@@ -1,0 +1,25 @@
+OLORIN DIGITAL — VERSÃO ESTÁTICA (HTML)
+=======================================
+
+Esta pasta é o site completo em HTML puro. Para publicar na Locaweb:
+
+1. No painel da Locaweb, abra "Arquivos e FTP" e conecte pelo FileZilla
+   (ou use o Gerenciador de Arquivos web).
+2. Envie TODO o conteúdo desta pasta (inclusive os arquivos ocultos
+   .htaccess e leads/.htaccess) para dentro de public_html.
+   O index.html precisa ficar direto em public_html.
+3. Edite o config.php (e-mail que recebe os pedidos, WhatsApp e SMTP
+   da Locaweb: email-ssl.com.br, porta 465, SSL, e-mail e senha da caixa).
+4. Troque o número de WhatsApp de exemplo (5541900000000 / (41) 90000-0000)
+   em index.html, politica-de-privacidade/index.html e 404.html
+   (use "Localizar e substituir" no editor de texto).
+5. Ative o SSL (Let's Encrypt) no painel e depois descomente o bloco
+   "HTTPS obrigatório" no arquivo .htaccess.
+
+Pedidos do formulário:
+- chegam por e-mail (com o SMTP configurado) e
+- ficam salvos em leads/pedidos.csv (baixe pelo FTP e abra no Excel).
+  Essa pasta é bloqueada para visitantes.
+
+Para editar textos: abra index.html num editor (ex.: VS Code) e procure o
+texto. Recomendado: usar a versão WordPress do tema, editável pelo painel.

@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "olorin/icone",
+	"title": "Ícone pixel",
+	"category": "olorin",
+	"icon": "star-filled",
+	"description": "Ícone em pixel art da Olorin. Escolha o desenho na barra lateral.",
+	"keywords": [ "icone", "pixel", "olorin" ],
+	"textdomain": "olorin",
+	"attributes": {
+		"icone": { "type": "string", "default": "pixel" }
+	},
+	"supports": {
+		"html": false,
+		"className": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorScript": "olorin-editor",
+	"render": "file:./render.php"
+}

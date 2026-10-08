@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "olorin/formulario",
+	"title": "Formulário de orçamento",
+	"category": "olorin",
+	"icon": "feedback",
+	"description": "Formulário em 2 etapas. Os pedidos ficam salvos em Leads e chegam por e-mail. Textos e opções em Aparência → Personalizar → Olorin → Formulário.",
+	"keywords": [ "formulario", "contato", "orcamento", "lead" ],
+	"textdomain": "olorin",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"className": true,
+		"multiple": false,
+		"reusable": false
+	},
+	"editorScript": "olorin-editor",
+	"render": "file:./render.php"
+}

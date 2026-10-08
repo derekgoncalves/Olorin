@@ -1,0 +1,51 @@
+# Publica o tema na Locaweb por FTP (OPCIONAL).
+#
+# Para usar: no GitHub, abra Settings → Secrets and variables → Actions e crie:
+#   LOCAWEB_FTP_SERVIDOR  ex.: ftp.seudominio.com.br
+#   LOCAWEB_FTP_USUARIO   usuário de FTP (painel Locaweb → Arquivos e FTP)
+#   LOCAWEB_FTP_SENHA     senha de FTP
+#   LOCAWEB_TEMA_PASTA    ex.: /public_html/wp-content/themes/olorin/
+# Depois, rode em Actions → "Publicar tema na Locaweb" → Run workflow.
+# Sem esses segredos, nada é enviado.
+name: Publicar tema na Locaweb
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publicar-tema
+  cancel-in-progress: false
+
+jobs:
+  ftp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conferir segredos
+        id: segredos
+        env:
+          SERVIDOR: ${{ secrets.LOCAWEB_FTP_SERVIDOR }}
+        run: |
+          if [ -z "$SERVIDOR" ]; then
+            echo "Segredos de FTP não configurados — nada a publicar."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.segredos.outputs.ok == 'true'
+      - name: Enviar por FTP
+        if: steps.segredos.outputs.ok == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.LOCAWEB_FTP_SERVIDOR }}
+          username: ${{ secrets.LOCAWEB_FTP_USUARIO }}
+          password: ${{ secrets.LOCAWEB_FTP_SENHA }}
+          local-dir: ./tema-wordpress/olorin/
+          server-dir: ${{ secrets.LOCAWEB_TEMA_PASTA }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

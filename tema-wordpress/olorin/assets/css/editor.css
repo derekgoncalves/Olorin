@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Ajustes do editor de blocos (o visual principal vem de olorin.css)
+   ========================================================================== */
+
+.editor-styles-wrapper {
+	background: #000;
+	color: #fff;
+	font-family: var(--o-f-mono);
+}
+
+/* Seções sem altura de tela cheia e sem cabeçalho fixo dentro do editor */
+.editor-styles-wrapper .o-hero {
+	min-height: 0;
+	padding-top: 96px;
+}
+.editor-styles-wrapper .o-hero::after {
+	display: none;
+}
+.editor-styles-wrapper .o-method__head,
+.editor-styles-wrapper .o-faq__head {
+	position: static;
+}
+
+/* Letreiro: no editor os itens ficam parados e quebram linha para facilitar a edição */
+.editor-styles-wrapper .o-marquee {
+	transform: none;
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 18px var(--o-gutter);
+	flex-wrap: wrap;
+	gap: 8px 0;
+	white-space: normal;
+}
+
+/* Dica do checklist sempre visível */
+.editor-styles-wrapper .o-problems__hint {
+	display: block;
+}
+.editor-styles-wrapper .o-check::after {
+	opacity: 1;
+}
+
+/* Blocos próprios */
+.editor-styles-wrapper .wp-block-olorin-icone {
+	min-width: 24px;
+	min-height: 24px;
+}
+.editor-styles-wrapper .o-editor-hint {
+	margin: 0 0 12px;
+	padding: 8px 12px;
+	border: 2px dashed currentColor;
+	font-size: 12px;
+	opacity: 0.8;
+}
+
+/* Reveal nunca esconde nada no editor */
+.editor-styles-wrapper .o-reveal {
+	opacity: 1 !important;
+	transform: none !important;
+}
+
+/* Ajuda visual: limites de cada seção */
+.editor-styles-wrapper .o-sec {
+	outline: 1px dashed rgba(127, 127, 127, 0.25);
+	outline-offset: -1px;
+}

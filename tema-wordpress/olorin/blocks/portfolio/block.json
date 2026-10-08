@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "olorin/portfolio",
+	"title": "Portfólio (grade com filtros)",
+	"category": "olorin",
+	"icon": "format-gallery",
+	"description": "Mostra os projetos cadastrados em Portfólio, com filtros por tipo de trabalho.",
+	"keywords": [ "portfolio", "trabalhos", "cases", "galeria" ],
+	"textdomain": "olorin",
+	"attributes": {
+		"quantidade": { "type": "number", "default": 12 },
+		"filtros": { "type": "boolean", "default": true }
+	},
+	"supports": {
+		"html": false,
+		"align": false,
+		"className": true,
+		"reusable": false
+	},
+	"editorScript": "olorin-editor",
+	"render": "file:./render.php"
+}

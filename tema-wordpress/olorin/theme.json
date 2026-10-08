@@ -1,0 +1,95 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": false,
+		"useRootPaddingAwareAlignments": false,
+		"border": {
+			"color": false,
+			"radius": false,
+			"style": false,
+			"width": false
+		},
+		"color": {
+			"custom": false,
+			"customDuotone": false,
+			"customGradient": false,
+			"defaultDuotone": false,
+			"defaultGradients": false,
+			"defaultPalette": false,
+			"duotone": [],
+			"gradients": [],
+			"link": false,
+			"palette": [
+				{ "slug": "verde", "name": "Verde (marca)", "color": "#ECFF36" },
+				{ "slug": "violeta", "name": "Violeta (marca)", "color": "#7E3BED" },
+				{ "slug": "preto", "name": "Preto", "color": "#000000" },
+				{ "slug": "branco", "name": "Branco", "color": "#FFFFFF" }
+			]
+		},
+		"dimensions": {
+			"minHeight": false
+		},
+		"layout": {
+			"allowEditing": false
+		},
+		"shadow": {
+			"defaultPresets": false,
+			"presets": []
+		},
+		"spacing": {
+			"blockGap": null,
+			"margin": false,
+			"padding": false,
+			"customSpacingSize": false,
+			"defaultSpacingSizes": false,
+			"spacingSizes": [],
+			"units": [ "px", "%", "rem", "vw" ]
+		},
+		"typography": {
+			"customFontSize": false,
+			"dropCap": false,
+			"fluid": false,
+			"fontStyle": false,
+			"fontWeight": false,
+			"letterSpacing": false,
+			"lineHeight": false,
+			"textDecoration": false,
+			"textTransform": false,
+			"writingMode": false,
+			"defaultFontSizes": false,
+			"fontFamilies": [
+				{ "slug": "display", "name": "Display (Archivo Expanded)", "fontFamily": "\"Archivo Expanded\", \"Arial Black\", Impact, sans-serif" },
+				{ "slug": "mono", "name": "Texto (Cascadia Code)", "fontFamily": "\"Cascadia Code\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" },
+				{ "slug": "pixel", "name": "Pixel (Silkscreen)", "fontFamily": "Silkscreen, \"Courier New\", monospace" }
+			],
+			"fontSizes": [
+				{ "slug": "pequeno", "name": "Pequeno", "size": "0.875rem" },
+				{ "slug": "normal", "name": "Normal", "size": "1rem" },
+				{ "slug": "medio", "name": "Médio", "size": "1.25rem" },
+				{ "slug": "grande", "name": "Grande", "size": "clamp(1.5rem, 2.4vw, 2rem)" },
+				{ "slug": "enorme", "name": "Enorme", "size": "clamp(2rem, 4.2vw, 3.75rem)" }
+			]
+		},
+		"blocks": {
+			"core/button": {
+				"color": { "background": false, "text": false }
+			},
+			"core/paragraph": {
+				"color": { "background": false }
+			},
+			"core/heading": {
+				"color": { "background": false }
+			}
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--preto)",
+			"text": "var(--wp--preset--color--branco)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--mono)"
+		}
+	}
+}

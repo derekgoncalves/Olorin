@@ -1,0 +1,33 @@
+# Verifica a sintaxe do tema (PHP e JavaScript) a cada alteração.
+name: Verificar tema
+
+on:
+  push:
+    paths: ['tema-wordpress/**', 'ferramentas/**', '.github/workflows/**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sintaxe:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - name: PHP sem erros de sintaxe
+        run: |
+          set -e
+          find tema-wordpress ferramentas -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: JavaScript sem erros de sintaxe
+        run: |
+          node -e "for (const f of ['tema-wordpress/olorin/assets/js/olorin.js','tema-wordpress/olorin/assets/js/editor.js']) { require('vm').createScript(require('fs').readFileSync(f,'utf8')); console.log('ok', f); }"
+      - name: theme.json válido
+        run: python3 -c "import json; json.load(open('tema-wordpress/olorin/theme.json')); print('ok')"
