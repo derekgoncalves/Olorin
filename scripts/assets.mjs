@@ -125,6 +125,11 @@ async function construirCss({ prod, saida }) {
 		css += `:root { ${licenciadas.map((f) => `${f.variavel}: "${f.familia}", ${f.reserva};`).join(' ')} }\n`;
 	}
 
+	// @font-face separado para ir embutido no <head> (as fontes começam a baixar antes do CSS completo,
+	// evitando salto de layout). As fontes licenciadas, se existirem, entram também.
+	const blocosFonte = (css.match(/@font-face\s*\{[^}]*\}/g) || []).join('\n');
+	const fontFace = transform({ filename: 'fontes.css', code: Buffer.from(blocosFonte), minify: true, sourceMap: false }).code.toString();
+
 	const { code } = transform({
 		filename: 'olorin.css',
 		code: Buffer.from(css),
@@ -138,7 +143,7 @@ async function construirCss({ prod, saida }) {
 	await mkdir(pasta, { recursive: true });
 	await limparPasta(pasta, 'olorin.');
 	await writeFile(path.join(pasta, nome), code);
-	return { href: `/assets/css/${nome}`, bytes: code.length, licenciadas };
+	return { href: `/assets/css/${nome}`, bytes: code.length, licenciadas, fontFace };
 }
 
 async function construirJs({ prod, saida }) {
@@ -169,6 +174,10 @@ export async function construirAssets({ prod, saida }) {
 			? { href: css.licenciadas.find((f) => f.familia === 'Integral CF').arquivo, tipo: css.licenciadas.find((f) => f.familia === 'Integral CF').tipo }
 			: { href: '/assets/fonts/archivo-expanded-900.woff2', tipo: 'font/woff2' },
 		{ href: '/assets/fonts/cascadia-code-400.woff2', tipo: 'font/woff2' },
+		// Fonte pixel da linha acima do título do banner (2,8 KiB): pré-carregada para a linha não mudar de tamanho.
+		css.licenciadas.find((f) => f.familia === 'Retro Computer')
+			? { href: css.licenciadas.find((f) => f.familia === 'Retro Computer').arquivo, tipo: css.licenciadas.find((f) => f.familia === 'Retro Computer').tipo }
+			: { href: '/assets/fonts/silkscreen-400.woff2', tipo: 'font/woff2' },
 	];
-	return { css: css.href, cssBytes: css.bytes, js: js.src, jsBytes: js.bytes, fontes, licenciadas: css.licenciadas.map((f) => f.familia) };
+	return { css: css.href, cssBytes: css.bytes, js: js.src, jsBytes: js.bytes, fontes, fontFace: css.fontFace, licenciadas: css.licenciadas.map((f) => f.familia) };
 }

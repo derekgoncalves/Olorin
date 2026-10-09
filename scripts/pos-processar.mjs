@@ -28,6 +28,8 @@ export async function posProcessar({ saida, resultados }) {
 		noscriptFallback: true,
 		pruneSource: false,
 		inlineFonts: false,
+		// Não mexe nos <style> já escritos no <head> (o @font-face fica lá para as fontes baixarem cedo).
+		reduceInlineStyles: false,
 		preloadFonts: false,
 		compress: true,
 		mergeStylesheets: true,

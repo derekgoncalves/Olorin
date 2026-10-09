@@ -19,30 +19,30 @@ seo:
 
 card:
   titulo: Identidade visual e criação
-  resumo: Logotipo, manual de marca, papelaria e todo o material visual. A marca com cara de marca, não de improviso.
+  resumo: Logotipo, manual de marca, papelaria e material visual de apoio. A marca com cara de marca, não de improviso.
   resumo_curto: Logotipo, manual de marca e papelaria.
 
 hero:
   eyebrow: Criação de identidade visual em Curitiba e para todo o Brasil
   h1: A marca com cara de marca, não de improviso.
-  sub: Logotipo, manual de marca, papelaria e todo o material visual, criados pelo mesmo time que faz o seu anúncio, o seu site e o seu impresso.
+  sub: Logotipo, manual de marca, papelaria e material de apoio, criados pelo mesmo time que também faz anúncios, conteúdo, sites e impressos.
   janela_linhas:
     - Logotipo · versão final
     - Manual de marca · cores e fontes
     - Papelaria · pronta para a gráfica
 
 resposta_curta: >-
-  Identidade visual é o conjunto que dá cara à sua marca: o logotipo, as cores, as fontes e o manual
-  que explica como usar tudo isso. É para quem está começando ou sente que a marca parece diferente
+  Identidade visual é o que dá cara à sua marca: logotipo, cores, fontes e o manual que explica
+  como usar tudo isso. É para quem está começando ou sente que a marca parece diferente
   em cada lugar — no feed, no cartão, no site. Os projetos custam a partir de R$ 800. O escopo e o prazo
-  são definidos no briefing, a etapa em que combinamos o que entra no projeto, antes de começar.
+  são definidos antes de começar, no briefing — a etapa em que combinamos o que entra no projeto.
 
 dores:
   titulo: Isso acontece com você?
   itens:
     - Cada peça parece de uma empresa diferente — o anúncio, o feed, o cartão de visita e o site.
     - O logotipo foi feito às pressas, e hoje ninguém sabe qual versão é a certa.
-    - Cada fornecedor usa uma cor e uma fonte, porque não existe um guia que diga qual é a da marca.
+    - Cada fornecedor usa uma cor e uma fonte diferentes, porque não existe um guia que diga quais são as da marca.
     - O material impresso ficou parado no tempo enquanto o digital foi atualizado.
 
 para_quem:
@@ -60,16 +60,16 @@ entregas:
   titulo: O que entregamos
   itens:
     - titulo: Logotipo
-      texto: O símbolo e o nome da sua marca, desenhados para funcionar do perfil do Instagram à fachada.
+      texto: O logotipo da sua marca, pensado para aparecer tanto no digital quanto no impresso.
       icone: marca
     - titulo: Manual de marca
-      texto: O guia de uso da marca — como aplicar o logotipo, quais cores e fontes usar e o que evitar. Com ele, qualquer peça sai com a mesma cara, não importa quem faça.
+      texto: O guia de uso da marca, que mostra como aplicar o logotipo, as cores e as fontes. Serve de referência para qualquer peça que for criada depois.
       icone: estrela
     - titulo: Papelaria
       texto: As peças do dia a dia com a nova marca, como o cartão de visita. Entregamos o arquivo fechado, pronto para a gráfica.
       icone: impresso
     - titulo: Material visual de apoio
-      texto: As peças que levam a marca para onde ela aparece — redes sociais, anúncio, site e impresso. O que entra em cada projeto é definido no briefing.
+      texto: As demais peças com a nova marca, conforme a necessidade do seu negócio. O que entra em cada projeto é definido no briefing, antes de começar.
       icone: redes
 
 como_funciona:
@@ -82,7 +82,7 @@ como_funciona:
     - nome: Execução
       texto: O Vinicius cria o logotipo, o manual de marca e as peças combinadas no briefing. As aprovações acontecem por e-mail, e a papelaria sai em arquivo fechado, pronto para a gráfica.
     - nome: Leitura
-      texto: Você recebe a marca com o manual que explica como usar cada peça, sem caixa-preta. Se seguir com a gente na Gestão mensal ou no 360 completo, o mesmo time aplica a marca em tudo, e o relatório mostra todo mês o que está voltando.
+      texto: Você recebe a marca e o manual que explica como usá-la, sem segredo. Se seguir com a gente no plano Gestão mensal, o mesmo time aplica a marca nos anúncios e no conteúdo, com relatório todo mês. No plano 360 completo, também no impresso e no site.
   prazos:
     - "[CONFIRMAR: prazo típico de cada etapa de um projeto de identidade visual (diagnóstico, criação, ajustes e entrega)]"
 
@@ -90,16 +90,16 @@ precisamos:
   titulo: O que precisamos de você
   itens:
     - Um tempo para o briefing, em que definimos juntos o escopo e o prazo do projeto.
-    - O que a sua marca já tem hoje, se existir — logotipo atual, fotos, material impresso e os links das redes e do site.
+    - O que a sua marca já tem hoje, se houver — logotipo atual, material impresso e os links das redes e do site, para o diagnóstico.
     - Retorno nas aprovações, que acontecem por e-mail, para o projeto andar sem travar.
-    - "[CONFIRMAR: número de rodadas de ajuste incluídas e materiais pedidos no início]"
+    - "[CONFIRMAR: número de rodadas de ajuste incluídas e outros materiais pedidos no início]"
 
 preco:
   titulo: Quanto custa
   formato: Projeto pontual
   valor: A partir de R$ 800/projeto
   faixa: "[CONFIRMAR: faixa de preço por escopo (só logotipo; logotipo + manual de marca; identidade completa com papelaria)]"
-  detalhe: Uma entrega específica e fechada. O escopo e o prazo são definidos no briefing, antes de começar, e o preço vem aberto na proposta.
+  detalhe: Uma entrega específica e fechada. O escopo e o prazo são definidos no briefing, antes de começar, e o preço vem detalhado na proposta.
   contrato: Projeto fechado, sem mensalidade.
   inclui:
     - Logotipo, manual de marca, papelaria e material visual de apoio, conforme o escopo do briefing
@@ -108,7 +108,7 @@ preco:
     - "[CONFIRMAR: rodadas de ajuste incluídas e formatos dos arquivos entregues]"
   nao_inclui:
     - A impressão da papelaria e do material (entregamos o arquivo fechado, pronto para a gráfica)
-    - Gestão de anúncios e de redes sociais (no plano Gestão mensal ou no 360 completo)
+    - Gestão de anúncios e de redes sociais (nos planos Gestão mensal ou 360 completo)
     - Site e loja virtual (contratados à parte ou no plano 360 completo)
   schema:
     valor: "800"
@@ -124,24 +124,24 @@ combina_com:
 faq:
   - id: identidade-quanto-custa
     pergunta: Quanto custa uma identidade visual?
-    resposta: Os projetos de identidade visual começam em R$ 800. O valor final depende do escopo — por exemplo, se entra só o logotipo ou também o manual de marca e a papelaria. Tudo é combinado no briefing, e o preço vem aberto na proposta, antes de começar.
+    resposta: Os projetos de identidade visual começam em R$ 800. O valor final depende do escopo, combinado no briefing, a etapa inicial em que definimos o que entra no projeto. O preço vem detalhado na proposta, antes de começar.
   - id: identidade-prazo
     pergunta: Quanto tempo leva para a marca ficar pronta?
-    resposta: Depende do tamanho do projeto. O prazo é definido no briefing, junto com o escopo, antes de começarmos. Assim, você sabe quando vai receber a marca antes de fechar.
+    resposta: Depende do tamanho do projeto. O prazo é definido junto com o escopo no briefing, a etapa inicial do projeto, antes de começarmos. Assim, você sabe quando vai receber a marca antes de fechar.
   - id: identidade-quem-cria
     pergunta: Quem cria a minha marca?
-    resposta: O Vinicius Mafra, diretor de arte e designer há mais de 10 anos, que já esteve à frente de projetos de influenciadores digitais a produções culturais. A criação é do nosso próprio time — não terceirizamos para fornecedor externo.
+    resposta: Quem cria é o Vinicius Mafra, diretor de arte e designer há mais de 10 anos. Ele já esteve à frente de diversos projetos, de influenciadores digitais a produções culturais. A criação é do nosso próprio time — não terceirizamos.
   - id: identidade-mesma-cara
     pergunta: A marca nova já sai aplicada no anúncio, no feed e no site?
-    resposta: Se você contratar essas frentes com a gente, sim. O mesmo time cria a marca, os posts, os anúncios, o site e o impresso, então tudo sai com a mesma cara. Também dá para contratar só a identidade visual e expandir depois.
+    resposta: Sim, se você contratar esses serviços com a gente. O mesmo time cria a marca, os posts, os anúncios, o site e o impresso, então tudo sai com a mesma cara. Também dá para contratar só a identidade visual e expandir depois.
   - id: identidade-arquivos
     pergunta: Quem fica com os arquivos da marca?
     resposta: "[CONFIRMAR: titularidade e formatos dos arquivos entregues (arquivos abertos, vetor, PNG, PDF)]"
   - id: identidade-fora-curitiba
     pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e entregáveis digitais.
+    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e arquivos entregues em formato digital.
 
 campanha:
   titulo: Chega de marca feita no improviso.
-  subtitulo: Diagnóstico gratuito da sua marca, feito por quem cria. Projetos de identidade visual a partir de R$ 800. Sem compromisso.
+  subtitulo: Diagnóstico gratuito da sua marca. Projetos de identidade visual a partir de R$ 800. Sem compromisso.
   faq: [identidade-quanto-custa, identidade-prazo, identidade-quem-cria, identidade-fora-curitiba]

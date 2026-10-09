@@ -137,3 +137,12 @@
 body:has(.o-topo.is-hidden) .o-indice {
 	top: 0;
 }
+
+/* Índice no celular: esmaece a borda direita para indicar que dá para rolar. */
+@media (max-width: 960px) {
+	.o-indice__lista {
+		-webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+		mask-image: linear-gradient(90deg, #000 85%, transparent);
+		padding-right: 40px;
+	}
+}

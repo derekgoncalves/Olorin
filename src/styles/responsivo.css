@@ -259,3 +259,10 @@
 		grid-template-columns: minmax(0, 1fr);
 	}
 }
+
+/* Título final em 3 linhas no celular ("Vamos olhar / sua marca / juntos."). */
+@media (max-width: 600px) {
+	.o-orcamento .o-titulo br {
+		display: none;
+	}
+}

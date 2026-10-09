@@ -13,7 +13,7 @@
 	src: url("/assets/fonts/archivo-expanded-900.woff2") format("woff2");
 	font-weight: 900;
 	font-style: normal;
-	font-display: swap;
+	font-display: optional; /* título do banner: sem troca depois de pintar (evita salto de layout); a partir da 2ª página vem do cache */
 }
 @font-face {
 	font-family: "Archivo Expanded";

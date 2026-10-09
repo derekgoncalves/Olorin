@@ -103,11 +103,11 @@ eleventyComputed:
 		<h2 class="o-titulo o-titulo--g" id="para-quem-titulo">Para quem é (e para quem não é)</h2>
 		<div class="o-para-quem">
 			<div class="o-para-quem__col o-para-quem__col--sim">
-				<h3 class="o-para-quem__titulo"><span class="o-icone o-icone--check" aria-hidden="true"></span>É para você se…</h3>
+				<h3 class="o-para-quem__titulo"><span class="o-icone o-icone--check" aria-hidden="true"></span>É para…</h3>
 				<ul class="o-lista-pixel">{% for i in s.para_quem.e %}<li>{{ i | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
 			</div>
 			<div class="o-para-quem__col o-para-quem__col--nao">
-				<h3 class="o-para-quem__titulo"><span class="o-icone o-icone--mais o-icone--x" aria-hidden="true"></span>Não é para você se…</h3>
+				<h3 class="o-para-quem__titulo"><span class="o-icone o-icone--mais o-icone--x" aria-hidden="true"></span>Não é para…</h3>
 				<ul class="o-lista-pixel">{% for i in s.para_quem.nao_e %}<li>{{ i | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
 			</div>
 		</div>

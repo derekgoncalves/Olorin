@@ -169,7 +169,7 @@
 
 .o-quem-faz {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 	gap: 24px 40px;
 	margin-bottom: 28px;
 }
@@ -262,6 +262,7 @@
 }
 .o-combina__titulo {
 	margin: 0 0 8px !important;
+	line-height: 1.1;
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
 	font-size: 18px;
@@ -363,4 +364,23 @@
 	font-size: 16px;
 	font-weight: 700;
 	opacity: 1;
+}
+
+/* Grade de entregas sem buracos (só no desktop, onde há 3 colunas): 4 itens em 2×2;
+   sobra de 1 ou 2 itens na última linha ocupa a largura toda. */
+@media (min-width: 1101px) {
+	.o-entregas:has(> li:nth-child(4):last-child) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.o-entregas > li:last-child:nth-child(3n + 2) {
+		grid-column: span 2;
+	}
+	.o-entregas > li:last-child:nth-child(3n + 1):not(:nth-child(4)) {
+		grid-column: 1 / -1;
+	}
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+	.o-entregas > li:last-child:nth-child(odd) {
+		grid-column: 1 / -1;
+	}
 }

@@ -59,6 +59,7 @@
 			h.setAttribute("data-form-variant", v);
 		})(document, window);
 	</script>
+	<style>{{ assets.fontFace | safe }}</style>
 	<link rel="stylesheet" href="{{ assets.css }}">
 	{%- include "partials/schema.njk" %}
 	<script>window.OLORIN_CONFIG = {{ {
