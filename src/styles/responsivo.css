@@ -146,7 +146,7 @@
 	.o-hero__janela .o-janela__barra {
 		--barra-x: 8px;
 		--ctrl-l: 30px;
-		font-size: 11px;
+		font-size: 12px;
 	}
 	.o-hero__barras {
 		height: 40px;

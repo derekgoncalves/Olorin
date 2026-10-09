@@ -90,6 +90,13 @@
 .o-barra .o-icone {
 	--tam: 18px;
 }
+.o-barra.is-alt {
+	border-top-color: var(--branco);
+}
+.o-barra.is-alt a:first-child {
+	background: var(--branco);
+	color: var(--preto);
+}
 .o-barra.is-longe {
 	transform: translateY(110%);
 }

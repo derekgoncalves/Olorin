@@ -254,7 +254,7 @@ eleventyComputed:
 	<div class="o-wrap o-faq__grade">
 		<div class="o-faq__cabeca">
 			<p class="o-etiqueta">Dúvidas sobre {{ s.nome | lower }}</p>
-			<h2 class="o-titulo o-titulo--g" id="perguntas-titulo">Perguntas frequentes</h2>
+			<h2 class="o-titulo o-titulo--m" id="perguntas-titulo">Perguntas frequentes</h2>
 			<a class="o-btn o-btn--contorno" href="{{ waLink('servico-' + s.slug + '-faq', { tipo: 'servico', x: s.nome }) }}" target="_blank" rel="noopener" data-servico="{{ s.slug }}"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>Perguntar no WhatsApp</a>
 		</div>
 		{{ ui.faqLista(s.faq) }}

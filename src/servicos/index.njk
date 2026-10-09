@@ -19,6 +19,10 @@ eleventyComputed:
 		<p class="o-etiqueta">{{ h.etiqueta }}</p>
 		<h1 class="o-pagina-topo__titulo">{{ h.titulo }}</h1>
 		<p class="o-pagina-topo__sub">{{ h.texto }}</p>
+		<div class="o-hero__acoes">
+			<a class="o-btn o-btn--verde o-btn--grande" id="cta-diagnostico-hub" href="#orcamento">{{ conteudo.home.hero.botao if site.config.OFERTA_DIAGNOSTICO else conteudo.home.hero.botao_sem_diagnostico }}</a>
+			<a class="o-link-wa" href="{{ waLink('servicos-hero') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ conteudo.home.hero.link_whatsapp }}</a>
+		</div>
 	</div>
 </section>
 

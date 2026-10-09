@@ -18,7 +18,7 @@
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
 	font-size: clamp(30px, 5vw, 72px);
-	line-height: 0.95;
+	line-height: 1.12;
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
 }
@@ -70,6 +70,7 @@
 /* Resposta curta (para leitores apressados e buscas com IA) */
 .o-resposta {
 	max-width: 900px;
+	margin-inline: 0;
 }
 .o-resposta__texto {
 	margin: 0 0 14px;
@@ -127,4 +128,12 @@
 }
 .o-texto ul {
 	padding-left: 1.3em;
+}
+
+/* Quando o cabeçalho se esconde ao rolar, o índice sobe junto (sem vão). */
+.o-indice {
+	transition: top 0.35s var(--curva);
+}
+body:has(.o-topo.is-hidden) .o-indice {
+	top: 0;
 }

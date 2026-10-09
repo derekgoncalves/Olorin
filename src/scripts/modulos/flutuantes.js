@@ -14,7 +14,10 @@ export function iniciarFlutuantes() {
 
 	function aplicar() {
 		const esconder = visiveis.size > 0 || teclado;
-		if (barra) barra.classList.toggle('is-longe', esconder);
+		if (barra) {
+			barra.classList.toggle('is-longe', esconder);
+			barra.classList.toggle('is-alt', sobreCor);
+		}
 		if (flutuante) {
 			flutuante.classList.toggle('is-longe', esconder || perto);
 			flutuante.classList.toggle('is-alt', sobreCor);

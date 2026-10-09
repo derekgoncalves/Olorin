@@ -14,7 +14,7 @@
 	z-index: -1;
 	width: min(46vw, 620px);
 	aspect-ratio: 134 / 126;
-	background: rgba(255, 255, 255, 0.09);
+	background: rgba(255, 255, 255, 0.04);
 	-webkit-mask: var(--icone-o) center / contain no-repeat;
 	mask: var(--icone-o) center / contain no-repeat;
 	animation: o-girar 60s linear infinite;

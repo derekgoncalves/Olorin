@@ -38,7 +38,7 @@ export function waLink(origem, contexto = {}) {
 
 /** Formatação simples em linha: **negrito**, [texto](url). Escapa o resto. */
 export function emLinha(texto) {
-	let html = escapar(texto);
+	let html = escapar(texto).replace(/R\$ (?=\d)/g, 'R$\u00a0');
 	html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 	html = html.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, rotulo, url) => {
 		if (/^\[CONFIRMAR/i.test(m)) return m;
@@ -117,7 +117,7 @@ export function registrarFiltros(eleventyConfig, { prod }) {
 		return `${d}/${m}/${a}`;
 	});
 	eleventyConfig.addFilter('dataIso', (d) => (d instanceof Date ? d.toISOString() : String(d ?? '')).slice(0, 10));
-	eleventyConfig.addFilter('reais', (n) => `R$ ${Number(n).toLocaleString('pt-BR')}`);
+	eleventyConfig.addFilter('reais', (n) => `R$\u00a0${Number(n).toLocaleString('pt-BR')}`);
 	eleventyConfig.addFilter('encontrar', (lista, campo, valor) => (lista || []).find((i) => i && i[campo] === valor));
 	eleventyConfig.addFilter('filtrarPor', (lista, campo, valor) => (lista || []).filter((i) => i && [].concat(i[campo] || []).includes(valor)));
 	eleventyConfig.addFilter('phpString', phpString);
@@ -126,7 +126,7 @@ export function registrarFiltros(eleventyConfig, { prod }) {
 	// Marcadores [CONFIRMAR: ...]: destacados no modo de desenvolvimento.
 	// Em produção o carregador de conteúdo já removeu tudo o que tinha marcador.
 	eleventyConfig.addFilter('confirmar', (html) =>
-		prod ? html : String(html ?? '').replace(/\[CONFIRMAR:?([^\]]*)\]/g, '<mark class="o-confirmar" title="Falta confirmar">[CONFIRMAR:$1]</mark>'),
+		prod ? String(html ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0') : String(html ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0').replace(/\[CONFIRMAR:?([^\]]*)\]/g, '<mark class="o-confirmar" title="Falta confirmar">[CONFIRMAR:$1]</mark>'),
 	);
 
 	eleventyConfig.addNunjucksGlobal('imagem', imagem);

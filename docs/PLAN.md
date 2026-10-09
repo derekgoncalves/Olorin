@@ -16,7 +16,10 @@
 - **Os pedidos (leads)** são gravados numa planilha mensal **fora** da pasta pública, quando a Locaweb permite. Também chegam por e-mail. O formulário recusa envios de outros sites, robôs que preenchem um campo-isca e excesso de envios do mesmo endereço.
 - **Rastreamento (GTM, GA4, Meta, Google Ads)** está pronto, mas **desligado** enquanto os IDs estiverem vazios em `src/_data/site/config.json`. Quando ligado, nada de terceiros carrega antes de a pessoa aceitar no aviso de cookies.
 - **Por que assim:** é o jeito mais rápido, seguro e barato de rodar na hospedagem que você já tem, com o mesmo resultado de velocidade do site atual ou melhor.
-- **O que precisa de atenção antes de publicar** está na seção 13.1. Os mais importantes: o `robots.txt` bloqueia `/promo/` e `/obrigado/` (o PROMPT proíbe), a imagem de compartilhamento da página Sobre não existe, e as páginas de cases não foram feitas.
+- **O que precisa de atenção antes de publicar** está na seção 13.1. Os mais importantes:
+  - o `robots.txt` bloqueia `/promo/` e `/obrigado/`, o que o PROMPT proíbe;
+  - o número de WhatsApp usado pelo formulário está digitado dentro do PHP, fora da configuração geral;
+  - a checagem de "tempo mínimo" contra robôs pode ser pulada por quem envia direto para o servidor.
 
 ---
 
@@ -133,6 +136,9 @@
 │   ├── pos-processar.mjs     Beasties: CSS crítico embutido em cada página (só em produção)
 │   ├── verificar-build.mjs   checagens do dist/; erro interrompe o build
 │   ├── testar.mjs            npm test: Chromium (Playwright), axe-core e formulário com PHP real
+│   ├── capturas.mjs          npm run capturas: telas de todas as páginas em 5 larguras
+│   ├── legibilidade.mjs      npm run legibilidade: índice de Flesch adaptado ao português
+│   ├── pendencias.mjs        npm run pendencias: lista os [CONFIRMAR] do conteúdo
 │   ├── gerar-og.mjs          npm run og: imagens de compartilhamento 1200×630 (fora do build)
 │   └── deploy.mjs            npm run deploy / deploy:dry (FTP/FTPS)
 ├── src/
@@ -154,6 +160,7 @@
 │   ├── index.njk, 404.njk    home e página de erro
 │   ├── servicos/             hub (index.njk) e servico.njk (gera as 6 páginas por paginação)
 │   ├── promo/                landing geral (index.njk) e servico.njk (gera as 6 landings)
+│   ├── cases/                lista e página de case (só existem com case aprovado)
 │   ├── sobre/, obrigado/, politica-de-privacidade/
 │   ├── seo/                  sitemap.xml, robots.txt, llms.txt, site.webmanifest
 │   ├── _estilo/              guia de estilo vivo (só em "npm run dev"; ignorado em produção)
@@ -252,6 +259,7 @@
 | `planos.yml` | Cartões de planos, calculadora e tabela equivalente sem JS, resumo das landings, lista de planos aceitos no PHP, `llms.txt` |
 | `formulario.yml` | Rótulos, mensagens de erro (também usadas pelo JS), faixas de investimento (também na lista do PHP) |
 | `equipe.yml` | Cards de pessoa, "Quem faz", página Sobre, JSON-LD `Person` e `employee` |
+| `cases.yml` | Seção Resultados da home (`exibir: true`). Com `aprovado: true`: `/cases/`, `/cases/<slug>/`, item "Cases" no menu, bloco de cases nas páginas dos serviços listados e sitemap. O carregador **para o build** se um case aprovado não tiver `slug`, `segmento`, `situacao`, `o_que_fizemos`, `resultado`, `periodo` e `servicos` |
 | `site/config.json` | Contatos, links de WhatsApp (`waLink`), flags (`SHOW_STATS`, `SHOW_TOTAL_COST`, `OFERTA_DIAGNOSTICO`, `FORM_TOP_VARIANT`), IDs de rastreamento, URL base de canonical/OG/sitemap |
 
 ### 4.3 A regra do `[CONFIRMAR]`
@@ -261,7 +269,7 @@
   - um **texto** com o marcador vira vazio (`null`), e o template não mostra o bloco;
   - um **item de lista** com o marcador em qualquer campo é **retirado inteiro**. Exemplos: uma pergunta do FAQ sem resposta confirmada, ou uma entrega de serviço com a frequência a confirmar.
 - **Segunda barreira:** `verificar-build.mjs` falha se encontrar `[CONFIRMAR` em qualquer arquivo de texto do `dist/` (HTML, PHP, XML, TXT, CSS, JS, JSON, `.htaccess`). `testar.mjs` também procura o marcador no texto visível.
-- **Cuidado:** a retirada de itens é silenciosa. Hoje há marcadores em 10 arquivos de conteúdo (o de rastreamento e relatório tem 14). O build não lista o que foi retirado. Para saber o que falta, rode `npm run dev` ou consulte `docs/CONTENT-TODO.md`.
+- **Cuidado:** a retirada de itens é silenciosa. Hoje há marcadores em 10 arquivos de conteúdo (o de rastreamento e relatório tem 14). O build não lista o que foi retirado. Para saber o que falta, rode `npm run pendencias` (lista arquivo, linha e descrição de cada marcador), abra o site com `npm run dev` ou consulte `docs/CONTENT-TODO.md`.
 
 ### 4.4 `enviar.php` gerado do mesmo conteúdo
 
@@ -294,8 +302,13 @@
 | `npm run build:dev` | Gera o `dist/` em modo de desenvolvimento, sem verificação. |
 | `npm test` | Testes no `dist/` já gerado (seção 12). |
 | `npm run og` | Regera as imagens de compartilhamento em `src/assets/og/` (precisa do Chromium). Não faz parte do build: as imagens ficam no Git. |
+| `npm run pendencias` | Lista todos os `[CONFIRMAR]` de `src/content/` e `src/_data/`. |
+| `npm run legibilidade` | Índice de Flesch adaptado ao português no texto visível do `<main>` de cada página do `dist/` (seção 12). |
+| `npm run capturas` | Telas de página inteira em 360, 390, 768, 1024 e 1440 px, salvas em `docs/screenshots/` (seção 12). |
 | `npm run deploy:dry` | Lista o que seria enviado. Com `.env` completo, só testa a conexão. Não roda o build. |
 | `npm run deploy` | `build` → `test` → backup do servidor → envio por FTP/FTPS. |
+
+A variável de ambiente `OLORIN_SAIDA` troca a pasta de saída (padrão `dist/`) no build, na verificação, nas capturas e na legibilidade. Serve para gerar um build de teste sem mexer no `dist/`.
 
 ### 5.2 Etapas do `npm run build`, na ordem
 
@@ -351,7 +364,7 @@
 
 ### 5.5 Imagens de compartilhamento (OG)
 
-`npm run og` monta cada imagem em HTML/CSS, com as fontes do site embutidas, e fotografa em 1200×630 com o Chromium. Gera: `home.jpg`, `servicos.jpg`, `promo.jpg` e `servico-<slug>.jpg` (6). Títulos longos têm a fonte reduzida até caber (de 64 até 36 px). **Não gera `sobre.jpg`, mas a página Sobre aponta para ela** (seção 13.1).
+`npm run og` monta cada imagem em HTML/CSS, com as fontes do site embutidas, e fotografa em 1200×630 com o Chromium. Gera: `home.jpg`, `servicos.jpg`, `sobre.jpg`, `promo.jpg` e `servico-<slug>.jpg` (6). Títulos longos têm a fonte reduzida até caber (de 64 até 36 px). Política, obrigado, 404 e páginas de case usam a da home. O build não confere se a imagem apontada em `og_imagem` existe.
 
 ---
 
@@ -367,6 +380,7 @@ Cada página define `modo` (no front matter ou no layout). Esse valor vai para `
 | `hub` | `/servicos/` | completo | sim | própria | completo no fim |
 | `servico` | `/servicos/<slug>/` (6) | completo | sim | própria | etapa 1 no topo + completo no fim, com o serviço marcado |
 | `sobre` | `/sobre/` | completo | sim | própria | completo no fim |
+| `cases` e `case` | `/cases/` e `/cases/<slug>/` (só com case aprovado; hoje nenhum) | completo | sim | própria | completo no fim |
 | `promo` | `/promo/` e `/promo/<slug>/` (6) | **mínimo** (logo + 1 botão, sem menu) | **não** | `/promo/` → própria; `/promo/<slug>/` → `/servicos/<slug>/` | completo **no topo** |
 | `obrigado` | `/obrigado/` | completo | não | própria | — |
 | `erro` | `/404.html` | completo | não | própria | — |
@@ -458,10 +472,10 @@ Os campos `ok`, `message`, `fields` e `whatsapp` mantêm o contrato do site ante
 |---|---|
 | `nome`, `site`, UTMs, ids de clique, `pagina`, `referencia`, `primeiro_toque` | uma linha só: sem tags, sem caracteres de controle nem quebras de linha, espaços repetidos reduzidos, tamanho máximo por campo |
 | `mensagem` | mantém as quebras de linha e tira o resto; até 1.500 caracteres |
-| `whatsapp` | só dígitos, tira o `55` inicial, exige 10 ou 11 dígitos, DDD válido e 9 no celular; grava como `+55DDDNÚMERO` |
+| `whatsapp` | só dígitos, tira o `55` inicial, exige 10 ou 11 dígitos, DDD válido e 9 no celular; normaliza para `+55DDDNÚMERO` (usado no e-mail e no webhook). Na planilha vira `(41) 99999-0000` + coluna `whatsapp_link` |
 | `servicos[]` | só as opções da lista gerada (+ lista antiga do `config.php`, se houver) |
 | `investimento`, `plano`, `servico_pagina` | só valores da lista gerada; senão, vazio |
-| `modo_pagina`, `posicao_formulario`, `variante_formulario` | listas fixas no PHP |
+| `modo_pagina`, `posicao_formulario`, `variante_formulario` | listas fixas no PHP. A de `modo_pagina` aceita `home`, `servico`, `promo`, `sobre`, `hub`, `simples`, `obrigado` e `erro`: **não inclui** `cases` nem `case` (seção 13.1) |
 | `consentimento` | vira a data e hora do aceite |
 
 **Assunto do e-mail:** `Novo lead: {plano ou serviços ou "orçamento"} | {origem}`. A origem é `utm_source/utm_medium` ou, na falta deles, "google ads" (gclid/gbraid/wbraid), "meta" (fbclid), o domínio de referência ou "site (direto)". O corpo lista os campos preenchidos com rótulos em português e termina com o link para responder no WhatsApp do cliente.
@@ -483,7 +497,7 @@ Os campos `ok`, `message`, `fields` e `whatsapp` mantêm o contrato do site ante
 | Envio rápido demais | Tempo mínimo de 3 s | `enviar.njk` | **Só vale quando o campo de tempo chega preenchido.** Sem JS os campos vão vazios (de propósito, para não barrar quem não tem JS), e um robô que simplesmente não manda os campos também passa (seção 13) |
 | Inundação | 6 pedidos válidos por IP a cada 10 min, contados em arquivo na pasta temporária do sistema (`olorin_rl_<hash do IP>`) | `enviar.njk` | Pedidos inválidos não contam; numa hospedagem compartilhada a pasta temporária pode ser limpa a qualquer momento |
 | Injeção de cabeçalho no e-mail | Campos de uma linha sem quebra de linha; assunto e remetente codificados em base64; destinatário fixo da config; corpo em base64 | `enviar.njk` | — |
-| Injeção de fórmula na planilha | Valores que começam com `=`, `+`, `-`, `@`, tab ou retorno ganham um `'` na frente | `enviar.njk` | O WhatsApp (`+55...`) também ganha o `'` e aparece como `'+5541...` no Excel |
+| Injeção de fórmula na planilha | Valores que começam com `=`, `+`, `-`, `@`, tab ou retorno ganham um `'` na frente. O WhatsApp vai para a planilha no formato `(41) 99999-0000` (não começa com `+`), seguido de uma coluna `whatsapp_link` com o link da conversa | `enviar.njk` | — |
 | Valores fora do esperado | Listas fechadas para serviços, investimento, plano, slugs, modo, posição e variante | `enviar.njk` | — |
 | HTML/JS injetado pelo conteúdo | `emLinha` escapa tudo antes de aplicar `**negrito**` e `[link](url)`; JSON-LD e config passam por `jsonSeguro` (escapa `<`, `>`, `&`); o build exige `rel="noopener"` em `target="_blank"` | `filtros.mjs`, `verificar-build.mjs` | — |
 | Arquivos sensíveis no servidor | `.htaccess`: `Options -Indexes`; bloqueio de `config*.php`, `olorin-config.php`, `.csv`, `.log`, `.md`, `.yml`, `.bak`, `.sql`, `.zip`, `.env`, `.ini`, `.sh`, `LEIA-ME.txt`, `license.txt`, `readme.html` e `error_log`; bloqueio de `.git` e `node_modules` | `src/servidor/.htaccess` | — |
@@ -598,9 +612,15 @@ Todos os links do site são montados por `waLink(origem, contexto)`. A mensagem 
 
 1. Todas as páginas do sitemap + `/obrigado/`, `/404.html`, `/promo/` e as 6 landings, em 360 e 1440 px: nenhum erro de JavaScript ou de console, exatamente 1 `<h1>`, nenhuma rolagem horizontal, nenhum texto quebrado (`[object Object]`, `undefined`, `NaN`, `[CONFIRMAR`).
 2. axe-core (regras WCAG 2.0/2.1/2.2 A e AA) em 7 páginas (home, hub, tráfego pago, sobre, promo, obrigado, política), em 390 e 1280 px. Reprova só violações "sérias" ou "críticas".
-3. Formulário de ponta a ponta com o **PHP de verdade** (`php -S`, se o PHP estiver instalado), numa cópia temporária do `dist/` com config de teste: erro de nome vazio, DDD inexistente recusado, etapa 2, envio com UTM, redirecionamento para `/obrigado/`, `generate_lead` exatamente uma vez, recarga sem duplicar, nenhum dado pessoal no `dataLayer`, pedido no CSV com WhatsApp normalizado e UTM, e 403 para envio vindo de outro site.
+3. Formulário de ponta a ponta com o **PHP de verdade** (`php -S`, se o PHP estiver instalado; sem PHP, o teste é pulado com aviso), numa cópia temporária do `dist/` com config de teste: erro de nome vazio, DDD inexistente recusado, etapa 2, envio com UTM, redirecionamento para `/obrigado/`, `generate_lead` exatamente uma vez, recarga sem duplicar, nenhum dado pessoal no `dataLayer`, pedido no CSV com WhatsApp legível, link da conversa e UTM, e 403 para envio vindo de outro site.
 
-**O que o PROMPT 20 pede e ainda não está automatizado:** Lighthouse CI (o pacote `lighthouse` está instalado, mas nenhum script o usa); WebKit; testes de isca, tempo mínimo, limite por IP, fluxo sem JS, persistência de UTM entre páginas, modo campanha, `?s=`, `?v=`, barra fixa, calculadora e teclado; capturas em 5 larguras; `html-validate`, `linkinator` e verificação ortográfica (`nspell` + `dictionary-pt`), todos instalados e não usados; comparação automática entre o FAQ visível e o JSON-LD (hoje garantida porque os dois saem do mesmo dado, mas sem teste). A pasta `.github/workflows/` existe e está vazia.
+**Ferramentas de apoio, rodadas à mão (não fazem parte do `npm test` nem do deploy):**
+
+- `npm run capturas`: telas de página inteira em 360, 390, 768, 1024 e 1440 px, gravadas em WebP em `docs/screenshots/`. Acusa rolagem horizontal e erros de JavaScript. Se `site-atual/` existir, captura também a home antiga para comparar.
+- `npm run legibilidade`: índice de Flesch adaptado ao português (Martins et al., 1996) sobre o texto visível do `<main>` de cada página. Meta: "fácil" (50 ou mais) e até 18 palavras por frase em média.
+- `npm run pendencias`: lista os `[CONFIRMAR]`.
+
+**O que o PROMPT 20 pede e ainda não está automatizado:** Lighthouse CI (o pacote `lighthouse` está instalado, mas nenhum script o usa); WebKit; testes de isca, tempo mínimo, limite por IP, fluxo sem JS, persistência de UTM entre páginas, modo campanha, `?s=`, `?v=`, barra fixa, calculadora e teclado; `html-validate`, `linkinator` e verificação ortográfica (`nspell` + `dictionary-pt`), todos instalados e não usados; comparação automática entre o FAQ visível e o JSON-LD (hoje garantida porque os dois saem do mesmo dado, mas sem teste). A pasta `.github/workflows/` existe e está vazia.
 
 ---
 
@@ -613,15 +633,15 @@ Em ordem de prioridade. Nenhum foi corrigido por este documento.
 | # | O quê | Onde | Efeito | Correção sugerida |
 |---|---|---|---|---|
 | 1 | **`robots.txt` bloqueia `/promo/` e `/obrigado/`** (`Disallow` para todos e de novo para GPTBot e ClaudeBot). O PROMPT 11.1, 15.4 e 23 proíbem: o certo é só `noindex` | `src/seo/robots.njk` | O Google não lê o `noindex` de páginas bloqueadas e pode listar a URL sem conteúdo se ela tiver links. O próprio comentário do arquivo contradiz o PROMPT | Tirar as linhas `Disallow: /promo/` e `Disallow: /obrigado/` (manter `/enviar.php` e `/leads/`) |
-| 2 | **Imagem de compartilhamento da página Sobre não existe**: `og_imagem: /assets/img/og/sobre.jpg`, mas `gerar-og.mjs` não gera `sobre.jpg` | `src/sobre/index.njk`, `scripts/gerar-og.mjs` | Prévia quebrada ao compartilhar `/sobre/` no WhatsApp ou nas redes. O build não verifica se a imagem OG existe | Incluir `sobre.jpg` em `gerar-og.mjs` e rodar `npm run og`; acrescentar ao `verificar-build` a checagem de `og:image` |
-| 3 | **Páginas `/cases/` e `/cases/<slug>/` não foram implementadas**, mas o menu ("Cases", com `so_com_cases`), a seção Resultados e as páginas de serviço já criam links para elas quando um case tem `aprovado: true`. O `docs/ROADMAP.md` diz que "já está preparada" | `navegacao.yml`, `secoes/resultados.njk`, `servicos/servico.njk` | Marcar o primeiro case como aprovado gera links para páginas 404. O build não checa links internos | Criar `src/cases/index.njk` e `src/cases/case.njk` (paginação sobre os aprovados) antes de aprovar qualquer case |
-| 4 | **Variante A do formulário quebra o botão principal**: `#cta-diagnostico-hero` e o botão do banner do serviço apontam para `#diagnostico`, que fica `display: none` na variante A | `secoes/hero.njk`, `servicos/servico.njk`, `componentes/orcamento.css` | Com `FORM_TOP_VARIANT` `"a"` ou `"ab"`, o CTA principal não leva a lugar nenhum para metade (ou todos) os visitantes. Hoje está em `"b"`, então não acontece | Na variante A, apontar o CTA para `#orcamento` (por CSS/JS) ou esconder só o formulário, deixando a âncora |
-| 5 | **Tempo mínimo contornável**: sem `olorin_tempo` e sem `olorin_ts`, a checagem não roda | `enviar.njk` (bloco "Tempo mínimo") | Um robô que posta direto no `enviar.php` sem esses campos nunca é checado. A auditoria já tinha apontado isso (AUDIT 0.3, item 2); a checagem de origem foi acrescentada, mas esse ponto continua | Ver seção 14 (token emitido pelo servidor, ou exigir o campo quando o envio vier com `Accept: application/json`) |
-| 6 | **WhatsApp digitado dentro do PHP** (`OLORIN_WHATSAPP_SITE_PADRAO`), fora da fonte única. O `whatsapp` do `config.php` é ignorado | `enviar.njk` | Se o número mudar em `config.json`, o PHP continua com o antigo, e a checagem do build não pega | Gerar a constante a partir de `site.config.WHATSAPP` (fora do bloco `raw`) |
-| 7 | **`APPROVED_ASSETS` não tem efeito**: a publicação de imagens depende só de `publicar: false` no manifesto; `autorizacao_de_uso: pendente` não bloqueia nada | `scripts/imagens.mjs`, `config.json` | Hoje todas as imagens estão "confirmada", então não há impacto. Uma imagem nova marcada como pendente seria publicada mesmo assim | Fazer `imagens.mjs` pular `pendente` que não esteja em `APPROVED_ASSETS` |
-| 8 | **Conversões de Ads e Meta só via GTM** (`adsId`/`adsLabel` não usados; sem `fbq('track','Lead')`) | `consentimento.js`, `medicao.js` | Com só GA4/Pixel configurados (sem GTM), não há conversão de anúncio | Documentar o GTM como obrigatório, ou disparar as conversões no `iniciarObrigado` quando não houver GTM |
-| 9 | **`page_mode` = `"promo"`** nas landings; o PROMPT 11.1 pede `"campanha"` (o `<body>` já tem `data-mode="campanha"`) | `layouts/campanha.njk` + `rastreamento.js` | Relatórios do GTM/GA4 precisam filtrar por `promo` | Mapear `promo` → `campanha` em `track()` (mantendo `modo_pagina=promo` no PHP, que é o que o PROMPT 10.2 pede) |
-| 10 | **Números publicados sem período nem critério**: `claims.json` tem `verificado: true` com `periodo` e `criterio` vazios, e o template só filtra por `verificado`. O PROMPT 12.2 exige os dois preenchidos | `secoes/resultados.njk`, `campanha-blocos.njk` | Decisão do dono (AUDIT 4.1), mas a regra do PROMPT não está no código | Manter a decisão e registrar no `CONTENT-TODO`; quando houver os dados, exigir os dois campos no template |
+| 2 | **Variante A do formulário quebra o botão principal**: `#cta-diagnostico-hero` e o botão do banner do serviço apontam para `#diagnostico`, que fica `display: none` na variante A | `secoes/hero.njk`, `servicos/servico.njk`, `componentes/orcamento.css` | Com `FORM_TOP_VARIANT` `"a"` ou `"ab"`, o CTA principal não leva a lugar nenhum para metade (ou todos) os visitantes. Hoje está em `"b"`, então não acontece | Na variante A, apontar o CTA para `#orcamento` (por CSS/JS) ou esconder só o formulário, deixando a âncora |
+| 3 | **Tempo mínimo contornável**: sem `olorin_tempo` e sem `olorin_ts`, a checagem não roda | `enviar.njk` (bloco "Tempo mínimo") | Um robô que posta direto no `enviar.php` sem esses campos nunca é checado. A auditoria já tinha apontado isso (AUDIT 0.3, item 2); a checagem de origem foi acrescentada, mas esse ponto continua | Ver seção 14 (exigir o campo quando o envio vier com `Accept: application/json`, ou token emitido pelo servidor) |
+| 4 | **WhatsApp digitado dentro do PHP** (`OLORIN_WHATSAPP_SITE_PADRAO`), fora da fonte única. O `whatsapp` do `config.php` é ignorado | `enviar.njk` | Se o número mudar em `config.json`, o PHP continua com o antigo, e a checagem do build não pega | Gerar a constante a partir de `site.config.WHATSAPP` (fora do bloco `raw`) |
+| 5 | **Páginas de case fora da lista do PHP**: os modos `cases` e `case` não estão na lista aceita de `modo_pagina`, e essas páginas têm o formulário completo | `enviar.njk`, `src/cases/*.njk` | Quando houver case aprovado, pedidos feitos nessas páginas chegam com "Tipo de página" vazio. Hoje não há case aprovado | Acrescentar `cases` e `case` à lista do PHP |
+| 6 | **`APPROVED_ASSETS` não tem efeito**: a publicação de imagens depende só de `publicar: false` no manifesto; `autorizacao_de_uso: pendente` não bloqueia nada | `scripts/imagens.mjs`, `config.json` | Hoje todas as imagens estão "confirmada", então não há impacto. Uma imagem nova marcada como pendente seria publicada mesmo assim | Fazer `imagens.mjs` pular `pendente` que não esteja em `APPROVED_ASSETS` |
+| 7 | **Conversões de Ads e Meta só via GTM** (`adsId`/`adsLabel` não usados; sem `fbq('track','Lead')`) | `consentimento.js`, `medicao.js` | Com só GA4/Pixel configurados (sem GTM), não há conversão de anúncio | Documentar o GTM como obrigatório (`docs/TRACKING.md` e `gtm-container.json`), ou disparar as conversões no `iniciarObrigado` quando não houver GTM |
+| 8 | **`page_mode` = `"promo"`** nas landings; o PROMPT 11.1 pede `"campanha"` (o `<body>` já tem `data-mode="campanha"`) | `layouts/campanha.njk` + `rastreamento.js` | Relatórios do GTM/GA4 precisam filtrar por `promo` | Mapear `promo` → `campanha` em `track()` (mantendo `modo_pagina=promo` no PHP, que é o que o PROMPT 10.2 pede) |
+| 9 | **Números publicados sem período nem critério**: `claims.json` tem `verificado: true` com `periodo` e `criterio` vazios, e o template só filtra por `verificado`. O PROMPT 12.2 exige os dois preenchidos | `secoes/resultados.njk`, `campanha-blocos.njk` | Decisão do dono (AUDIT 4.1), mas a regra do PROMPT não está no código | Manter a decisão e registrar no `CONTENT-TODO`; quando houver os dados, exigir os dois campos no template |
+| 10 | **O build não confere links internos nem a imagem de `og_imagem`** | `verificar-build.mjs` | Um link para página inexistente ou uma imagem de compartilhamento que falta só aparece no ar | Ligar o `linkinator` (já instalado) e conferir o arquivo de `og:image` no `verificar-build` |
 | 11 | **Não implementados** (detalhes nas seções 5.4, 9.5, 10 e 12): subset de fontes no pipeline, `content-visibility`, Brotli, métricas de fonte de reserva, Lighthouse/WebKit/html-validate/linkinator/ortografia automáticos, `ViewContent` | vários | Riscos de desempenho e QA não medidos automaticamente | Ver seção 14 |
 
 ### 13.2 Trade-offs assumidos
@@ -637,7 +657,6 @@ Em ordem de prioridade. Nenhum foi corrigido por este documento.
 | **HTTPS e HSTS comentados** | Não derruba o site se o SSL da Locaweb não estiver pronto ou vier por proxy | Até alguém ativar, o site aceita `http://` e `www.` | Ativar logo após o primeiro deploy, seguindo `docs/DEPLOY.md` |
 | **CSP só observando** | Não quebra o GTM nem as tags que vierem dele | Não protege de fato | Impor depois de uma semana sem avisos no console (comentário no `.htaccess`) |
 | **Limite por IP em arquivo temporário** | Funciona sem banco de dados | A pasta pode ser limpa; IPs compartilhados (por exemplo, redes móveis) dividem o limite | Aceitável para o volume de uma agência; acompanhar pelos e-mails |
-| **Proteção de fórmula no CSV** | Planilha segura ao abrir no Excel | WhatsApp aparece como `'+5541...` | Normal; o número continua correto |
 | **Webhook com `file_get_contents`** | Sem dependências | Precisa de `allow_url_fopen` ligado na Locaweb; se não estiver, falha em silêncio | Testar com um webhook real antes de depender dele |
 | **`lastmod` do sitemap manual** (campo `atualizado` do serviço ou `ATUALIZADO_EM`) | Data controlada e estável | Não muda sozinha quando o texto muda (o PROMPT 15.4 pede "real") | Atualizar a data ao mudar uma página de serviço |
 
@@ -647,9 +666,9 @@ Em ordem de prioridade. Nenhum foi corrigido por este documento.
 
 ### 14.1 Primeiro: fechar as lacunas da seção 13.1
 
-Ordem sugerida (do mais barato e mais arriscado para o resto): 1 (robots), 2 (OG da Sobre), 6 (WhatsApp no PHP), 4 (variante A), 3 (cases), 7 (`APPROVED_ASSETS`), 9 (`page_mode`), 5 (tempo mínimo), 8 (conversões sem GTM).
+Ordem sugerida (do mais barato e mais arriscado para o resto): 1 (robots), 4 (WhatsApp no PHP), 5 (modos de case no PHP), 2 (variante A), 10 (links e OG no build), 6 (`APPROVED_ASSETS`), 8 (`page_mode`), 3 (tempo mínimo), 7 (conversões sem GTM).
 
-Para o item 5, as opções em ordem de esforço:
+Para o item 3, as opções em ordem de esforço:
 
 1. Quando o envio vier com `Accept: application/json` (só o JS do site manda assim), **exigir** `olorin_tempo`/`olorin_ts`; sem JS, continuar sem exigir.
 2. Pequeno `token.php` que devolve um carimbo assinado (HMAC com um segredo do `config.php`), pedido pelo JS ao abrir o formulário e conferido no `enviar.php`.
@@ -672,18 +691,18 @@ Para o item 5, as opções em ordem de esforço:
 3. **Pôr o campo novo no fim de `$lead`.** O cabeçalho do CSV é escrito só quando o arquivo do mês é criado, então um campo no meio desalinha as colunas até o mês virar.
 4. Se for lista fechada, gerar a lista em `listasParaPhp` e acrescentar a conferência em `verificar-build.mjs`.
 
-**Publicar o primeiro case:** primeiro implementar `/cases/` (13.1, item 3); depois preencher situação, o que foi feito, resultado com período e verba e o depoimento, e marcar `aprovado: true`.
+**Publicar o primeiro case:** corrigir antes o item 5 da seção 13.1. Depois, em `src/content/cases.yml`, preencher pelo menos `slug`, `segmento`, `situacao`, `o_que_fizemos`, `resultado`, `periodo` e `servicos` (o build para se faltar algum); `verba`, `medicao`, `imagem` e `depoimento` são opcionais. Marcar `aprovado: true`. Surgem sozinhos: `/cases/`, `/cases/<slug>/`, o item "Cases" no menu, o bloco de cases nas páginas dos serviços listados e as entradas no sitemap.
 
 **Ligar o rastreamento:** preencher `GTM_ID` (recomendado) em `config.json`; montar no GTM as tags de GA4, Meta e Google Ads disparadas por `generate_lead`, `whatsapp_click` etc. (`docs/TRACKING.md`); testar com o modo de visualização do GTM. O aviso de cookies passa a aparecer sozinho.
 
-**Ligar o teste A/B:** só depois de corrigir o item 4 da seção 13.1. Trocar `FORM_TOP_VARIANT` para `"ab"` e comparar `generate_lead` por `form_variant` no GA4.
+**Ligar o teste A/B:** só depois de corrigir o item 2 da seção 13.1. Trocar `FORM_TOP_VARIANT` para `"ab"` e comparar `generate_lead` por `form_variant` no GA4.
 
 **Endurecer o servidor**, nesta ordem, cada passo testado em produção: HTTPS (variante A ou B do `.htaccess`) → HSTS → CSP imposta (trocar `Report-Only` por `Content-Security-Policy`, de preferência sem `'unsafe-inline'`, movendo os scripts embutidos para arquivo) → Brotli, se a Locaweb oferecer.
 
 ### 14.3 Automação de QA (fecha o PROMPT 20)
 
 1. Acrescentar ao `testar.mjs`: WebKit, isca, tempo mínimo, limite por IP, fluxo sem JS (contexto com JavaScript desligado), modo campanha (sem menu, `noindex`, canonical), `?s=`, `?v=`, calculadora e teclado.
-2. Ligar os pacotes já instalados: `html-validate` e `linkinator` sobre o `dist/` (o linkinator teria pegado os itens 2 e 3 da seção 13.1), `nspell` + `dictionary-pt` nos textos de `src/content/`, e Lighthouse mobile com mediana de 3 execuções, gravando em `docs/lighthouse/`.
+2. Ligar os pacotes já instalados: `html-validate` e `linkinator` sobre o `dist/` (resolve o item 10 da seção 13.1), `nspell` + `dictionary-pt` nos textos de `src/content/`, e Lighthouse mobile com mediana de 3 execuções, gravando em `docs/lighthouse/`.
 3. Rodar tudo num workflow do GitHub Actions (a pasta `.github/workflows/` já existe) a cada push, sem o deploy.
 
 ### 14.4 Mais adiante
