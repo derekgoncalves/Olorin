@@ -87,7 +87,7 @@ como_funciona:
     - nome: Diagnóstico
       texto: Olhamos o material que a sua marca já tem — impresso, redes, site e anúncios. Antes de criar qualquer peça, entendemos o que está desatualizado e o que vale manter.
     - nome: Direção
-      texto: Na conversa de briefing, combinamos o que entra no projeto: as peças, o escopo e o prazo. Você sabe o que vai receber antes de começarmos.
+      texto: Na conversa de briefing, combinamos o que entra no projeto — as peças, o escopo e o prazo. Você sabe o que vai receber antes de começarmos.
     - nome: Execução
       texto: Criamos as peças com a mesma cara do seu digital. As aprovações acontecem por e-mail e, no fim, você recebe o arquivo fechado, pronto para a gráfica.
     - nome: Leitura
@@ -99,7 +99,7 @@ precisamos:
   titulo: O que precisamos de você
   itens:
     - Um tempo para o briefing, em que definimos juntos as peças, o escopo e o prazo do projeto.
-    - O que a sua marca já tem hoje, se tiver —logotipo, cores, fontes, fotos e o material impresso atual.
+    - O que a sua marca já tem hoje, se tiver — logotipo, cores, fontes, fotos e o material impresso atual.
     - "[CONFIRMAR: quem escreve os textos das peças e quais informações pedimos no início (contatos, produtos, preços)]"
     - "[CONFIRMAR: especificações pedidas à gráfica (tamanho, papel, acabamento) e quem faz esse contato]"
     - Retorno nas aprovações, que acontecem por e-mail, para o projeto andar sem travar.
@@ -129,7 +129,7 @@ preco:
 
 combina_com:
   - slug: identidade-visual
-    porque: O impresso fica mais fácil quando a marca já tem logotipo, cores, fontes e manual definidos. Se a sua ainda não tem, vale começar pela identidade visual, que também pode incluir a papelaria: as peças de papel do dia a dia da empresa, como o cartão de visita.
+    porque: O impresso fica mais fácil quando a marca já tem logotipo, cores, fontes e manual definidos. Se a sua ainda não tem, vale começar pela identidade visual, que também pode incluir a papelaria, que são as peças de papel do dia a dia da empresa, como o cartão de visita.
   - slug: redes-sociais
     porque: Quem conhece a marca pelo feed precisa reconhecer a mesma marca no folder e na fachada. Feitos pelo mesmo time, papel e tela falam a mesma língua. No 360 completo, impresso e redes andam juntos.
 
@@ -155,5 +155,6 @@ faq:
 
 campanha:
   titulo: Chega de impresso parado no tempo.
+  # TODO (CONTENT-TODO): se OFERTA_DIAGNOSTICO=false, este subtítulo precisa de uma versão sem o diagnóstico gratuito (PROMPT 11.2).
   subtitulo: Diagnóstico gratuito do material da sua marca, feito por quem executa. Projetos de material impresso a partir de R$ 800, com arquivo fechado pronto para a gráfica. Sem compromisso.
   faq: [impresso-imprime, impresso-quanto-custa, impresso-prazo, impresso-fora-curitiba]

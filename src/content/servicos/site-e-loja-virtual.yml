@@ -7,42 +7,41 @@
 slug: site-e-loja-virtual
 ordem: 5
 nome: Site e loja virtual
-chip: Site ou loja virtual   # igual à opção do formulário e à lista do enviar.php
+chip: Site ou loja virtual # igual à opção do formulário e à lista do enviar.php
 icone: site
 janela: site.html
 atualizado: "2026-10-08"
-quem_faz: [vinicius-mafra, natalia-arruda, derek-goncalves]
+quem_faz: [vinicius-mafra, derek-goncalves]
 quem_faz_nota: "[CONFIRMAR: responsável principal por sites e lojas]"
 
 seo:
   title: Criação de Sites e Lojas Virtuais em Curitiba | Olorin
-  description: Site institucional, loja virtual e página de captação rápidos, bonitos no celular e preparados para converter. Projetos a partir de R$ 800.
+  description: Site institucional, loja virtual e página de captação rápidos, bonitos no celular e feitos para trazer contato e venda. Projetos a partir de R$ 800.
 
 card:
   titulo: Site e loja virtual
-  resumo: Site institucional, loja virtual e página de captação. Rápido, bonito no celular e preparado para converter.
+  resumo: Site institucional, loja virtual e página de captação. Tudo rápido, bonito no celular e feito para trazer contato e venda.
   resumo_curto: Site institucional, loja virtual e página de captação.
 
 hero:
   eyebrow: Criação de sites e lojas virtuais em Curitiba e para todo o Brasil
-  h1: Site rápido, bonito no celular e feito para converter.
-  sub: Site institucional, loja virtual e página de captação com a cara da sua marca, feitos pelo mesmo time que cria o seu anúncio. Velocidade e acessibilidade são o padrão, não um extra.
+  h1: Site rápido, bonito no celular e feito para trazer cliente.
+  sub: Site institucional, loja virtual e página de captação com a cara da sua marca, feitos pelo mesmo time que faz anúncio, conteúdo e impresso. Velocidade e acessibilidade são o padrão, não um extra.
   janela_linhas:
     - Site institucional · no ar
     - Versão do celular · aprovada
-    - Rastreamento · configurado
+    - Medição de visitas · configurada
 
 resposta_curta: >-
-  Criamos site institucional, loja virtual e página de captação, todos rápidos e bonitos no celular e
-  preparados para converter — ou seja, para transformar visita em contato ou venda. É para quem anuncia,
-  vende pela internet ou quer um site com a mesma cara do resto da marca. Os projetos começam em R$ 800,
-  no plano Pontual. O escopo e o prazo são definidos no briefing, a etapa em que combinamos o que entra
+  Criamos site institucional, loja virtual e página de captação. Todos são rápidos, bonitos no celular e
+  feitos para transformar visita em contato ou venda. É para quem anuncia, vende pela internet ou quer um
+  site com a mesma cara do resto da marca. Os projetos de site começam em R$ 800, no plano Pontual. O escopo e o prazo são definidos no briefing, a etapa em que combinamos o que entra
   no projeto, antes de começar.
 
 dores:
   titulo: Isso acontece com você?
   itens:
-    - O anúncio leva a pessoa até o site, mas a página demora a abrir no celular — e ela desiste antes de ver o que você vende.
+    - O anúncio leva a pessoa até o site, mas a página demora a abrir no celular — e ela desiste antes de ver o produto.
     - No celular, o texto fica miúdo, o botão some e pedir um orçamento vira uma maratona.
     - "O site parece de outra empresa: as cores, as fontes e o jeito de falar não batem com o feed e o anúncio."
     - Você não sabe dizer quantos contatos ou vendas vieram do site no mês passado.
@@ -55,8 +54,8 @@ para_quem:
     - Quem quer o site com a mesma cara do feed, do anúncio e do material impresso.
     - Quem prefere uma entrega fechada, com escopo e prazo definidos antes de começar.
   nao_e:
-    - Quem precisa de um projeto por menos de R$ 800. Esse é o valor de entrada do plano Pontual.
-    - "Quem quer um site só para dizer que tem um. O nosso lema é outro: não é sobre aparecer, é sobre vender."
+    - Quem precisa de um projeto por menos de R$ 800. Esse é o valor mínimo do plano Pontual.
+    - "[CONFIRMAR: Quem quer um site só para dizer que tem um. O nosso lema é outro: não é sobre aparecer, é sobre vender.]"
     - "[CONFIRMAR: outros critérios de quem não é cliente ideal para sites e lojas]"
 
 entregas:
@@ -66,19 +65,19 @@ entregas:
       texto: O site da sua empresa, com quem vocês são, o que fazem, onde atendem e como falar com vocês. Organizado para levar quem visita até o contato.
       icone: site
     - titulo: Loja virtual
-      texto: O site em que o seu cliente escolhe o produto e compra sem sair de casa. Com a cara da sua marca e pensada para a pessoa chegar ao fim da compra sem se perder.
+      texto: O site em que o seu cliente escolhe o produto e compra sem sair de casa. Tem a cara da sua marca e é pensado para a pessoa chegar ao fim da compra sem se perder.
       icone: estrela
     - titulo: Página de captação
       texto: Uma página só, feita para uma campanha ou oferta, com um único objetivo — fazer a pessoa deixar o contato ou pedir orçamento. É para onde o anúncio manda quem clica.
       icone: seta
     - titulo: Rastreamento configurado
-      texto: Rastreamento são as marcações que contam o que acontece no site, como visitas e pedidos. O site já sai com elas configuradas, para você saber o que está funcionando. Para ir além, veja [Rastreamento e relatório](/servicos/rastreamento-e-relatorio/).
+      texto: O rastreamento é feito com marcações que contam o que acontece no site, como visitas e pedidos. O site já sai com elas configuradas, para você saber o que está funcionando. Para ir além, veja [Rastreamento e relatório](/servicos/rastreamento-e-relatorio/).
       icone: dados
     - titulo: Velocidade e acessibilidade como padrão
-      texto: Páginas leves, que abrem rápido no celular, e acessíveis — que funcionam também para quem usa leitor de tela ou navega só pelo teclado. Para ter uma referência, o site anterior da própria Olorin foi medido em 97/100/100/100 no PageSpeed, no celular, em 08/10/2026.
+      texto: Páginas leves, que abrem rápido no celular, e acessíveis — que funcionam também para quem usa leitor de tela ou navega só pelo teclado. Para ter uma referência, o site anterior da própria Olorin tirou 97 em desempenho e 100 em acessibilidade no celular. A medição foi feita em 08/10/2026 no PageSpeed, a ferramenta do Google que dá notas de 0 a 100.
       icone: relogio
     - titulo: A mesma cara da sua marca
-      texto: Logotipo, cores, fontes e jeito de falar iguais aos do anúncio, do feed e do impresso. Quem clica no anúncio e chega ao site reconhece a marca na hora.
+      texto: Logotipo, cores e fontes iguais aos do anúncio, do feed e do impresso. Quem clica no anúncio e chega ao site reconhece a marca.
       icone: marca
 
 como_funciona:
@@ -87,11 +86,11 @@ como_funciona:
     - nome: Diagnóstico
       texto: Olhamos o site atual, se existir, e também os anúncios, as redes e o material da marca. Antes de desenhar qualquer página, descobrimos onde a pessoa trava no caminho até o contato ou a compra.
     - nome: Direção
-      texto: "No briefing, combinamos o escopo, o prazo e o papel de cada página: o que ela precisa dizer, para quem e qual ação a pessoa deve tomar. Você sabe o que vai receber antes de começarmos."
+      texto: "No briefing, combinamos o escopo, o prazo e o papel de cada página. Ou seja: o que ela precisa dizer, para quem e o que a pessoa deve fazer ali. Você sabe o que vai receber antes de começarmos."
     - nome: Execução
-      texto: Criamos o site com a cara da sua marca, leve no celular e com o rastreamento configurado. As aprovações acontecem por e-mail, e você aprova o site antes de ele ir ao ar.
+      texto: Criamos o site com a cara da sua marca, leve no celular e com o rastreamento configurado. As aprovações acontecem por e-mail.
     - nome: Leitura
-      texto: Com o rastreamento funcionando, dá para ver o que acontece no site depois do clique. Se você seguir com a gente na Gestão mensal ou no 360 completo, o relatório fechado todo mês mostra quanto entrou, quanto saiu e qual foi o retorno.
+      texto: Com o rastreamento funcionando, dá para ver o que acontece no site depois do clique. Se você seguir com a gente nos planos Gestão mensal ou 360 completo, recebe um relatório todo mês. Ele mostra quanto entrou, quanto saiu e qual foi o retorno.
   prazos:
     - "[CONFIRMAR: prazo típico de cada etapa de um projeto de site ou loja virtual (briefing, criação, ajustes e publicação)]"
 
@@ -106,15 +105,15 @@ precisamos:
 
 preco:
   titulo: Quanto custa
-  formato: Projeto pontual
+  formato: Plano Pontual
   valor: A partir de R$ 800/projeto
   faixa: "[CONFIRMAR: faixa de preço por escopo para site e loja (página de captação; site institucional; loja virtual)]"
-  detalhe: Uma entrega específica e fechada. O escopo e o prazo são definidos no briefing, antes de começar, e o preço vem aberto na proposta. O site também faz parte do plano 360 completo, por R$ 5.000/mês.
+  detalhe: "Uma entrega específica e fechada. O escopo e o prazo são definidos no briefing, antes de começar, e o preço vem detalhado na proposta. O site também faz parte do plano 360 completo: R$ 5.000 por mês de gestão, com a verba de anúncio à parte (a partir de R$ 6.500 por mês no total)."
   inclui:
     - Site institucional, loja virtual ou página de captação, conforme o escopo do briefing
     - Site rápido e bonito no celular, com velocidade e acessibilidade como padrão
     - Rastreamento configurado
-    - Feito pelo mesmo time que cuida do seu anúncio, do conteúdo e do impresso
+    - Feito pelo mesmo time que faz anúncio, conteúdo e impresso
     - Escopo e prazo definidos antes de começar
     - "[CONFIRMAR: rodadas de ajuste incluídas, plataforma da loja virtual e se o cliente consegue atualizar o site e cadastrar produtos sozinho]"
   nao_inclui:
@@ -130,27 +129,27 @@ combina_com:
   - slug: rastreamento-e-relatorio
     porque: O site já sai com o rastreamento configurado. Com o painel de acompanhamento, você vê quanto entrou, quanto saiu e qual foi o retorno — não só quantas visitas chegaram.
   - slug: trafego-pago
-    porque: O anúncio leva a pessoa até o site, e o site precisa confirmar o que o anúncio prometeu. A Natália Arruda cuida das campanhas, e o mesmo time faz o anúncio e o site com a mesma cara.
+    porque: O anúncio leva a pessoa até o site, e o site precisa confirmar o que o anúncio prometeu. A Natália Arruda cuida das campanhas, e o mesmo time faz o anúncio e o site com a cara da sua marca.
 
 faq:
   - id: site-quanto-custa
     pergunta: Quanto custa um site ou uma loja virtual?
-    resposta: Os projetos começam em R$ 800, no plano Pontual. O valor final depende do escopo — por exemplo, se é uma página de captação, um site institucional ou uma loja virtual. Tudo é combinado no briefing, e o preço vem aberto na proposta, antes de começar. O site também faz parte do plano 360 completo, por R$ 5.000 por mês.
+    resposta: "Os projetos de site começam em R$ 800, no plano Pontual. O valor final depende do escopo — por exemplo, se é uma página de captação, um site institucional ou uma loja virtual. Tudo é combinado no briefing, a conversa em que definimos o projeto antes de começar. O preço vem detalhado na proposta. O site também faz parte do plano 360 completo: R$ 5.000 por mês de gestão, com a verba de anúncio à parte (a partir de R$ 6.500 por mês no total)."
   - id: site-prazo
     pergunta: Quanto tempo leva para o site ficar pronto?
-    resposta: Depende do tamanho do projeto. O prazo é definido no briefing, junto com o escopo, antes de começarmos. Assim, você sabe quando o site vai ficar pronto antes de fechar.
+    resposta: Depende do tamanho do projeto. O prazo é definido no briefing, junto com o escopo, antes de começarmos. Assim, você sabe quando o site vai ficar pronto.
   - id: site-velocidade
     pergunta: Como sei que o site vai ser rápido?
-    resposta: Velocidade e acessibilidade são o padrão em todo projeto de site, não um extra. Para ter uma referência, o site anterior da própria Olorin foi medido no PageSpeed — a ferramenta do Google que dá notas de 0 a 100 para a qualidade de uma página. Em 08/10/2026, no celular, ele tirou 97 em desempenho, 100 em acessibilidade, 100 em práticas recomendadas e 100 em SEO (o que ajuda o Google a entender a página).
+    resposta: Velocidade e acessibilidade (o site funcionar também para quem usa leitor de tela ou só o teclado) são o padrão em todo projeto de site, não um extra. Para ter uma referência, o site anterior da própria Olorin foi medido no PageSpeed. É a ferramenta do Google que dá notas de 0 a 100 para a qualidade de uma página. Em 08/10/2026, no celular, ele tirou 97 em desempenho e 100 em acessibilidade, práticas recomendadas e SEO. SEO é o conjunto de cuidados que ajuda a página a aparecer no Google.
   - id: site-anuncio
     pergunta: O site já sai pronto para receber anúncio?
-    resposta: Sai com o rastreamento configurado, então dá para medir o que acontece depois do clique. Se você anunciar com a gente, a Natália Arruda cuida das campanhas de Meta Ads (Instagram e Facebook) e Google Ads. O anúncio e o site saem do mesmo time, com a mesma cara. A gestão de tráfego pago faz parte da Gestão mensal e do 360 completo.
+    resposta: Sai com o rastreamento configurado, então dá para medir o que acontece depois do clique. Se você anunciar com a gente, a Natália Arruda cuida das campanhas de Meta Ads (Instagram e Facebook) e Google Ads. O anúncio e o site saem do mesmo time, com a mesma cara. A gestão dos anúncios faz parte dos planos Gestão mensal e 360 completo.
   - id: site-dono
     pergunta: Quem fica com o domínio, a hospedagem e os arquivos do site?
     resposta: "[CONFIRMAR: titularidade do domínio, da hospedagem e dos arquivos do site, e o que acontece se o cliente encerrar o trabalho]"
   - id: site-fora-curitiba
     pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e entregáveis digitais.
+    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e arquivos entregues pela internet.
 
 campanha:
   titulo: Chega de site que faz o cliente desistir.
