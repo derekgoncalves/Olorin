@@ -1,0 +1,158 @@
+# ============================================================
+# SERVIÇO: Site e loja virtual — fonte ÚNICA da página /servicos/site-e-loja-virtual/
+# e da landing de campanha /promo/site-e-loja-virtual/ (PROMPT seções 9 e 11).
+# Só fatos do PROMPT.md. O que falta confirmar vai com [CONFIRMAR: ...]
+# (não aparece no site publicado; itens de lista com marcador somem inteiros).
+# ============================================================
+slug: site-e-loja-virtual
+ordem: 5
+nome: Site e loja virtual
+chip: Site ou loja virtual   # igual à opção do formulário e à lista do enviar.php
+icone: site
+janela: site.html
+atualizado: "2026-10-08"
+quem_faz: [vinicius-mafra, natalia-arruda, derek-goncalves]
+quem_faz_nota: "[CONFIRMAR: responsável principal por sites e lojas]"
+
+seo:
+  title: Criação de Sites e Lojas Virtuais em Curitiba | Olorin
+  description: Site institucional, loja virtual e página de captação rápidos, bonitos no celular e preparados para converter. Projetos a partir de R$ 800.
+
+card:
+  titulo: Site e loja virtual
+  resumo: Site institucional, loja virtual e página de captação. Rápido, bonito no celular e preparado para converter.
+  resumo_curto: Site institucional, loja virtual e página de captação.
+
+hero:
+  eyebrow: Criação de sites e lojas virtuais em Curitiba e para todo o Brasil
+  h1: Site rápido, bonito no celular e feito para converter.
+  sub: Site institucional, loja virtual e página de captação com a cara da sua marca, feitos pelo mesmo time que cria o seu anúncio. Velocidade e acessibilidade são o padrão, não um extra.
+  janela_linhas:
+    - Site institucional · no ar
+    - Versão do celular · aprovada
+    - Rastreamento · configurado
+
+resposta_curta: >-
+  Criamos site institucional, loja virtual e página de captação, todos rápidos e bonitos no celular e
+  preparados para converter — ou seja, para transformar visita em contato ou venda. É para quem anuncia,
+  vende pela internet ou quer um site com a mesma cara do resto da marca. Os projetos começam em R$ 800,
+  no plano Pontual. O escopo e o prazo são definidos no briefing, a etapa em que combinamos o que entra
+  no projeto, antes de começar.
+
+dores:
+  titulo: Isso acontece com você?
+  itens:
+    - O anúncio leva a pessoa até o site, mas a página demora a abrir no celular — e ela desiste antes de ver o que você vende.
+    - No celular, o texto fica miúdo, o botão some e pedir um orçamento vira uma maratona.
+    - "O site parece de outra empresa: as cores, as fontes e o jeito de falar não batem com o feed e o anúncio."
+    - Você não sabe dizer quantos contatos ou vendas vieram do site no mês passado.
+
+para_quem:
+  e:
+    - Quem anuncia (ou vai anunciar) e precisa de um site rápido e claro para receber quem clica.
+    - Quem vende ou quer vender pela internet e precisa de uma loja virtual.
+    - Quem vai lançar uma oferta ou campanha e precisa de uma página de captação só para ela.
+    - Quem quer o site com a mesma cara do feed, do anúncio e do material impresso.
+    - Quem prefere uma entrega fechada, com escopo e prazo definidos antes de começar.
+  nao_e:
+    - Quem precisa de um projeto por menos de R$ 800. Esse é o valor de entrada do plano Pontual.
+    - "Quem quer um site só para dizer que tem um. O nosso lema é outro: não é sobre aparecer, é sobre vender."
+    - "[CONFIRMAR: outros critérios de quem não é cliente ideal para sites e lojas]"
+
+entregas:
+  titulo: O que entregamos
+  itens:
+    - titulo: Site institucional
+      texto: O site da sua empresa, com quem vocês são, o que fazem, onde atendem e como falar com vocês. Organizado para levar quem visita até o contato.
+      icone: site
+    - titulo: Loja virtual
+      texto: O site em que o seu cliente escolhe o produto e compra sem sair de casa. Com a cara da sua marca e pensada para a pessoa chegar ao fim da compra sem se perder.
+      icone: estrela
+    - titulo: Página de captação
+      texto: Uma página só, feita para uma campanha ou oferta, com um único objetivo — fazer a pessoa deixar o contato ou pedir orçamento. É para onde o anúncio manda quem clica.
+      icone: seta
+    - titulo: Rastreamento configurado
+      texto: Rastreamento são as marcações que contam o que acontece no site, como visitas e pedidos. O site já sai com elas configuradas, para você saber o que está funcionando. Para ir além, veja [Rastreamento e relatório](/servicos/rastreamento-e-relatorio/).
+      icone: dados
+    - titulo: Velocidade e acessibilidade como padrão
+      texto: Páginas leves, que abrem rápido no celular, e acessíveis — que funcionam também para quem usa leitor de tela ou navega só pelo teclado. Para ter uma referência, o site anterior da própria Olorin foi medido em 97/100/100/100 no PageSpeed, no celular, em 08/10/2026.
+      icone: relogio
+    - titulo: A mesma cara da sua marca
+      texto: Logotipo, cores, fontes e jeito de falar iguais aos do anúncio, do feed e do impresso. Quem clica no anúncio e chega ao site reconhece a marca na hora.
+      icone: marca
+
+como_funciona:
+  titulo: Como funciona
+  etapas:
+    - nome: Diagnóstico
+      texto: Olhamos o site atual, se existir, e também os anúncios, as redes e o material da marca. Antes de desenhar qualquer página, descobrimos onde a pessoa trava no caminho até o contato ou a compra.
+    - nome: Direção
+      texto: "No briefing, combinamos o escopo, o prazo e o papel de cada página: o que ela precisa dizer, para quem e qual ação a pessoa deve tomar. Você sabe o que vai receber antes de começarmos."
+    - nome: Execução
+      texto: Criamos o site com a cara da sua marca, leve no celular e com o rastreamento configurado. As aprovações acontecem por e-mail, e você aprova o site antes de ele ir ao ar.
+    - nome: Leitura
+      texto: Com o rastreamento funcionando, dá para ver o que acontece no site depois do clique. Se você seguir com a gente na Gestão mensal ou no 360 completo, o relatório fechado todo mês mostra quanto entrou, quanto saiu e qual foi o retorno.
+  prazos:
+    - "[CONFIRMAR: prazo típico de cada etapa de um projeto de site ou loja virtual (briefing, criação, ajustes e publicação)]"
+
+precisamos:
+  titulo: O que precisamos de você
+  itens:
+    - Um tempo para o briefing, em que definimos juntos o escopo e o prazo do projeto.
+    - O que a sua marca já tem hoje — logotipo, manual de marca, fotos e o endereço do site atual, se existir.
+    - Para a loja virtual, as informações dos produtos, como fotos, preços e descrições.
+    - Retorno nas aprovações, que acontecem por e-mail, para o projeto andar sem travar.
+    - "[CONFIRMAR: quem escreve os textos do site e quais acessos pedimos no início (domínio, hospedagem, site atual)]"
+
+preco:
+  titulo: Quanto custa
+  formato: Projeto pontual
+  valor: A partir de R$ 800/projeto
+  faixa: "[CONFIRMAR: faixa de preço por escopo para site e loja (página de captação; site institucional; loja virtual)]"
+  detalhe: Uma entrega específica e fechada. O escopo e o prazo são definidos no briefing, antes de começar, e o preço vem aberto na proposta. O site também faz parte do plano 360 completo, por R$ 5.000/mês.
+  inclui:
+    - Site institucional, loja virtual ou página de captação, conforme o escopo do briefing
+    - Site rápido e bonito no celular, com velocidade e acessibilidade como padrão
+    - Rastreamento configurado
+    - Feito pelo mesmo time que cuida do seu anúncio, do conteúdo e do impresso
+    - Escopo e prazo definidos antes de começar
+    - "[CONFIRMAR: rodadas de ajuste incluídas, plataforma da loja virtual e se o cliente consegue atualizar o site e cadastrar produtos sozinho]"
+  nao_inclui:
+    - Gestão de anúncios e de redes sociais (no plano Gestão mensal ou no 360 completo)
+    - Material impresso (contratado à parte ou no plano 360 completo)
+    - "[CONFIRMAR: hospedagem, domínio e manutenção depois da entrega — inclusos ou à parte]"
+  schema:
+    valor: "800"
+    minimo: true
+    descricao: Projeto pontual de site, a partir de R$ 800.
+
+combina_com:
+  - slug: rastreamento-e-relatorio
+    porque: O site já sai com o rastreamento configurado. Com o painel de acompanhamento, você vê quanto entrou, quanto saiu e qual foi o retorno — não só quantas visitas chegaram.
+  - slug: trafego-pago
+    porque: O anúncio leva a pessoa até o site, e o site precisa confirmar o que o anúncio prometeu. A Natália Arruda cuida das campanhas, e o mesmo time faz o anúncio e o site com a mesma cara.
+
+faq:
+  - id: site-quanto-custa
+    pergunta: Quanto custa um site ou uma loja virtual?
+    resposta: Os projetos começam em R$ 800, no plano Pontual. O valor final depende do escopo — por exemplo, se é uma página de captação, um site institucional ou uma loja virtual. Tudo é combinado no briefing, e o preço vem aberto na proposta, antes de começar. O site também faz parte do plano 360 completo, por R$ 5.000 por mês.
+  - id: site-prazo
+    pergunta: Quanto tempo leva para o site ficar pronto?
+    resposta: Depende do tamanho do projeto. O prazo é definido no briefing, junto com o escopo, antes de começarmos. Assim, você sabe quando o site vai ficar pronto antes de fechar.
+  - id: site-velocidade
+    pergunta: Como sei que o site vai ser rápido?
+    resposta: Velocidade e acessibilidade são o padrão em todo projeto de site, não um extra. Para ter uma referência, o site anterior da própria Olorin foi medido no PageSpeed — a ferramenta do Google que dá notas de 0 a 100 para a qualidade de uma página. Em 08/10/2026, no celular, ele tirou 97 em desempenho, 100 em acessibilidade, 100 em práticas recomendadas e 100 em SEO (o que ajuda o Google a entender a página).
+  - id: site-anuncio
+    pergunta: O site já sai pronto para receber anúncio?
+    resposta: Sai com o rastreamento configurado, então dá para medir o que acontece depois do clique. Se você anunciar com a gente, a Natália Arruda cuida das campanhas de Meta Ads (Instagram e Facebook) e Google Ads. O anúncio e o site saem do mesmo time, com a mesma cara. A gestão de tráfego pago faz parte da Gestão mensal e do 360 completo.
+  - id: site-dono
+    pergunta: Quem fica com o domínio, a hospedagem e os arquivos do site?
+    resposta: "[CONFIRMAR: titularidade do domínio, da hospedagem e dos arquivos do site, e o que acontece se o cliente encerrar o trabalho]"
+  - id: site-fora-curitiba
+    pergunta: Vocês atendem fora de Curitiba?
+    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e entregáveis digitais.
+
+campanha:
+  titulo: Chega de site que faz o cliente desistir.
+  subtitulo: Diagnóstico gratuito do seu site, dos anúncios e da marca. Projetos de site a partir de R$ 800. Sem compromisso.
+  faq: [site-quanto-custa, site-prazo, site-velocidade, site-fora-curitiba]

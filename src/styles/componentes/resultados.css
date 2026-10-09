@@ -1,0 +1,111 @@
+/* Resultados: números, cases e depoimentos (fundo verde). */
+.o-numeros {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: clamp(24px, 3vw, 48px);
+	margin: clamp(24px, 3vw, 40px) 0 clamp(56px, 7vw, 96px);
+	padding-top: 32px;
+	border-top: var(--borda) solid var(--cor-linha);
+}
+.o-numero {
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: flex-end;
+	container-type: inline-size;
+	min-width: 0;
+}
+.o-numero__valor {
+	margin: 0 0 14px;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(24px, 19cqi, 92px);
+	line-height: 0.95;
+	letter-spacing: -0.03em;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+.o-numero__rotulo {
+	max-width: 24ch;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	line-height: 1.45;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+.o-numero__base {
+	order: -1;
+	margin: 8px 0 0;
+	font-size: 11px;
+	color: var(--cor-apoio);
+}
+.o-cases {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: clamp(18px, 2.4vw, 32px);
+}
+.o-case {
+	--janela-borda: var(--preto);
+	--janela-barra: var(--branco);
+	--janela-tinta: var(--preto);
+	--janela-corpo: var(--preto);
+	--janela-sombra: rgba(0, 0, 0, 0.25);
+	container-type: inline-size;
+	color: var(--branco);
+	transition: translate 0.25s var(--curva), box-shadow 0.25s var(--curva);
+}
+.o-case:hover {
+	translate: -4px -4px;
+	--janela-sombra: var(--preto);
+}
+.o-case__segmento {
+	margin: 0 0 8px !important;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-case__servicos {
+	margin-bottom: 24px !important;
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.8);
+}
+.o-case__resultado {
+	margin-bottom: 6px !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(30px, calc((100cqi - 48px) / 6.4), 60px);
+	line-height: 1;
+	letter-spacing: -0.02em;
+	color: var(--verde);
+	white-space: nowrap;
+}
+.o-case__detalhe {
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.78);
+}
+.o-case__link {
+	color: var(--verde);
+	font-size: 13px;
+}
+.o-depoimentos {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 24px;
+	margin-top: 48px;
+}
+.o-depoimento {
+	margin: 0;
+	padding: 24px;
+	border: var(--borda) solid var(--preto);
+	background: var(--branco);
+	color: var(--preto);
+}
+.o-depoimento blockquote {
+	margin: 0 0 16px;
+	font-size: 16px;
+}
+.o-depoimento figcaption {
+	font-size: 13px;
+}

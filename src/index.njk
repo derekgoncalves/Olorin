@@ -1,0 +1,10 @@
+---
+layout: layouts/base.njk
+modo: home
+slug: home
+og_imagem: /assets/img/og/home.jpg
+---
+{#- Home: as seções são incluídas na ordem da lista "secoes" de src/content/home.yml. -#}
+{%- for secao in conteudo.home.secoes %}
+{% include "secoes/" + secao + ".njk" %}
+{%- endfor %}

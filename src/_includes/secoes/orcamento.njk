@@ -1,0 +1,25 @@
+{#- ===== SEÇÃO: CTA final + formulário completo — src/content/home.yml → orcamento ===== -#}
+{%- from "components/formulario.njk" import formulario with context -%}
+{%- set t = conteudo.home.orcamento -%}
+<section class="o-sec o-orcamento o-ctx-violeta" id="orcamento" data-secao="orcamento" aria-labelledby="orcamento-titulo">
+	<div class="o-wrap">
+		<p class="o-etiqueta">{{ t.etiqueta }}</p>
+		<h2 class="o-titulo o-titulo--gg" id="orcamento-titulo">{{ t.titulo_1 }}<br> {{ t.titulo_2 }}</h2>
+		<div class="o-orcamento__grade">
+			{{ formulario({ id: "form-fim", posicao: "fim", modo: modo or "home", servico: servicoForm, nomeServico: nomeServicoForm, origemWa: origemWaForm }) }}
+			<div class="o-orcamento__lado">
+				<ul class="o-lista-pixel o-orcamento__lista">
+				{%- for item in t.lista %}<li>{{ item }}</li>{% endfor %}
+				</ul>
+				<div class="o-janela o-orcamento__wa">
+					<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ t.janela }}</span><span class="o-janela__ctrl"></span></div>
+					<div class="o-janela__corpo">
+						<p class="o-etiqueta">{{ t.wa_etiqueta }}</p>
+						<p>{{ t.wa_texto }}:</p>
+						<p class="o-orcamento__telefone"><a href="{{ waLink(origemWaFinal or 'orcamento-final') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ site.config.TELEFONE_EXIBICAO }}</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

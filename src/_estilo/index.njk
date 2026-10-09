@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+titulo: Guia de estilo | Olorin Digital
+descricao: Cores, tipos e componentes do site da Olorin (uso interno).
+indexavel: false
+modo: simples
+slug: estilo
+---
+{%- import "components/ui.njk" as ui with context -%}
+{%- import "components/formulario.njk" as f with context -%}
+<section class="o-sec o-ctx-branco">
+	<div class="o-wrap">
+		{{ ui.etiqueta("guia_de_estilo.exe") }}
+		<h1 class="o-titulo o-titulo--g">Guia de estilo</h1>
+		<p class="o-apoio">Página só de desenvolvimento. Não vai para o FTP.</p>
+
+		<div class="o-estilo-bloco">
+			<h2>Cores (só estas 4 + gradientes)</h2>
+			<ul class="o-estilo-amostras">
+				<li class="o-estilo-cor"><span style="background:var(--verde)"></span><p>Verde-limão · var(--verde)</p></li>
+				<li class="o-estilo-cor"><span style="background:var(--violeta)"></span><p>Violeta · var(--violeta)</p></li>
+				<li class="o-estilo-cor"><span style="background:var(--preto)"></span><p>Preto · var(--preto)</p></li>
+				<li class="o-estilo-cor"><span style="background:var(--branco)"></span><p>Branco · var(--branco)</p></li>
+				<li class="o-estilo-cor"><span style="background:var(--gradiente-indigo)"></span><p>Gradiente índigo</p></li>
+				<li class="o-estilo-cor"><span style="background:var(--gradiente-lavanda)"></span><p>Gradiente lavanda</p></li>
+			</ul>
+			<p>Regra: violeta nunca encosta no verde-limão.</p>
+		</div>
+
+		<div class="o-estilo-bloco">
+			<h2>Tipografia</h2>
+			<p class="o-etiqueta">Etiqueta em pixel</p>
+			<h1 class="o-titulo o-titulo--g">Título display caixa alta</h1>
+			<h2 class="o-titulo o-titulo--m">Subtítulo display</h2>
+			<p class="o-apoio">Texto de apoio maior, em Cascadia Code.</p>
+			<p>Texto corrido em Cascadia Code. <strong>Negrito</strong> e <a href="#">link</a>.</p>
+		</div>
+
+		<div class="o-estilo-bloco">
+			<h2>Botões</h2>
+			<div class="o-estilo-linha">
+				<a class="o-btn" href="#">Padrão</a>
+				<a class="o-btn o-btn--preto" href="#">Preto</a>
+				<a class="o-btn o-btn--violeta" href="#">Violeta</a>
+				<a class="o-btn o-btn--contorno" href="#">Contorno</a>
+				<a class="o-btn o-btn--pequeno" href="#">Pequeno</a>
+				<a class="o-btn o-btn--grande" href="#">Grande</a>
+			</div>
+		</div>
+
+		<div class="o-estilo-bloco">
+			<h2>Janela anos 90</h2>
+			{% call ui.janela("exemplo.exe") %}<p>Conteúdo da janela.</p>{% endcall %}
+		</div>
+
+		<div class="o-estilo-bloco">
+			<h2>Card de serviço</h2>
+			<div class="o-cards-servico">
+			{%- for s in conteudo.servicos | batch(2) | first %}{{ ui.cardServico(s) }}{% endfor %}
+			</div>
+		</div>
+
+		<div class="o-estilo-bloco">
+			<h2>Card de plano</h2>
+			<div class="o-planos__grade">
+			{%- for p in conteudo.planos.planos %}{{ ui.cardPlano(p) }}{% endfor %}
+			</div>
+		</div>
+
+		<div class="o-estilo-bloco">
+			<h2>Perguntas</h2>
+			{{ ui.faqLista(conteudo.faq.perguntas | batch(3) | first) }}
+		</div>
+	</div>
+</section>
+<section class="o-sec o-ctx-violeta">
+	<div class="o-wrap">
+		<h2 class="o-titulo">Formulário</h2>
+		{{ f.formulario({ id: "estilo", posicao: "estilo", modo: "simples", origemWa: "estilo" }) }}
+	</div>
+</section>

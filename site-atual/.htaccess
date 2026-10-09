@@ -1,0 +1,45 @@
+# ============================================================
+# Olorin — versão estática (Apache / Locaweb)
+# ============================================================
+
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+Options -Indexes
+
+# Bloqueia acesso direto a configurações e planilhas
+<FilesMatch "^(config\.php|.*\.csv|LEIA-ME\.txt)$">
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Deny from all
+	</IfModule>
+</FilesMatch>
+
+# HTTPS obrigatório — descomente as 4 linhas abaixo DEPOIS de ativar o
+# certificado SSL (Let's Encrypt) no painel da Locaweb.
+
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType text/html "access plus 0 seconds"
+	ExpiresByType image/webp "access plus 1 year"
+	ExpiresByType image/jpeg "access plus 1 year"
+	ExpiresByType image/png "access plus 1 year"
+	ExpiresByType image/svg+xml "access plus 1 year"
+	ExpiresByType font/woff2 "access plus 1 year"
+	ExpiresByType text/css "access plus 1 month"
+	ExpiresByType application/javascript "access plus 1 month"
+	ExpiresByType text/javascript "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set Referrer-Policy "strict-origin-when-cross-origin"
+	Header always set X-Frame-Options "SAMEORIGIN"
+	Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>

@@ -1,0 +1,26 @@
+{#- ===== SEÇÃO: Quem toca (equipe) — src/content/home.yml → equipe + src/content/equipe.yml ===== -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set t = conteudo.home.equipe -%}
+<section class="o-sec o-equipe o-ctx-preto" id="equipe" data-secao="equipe" aria-labelledby="equipe-titulo">
+	<div class="o-wrap">
+		<div class="o-equipe__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ t.etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="equipe-titulo">{{ t.titulo }}</h2>
+			</div>
+			<div>
+				<p class="o-apoio">{{ t.texto }}</p>
+				{%- if t.apoio %}<p class="o-apoio">{{ t.apoio | confirmar | safe }}</p>{% endif %}
+			</div>
+		</div>
+		<div class="o-equipe__grade">
+		{%- for p in conteudo.equipe.pessoas %}
+			{{ ui.cardPessoa(p) }}
+		{%- endfor %}
+		</div>
+		<div class="o-equipe__acoes">
+			<a class="o-btn o-btn--verde" href="{{ waLink('equipe', { tipo: 'equipe' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.botao }}</a>
+			<a class="o-link-seta" href="/sobre/">{{ t.link_sobre }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+		</div>
+	</div>
+</section>

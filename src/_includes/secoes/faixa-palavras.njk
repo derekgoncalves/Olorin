@@ -1,0 +1,9 @@
+{#- ===== SEÇÃO: Faixa animada violeta — src/content/home.yml → faixa_palavras (não encostar em seção verde) ===== -#}
+<div class="o-faixa o-faixa--violeta o-faixa--reversa" data-o-faixa>
+	<ul class="o-faixa__trilho">
+	{%- for item in conteudo.home.faixa_palavras %}
+		<li>{{ item }}</li>
+	{%- endfor %}
+	</ul>
+	<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>
+</div>

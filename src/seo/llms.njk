@@ -1,0 +1,38 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+{%- set cfg = site.config -%}
+# {{ cfg.NOME }}
+
+> {{ cfg.LEMA }}. Agência de marketing digital em {{ cfg.CIDADE }} ({{ cfg.UF }}) que atende todo o Brasil: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, material impresso, site e loja virtual, rastreamento e relatório — feitos pelo mesmo time, com preço aberto e relatório em linguagem simples.
+
+- Site: {{ cfg.URL }}/
+- WhatsApp: {{ cfg.TELEFONE_EXIBICAO }} (https://wa.me/{{ cfg.WHATSAPP }})
+- E-mail: {{ cfg.EMAIL }}
+- Instagram: {{ cfg.INSTAGRAM_HANDLE }} ({{ cfg.INSTAGRAM_URL }})
+- Atendimento: 100% remoto, a partir de {{ cfg.CIDADE }}
+
+## Serviços
+{% for s in conteudo.servicos %}
+- [{{ s.nome }}]({{ ("/servicos/" + s.slug + "/") | urlAbsoluta }}): {{ s.resposta_curta | textoPuro }}{% if s.preco and s.preco.valor %} Preço: {{ s.preco.valor }}.{% endif %}
+{%- endfor %}
+
+## Planos
+{% for p in conteudo.planos.planos %}
+- {{ p.nome }}: {{ p.valor | reais }} {{ p.periodo }}.{% if p.itens %} Inclui: {{ p.itens | join("; ") }}.{% endif %}
+{%- endfor %}
+{%- if conteudo.planos.nota %}
+
+{{ conteudo.planos.nota | textoPuro }}
+{%- endif %}
+
+## Perguntas frequentes
+{% for f in conteudo.faq.perguntas %}
+- {{ f.pergunta | textoPuro }} {{ f.resposta | textoPuro }}
+{%- endfor %}
+
+## Páginas
+- [Serviços]({{ "/servicos/" | urlAbsoluta }})
+- [Sobre a Olorin e a equipe]({{ "/sobre/" | urlAbsoluta }})
+- [Política de Privacidade]({{ "/politica-de-privacidade/" | urlAbsoluta }})

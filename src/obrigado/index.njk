@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+modo: obrigado
+slug: obrigado
+indexavel: false
+og_imagem: /assets/img/og/home.jpg
+eleventyComputed:
+  titulo: "{{ conteudo.paginas.obrigado.seo.titulo }}"
+  descricao: "{{ conteudo.paginas.obrigado.seo.descricao }}"
+---
+{#- /obrigado/ — aqui disparam generate_lead e as conversões (uma vez por envio). -#}
+{%- set o = conteudo.paginas.obrigado -%}
+<section class="o-sec o-obrigado o-ctx-violeta" data-secao="obrigado" data-o-obrigado>
+	<div class="o-wrap o-obrigado__grade">
+		<div class="o-janela o-obrigado__janela">
+			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">pedido_recebido.exe</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-janela__corpo">
+				<span class="o-icone o-icone--o o-obrigado__icone" aria-hidden="true"></span>
+				<p class="o-etiqueta">{{ o.etiqueta }}</p>
+				<h1 class="o-obrigado__titulo">{{ o.titulo }}</h1>
+				<p class="o-obrigado__texto">{{ o.texto }}</p>
+				<p class="o-nota"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ o.prazo }}</p>
+				<div class="o-obrigado__acoes">
+					<a class="o-btn o-btn--branco o-btn--grande" id="cta-whatsapp-obrigado" href="{{ waLink('obrigado', { tipo: 'obrigado' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ o.botao }}</a>
+					{%- if site.config.SCHEDULING_URL %}
+					<a class="o-btn o-btn--contorno" id="cta-agendar-obrigado" href="{{ site.config.SCHEDULING_URL }}" target="_blank" rel="noopener">{{ o.agendar }}</a>
+					{%- endif %}
+				</div>
+			</div>
+		</div>
+		<div class="o-obrigado__enquanto">
+			<h2 class="o-titulo o-titulo--m">{{ o.enquanto_titulo }}</h2>
+			<ul class="o-lista-pixel">
+			{%- for l in o.enquanto %}<li><a href="{{ l.url }}">{{ l.rotulo }}</a></li>{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,115 @@
+/* Botões: .o-btn + variação (--verde, --violeta, --preto, --branco, --contorno). Sem variação = cor de destaque do contexto. */
+.o-btn {
+	--btn-fundo: var(--cor-destaque);
+	--btn-texto: var(--cor-sobre-destaque);
+	--btn-borda: var(--cor-destaque);
+	--btn-sombra: var(--cor-sombra);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	min-height: 52px;
+	padding: 15px 22px;
+	border: var(--borda) solid var(--btn-borda);
+	border-radius: var(--raio);
+	background: var(--btn-fundo);
+	color: var(--btn-texto);
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: 13px;
+	line-height: 1.15;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	box-shadow: 0 0 0 transparent;
+	transition: transform var(--dur-rapida) var(--curva), box-shadow var(--dur-rapida) var(--curva), background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.o-btn:hover,
+.o-btn:focus-visible {
+	transform: translate(var(--deslocamento-hover), var(--deslocamento-hover));
+	box-shadow: var(--sombra-botao) var(--btn-sombra);
+}
+.o-btn:active {
+	transform: none;
+	box-shadow: 0 0 0 transparent;
+}
+.o-btn .o-icone {
+	--tam: 18px;
+	flex: none;
+}
+
+.o-btn--verde {
+	--btn-fundo: var(--verde);
+	--btn-texto: var(--preto);
+	--btn-borda: var(--verde);
+}
+.o-btn--violeta {
+	--btn-fundo: var(--violeta);
+	--btn-texto: var(--branco);
+	--btn-borda: var(--violeta);
+}
+.o-btn--preto {
+	--btn-fundo: var(--preto);
+	--btn-texto: var(--branco);
+	--btn-borda: var(--preto);
+}
+.o-ctx-verde .o-btn--preto {
+	--btn-texto: var(--verde);
+}
+.o-ctx-preto .o-btn--preto {
+	--btn-borda: var(--branco);
+}
+.o-btn--branco {
+	--btn-fundo: var(--branco);
+	--btn-texto: var(--preto);
+	--btn-borda: var(--branco);
+	--btn-sombra: var(--preto);
+}
+.o-ctx-violeta .o-btn--branco {
+	--btn-texto: var(--violeta);
+}
+.o-btn--contorno {
+	--btn-fundo: transparent;
+	--btn-texto: var(--cor-texto);
+	--btn-borda: var(--cor-texto);
+}
+.o-btn--contorno:hover,
+.o-btn--contorno:focus-visible {
+	--btn-fundo: var(--cor-texto);
+	--btn-texto: var(--cor-fundo);
+	--btn-sombra: var(--cor-destaque);
+}
+.o-ctx-violeta .o-btn--contorno:hover {
+	--btn-sombra: var(--preto);
+}
+.o-btn--pequeno {
+	min-height: 44px;
+	padding: 11px 16px;
+	font-size: 12px;
+}
+.o-btn--grande {
+	min-height: 60px;
+	padding: 18px 28px;
+	font-size: 14px;
+}
+
+/* Link "ou fale no WhatsApp" */
+.o-link-wa {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--esp-2);
+	min-height: 44px;
+	font-size: 15px;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 5px;
+}
+.o-link-wa .o-icone {
+	--tam: 18px;
+	color: var(--cor-destaque);
+}
+.o-link-wa:hover {
+	color: var(--cor-destaque);
+}

@@ -1,0 +1,117 @@
+/* Card de serviço: o card inteiro é clicável (um único <a> no título, estendido com ::after). */
+.o-servicos {
+	padding-bottom: 0;
+}
+.o-servicos .o-apoio {
+	margin-bottom: 0;
+}
+.o-cards-servico {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	margin-top: clamp(40px, 5vw, 72px);
+	border-top: 1px solid var(--cor-destaque);
+	border-left: 1px solid var(--cor-destaque);
+}
+.o-card-servico {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	min-height: 290px;
+	padding: clamp(28px, 3vw, 40px) clamp(22px, 2.4vw, 32px) clamp(28px, 3vw, 36px);
+	border-right: 1px solid var(--cor-destaque);
+	border-bottom: 1px solid var(--cor-destaque);
+	transition: background-color 0.25s, color 0.25s;
+}
+.o-card-servico__icone {
+	--tam: 40px;
+	margin-bottom: 10px;
+	color: var(--cor-destaque);
+	transition: color 0.25s, transform 0.4s var(--curva);
+}
+.o-card-servico__titulo {
+	margin: 0;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(17px, 1.45vw, 22px);
+	line-height: 1.12;
+	text-transform: uppercase;
+}
+.o-card-servico__link {
+	text-decoration: none;
+}
+.o-card-servico__link::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+.o-card-servico__link:focus-visible {
+	outline: none;
+}
+.o-card-servico:has(.o-card-servico__link:focus-visible) {
+	outline: 3px solid var(--cor-foco);
+	outline-offset: -5px;
+}
+.o-card-servico__texto {
+	margin: 0;
+	font-size: 15px;
+	color: var(--cor-apoio);
+	transition: color 0.25s;
+}
+.o-card-servico__mais {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: auto 0 0;
+	padding-top: 10px;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--cor-destaque);
+	transition: color 0.25s, gap 0.25s var(--curva);
+}
+.o-card-servico__mais .o-icone {
+	--tam: 12px;
+}
+.o-card-servico:hover,
+.o-card-servico:focus-within {
+	background: var(--cor-destaque);
+	color: var(--cor-sobre-destaque);
+}
+.o-card-servico:hover .o-card-servico__icone,
+.o-card-servico:focus-within .o-card-servico__icone {
+	color: var(--cor-sobre-destaque);
+	transform: translateY(-4px) rotate(-8deg);
+}
+.o-card-servico:hover .o-card-servico__texto,
+.o-card-servico:hover .o-card-servico__mais,
+.o-card-servico:focus-within .o-card-servico__texto,
+.o-card-servico:focus-within .o-card-servico__mais {
+	color: inherit;
+}
+.o-card-servico:hover .o-card-servico__mais {
+	gap: 16px;
+}
+
+/* Faixa "Precisa de um desses agora?" */
+.o-faixa-cta {
+	margin-top: clamp(64px, 8vw, 112px);
+	padding-block: clamp(22px, 2.6vw, 32px);
+}
+.o-faixa-cta__dentro {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px 32px;
+}
+.o-faixa-cta__texto {
+	margin: 0;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(19px, 2.6vw, 38px);
+	line-height: 1.05;
+	text-transform: uppercase;
+}

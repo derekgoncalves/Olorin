@@ -1,0 +1,196 @@
+# ============================================================
+# HOME — textos e ORDEM dos blocos
+# ------------------------------------------------------------
+# Para reordenar: mude a ordem das linhas em "secoes".
+# Para esconder um bloco: apague a linha (ou comente com #).
+# Regra da marca: violeta e verde nunca encostam. Cuidado ao
+# colocar "faixa-servicos" (verde) ao lado de "metodo" ou
+# "orcamento" (violeta).
+# ============================================================
+secoes:
+  - hero
+  - formulario-topo
+  - faixa-servicos
+  - checklist
+  - metodo
+  - servicos
+  - resultados
+  - portfolio
+  - equipe
+  - relatorio
+  - faixa-palavras
+  - planos
+  - duvidas
+  - orcamento
+
+seo:
+  titulo: Olorin Digital | Agência de marketing em Curitiba
+  descricao: Anúncio, conteúdo, site e impresso feitos pelo mesmo time. Marketing 360 com foco em venda e relatório que qualquer pessoa entende.
+
+hero:
+  linha_superior: Agência de marketing digital em Curitiba · Tráfego pago · Conteúdo · Site · Impresso
+  titulo_1: Não é sobre aparecer.
+  titulo_2: É sobre
+  titulo_destaque: vender.
+  paragrafo: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Sua marca falando a mesma língua em todo lugar — e cada real investido com nome, sobrenome e retorno.
+  botao: Quero meu diagnóstico gratuito
+  botao_sem_diagnostico: Pedir orçamento
+  link_whatsapp: ou fale no WhatsApp
+  microtexto: Sem compromisso · Resposta em até 1 dia útil
+  prova:
+    - Preços abertos
+    - Sem multa após 3 meses
+    - Relatório mensal
+  janela: relatorio.exe
+  janela_rotulo: Vendas do mês
+
+formulario_topo:
+  titulo: Diagnóstico gratuito da sua marca
+  texto: Conte rapidinho quem você é. A gente olha anúncio, redes, site e material da marca e te diz onde está travando e por onde vale começar.
+  detalhe: "[CONFIRMAR: formato do diagnóstico — padrão sugerido: conversa de 30 minutos por vídeo + resumo por escrito do que encontramos]"
+  itens:
+    - Sem compromisso
+    - Resposta em até 1 dia útil
+    - Preço aberto na proposta
+
+faixa_servicos:
+  - Tráfego pago
+  - Redes sociais
+  - Identidade visual
+  - Material impresso
+  - Site
+  - Criativos
+  - Relatório
+
+checklist:
+  etiqueta: Checklist rápido
+  titulo: Se você se reconhece aqui, o problema não é falta de esforço.
+  dica: Marque o que acontece com você.
+  itens:
+    - Você tem um fornecedor pro anúncio, outro pro post e outro pra arte — e nenhum conversa com o outro.
+    - "Cada peça parece de uma empresa diferente: o anúncio, o feed, o cartão de visita e o site."
+    - Você investe todo mês e não sabe dizer quanto custou cada venda.
+    - O relatório mostra alcance e impressão, mas nunca mostra faturamento.
+    - O material impresso ficou parado no tempo enquanto o digital foi atualizado.
+    - Cada pergunta vira telefone sem fio, e ninguém sabe dizer quem está cuidando da sua conta.
+  contador_um: marcado
+  contador_varios: marcados
+  resposta_titulo: Isso tem solução, e não é trabalhar mais.
+  resposta: Quando anúncio, conteúdo, site e impresso são feitos por gente que não conversa, cada um puxa para um lado. Com o mesmo time cuidando de tudo, a marca fala uma língua só e cada real investido aparece no relatório.
+  resposta_padrao: Se você marcou dois ou mais, a gente começa pelo diagnóstico.
+  cta: Ver como a gente resolve
+
+metodo:
+  etiqueta: Método Olorin
+  titulo: Quatro etapas. Zero achismo.
+  texto: Sem caixa-preta. Você sabe o que está sendo feito, por quê e quanto está voltando.
+  etapas:
+    - nome: Diagnóstico
+      texto: Olhamos tudo o que já existe — conta de anúncio, redes, site e material da marca. Antes de criar qualquer coisa, descobrimos o que está travando.
+    - nome: Direção
+      texto: Estratégia e identidade alinhadas — o que falar, para quem, em qual canal e com qual cara. Uma marca só, em todos os pontos de contato.
+    - nome: Execução
+      texto: Campanha no ar, conteúdo publicado, arquivo fechado para a gráfica e site no ar. Tudo saindo pela mesma porta, no mesmo ritmo.
+    - nome: Leitura
+      texto: Relatório que qualquer pessoa entende — quanto entrou, quanto saiu, qual foi o retorno e o que vem na próxima rodada.
+  cta_texto: Quer saber em qual dessas etapas sua marca está travada?
+  cta: Pedir diagnóstico
+
+servicos:
+  etiqueta: O que a Olorin faz
+  titulo: A marca inteira, não só o anúncio.
+  texto: Você pode contratar uma frente só. Mas quando elas rodam juntas, uma empurra a outra.
+  ver_detalhes: Ver detalhes
+  faixa_texto: Precisa de um desses agora?
+  faixa_botao: Chamar no WhatsApp
+
+resultados:
+  etiqueta: Resultados
+  titulo: Número é a única coisa que não dá pra maquiar.
+  janela_prefixo: case_
+
+portfolio:
+  etiqueta: Portfólio
+  titulo: Dá pra ver a diferença.
+  filtro_todos: Tudo
+  botao: Ver mais trabalhos no Instagram
+
+equipe:
+  etiqueta: Quem toca
+  titulo: Você fala com quem faz.
+  texto: A Olorin é um time de 3 especialistas. Anúncio, conteúdo, site e impresso saem das mesmas mãos.
+  apoio: "[CONFIRMAR: Natália e Vinicius participam do início de cada projeto e da reunião mensal, então você fala com quem executa.]"
+  botao: Falar com a equipe no WhatsApp
+  link_sobre: Conheça a Olorin
+
+relatorio:
+  etiqueta: Como é o nosso relatório
+  titulo: Relatório que mostra faturamento, não só alcance.
+  texto: Todo mês você recebe um painel como este — com o que foi investido, o que voltou e o que vamos fazer na próxima rodada. Sem sigla solta e sem gráfico bonito que não diz nada.
+  aviso: Exemplo ilustrativo, com dados fictícios
+  janela: painel.exe
+  mes: Mês de exemplo
+  indicadores:
+    - rotulo: Investimento em anúncio
+      valor: R$ 3.000
+      variacao: mesmo valor do mês anterior
+      tendencia: neutra
+    - rotulo: Faturamento atribuído
+      valor: R$ 14.400
+      variacao: +18% sobre o mês anterior
+      tendencia: alta
+    - rotulo: Custo por venda
+      valor: R$ 62,50
+      variacao: −12% sobre o mês anterior
+      tendencia: alta
+    - rotulo: Retorno sobre o investimento
+      valor: 4,8x
+      variacao: era 4,1x no mês anterior
+      tendencia: alta
+  grafico_titulo: Faturamento atribuído por semana
+  grafico:
+    - rotulo: Semana 1
+      valor: 2800
+    - rotulo: Semana 2
+      valor: 3300
+    - rotulo: Semana 3
+      valor: 3900
+    - rotulo: Semana 4
+      valor: 4400
+  proxima_titulo: O que faremos na próxima rodada
+  proxima:
+    - Aumentar a verba da campanha de remarketing, que teve o menor custo por venda.
+    - Trocar os dois anúncios com pior taxa de clique por versões novas.
+    - Revisar a página de destino, que perde gente no celular.
+  glossario: "Retorno sobre o investimento (ROAS): quanto voltou em faturamento para cada R$ 1 investido em anúncio."
+
+faixa_palavras:
+  - Agência de marketing em Curitiba
+  - Gestão de tráfego pago
+  - Criação de site
+  - Gestão de redes sociais
+  - Material impresso
+  - Identidade visual
+
+planos:
+  etiqueta: Planos
+  titulo: Formatos de trabalho.
+  texto: Preço aberto, sem letra miúda. Escolha um formato ou calcule quanto custa começar.
+
+duvidas:
+  etiqueta: Dúvidas
+  titulo: Dúvidas.
+  texto: Ficou alguma dúvida que não está aqui?
+  botao: Perguntar no WhatsApp
+
+orcamento:
+  etiqueta: Orçamento sem compromisso
+  titulo_1: Vamos olhar sua
+  titulo_2: marca juntos.
+  lista:
+    - Resposta em até 1 dia útil
+    - Proposta montada pra sua marca, não modelo pronto
+    - Você fala com quem faz
+  janela: whatsapp.exe
+  wa_etiqueta: Prefere resolver agora?
+  wa_texto: Chama no WhatsApp

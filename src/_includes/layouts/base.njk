@@ -1,0 +1,89 @@
+{#-
+	Layout base de todas as páginas.
+	Variáveis da página (front matter ou dados):
+	  titulo, descricao       → <title> (≤ 60) e meta description (≤ 155)
+	  modo                    → home | servico | hub | sobre | promo | obrigado | simples | erro
+	  slug                    → identificador para o rastreamento (page_slug)
+	  indexavel               → false gera "noindex, follow"
+	  canonical               → caminho canônico (padrão: a própria URL)
+	  og_imagem               → caminho da imagem de compartilhamento (1200×630)
+	  cabecalho               → "completo" (padrão) ou "minimo" (landings de campanha)
+	  migalhas                → [{ nome, url }] para a trilha e o BreadcrumbList
+-#}
+{%- set cfg = site.config -%}
+{%- set modoPagina = modo or "simples" -%}
+{%- set urlCanonica = (canonical or page.url) | urlAbsoluta -%}
+{%- set imagemOg = (og_imagem or "/assets/img/og/home.jpg") | urlAbsoluta -%}
+{%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ titulo }}</title>
+	<meta name="description" content="{{ descricao }}">
+	{%- if indexavel === false %}
+	<meta name="robots" content="noindex, follow">
+	{%- endif %}
+	<link rel="canonical" href="{{ urlCanonica }}">
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="pt_BR">
+	<meta property="og:site_name" content="{{ cfg.NOME }}">
+	<meta property="og:title" content="{{ og_titulo or titulo }}">
+	<meta property="og:description" content="{{ descricao }}">
+	<meta property="og:url" content="{{ urlCanonica }}">
+	<meta property="og:image" content="{{ imagemOg }}">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="{{ og_titulo or titulo }}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{{ og_titulo or titulo }}">
+	<meta name="twitter:description" content="{{ descricao }}">
+	<meta name="twitter:image" content="{{ imagemOg }}">
+	<meta name="theme-color" content="#000000">
+	<link rel="icon" href="/favicon.ico" sizes="32x32">
+	<link rel="icon" href="/assets/img/brand/favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
+	<link rel="manifest" href="/site.webmanifest">
+	{%- for fonte in assets.fontes %}
+	<link rel="preload" href="{{ fonte.href }}" as="font" type="{{ fonte.tipo }}" crossorigin>
+	{%- endfor %}
+	<script>
+		{#- Antes da primeira pintura: marca "js" e decide a variante do formulário (A/B) sem pulo de layout. -#}
+		(function (d, w) {
+			var h = d.documentElement, modo = "{{ cfg.FORM_TOP_VARIANT }}", v = null, q = /[?&]v=(a|b)(&|$)/.exec(w.location.search);
+			h.classList.add("js");
+			try { v = w.sessionStorage.getItem("olorin_variante"); } catch (e) {}
+			if (q) { v = q[1]; } else if (modo !== "ab") { v = modo; } else if (v !== "a" && v !== "b") { v = Math.random() < 0.5 ? "a" : "b"; }
+			try { w.sessionStorage.setItem("olorin_variante", v); } catch (e) {}
+			h.setAttribute("data-form-variant", v);
+		})(document, window);
+	</script>
+	<link rel="stylesheet" href="{{ assets.css }}">
+	{%- include "partials/schema.njk" %}
+	<script>window.OLORIN_CONFIG = {{ {
+		whatsapp: cfg.WHATSAPP,
+		gtm: cfg.GTM_ID,
+		ga4: cfg.GA4_ID,
+		pixel: cfg.META_PIXEL_ID,
+		adsId: cfg.GADS_CONVERSION_ID,
+		adsLabel: cfg.GADS_CONVERSION_LABEL,
+		agendamento: cfg.SCHEDULING_URL,
+		modo: modoPagina,
+		slug: slug or "",
+		cursor: cfg.CURSOR_ESTRELA
+	} | jsonSeguro | safe }};</script>
+	<script src="{{ assets.js }}" defer></script>
+</head>
+<body class="o-modo-{{ modoPagina }}{% if cabecalho != 'minimo' %} o-tem-barra{% endif %}" data-mode="{{ 'campanha' if modoPagina == 'promo' else modoPagina }}">
+{% include "partials/svg-simbolos.njk" %}
+<a class="o-pular" href="#conteudo">Pular para o conteúdo</a>
+{% if cabecalho == "minimo" %}{% include "partials/cabecalho-minimo.njk" %}{% else %}{% include "partials/cabecalho.njk" %}{% endif %}
+<main id="conteudo" class="o-main" tabindex="-1">
+{{ content | safe }}
+</main>
+{% if cabecalho == "minimo" %}{% include "partials/rodape-minimo.njk" %}{% else %}{% include "partials/rodape.njk" %}{% endif %}
+{% include "partials/flutuantes.njk" %}
+{% if temRastreamento %}{% include "partials/cookies.njk" %}{% endif %}
+</body>
+</html>

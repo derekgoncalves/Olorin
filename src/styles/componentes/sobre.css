@@ -1,0 +1,53 @@
+/* Página Sobre. */
+.o-sobre-foto {
+	--janela-barra: var(--verde);
+	--janela-tinta: var(--preto);
+	--janela-borda: var(--verde);
+	--janela-sombra: rgba(236, 255, 54, 0.25);
+	margin: 0;
+	overflow: hidden;
+}
+.o-sobre-foto img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+.o-sobre-lema {
+	margin-top: 28px !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(20px, 2.4vw, 32px);
+	line-height: 1.05;
+	text-transform: uppercase;
+	color: var(--violeta);
+}
+.o-pessoa__servicos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 14px 0 0;
+	padding: 0;
+	list-style: none;
+}
+.o-pessoa__servicos a {
+	display: inline-block;
+	padding: 6px 10px;
+	border: 1px solid var(--cor-linha);
+	font-size: 13px;
+	text-decoration: none;
+}
+.o-pessoa__servicos a:hover {
+	border-color: var(--verde);
+	color: var(--verde);
+}
+.o-sobre-contato {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px 32px;
+	margin-top: clamp(40px, 5vw, 72px);
+	padding-top: 32px;
+	border-top: 2px dashed var(--cor-linha);
+}

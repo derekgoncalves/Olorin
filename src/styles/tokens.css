@@ -1,0 +1,175 @@
+/* ==========================================================================
+   OLORIN DIGITAL — tokens de design (fonte: manual de marca, docs/BRAND.md)
+   Todo o restante do CSS usa só estas variáveis.
+   Cores da marca: verde #ECFF36 · violeta #7E3BED · preto #000000 · branco #FFFFFF
+   Regras: verde + preto (+ branco) ✔ · violeta + preto (+ branco) ✔
+           violeta encostado no verde ✘ · verde sobre branco ✘ (contraste 1,1:1)
+   ========================================================================== */
+
+/* Fontes hospedadas no próprio site (sem Google Fonts — melhor para a LGPD).
+   Subconjunto latim + caracteres do pt-BR. */
+@font-face {
+	font-family: "Archivo Expanded";
+	src: url("/assets/fonts/archivo-expanded-900.woff2") format("woff2");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Archivo Expanded";
+	src: url("/assets/fonts/archivo-expanded-800.woff2") format("woff2");
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Cascadia Code";
+	src: url("/assets/fonts/cascadia-code-400.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Cascadia Code";
+	src: url("/assets/fonts/cascadia-code-700.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Silkscreen";
+	src: url("/assets/fonts/silkscreen-400.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	/* Cores da marca */
+	--verde: #ecff36;
+	--violeta: #7e3bed;
+	/* Tons de gradiente (só para os degradês do fundo violeta, como na pág. 2 do manual) */
+	--gradiente-indigo: rgba(30, 6, 90, 0.55);
+	--gradiente-lavanda: rgba(190, 150, 255, 0.28);
+	--preto: #000;
+	--branco: #fff;
+
+	/* Tipografia (Integral CF e Retro Computer entram aqui quando licenciadas — ver scripts/assets.mjs) */
+	--fonte-titulo: "Archivo Expanded", "Arial Black", Impact, sans-serif;
+	--fonte-texto: "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	--fonte-pixel: "Silkscreen", "Courier New", monospace;
+
+	/* Escala de espaçamento */
+	--esp-1: 4px;
+	--esp-2: 8px;
+	--esp-3: 12px;
+	--esp-4: 16px;
+	--esp-5: 24px;
+	--esp-6: 32px;
+	--esp-7: 48px;
+	--esp-8: 64px;
+	--esp-9: 96px;
+	--margem: clamp(20px, 5vw, 80px);
+	--largura-max: 1280px;
+	--altura-topo: 72px;
+	--pad-secao: clamp(80px, 10vw, 152px);
+	--pad-secao-compacta: clamp(48px, 6vw, 88px);
+
+	/* Bordas, raios e sombras "duras" de janela anos 90 */
+	--borda: 2px;
+	--raio: 0;
+	--raio-celular: 40px;
+	--sombra-janela: 8px 8px 0;
+	--sombra-botao: 4px 4px 0;
+	--deslocamento-hover: -3px;
+
+	/* Movimento */
+	--curva: cubic-bezier(0.2, 0.7, 0.1, 1);
+	--dur-rapida: 0.18s;
+	--dur: 0.3s;
+	--dur-lenta: 0.75s;
+
+	/* Textura de grão analógico */
+	--grao: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+	/* Contexto padrão (fundo preto) — cada seção redefine pelo .o-ctx-* */
+	--cor-fundo: var(--preto);
+	--cor-texto: var(--branco);
+	--cor-apoio: rgba(255, 255, 255, 0.74);
+	--cor-linha: rgba(255, 255, 255, 0.24);
+	--cor-destaque: var(--verde);
+	--cor-sobre-destaque: var(--preto);
+	--cor-foco: var(--verde);
+	--cor-sombra: var(--branco);
+}
+
+/* Contextos de cor por fundo de seção (as cores de texto, botões e foco se ajustam sozinhas). */
+.o-ctx-preto {
+	--cor-fundo: var(--preto);
+	--cor-texto: var(--branco);
+	--cor-apoio: rgba(255, 255, 255, 0.74);
+	--cor-linha: rgba(255, 255, 255, 0.24);
+	--cor-destaque: var(--verde);
+	--cor-sobre-destaque: var(--preto);
+	--cor-foco: var(--verde);
+	--cor-sombra: var(--branco);
+	background-color: var(--cor-fundo);
+	color: var(--cor-texto);
+}
+.o-ctx-branco {
+	--cor-fundo: var(--branco);
+	--cor-texto: var(--preto);
+	--cor-apoio: rgba(0, 0, 0, 0.72);
+	--cor-linha: var(--preto);
+	--cor-destaque: var(--violeta);
+	--cor-sobre-destaque: var(--branco);
+	--cor-foco: var(--violeta);
+	--cor-sombra: var(--preto);
+	background-color: var(--cor-fundo);
+	color: var(--cor-texto);
+}
+.o-ctx-violeta {
+	--cor-fundo: var(--violeta);
+	--cor-texto: var(--branco);
+	--cor-apoio: rgba(255, 255, 255, 0.92);
+	--cor-linha: rgba(255, 255, 255, 0.45);
+	--cor-destaque: var(--branco);
+	--cor-sobre-destaque: var(--violeta);
+	--cor-foco: var(--branco);
+	--cor-sombra: var(--preto);
+	background-color: var(--cor-fundo);
+	color: var(--cor-texto);
+}
+.o-ctx-verde {
+	--cor-fundo: var(--verde);
+	--cor-texto: var(--preto);
+	--cor-apoio: rgba(0, 0, 0, 0.76);
+	--cor-linha: var(--preto);
+	--cor-destaque: var(--preto);
+	--cor-sobre-destaque: var(--verde);
+	--cor-foco: var(--preto);
+	--cor-sombra: var(--preto);
+	background-color: var(--cor-fundo);
+	color: var(--cor-texto);
+}
+
+/* Ícones pixel da marca (máscaras SVG — herdam a cor do texto). */
+:root {
+	--icone-trafego: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v1h-1zM0 1h2v1h-2zM0 2h3v1h-3zM0 3h4v1h-4zM0 4h5v1h-5zM0 5h6v1h-6zM0 6h7v1h-7zM0 7h8v1h-8zM0 8h5v1h-5zM0 9h2v1h-2zM3 9h2v1h-2zM0 10h1v1h-1zM4 10h2v1h-2zM4 11h2v1h-2z'/%3E%3C/svg%3E");
+	--icone-redes: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M1 1h10v1h-10zM0 2h1v1h-1zM11 2h1v1h-1zM0 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM3 4h2v1h-2zM7 4h2v1h-2zM11 4h1v1h-1zM0 5h1v1h-1zM3 5h2v1h-2zM7 5h2v1h-2zM11 5h1v1h-1zM0 6h1v1h-1zM11 6h1v1h-1zM0 7h1v1h-1zM11 7h1v1h-1zM1 8h4v1h-4zM6 8h5v1h-5zM4 9h1v1h-1zM6 9h1v1h-1zM4 10h2v1h-2zM4 11h1v1h-1z'/%3E%3C/svg%3E");
+	--icone-marca: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M5 0h2v1h-2zM5 1h2v1h-2zM5 2h2v1h-2zM4 3h4v1h-4zM3 4h6v1h-6zM0 5h12v1h-12zM0 6h12v1h-12zM3 7h6v1h-6zM4 8h4v1h-4zM5 9h2v1h-2zM5 10h2v1h-2zM5 11h2v1h-2z'/%3E%3C/svg%3E");
+	--icone-impresso: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M3 0h6v1h-6zM3 1h1v1h-1zM8 1h1v1h-1zM3 2h1v1h-1zM8 2h1v1h-1zM0 3h12v1h-12zM0 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM8 5h2v1h-2zM11 5h1v1h-1zM0 6h1v1h-1zM11 6h1v1h-1zM0 7h12v1h-12zM2 8h1v1h-1zM9 8h1v1h-1zM2 9h1v1h-1zM4 9h4v1h-4zM9 9h1v1h-1zM2 10h1v1h-1zM9 10h1v1h-1zM2 11h8v1h-8z'/%3E%3C/svg%3E");
+	--icone-site: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h12v1h-12zM0 1h1v1h-1zM2 1h1v1h-1zM4 1h1v1h-1zM11 1h1v1h-1zM0 2h12v1h-12zM0 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM2 4h5v1h-5zM11 4h1v1h-1zM0 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM2 6h8v1h-8zM11 6h1v1h-1zM0 7h1v1h-1zM2 7h6v1h-6zM11 7h1v1h-1zM0 8h1v1h-1zM11 8h1v1h-1zM0 9h1v1h-1zM2 9h3v1h-3zM7 9h3v1h-3zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z'/%3E%3C/svg%3E");
+	--icone-dados: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M10 0h2v1h-2zM10 1h2v1h-2zM7 2h2v1h-2zM10 2h2v1h-2zM7 3h2v1h-2zM10 3h2v1h-2zM4 4h2v1h-2zM7 4h2v1h-2zM10 4h2v1h-2zM4 5h2v1h-2zM7 5h2v1h-2zM10 5h2v1h-2zM1 6h2v1h-2zM4 6h2v1h-2zM7 6h2v1h-2zM10 6h2v1h-2zM1 7h2v1h-2zM4 7h2v1h-2zM7 7h2v1h-2zM10 7h2v1h-2zM1 8h2v1h-2zM4 8h2v1h-2zM7 8h2v1h-2zM10 8h2v1h-2zM1 9h2v1h-2zM4 9h2v1h-2zM7 9h2v1h-2zM10 9h2v1h-2zM0 11h12v1h-12z'/%3E%3C/svg%3E");
+	--icone-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M10 2h2v1h-2zM9 3h2v1h-2zM8 4h2v1h-2zM0 5h2v1h-2zM7 5h2v1h-2zM1 6h2v1h-2zM6 6h2v1h-2zM2 7h2v1h-2zM5 7h2v1h-2zM3 8h3v1h-3zM4 9h1v1h-1z'/%3E%3C/svg%3E");
+	--icone-seta: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M6 1h1v1h-1zM6 2h2v1h-2zM6 3h3v1h-3zM0 4h10v1h-10zM0 5h11v1h-11zM0 6h11v1h-11zM0 7h10v1h-10zM6 8h3v1h-3zM6 9h2v1h-2zM6 10h1v1h-1z'/%3E%3C/svg%3E");
+	--icone-relogio: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M3 0h6v1h-6zM2 1h1v1h-1zM9 1h1v1h-1zM1 2h1v1h-1zM5 2h2v1h-2zM10 2h1v1h-1zM0 3h1v1h-1zM5 3h2v1h-2zM11 3h1v1h-1zM0 4h1v1h-1zM5 4h2v1h-2zM11 4h1v1h-1zM0 5h1v1h-1zM5 5h4v1h-4zM11 5h1v1h-1zM0 6h1v1h-1zM5 6h4v1h-4zM11 6h1v1h-1zM0 7h1v1h-1zM11 7h1v1h-1zM0 8h1v1h-1zM11 8h1v1h-1zM1 9h1v1h-1zM10 9h1v1h-1zM2 10h1v1h-1zM9 10h1v1h-1zM3 11h6v1h-6z'/%3E%3C/svg%3E");
+	--icone-mais: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M5 2h2v1h-2zM5 3h2v1h-2zM5 4h2v1h-2zM2 5h8v1h-8zM2 6h8v1h-8zM5 7h2v1h-2zM5 8h2v1h-2zM5 9h2v1h-2z'/%3E%3C/svg%3E");
+	--icone-caixa: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h1v1h-1zM11 2h1v1h-1zM0 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM11 4h1v1h-1zM0 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM11 6h1v1h-1zM0 7h1v1h-1zM11 7h1v1h-1zM0 8h1v1h-1zM11 8h1v1h-1zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z'/%3E%3C/svg%3E");
+	--icone-caixa-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h1v1h-1zM8 2h2v1h-2zM11 2h1v1h-1zM0 3h1v1h-1zM7 3h2v1h-2zM11 3h1v1h-1zM0 4h1v1h-1zM6 4h2v1h-2zM11 4h1v1h-1zM0 5h1v1h-1zM2 5h2v1h-2zM5 5h2v1h-2zM11 5h1v1h-1zM0 6h1v1h-1zM3 6h3v1h-3zM11 6h1v1h-1zM0 7h1v1h-1zM4 7h1v1h-1zM11 7h1v1h-1zM0 8h1v1h-1zM11 8h1v1h-1zM0 9h1v1h-1zM11 9h1v1h-1zM0 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z'/%3E%3C/svg%3E");
+	--icone-ctrl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 41 9' shape-rendering='crispEdges'%3E%3Cpath d='M14 0h12v1h-12zM31 0h2v1h-2zM39 0h2v1h-2zM14 1h1v1h-1zM25 1h1v1h-1zM32 1h2v1h-2zM38 1h2v1h-2zM14 2h12v1h-12zM33 2h2v1h-2zM37 2h2v1h-2zM14 3h1v1h-1zM25 3h1v1h-1zM34 3h4v1h-4zM14 4h1v1h-1zM25 4h1v1h-1zM35 4h2v1h-2zM14 5h1v1h-1zM25 5h1v1h-1zM34 5h4v1h-4zM14 6h1v1h-1zM25 6h1v1h-1zM33 6h2v1h-2zM37 6h2v1h-2zM0 7h12v1h-12zM14 7h1v1h-1zM25 7h1v1h-1zM32 7h2v1h-2zM38 7h2v1h-2zM0 8h12v1h-12zM14 8h12v1h-12zM31 8h2v1h-2zM39 8h2v1h-2z'/%3E%3C/svg%3E");
+	--icone-o: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 134 126'%3E%3Cpath d='M116.65 108.75C119.99 105.08 122.62 100.96 124.63 96.43C131.53 80.86 124 66.6 113.27 54.73C108.57 49.52 103.76 44.6 98.51 39.93L88.45 31C76.93 20.78 60.59 9.95 45.39 7.3C27.79 4.23 14.04 14.81 8.31 31.12C2.49 47.71 12.38 62.84 23.48 74.91C27.17 78.92 30.86 82.69 34.89 86.32L42.82 93.46C54.43 103.92 71.37 114.83 86.87 117.62C97.91 119.6 109.09 117.08 116.65 108.75M133.43 74.01C132.98 100.69 112.18 123.76 85 124.92C72.98 125.43 60.79 125.45 48.8 124.91C21.29 123.68 0.61 100.24 0.33 73.28C0.27 66.64 -0.02 60.64 0.36 53.99L0.71 47.96C2.23 21.63 24.36 0.65 50.88 0.08L82.61 0.06C95.04 0.06 106.76 4.99 115.92 13.16C126.25 22.37 132.39 34.98 133.19 48.78L133.84 60.08L133.84 66.85ZM133.43 74.01M82.29 63.75C78.6 63.93 75 64.72 72.12 67.03C66.38 71.65 67.57 82.46 66.15 89.68C65.28 82.54 66.35 70.8 60.75 66.83C54.6 62.48 44.66 62.49 37.04 61.55L48.11 60.86C54.05 60.49 61.79 59.13 64.14 53.48C65.07 51.27 65.29 48.93 65.5 46.58L66.11 39.94L66.46 35.44L66.83 35.36L67.2 40.74C67.7 47.95 67.94 57.51 75.9 59.21C79 59.87 82.12 60.22 85.33 60.37L97.57 60.94L118.12 61.78L123.21 62.01L131.47 62.27C131.04 62.42 130.24 62.65 129.76 62.66L120.43 62.8L109.96 63.05L100.21 63.32L86.79 63.53ZM82.29 63.75'/%3E%3C/svg%3E");
+	--icone-pixel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 142 125.3'%3E%3Cpath d='M88.18 34.4L53.78 34.4L53.78 0L88.18 0ZM88.18 34.4M88.18 125.25L53.78 125.25L53.78 90.85L88.18 90.85ZM88.18 125.25M34.41 79.83L0.01 79.83L0.01 45.43L34.41 45.43ZM34.41 79.83M141.95 79.83L107.55 79.83L107.55 45.43L141.95 45.43ZM141.95 79.83M122.57 45.43L88.18 45.43L88.18 11.03L122.57 11.03ZM122.57 45.43M53.78 45.43L19.39 45.43L19.39 11.03L53.78 11.03ZM53.78 45.43M53.78 114.22L19.39 114.22L19.39 79.83L53.78 79.83ZM53.78 114.22M122.57 114.22L88.18 114.22L88.18 79.83L122.57 79.83ZM122.57 114.22'/%3E%3C/svg%3E");
+	--icone-estrela: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C12.9 8.6 15.4 11.1 24 12 15.4 12.9 12.9 15.4 12 24 11.1 15.4 8.6 12.9 0 12 8.6 11.1 11.1 8.6 12 0Z'/%3E%3C/svg%3E");
+	--icone-whatsapp: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E");
+}

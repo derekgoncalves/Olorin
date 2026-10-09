@@ -1,0 +1,51 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+# Olorin Digital — {{ site.config.URL }}
+# Buscadores e assistentes de IA podem ler as páginas públicas.
+# Páginas de campanha e de agradecimento ficam fora (também têm noindex).
+
+User-agent: *
+Allow: /
+Disallow: /promo/
+Disallow: /obrigado/
+Disallow: /enviar.php
+Disallow: /leads/
+
+# Assistentes de IA (busca e resposta) — liberados de propósito
+User-agent: GPTBot
+Allow: /
+Disallow: /promo/
+Disallow: /obrigado/
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /promo/
+Disallow: /obrigado/
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: {{ "/sitemap.xml" | urlAbsoluta }}

@@ -1,0 +1,9 @@
+{#- ===== SEÇÃO: Faixa animada verde — src/content/home.yml → faixa_servicos ===== -#}
+<div class="o-faixa o-faixa--verde" data-o-faixa>
+	<ul class="o-faixa__trilho">
+	{%- for item in conteudo.home.faixa_servicos %}
+		<li>{{ item }}</li>
+	{%- endfor %}
+	</ul>
+	<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>
+</div>

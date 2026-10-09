@@ -1,0 +1,73 @@
+{#- Blocos comuns às landings de campanha (/promo/ e /promo/<slug>/). Espera: pc (paginas.promo), faqCampanha, precoCampanha, servicoCampanha. -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set pc = conteudo.paginas.promo -%}
+{%- set numeros = conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else [] -%}
+{%- if numeros.length %}
+<section class="o-sec o-sec--compacta o-resultados o-ctx-verde" data-secao="prova" aria-labelledby="prova-titulo">
+	<div class="o-wrap">
+		<h2 class="o-titulo o-titulo--m" id="prova-titulo">{{ pc.prova_titulo }}</h2>
+		<dl class="o-numeros">
+		{%- for n in numeros %}
+			<div class="o-numero"><dt class="o-numero__rotulo">{{ n.rotulo }}</dt><dd class="o-numero__valor">{{ n.valor }}</dd></div>
+		{%- endfor %}
+		</dl>
+	</div>
+</section>
+{%- endif %}
+
+<section class="o-sec o-ctx-branco" data-secao="como-funciona" aria-labelledby="passos-titulo">
+	<div class="o-wrap">
+		<h2 class="o-titulo o-titulo--g" id="passos-titulo">{{ pc.passos.titulo }}</h2>
+		<ol class="o-passos">
+		{%- for p in pc.passos.itens %}
+			<li class="o-passo"><span class="o-passo__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-passo__titulo">{{ p.titulo }}</h3><p>{{ p.texto }}</p></li>
+		{%- endfor %}
+		</ol>
+	</div>
+</section>
+
+<section class="o-sec o-ctx-preto" data-secao="preco" aria-labelledby="preco-titulo">
+	<div class="o-wrap">
+		<h2 class="o-titulo o-titulo--g" id="preco-titulo">{{ pc.preco.titulo }}</h2>
+		{%- if precoCampanha %}
+		<div class="o-preco o-preco--campanha">
+			<div class="o-preco__caixa o-janela">
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">preco.txt</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-janela__corpo">
+					{%- if precoCampanha.formato %}<p class="o-preco__formato">{{ precoCampanha.formato }}</p>{% endif %}
+					{%- if precoCampanha.valor %}<p class="o-preco__valor">{{ precoCampanha.valor }}</p>{% endif %}
+					{%- if precoCampanha.detalhe %}<p class="o-preco__detalhe">{{ precoCampanha.detalhe | emLinha | safe }}</p>{% endif %}
+					{%- if precoCampanha.total and site.config.SHOW_TOTAL_COST %}<p class="o-preco__total">{{ precoCampanha.total }}</p>{% endif %}
+				</div>
+			</div>
+		</div>
+		{%- else %}
+		<ul class="o-planos-resumo">
+		{%- for plano in conteudo.planos.planos %}
+			<li><strong>{{ plano.nome }}</strong><span>{{ plano.de | lower if plano.de == "A partir de" else "" }} {{ plano.valor | reais }}{{ plano.periodo }}</span></li>
+		{%- endfor %}
+		</ul>
+		<p class="o-planos__nota">{{ conteudo.planos.nota }}</p>
+		{%- if site.config.SHOW_TOTAL_COST %}<p class="o-planos__total">{{ conteudo.planos.total_entrada }}</p>{% endif %}
+		{%- endif %}
+	</div>
+</section>
+
+<section class="o-sec o-faq o-ctx-branco" data-secao="faq-campanha" aria-labelledby="faq-campanha-titulo">
+	<div class="o-wrap o-faq__grade">
+		<div class="o-faq__cabeca">
+			<h2 class="o-titulo o-titulo--g" id="faq-campanha-titulo">{{ pc.faq_titulo }}</h2>
+		</div>
+		{{ ui.faqLista(faqCampanha) }}
+	</div>
+</section>
+
+<section class="o-sec o-sec--compacta o-ctx-preto o-promo-final" data-secao="cta-final">
+	<div class="o-wrap o-promo-final__dentro">
+		<p class="o-faixa-cta__texto">{{ pc.cta_final.titulo }}</p>
+		<div class="o-hero__acoes">
+			<a class="o-btn o-btn--verde o-btn--grande" href="#formulario" data-cta="promo-final">{{ pc.cta_final.botao if site.config.OFERTA_DIAGNOSTICO else "Pedir orçamento" }}</a>
+			<a class="o-link-wa" href="{{ waLink('promo-final' if not servicoCampanha else 'promo-' + servicoCampanha + '-final', { tipo: 'servico', x: conteudo.servicoPorSlug[servicoCampanha].nome } if servicoCampanha else { tipo: 'diagnostico' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>ou fale no WhatsApp</a>
+		</div>
+	</div>
+</section>

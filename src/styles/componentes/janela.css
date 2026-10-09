@@ -1,0 +1,47 @@
+/* Janela anos 90 (.exe): barra de título com nome de arquivo + botões decorativos.
+   Variáveis: --janela-borda, --janela-barra, --janela-tinta, --janela-corpo, --janela-sombra */
+.o-janela {
+	--janela-borda: var(--cor-texto);
+	--janela-barra: var(--cor-texto);
+	--janela-tinta: var(--cor-fundo);
+	--janela-corpo: var(--cor-fundo);
+	--janela-sombra: transparent;
+	position: relative;
+	border: var(--borda) solid var(--janela-borda);
+	background: var(--janela-corpo);
+	box-shadow: var(--sombra-janela) var(--janela-sombra);
+}
+.o-janela__barra {
+	--barra-x: 12px;
+	--ctrl-l: 41px;
+	position: relative;
+	display: block;
+	padding: 9px calc(var(--ctrl-l) + var(--barra-x) * 2) 9px var(--barra-x);
+	background: var(--janela-barra);
+	color: var(--janela-tinta);
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	line-height: 1.2;
+	letter-spacing: 0.08em;
+	/* título longo (ou fonte mais larga) encurta com "…" em vez de empurrar os botões */
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.o-janela__ctrl {
+	position: absolute;
+	top: 50%;
+	right: var(--barra-x);
+	width: var(--ctrl-l);
+	height: 9px;
+	translate: 0 -50%;
+	background: currentColor;
+	-webkit-mask: var(--icone-ctrl) center / contain no-repeat;
+	mask: var(--icone-ctrl) center / contain no-repeat;
+}
+.o-janela__corpo {
+	padding: clamp(16px, 2vw, 24px);
+}
+.o-janela__corpo > :last-child {
+	margin-bottom: 0;
+}

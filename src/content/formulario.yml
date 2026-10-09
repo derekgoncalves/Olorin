@@ -1,0 +1,49 @@
+# Textos e opções do formulário de orçamento (o mesmo componente em todas as páginas).
+# ATENÇÃO: os nomes das opções de "servicos" precisam ser idênticos aos da lista do enviar.php.
+barra_topo: diagnostico.exe
+barra_fim: orcamento.exe
+etapa1_legenda: Seus contatos
+etapa2_legenda: O que você precisa
+rotulos:
+  nome: Seu nome
+  whatsapp: WhatsApp com DDD
+  site: Site ou @ do Instagram
+  site_opcional: (opcional)
+  servicos: O que você precisa agora?
+  servicos_dica: Pode marcar mais de um.
+  investimento: Quanto você investe hoje em anúncio por mês?
+  mensagem: Quer contar mais alguma coisa?
+  mensagem_opcional: (opcional)
+placeholders:
+  nome: Como podemos te chamar
+  whatsapp: (41) 99999-9999
+  site: "@suamarca ou suamarca.com.br"
+  mensagem: "Ex.: tenho uma loja virtual e quero vender mais pelo Instagram."
+servicos_extra: Ainda não sei, quero conversar
+investimento_placeholder: Selecione uma faixa
+investimento:
+  - Ainda não invisto
+  - Até R$ 2 mil por mês
+  - De R$ 2 a 5 mil por mês
+  - De R$ 5 a 15 mil por mês
+  - Acima de R$ 15 mil por mês
+sem_verba: "Sem problema: começamos pelo diagnóstico e te dizemos por onde vale começar."
+consentimento: Concordo em ser contatado pela Olorin sobre este pedido, conforme a
+consentimento_link: Política de Privacidade
+botao_continuar: Continuar
+botao_voltar: Voltar e editar contatos
+botao_enviar: Pedir orçamento
+botao_enviar_diagnostico: Quero meu diagnóstico
+botao_enviando: Enviando…
+nota: Seus dados são usados só para esse contato. Nada de lista de disparo.
+alternativa_wa: Prefere conversar agora?
+alternativa_wa_link: Chame no WhatsApp
+erros:
+  nome: Conta pra gente o seu nome.
+  whatsapp: Confira o WhatsApp com DDD, por exemplo (41) 99999-9999.
+  ddd: Esse DDD não existe. Confira o número.
+  consentimento: Precisamos do seu ok para entrar em contato.
+  geral: Não conseguimos enviar agora.
+  conexao: Parece que a conexão caiu.
+  wa_alternativa: Mande pelo WhatsApp, com o que você já preencheu
+erro_sem_js: Não conseguimos registrar o seu pedido. Confira os campos ou chame no WhatsApp.

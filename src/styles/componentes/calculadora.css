@@ -1,0 +1,106 @@
+/* Calculadora de custo de entrada (sem JS: só a tabela). */
+.o-calc {
+	--janela-borda: var(--preto);
+	margin-top: clamp(48px, 6vw, 80px);
+	border: var(--borda) solid var(--preto);
+	background: var(--branco);
+	box-shadow: var(--sombra-janela) var(--violeta);
+}
+.o-calc > .o-janela__barra {
+	background: var(--preto);
+	color: var(--branco);
+}
+.o-calc__corpo {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	gap: 20px clamp(24px, 4vw, 56px);
+	padding: clamp(20px, 3vw, 40px);
+}
+.o-calc__titulo {
+	margin: 0 0 10px !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(20px, 2.2vw, 30px);
+	line-height: 1.05;
+	text-transform: uppercase;
+}
+.o-calc__texto {
+	color: var(--cor-apoio);
+}
+.o-calc__corpo > .o-calc__titulo,
+.o-calc__corpo > .o-calc__texto,
+.o-calc__corpo > .o-calc__aviso {
+	grid-column: 1;
+}
+.o-calc__form,
+.o-calc__tabela {
+	grid-column: 2;
+	grid-row: 1 / span 3;
+}
+.o-calc__grupo {
+	min-width: 0;
+	margin: 0 0 16px;
+	padding: 0;
+	border: 0;
+}
+.o-calc__grupo legend {
+	margin-bottom: 8px;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+.o-calc__opcoes {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 8px;
+}
+.o-calc__resultado {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 18px;
+	background: var(--preto);
+	color: var(--branco);
+}
+.o-calc__conta {
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.8);
+}
+.o-calc__total {
+	font-size: 15px;
+}
+.o-calc__total strong {
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(26px, 3vw, 40px);
+	color: var(--verde);
+}
+.o-calc__aviso {
+	font-size: 13px;
+	color: var(--cor-apoio);
+}
+.o-calc__tabela {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+.o-calc__tabela caption {
+	margin-bottom: 8px;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-align: left;
+	text-transform: uppercase;
+}
+.o-calc__tabela th,
+.o-calc__tabela td {
+	padding: 10px 12px;
+	border: var(--borda) solid var(--preto);
+	text-align: left;
+}
+.o-calc__tabela thead th {
+	background: var(--preto);
+	color: var(--branco);
+	font-weight: 400;
+}

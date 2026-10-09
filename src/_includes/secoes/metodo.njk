@@ -1,0 +1,21 @@
+{#- ===== SEÇÃO: Método Olorin — src/content/home.yml → metodo ===== -#}
+{%- set m = conteudo.home.metodo -%}
+<section class="o-sec o-metodo o-ctx-violeta" id="metodo" data-secao="metodo" aria-labelledby="metodo-titulo">
+	<div class="o-wrap o-metodo__grade">
+		<div class="o-metodo__cabeca">
+			<p class="o-etiqueta">{{ m.etiqueta }}</p>
+			<h2 class="o-titulo o-titulo--g" id="metodo-titulo">{{ m.titulo }}</h2>
+			<p class="o-apoio">{{ m.texto }}</p>
+			<p class="o-metodo__progresso" aria-hidden="true" data-o-metodo-progresso><span class="o-medidor">{% for e in m.etapas %}<i></i>{% endfor %}</span><span data-o-metodo-rotulo></span></p>
+		</div>
+		<ol class="o-etapas" data-o-etapas>
+		{%- for e in m.etapas %}
+			<li class="o-etapa"><span class="o-etapa__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-etapa__nome">{{ e.nome }}</h3><p class="o-etapa__texto">{{ e.texto }}</p></li>
+		{%- endfor %}
+		</ol>
+	</div>
+	<div class="o-wrap o-metodo__cta">
+		<p>{{ m.cta_texto }}</p>
+		<a class="o-btn o-btn--branco" href="#diagnostico" data-cta="metodo-diagnostico">{{ m.cta }}</a>
+	</div>
+</section>

@@ -1,0 +1,13 @@
+{#- JSON-LD da página: empresa, site, página + trilha, serviço, FAQ e pessoas quando houver. -#}
+	<script type="application/ld+json">{{ montarSchema({
+		cfg: site.config,
+		content: conteudo,
+		modo: modo,
+		url: (canonical or page.url) | urlAbsoluta,
+		descricao: descricao,
+		migalhas: migalhas,
+		servico: servicoSchema,
+		faq: faqSchema,
+		pessoas: pessoasSchema,
+		imagemOg: (og_imagem or "/assets/img/og/home.jpg") | urlAbsoluta
+	}) | jsonSeguro | safe }}</script>

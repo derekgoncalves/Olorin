@@ -1,0 +1,36 @@
+{
+  "name": "olorin-site",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Site olorin.com.br — gerador estático (Eleventy) para hospedagem Locaweb (Apache + PHP, FTP)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "cross-env ELEVENTY_ENV=development eleventy --serve --port=8081",
+    "build": "cross-env ELEVENTY_ENV=production eleventy && node scripts/verificar-build.mjs",
+    "build:dev": "cross-env ELEVENTY_ENV=development eleventy",
+    "test": "node scripts/testar.mjs",
+    "deploy:dry": "node scripts/deploy.mjs --dry",
+    "deploy": "npm run build && npm run test && node scripts/deploy.mjs",
+    "og": "node scripts/gerar-og.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "axe-core": "4.14.0",
+    "basic-ftp": "^5.0.5",
+    "beasties": "0.5.4",
+    "cross-env": "^7.0.3",
+    "dictionary-pt": "^4.0.0",
+    "esbuild": "0.28.2",
+    "html-validate": "11.16.2",
+    "js-yaml": "^4.1.0",
+    "lightningcss": "1.33.0",
+    "lighthouse": "13.5.0",
+    "linkinator": "8.1.0",
+    "nspell": "^2.1.5",
+    "playwright-core": "1.64.0",
+    "sharp": "0.35.5"
+  }
+}

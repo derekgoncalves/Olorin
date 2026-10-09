@@ -1,0 +1,116 @@
+/* Botão flutuante de WhatsApp (≥ 1024 px), barra fixa do celular e cursor de estrela. */
+.o-wa-flutuante {
+	position: fixed;
+	right: clamp(16px, 2vw, 28px);
+	bottom: clamp(16px, 2vw, 28px);
+	z-index: 90;
+	display: none;
+	align-items: center;
+	height: 60px;
+	padding: 0 16px;
+	border: var(--borda) solid var(--preto);
+	border-radius: 999px;
+	background: var(--verde);
+	color: var(--preto);
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: 13px;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	text-decoration: none;
+	box-shadow: var(--sombra-botao) var(--preto);
+	transition: background-color var(--dur), color var(--dur), border-color var(--dur), box-shadow var(--dur), transform var(--dur) var(--curva), opacity var(--dur);
+}
+@media (min-width: 1024px) {
+	.o-wa-flutuante {
+		display: flex;
+		animation: o-tocar 6s ease-in-out 3s infinite;
+	}
+}
+.o-wa-flutuante .o-icone {
+	--tam: 25px;
+}
+.o-wa-flutuante__texto {
+	max-width: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	transition: max-width 0.4s var(--curva), margin 0.4s var(--curva);
+}
+.o-wa-flutuante:hover .o-wa-flutuante__texto,
+.o-wa-flutuante:focus-visible .o-wa-flutuante__texto {
+	max-width: 240px;
+	margin-left: 10px;
+}
+/* Sobre fundo violeta ou verde, o botão fica preto (verde nunca encosta no violeta). */
+.o-wa-flutuante.is-alt {
+	border-color: var(--branco);
+	background: var(--preto);
+	color: var(--branco);
+	box-shadow: var(--sombra-botao) rgba(0, 0, 0, 0.45);
+}
+.o-wa-flutuante.is-longe {
+	opacity: 0;
+	transform: translateY(20px);
+	pointer-events: none;
+}
+
+.o-barra {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 95;
+	display: none;
+	grid-template-columns: 1fr 1fr;
+	border-top: var(--borda) solid var(--verde);
+	background: var(--preto);
+	padding-bottom: env(safe-area-inset-bottom);
+	transition: transform 0.35s var(--curva);
+}
+.o-barra a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 56px;
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: 13px;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.o-barra a:first-child {
+	background: var(--verde);
+	color: var(--preto);
+}
+.o-barra a:last-child {
+	color: var(--branco);
+}
+.o-barra .o-icone {
+	--tam: 18px;
+}
+.o-barra.is-longe {
+	transform: translateY(110%);
+}
+
+.o-cursor {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	width: 16px;
+	height: 16px;
+	margin: 14px 0 0 12px;
+	background: var(--cor-cursor, var(--verde));
+	-webkit-mask: var(--icone-estrela) center / contain no-repeat;
+	mask: var(--icone-estrela) center / contain no-repeat;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.2s, background-color 0.25s;
+	will-change: transform;
+}
+/* Estrela que segue o ponteiro, ao lado do cursor do sistema (que nunca é escondido). */
+html.o-has-cursor .o-cursor.is-visivel {
+	opacity: 1;
+}

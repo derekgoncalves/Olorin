@@ -1,0 +1,32 @@
+# Cases (PROMPT seção 12.2).
+# exibir: true  → aparece na seção Resultados da home (o dono pediu para manter os 3 exemplos em 08/10/2026).
+# aprovado: true → além disso, ganha página própria em /cases/<slug>/ e aparece nas páginas de serviço.
+#                  Só marque com cliente/segmento, situação, o que fizemos, resultado com período e verba.
+itens:
+  - slug: e-commerce-de-moda
+    exibir: true
+    aprovado: false
+    janela: case_01.exe
+    segmento: E-commerce de moda
+    servicos_texto: Tráfego pago + conteúdo + site
+    servicos: [trafego-pago, redes-sociais, site-e-loja-virtual]
+    resultado: R$ 380k
+    detalhe: faturado em 90 dias
+  - slug: clinica-estetica
+    exibir: true
+    aprovado: false
+    janela: case_02.exe
+    segmento: Clínica estética
+    servicos_texto: Meta Ads + identidade visual
+    servicos: [trafego-pago, identidade-visual]
+    resultado: 8x
+    detalhe: de retorno sobre investimento
+  - slug: industria-alimenticia
+    exibir: true
+    aprovado: false
+    janela: case_03.exe
+    segmento: Indústria alimentícia
+    servicos_texto: Impresso + redes sociais + campanha
+    servicos: [material-impresso, redes-sociais, trafego-pago]
+    resultado: 3 meses
+    detalhe: do zero ao mercado

@@ -1,0 +1,17 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+{%- set cfg = site.config -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all | sort(false, false, "url") %}
+{%- set u = item.url %}
+{%- if u and item.data.indexavel !== false and u.endsWith("/") and not u.startsWith("/promo") and not u.startsWith("/obrigado") and not u.startsWith("/_") %}
+	<url>
+		<loc>{{ u | urlAbsoluta }}</loc>
+		<lastmod>{{ ((item.data.servico.atualizado if item.data.servico else item.data.atualizado) or cfg.ATUALIZADO_EM or "2026-10-08") | dataIso }}</lastmod>
+	</url>
+{%- endif %}
+{%- endfor %}
+</urlset>

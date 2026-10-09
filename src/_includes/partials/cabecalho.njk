@@ -1,0 +1,73 @@
+{#- Cabeçalho completo: logo, menu (com submenu de serviços), WhatsApp e diagnóstico. -#}
+{%- set cfg = site.config -%}
+{%- set temCases = conteudo.cases and (conteudo.cases.itens | filtrarPor("aprovado", true) | length) -%}
+{%- set rotuloPrincipal = "Diagnóstico gratuito" if cfg.OFERTA_DIAGNOSTICO else "Pedir orçamento" -%}
+<header class="o-topo" data-o-topo>
+	<div class="o-topo__dentro">
+		<a class="o-logo" href="/" aria-label="Olorin Digital — página inicial"><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></a>
+		<nav class="o-nav" aria-label="Principal">
+			<ul class="o-nav__lista">
+			{%- for item in navegacao.principal %}
+				{%- if not item.so_com_cases or temCases %}
+				{%- set atual = (page.url == item.url) or (item.submenu and page.url.startsWith("/servicos/")) %}
+				<li class="o-nav__item{% if item.submenu %} o-nav__item--sub{% endif %}"{% if item.submenu %} data-o-sub{% endif %}>
+					<a class="o-nav__link" href="{{ item.url }}"{% if atual %} aria-current="page"{% endif %}>{{ item.rotulo }}</a>
+					{%- if item.submenu %}
+					<button class="o-nav__abrir" type="button" aria-expanded="false" aria-controls="submenu-servicos" data-o-sub-botao>
+						<span class="o-sr">Abrir a lista de serviços</span><span class="o-icone o-icone--seta" aria-hidden="true"></span>
+					</button>
+					<div class="o-sub" id="submenu-servicos" data-o-sub-painel>
+						<ul class="o-sub__lista">
+						{%- for s in conteudo.servicos %}
+							<li><a class="o-sub__link" href="/servicos/{{ s.slug }}/"{% if page.url == "/servicos/" + s.slug + "/" %} aria-current="page"{% endif %}><span class="o-icone o-icone--{{ s.icone }}" aria-hidden="true"></span><span><strong>{{ s.nome }}</strong><small>{{ s.card.resumo_curto }}</small></span></a></li>
+						{%- endfor %}
+						</ul>
+						<a class="o-sub__todos" href="/servicos/">Ver todos os serviços <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+					</div>
+					{%- endif %}
+				</li>
+				{%- endif %}
+			{%- endfor %}
+			</ul>
+		</nav>
+		<div class="o-topo__ctas">
+			<a class="o-btn o-btn--contorno o-btn--pequeno o-topo__wa" id="cta-whatsapp-topo" href="{{ waLink('topo') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-topo__wa-texto">Falar no WhatsApp</span></a>
+			<a class="o-btn o-btn--verde o-btn--pequeno" id="cta-orcamento-topo" href="/#diagnostico">{{ rotuloPrincipal }}</a>
+		</div>
+		<button class="o-hamburguer" type="button" aria-expanded="false" aria-controls="menu-celular" data-o-hamburguer>
+			<span class="o-sr">Abrir menu</span><i></i><i></i><i></i>
+		</button>
+	</div>
+</header>
+<div class="o-menu" id="menu-celular" role="dialog" aria-modal="true" aria-label="Menu" data-o-menu inert>
+	<div class="o-menu__topo">
+		<a class="o-logo" href="/" aria-label="Olorin Digital — página inicial"><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></a>
+		<button class="o-menu__fechar" type="button" data-o-menu-fechar><span class="o-sr">Fechar menu</span><span aria-hidden="true">✕</span></button>
+	</div>
+	<nav class="o-menu__nav" aria-label="Principal (celular)">
+		<ul class="o-menu__lista">
+		{%- for item in navegacao.principal %}
+			{%- if not item.so_com_cases or temCases %}
+			<li>
+				{%- if item.submenu %}
+				<button class="o-menu__grupo" type="button" aria-expanded="false" aria-controls="menu-celular-servicos" data-o-acordeao>{{ item.rotulo }}<span class="o-icone o-icone--mais" aria-hidden="true"></span></button>
+				<ul class="o-menu__sub" id="menu-celular-servicos" hidden>
+				{%- for s in conteudo.servicos %}
+					<li><a href="/servicos/{{ s.slug }}/">{{ s.nome }}</a></li>
+				{%- endfor %}
+					<li><a href="/servicos/">Ver todos os serviços</a></li>
+				</ul>
+				{%- else %}
+				<a href="{{ item.url }}">{{ item.rotulo }}</a>
+				{%- endif %}
+			</li>
+			{%- endif %}
+		{%- endfor %}
+		</ul>
+	</nav>
+	<div class="o-menu__ctas">
+		<a class="o-btn o-btn--verde" href="/#diagnostico" data-cta="menu-diagnostico">{{ rotuloPrincipal }}</a>
+		<a class="o-btn o-btn--contorno" href="{{ waLink('menu') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>Falar no WhatsApp</a>
+	</div>
+	<p class="o-menu__rodape">{{ cfg.INSTAGRAM_HANDLE }} · {{ cfg.CIDADE }}, {{ cfg.UF }}</p>
+</div>

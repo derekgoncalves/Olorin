@@ -1,0 +1,98 @@
+/* Faixa animada (letreiro) inclinada. Parada com prefers-reduced-motion. */
+.o-faixa {
+	--inclinacao: -2deg;
+	position: relative;
+	z-index: 6;
+	width: calc(100% + 6vw);
+	height: clamp(50px, 4.6vw, 64px);
+	margin: -8px -3vw;
+	overflow: hidden;
+	transform: rotate(var(--inclinacao));
+	contain: layout paint;
+}
+.o-faixa--verde {
+	background: var(--verde);
+	color: var(--preto);
+}
+.o-faixa--violeta {
+	background: var(--violeta);
+	color: var(--branco);
+}
+.o-faixa--reversa {
+	--inclinacao: 2deg;
+}
+.o-faixa__trilho {
+	display: flex;
+	align-items: center;
+	width: max-content;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	white-space: nowrap;
+	animation: o-letreiro var(--letreiro-tempo, 30s) linear infinite;
+}
+.o-faixa--reversa .o-faixa__trilho {
+	animation-direction: reverse;
+}
+.o-faixa:hover .o-faixa__trilho {
+	animation-play-state: paused;
+}
+.o-faixa__trilho li {
+	display: inline-flex;
+	flex: none;
+	align-items: center;
+	gap: clamp(16px, 1.6vw, 24px);
+	padding-right: clamp(16px, 1.6vw, 24px);
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(14px, 1.35vw, 20px);
+	line-height: 1;
+	text-transform: uppercase;
+}
+.o-faixa__trilho li::after {
+	content: "";
+	flex: none;
+	width: 0.8em;
+	height: 0.8em;
+	background: currentColor;
+	-webkit-mask: var(--icone-estrela) center / contain no-repeat;
+	mask: var(--icone-estrela) center / contain no-repeat;
+}
+/* Botão de pausa no fim da faixa (WCAG 2.2.2) */
+.o-faixa__pausar {
+	position: absolute;
+	top: 50%;
+	right: calc(3vw + var(--margem) - 12px);
+	z-index: 2;
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	translate: 0 -50%;
+	border: var(--borda) solid var(--preto);
+	background: var(--preto);
+	color: var(--verde);
+	box-shadow: 0 0 0 10px var(--verde);
+	cursor: pointer;
+}
+.o-faixa--violeta .o-faixa__pausar {
+	color: var(--branco);
+	box-shadow: 0 0 0 10px var(--violeta);
+}
+.o-faixa__pausar-icone {
+	width: 10px;
+	height: 12px;
+	border-left: 3px solid currentColor;
+	border-right: 3px solid currentColor;
+}
+.o-faixa__pausar[aria-pressed="true"] .o-faixa__pausar-icone {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 6px 0 6px 10px;
+	border-color: transparent transparent transparent currentColor;
+}
+html:not(.js) .o-faixa__pausar {
+	display: none;
+}

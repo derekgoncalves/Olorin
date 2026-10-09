@@ -1,0 +1,106 @@
+/* Método Olorin (fundo violeta com degradê e símbolo girando). */
+.o-metodo {
+	overflow: hidden;
+	background-image:
+		radial-gradient(120% 90% at 100% 0%, var(--gradiente-indigo), transparent 55%),
+		radial-gradient(90% 70% at 0% 100%, var(--gradiente-indigo), transparent 60%),
+		radial-gradient(60% 50% at 70% 60%, var(--gradiente-lavanda), transparent 70%);
+}
+.o-metodo::after {
+	content: "";
+	position: absolute;
+	right: -6vw;
+	bottom: -8vw;
+	z-index: -1;
+	width: min(46vw, 620px);
+	aspect-ratio: 134 / 126;
+	background: rgba(255, 255, 255, 0.09);
+	-webkit-mask: var(--icone-o) center / contain no-repeat;
+	mask: var(--icone-o) center / contain no-repeat;
+	animation: o-girar 60s linear infinite;
+	pointer-events: none;
+}
+.o-metodo__grade {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	gap: clamp(40px, 6vw, 112px);
+	align-items: start;
+}
+.o-metodo__cabeca {
+	position: sticky;
+	top: calc(var(--altura-topo) + 48px);
+}
+.o-metodo__progresso {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-top: 32px;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+html:not(.js) .o-metodo__progresso {
+	display: none;
+}
+.o-etapas {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid var(--cor-linha);
+}
+.o-etapa {
+	display: grid;
+	grid-template-columns: 56px minmax(0, 1fr);
+	column-gap: clamp(18px, 2.4vw, 32px);
+	padding: clamp(26px, 3vw, 40px) 0;
+	border-bottom: 1px solid var(--cor-linha);
+}
+.o-etapa__num {
+	grid-row: 1 / span 2;
+	display: grid;
+	place-items: center;
+	width: 52px;
+	height: 52px;
+	border: var(--borda) solid currentColor;
+	font-family: var(--fonte-pixel);
+	font-size: 15px;
+	transition: background-color 0.35s, color 0.35s, transform 0.35s var(--curva);
+}
+.o-etapa.is-ativa .o-etapa__num {
+	background: var(--branco);
+	color: var(--violeta);
+	transform: rotate(-6deg);
+}
+.o-etapa__nome {
+	margin: 4px 0 10px !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(20px, 2.2vw, 32px);
+	line-height: 1.05;
+	text-transform: uppercase;
+}
+.o-etapa__texto {
+	max-width: 54ch;
+	margin: 0 !important;
+	color: var(--cor-apoio);
+}
+.o-metodo__cta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px 32px;
+	margin-top: clamp(48px, 6vw, 88px);
+	padding-top: 32px;
+	border-top: 2px dashed var(--cor-linha);
+}
+.o-metodo__cta > p {
+	max-width: 46ch;
+	margin: 0;
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: clamp(16px, 1.5vw, 22px);
+	line-height: 1.2;
+	text-transform: uppercase;
+}

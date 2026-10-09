@@ -1,0 +1,50 @@
+{#- ===== SEÇÃO: Resultados — números (src/content/claims.json), cases (cases.yml) e depoimentos (depoimentos.yml) ===== -#}
+{%- set r = conteudo.home.resultados -%}
+{%- set numeros = conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else [] -%}
+{%- set cases = conteudo.cases.itens | filtrarPor("exibir", true) -%}
+{%- set depoimentos = conteudo.depoimentos.itens | filtrarPor("autorizado", true) -%}
+{%- if numeros.length or cases.length or depoimentos.length %}
+<section class="o-sec o-resultados o-ctx-verde" id="resultados" data-secao="resultados" aria-labelledby="resultados-titulo">
+	<div class="o-wrap">
+		<p class="o-etiqueta">{{ r.etiqueta }}</p>
+		<h2 class="o-titulo o-titulo--g" id="resultados-titulo">{{ r.titulo }}</h2>
+		{%- if numeros.length %}
+		<dl class="o-numeros">
+		{%- for n in numeros %}
+			<div class="o-numero">
+				<dt class="o-numero__rotulo">{{ n.rotulo }}</dt>
+				<dd class="o-numero__valor" data-o-contador>{{ n.valor }}</dd>
+				{%- if n.periodo or n.criterio %}<dd class="o-numero__base">base: {{ [n.criterio, n.periodo] | semVazios | join(", ") }}</dd>{% endif %}
+			</div>
+		{%- endfor %}
+		</dl>
+		{%- endif %}
+		{%- if cases.length %}
+		<div class="o-cases">
+		{%- for c in cases %}
+			<article class="o-case o-janela">
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-janela__corpo">
+					<h3 class="o-case__segmento">{{ c.segmento }}</h3>
+					<p class="o-case__servicos">{{ c.servicos_texto }}</p>
+					<p class="o-case__resultado" data-o-contador>{{ c.resultado }}</p>
+					<p class="o-case__detalhe">{{ c.detalhe }}</p>
+					{%- if c.aprovado %}<a class="o-case__link" href="/cases/{{ c.slug }}/">Ver o case completo</a>{% endif %}
+				</div>
+			</article>
+		{%- endfor %}
+		</div>
+		{%- endif %}
+		{%- if depoimentos.length %}
+		<div class="o-depoimentos">
+		{%- for d in depoimentos %}
+			<figure class="o-depoimento">
+				<blockquote><p>{{ d.texto }}</p></blockquote>
+				<figcaption><strong>{{ d.nome }}</strong>{% if d.cargo %}, {{ d.cargo }}{% endif %}{% if d.empresa %} · {{ d.empresa }}{% endif %}</figcaption>
+			</figure>
+		{%- endfor %}
+		</div>
+		{%- endif %}
+	</div>
+</section>
+{%- endif %}

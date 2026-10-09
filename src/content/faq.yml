@@ -1,0 +1,44 @@
+# Perguntas frequentes da home (PROMPT seção 12.6). A mesma fonte gera o HTML e o JSON-LD.
+# "id" é fixo (serve para links como /#faq-verba-minima e para o evento faq_open).
+# Perguntas com [CONFIRMAR] não aparecem no site publicado até serem respondidas.
+perguntas:
+  - id: faq-uma-frente
+    pergunta: Dá pra contratar só uma frente, tipo só o impresso ou só o tráfego?
+    resposta: Sim. Você pode entrar por uma frente específica e expandir depois. O ideal é que tudo rode junto, mas a gente não força. Cada contrato tem escopo e prazo definidos antes de começar.
+  - id: faq-verba-minima
+    pergunta: Qual a verba mínima para começar a anunciar?
+    resposta: Para Meta Ads e Google Ads, recomendamos pelo menos R$ 1.500 por mês de verba de mídia. Abaixo disso, o algoritmo demora mais para aprender e o retorno fica mais imprevisível. Somando a gestão mensal (R$ 2.500), o custo total de entrada fica a partir de R$ 4.000 por mês.
+  - id: faq-tempo-resultado
+    pergunta: Em quanto tempo eu vejo resultado?
+    resposta: Depende do objetivo. Campanhas de resposta direta (venda, mensagem) costumam dar sinais claros em 2 a 4 semanas. Marca e conteúdo pedem 2 a 3 meses de consistência.
+  - id: faq-fidelidade
+    pergunta: Vocês trabalham com contrato de fidelidade?
+    resposta: Na gestão mensal, o contrato mínimo é de 3 meses. Depois, fica mês a mês com aviso de 30 dias. Não cobramos multa rescisória.
+  - id: faq-quem-cria
+    pergunta: Quem cria as artes dos anúncios e dos posts?
+    resposta: O nosso próprio time de criação. Não terceirizamos para fornecedor externo. É por isso que o anúncio e o post saem com a mesma cara.
+  - id: faq-impressao
+    pergunta: Vocês fazem a impressão ou só entregam o arquivo?
+    resposta: Entregamos o arquivo fechado, pronto para a gráfica. Se precisar, indicamos gráficas parceiras em Curitiba e acompanhamos a aprovação da prova.
+  - id: faq-fora-curitiba
+    pergunta: Vocês atendem fora de Curitiba?
+    resposta: Sim. A maioria dos clientes é de outras cidades — o atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e entregáveis digitais.
+  - id: faq-segmento
+    pergunta: Vocês atendem o meu segmento?
+    resposta: O nosso time já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Se o seu segmento é outro, conte no formulário que a gente responde se consegue ajudar.
+  - id: faq-relatorio
+    pergunta: Como é o relatório?
+    resposta: Todo mês você recebe um relatório fechado que mostra quanto foi investido, quanto voltou em faturamento, quanto custou cada venda e qual foi o retorno — além do que vamos fazer na próxima rodada. Nada de relatório só com alcance e impressão.
+  - id: faq-dia-a-dia
+    pergunta: Quem cuida da minha conta no dia a dia?
+    resposta: O Derek Gonçalves é o seu primeiro contato e quem coordena a sua conta. A Natália cuida da mídia paga e o Vinicius, da direção de arte e do design.
+  - id: faq-troca-agencia
+    pergunta: Já tenho agência. Como funciona a troca?
+    resposta: "[CONFIRMAR: como é a transição de outra agência — acessos às contas, histórico, prazo]"
+  - id: faq-sem-verba
+    pergunta: E se eu ainda não tiver verba para anúncio?
+    resposta: Sem problema. Começamos pelo diagnóstico e te dizemos por onde vale começar. Dá para entrar pelo plano Pontual (a partir de R$ 800 por projeto), com uma entrega fechada como identidade visual, site ou impresso.
+  - id: faq-dono-contas
+    pergunta: Quem é o dono das contas de anúncio, do site e dos arquivos?
+    resposta: "[CONFIRMAR: titularidade das contas de anúncio, do domínio/site e dos arquivos abertos]"
+whatsapp: Perguntar no WhatsApp

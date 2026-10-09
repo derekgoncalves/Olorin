@@ -1,0 +1,17 @@
+# Portfólio da home. Imagens = ids do src/assets/manifest.json.
+# As 8 imagens atuais são ilustrativas (provisórias) — troque pelos trabalhos reais.
+filtros:
+  - { id: marca, rotulo: Marca }
+  - { id: campanha, rotulo: Campanha }
+  - { id: site, rotulo: Site }
+  - { id: impresso, rotulo: Impresso }
+  - { id: redes-sociais, rotulo: Redes sociais }
+itens:
+  - { titulo: Ateliê de moda, rotulo: Marca · Identidade visual, imagem: portfolio-marca-identidade, categorias: [marca] }
+  - { titulo: Loja de tecnologia, rotulo: Campanha · Tráfego pago, imagem: portfolio-redes-conteudo, categorias: [campanha] }
+  - { titulo: Escritório de advocacia, rotulo: Site · Institucional, imagem: portfolio-site-institucional, categorias: [site] }
+  - { titulo: Cafeteria, rotulo: Impresso · Catálogo, imagem: portfolio-campanha-trafego, categorias: [impresso] }
+  - { titulo: Estúdio de estética, rotulo: Redes sociais · Conteúdo, imagem: portfolio-impresso-catalogo, categorias: [redes-sociais] }
+  - { titulo: Marcenaria autoral, rotulo: Marca · Fotografia, imagem: portfolio-marca-producao, categorias: [marca] }
+  - { titulo: Clínica médica, rotulo: Campanha · Google Ads, imagem: portfolio-campanha-google-ads, categorias: [campanha] }
+  - { titulo: Loja infantil, rotulo: Impresso · Ponto de venda, imagem: portfolio-impresso-loja, categorias: [impresso] }

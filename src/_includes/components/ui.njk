@@ -1,0 +1,135 @@
+{#-
+	Biblioteca de componentes (PROMPT seção 3.2). Importar com:
+	{% import "components/ui.njk" as ui with context %}
+-#}
+
+{#- Janela anos 90 com barra de título tipo "nome_arquivo.ext". -#}
+{% macro janela(titulo, classe="", tag="div", atributos="") %}
+<{{ tag }} class="o-janela {{ classe }}"{{ (" " + atributos) | safe if atributos }}>
+	<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ titulo }}</span><span class="o-janela__ctrl"></span></div>
+	<div class="o-janela__corpo">{{ caller() }}</div>
+</{{ tag }}>
+{% endmacro %}
+
+{#- Etiqueta em pixel, acima dos títulos. -#}
+{% macro etiqueta(texto, classe="") %}<p class="o-etiqueta {{ classe }}">{{ texto }}</p>{% endmacro %}
+
+{#- Card de serviço: o card inteiro é clicável por um único link no título (::after estendido). -#}
+{% macro cardServico(s, nivel="h3") %}
+<article class="o-card-servico" data-servico="{{ s.slug }}">
+	<span class="o-icone o-icone--{{ s.icone }} o-card-servico__icone" aria-hidden="true"></span>
+	<{{ nivel }} class="o-card-servico__titulo"><a class="o-card-servico__link" href="/servicos/{{ s.slug }}/" data-o-card-servico="{{ s.slug }}">{{ s.card.titulo }}</a></{{ nivel }}>
+	<p class="o-card-servico__texto">{{ s.card.resumo }}</p>
+	<p class="o-card-servico__mais" aria-hidden="true">{{ conteudo.home.servicos.ver_detalhes }} <span class="o-icone o-icone--seta"></span></p>
+</article>
+{% endmacro %}
+
+{#- Card de pessoa da equipe, com foto em moldura de janela. -#}
+{% macro cardPessoa(p, nivel="h3", compacto=false) %}
+<article class="o-pessoa{% if compacto %} o-pessoa--compacta{% endif %}" id="{{ p.slug }}">
+	<figure class="o-pessoa__foto o-janela">
+		<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ p.janela }}</span><span class="o-janela__ctrl"></span></div>
+		{{ imagem(imagens, p.foto + ("-quadrada" if compacto else ""), { sizes: "(max-width: 640px) 160px, 160px" if compacto else "(max-width: 640px) 88vw, (max-width: 1100px) 44vw, 380px" }) | safe }}
+	</figure>
+	<div class="o-pessoa__texto">
+		<{{ nivel }} class="o-pessoa__nome">{{ p.nome }}</{{ nivel }}>
+		<p class="o-pessoa__funcao">{{ p.funcao }}</p>
+		<p class="o-pessoa__frase">{{ p.frase }}</p>
+	</div>
+</article>
+{% endmacro %}
+
+{#- Card de plano com preço, itens, selos e "Quero esse". -#}
+{% macro cardPlano(plano, destinoForm="#orcamento") %}
+{%- set p = conteudo.planos -%}
+<article class="o-plano{% if plano.destaque %} o-plano--destaque{% endif %}" data-plano="{{ plano.id }}">
+	{%- if plano.tag %}<p class="o-plano__tag">{{ plano.tag }}</p>{% endif %}
+	<h3 class="o-plano__nome">{{ plano.nome }}</h3>
+	<p class="o-plano__de">{{ plano.de }}</p>
+	<p class="o-plano__preco"><span class="o-plano__valor">{{ plano.valor | reais }}</span> <span class="o-plano__periodo">{{ plano.periodo }}</span></p>
+	<ul class="o-lista-pixel o-plano__itens">
+	{%- for item in plano.itens %}
+		<li>{{ item }}</li>
+	{%- endfor %}
+	</ul>
+	{%- if plano.selos and plano.selos.length %}
+	<ul class="o-plano__selos" aria-label="Garantias do plano">
+	{%- for selo in plano.selos %}<li>{{ selo }}</li>{% endfor %}
+	</ul>
+	{%- endif %}
+	{%- if site.config.SHOW_TOTAL_COST and plano.custo_total %}
+	<p class="o-plano__total">{{ plano.custo_total }}</p>
+	{%- endif %}
+	<a class="o-btn o-plano__botao{% if plano.destaque %} o-btn--preto{% else %} o-btn--contorno{% endif %}" href="{{ destinoForm }}" data-o-plano="{{ plano.id }}" data-servicos="{{ plano.servicos_preselecao | join(' ') }}" data-cta="planos-{{ plano.id }}">{{ p.botao }}<span class="o-sr"> — plano {{ plano.nome }}</span></a>
+</article>
+{% endmacro %}
+
+{#- Acordeão de perguntas (<details>), mesma fonte do JSON-LD. -#}
+{% macro faqLista(perguntas, classe="") %}
+<div class="o-faq__lista {{ classe }}">
+{%- for item in perguntas %}
+	<details class="o-faq__item" id="{{ item.id }}" data-o-faq="{{ item.id }}"{% if loop.first %} open{% endif %}>
+		<summary class="o-faq__pergunta">{{ item.pergunta | confirmar | safe }}</summary>
+		<div class="o-faq__resposta"><p>{{ item.resposta | emLinha | confirmar | safe }}</p></div>
+	</details>
+{%- endfor %}
+</div>
+{% endmacro %}
+
+{#- Trilha de navegação (Home › Serviços › Serviço). O JSON-LD BreadcrumbList sai do mesmo dado. -#}
+{% macro migalhas(itens) %}
+<nav class="o-migalhas" aria-label="Você está em">
+	<ol>
+	{%- for m in itens %}
+		<li>{% if loop.last %}<span aria-current="page">{{ m.nome }}</span>{% else %}<a href="{{ m.url }}">{{ m.nome }}</a>{% endif %}</li>
+	{%- endfor %}
+	</ol>
+</nav>
+{% endmacro %}
+
+{#- Calculadora de custo de entrada. Sem JavaScript, a tabela equivalente fica visível. -#}
+{% macro calculadora() %}
+{%- set c = conteudo.planos.calculadora -%}
+{%- set planosCalc = conteudo.planos.planos | filtrarPor("calculadora", true) -%}
+<div class="o-calc" data-o-calc>
+	<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">calculadora.exe</span><span class="o-janela__ctrl"></span></div>
+	<div class="o-calc__corpo">
+		<h3 class="o-calc__titulo">{{ c.titulo }}</h3>
+		<p class="o-calc__texto">{{ c.texto }}</p>
+		<form class="o-calc__form" data-o-calc-form hidden>
+			<fieldset class="o-calc__grupo">
+				<legend>{{ c.rotulo_plano }}</legend>
+				<div class="o-calc__opcoes">
+				{%- for plano in planosCalc %}
+					<label class="o-chip o-chip--escuro"><input type="radio" name="calc-plano" value="{{ plano.valor }}" data-plano="{{ plano.id }}" data-nome="{{ plano.nome }}"{% if loop.first %} checked{% endif %}><span>{{ plano.nome }} · {{ plano.valor | reais }}</span></label>
+				{%- endfor %}
+				</div>
+			</fieldset>
+			<fieldset class="o-calc__grupo">
+				<legend>{{ c.rotulo_verba }}</legend>
+				<div class="o-calc__opcoes">
+				{%- for verba in c.verbas %}
+					<label class="o-chip o-chip--escuro"><input type="radio" name="calc-verba" value="{{ verba }}"{% if loop.first %} checked{% endif %}><span>{{ verba | reais }}</span></label>
+				{%- endfor %}
+				</div>
+			</fieldset>
+			<output class="o-calc__resultado" aria-live="polite" data-o-calc-resultado>
+				<span class="o-calc__conta" data-o-calc-conta>Gestão {{ planosCalc[0].valor | reais }} + verba {{ c.verbas[0] | reais }}</span>
+				<span class="o-calc__total">{{ c.resultado_prefixo }} <strong data-o-calc-total>{{ (planosCalc[0].valor + c.verbas[0]) | reais }}</strong> {{ c.resultado_sufixo }}</span>
+			</output>
+		</form>
+		<table class="o-calc__tabela" data-o-calc-tabela>
+			<caption>{{ c.tabela_titulo }}</caption>
+			<thead>
+				<tr><th scope="col">Verba de anúncio</th>{% for plano in planosCalc %}<th scope="col">{{ plano.nome }} ({{ plano.valor | reais }})</th>{% endfor %}</tr>
+			</thead>
+			<tbody>
+			{%- for verba in c.verbas %}
+				<tr><th scope="row">{{ verba | reais }}</th>{% for plano in planosCalc %}<td>{{ (plano.valor + verba) | reais }}</td>{% endfor %}</tr>
+			{%- endfor %}
+			</tbody>
+		</table>
+		<p class="o-calc__aviso">{{ c.aviso }}</p>
+	</div>
+</div>
+{% endmacro %}

@@ -1,0 +1,17 @@
+# Menu principal. "submenu: servicos" lista automaticamente os 6 serviços (src/content/servicos/).
+# "so_com_cases: true" só aparece quando houver case aprovado (src/content/cases.yml).
+principal:
+  - rotulo: Serviços
+    url: /servicos/
+    submenu: servicos
+  - rotulo: Método
+    url: /#metodo
+  - rotulo: Cases
+    url: /cases/
+    so_com_cases: true
+  - rotulo: Planos
+    url: /#planos
+  - rotulo: Sobre
+    url: /sobre/
+  - rotulo: Dúvidas
+    url: /#duvidas

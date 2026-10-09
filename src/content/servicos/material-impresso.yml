@@ -1,0 +1,158 @@
+# ============================================================
+# SERVIÇO: Material impresso — fonte ÚNICA da página /servicos/material-impresso/
+# e da landing de campanha /promo/material-impresso/ (PROMPT seções 9 e 11).
+# Só fatos do PROMPT.md. O que falta confirmar vai com [CONFIRMAR: ...]
+# (não aparece no site publicado; itens de lista com marcador somem inteiros).
+# ============================================================
+slug: material-impresso
+ordem: 4
+nome: Material impresso
+chip: Material impresso       # igual à opção do formulário e à lista do enviar.php
+icone: impresso
+janela: grafica.pdf
+atualizado: "2026-10-08"
+quem_faz: [vinicius-mafra, natalia-arruda, derek-goncalves]
+quem_faz_nota: "[CONFIRMAR: responsável principal pelo material impresso]"
+
+seo:
+  title: Material Impresso para Empresas em Curitiba | Olorin
+  description: Cartão, folder, catálogo, banner, adesivo, fachada e embalagem. Arquivo fechado pronto para a gráfica e acompanhamento da prova.
+
+card:
+  titulo: Material impresso
+  resumo: Cartão, folder, catálogo, banner, adesivo, fachada e embalagem. Do arquivo fechado ao acompanhamento da prova na gráfica.
+  resumo_curto: Do cartão à fachada, pronto para a gráfica.
+
+hero:
+  eyebrow: Material impresso para empresas em Curitiba e para todo o Brasil
+  h1: Impresso que conversa com o seu digital.
+  sub: Cartão, folder, catálogo, banner, adesivo, fachada e embalagem com a mesma cara do seu anúncio, do seu feed e do seu site. Entregamos o arquivo fechado, pronto para a gráfica.
+  janela_linhas:
+    - Cartão de visita · arquivo fechado
+    - Folder · pronto para a gráfica
+    - Prova · em aprovação
+
+resposta_curta: >-
+  Para empresas que querem o impresso com a mesma cara do digital, criamos cartão, folder, catálogo,
+  banner, adesivo, fachada e embalagem. Entregamos o arquivo fechado, que é o arquivo final pronto
+  para a gráfica, mas não fazemos a impressão. Se precisar, indicamos gráficas parceiras em Curitiba
+  e acompanhamos a aprovação da prova, a amostra conferida antes de imprimir. Os projetos custam a
+  partir de R$ 800, com escopo e prazo definidos no briefing, antes de começar.
+
+dores:
+  titulo: Isso acontece com você?
+  itens:
+    - O material impresso ficou parado no tempo enquanto o digital foi atualizado.
+    - O cartão, o folder e a fachada parecem de uma empresa diferente da que aparece no anúncio e no feed.
+    - A gráfica pede o "arquivo fechado", e ninguém sabe direito o que mandar.
+    - O erro só aparece depois de tudo impresso, quando já não dá mais para corrigir.
+
+para_quem:
+  e:
+    - Quem precisa de cartão, folder, catálogo, banner, adesivo, fachada ou embalagem com a mesma cara do anúncio, do feed e do site.
+    - Quem já tem uma gráfica de confiança e só precisa do arquivo certo para mandar.
+    - Quem é de outra cidade e quer resolver tudo a distância. O atendimento é 100% remoto.
+    - Quem prefere uma entrega fechada, com escopo e prazo definidos antes de começar.
+  nao_e:
+    - Quem procura alguém para imprimir. Nós criamos e entregamos o arquivo fechado; a impressão fica com a gráfica.
+    - Quem precisa de um projeto por menos de R$ 800. Esse é o valor de entrada do material impresso.
+    - "[CONFIRMAR: outros critérios de quem não é cliente ideal]"
+
+entregas:
+  titulo: O que entregamos
+  itens:
+    - titulo: Cartão, folder e catálogo
+      texto: As peças que vão para a mão do cliente, do cartão de visita ao catálogo do que você vende. Tudo com as cores, as fontes e o tom da sua marca.
+      icone: impresso
+    - titulo: Banner, adesivo e fachada
+      texto: As peças que mostram a sua marca no ponto de venda, em eventos e na rua. Criamos a arte; a produção fica com a gráfica.
+      icone: marca
+    - titulo: Embalagem
+      texto: A embalagem também apresenta a sua marca. Criamos a arte com a mesma cara do anúncio, do feed e do site.
+      icone: estrela
+    - titulo: Arquivo fechado, pronto para a gráfica
+      texto: Arquivo fechado é o arquivo final, preparado para a gráfica imprimir. Você não precisa entender de gráfica para mandar. Nós entregamos o arquivo e não fazemos a impressão.
+      icone: pixel
+    - titulo: Indicação de gráficas parceiras
+      texto: Se você ainda não tem uma gráfica de confiança, indicamos gráficas parceiras em Curitiba.
+      icone: seta
+    - titulo: Acompanhamento da prova
+      texto: A prova é a amostra que a gráfica prepara antes de rodar o pedido inteiro. Acompanhamos a aprovação com você, para o ajuste acontecer antes da impressão, e não depois.
+      icone: check
+
+como_funciona:
+  titulo: Como funciona
+  etapas:
+    - nome: Diagnóstico
+      texto: Olhamos o material que a sua marca já tem — impresso, redes, site e anúncios. Antes de criar qualquer peça, entendemos o que está desatualizado e o que vale manter.
+    - nome: Direção
+      texto: No briefing, a etapa em que combinamos o que entra no projeto, definimos as peças, o escopo e o prazo. Você sabe o que vai receber antes de começarmos.
+    - nome: Execução
+      texto: Criamos as peças com a mesma cara do seu digital. As aprovações acontecem por e-mail e, no fim, você recebe o arquivo fechado, pronto para a gráfica.
+    - nome: Leitura
+      texto: A prova é a última leitura antes de imprimir. Acompanhamos a aprovação com você e com a gráfica, para corrigir o que for preciso antes de rodar o pedido.
+  prazos:
+    - "[CONFIRMAR: prazo típico de criação por tipo de peça (cartão, folder, catálogo, banner, fachada, embalagem)]"
+
+precisamos:
+  titulo: O que precisamos de você
+  itens:
+    - Um tempo para o briefing, em que definimos juntos as peças, o escopo e o prazo do projeto.
+    - O que a sua marca já tem hoje, se existir — logotipo, cores, fontes, fotos e o material impresso atual.
+    - "[CONFIRMAR: quem escreve os textos das peças e quais informações pedimos no início (contatos, produtos, preços)]"
+    - "[CONFIRMAR: especificações pedidas à gráfica (tamanho, papel, acabamento) e quem faz esse contato]"
+    - Retorno nas aprovações, que acontecem por e-mail, para o projeto andar sem travar.
+    - A sua aprovação da prova antes de a gráfica rodar o pedido.
+
+preco:
+  titulo: Quanto custa
+  formato: Projeto pontual
+  valor: A partir de R$ 800/projeto
+  faixa: "[CONFIRMAR: faixa de preço por escopo (quais peças e quantas)]"
+  detalhe: Uma entrega específica e fechada. O escopo e o prazo são definidos no briefing, antes de começar, e o preço vem aberto na proposta. O valor é da criação; a impressão é feita pela gráfica, à parte.
+  contrato: Projeto fechado, sem mensalidade. Se preferir o impresso junto com anúncio, redes e site todo mês, ele faz parte do plano 360 completo (R$ 5.000/mês).
+  inclui:
+    - Criação das peças combinadas no briefing, como cartão, folder, catálogo, banner, adesivo, fachada ou embalagem
+    - Arquivo fechado, pronto para a gráfica
+    - Indicação de gráficas parceiras em Curitiba, se você precisar
+    - Acompanhamento da aprovação da prova
+    - "[CONFIRMAR: rodadas de ajuste incluídas e formatos dos arquivos entregues]"
+  nao_inclui:
+    - A impressão e o custo da gráfica (nós entregamos o arquivo fechado, não imprimimos)
+    - Logotipo e manual de marca (no projeto de [identidade visual](/servicos/identidade-visual/))
+    - Gestão de anúncios e de redes sociais (no plano Gestão mensal ou no 360 completo)
+  schema:
+    valor: "800"
+    minimo: true
+    descricao: Projeto pontual de material impresso (arquivo fechado), a partir de R$ 800.
+
+combina_com:
+  - slug: identidade-visual
+    porque: O impresso fica mais fácil quando a marca já tem logotipo, cores, fontes e manual definidos. Se a sua ainda não tem, vale começar pela identidade visual — a papelaria já faz parte desse projeto.
+  - slug: redes-sociais
+    porque: Quem conhece a marca pelo feed precisa reconhecer a mesma marca no folder e na fachada. Feitos pelo mesmo time, papel e tela falam a mesma língua. No 360 completo, impresso e redes andam juntos.
+
+faq:
+  - id: impresso-imprime
+    pergunta: Vocês fazem a impressão ou só entregam o arquivo?
+    resposta: Entregamos o arquivo fechado, pronto para a gráfica. A impressão não é feita por nós. Se precisar, indicamos gráficas parceiras em Curitiba e acompanhamos a aprovação da prova.
+  - id: impresso-quanto-custa
+    pergunta: Quanto custa um projeto de material impresso?
+    resposta: Os projetos de material impresso começam em R$ 800. O valor final depende do escopo, ou seja, de quais peças entram e quantas são. Tudo é combinado no briefing, e o preço vem aberto na proposta. A impressão fica à parte, com a gráfica.
+  - id: impresso-prazo
+    pergunta: Quanto tempo leva para o material ficar pronto?
+    resposta: Depende das peças e da quantidade. O prazo de criação é definido no briefing, junto com o escopo, antes de começarmos. O tempo de impressão depende da gráfica.
+  - id: impresso-prova
+    pergunta: O que é a prova e por que acompanhar a aprovação?
+    resposta: A prova é uma amostra, impressa ou digital, que a gráfica prepara antes de rodar o pedido inteiro. É a hora de conferir cor, texto e acabamento. Acompanhamos essa aprovação com você, para qualquer ajuste acontecer antes da impressão, e não depois.
+  - id: impresso-so-impresso
+    pergunta: Dá para contratar só o material impresso?
+    resposta: Sim. Você pode entrar só pelo impresso, como projeto pontual, e expandir depois. Se quiser o impresso junto com anúncio, redes e site todo mês, ele faz parte do plano 360 completo (R$ 5.000/mês).
+  - id: impresso-fora-curitiba
+    pergunta: Vocês atendem fora de Curitiba?
+    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e entregáveis digitais. As gráficas parceiras que indicamos ficam em Curitiba, mas você pode levar o arquivo fechado a uma gráfica da sua cidade.
+
+campanha:
+  titulo: Chega de impresso parado no tempo.
+  subtitulo: Diagnóstico gratuito do material da sua marca, feito por quem cria. Projetos de material impresso a partir de R$ 800, com arquivo fechado pronto para a gráfica. Sem compromisso.
+  faq: [impresso-imprime, impresso-quanto-custa, impresso-prazo, impresso-fora-curitiba]

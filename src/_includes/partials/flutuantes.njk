@@ -1,0 +1,16 @@
+{#- Botão flutuante de WhatsApp (só em telas ≥ 1024 px) e barra fixa do celular. -#}
+{%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre"] -%}
+<aside class="o-flutuantes" aria-label="Atalhos de contato">
+	<a class="o-wa-flutuante" id="cta-whatsapp-flutuante" href="{{ waLink('flutuante') }}" target="_blank" rel="noopener" data-o-flutuante>
+		<span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-wa-flutuante__texto">Falar no WhatsApp</span>
+	</a>
+	{%- if cabecalho != "minimo" %}
+	<nav class="o-barra" aria-label="Contato rápido" data-o-barra>
+		<a id="cta-whatsapp-barra-mobile" href="{{ waLink('barra-mobile') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>WhatsApp</a>
+		<a id="cta-form-barra-mobile" href="{{ '#orcamento' if temFormulario else '/#orcamento' }}"><span class="o-icone o-icone--seta" aria-hidden="true"></span>Orçamento</a>
+	</nav>
+	{%- endif %}
+</aside>
+{%- if site.config.CURSOR_ESTRELA %}
+<div class="o-cursor" aria-hidden="true" data-o-cursor></div>
+{%- endif %}

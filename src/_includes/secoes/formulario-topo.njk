@@ -1,0 +1,16 @@
+{#- ===== SEÇÃO: Formulário, etapa 1 (logo abaixo do banner) — src/content/home.yml → formulario_topo ===== -#}
+{%- from "components/formulario.njk" import formulario with context -%}
+{%- set t = conteudo.home.formulario_topo -%}
+<section class="o-sec o-sec--compacta o-form-topo o-ctx-preto" id="diagnostico" data-secao="formulario-topo" aria-labelledby="diagnostico-titulo">
+	<div class="o-wrap o-form-topo__grade">
+		<div class="o-form-topo__texto">
+			<h2 class="o-titulo o-titulo--m" id="diagnostico-titulo">{{ t.titulo }}</h2>
+			<p class="o-apoio">{{ t.texto }}</p>
+			{%- if t.detalhe %}<p class="o-apoio">{{ t.detalhe | confirmar | safe }}</p>{% endif %}
+			<ul class="o-lista-pixel">
+			{%- for item in t.itens %}<li>{{ item }}</li>{% endfor %}
+			</ul>
+		</div>
+		{{ formulario({ id: "form-topo", posicao: "topo", modo: "home" }) }}
+	</div>
+</section>

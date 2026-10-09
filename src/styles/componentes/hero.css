@@ -1,0 +1,204 @@
+/* Banner da home. */
+.o-hero {
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+	min-height: 100svh;
+	padding-top: calc(var(--altura-topo) + clamp(40px, 7vh, 88px));
+	padding-bottom: clamp(72px, 10vh, 120px);
+	overflow: hidden;
+}
+.o-hero__grade {
+	display: grid;
+	grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.62fr);
+	align-items: center;
+	gap: clamp(40px, 5vw, 96px);
+}
+.o-hero__linha {
+	margin-bottom: clamp(20px, 3vh, 28px);
+}
+.o-hero__titulo {
+	margin: 0 0 clamp(20px, 3vh, 32px);
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(38px, 6.3vw, 88px);
+	line-height: 0.9;
+	letter-spacing: -0.015em;
+	text-transform: uppercase;
+}
+.o-hero__destaque {
+	color: var(--verde);
+}
+.o-hero__destaque::after {
+	content: "";
+	display: inline-block;
+	width: 0.36em;
+	height: 0.7em;
+	margin-left: 0.1em;
+	background: var(--verde);
+	vertical-align: -0.02em;
+	animation: o-piscar 1.05s steps(1) infinite;
+}
+.o-hero__paragrafo {
+	max-width: 52ch;
+	font-size: clamp(16px, 1.2vw, 18px);
+	line-height: 1.7;
+	color: var(--cor-apoio);
+}
+.o-hero__acoes {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 14px 24px;
+	margin: clamp(24px, 4vh, 36px) 0 18px;
+}
+.o-prova {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 18px;
+	margin: 22px 0 0;
+	padding: 18px 0 0;
+	border-top: 1px solid var(--cor-linha);
+	list-style: none;
+	font-size: 13px;
+	color: var(--cor-apoio);
+}
+.o-prova li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.o-prova li::before {
+	content: "";
+	width: 12px;
+	height: 12px;
+	background: var(--verde);
+	-webkit-mask: var(--icone-check) center / contain no-repeat;
+	mask: var(--icone-check) center / contain no-repeat;
+}
+
+.o-hero__visual {
+	position: relative;
+	justify-self: center;
+	width: min(100%, 320px);
+}
+/* Símbolo da marca girando no canto */
+.o-hero__visual::after {
+	content: "";
+	position: absolute;
+	top: -34px;
+	right: -42px;
+	z-index: 3;
+	width: 86px;
+	aspect-ratio: 134 / 126;
+	background: var(--verde);
+	-webkit-mask: var(--icone-o) center / contain no-repeat;
+	mask: var(--icone-o) center / contain no-repeat;
+	animation: o-girar 16s linear infinite;
+}
+/* Símbolo central sobre a foto */
+.o-hero__visual::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 2;
+	width: 64px;
+	aspect-ratio: 134 / 126;
+	translate: -50% -50%;
+	background: var(--verde);
+	-webkit-mask: var(--icone-o) center / contain no-repeat;
+	mask: var(--icone-o) center / contain no-repeat;
+	pointer-events: none;
+}
+.o-celular {
+	position: relative;
+	margin: 0;
+	aspect-ratio: 3 / 5;
+	border: 3px solid var(--verde);
+	border-radius: var(--raio-celular);
+	overflow: hidden;
+	background: var(--preto);
+}
+.o-celular picture,
+.o-celular__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+/* Logo nos cantos da tela do celular (SVG decorativo, não texto) */
+.o-celular__logo {
+	position: absolute;
+	z-index: 2;
+	width: 64px;
+	height: auto;
+	color: var(--verde);
+}
+.o-celular__logo--topo {
+	top: 22px;
+	left: 22px;
+}
+.o-celular__logo--base {
+	right: 22px;
+	bottom: 22px;
+}
+
+/* Janelinha "relatorio.exe" sobre o celular */
+.o-hero__janela {
+	--janela-barra: var(--verde);
+	--janela-tinta: var(--preto);
+	--janela-borda: var(--verde);
+	--janela-corpo: var(--preto);
+	--janela-sombra: rgba(236, 255, 54, 0.25);
+	position: absolute;
+	left: -64px;
+	bottom: 56px;
+	z-index: 4;
+	width: max-content;
+	min-width: 214px;
+	max-width: 300px;
+}
+.o-hero__barras {
+	display: flex;
+	align-items: flex-end;
+	gap: 9%;
+	height: 58px;
+	margin: 16px 16px 0;
+}
+.o-hero__barras i {
+	flex: 1;
+	background: var(--verde);
+	transform-origin: bottom;
+	animation: o-barras 2.4s var(--curva) both;
+}
+.o-hero__barras i:nth-child(1) { height: 30%; }
+.o-hero__barras i:nth-child(2) { height: 48%; }
+.o-hero__barras i:nth-child(3) { height: 70%; }
+.o-hero__barras i:nth-child(4) { height: 100%; }
+.o-hero__janela-rotulo {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 10px 16px 14px;
+	font-family: var(--fonte-pixel);
+	font-size: 11px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-hero__janela-rotulo .o-icone {
+	--tam: 11px;
+	rotate: -45deg;
+}
+/* Quadradinhos pixel */
+.o-hero__janela::after {
+	content: "";
+	position: absolute;
+	left: -24px;
+	bottom: -24px;
+	width: 22px;
+	height: 22px;
+	background: var(--verde);
+	box-shadow: -22px 22px 0 rgba(236, 255, 54, 0.55);
+}

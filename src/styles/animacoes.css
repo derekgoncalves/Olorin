@@ -1,0 +1,120 @@
+/* Animações. Todas param com prefers-reduced-motion ou com o botão "Pausar animações" (WCAG 2.2.2). */
+@keyframes o-piscar {
+	50% {
+		opacity: 0;
+	}
+}
+@keyframes o-girar {
+	to {
+		rotate: 360deg;
+	}
+}
+@keyframes o-letreiro {
+	to {
+		transform: translateX(-50%);
+	}
+}
+@keyframes o-barras {
+	from {
+		transform: scaleY(0.15);
+	}
+	to {
+		transform: none;
+	}
+}
+@keyframes o-surgir {
+	from {
+		opacity: 0;
+	}
+}
+@keyframes o-descer {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+}
+@keyframes o-pulo {
+	50% {
+		transform: scale(1.3);
+	}
+}
+@keyframes o-tocar {
+	0%,
+	88%,
+	100% {
+		transform: none;
+	}
+	92% {
+		transform: scale(1.08) rotate(-6deg);
+	}
+	96% {
+		transform: scale(1.04) rotate(4deg);
+	}
+}
+
+/* Cursor piscante do título: pisca algumas vezes e para (não fica infinito). */
+.o-hero__destaque::after {
+	animation-iteration-count: 8;
+}
+
+/* Entrada suave ao rolar (só com JS; o conteúdo nunca fica escondido sem JS). */
+html.js .o-reveal {
+	opacity: 0;
+	transform: translateY(26px);
+	transition: opacity var(--dur-lenta) var(--curva), transform var(--dur-lenta) var(--curva);
+	transition-delay: var(--atraso, 0s);
+}
+html.js .o-reveal.is-in {
+	opacity: 1;
+	transform: none;
+}
+
+/* Botão "Pausar animações" */
+.o-pausar {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 32px;
+	padding: 6px 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-decoration: underline;
+	cursor: pointer;
+}
+html:not(.js) .o-pausar {
+	display: none;
+}
+
+html.o-pausado *,
+html.o-pausado *::before,
+html.o-pausado *::after {
+	animation-play-state: paused !important;
+}
+html.o-pausado .o-cursor {
+	display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+	html.js .o-reveal {
+		opacity: 1;
+		transform: none;
+	}
+	.o-faixa__trilho {
+		animation: none;
+	}
+	.o-cursor {
+		display: none;
+	}
+}

@@ -1,0 +1,3 @@
+# Depoimentos reais, com autorização (PROMPT seção 12). Lista vazia = a seção não aparece.
+# Formato: - nome: "Nome Sobrenome" / cargo: "..." / empresa: "..." / texto: "..." / autorizado: true
+itens: []

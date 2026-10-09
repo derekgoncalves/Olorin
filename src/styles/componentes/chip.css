@@ -1,0 +1,63 @@
+/* Chip (opção marcável): <label class="o-chip"><input type="checkbox|radio"><span>Texto</span></label> */
+.o-chip {
+	--chip-borda: rgba(255, 255, 255, 0.6);
+	--chip-ativo-fundo: var(--branco);
+	--chip-ativo-texto: var(--violeta);
+	position: relative;
+	display: block;
+	cursor: pointer;
+}
+.o-chip input {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+.o-chip span {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 48px;
+	height: 100%;
+	padding: 10px 12px;
+	border: var(--borda) solid var(--chip-borda);
+	font-family: var(--fonte-texto);
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 1.35;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.o-chip span::before {
+	content: "";
+	flex: none;
+	width: 14px;
+	height: 14px;
+	background: currentColor;
+	-webkit-mask: var(--icone-caixa) center / contain no-repeat;
+	mask: var(--icone-caixa) center / contain no-repeat;
+}
+.o-chip:hover span {
+	border-color: currentColor;
+}
+.o-chip input:checked + span {
+	border-color: var(--chip-ativo-fundo);
+	background: var(--chip-ativo-fundo);
+	color: var(--chip-ativo-texto);
+}
+.o-chip input:checked + span::before {
+	-webkit-mask-image: var(--icone-caixa-ok);
+	mask-image: var(--icone-caixa-ok);
+}
+.o-chip input:focus-visible + span {
+	outline: 3px solid var(--cor-foco);
+	outline-offset: 2px;
+}
+/* Chip em fundo claro (calculadora) */
+.o-chip--escuro {
+	--chip-borda: var(--preto);
+	--chip-ativo-fundo: var(--preto);
+	--chip-ativo-texto: var(--verde);
+}

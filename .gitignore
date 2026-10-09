@@ -1,4 +1,31 @@
-.DS_Store
+# Dependências e caches
 node_modules/
-site-estatico/leads/pedidos.csv
+.cache/
 *.log
+.DS_Store
+
+# Build: o site pronto sai em dist/ (o pacote para o FTP fica em entrega/)
+dist/
+
+# Segredos: nunca vão para o Git
+.env
+.env.*
+!.env.example
+config.php
+olorin-config.php
+!src/php/config.example.php
+
+# Pedidos (leads) baixados do servidor
+leads/
+*.csv
+
+# Fontes pagas: licença individual, não podem ser redistribuídas
+src/assets/fonts/licenciadas/*
+!src/assets/fonts/licenciadas/.gitkeep
+
+# Material de entrada grande ou sem licença de redistribuição
+_brand/*.pdf
+_inbox/
+
+# Legado: planilha de pedidos antiga
+site-estatico/leads/pedidos.csv

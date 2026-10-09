@@ -1,0 +1,151 @@
+# ============================================================
+# Olorin Digital — site estático v3 (Apache / Locaweb)
+# Gerado junto com o build. Vai para a raiz do public_html.
+# ============================================================
+
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+Options -Indexes
+AddDefaultCharset utf-8
+
+# Tipos que alguns servidores não conhecem
+<IfModule mod_mime.c>
+	AddType font/woff2 .woff2
+	AddType font/woff .woff
+	AddType image/avif .avif
+	AddType image/webp .webp
+	AddType application/manifest+json .webmanifest
+	AddType text/plain .txt
+</IfModule>
+
+# ------------------------------------------------------------
+# Arquivos que NUNCA podem ser abertos pelo navegador
+# (configuração com senha, planilhas de leads, logs, anotações)
+# ------------------------------------------------------------
+<FilesMatch "^(config\.php|config\.example\.php|olorin-config\.php|.*\.(csv|log|md|yml|yaml|bak|old|orig|sql|zip|env|ini|sh)|\.env.*|LEIA-ME\.txt|LEIA-ANTES\.txt|license\.txt|readme\.html|error_log)$">
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Deny from all
+	</IfModule>
+</FilesMatch>
+
+# Pastas de sistema (controle de versão, dependências)
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule (^|/)\.(git|svn|hg)(/|$) - [F,L]
+	RewriteRule (^|/)node_modules(/|$) - [F,L]
+</IfModule>
+
+# ------------------------------------------------------------
+# HTTPS e domínio único (https://olorin.com.br, sem www)
+#
+# ATIVE SÓ DEPOIS de confirmar que o certificado SSL está ativo no
+# painel da Locaweb e que https://olorin.com.br abre sem aviso.
+# Para ativar: apague o "# " do começo das 5 linhas do bloco abaixo.
+# Se o site entrar em "redirecionamento infinito", comente de novo e
+# use a variante B (algumas hospedagens entregam o HTTPS por um proxy).
+# Passo a passo em docs/DEPLOY.md.
+# ------------------------------------------------------------
+# --- Variante A (padrão) ---
+# <IfModule mod_rewrite.c>
+# RewriteCond %{HTTPS} off [OR]
+# RewriteCond %{HTTP_HOST} ^www\. [NC]
+# RewriteRule ^ https://olorin.com.br%{REQUEST_URI} [L,R=301]
+# </IfModule>
+#
+# --- Variante B (HTTPS atrás de proxy) ---
+# <IfModule mod_rewrite.c>
+# RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+# RewriteCond %{HTTPS} off [OR]
+# RewriteCond %{HTTP_HOST} ^www\. [NC]
+# RewriteRule ^ https://olorin.com.br%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ------------------------------------------------------------
+# Endereços antigos que mudaram (301 permanente)
+# ------------------------------------------------------------
+<IfModule mod_rewrite.c>
+	# /index.html → /
+	RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+	RewriteRule ^index\.html$ / [L,R=301]
+	# Restos da versão WordPress, se alguém tiver o link salvo
+	RewriteRule ^(wp-admin|wp-login\.php|wp-content|wp-includes|feed)(/.*)?$ / [L,R=301]
+	# Atalhos que as pessoas costumam digitar
+	RewriteRule ^(orcamento|contato)/?$ /#orcamento [NE,L,R=301]
+	RewriteRule ^diagnostico/?$ /#diagnostico [NE,L,R=301]
+	RewriteRule ^privacidade/?$ /politica-de-privacidade/ [L,R=301]
+</IfModule>
+
+# ------------------------------------------------------------
+# Compressão
+# ------------------------------------------------------------
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/javascript text/javascript application/json application/ld+json application/manifest+json image/svg+xml
+</IfModule>
+
+# ------------------------------------------------------------
+# Cache
+#   CSS e JS têm o "hash" no nome (olorin.3f9a1c.css): podem ficar 1 ano.
+#   Fontes não mudam de nome: 1 ano.
+#   Imagens podem ser trocadas com o mesmo nome: 30 dias.
+#   HTML: sempre conferir se há versão nova.
+# ------------------------------------------------------------
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 1 hour"
+	ExpiresByType text/html "access plus 0 seconds"
+	ExpiresByType application/xml "access plus 1 hour"
+	ExpiresByType text/plain "access plus 1 hour"
+	ExpiresByType text/css "access plus 1 year"
+	ExpiresByType application/javascript "access plus 1 year"
+	ExpiresByType text/javascript "access plus 1 year"
+	ExpiresByType font/woff2 "access plus 1 year"
+	ExpiresByType font/woff "access plus 1 year"
+	ExpiresByType image/avif "access plus 30 days"
+	ExpiresByType image/webp "access plus 30 days"
+	ExpiresByType image/jpeg "access plus 30 days"
+	ExpiresByType image/png "access plus 30 days"
+	ExpiresByType image/svg+xml "access plus 30 days"
+	ExpiresByType image/x-icon "access plus 30 days"
+	ExpiresByType application/manifest+json "access plus 7 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set Referrer-Policy "strict-origin-when-cross-origin"
+	Header always set X-Frame-Options "SAMEORIGIN"
+	Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+	# Páginas de campanha e de agradecimento não entram no Google
+	<IfModule mod_setenvif.c>
+		SetEnvIf Request_URI "^/(promo|obrigado)(/|$)" NOINDEX
+		Header set X-Robots-Tag "noindex, follow" env=NOINDEX
+	</IfModule>
+
+	# Arquivos com hash no nome e fontes: imutáveis
+	<FilesMatch "^olorin\.[0-9a-f]{8,}\.(css|js)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+	<FilesMatch "\.(woff2|woff)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+		Header set Access-Control-Allow-Origin "*"
+	</FilesMatch>
+	<FilesMatch "\.(avif|webp|jpg|jpeg|png|svg|ico)$">
+		Header set Cache-Control "public, max-age=2592000"
+	</FilesMatch>
+	<FilesMatch "\.html$">
+		Header set Cache-Control "no-cache"
+	</FilesMatch>
+
+	# HSTS: ative SÓ depois que o bloco de HTTPS acima estiver ligado e testado.
+	# Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+
+	# Política de segurança de conteúdo em modo "só observar" (não bloqueia nada).
+	# Já libera Google Tag Manager, GA4, Google Ads e Meta Pixel. Para impor de verdade,
+	# troque "Content-Security-Policy-Report-Only" por "Content-Security-Policy"
+	# depois de uma semana sem avisos no console (ver docs/DEPLOY.md).
+	Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://connect.facebook.net; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.google.com https://www.google.com.br https://googleads.g.doubleclick.net https://www.facebook.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://www.facebook.com https://connect.facebook.net; frame-src https://www.googletagmanager.com https://td.doubleclick.net; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'self' https://wa.me; base-uri 'self'; frame-ancestors 'self'; object-src 'none'"
+</IfModule>

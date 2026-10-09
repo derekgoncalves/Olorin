@@ -1,0 +1,54 @@
+# Política de Privacidade — RASCUNHO para revisão jurídica do dono (PROMPT seção 13.3).
+seo:
+  titulo: Política de Privacidade | Olorin Digital
+  descricao: Como a Olorin Digital trata os dados de quem visita o site e pede orçamento, conforme a LGPD (Lei nº 13.709/2018).
+titulo: Política de Privacidade
+atualizado: "2026-10-08"
+introducao: Esta política explica como a Olorin Digital trata os dados pessoais de quem visita o site olorin.com.br e pede orçamento, de acordo com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).
+secoes:
+  - id: responsavel
+    titulo: 1. Quem é responsável pelos seus dados
+    paragrafos:
+      - A controladora dos dados é a Olorin Digital, agência de marketing digital com atendimento em Curitiba, PR. Para qualquer assunto sobre os seus dados, escreva para [digital@olorin.com.br](mailto:digital@olorin.com.br).
+      - "[CONFIRMAR: razão social, CNPJ e nome do encarregado pelo tratamento de dados (DPO)]"
+  - id: dados
+    titulo: 2. Quais dados coletamos
+    lista:
+      - "**Formulário de orçamento:** nome, WhatsApp, site ou perfil do Instagram (opcional), serviços de interesse, faixa de investimento em anúncio e a mensagem que você escrever."
+      - "**Origem da visita:** parâmetros de campanha (utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, gbraid, wbraid e fbclid), a página em que o formulário foi enviado e o site de onde você veio — para sabermos qual anúncio ou canal trouxe o contato."
+      - "**Cookies de análise e de marketing:** só são ativados se você permitir no aviso de cookies (veja a seção 4)."
+      - "**Dados técnicos:** o endereço IP é usado apenas por alguns minutos para bloquear envios automáticos (spam) e não é guardado junto ao seu pedido."
+  - id: finalidade
+    titulo: 3. Para que usamos e com qual base legal
+    lista:
+      - "Responder o seu pedido e preparar uma proposta comercial — base legal: procedimentos preliminares a um contrato, a seu pedido (art. 7º, V, da LGPD), e o seu consentimento (art. 7º, I)."
+      - "Medir o desempenho do site e dos nossos anúncios, quando você autoriza os cookies — base legal: consentimento (art. 7º, I)."
+      - Não enviamos listas de disparo e não vendemos os seus dados.
+  - id: cookies
+    titulo: 4. Cookies e ferramentas de medição
+    paragrafos:
+      - Cookies necessários fazem o site funcionar e não dependem de autorização. Os demais só são ativados depois da sua escolha no aviso de cookies, que tem três opções com o mesmo peso — Aceitar tudo, Recusar e Personalizar (Análise e Marketing). Você pode mudar de ideia a qualquer momento pelo link "Preferências de cookies", no rodapé.
+    lista:
+      - "**Google Tag Manager:** organiza as ferramentas abaixo. Só carrega depois do seu consentimento."
+      - "**Google Analytics 4 (Análise):** conta visitas e cliques de forma agregada."
+      - "**Meta Pixel e Google Ads (Marketing):** medem o resultado dos nossos anúncios."
+  - id: compartilhamento
+    titulo: 5. Com quem compartilhamos
+    paragrafos:
+      - Os pedidos ficam armazenados no servidor de hospedagem do site (Locaweb, no Brasil) e na nossa caixa de e-mail. Se você permitir os cookies, Google e Meta recebem dados de navegação conforme as políticas de privacidade dessas empresas. Não há outros compartilhamentos, salvo por obrigação legal.
+  - id: retencao
+    titulo: 6. Por quanto tempo guardamos
+    paragrafos:
+      - Os pedidos de orçamento ficam guardados por até 24 meses após o último contato, ou até você pedir a exclusão. Depois disso, são apagados.
+  - id: direitos
+    titulo: 7. Seus direitos
+    paragrafos:
+      - Você pode, a qualquer momento, confirmar se tratamos os seus dados, pedir acesso, correção, anonimização, portabilidade ou exclusão, e revogar o consentimento (art. 18 da LGPD). Basta escrever para [digital@olorin.com.br](mailto:digital@olorin.com.br). Respondemos o mais rápido possível, dentro dos prazos da lei.
+  - id: seguranca
+    titulo: 8. Segurança
+    paragrafos:
+      - O site usa conexão criptografada (HTTPS), e o acesso aos pedidos é restrito à equipe da Olorin.
+  - id: mudancas
+    titulo: 9. Mudanças nesta política
+    paragrafos:
+      - Podemos atualizar este texto. A data da última atualização fica sempre no topo da página.

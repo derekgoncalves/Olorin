@@ -1,0 +1,14 @@
+{#- ===== SEÇÃO: Dúvidas (FAQ) — src/content/faq.yml (o mesmo texto vai para o JSON-LD) ===== -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set t = conteudo.home.duvidas -%}
+<section class="o-sec o-faq o-ctx-branco" id="duvidas" data-secao="duvidas" aria-labelledby="duvidas-titulo">
+	<div class="o-wrap o-faq__grade">
+		<div class="o-faq__cabeca">
+			<p class="o-etiqueta">{{ t.etiqueta }}</p>
+			<h2 class="o-titulo o-titulo--g" id="duvidas-titulo">{{ t.titulo }}</h2>
+			<p class="o-apoio">{{ t.texto }}</p>
+			<a class="o-btn o-btn--contorno" href="{{ waLink('faq', { tipo: 'duvida' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.botao }}</a>
+		</div>
+		{{ ui.faqLista(conteudo.faq.perguntas) }}
+	</div>
+</section>

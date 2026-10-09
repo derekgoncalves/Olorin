@@ -1,0 +1,26 @@
+/* Ícone pixel: <span class="o-icone o-icone--trafego" aria-hidden="true"></span> */
+.o-icone {
+	--tam: 1.1em;
+	display: inline-block;
+	flex: none;
+	width: var(--tam);
+	height: var(--tam);
+	background-color: currentColor;
+	-webkit-mask: var(--icone, var(--icone-pixel)) center / contain no-repeat;
+	mask: var(--icone, var(--icone-pixel)) center / contain no-repeat;
+	vertical-align: -0.15em;
+}
+.o-icone--trafego { --icone: var(--icone-trafego); }
+.o-icone--redes { --icone: var(--icone-redes); }
+.o-icone--marca { --icone: var(--icone-marca); }
+.o-icone--impresso { --icone: var(--icone-impresso); }
+.o-icone--site { --icone: var(--icone-site); }
+.o-icone--dados { --icone: var(--icone-dados); }
+.o-icone--check { --icone: var(--icone-check); }
+.o-icone--seta { --icone: var(--icone-seta); }
+.o-icone--relogio { --icone: var(--icone-relogio); }
+.o-icone--mais { --icone: var(--icone-mais); }
+.o-icone--o { --icone: var(--icone-o); aspect-ratio: 134 / 126; height: auto; }
+.o-icone--pixel { --icone: var(--icone-pixel); }
+.o-icone--estrela { --icone: var(--icone-estrela); }
+.o-icone--whatsapp { --icone: var(--icone-whatsapp); }

@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+modo: erro
+slug: "404"
+permalink: /404.html
+indexavel: false
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  titulo: "{{ conteudo.paginas.erro404.seo.titulo }}"
+  descricao: "{{ conteudo.paginas.erro404.seo.descricao }}"
+---
+{#- Página 404 com a marca (o .htaccess aponta ErrorDocument 404 para cá). -#}
+{%- set e = conteudo.paginas.erro404 -%}
+<section class="o-erro" data-secao="404">
+	{{ imagem(imagens, "erro-404", { alt: "", sizes: "100vw", classe: "o-erro__fundo" }) | safe }}
+	<div class="o-janela o-erro__janela">
+		<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ e.janela }}</span><span class="o-janela__ctrl"></span></div>
+		<div class="o-janela__corpo">
+			<p class="o-erro__codigo" aria-hidden="true">404</p>
+			<h1 class="o-erro__titulo">{{ e.titulo }}</h1>
+			<p class="o-erro__texto">{{ e.texto }}</p>
+			<ul class="o-erro__servicos">
+			{%- for s in conteudo.servicos %}<li><a href="/servicos/{{ s.slug }}/"><span class="o-icone o-icone--{{ s.icone }}" aria-hidden="true"></span>{{ s.nome }}</a></li>{% endfor %}
+			</ul>
+			<div class="o-erro__acoes">
+				<a class="o-btn o-btn--verde" href="/">{{ e.inicio }}</a>
+				<a class="o-btn o-btn--contorno" href="{{ waLink('404', { tipo: 'erro' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ e.whatsapp }}</a>
+			</div>
+		</div>
+	</div>
+</section>

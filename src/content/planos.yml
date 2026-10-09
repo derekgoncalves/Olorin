@@ -1,0 +1,65 @@
+# Planos e preços (PROMPT seção 2 e 12.5). Não alterar valores sem ordem do dono.
+planos:
+  - id: pontual
+    nome: Pontual
+    de: A partir de
+    valor: 800
+    periodo: /projeto
+    itens:
+      - Uma entrega específica e fechada
+      - Identidade visual, site ou impresso
+      - Auditoria da conta de anúncio
+      - Prazo e escopo definidos no briefing
+    selos: []
+    servicos_preselecao: []
+    calculadora: false
+  - id: gestao-mensal
+    nome: Gestão mensal
+    tag: Mais procurado
+    destaque: true
+    de: Contrato mensal
+    valor: 2500
+    periodo: /mês
+    itens:
+      - Tráfego pago + conteúdo todo mês
+      - Criação de peças inclusa
+      - Otimização semanal das campanhas
+      - Relatório fechado todo mês
+    selos:
+      - Sem multa após 3 meses
+      - Relatório mensal
+      - Otimização semanal
+    custo_total: "Com verba de anúncio: a partir de R$ 4.000/mês no total"
+    servicos_preselecao: [trafego-pago, redes-sociais]
+    calculadora: true
+  - id: 360-completo
+    nome: 360 completo
+    de: Contrato mensal
+    valor: 5000
+    periodo: /mês
+    itens:
+      - Estratégia, anúncio, redes e criação
+      - Material impresso e site
+      - A marca inteira sob o mesmo comando
+      - Reunião estratégica mensal
+    selos:
+      - Relatório mensal
+      - Reunião estratégica mensal
+    custo_total: "Com verba de anúncio: a partir de R$ 6.500/mês no total"
+    servicos_preselecao: [trafego-pago, redes-sociais, identidade-visual, material-impresso, site-e-loja-virtual]
+    calculadora: true
+botao: Quero esse
+nota: Valores de gestão. A verba de anúncio (recomendamos a partir de R$ 1.500/mês) é investida à parte, direto nas plataformas Meta e Google.
+contrato: Gestão mensal com contrato mínimo de 3 meses. Depois, mês a mês com aviso de 30 dias. Sem multa rescisória.
+total_entrada: "Custo total de entrada: a partir de R$ 4.000/mês (gestão R$ 2.500 + verba mínima recomendada de R$ 1.500)."
+calculadora:
+  titulo: Quanto custa começar?
+  texto: Escolha o formato e quanto quer investir em anúncio. A conta aparece na hora.
+  rotulo_plano: Formato
+  rotulo_verba: Verba de anúncio por mês
+  verbas: [1500, 3000, 5000, 10000]
+  verba_minima: 1500
+  resultado_prefixo: a partir de
+  resultado_sufixo: por mês
+  aviso: A verba vai direto para a Meta e o Google, na sua conta. A Olorin cobra só a gestão.
+  tabela_titulo: Custo total por mês (gestão + verba)

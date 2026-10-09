@@ -1,0 +1,21 @@
+{#- ===== SEÇÃO: Serviços (cada card leva à página do serviço) — src/content/home.yml → servicos + src/content/servicos/ ===== -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set t = conteudo.home.servicos -%}
+<section class="o-sec o-servicos o-ctx-preto" id="servicos" data-secao="servicos" aria-labelledby="servicos-titulo">
+	<div class="o-wrap">
+		<p class="o-etiqueta">{{ t.etiqueta }}</p>
+		<h2 class="o-titulo o-titulo--g" id="servicos-titulo">{{ t.titulo }}</h2>
+		<p class="o-apoio">{{ t.texto }}</p>
+		<div class="o-cards-servico">
+		{%- for s in conteudo.servicos %}
+			{{ ui.cardServico(s) }}
+		{%- endfor %}
+		</div>
+	</div>
+	<div class="o-faixa-cta o-ctx-branco">
+		<div class="o-wrap o-faixa-cta__dentro">
+			<p class="o-faixa-cta__texto">{{ t.faixa_texto }}</p>
+			<a class="o-btn o-btn--preto" href="{{ waLink('servicos-faixa') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.faixa_botao }}</a>
+		</div>
+	</div>
+</section>

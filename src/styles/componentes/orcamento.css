@@ -1,0 +1,66 @@
+/* Seções de formulário: etapa 1 (abaixo do banner) e CTA final (violeta). */
+.o-form-topo {
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.o-form-topo__grade {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+	align-items: start;
+	gap: clamp(32px, 5vw, 88px);
+}
+.o-form-topo__texto .o-lista-pixel {
+	margin-top: 24px;
+}
+html[data-form-variant="a"] .o-form-topo {
+	display: none;
+}
+
+.o-orcamento {
+	overflow: hidden;
+	background-image:
+		radial-gradient(100% 80% at 0% 0%, var(--gradiente-indigo), transparent 60%),
+		radial-gradient(80% 60% at 100% 100%, var(--gradiente-lavanda), transparent 60%);
+}
+.o-orcamento .o-titulo--gg {
+	margin-bottom: clamp(32px, 5vw, 64px);
+}
+.o-orcamento__grade {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	align-items: start;
+	gap: clamp(36px, 6vw, 104px);
+}
+.o-orcamento__lista li {
+	font-size: clamp(15px, 1.2vw, 17px);
+}
+.o-orcamento__wa {
+	--janela-barra: var(--branco);
+	--janela-tinta: var(--violeta);
+	--janela-borda: var(--branco);
+	--janela-corpo: transparent;
+	margin-top: 32px;
+}
+.o-orcamento__wa .o-etiqueta {
+	margin-bottom: 8px;
+}
+.o-orcamento__wa p {
+	margin-bottom: 6px;
+}
+.o-orcamento__telefone a {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	min-height: 44px;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(19px, 2vw, 28px);
+	letter-spacing: -0.01em;
+	text-decoration: none;
+}
+.o-orcamento__telefone .o-icone {
+	--tam: 24px;
+}
+.o-orcamento__telefone a:hover {
+	text-decoration: underline;
+	text-decoration-thickness: 3px;
+}

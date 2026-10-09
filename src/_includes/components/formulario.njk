@@ -1,0 +1,96 @@
+{#-
+	Formulário de orçamento em 2 etapas — componente único (PROMPT seção 10).
+	Uso: {% from "components/formulario.njk" import formulario with context %}
+	     {{ formulario({ id: "form-fim", posicao: "fim", servico: "trafego-pago" }) }}
+	posicao: topo (abaixo do banner) | fim (CTA final) | promo (landing de campanha)
+	Sem JavaScript: as duas etapas aparecem juntas e o envio é tradicional (enviar.php redireciona).
+-#}
+{% macro formulario(o) %}
+{%- set f = conteudo.formulario -%}
+{%- set cfg = site.config -%}
+{%- set id = o.id -%}
+{%- set diagnostico = cfg.OFERTA_DIAGNOSTICO and (o.posicao == "topo" or o.posicao == "promo") -%}
+{%- set opcoesServico = conteudo.opcoesServico -%}
+<div class="o-form o-form--{{ o.posicao }}" id="{{ id }}" data-o-form data-posicao="{{ o.posicao }}" data-etapa="1" data-o-erros="{{ f.erros | dump | escape }}">
+	<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ f.barra_topo if o.posicao == "topo" else f.barra_fim }}</span><span class="o-janela__ctrl"></span></div>
+	<form class="o-form__corpo" action="/enviar.php" method="post" accept-charset="UTF-8" data-o-form-el>
+		<p class="o-form__progresso" aria-hidden="true"><span class="o-medidor"><i class="is-on"></i><i></i></span><span data-o-etapa-rotulo>Etapa 1 de 2</span></p>
+		<div class="o-form__alerta" role="alert" data-o-alerta hidden>{{ f.erro_sem_js }}</div>
+
+		<fieldset class="o-form__etapa" data-etapa="1">
+			<legend class="o-form__legenda" tabindex="-1">{{ f.etapa1_legenda }}</legend>
+			<div class="o-campo">
+				<label for="{{ id }}-nome">{{ f.rotulos.nome }}</label>
+				<input id="{{ id }}-nome" name="nome" type="text" autocomplete="name" required minlength="2" maxlength="80" placeholder="{{ f.placeholders.nome }}" aria-describedby="{{ id }}-nome-erro">
+				<p class="o-campo__erro" id="{{ id }}-nome-erro" data-erro-de="nome" hidden></p>
+			</div>
+			<div class="o-campo">
+				<label for="{{ id }}-whatsapp">{{ f.rotulos.whatsapp }}</label>
+				<input id="{{ id }}-whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" required pattern="[0-9()+ .-]{10,20}" maxlength="20" placeholder="{{ f.placeholders.whatsapp }}" aria-describedby="{{ id }}-whatsapp-erro">
+				<p class="o-campo__erro" id="{{ id }}-whatsapp-erro" data-erro-de="whatsapp" hidden></p>
+			</div>
+			<div class="o-campo">
+				<label for="{{ id }}-site">{{ f.rotulos.site }} <span class="o-campo__opcional">{{ f.rotulos.site_opcional }}</span></label>
+				<input id="{{ id }}-site" name="site" type="text" inputmode="url" autocomplete="url" maxlength="120" placeholder="{{ f.placeholders.site }}">
+			</div>
+			<button class="o-form__avancar" type="button" data-o-avancar>{{ f.botao_continuar }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></button>
+		</fieldset>
+
+		<fieldset class="o-form__etapa" data-etapa="2">
+			<legend class="o-form__legenda" tabindex="-1">{{ f.etapa2_legenda }}</legend>
+			<fieldset class="o-campo o-campo--grupo">
+				<legend class="o-campo__rotulo">{{ f.rotulos.servicos }} <span class="o-campo__opcional">{{ f.rotulos.servicos_dica }}</span></legend>
+				<div class="o-chips">
+				{%- for op in opcoesServico %}
+					<label class="o-chip"><input type="checkbox" name="servicos[]" value="{{ op.valor }}" data-servico="{{ op.slug }}"{% if o.servico == op.slug %} checked{% endif %}><span>{{ op.valor }}</span></label>
+				{%- endfor %}
+				</div>
+			</fieldset>
+			<div class="o-campo o-campo--verba">
+				<label for="{{ id }}-investimento">{{ f.rotulos.investimento }}</label>
+				<div class="o-select">
+					<select id="{{ id }}-investimento" name="investimento">
+						<option value="">{{ f.investimento_placeholder }}</option>
+					{%- for faixa in f.investimento %}
+						<option value="{{ faixa }}">{{ faixa }}</option>
+					{%- endfor %}
+					</select>
+				</div>
+				<p class="o-campo__dica o-campo__dica--sem-verba">{{ f.sem_verba }}</p>
+			</div>
+			<div class="o-campo">
+				<label for="{{ id }}-mensagem">{{ f.rotulos.mensagem }} <span class="o-campo__opcional">{{ f.rotulos.mensagem_opcional }}</span></label>
+				<textarea id="{{ id }}-mensagem" name="mensagem" rows="3" maxlength="1500" placeholder="{{ f.placeholders.mensagem }}"></textarea>
+			</div>
+			<div class="o-campo">
+				<label class="o-consentimento" for="{{ id }}-consentimento">
+					<input id="{{ id }}-consentimento" type="checkbox" name="consentimento" value="1" required aria-describedby="{{ id }}-consentimento-erro">
+					<span>{{ f.consentimento }} <a href="/politica-de-privacidade/" target="_blank" rel="noopener">{{ f.consentimento_link }}</a>.</span>
+				</label>
+				<p class="o-campo__erro" id="{{ id }}-consentimento-erro" data-erro-de="consentimento" hidden></p>
+			</div>
+
+			<div class="o-isca" aria-hidden="true">
+				<label for="{{ id }}-empresa-url">Não preencha este campo</label>
+				<input id="{{ id }}-empresa-url" type="text" name="empresa_url" tabindex="-1" autocomplete="off">
+			</div>
+			<input type="hidden" name="olorin_ts" value="">
+			<input type="hidden" name="olorin_tempo" value="">
+			<input type="hidden" name="plano" value="{{ o.plano or '' }}">
+			{%- for campo in ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid", "fbclid", "primeiro_toque", "pagina", "referencia"] %}
+			<input type="hidden" name="{{ campo }}" value="">
+			{%- endfor %}
+			<input type="hidden" name="modo_pagina" value="{{ o.modo or modo or 'home' }}">
+			<input type="hidden" name="servico_pagina" value="{{ o.servico or '' }}">
+			<input type="hidden" name="posicao_formulario" value="{{ o.posicao }}">
+			<input type="hidden" name="variante_formulario" value="">
+
+			<button class="o-form__enviar" type="submit" data-o-enviar>{{ f.botao_enviar_diagnostico if diagnostico else f.botao_enviar }}</button>
+			<button class="o-form__voltar" type="button" data-o-voltar>{{ f.botao_voltar }}</button>
+			<p class="o-form__nota">{{ f.nota }}</p>
+		</fieldset>
+		<p class="o-form__status" role="status" aria-live="polite" data-o-status></p>
+	</form>
+	<p class="o-form__alternativa">{{ f.alternativa_wa }} <a href="{{ waLink(o.origemWa or ('form-' + o.posicao), { tipo: 'servico', x: o.nomeServico } if o.nomeServico else {}) }}" target="_blank" rel="noopener">{{ f.alternativa_wa_link }}</a></p>
+</div>
+{% endmacro %}

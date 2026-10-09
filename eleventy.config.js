@@ -1,0 +1,70 @@
+/**
+ * Eleventy — gera o site estático da Olorin em dist/ (vai inteiro para o public_html da Locaweb).
+ *
+ *   npm run dev     → servidor local com recarga, guia /_estilo/ e marcadores [CONFIRMAR] visíveis
+ *   npm run build   → dist/ de produção (CSS crítico inline, nomes com hash, verificações)
+ *
+ * Conteúdo editável: src/content/*.yml (textos e ordem dos blocos da home).
+ */
+import { rm } from 'node:fs/promises';
+import yaml from 'js-yaml';
+import { construirAssets } from './scripts/assets.mjs';
+import { processarImagens } from './scripts/imagens.mjs';
+import { posProcessar } from './scripts/pos-processar.mjs';
+import { registrarFiltros } from './scripts/filtros.mjs';
+import { montarSchema } from './scripts/schema.mjs';
+
+const PROD = process.env.ELEVENTY_ENV === 'production';
+
+export default async function (eleventyConfig) {
+	let limpo = false;
+
+	eleventyConfig.addDataExtension('yml,yaml', (conteudo) => yaml.load(conteudo));
+	eleventyConfig.addGlobalData('ambiente', { prod: PROD, dev: !PROD });
+
+	// CSS e JS com hash no nome + imagens responsivas: recalculados a cada build.
+	eleventyConfig.addGlobalData('assets', async () => construirAssets({ prod: PROD, saida: 'dist' }));
+	eleventyConfig.addGlobalData('imagens', async () => processarImagens({ saida: 'dist' }));
+
+	eleventyConfig.on('eleventy.before', async () => {
+		if (PROD && !limpo) {
+			await rm('dist', { recursive: true, force: true });
+			limpo = true;
+		}
+	});
+	eleventyConfig.on('eleventy.after', async ({ results }) => {
+		if (PROD) {
+			await posProcessar({ saida: 'dist', resultados: results });
+		}
+	});
+
+	// Guia de estilo /_estilo/: só no modo de desenvolvimento.
+	if (PROD) eleventyConfig.ignores.add('src/_estilo/**');
+
+	eleventyConfig.addWatchTarget('src/styles/');
+	eleventyConfig.addWatchTarget('src/scripts/');
+	eleventyConfig.addWatchTarget('src/content/');
+	eleventyConfig.addWatchTarget('src/assets/');
+
+	// Arquivos copiados como estão.
+	eleventyConfig.addPassthroughCopy({ 'src/assets/fonts': 'assets/fonts' }, { filter: ['**/*', '!**/.gitkeep'] });
+	eleventyConfig.addPassthroughCopy({ 'src/assets/brand': 'assets/img/brand' });
+	eleventyConfig.addPassthroughCopy({ 'src/assets/og': 'assets/img/og' });
+	eleventyConfig.addPassthroughCopy({ 'src/php/config.example.php': 'config.example.php' });
+	eleventyConfig.addPassthroughCopy({ 'src/servidor/.htaccess': '.htaccess' });
+	eleventyConfig.addPassthroughCopy({ 'src/servidor/leads.htaccess': 'leads/.htaccess' });
+	eleventyConfig.addPassthroughCopy({ 'src/servidor/favicon.ico': 'favicon.ico' });
+
+	registrarFiltros(eleventyConfig, { prod: PROD });
+	eleventyConfig.addNunjucksGlobal('montarSchema', montarSchema);
+
+	eleventyConfig.setServerOptions({ port: 8081, showAllHosts: false });
+	eleventyConfig.setQuietMode(true);
+
+	return {
+		dir: { input: 'src', output: 'dist', includes: '_includes', data: '_data' },
+		templateFormats: ['njk', '11ty.js'],
+		htmlTemplateEngine: 'njk',
+		markdownTemplateEngine: false,
+	};
+}

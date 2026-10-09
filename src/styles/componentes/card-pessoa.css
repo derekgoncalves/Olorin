@@ -1,0 +1,85 @@
+/* Card de pessoa da equipe (foto em moldura de janela). */
+.o-equipe__cabeca {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	align-items: end;
+	gap: 24px clamp(32px, 5vw, 80px);
+	margin-bottom: clamp(36px, 5vw, 64px);
+}
+.o-equipe__cabeca .o-titulo {
+	margin-bottom: 0;
+}
+.o-equipe__grade {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: clamp(20px, 3vw, 40px);
+}
+.o-pessoa {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+.o-pessoa__foto {
+	--janela-borda: var(--cor-texto);
+	--janela-barra: var(--cor-texto);
+	--janela-tinta: var(--cor-fundo);
+	--janela-sombra: rgba(126, 59, 237, 0.55);
+	margin: 0;
+	overflow: hidden;
+}
+.o-pessoa__foto img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	transition: transform 0.6s var(--curva);
+}
+.o-pessoa:hover .o-pessoa__foto img {
+	transform: scale(1.03);
+}
+.o-pessoa__nome {
+	margin: 0 0 6px !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(18px, 1.6vw, 24px);
+	line-height: 1.05;
+	text-transform: uppercase;
+}
+.o-pessoa__funcao {
+	margin: 0 0 10px !important;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--cor-destaque);
+}
+.o-pessoa__frase {
+	margin: 0 !important;
+	font-size: 15px;
+	color: var(--cor-apoio);
+}
+.o-equipe__acoes {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px 28px;
+	margin-top: clamp(36px, 4vw, 56px);
+}
+/* Versão compacta (páginas de serviço: "Quem faz") */
+.o-pessoa--compacta {
+	flex-direction: row;
+	align-items: center;
+	gap: 20px;
+}
+.o-pessoa--compacta .o-pessoa__foto {
+	flex: none;
+	width: 132px;
+}
+.o-pessoa--compacta .o-pessoa__foto img {
+	aspect-ratio: 1;
+}
+.o-pessoa--compacta .o-janela__barra {
+	--ctrl-l: 26px;
+	--barra-x: 8px;
+	font-size: 10px;
+}

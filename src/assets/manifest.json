@@ -1,0 +1,364 @@
+{
+  "_leia": "Inventário de imagens (PROMPT seção 12.1). 'recorte' = [esquerda, topo, largura, altura] em pixels do original. 'publicar: false' tira a imagem do site. Fotos de clientes, logos e prints só com autorizacao_de_uso = confirmada.",
+  "imagens": {
+    "hero-celular": {
+      "arquivo_original": "src/assets/img-src/hero-celular.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "Pessoas atravessando a faixa de pedestres, vistas de cima, na tela de um celular",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Foto do manual de marca (página 5). Tratamento P&B aplicado no próprio arquivo para pesar menos.",
+      "tratamento": "pb",
+      "larguras": [
+        270,
+        400,
+        540
+      ],
+      "largura_padrao": 400,
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "sobre-bastidores": {
+      "arquivo_original": "src/assets/img-src/sobre-bastidores.webp",
+      "categoria": "bastidor",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "Mãos digitando em um notebook, nos bastidores da Olorin",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Foto do manual de marca (página 16).",
+      "tratamento": "pb",
+      "larguras": [
+        400,
+        736
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "erro-404": {
+      "arquivo_original": "src/assets/img-src/erro-404.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Foto do olho, do manual de marca (página 6). Decorativa.",
+      "larguras": [
+        640,
+        1200
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "equipe-natalia": {
+      "arquivo_original": "src/assets/img-src/equipe/natalia-arruda.png",
+      "categoria": "equipe",
+      "pessoa_ou_cliente": "Natália Arruda",
+      "servico_tags": [
+        "trafego-pago"
+      ],
+      "alt": "Natália Arruda, de cabelo cacheado, sorrindo para a câmera",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos na mensagem (Natália, Vinicius, Derek) — conferir. Original pequeno (417×533): pedir uma foto maior.",
+      "recorte": [
+        0,
+        6,
+        417,
+        521
+      ],
+      "larguras": [
+        320,
+        417
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "equipe-natalia-quadrada": {
+      "arquivo_original": "src/assets/img-src/equipe/natalia-arruda.png",
+      "categoria": "equipe",
+      "pessoa_ou_cliente": "Natália Arruda",
+      "servico_tags": [
+        "trafego-pago"
+      ],
+      "alt": "Natália Arruda",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 1:1 com foco no rosto.",
+      "recorte": [
+        0,
+        40,
+        417,
+        417
+      ],
+      "larguras": [
+        160,
+        320
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "equipe-vinicius": {
+      "arquivo_original": "src/assets/img-src/equipe/vinicius-mafra.webp",
+      "categoria": "equipe",
+      "pessoa_ou_cliente": "Vinicius Mafra",
+      "servico_tags": [
+        "identidade-visual",
+        "redes-sociais",
+        "material-impresso",
+        "site-e-loja-virtual"
+      ],
+      "alt": "Vinicius Mafra, de cabelo raspado, barba e jaqueta preta, olhando para o lado",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos — conferir.",
+      "recorte": [
+        60,
+        0,
+        864,
+        1080
+      ],
+      "larguras": [
+        320,
+        480,
+        640
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "equipe-vinicius-quadrada": {
+      "arquivo_original": "src/assets/img-src/equipe/vinicius-mafra.webp",
+      "categoria": "equipe",
+      "pessoa_ou_cliente": "Vinicius Mafra",
+      "servico_tags": [],
+      "alt": "Vinicius Mafra",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 1:1 com foco no rosto.",
+      "recorte": [
+        140,
+        120,
+        760,
+        760
+      ],
+      "larguras": [
+        160,
+        320
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "equipe-derek": {
+      "arquivo_original": "src/assets/img-src/equipe/derek-goncalves.webp",
+      "categoria": "equipe",
+      "pessoa_ou_cliente": "Derek Gonçalves",
+      "servico_tags": [
+        "redes-sociais",
+        "rastreamento-e-relatorio"
+      ],
+      "alt": "Derek Gonçalves, de barba e camiseta clara, com prédios da cidade ao fundo",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos — conferir.",
+      "recorte": [
+        190,
+        200,
+        660,
+        825
+      ],
+      "larguras": [
+        320,
+        480,
+        660
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "equipe-derek-quadrada": {
+      "arquivo_original": "src/assets/img-src/equipe/derek-goncalves.webp",
+      "categoria": "equipe",
+      "pessoa_ou_cliente": "Derek Gonçalves",
+      "servico_tags": [],
+      "alt": "Derek Gonçalves",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 1:1 com foco no rosto.",
+      "recorte": [
+        240,
+        220,
+        620,
+        620
+      ],
+      "larguras": [
+        160,
+        320
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-marca-identidade": {
+      "arquivo_original": "src/assets/img-src/portfolio/marca-identidade.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "servico_tags": [
+        "identidade-visual"
+      ],
+      "alt": "Catálogo de cores aberto ao lado de um tablet com ilustrações coloridas",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Imagem ilustrativa provisória (não é trabalho da Olorin). Substituir por trabalhos reais.",
+      "larguras": [
+        300,
+        600
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-campanha-trafego": {
+      "arquivo_original": "src/assets/img-src/portfolio/campanha-trafego.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "servico_tags": [
+        "trafego-pago"
+      ],
+      "alt": "Tablet com um estudo da letra A, caneta, fone de ouvido e um impresso laranja sobre a mesa",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Imagem ilustrativa provisória.",
+      "larguras": [
+        300,
+        600
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-impresso-catalogo": {
+      "arquivo_original": "src/assets/img-src/portfolio/impresso-catalogo.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "servico_tags": [
+        "material-impresso"
+      ],
+      "alt": "Celular mostrando um perfil com fotos organizadas em grade",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Imagem ilustrativa provisória.",
+      "larguras": [
+        300,
+        600
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-site-institucional": {
+      "arquivo_original": "src/assets/img-src/portfolio/site-institucional.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "servico_tags": [
+        "site-e-loja-virtual"
+      ],
+      "alt": "Estação de trabalho com dois monitores mostrando código, em um ambiente escuro",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Imagem ilustrativa provisória.",
+      "larguras": [
+        300,
+        600
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-redes-conteudo": {
+      "arquivo_original": "src/assets/img-src/portfolio/redes-conteudo.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "servico_tags": [
+        "redes-sociais"
+      ],
+      "alt": "Mão erguendo um celular contra o céu azul",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Imagem ilustrativa provisória.",
+      "larguras": [
+        320,
+        640
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-campanha-google-ads": {
+      "arquivo_original": "src/assets/img-src/portfolio/campanha-google-ads.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "servico_tags": [
+        "trafego-pago"
+      ],
+      "alt": "Notebook aberto mostrando um painel com gráficos de resultados",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Imagem ilustrativa provisória.",
+      "larguras": [
+        300,
+        600
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-marca-producao": {
+      "arquivo_original": "src/assets/img-src/portfolio/marca-producao.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "servico_tags": [
+        "identidade-visual"
+      ],
+      "alt": "Pessoa trabalhando com ferramentas em uma bancada iluminada",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Imagem ilustrativa provisória.",
+      "larguras": [
+        300,
+        600
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-impresso-loja": {
+      "arquivo_original": "src/assets/img-src/portfolio/impresso-loja.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "servico_tags": [
+        "material-impresso"
+      ],
+      "alt": "Roupas infantis estampadas penduradas em uma arara",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Imagem ilustrativa provisória.",
+      "larguras": [
+        300,
+        600
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    }
+  }
+}

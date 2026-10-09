@@ -1,0 +1,56 @@
+{#- ===== SEÇÃO: Como é o nosso relatório (exemplo ilustrativo, dados fictícios) — src/content/home.yml → relatorio ===== -#}
+{%- set r = conteudo.home.relatorio -%}
+{%- set maximo = 0 -%}
+{%- for g in r.grafico %}{% if g.valor > maximo %}{% set maximo = g.valor %}{% endif %}{% endfor -%}
+<section class="o-sec o-relatorio o-ctx-branco" id="relatorio" data-secao="relatorio" aria-labelledby="relatorio-titulo">
+	<div class="o-wrap o-relatorio__grade">
+		<div class="o-relatorio__texto">
+			<p class="o-etiqueta">{{ r.etiqueta }}</p>
+			<h2 class="o-titulo o-titulo--g o-relatorio__titulo" id="relatorio-titulo">{{ r.titulo }}</h2>
+			<p class="o-apoio">{{ r.texto }}</p>
+			<p class="o-relatorio__glossario">{{ r.glossario }}</p>
+		</div>
+		<figure class="o-painel o-janela" aria-labelledby="relatorio-legenda">
+			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ r.janela }}</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-janela__corpo">
+				<p class="o-painel__aviso"><span class="o-icone o-icone--estrela" aria-hidden="true"></span>{{ r.aviso }}</p>
+				<p class="o-painel__mes">{{ r.mes }}</p>
+				<ul class="o-painel__kpis">
+				{%- for k in r.indicadores %}
+					<li class="o-kpi o-kpi--{{ k.tendencia }}">
+						<span class="o-kpi__rotulo">{{ k.rotulo }}</span>
+						<strong class="o-kpi__valor">{{ k.valor }}</strong>
+						<span class="o-kpi__variacao">{{ k.variacao }}</span>
+					</li>
+				{%- endfor %}
+				</ul>
+				<div class="o-painel__grafico">
+					<p class="o-painel__subtitulo" id="relatorio-grafico">{{ r.grafico_titulo }}</p>
+					<ol class="o-barras" aria-hidden="true">
+					{%- for g in r.grafico %}
+						<li class="o-barras__coluna{% if loop.last %} o-barras__coluna--atual{% endif %}" style="--altura: {{ (g.valor / maximo * 100) | round }}%">
+							<span class="o-barras__valor">{{ (g.valor / 1000) | round(1) | replace(".", ",") }} mil</span>
+							<span class="o-barras__barra"></span>
+							<span class="o-barras__rotulo">{{ g.rotulo | replace("Semana ", "Sem. ") }}</span>
+						</li>
+					{%- endfor %}
+					</ol>
+					<table class="o-sr">
+						<caption>{{ r.grafico_titulo }} ({{ r.aviso | lower }})</caption>
+						<thead><tr><th scope="col">Semana</th><th scope="col">Faturamento atribuído</th></tr></thead>
+						<tbody>
+						{%- for g in r.grafico %}<tr><th scope="row">{{ g.rotulo }}</th><td>{{ g.valor | reais }}</td></tr>{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="o-painel__proxima">
+					<p class="o-painel__subtitulo">{{ r.proxima_titulo }}</p>
+					<ol>
+					{%- for item in r.proxima %}<li>{{ item }}</li>{% endfor %}
+					</ol>
+				</div>
+			</div>
+			<figcaption class="o-sr" id="relatorio-legenda">Painel de relatório mensal — {{ r.aviso | lower }}.</figcaption>
+		</figure>
+	</div>
+</section>

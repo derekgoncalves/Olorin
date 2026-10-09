@@ -1,0 +1,12 @@
+Fontes usadas no site da Olorin Digital (olorin.com.br)
+
+As fontes desta pasta são versões reduzidas (só os caracteres do português) de fontes livres,
+distribuídas sob a SIL Open Font License 1.1 (https://openfontlicense.org):
+
+- Archivo Expanded (pesos 800 e 900) — Copyright Omnibus-Type. Substituta da Integral CF.
+- Cascadia Code (pesos 400 e 700) — Copyright Microsoft Corporation.
+- Silkscreen (peso 400) — Copyright Jason Kottke. Substituta da Retro Computer.
+
+As fontes pagas da marca (Integral CF e Retro Computer), quando presentes na pasta
+"licenciadas/", são usadas sob licença individual do dono do site e NÃO podem ser copiadas
+ou redistribuídas.

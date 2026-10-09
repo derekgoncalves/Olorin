@@ -1,0 +1,155 @@
+# ============================================================
+# SERVIÇO: Redes sociais e conteúdo — fonte ÚNICA da página /servicos/redes-sociais/
+# e da landing de campanha /promo/redes-sociais/ (PROMPT seções 9 e 11).
+# Só fatos do PROMPT.md. O que falta confirmar vai com [CONFIRMAR: ...]
+# (não aparece no site publicado; itens de lista com marcador somem inteiros).
+# ============================================================
+slug: redes-sociais
+ordem: 2
+nome: Redes sociais e conteúdo
+chip: Redes sociais e conteúdo   # igual à opção do formulário e à lista do enviar.php
+icone: redes
+janela: feed.exe
+atualizado: "2026-10-08"
+quem_faz: [vinicius-mafra, derek-goncalves]
+quem_faz_nota: "[CONFIRMAR: divisão entre arte (Vinicius) e comunicação (Derek)]"
+
+seo:
+  title: Gestão de Redes Sociais em Curitiba | Olorin Digital
+  description: Calendário editorial, posts, stories e legendas com a mesma cara do seu anúncio e do seu site. Incluso na gestão a partir de R$ 2.500/mês.
+
+card:
+  titulo: Redes sociais e conteúdo
+  resumo: Calendário editorial, criação de post, story e legenda. Um feed que sustenta o anúncio em vez de brigar com ele.
+  resumo_curto: Calendário, posts, stories e legendas.
+
+hero:
+  eyebrow: Gestão de redes sociais em Curitiba e para todo o Brasil
+  h1: Um feed que sustenta o anúncio, em vez de brigar com ele.
+  sub: Calendário editorial, posts, stories e legendas feitos pelo mesmo time que cria os seus anúncios. Uma marca só, do anúncio ao perfil.
+  janela_linhas:
+    - Calendário editorial · aprovado
+    - Post, story e legenda · no ar
+    - Relatório · todo mês
+
+resposta_curta: >-
+  Gestão de redes sociais é planejar, criar e publicar posts, stories e legendas com a mesma cara do seu
+  anúncio e do seu site. É para quem quer um perfil que ajude a vender, e não só a aparecer. Está inclusa na
+  Gestão mensal, que junta tráfego pago e conteúdo por R$ 2.500/mês (verba de anúncio à parte), e no 360
+  completo, por R$ 5.000/mês. Como todo trabalho de marca e conteúdo, pede de 2 a 3 meses de consistência.
+
+dores:
+  titulo: Isso acontece com você?
+  itens:
+    - O anúncio leva a pessoa até o seu perfil, e o feed (a grade de posts que ela vê primeiro) parece de outra empresa.
+    - Você posta quando sobra tempo, sem plano, e o perfil passa semanas parado.
+    - Um fornecedor faz a arte, outro escreve a legenda, outro cuida do anúncio — e nenhum conversa com o outro.
+    - Cada post sai com uma cor, uma letra e um jeito de falar, e a marca não fica na cabeça de ninguém.
+
+para_quem:
+  e:
+    - Quem anuncia (ou vai anunciar) e quer um perfil que confirme o que o anúncio promete.
+    - Quem não tem tempo de planejar, criar e escrever post e prefere aprovar um calendário pronto.
+    - Quem hoje tem um fornecedor para cada coisa e quer anúncio, conteúdo e arte com o mesmo time.
+    - Quem quer tráfego pago e conteúdo no mesmo plano, com relatório todo mês.
+  nao_e:
+    - "Quem quer só aparecer, sem pensar em venda. O nosso lema é outro: não é sobre aparecer, é sobre vender."
+    - Quem quer "viralizar" do dia para a noite. Marca e conteúdo pedem de 2 a 3 meses de consistência.
+    - "[CONFIRMAR: outros critérios de quem não é cliente ideal para redes sociais]"
+
+entregas:
+  titulo: O que entregamos
+  itens:
+    - titulo: Calendário editorial
+      texto: O planejamento de tudo o que vai ao ar — tema, formato e data de cada publicação. Você vê o plano antes e aprova.
+      icone: relogio
+    - titulo: Posts e stories
+      texto: Artes para o feed e para os stories, feitas pelo nosso próprio time de criação. Nada é terceirizado.
+      frequencia: todo mês
+      icone: redes
+    - titulo: Legendas
+      texto: O texto de cada post, na voz da sua marca e com as palavras que o seu cliente usa. Sem jargão e sem enrolação.
+      icone: pixel
+    - titulo: Alinhamento com anúncio e site
+      texto: Feed, anúncio e site com as mesmas cores, a mesma letra e o mesmo jeito de falar. Quem clica no anúncio e abre o seu perfil reconhece a marca na hora.
+      icone: marca
+    - titulo: Relatório mensal
+      texto: Um relatório fechado, em linguagem simples, com o que funcionou e o que muda na próxima rodada.
+      frequencia: todo mês
+      icone: dados
+    - titulo: Volume do mês
+      texto: "[CONFIRMAR: quantos posts e stories por mês e em quais redes sociais, em cada plano]"
+      icone: mais
+
+como_funciona:
+  titulo: Como funciona
+  etapas:
+    - nome: Diagnóstico
+      texto: Olhamos o seu perfil, os anúncios, o site e o material da marca. Vemos onde o feed ajuda e onde atrapalha a venda antes de criar qualquer post.
+    - nome: Direção
+      texto: Definimos o que falar, para quem e com qual cara. Daí sai o calendário editorial, que você aprova antes de ir ao ar.
+    - nome: Execução
+      texto: Posts, stories e legendas criados e publicados pelo mesmo time que faz os seus anúncios. Tudo sai pela mesma porta, no mesmo ritmo.
+    - nome: Leitura
+      texto: Todo mês, um relatório que qualquer pessoa entende, com o que funcionou e o que vem na próxima rodada.
+  prazos:
+    - "[CONFIRMAR: o que acontece nos primeiros 30 dias]"
+    - "[CONFIRMAR: o que acontece até os 60 dias]"
+    - "[CONFIRMAR: o que acontece até os 90 dias]"
+
+precisamos:
+  titulo: O que precisamos de você
+  itens:
+    - Acesso aos perfis da marca nas redes sociais.
+    - "[CONFIRMAR: materiais pedidos no início (fotos, vídeos, logotipo, manual de marca)]"
+    - Aprovação do calendário editorial e das peças antes de irem ao ar.
+    - "[CONFIRMAR: quem responde comentários e mensagens no direct (vocês ou a Olorin)]"
+
+preco:
+  titulo: Quanto custa
+  formato: Incluso na Gestão mensal
+  valor: R$ 2.500/mês
+  detalhe: Valor da Gestão mensal, que junta tráfego pago e conteúdo. A verba de anúncio é investida à parte, direto nas plataformas Meta e Google — recomendamos a partir de R$ 1.500/mês. As redes também fazem parte do 360 completo, por R$ 5.000/mês.
+  total: "Custo total de entrada: a partir de R$ 4.000/mês (gestão + verba mínima recomendada)."
+  contrato: Contrato mínimo de 3 meses. Depois, mês a mês com aviso de 30 dias e sem multa rescisória.
+  inclui:
+    - Calendário editorial
+    - Criação de post, story e legenda
+    - Alinhamento visual com os anúncios e o site
+    - Tráfego pago com otimização semanal das campanhas (plano Gestão mensal)
+    - Relatório fechado todo mês
+  nao_inclui:
+    - A verba de anúncio (paga direto à Meta e ao Google)
+    - Site, loja virtual e material impresso (contratados à parte ou no plano 360 completo)
+    - "[CONFIRMAR: produção de foto e vídeo (sessão ou gravação) está inclusa ou é à parte]"
+
+combina_com:
+  - slug: trafego-pago
+    porque: O anúncio leva a pessoa até o seu perfil, e o feed confirma o que ele prometeu. Na Gestão mensal, os dois já andam juntos.
+  - slug: identidade-visual
+    porque: Com logotipo, cores e manual de marca definidos, cada post sai com a mesma cara. É a identidade que faz o feed parecer de uma empresa só.
+
+faq:
+  - id: redes-quanto-custa
+    pergunta: Quanto custa a gestão de redes sociais?
+    resposta: As redes sociais estão inclusas na Gestão mensal, que custa R$ 2.500 por mês e junta tráfego pago e conteúdo. Também fazem parte do 360 completo, por R$ 5.000 por mês. A verba de anúncio é paga à parte, direto à Meta e ao Google — recomendamos a partir de R$ 1.500 por mês.
+  - id: redes-so-redes
+    pergunta: Dá para contratar só as redes sociais, sem tráfego pago?
+    resposta: "[CONFIRMAR: contratação só de redes sociais — se é possível, em que formato e por quanto]"
+  - id: redes-quem-cria
+    pergunta: Quem cria os posts e escreve as legendas?
+    resposta: O nosso próprio time, o mesmo que faz os seus anúncios. Não terceirizamos para fornecedor externo. O Vinicius Mafra responde pela direção de arte, e o Derek Gonçalves coordena a sua conta no dia a dia.
+  - id: redes-tempo-resultado
+    pergunta: Em quanto tempo vejo resultado nas redes?
+    resposta: Marca e conteúdo pedem de 2 a 3 meses de consistência. Quando as redes andam junto com o tráfego pago, as campanhas de resposta direta (venda e mensagem) costumam dar sinais claros em 2 a 4 semanas.
+  - id: redes-aprovacao
+    pergunta: Posso aprovar o conteúdo antes de ir ao ar?
+    resposta: Sim. Você aprova o calendário editorial e as peças antes da publicação. Como o atendimento é 100% remoto, as aprovações são feitas por e-mail.
+  - id: redes-fora-curitiba
+    pergunta: Vocês atendem fora de Curitiba?
+    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo e aprovações por e-mail.
+
+campanha:
+  titulo: Seu feed ajuda ou atrapalha o seu anúncio?
+  subtitulo: Diagnóstico gratuito do seu perfil, dos anúncios e do site, feito por quem cria. Sem compromisso.
+  faq: [redes-quanto-custa, redes-quem-cria, redes-tempo-resultado, redes-fora-curitiba]

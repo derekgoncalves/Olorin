@@ -1,0 +1,88 @@
+/* Aviso de cookies (LGPD) — três ações com o mesmo peso visual. Não cobre o botão principal no celular. */
+.o-cookies {
+	position: fixed;
+	left: clamp(12px, 2vw, 24px);
+	bottom: clamp(12px, 2vw, 24px);
+	z-index: 300;
+	width: min(420px, calc(100% - 24px));
+	border: var(--borda) solid var(--branco);
+	background: var(--preto);
+	color: var(--branco);
+	box-shadow: 6px 6px 0 var(--verde);
+	animation: o-descer 0.4s var(--curva);
+	--cor-foco: var(--verde);
+}
+.o-cookies[hidden] {
+	display: none;
+}
+.o-cookies__barra {
+	position: relative;
+	padding: 8px 64px 8px 12px;
+	background: var(--branco);
+	color: var(--preto);
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	--barra-x: 12px;
+	--ctrl-l: 41px;
+}
+.o-cookies__corpo {
+	padding: 16px;
+	font-size: 13px;
+	line-height: 1.55;
+}
+.o-cookies__titulo {
+	margin: 0 0 6px;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.o-cookies__corpo p {
+	margin: 0;
+}
+.o-cookies__corpo a {
+	color: var(--verde);
+}
+.o-cookies__acoes {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 8px;
+	margin-top: 14px;
+}
+.o-cookies__btn {
+	min-height: 46px;
+	padding: 10px 6px;
+	border: var(--borda) solid var(--branco);
+	background: transparent;
+	color: var(--branco);
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: 12px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.o-cookies__btn:hover {
+	background: var(--branco);
+	color: var(--preto);
+}
+.o-cookies__opcoes {
+	display: grid;
+	gap: 10px;
+	margin-top: 14px;
+}
+.o-cookies__opcoes[hidden] {
+	display: none;
+}
+.o-cookies__opcao {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	cursor: pointer;
+}
+.o-cookies__opcao input {
+	width: 20px;
+	height: 20px;
+	margin: 2px 0 0;
+	accent-color: var(--verde);
+}

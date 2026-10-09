@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+modo: simples
+slug: politica-de-privacidade
+og_imagem: /assets/img/og/home.jpg
+migalhas:
+  - { nome: Home, url: / }
+  - { nome: Política de Privacidade, url: /politica-de-privacidade/ }
+eleventyComputed:
+  titulo: "{{ conteudo.paginas.privacidade.seo.titulo }}"
+  descricao: "{{ conteudo.paginas.privacidade.seo.descricao }}"
+---
+{#- Política de Privacidade — texto em src/content/paginas/privacidade.yml (rascunho para revisão jurídica). -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set p = conteudo.paginas.privacidade -%}
+<section class="o-pagina-topo o-ctx-preto" data-secao="privacidade-hero">
+	<div class="o-wrap">
+		{{ ui.migalhas(migalhas) }}
+		<h1 class="o-pagina-topo__titulo">{{ p.titulo }}</h1>
+		<p class="o-atualizado o-atualizado--escuro">Última atualização: <time datetime="{{ p.atualizado }}">{{ p.atualizado | dataBR }}</time></p>
+	</div>
+</section>
+<article class="o-texto o-ctx-branco">
+	<div class="o-texto__dentro">
+		<p>{{ p.introducao | emLinha | safe }}</p>
+		{%- for sec in p.secoes %}
+		<h2 id="{{ sec.id }}">{{ sec.titulo }}</h2>
+		{%- for par in sec.paragrafos %}{% if par %}<p>{{ par | emLinha | confirmar | safe }}</p>{% endif %}{% endfor %}
+		{%- if sec.lista and sec.lista.length %}
+		<ul>{% for item in sec.lista %}<li>{{ item | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
+		{%- endif %}
+		{%- endfor %}
+	</div>
+</article>

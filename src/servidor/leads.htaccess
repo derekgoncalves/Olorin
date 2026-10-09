@@ -1,0 +1,10 @@
+# Pasta de pedidos (leads). Só é usada se o PHP não conseguir gravar fora do public_html.
+# Ninguém abre nada daqui pelo navegador: baixe as planilhas pelo FTP.
+Options -Indexes
+<IfModule mod_authz_core.c>
+	Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+	Order allow,deny
+	Deny from all
+</IfModule>

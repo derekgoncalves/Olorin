@@ -1,0 +1,27 @@
+{#- ===== SEÇÃO: Checklist de dores — src/content/home.yml → checklist ===== -#}
+{%- set c = conteudo.home.checklist -%}
+<section class="o-sec o-checklist-sec o-ctx-branco" id="checklist" data-secao="checklist" aria-labelledby="checklist-titulo">
+	<div class="o-wrap">
+		<p class="o-etiqueta">{{ c.etiqueta }}</p>
+		<h2 class="o-titulo" id="checklist-titulo">{{ c.titulo }}</h2>
+		<p class="o-checklist__dica" id="checklist-dica">{{ c.dica }}</p>
+		<ul class="o-checklist" data-o-checklist aria-describedby="checklist-dica">
+		{%- for item in c.itens %}
+			<li class="o-checklist__item"><button class="o-check" type="button" aria-pressed="false" data-o-check><span class="o-check__num" aria-hidden="true">{{ "0" + loop.index if loop.index < 10 else loop.index }}</span><span class="o-check__texto">{{ item }}</span></button></li>
+		{%- endfor %}
+		</ul>
+		<div class="o-checklist__fim">
+			<div class="o-checklist__placar">
+				<p class="o-checklist__contador" aria-live="polite" data-o-check-contador data-um="{{ c.contador_um }}" data-varios="{{ c.contador_varios }}" data-total="{{ c.itens.length }}"><span class="o-medidor" aria-hidden="true">{% for item in c.itens %}<i></i>{% endfor %}</span><span data-o-check-rotulo>0 de {{ c.itens.length }} {{ c.contador_varios }}</span></p>
+				<div class="o-checklist__resposta" data-o-check-resposta aria-live="polite">
+					<p class="o-checklist__veredito" data-o-check-padrao>{{ c.resposta_padrao }}</p>
+					<div class="o-checklist__solucao" data-o-check-solucao hidden>
+						<p class="o-checklist__veredito">{{ c.resposta_titulo }}</p>
+						<p>{{ c.resposta }}</p>
+					</div>
+				</div>
+			</div>
+			<a class="o-btn o-btn--preto" href="#metodo" data-cta="checklist-resolver">{{ c.cta }}</a>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,353 @@
+/* Formulário de orçamento (componente único, janela violeta "orcamento.exe"). */
+.o-form {
+	--cor-fundo: var(--violeta);
+	--cor-texto: var(--branco);
+	--cor-apoio: rgba(255, 255, 255, 0.92);
+	--cor-foco: var(--branco);
+	--cor-destaque: var(--branco);
+	--janela-barra: var(--branco);
+	--janela-tinta: var(--violeta);
+	position: relative;
+	border: var(--borda) solid var(--branco);
+	background:
+		radial-gradient(90% 70% at 100% 0%, var(--gradiente-indigo), transparent 60%),
+		var(--violeta);
+	box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.35);
+	color: var(--branco);
+	scroll-margin-top: calc(var(--altura-topo) + 16px);
+}
+.o-ctx-preto .o-form {
+	box-shadow: 10px 10px 0 rgba(126, 59, 237, 0.4);
+}
+.o-ctx-violeta .o-form {
+	background: rgba(0, 0, 0, 0.16);
+}
+.o-form > .o-janela__barra {
+	background: var(--branco);
+	color: var(--violeta);
+}
+.o-form__corpo {
+	padding: clamp(20px, 3vw, 36px);
+}
+.o-form__progresso {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0 0 22px;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+.o-form__alerta {
+	margin: 0 0 20px;
+	padding: 12px 14px;
+	background: var(--preto);
+	color: var(--branco);
+	font-size: 14px;
+}
+.o-form__alerta[hidden] {
+	display: none;
+}
+.o-form__etapa {
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.o-form__legenda {
+	float: left;
+	width: 100%;
+	margin: 0 0 18px;
+	padding: 0;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(17px, 1.6vw, 22px);
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+.o-form__legenda + * {
+	clear: both;
+}
+.o-form__legenda:focus {
+	outline: none;
+}
+.o-form__legenda:focus-visible {
+	outline: 3px solid var(--branco);
+}
+
+/* Sem JS: as duas etapas aparecem; com JS: uma de cada vez. */
+html.js .o-form[data-etapa="1"] .o-form__etapa[data-etapa="2"],
+html.js .o-form[data-etapa="2"] .o-form__etapa[data-etapa="1"] {
+	display: none;
+}
+html:not(.js) .o-form__avancar,
+html:not(.js) .o-form__voltar,
+html:not(.js) .o-form__progresso {
+	display: none;
+}
+html:not(.js) .o-form__etapa[data-etapa="2"] {
+	margin-top: 12px;
+}
+html.js .o-form[data-etapa="2"] .o-form__etapa[data-etapa="2"] {
+	animation: o-descer 0.4s var(--curva);
+}
+
+.o-campo {
+	min-width: 0;
+	margin: 0 0 18px;
+	padding: 0;
+	border: 0;
+}
+.o-campo > label,
+.o-campo__rotulo {
+	display: block;
+	margin-bottom: 8px;
+	padding: 0;
+	font-family: var(--fonte-texto);
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 1.4;
+}
+.o-campo__opcional {
+	font-weight: 400;
+	opacity: 0.88;
+}
+.o-form input[type="text"],
+.o-form input[type="tel"],
+.o-form input[type="email"],
+.o-form select,
+.o-form textarea {
+	display: block;
+	width: 100%;
+	min-height: 52px;
+	padding: 13px 16px;
+	border: var(--borda) solid rgba(255, 255, 255, 0.65);
+	border-radius: 0;
+	background: rgba(0, 0, 0, 0.14);
+	color: var(--branco);
+	font-family: var(--fonte-texto);
+	font-size: 16px;
+	line-height: 1.4;
+	-webkit-appearance: none;
+	appearance: none;
+	transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+.o-form textarea {
+	min-height: 96px;
+	resize: vertical;
+}
+.o-form ::placeholder {
+	color: rgba(255, 255, 255, 0.66);
+	opacity: 1;
+}
+.o-form input:focus,
+.o-form select:focus,
+.o-form textarea:focus {
+	outline: none;
+	border-color: var(--branco);
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 5px 5px 0 var(--preto);
+}
+.o-form [aria-invalid="true"] {
+	border-color: var(--branco) !important;
+	background: rgba(0, 0, 0, 0.38) !important;
+}
+.o-campo__erro {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin: 8px 0 0;
+	padding: 6px 10px;
+	background: var(--preto);
+	color: var(--branco);
+	font-family: var(--fonte-texto);
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 1.4;
+}
+.o-campo__erro[hidden] {
+	display: none;
+}
+.o-campo__dica {
+	margin: 8px 0 0;
+	font-size: 13px;
+	color: var(--cor-apoio);
+}
+/* "Ainda não invisto" → mensagem honesta (funciona até sem JS) */
+.o-campo__dica--sem-verba {
+	display: none;
+	padding: 8px 10px;
+	border-left: 4px solid var(--branco);
+	background: rgba(0, 0, 0, 0.2);
+}
+.o-campo--verba:has(option[value="Ainda não invisto"]:checked) .o-campo__dica--sem-verba,
+.o-campo--verba.tem-sem-verba .o-campo__dica--sem-verba {
+	display: block;
+}
+.o-select {
+	position: relative;
+}
+.o-select::after {
+	content: "";
+	position: absolute;
+	right: 16px;
+	top: 50%;
+	width: 12px;
+	height: 12px;
+	translate: 0 -50%;
+	rotate: 90deg;
+	background: var(--branco);
+	-webkit-mask: var(--icone-seta) center / contain no-repeat;
+	mask: var(--icone-seta) center / contain no-repeat;
+	pointer-events: none;
+}
+.o-form select {
+	padding-right: 44px;
+	cursor: pointer;
+}
+.o-form select option {
+	background: var(--branco);
+	color: var(--preto);
+}
+.o-chips {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+}
+.o-consentimento {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	min-height: 44px;
+	font-family: var(--fonte-texto) !important;
+	font-size: 13px !important;
+	line-height: 1.55 !important;
+	letter-spacing: 0 !important;
+	text-transform: none !important;
+	cursor: pointer;
+}
+.o-consentimento input {
+	flex: none;
+	display: grid;
+	place-content: center;
+	width: 24px;
+	height: 24px;
+	margin: 0;
+	border: var(--borda) solid var(--branco);
+	border-radius: 0;
+	background: transparent;
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+}
+.o-consentimento input::before {
+	content: "";
+	width: 14px;
+	height: 14px;
+	background: var(--violeta);
+	-webkit-mask: var(--icone-check) center / contain no-repeat;
+	mask: var(--icone-check) center / contain no-repeat;
+	transform: scale(0);
+	transition: transform 0.15s var(--curva);
+}
+.o-consentimento input:checked {
+	background: var(--branco);
+}
+.o-consentimento input:checked::before {
+	transform: scale(1);
+}
+.o-consentimento a {
+	font-weight: 700;
+}
+/* Isca para robôs: fora da tela (nunca só display:none) */
+.o-isca {
+	position: absolute !important;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+.o-form__avancar,
+.o-form__enviar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	width: 100%;
+	min-height: 56px;
+	margin-top: 6px;
+	padding: 16px 24px;
+	border: var(--borda) solid var(--branco);
+	background: var(--branco);
+	color: var(--violeta);
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: 14px;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: transform var(--dur-rapida) var(--curva), box-shadow var(--dur-rapida) var(--curva);
+}
+.o-form__avancar .o-icone {
+	--tam: 14px;
+}
+.o-form__avancar:hover,
+.o-form__enviar:hover,
+.o-form__avancar:focus-visible,
+.o-form__enviar:focus-visible {
+	transform: translate(-3px, -3px);
+	box-shadow: 5px 5px 0 var(--preto);
+}
+.o-form__enviar[aria-busy="true"] {
+	pointer-events: none;
+	opacity: 0.85;
+}
+.o-form__enviar[aria-busy="true"]::after {
+	content: "";
+	width: 14px;
+	height: 14px;
+	background: currentColor;
+	-webkit-mask: var(--icone-o) center / contain no-repeat;
+	mask: var(--icone-o) center / contain no-repeat;
+	animation: o-girar 0.9s linear infinite;
+}
+.o-form__voltar {
+	display: block;
+	min-height: 44px;
+	margin: 10px auto 0;
+	padding: 8px 12px;
+	border: 0;
+	background: none;
+	color: var(--branco);
+	font-size: 13px;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	cursor: pointer;
+}
+.o-form__nota {
+	margin: 12px 0 0 !important;
+	font-size: 12px;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.92);
+}
+.o-form__status {
+	margin: 14px 0 0;
+	font-size: 14px;
+}
+.o-form__status:empty {
+	display: none;
+}
+.o-form__status a {
+	font-weight: 700;
+}
+.o-form__alternativa {
+	margin: 0;
+	padding: 12px clamp(20px, 3vw, 36px) 16px;
+	border-top: 1px dashed rgba(255, 255, 255, 0.4);
+	font-size: 13px;
+}
+.o-form__alternativa a {
+	font-weight: 700;
+}
