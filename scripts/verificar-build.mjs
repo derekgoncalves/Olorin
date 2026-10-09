@@ -9,7 +9,7 @@
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import path from 'node:path';
 
-const SAIDA = 'dist';
+const SAIDA = process.env.OLORIN_SAIDA || 'dist';
 const cfg = JSON.parse(readFileSync('src/_data/site/config.json', 'utf8'));
 const erros = [];
 const avisos = [];
@@ -167,6 +167,15 @@ for (const loc of sitemap.match(/<loc>([^<]+)<\/loc>/g) || []) {
 	const arquivo = path.join(SAIDA, caminho, caminho.endsWith('/') ? 'index.html' : '');
 	if (!existsSync(arquivo)) erro('sitemap.xml', `URL sem página: ${url}`);
 	else if (/<meta name="robots" content="noindex/.test(readFileSync(arquivo, 'utf8'))) erro('sitemap.xml', `página com noindex no sitemap: ${url}`);
+}
+
+// 5b. Toda página indexável precisa estar no sitemap
+const noSitemap = new Set((sitemap.match(/<loc>([^<]+)<\/loc>/g) || []).map((l) => l.slice(5, -6)));
+for (const a of arquivos.filter((x) => x.endsWith('index.html'))) {
+	const html = readFileSync(a, 'utf8');
+	if (/<meta name="robots" content="noindex/.test(html)) continue;
+	const url = 'https://olorin.com.br/' + rel(a).replace(/index\.html$/, '');
+	if (!noSitemap.has(url)) erro('sitemap.xml', `página indexável fora do sitemap: ${url}`);
 }
 
 // 6. Orçamento de peso (PROMPT seção 15)

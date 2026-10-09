@@ -2,7 +2,7 @@
 /**
  * Olorin Digital — MODELO de configuração do formulário (enviar.php).
  *
- * COMO USAR (faça você mesma, pelo FTP ou pelo Gerenciador de Arquivos da Locaweb):
+ * COMO USAR (direto no servidor, pelo FTP ou pelo Gerenciador de Arquivos da Locaweb):
  *
  *  1. Copie este arquivo com o nome  olorin-config.php
  *  2. Coloque-o UMA PASTA ACIMA do public_html (fora da pasta pública), se a Locaweb permitir.

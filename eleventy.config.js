@@ -15,6 +15,8 @@ import { registrarFiltros } from './scripts/filtros.mjs';
 import { montarSchema } from './scripts/schema.mjs';
 
 const PROD = process.env.ELEVENTY_ENV === 'production';
+// Pasta de saída (padrão dist/). OLORIN_SAIDA permite gerar um build de teste em outra pasta.
+const SAIDA = process.env.OLORIN_SAIDA || 'dist';
 
 export default async function (eleventyConfig) {
 	let limpo = false;
@@ -23,18 +25,18 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addGlobalData('ambiente', { prod: PROD, dev: !PROD });
 
 	// CSS e JS com hash no nome + imagens responsivas: recalculados a cada build.
-	eleventyConfig.addGlobalData('assets', async () => construirAssets({ prod: PROD, saida: 'dist' }));
-	eleventyConfig.addGlobalData('imagens', async () => processarImagens({ saida: 'dist' }));
+	eleventyConfig.addGlobalData('assets', async () => construirAssets({ prod: PROD, saida: SAIDA }));
+	eleventyConfig.addGlobalData('imagens', async () => processarImagens({ saida: SAIDA }));
 
 	eleventyConfig.on('eleventy.before', async () => {
 		if (PROD && !limpo) {
-			await rm('dist', { recursive: true, force: true });
+			await rm(SAIDA, { recursive: true, force: true });
 			limpo = true;
 		}
 	});
 	eleventyConfig.on('eleventy.after', async ({ results }) => {
 		if (PROD) {
-			await posProcessar({ saida: 'dist', resultados: results });
+			await posProcessar({ saida: SAIDA, resultados: results });
 		}
 	});
 
@@ -62,7 +64,7 @@ export default async function (eleventyConfig) {
 	eleventyConfig.setQuietMode(true);
 
 	return {
-		dir: { input: 'src', output: 'dist', includes: '_includes', data: '_data' },
+		dir: { input: 'src', output: SAIDA, includes: '_includes', data: '_data' },
 		templateFormats: ['njk', '11ty.js'],
 		htmlTemplateEngine: 'njk',
 		markdownTemplateEngine: false,

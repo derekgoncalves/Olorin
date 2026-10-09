@@ -5,6 +5,7 @@ pagination:
   data: conteudo.servicos
   size: 1
   alias: servico
+  addAllPagesToCollections: true
 permalink: "/servicos/{{ servico.slug }}/"
 eleventyComputed:
   titulo: "{{ servico.seo.title }}"
@@ -204,7 +205,8 @@ eleventyComputed:
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">preco.txt</span><span class="o-janela__ctrl"></span></div>
 				<div class="o-janela__corpo">
 					{%- if s.preco.formato %}<p class="o-preco__formato">{{ s.preco.formato | confirmar | safe }}</p>{% endif %}
-					{%- if s.preco.valor %}<p class="o-preco__valor">{{ s.preco.valor | confirmar | safe }}</p>{% endif %}
+					{%- if s.preco.valor %}<p class="o-preco__valor">{{ s.preco.valor | confirmar | safe }}</p>{% elif s.preco.sem_valor %}<p class="o-preco__detalhe o-preco__sem-valor">{{ s.preco.sem_valor | emLinha | safe }}</p>{% endif %}
+					{%- if s.preco.faixa %}<p class="o-preco__detalhe">{{ s.preco.faixa | emLinha | confirmar | safe }}</p>{% endif %}
 					{%- if s.preco.detalhe %}<p class="o-preco__detalhe">{{ s.preco.detalhe | emLinha | confirmar | safe }}</p>{% endif %}
 					{%- if s.preco.total and site.config.SHOW_TOTAL_COST %}<p class="o-preco__total">{{ s.preco.total | confirmar | safe }}</p>{% endif %}
 					{%- if s.preco.contrato %}<p class="o-preco__detalhe">{{ s.preco.contrato | confirmar | safe }}</p>{% endif %}

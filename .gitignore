@@ -29,3 +29,6 @@ _inbox/
 
 # Legado: planilha de pedidos antiga
 site-estatico/leads/pedidos.csv
+
+# Backups baixados do servidor pelo npm run deploy
+backups/

@@ -302,8 +302,40 @@ function olorin_pasta_leads()
 	return '';
 }
 
+/** "+5541999990000" → "(41) 99999-0000" (o Excel não confunde com número nem com fórmula). */
+function olorin_whatsapp_legivel($e164)
+{
+	$d = preg_replace('/\D/', '', (string) $e164);
+	if (0 === strpos($d, '55') && strlen($d) > 11) {
+		$d = substr($d, 2);
+	}
+	if (11 === strlen($d)) {
+		return '(' . substr($d, 0, 2) . ') ' . substr($d, 2, 5) . '-' . substr($d, 7);
+	}
+	if (10 === strlen($d)) {
+		return '(' . substr($d, 0, 2) . ') ' . substr($d, 2, 4) . '-' . substr($d, 6);
+	}
+	return $d;
+}
+
+/** Linha da planilha: WhatsApp legível + link clicável para abrir a conversa. */
+function olorin_para_planilha($lead)
+{
+	$saida = array();
+	foreach ($lead as $chave => $valor) {
+		if ('whatsapp' === $chave) {
+			$saida['whatsapp']      = olorin_whatsapp_legivel($valor);
+			$saida['whatsapp_link'] = '' !== $valor ? 'https://wa.me/' . ltrim($valor, '+') : '';
+		} else {
+			$saida[$chave] = $valor;
+		}
+	}
+	return $saida;
+}
+
 function olorin_gravar_csv($lead)
 {
+	$lead  = olorin_para_planilha($lead);
 	$pasta = olorin_pasta_leads();
 	if ('' === $pasta) {
 		return false;

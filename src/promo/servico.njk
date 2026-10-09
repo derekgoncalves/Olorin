@@ -4,6 +4,7 @@ pagination:
   data: conteudo.servicos
   size: 1
   alias: servico
+  addAllPagesToCollections: true
 permalink: "/promo/{{ servico.slug }}/"
 eleventyComputed:
   titulo: "{{ servico.seo.title }}"

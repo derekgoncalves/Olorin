@@ -109,3 +109,51 @@
 .o-depoimento figcaption {
 	font-size: 13px;
 }
+
+/* Página de case (/cases/<slug>/) */
+.o-case--destaque {
+	align-self: center;
+}
+.o-case--destaque:hover {
+	translate: none;
+}
+.o-case-ficha {
+	margin-top: clamp(40px, 6vw, 72px);
+}
+.o-case-ficha__lista {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 0;
+	margin: 0;
+	border: var(--borda) solid currentColor;
+}
+.o-case-ficha__lista > div {
+	padding: 18px 20px;
+	border: 1px solid currentColor;
+}
+.o-case-ficha__lista dt {
+	margin-bottom: 6px;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+.o-case-ficha__lista dd {
+	margin: 0;
+	font-weight: 700;
+}
+.o-case-imagem {
+	margin-top: clamp(40px, 6vw, 72px);
+}
+.o-case-imagem img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: var(--borda) solid currentColor;
+}
+.o-depoimento--grande blockquote p {
+	font-family: var(--fonte-titulo);
+	font-size: clamp(22px, 2.6vw, 34px);
+	line-height: 1.2;
+	text-transform: none;
+}

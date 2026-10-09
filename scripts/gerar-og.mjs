@@ -65,6 +65,7 @@ h1 em { font-style: normal; color: ${t.destaque}; ${tema === 'preto' ? '' : 'tex
 const home = ler('src/content/home.yml');
 const hub = ler('src/content/paginas/servicos.yml');
 const promo = ler('src/content/paginas/promo.yml');
+const sobre = ler('src/content/paginas/sobre.yml');
 const servicos = readdirSync('src/content/servicos')
 	.filter((n) => n.endsWith('.yml'))
 	.map((n) => ler(path.join('src/content/servicos', n)));
@@ -86,6 +87,14 @@ const pecas = [
 		etiqueta: 'Anúncio · conteúdo · site · impresso',
 		titulo: semMarcador(hub.titulo) || 'Serviços de marketing digital',
 		rodape: 'olorin.com.br/servicos',
+	},
+	{
+		arquivo: 'sobre.jpg',
+		tema: 'preto',
+		janela: 'equipe.exe',
+		etiqueta: 'Sobre a Olorin',
+		titulo: semMarcador(sobre.titulo) || 'O mesmo time do anúncio ao impresso.',
+		rodape: 'olorin.com.br/sobre',
 	},
 	{
 		arquivo: 'promo.jpg',

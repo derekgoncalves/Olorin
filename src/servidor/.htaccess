@@ -44,7 +44,7 @@ AddDefaultCharset utf-8
 #
 # ATIVE SÓ DEPOIS de confirmar que o certificado SSL está ativo no
 # painel da Locaweb e que https://olorin.com.br abre sem aviso.
-# Para ativar: apague o "# " do começo das 5 linhas do bloco abaixo.
+# Para ativar: apague o "# " do começo das 5 linhas da Variante A.
 # Se o site entrar em "redirecionamento infinito", comente de novo e
 # use a variante B (algumas hospedagens entregam o HTTPS por um proxy).
 # Passo a passo em docs/DEPLOY.md.
@@ -59,7 +59,8 @@ AddDefaultCharset utf-8
 # --- Variante B (HTTPS atrás de proxy) ---
 # <IfModule mod_rewrite.c>
 # RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
-# RewriteCond %{HTTPS} off [OR]
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://olorin.com.br%{REQUEST_URI} [L,R=301]
 # RewriteCond %{HTTP_HOST} ^www\. [NC]
 # RewriteRule ^ https://olorin.com.br%{REQUEST_URI} [L,R=301]
 # </IfModule>

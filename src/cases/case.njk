@@ -1,0 +1,80 @@
+---
+layout: layouts/base.njk
+modo: case
+pagination:
+  data: conteudo.casesAprovados
+  size: 1
+  alias: caso
+  addAllPagesToCollections: true
+permalink: "/cases/{{ caso.slug }}/"
+eleventyComputed:
+  titulo: "{{ (caso.cliente or caso.segmento) + ': ' + caso.resultado + ' | Olorin' }}"
+  descricao: "{{ ((caso.cliente or caso.segmento) + ' — ' + caso.resultado + ' ' + caso.detalhe + ' (' + caso.periodo + '). ' + caso.servicos_texto + '.') | truncate(155, true, '…') }}"
+  slug: "case-{{ caso.slug }}"
+---
+{#- Página de um case aprovado (PROMPT 12.2): situação, o que fizemos, resultado com período/verba/medição, serviços, imagem e depoimento. -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set c = caso -%}
+{%- set nomeCase = c.cliente or c.segmento -%}
+{%- set trilha = [{ nome: "Home", url: "/" }, { nome: "Cases", url: "/cases/" }, { nome: nomeCase, url: "/cases/" + c.slug + "/" }] -%}
+<section class="o-pagina-topo o-ctx-preto" data-secao="case-hero">
+	<div class="o-wrap o-pagina-topo__grade">
+		<div class="o-pagina-topo__texto">
+			{{ ui.migalhas(trilha) }}
+			<p class="o-etiqueta">Case · {{ c.segmento }}</p>
+			<h1 class="o-pagina-topo__titulo">{{ nomeCase }}</h1>
+			<p class="o-pagina-topo__sub">{{ c.servicos_texto }}</p>
+		</div>
+		<div class="o-case o-janela o-case--destaque">
+			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-janela__corpo">
+				<p class="o-case__resultado">{{ c.resultado }}</p>
+				<p class="o-case__detalhe">{{ c.detalhe }}</p>
+				<p class="o-case__detalhe">Período: {{ c.periodo }}</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="o-sec o-ctx-branco" data-secao="case-historia" aria-labelledby="case-situacao">
+	<div class="o-wrap o-duas-colunas">
+		<div>
+			<h2 class="o-titulo o-titulo--m" id="case-situacao">A situação</h2>
+			<p class="o-apoio">{{ c.situacao | emLinha | safe }}</p>
+		</div>
+		<div>
+			<h2 class="o-titulo o-titulo--m">O que fizemos</h2>
+			<ul class="o-lista-pixel">{% for item in c.o_que_fizemos %}<li>{{ item | emLinha | safe }}</li>{% endfor %}</ul>
+		</div>
+	</div>
+	<div class="o-wrap o-case-ficha">
+		<h2 class="o-titulo o-titulo--m">O resultado</h2>
+		<dl class="o-case-ficha__lista">
+			<div><dt>Resultado</dt><dd>{{ c.resultado }} {{ c.detalhe }}</dd></div>
+			<div><dt>Período</dt><dd>{{ c.periodo }}</dd></div>
+			{%- if c.verba %}<div><dt>Verba de anúncio</dt><dd>{{ c.verba }}</dd></div>{% endif %}
+			{%- if c.medicao %}<div><dt>Como medimos</dt><dd>{{ c.medicao }}</dd></div>{% endif %}
+			<div><dt>Serviços</dt><dd>{% for sl in c.servicos %}{% set sv = conteudo.servicoPorSlug[sl] %}{% if sv %}<a href="/servicos/{{ sv.slug }}/">{{ sv.nome }}</a>{% if not loop.last %}, {% endif %}{% endif %}{% endfor %}</dd></div>
+		</dl>
+	</div>
+	{%- if c.imagem and imagens[c.imagem] %}
+	<figure class="o-wrap o-case-imagem">
+		{{ imagem(imagens, c.imagem, { sizes: "(max-width: 1280px) 92vw, 1200px" }) | safe }}
+	</figure>
+	{%- endif %}
+</section>
+
+{%- if c.depoimento and c.depoimento.texto %}
+<section class="o-sec o-ctx-preto" data-secao="case-depoimento">
+	<div class="o-wrap">
+		<figure class="o-depoimento o-depoimento--grande">
+			<blockquote><p>{{ c.depoimento.texto }}</p></blockquote>
+			<figcaption><strong>{{ c.depoimento.nome }}</strong>{% if c.depoimento.cargo %}, {{ c.depoimento.cargo }}{% endif %}</figcaption>
+		</figure>
+	</div>
+</section>
+{%- endif %}
+
+{%- set origemWaForm = "case-" + c.slug + "-form" -%}
+{%- set origemWaFinal = "case-" + c.slug + "-final" -%}
+{% include "secoes/orcamento.njk" %}

@@ -359,3 +359,8 @@
 	font-size: 15px;
 	color: var(--cor-apoio);
 }
+.o-preco__sem-valor {
+	font-size: 16px;
+	font-weight: 700;
+	opacity: 1;
+}

@@ -14,7 +14,10 @@
     "test": "node scripts/testar.mjs",
     "deploy:dry": "node scripts/deploy.mjs --dry",
     "deploy": "npm run build && npm run test && node scripts/deploy.mjs",
-    "og": "node scripts/gerar-og.mjs"
+    "og": "node scripts/gerar-og.mjs",
+    "pendencias": "node scripts/pendencias.mjs",
+    "legibilidade": "node scripts/legibilidade.mjs",
+    "capturas": "node scripts/capturas.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.6",

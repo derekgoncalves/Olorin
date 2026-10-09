@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+modo: cases
+slug: cases
+pagination:
+  data: conteudo.casesAprovados
+  size: 100
+  alias: lista
+permalink: /cases/
+titulo: Cases de marketing digital | Olorin Digital
+descricao: Resultados de clientes da Olorin com contexto — situação, o que fizemos, período e como medimos. Tráfego pago, conteúdo, marca, site e impresso.
+migalhas:
+  - { nome: Home, url: / }
+  - { nome: Cases, url: /cases/ }
+---
+{#- Lista de cases aprovados. Só é gerada se houver ao menos 1 case com "aprovado: true" em src/content/cases.yml. -#}
+{%- import "components/ui.njk" as ui with context -%}
+<section class="o-pagina-topo o-ctx-preto" data-secao="cases-hero">
+	<div class="o-wrap">
+		{{ ui.migalhas(migalhas) }}
+		<p class="o-etiqueta">Cases</p>
+		<h1 class="o-pagina-topo__titulo">Resultado com contexto.</h1>
+		<p class="o-pagina-topo__sub">Cada case mostra como a marca estava, o que fizemos, em quanto tempo e como o resultado foi medido.</p>
+	</div>
+</section>
+
+<section class="o-sec o-resultados o-ctx-branco" data-secao="cases-lista" aria-labelledby="cases-lista-titulo">
+	<div class="o-wrap">
+		<h2 class="o-sr" id="cases-lista-titulo">Todos os cases</h2>
+		<div class="o-cases">
+		{%- for c in lista %}
+			<article class="o-case o-janela">
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-janela__corpo">
+					<h3 class="o-case__segmento">{{ c.cliente or c.segmento }}</h3>
+					<p class="o-case__servicos">{{ c.servicos_texto }}</p>
+					<p class="o-case__resultado">{{ c.resultado }}</p>
+					<p class="o-case__detalhe">{{ c.detalhe }}</p>
+					<a class="o-case__link" href="/cases/{{ c.slug }}/">Ver o case completo<span class="o-sr"> — {{ c.cliente or c.segmento }}</span></a>
+				</div>
+			</article>
+		{%- endfor %}
+		</div>
+	</div>
+</section>
+
+{%- set origemWaForm = "cases-form" -%}
+{%- set origemWaFinal = "cases-final" -%}
+{% include "secoes/orcamento.njk" %}

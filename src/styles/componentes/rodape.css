@@ -116,3 +116,9 @@
 	font-size: 12px;
 	color: rgba(255, 255, 255, 0.72);
 }
+/* Links dentro de frase precisam de sublinhado (não dependem só da cor). */
+.o-rodape__base p a,
+.o-rodape__base-dentro p a {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}

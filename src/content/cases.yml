@@ -1,7 +1,17 @@
 # Cases (PROMPT seção 12.2).
-# exibir: true  → aparece na seção Resultados da home (o dono pediu para manter os 3 exemplos em 08/10/2026).
-# aprovado: true → além disso, ganha página própria em /cases/<slug>/ e aparece nas páginas de serviço.
-#                  Só marque com cliente/segmento, situação, o que fizemos, resultado com período e verba.
+# exibir: true   → aparece na seção Resultados da home (o dono pediu para manter os 3 exemplos em 08/10/2026).
+# aprovado: true → além disso, ganha página própria em /cases/<slug>/, entra no menu ("Cases"),
+#                  aparece nas páginas dos serviços listados e no sitemap.
+#                  Só marque com o cliente de acordo e com TODOS estes campos preenchidos
+#                  (o build para com um aviso se faltar algum):
+#   cliente: Nome do cliente (ou deixe vazio e use só o segmento)
+#   situacao: Como estava antes (1 a 3 frases)
+#   o_que_fizemos: [lista do que foi feito]
+#   periodo: "90 dias (jan a mar/2026)"
+#   verba: "R$ 9 mil em anúncio no período"     (opcional)
+#   medicao: "Faturamento do painel da loja"     (opcional: como o resultado foi medido)
+#   imagem: id de uma imagem do src/assets/manifest.json   (opcional)
+#   depoimento: { texto: "...", nome: "...", cargo: "..." } (opcional, só autorizado)
 itens:
   - slug: e-commerce-de-moda
     exibir: true

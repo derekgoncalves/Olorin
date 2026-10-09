@@ -75,6 +75,16 @@ export default function () {
 		.map((s) => ({ valor: s.chip, slug: s.slug }))
 		.concat(conteudo.formulario && conteudo.formulario.servicos_extra ? [{ valor: conteudo.formulario.servicos_extra, slug: 'nao-sei' }] : []);
 
+	// Cases aprovados: geram /cases/ e /cases/<slug>/ (PROMPT 12.2). Sem nenhum aprovado, as páginas não existem.
+	const OBRIGATORIOS = ['slug', 'segmento', 'situacao', 'o_que_fizemos', 'resultado', 'periodo', 'servicos'];
+	conteudo.casesAprovados = ((conteudo.cases && conteudo.cases.itens) || []).filter((c) => c && c.aprovado);
+	for (const c of conteudo.casesAprovados) {
+		const faltando = OBRIGATORIOS.filter((campo) => !c[campo] || (Array.isArray(c[campo]) && !c[campo].length));
+		if (faltando.length) {
+			throw new Error(`Case "${c.slug || c.segmento}" está com aprovado: true, mas faltam os campos: ${faltando.join(', ')} (src/content/cases.yml).`);
+		}
+	}
+
 	// Equipe: atalho por slug.
 	conteudo.pessoaPorSlug = Object.fromEntries(((conteudo.equipe && conteudo.equipe.pessoas) || []).map((p) => [p.slug, p]));
 
