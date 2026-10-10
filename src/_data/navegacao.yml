@@ -4,6 +4,8 @@ principal:
   - rotulo: Serviços
     url: /servicos/
     submenu: servicos
+  - rotulo: Educação
+    url: /educacao/
   - rotulo: Método
     url: /#metodo
   - rotulo: Cases

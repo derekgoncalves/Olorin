@@ -1,5 +1,5 @@
 # Cases (PROMPT seção 12.2).
-# exibir: true   → aparece na seção Resultados da home (o dono pediu para manter os 3 exemplos em 08/10/2026).
+# exibir: true   → aparece na seção Resultados da home. Os 3 exemplos abaixo ficaram ocultos em 10/10/2026 (plano de negócio: só prova real no site).
 # aprovado: true → além disso, ganha página própria em /cases/<slug>/, entra no menu ("Cases"),
 #                  aparece nas páginas dos serviços listados e no sitemap.
 #                  Só marque com o cliente de acordo e com TODOS estes campos preenchidos
@@ -14,7 +14,7 @@
 #   depoimento: { texto: "...", nome: "...", cargo: "..." } (opcional, só autorizado)
 itens:
   - slug: e-commerce-de-moda
-    exibir: true
+    exibir: false
     aprovado: false
     janela: case_01.exe
     segmento: E-commerce de moda
@@ -23,7 +23,7 @@ itens:
     resultado: R$ 380k
     detalhe: faturado em 90 dias
   - slug: clinica-estetica
-    exibir: true
+    exibir: false
     aprovado: false
     janela: case_02.exe
     segmento: Clínica estética
@@ -32,7 +32,7 @@ itens:
     resultado: 8x
     detalhe: de retorno sobre investimento
   - slug: industria-alimenticia
-    exibir: true
+    exibir: false
     aprovado: false
     janela: case_03.exe
     segmento: Indústria alimentícia

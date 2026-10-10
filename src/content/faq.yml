@@ -5,6 +5,15 @@ perguntas:
   - id: faq-uma-frente
     pergunta: Dá pra contratar só uma frente, tipo só o impresso ou só o tráfego?
     resposta: Sim. Você pode entrar por uma frente específica e expandir depois. O ideal é que tudo rode junto, mas a gente não força. Cada contrato tem escopo e prazo definidos antes de começar.
+  - id: faq-raio-x
+    pergunta: O que é o Raio-X gratuito?
+    resposta: É uma conversa de 30 minutos por vídeo sobre a sua marca. Em até 48 horas você recebe um PDF de 1 página com os 3 problemas que mais travam a sua venda e as 3 ações para começar. Olhamos anúncio, Instagram, site, Perfil da Empresa no Google e o atendimento pelo WhatsApp. Não tem compromisso.
+  - id: faq-arranque
+    pergunta: Dá pra testar antes de assinar a gestão mensal?
+    resposta: Sim, com o Arranque 30 dias, a partir de R$ 1.800 uma única vez. Instalamos o rastreamento, colocamos 1 campanha no ar com 8 criativos e entregamos o relatório no dia 30. Se você seguir para a gestão mensal, o valor do Arranque é abatido da implantação.
+  - id: faq-implantacao
+    pergunta: O que é a taxa de implantação?
+    resposta: É o trabalho do primeiro mês, que é maior que o dos outros, cobrado uma única vez. Inclui acessos, rastreamento (GA4, pixel e conversões), configuração das contas e briefing. Custa R$ 1.000 na Gestão mensal e R$ 1.500 no 360 completo.
   - id: faq-verba-minima
     pergunta: Qual a verba mínima para começar a anunciar?
     resposta: Para Meta Ads e Google Ads, recomendamos pelo menos R$ 1.500 por mês de verba de mídia. Abaixo disso, o algoritmo demora mais para aprender e o retorno fica mais imprevisível. Somando a gestão mensal (R$ 2.500), o custo total de entrada fica a partir de R$ 4.000 por mês.
@@ -25,7 +34,7 @@ perguntas:
     resposta: Sim. A maioria dos clientes é de outras cidades — o atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e entregáveis digitais.
   - id: faq-segmento
     pergunta: Vocês atendem o meu segmento?
-    resposta: O nosso time já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Se o seu segmento é outro, conte no formulário que a gente responde se consegue ajudar.
+    resposta: A nossa especialidade é educação, ou seja, escolas e cursos que precisam encher turma. O time também já operou contas de comércio eletrônico, serviço, indústria e campanha política. Se o seu segmento é outro, conte no formulário que a gente responde se consegue ajudar.
   - id: faq-relatorio
     pergunta: Como é o relatório?
     resposta: Todo mês você recebe um relatório fechado que mostra quanto foi investido, quanto voltou em faturamento, quanto custou cada venda e qual foi o retorno — além do que vamos fazer na próxima rodada. Nada de relatório só com alcance e impressão.
@@ -37,7 +46,7 @@ perguntas:
     resposta: "[CONFIRMAR: como é a transição de outra agência — acessos às contas, histórico, prazo]"
   - id: faq-sem-verba
     pergunta: E se eu ainda não tiver verba para anúncio?
-    resposta: Sem problema. Começamos pelo diagnóstico e te dizemos por onde vale começar. Dá para entrar pelo plano Pontual (a partir de R$ 800 por projeto), com uma entrega fechada como identidade visual, site ou impresso.
+    resposta: Sem problema. Começamos pelo Raio-X e te dizemos por onde vale começar. Dá para entrar pelo plano Pontual (a partir de R$ 800 por projeto), com uma entrega fechada como identidade visual, site ou impresso.
   - id: faq-dono-contas
     pergunta: Quem é o dono das contas de anúncio, do site e dos arquivos?
     resposta: "[CONFIRMAR: titularidade das contas de anúncio, do domínio/site e dos arquivos abertos]"

@@ -7,7 +7,7 @@ const config = JSON.parse(readFileSync('src/_data/site/config.json', 'utf8'));
 
 const MENSAGENS = {
 	padrao: 'Oi! Vim pelo site da Olorin e quero um orçamento.',
-	diagnostico: 'Oi! Vim pelo site da Olorin e quero o diagnóstico gratuito.',
+	diagnostico: 'Oi! Vim pelo site da Olorin e quero o Raio-X gratuito.',
 	servico: 'Oi! Vim pelo site da Olorin e quero falar sobre {x}.',
 	plano: 'Oi! Vim pelo site da Olorin e quero saber mais sobre o plano {x}.',
 	duvida: 'Oi! Tenho uma dúvida sobre os serviços da Olorin.',

@@ -57,6 +57,9 @@
 	{%- for selo in plano.selos %}<li>{{ selo }}</li>{% endfor %}
 	</ul>
 	{%- endif %}
+	{%- if plano.implantacao %}
+	<p class="o-plano__total">{{ plano.implantacao }}</p>
+	{%- endif %}
 	{%- if site.config.SHOW_TOTAL_COST and plano.custo_total %}
 	<p class="o-plano__total">{{ plano.custo_total }}</p>
 	{%- endif %}

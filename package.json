@@ -1,6 +1,6 @@
 {
   "name": "olorin-site",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
   "description": "Site olorin.com.br — gerador estático (Eleventy) para hospedagem Locaweb (Apache + PHP, FTP)",
   "type": "module",

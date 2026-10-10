@@ -1,7 +1,8 @@
 {#- ===== SEÇÃO: Faixa animada verde — src/content/home.yml → faixa_servicos ===== -#}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 <div class="o-faixa o-faixa--verde" data-o-faixa>
 	<ul class="o-faixa__trilho">
-	{%- for item in conteudo.home.faixa_servicos %}
+	{%- for item in P.faixa_servicos %}
 		<li>{{ item }}</li>
 	{%- endfor %}
 	</ul>

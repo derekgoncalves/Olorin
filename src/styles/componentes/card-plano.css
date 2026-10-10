@@ -1,7 +1,7 @@
-/* Planos (3 cartões, o do meio em destaque). */
+/* Planos (4 cartões, Gestão mensal em destaque). */
 .o-planos__grade {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-columns: repeat(4, minmax(0, 1fr));
 	align-items: stretch;
 	margin-top: clamp(40px, 5vw, 72px);
 }

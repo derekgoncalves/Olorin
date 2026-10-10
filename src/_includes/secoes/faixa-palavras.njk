@@ -1,7 +1,8 @@
 {#- ===== SEÇÃO: Faixa animada violeta — src/content/home.yml → faixa_palavras (não encostar em seção verde) ===== -#}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 <div class="o-faixa o-faixa--violeta o-faixa--reversa" data-o-faixa>
 	<ul class="o-faixa__trilho">
-	{%- for item in conteudo.home.faixa_palavras %}
+	{%- for item in P.faixa_palavras %}
 		<li>{{ item }}</li>
 	{%- endfor %}
 	</ul>

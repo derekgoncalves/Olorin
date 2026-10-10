@@ -155,6 +155,6 @@ faq:
 
 campanha:
   titulo: Chega de impresso parado no tempo.
-  # TODO (CONTENT-TODO): se OFERTA_DIAGNOSTICO=false, este subtítulo precisa de uma versão sem o diagnóstico gratuito (PROMPT 11.2).
-  subtitulo: Diagnóstico gratuito do material da sua marca, feito por quem executa. Projetos de material impresso a partir de R$ 800, com arquivo fechado pronto para a gráfica. Sem compromisso.
+  # TODO (CONTENT-TODO): se OFERTA_DIAGNOSTICO=false, este subtítulo precisa de uma versão sem o Raio-X gratuito (PROMPT 11.2).
+  subtitulo: Raio-X gratuito do material da sua marca, feito por quem executa. Projetos de material impresso a partir de R$ 800, com arquivo fechado pronto para a gráfica. Sem compromisso.
   faq: [impresso-imprime, impresso-quanto-custa, impresso-prazo, impresso-fora-curitiba]

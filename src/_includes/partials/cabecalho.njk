@@ -1,7 +1,7 @@
 {#- Cabeçalho completo: logo, menu (com submenu de serviços), WhatsApp e diagnóstico. -#}
 {%- set cfg = site.config -%}
 {%- set temCases = conteudo.casesAprovados and conteudo.casesAprovados.length -%}
-{%- set rotuloPrincipal = "Diagnóstico gratuito" if cfg.OFERTA_DIAGNOSTICO else "Pedir orçamento" -%}
+{%- set rotuloPrincipal = "Raio-X gratuito" if cfg.OFERTA_DIAGNOSTICO else "Pedir orçamento" -%}
 <header class="o-topo" data-o-topo>
 	<div class="o-topo__dentro">
 		<a class="o-logo" href="/" aria-label="Olorin Digital — página inicial"><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></a>

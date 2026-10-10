@@ -57,7 +57,7 @@ eleventyComputed:
 			<li><a href="#quem-faz">Quem faz</a></li>
 			<li><a href="#preco">Quanto custa</a></li>
 			<li><a href="#perguntas">Dúvidas</a></li>
-			<li><a href="#orcamento">Pedir diagnóstico</a></li>
+			<li><a href="#orcamento">Pedir Raio-X</a></li>
 		</ul>
 	</div>
 </nav>
@@ -210,7 +210,7 @@ eleventyComputed:
 					{%- if s.preco.detalhe %}<p class="o-preco__detalhe">{{ s.preco.detalhe | emLinha | confirmar | safe }}</p>{% endif %}
 					{%- if s.preco.total and site.config.SHOW_TOTAL_COST %}<p class="o-preco__total">{{ s.preco.total | confirmar | safe }}</p>{% endif %}
 					{%- if s.preco.contrato %}<p class="o-preco__detalhe">{{ s.preco.contrato | confirmar | safe }}</p>{% endif %}
-					<a class="o-btn o-btn--verde" href="#orcamento" data-cta="servico-{{ s.slug }}-preco">{{ "Quero meu diagnóstico gratuito" if site.config.OFERTA_DIAGNOSTICO else "Pedir orçamento" }}</a>
+					<a class="o-btn o-btn--verde" href="#orcamento" data-cta="servico-{{ s.slug }}-preco">{{ "Quero meu Raio-X gratuito" if site.config.OFERTA_DIAGNOSTICO else "Pedir orçamento" }}</a>
 				</div>
 			</div>
 			<div class="o-preco__listas">

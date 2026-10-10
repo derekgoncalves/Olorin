@@ -53,7 +53,7 @@ para_quem:
     - Quem tem (ou pode ter) pelo menos R$ 1.500 por mês para investir em anúncio, além da gestão.
     - Quem quer o anúncio com a mesma cara do feed, do site e do material impresso.
   nao_e:
-    - Quem quer começar a anunciar com menos de R$ 1.500 por mês de verba. Nesse caso, começamos pelo diagnóstico.
+    - Quem quer começar a anunciar com menos de R$ 1.500 por mês de verba. Nesse caso, começamos pelo Raio-X.
     - Quem procura resultado garantido ou "viralizar" do dia para a noite.
     - "[CONFIRMAR: outros critérios de quem não é cliente ideal]"
 
@@ -155,5 +155,5 @@ faq:
 
 campanha:
   titulo: Pare de pagar anúncio que não volta.
-  subtitulo: Diagnóstico gratuito da sua conta de Meta Ads e Google Ads, feito por quem executa. Sem compromisso.
+  subtitulo: Raio-X gratuito da sua conta de Meta Ads e Google Ads, feito por quem executa. Sem compromisso.
   faq: [trafego-quanto-investir, trafego-tempo-resultado, trafego-meta-ou-google, trafego-fora-curitiba]

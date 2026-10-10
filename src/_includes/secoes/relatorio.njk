@@ -1,5 +1,6 @@
 {#- ===== SEÇÃO: Como é o nosso relatório (exemplo ilustrativo, dados fictícios) — src/content/home.yml → relatorio ===== -#}
-{%- set r = conteudo.home.relatorio -%}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
+{%- set r = P.relatorio -%}
 {%- set maximo = 0 -%}
 {%- for g in r.grafico %}{% if g.valor > maximo %}{% set maximo = g.valor %}{% endif %}{% endfor -%}
 <section class="o-sec o-relatorio o-ctx-branco" id="relatorio" data-secao="relatorio" aria-labelledby="relatorio-titulo">
@@ -29,7 +30,7 @@
 					<ol class="o-barras" aria-hidden="true">
 					{%- for g in r.grafico %}
 						<li class="o-barras__coluna{% if loop.last %} o-barras__coluna--atual{% endif %}" style="--altura: {{ (g.valor / maximo * 100) | round }}%">
-							<span class="o-barras__valor">{{ (g.valor / 1000) | round(1) | replace(".", ",") }} mil</span>
+							<span class="o-barras__valor">{% if r.grafico_unidade %}{{ g.valor }}{% else %}{{ (g.valor / 1000) | round(1) | replace(".", ",") }} mil{% endif %}</span>
 							<span class="o-barras__barra"></span>
 							<span class="o-barras__rotulo">{{ g.rotulo | replace("Semana ", "Sem. ") }}</span>
 						</li>
@@ -37,9 +38,9 @@
 					</ol>
 					<table class="o-sr">
 						<caption>{{ r.grafico_titulo }} ({{ r.aviso | lower }})</caption>
-						<thead><tr><th scope="col">Semana</th><th scope="col">Faturamento atribuído</th></tr></thead>
+						<thead><tr><th scope="col">Semana</th><th scope="col">{{ r.grafico_coluna or "Faturamento atribuído" }}</th></tr></thead>
 						<tbody>
-						{%- for g in r.grafico %}<tr><th scope="row">{{ g.rotulo }}</th><td>{{ g.valor | reais }}</td></tr>{% endfor %}
+						{%- for g in r.grafico %}<tr><th scope="row">{{ g.rotulo }}</th><td>{{ (g.valor ~ " " ~ r.grafico_unidade) if r.grafico_unidade else (g.valor | reais) }}</td></tr>{% endfor %}
 						</tbody>
 					</table>
 				</div>

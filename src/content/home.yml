@@ -15,7 +15,9 @@ secoes:
   - metodo
   - servicos
   - resultados
-  - portfolio
+  # portfolio: escondido até haver trabalhos reais autorizados (plano de negócio, 10/10/2026).
+  #   Para voltar, troque as imagens em portfolio.yml e tire o "#" da linha abaixo.
+  # - portfolio
   - equipe
   - relatorio
   - faixa-palavras
@@ -25,18 +27,21 @@ secoes:
 
 seo:
   titulo: Olorin Digital | Agência de marketing em Curitiba
-  descricao: Anúncio, conteúdo, site e impresso feitos pelo mesmo time. Marketing 360 com foco em venda e relatório que qualquer pessoa entende.
+  descricao: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Foco em venda, preço aberto e Raio-X gratuito da sua marca.
 
 hero:
-  linha_superior: Agência de marketing digital em Curitiba · Tráfego pago · Conteúdo · Site · Impresso
+  linha_superior: Agência de marketing digital em Curitiba · Especialista em captação de alunos
   titulo_1: Não é sobre aparecer.
   titulo_2: É sobre
   titulo_destaque: vender.
   paragrafo: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Sua marca falando a mesma língua em todo lugar — e cada real investido com nome, sobrenome e retorno.
-  botao: Quero meu diagnóstico gratuito
+  botao: Quero meu Raio-X gratuito
   botao_sem_diagnostico: Pedir orçamento
   link_whatsapp: ou fale no WhatsApp
   microtexto: Sem compromisso · Resposta em até 1 dia útil
+  link_nicho:
+    texto: Tem escola ou curso? Veja como enchemos turma
+    url: /educacao/
   prova:
     - Preços abertos
     - Sem multa após 3 meses
@@ -45,13 +50,13 @@ hero:
   janela_rotulo: Vendas do mês
 
 formulario_topo:
-  titulo: Diagnóstico gratuito da sua marca
+  titulo: Raio-X Olorin gratuito
   texto: Conte rapidinho quem você é. A gente olha anúncio, redes, site e material da marca e te diz onde está travando e por onde vale começar.
-  detalhe: "[CONFIRMAR: formato do diagnóstico — padrão sugerido: conversa de 30 minutos por vídeo + resumo por escrito do que encontramos]"
+  detalhe: "Como funciona: uma conversa de 30 minutos por vídeo e, em até 48 horas, um PDF de 1 página com os 3 problemas que mais travam a sua venda e as 3 ações para começar."
   itens:
-    - Sem compromisso
-    - Resposta em até 1 dia útil
-    - Preço aberto na proposta
+    - 30 minutos por vídeo
+    - PDF com 3 problemas e 3 ações em 48 horas
+    - Sem compromisso e com preço aberto na proposta
 
 faixa_servicos:
   - Tráfego pago
@@ -77,7 +82,7 @@ checklist:
   contador_varios: marcados
   resposta_titulo: Isso tem solução, e não é trabalhar mais.
   resposta: Quando anúncio, conteúdo, site e impresso são feitos por gente que não conversa, cada um puxa para um lado. Com o mesmo time cuidando de tudo, a marca fala uma língua só e cada real investido aparece no relatório.
-  resposta_padrao: Se você marcou dois ou mais, a gente começa pelo diagnóstico.
+  resposta_padrao: Se você marcou dois ou mais, a gente começa pelo Raio-X.
   cta: Ver como a gente resolve
 
 metodo:
@@ -85,7 +90,7 @@ metodo:
   titulo: Quatro etapas. Zero achismo.
   texto: Sem caixa-preta. Você sabe o que está sendo feito, por quê e quanto está voltando.
   etapas:
-    - nome: Diagnóstico
+    - nome: Raio-X
       texto: Olhamos tudo o que já existe — conta de anúncio, redes, site e material da marca. Antes de criar qualquer coisa, descobrimos o que está travando.
     - nome: Direção
       texto: Estratégia e identidade alinhadas — o que falar, para quem, em qual canal e com qual cara. Uma marca só, em todos os pontos de contato.
@@ -94,7 +99,7 @@ metodo:
     - nome: Leitura
       texto: Relatório que qualquer pessoa entende — quanto entrou, quanto saiu, qual foi o retorno e o que vem na próxima rodada.
   cta_texto: Quer saber em qual dessas etapas sua marca está travada?
-  cta: Pedir diagnóstico
+  cta: Pedir meu Raio-X
 
 servicos:
   etiqueta: O que a Olorin faz
@@ -166,6 +171,7 @@ relatorio:
 
 faixa_palavras:
   - Agência de marketing em Curitiba
+  - Marketing para escolas e cursos
   - Gestão de tráfego pago
   - Criação de site
   - Gestão de redes sociais
@@ -175,7 +181,7 @@ faixa_palavras:
 planos:
   etiqueta: Planos
   titulo: Formatos de trabalho.
-  texto: Preço aberto, sem letra miúda. Escolha um formato ou calcule quanto custa começar.
+  texto: Preço aberto, sem letra miúda, com o que entra em cada formato. Quer testar antes de assinar? Comece pelo Arranque 30 dias.
 
 duvidas:
   etiqueta: Dúvidas

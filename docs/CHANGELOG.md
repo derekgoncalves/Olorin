@@ -1,5 +1,19 @@
 # Histórico de versões
 
+## 4.0.0 — 10 de outubro de 2026
+
+Site ajustado ao plano de negócio (nicho principal: educação).
+
+**Novo**
+- Landing `/educacao/` com os mesmos blocos da home e textos para escolas e cursos (`src/content/paginas/educacao.yml`). As seções da home aceitam `pagina_dados` para usar outro arquivo de textos.
+- "Educação" no menu e link no banner da home.
+- Plano "Arranque 30 dias" (a partir de R$ 1.800, uma vez) e taxa de implantação na Gestão mensal (R$ 1.000) e no 360 (R$ 1.500). Planos com quantidades de criativos, posts e reuniões.
+- Oferta gratuita renomeada para "Raio-X Olorin", com formato definido (30 min por vídeo + PDF em 48 h). FAQ com Raio-X, Arranque e implantação.
+
+**Mudou**
+- Cases de exemplo (`exibir: false`) e portfólio ilustrativo fora do ar até haver prova real.
+- `enviar.php` aceita `modo_pagina = educacao`.
+
 ## 3.0.0 — outubro de 2026
 
 Reconstrução completa do site em HTML estático gerado (Eleventy), substituindo a exportação do WordPress.

@@ -1,6 +1,7 @@
 {#- ===== SEÇÃO: Serviços (cada card leva à página do serviço) — src/content/home.yml → servicos + src/content/servicos/ ===== -#}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- import "components/ui.njk" as ui with context -%}
-{%- set t = conteudo.home.servicos -%}
+{%- set t = P.servicos -%}
 <section class="o-sec o-servicos o-ctx-preto" id="servicos" data-secao="servicos" aria-labelledby="servicos-titulo">
 	<div class="o-wrap">
 		<p class="o-etiqueta">{{ t.etiqueta }}</p>

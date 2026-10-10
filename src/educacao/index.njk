@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+modo: home
+modo_form: educacao
+slug: educacao
+pagina_dados: educacao
+permalink: /educacao/
+og_imagem: /assets/img/og/home.jpg
+---
+{#- /educacao/ — landing do nicho (mesmos blocos da home, textos em src/content/paginas/educacao.yml). -#}
+{%- for secao in conteudo.paginas.educacao.secoes %}
+{% include "secoes/" + secao + ".njk" %}
+{%- endfor %}

@@ -1,5 +1,6 @@
 {#- ===== SEÇÃO: Método Olorin — src/content/home.yml → metodo ===== -#}
-{%- set m = conteudo.home.metodo -%}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
+{%- set m = P.metodo -%}
 <section class="o-sec o-metodo o-ctx-violeta" id="metodo" data-secao="metodo" aria-labelledby="metodo-titulo">
 	<div class="o-wrap o-metodo__grade">
 		<div class="o-metodo__cabeca">

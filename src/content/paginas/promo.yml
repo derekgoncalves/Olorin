@@ -1,10 +1,10 @@
 # Landing de campanha geral (/promo/) — PROMPT seção 11.2. Não indexada.
 seo:
-  titulo: Diagnóstico gratuito de marketing | Olorin Digital
-  descricao: Descubra onde o seu marketing está travado. Diagnóstico gratuito de anúncio, redes, site e material impresso, feito por quem executa.
-etiqueta: Diagnóstico gratuito
+  titulo: Raio-X gratuito de marketing | Olorin Digital
+  descricao: Descubra onde o seu marketing está travado. Raio-X gratuito de anúncio, redes, site e material impresso, feito por quem executa.
+etiqueta: Raio-X gratuito
 titulo: Descubra onde o seu marketing está travado.
-sub: Diagnóstico gratuito de anúncio, redes, site e material impresso, feito por quem executa. Sem compromisso.
+sub: Raio-X gratuito de anúncio, redes, site e material impresso, feito por quem executa. Sem compromisso.
 titulo_sem_diagnostico: Peça seu orçamento.
 sub_sem_diagnostico: Anúncio, conteúdo, site e impresso feitos pelo mesmo time. Preço aberto e resposta em até 1 dia útil.
 prova_titulo: Quem já passou por aqui
@@ -13,7 +13,7 @@ passos:
   itens:
     - titulo: Você conta sobre a marca
       texto: Preencha o formulário rapidinho, com o que você faz e quanto investe hoje.
-    - titulo: Fazemos o diagnóstico
+    - titulo: Fazemos o Raio-X
       texto: Olhamos anúncio, redes, site e material da marca para descobrir o que está travando.
     - titulo: Você recebe a proposta
       texto: Com preço aberto e o que faz sentido para o seu momento. Sem compromisso.
@@ -23,4 +23,4 @@ faq_titulo: Dúvidas rápidas
 faq: [faq-tempo-resultado, faq-verba-minima, faq-fidelidade, faq-fora-curitiba]
 cta_final:
   titulo: Pronto para descobrir onde está travando?
-  botao: Quero meu diagnóstico
+  botao: Quero meu Raio-X

@@ -1,4 +1,5 @@
 # Planos e preços (PROMPT seção 2 e 12.5). Não alterar valores sem ordem do dono.
+# Escopo em quantidades, Arranque 30 dias e taxa de implantação: plano de negócio aprovado pelo dono em 10/10/2026.
 planos:
   - id: pontual
     nome: Pontual
@@ -13,6 +14,23 @@ planos:
     selos: []
     servicos_preselecao: []
     calculadora: false
+  - id: arranque-30-dias
+    nome: Arranque 30 dias
+    tag: Para testar
+    de: A partir de
+    valor: 1800
+    periodo: /uma vez
+    itens:
+      - Rastreamento instalado (GA4, pixel e conversões)
+      - 1 campanha no ar na Meta ou no Google
+      - 8 criativos de anúncio
+      - Relatório com resultado no dia 30
+    selos:
+      - Sem contrato mensal
+      - Valor abatido da implantação se continuar
+    custo_total: "Verba de anúncio à parte, direto na sua conta (recomendamos a partir de R$ 1.500 no mês)"
+    servicos_preselecao: [trafego-pago, rastreamento-e-relatorio]
+    calculadora: false
   - id: gestao-mensal
     nome: Gestão mensal
     tag: Mais procurado
@@ -21,14 +39,16 @@ planos:
     valor: 2500
     periodo: /mês
     itens:
-      - Tráfego pago + conteúdo todo mês
-      - Criação de peças inclusa
+      - Meta Ads ou Google Ads
+      - 8 criativos de anúncio por mês
+      - 8 posts no feed por mês
       - Otimização semanal das campanhas
-      - Relatório fechado todo mês
+      - Relatório mensal + reunião de 30 minutos
     selos:
       - Sem multa após 3 meses
       - Relatório mensal
       - Otimização semanal
+    implantacao: "Implantação única: R$ 1.000 (rastreamento, contas e briefing)"
     custo_total: "Com verba de anúncio: a partir de R$ 4.000/mês no total"
     servicos_preselecao: [trafego-pago, redes-sociais]
     calculadora: true
@@ -38,19 +58,21 @@ planos:
     valor: 5000
     periodo: /mês
     itens:
-      - Estratégia, anúncio, redes e criação
-      - Material impresso e site
-      - A marca inteira sob o mesmo comando
-      - Reunião estratégica mensal
+      - Meta Ads e Google Ads
+      - 15 criativos de anúncio por mês
+      - 12 posts + 4 Reels por mês
+      - Site e material impresso sob o mesmo comando
+      - Reunião estratégica mensal de 1 hora
     selos:
       - Relatório mensal
       - Reunião estratégica mensal
+    implantacao: "Implantação única: R$ 1.500 (rastreamento, contas e briefing)"
     custo_total: "Com verba de anúncio: a partir de R$ 6.500/mês no total"
     servicos_preselecao: [trafego-pago, redes-sociais, identidade-visual, material-impresso, site-e-loja-virtual]
     calculadora: true
 botao: Quero esse
 nota: Valores de gestão. A verba de anúncio (recomendamos a partir de R$ 1.500/mês) é investida à parte, direto nas plataformas Meta e Google.
-contrato: Gestão mensal com contrato mínimo de 3 meses. Depois, mês a mês com aviso de 30 dias. Sem multa rescisória.
+contrato: Gestão mensal e 360 com contrato mínimo de 3 meses e taxa única de implantação. Depois, mês a mês com aviso de 30 dias. Sem multa rescisória.
 total_entrada: "Custo total de entrada: a partir de R$ 4.000/mês (gestão R$ 2.500 + verba mínima recomendada de R$ 1.500)."
 calculadora:
   titulo: Quanto custa começar?

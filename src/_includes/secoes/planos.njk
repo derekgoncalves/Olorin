@@ -1,6 +1,7 @@
 {#- ===== SEÇÃO: Planos + calculadora — src/content/planos.yml ===== -#}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- import "components/ui.njk" as ui with context -%}
-{%- set t = conteudo.home.planos -%}
+{%- set t = P.planos -%}
 {%- set p = conteudo.planos -%}
 <section class="o-sec o-planos o-ctx-branco" id="planos" data-secao="planos" aria-labelledby="planos-titulo">
 	<div class="o-wrap">

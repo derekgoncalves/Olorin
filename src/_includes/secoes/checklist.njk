@@ -1,5 +1,6 @@
 {#- ===== SEÇÃO: Checklist de dores — src/content/home.yml → checklist ===== -#}
-{%- set c = conteudo.home.checklist -%}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
+{%- set c = P.checklist -%}
 <section class="o-sec o-checklist-sec o-ctx-branco" id="checklist" data-secao="checklist" aria-labelledby="checklist-titulo">
 	<div class="o-wrap">
 		<p class="o-etiqueta">{{ c.etiqueta }}</p>

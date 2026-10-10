@@ -1,0 +1,64 @@
+COMO PUBLICAR O SITE OLORIN v4 (WebFTP da Locaweb)
+====================================================
+Data: 10/10/2026 · Pacote: olorin-site-v4.zip
+
+O QUE MUDOU NESTA VERSÃO
+------------------------
+- Nova página olorin.com.br/educacao/ (landing para escolas e cursos).
+- "Educação" no menu e um link para ela no banner da home.
+- Diagnóstico gratuito virou "Raio-X Olorin": 30 minutos por vídeo + PDF de 1 página em 48 horas.
+- Planos com quantidades (criativos, posts, reuniões), novo plano "Arranque 30 dias"
+  (a partir de R$ 1.800, uma vez) e taxa única de implantação (R$ 1.000 na Gestão, R$ 1.500 no 360).
+- 3 perguntas novas no FAQ (Raio-X, Arranque e implantação).
+- Cases de exemplo e portfólio ilustrativo foram ESCONDIDOS (só prova real no site).
+  Os números (R$ 2M+, 50+, 2x, 100+) continuam.
+- O enviar.php foi atualizado para registrar os pedidos que vêm da página de educação.
+  Ele continua lendo o MESMO config.php de antes. Nada muda na senha.
+
+ANTES DE COMEÇAR
+----------------
+1. Entre no painel da Locaweb e abra o WebFTP.
+2. Faça backup: baixe o index.html e o enviar.php que estão hoje no public_html
+   para uma pasta no seu computador (ex.: "backup-olorin-10-10").
+
+NÃO APAGUE NEM SUBSTITUA
+------------------------
+- config.php (ou olorin-config.php): é onde está a senha do e-mail.
+- A pasta leads/ e as planilhas dentro dela.
+
+PUBLICAR
+--------
+Caminho A: o WebFTP descompacta zip
+  1. Entre na pasta public_html.
+  2. Clique em Upload e envie o arquivo olorin-site-v4.zip, sem descompactar.
+  3. Selecione o zip e escolha Descompactar / Extrair ali mesmo.
+     Se perguntar sobre arquivos existentes, escolha SUBSTITUIR.
+  4. Apague o olorin-site-v4.zip do servidor.
+
+Caminho B: o WebFTP não descompacta
+  1. No computador, descompacte o olorin-site-v4.zip.
+  2. Envie para dentro de public_html, substituindo os antigos:
+     - index.html, 404.html, enviar.php, llms.txt, sitemap.xml, robots.txt
+     - as pastas educacao/, servicos/, sobre/, promo/, obrigado/,
+       politica-de-privacidade/ e assets/
+  3. A pasta educacao/ é nova: crie a pasta educacao dentro de public_html
+     e envie o index.html dela para dentro.
+
+TESTAR (5 minutos)
+------------------
+1. Abra olorin.com.br/educacao/ no celular e no computador.
+2. Na home, confira o menu "Educação" e os 4 planos.
+   Se o site parecer igual ao antigo, atualize a página com Ctrl+F5 (cache).
+3. Preencha o formulário da página /educacao/ com o seu número.
+   Confira se o e-mail chegou em digital@olorin.com.br.
+
+SE DER ALGO ERRADO
+------------------
+Reenvie do backup o index.html e o enviar.php. A página /educacao/ pode ficar,
+ela não atrapalha o resto.
+
+PARA TRAZER DE VOLTA O PORTFÓLIO OU UM CASE
+--------------------------------------------
+Quando tiver trabalhos e cases reais autorizados, peça para o Claude
+trocar as imagens e reativar os blocos. Os cases de educação entram
+na página /educacao/ automaticamente quando forem aprovados.

@@ -1,5 +1,6 @@
 {#- ===== SEÇÃO: Portfólio com filtros — src/content/portfolio.yml ===== -#}
-{%- set t = conteudo.home.portfolio -%}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
+{%- set t = P.portfolio -%}
 {%- set p = conteudo.portfolio -%}
 <section class="o-sec o-portfolio o-ctx-branco" id="portfolio" data-secao="portfolio" aria-labelledby="portfolio-titulo">
 	<div class="o-wrap">

@@ -1,7 +1,8 @@
 {#- ===== SEÇÃO: Resultados — números (src/content/claims.json), cases (cases.yml) e depoimentos (depoimentos.yml) ===== -#}
-{%- set r = conteudo.home.resultados -%}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
+{%- set r = P.resultados -%}
 {%- set numeros = conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else [] -%}
-{%- set cases = conteudo.cases.itens | filtrarPor("exibir", true) -%}
+{%- set cases = [] if r.ocultar_cases else (conteudo.cases.itens | filtrarPor("exibir", true)) -%}
 {%- set depoimentos = conteudo.depoimentos.itens | filtrarPor("autorizado", true) -%}
 {%- if numeros.length or cases.length or depoimentos.length %}
 <section class="o-sec o-resultados o-ctx-verde" id="resultados" data-secao="resultados" aria-labelledby="resultados-titulo">
