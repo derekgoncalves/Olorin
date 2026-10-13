@@ -1,18 +1,20 @@
 # Página /obrigado/ (confirmação do lead) — PROMPT seção 10.6. Não indexada.
 seo:
   titulo: Recebido | Olorin Digital
-  descricao: Recebemos o seu pedido. Vamos montar sua proposta e te chamar no WhatsApp.
+  descricao: Recebemos o seu pedido. Vamos te chamar no WhatsApp em até 1 dia útil.
 etiqueta: Pedido recebido
 titulo: Recebido.
-texto: Vamos montar sua proposta e te chamar no WhatsApp.
+texto: Vamos te chamar no WhatsApp para entender o que você precisa e marcar a conversa.
 prazo: Resposta em até 1 dia útil.
 botao: Adiantar pelo WhatsApp
 agendar: Prefere marcar um horário?
 enquanto_titulo: Enquanto isso
 enquanto:
   - rotulo: Veja como funciona o Método Olorin
-    url: /#metodo
+    url: /como-trabalhamos/
   - rotulo: Veja um exemplo do nosso relatório
-    url: /#relatorio
+    url: /como-trabalhamos/#relatorio
+  - rotulo: Compare os planos e preços
+    url: /planos/
   - rotulo: Conheça o time
     url: /sobre/

@@ -11,6 +11,7 @@ import path from 'node:path';
 
 const SAIDA = process.env.OLORIN_SAIDA || 'dist';
 const cfg = JSON.parse(readFileSync('src/_data/site/config.json', 'utf8'));
+const REDES = [cfg.FACEBOOK_URL, cfg.X_URL, cfg.LINKEDIN_URL].filter(Boolean).flatMap((u) => [u, u.replace(/^https?:/, ''), u.replace(/\//g, '\\/')]);
 const erros = [];
 const avisos = [];
 const erro = (arquivo, msg) => erros.push(`${arquivo}: ${msg}`);
@@ -61,8 +62,10 @@ for (const a of textos) {
 	const r = rel(a);
 	const t = readFileSync(a, 'utf8');
 	if (/\[CONFIRMAR/i.test(t)) erro(r, 'tem marcador [CONFIRMAR] (texto sem confirmação não vai ao ar)');
-	if (/olorindigital/i.test(t)) erro(r, 'domínio errado "olorindigital"');
-	const digital = t.match(/[\w@./-]*olorin\.digital[\w./-]*/gi) || [];
+	// Perfis oficiais nas redes (config.json) não contam como domínio errado.
+	const semRedes = REDES.reduce((texto, url) => texto.split(url).join(''), t);
+	if (/olorindigital/i.test(semRedes)) erro(r, 'domínio errado "olorindigital"');
+	const digital = semRedes.match(/[\w@./-]*olorin\.digital[\w./-]*/gi) || [];
 	for (const ocorrencia of digital) {
 		if (!/^(@olorin\.digital_|((https?:)?\/\/)?(www\.)?instagram\.com\/olorin\.digital_\/?)$/i.test(ocorrencia)) {
 			erro(r, `"olorin.digital" fora do Instagram: ${ocorrencia}`);

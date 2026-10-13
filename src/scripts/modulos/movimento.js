@@ -101,7 +101,7 @@ export function iniciarRevelarMovimento() {
 			const p = el.parentElement;
 			const k = grupos.has(p) ? grupos.get(p) + 1 : 0;
 			grupos.set(p, k);
-			el.style.setProperty('--atraso', Math.min(k, 6) * 0.07 + 's');
+			el.style.setProperty('--atraso', Math.min(k, 6) * 70 + 'ms');
 			el.classList.add(el.matches('.o-titulo') ? 'o-mov-titulo' : el.matches('.o-etiqueta') ? 'o-mov-mascara' : el.matches('.o-janela') ? 'o-mov-jan' : 'o-reveal');
 		});
 		raiz.classList.add('o-mov');
@@ -112,7 +112,7 @@ export function iniciarRevelarMovimento() {
 					const el = en.target;
 					io.unobserve(el);
 					if (el.classList.contains('o-mov-titulo') && !pausado()) {
-						juntar(el, (parseFloat(el.style.getPropertyValue('--atraso')) || 0) * 1000 + dividir(el) * 45 + 900);
+						juntar(el, (parseFloat(el.style.getPropertyValue('--atraso')) || 0) + dividir(el) * 45 + 900);
 					}
 					el.classList.add('is-in');
 				});

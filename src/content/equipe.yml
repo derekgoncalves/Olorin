@@ -1,11 +1,12 @@
 # Equipe (PROMPT seção 2 e 12.3). Só fatos confirmados — não aumentar.
 # "foto" = id da imagem no src/assets/manifest.json (sem o "-quadrada").
+# "frase" aparece nos cartões (home e páginas de serviço); "bio" aparece na página /sobre/.
 pessoas:
   - slug: natalia-arruda
     nome: Natália Arruda
     funcao: Mídia paga
-    frase: Mais de seis anos operando contas de e-commerce, serviço, indústria, educação e campanha política.
-    bio: Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, cuida das campanhas de Meta Ads e Google Ads.
+    frase: Mais de seis anos operando contas de anúncio de e-commerce, serviço, indústria, educação e campanha política.
+    bio: Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, cuida das campanhas na Meta (Facebook e Instagram) e no Google.
     foto: equipe-natalia
     janela: natalia.jpg
     servicos: [trafego-pago]
@@ -13,7 +14,7 @@ pessoas:
     nome: Vinicius Mafra
     funcao: Direção de arte e design
     frase: Mais de 10 anos à frente de projetos, de influenciadores digitais a produções culturais.
-    bio: Diretor de arte e designer há mais de 10 anos. Esteve à frente de diversos projetos, de influenciadores digitais a produções culturais. Na Olorin, responde pela identidade visual e pela direção de arte.
+    bio: Diretor de arte e designer há mais de 10 anos. Já esteve à frente de projetos de influenciadores digitais a produções culturais. Na Olorin, responde pela identidade visual e pela direção de arte.
     foto: equipe-vinicius
     janela: vinicius.jpg
     servicos: [identidade-visual, redes-sociais, material-impresso, site-e-loja-virtual]
@@ -21,7 +22,7 @@ pessoas:
     nome: Derek Gonçalves
     funcao: Atendimento e comunicação 360
     frase: Seu primeiro contato e quem coordena a sua conta.
-    bio: Comunicador digital com atuação 360. É o atendimento da Olorin — o seu primeiro contato e quem coordena a sua conta no dia a dia.
+    bio: Comunicador digital com atuação 360. Na Olorin, cuida do atendimento. É o seu primeiro contato e quem coordena a sua conta no dia a dia.
     foto: equipe-derek
     janela: derek.jpg
     servicos: [redes-sociais, rastreamento-e-relatorio]

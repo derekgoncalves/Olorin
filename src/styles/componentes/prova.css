@@ -38,3 +38,14 @@
 .o-faq__mais {
 	margin-top: 20px;
 }
+
+/* Card de plano: linha curta de quem é o plano, logo abaixo do nome. */
+.o-plano__nome:has(+ .o-plano__para) {
+	margin-bottom: 8px !important;
+}
+.o-plano__para {
+	margin: 0 0 20px !important;
+	font-size: 14px;
+	line-height: 1.4;
+	color: var(--cor-apoio);
+}

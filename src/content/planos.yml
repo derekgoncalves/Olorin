@@ -1,14 +1,19 @@
 # Planos e preços (PROMPT seção 2 e 12.5). Não alterar valores sem ordem do dono.
 # Escopo em quantidades, Arranque 30 dias e taxa de implantação: plano de negócio aprovado pelo dono em 10/10/2026.
+# 13/10/2026 (dono): Gestão a partir de R$ 2.500 sustenta clientes de ticket baixo e médio; 360 a partir de R$ 5.000
+# é para quem quer mais e para clientes grandes. Loja virtual (e-commerce) a partir de R$ 10.000.
+# "para" = linha curta de quem é o plano, logo abaixo do nome.
 planos:
   - id: pontual
     nome: Pontual
+    para: Uma entrega fechada, sem mensalidade
     de: A partir de
     valor: 800
     periodo: /projeto
     itens:
       - Uma entrega específica e fechada
       - Identidade visual, site ou impresso
+      - Loja virtual (e-commerce) a partir de R$ 10.000
       - Auditoria da conta de anúncio
       - Prazo e escopo definidos no briefing
     selos: []
@@ -16,6 +21,7 @@ planos:
     calculadora: false
   - id: arranque-30-dias
     nome: Arranque 30 dias
+    para: Para testar a Olorin antes de assinar
     tag: Para testar
     de: A partir de
     valor: 1800
@@ -35,7 +41,8 @@ planos:
     nome: Gestão mensal
     tag: Mais procurado
     destaque: true
-    de: Contrato mensal
+    para: Para pequenas e médias marcas que querem constância
+    de: A partir de
     valor: 2500
     periodo: /mês
     itens:
@@ -54,7 +61,9 @@ planos:
     calculadora: true
   - id: 360-completo
     nome: 360 completo
-    de: Contrato mensal
+    tag: Para quem quer mais
+    para: Para marcas maiores, com mais canais e mais volume
+    de: A partir de
     valor: 5000
     periodo: /mês
     itens:
@@ -63,6 +72,7 @@ planos:
       - 12 posts + 4 Reels por mês
       - Site e material impresso sob o mesmo comando
       - Reunião estratégica mensal de 1 hora
+      - Volume e canais sob medida acima disso
     selos:
       - Relatório mensal
       - Reunião estratégica mensal

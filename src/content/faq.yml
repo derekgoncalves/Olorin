@@ -1,52 +1,54 @@
-# Perguntas frequentes da home (PROMPT seção 12.6). A mesma fonte gera o HTML e o JSON-LD.
-# "id" é fixo (serve para links como /#faq-verba-minima e para o evento faq_open).
+# Perguntas frequentes (PROMPT seção 12.6). A mesma fonte gera o HTML e o JSON-LD.
+# A home mostra só as perguntas listadas em home.yml → duvidas.ids; a página /planos/ mostra todas.
+# "id" é fixo (serve para links como /planos/#faq-verba-minima e para o evento faq_open).
 # Perguntas com [CONFIRMAR] não aparecem no site publicado até serem respondidas.
+# Regra: no máximo 3 frases curtas por resposta, só com fatos confirmados.
 perguntas:
   - id: faq-uma-frente
-    pergunta: Dá pra contratar só uma frente, tipo só o impresso ou só o tráfego?
-    resposta: Sim. Você pode entrar por uma frente específica e expandir depois. O ideal é que tudo rode junto, mas a gente não força. Cada contrato tem escopo e prazo definidos antes de começar.
+    pergunta: Dá pra contratar só uma frente, tipo só o impresso ou só os anúncios?
+    resposta: Sim. Você pode começar por uma frente e juntar outras depois, sem obrigação. Escopo, prazo e preço ficam definidos antes de começar.
   - id: faq-raio-x
     pergunta: O que é o Raio-X gratuito?
-    resposta: É uma conversa de 30 minutos por vídeo sobre a sua marca. Em até 48 horas você recebe um PDF de 1 página com os 3 problemas que mais travam a sua venda e as 3 ações para começar. Olhamos anúncio, Instagram, site, Perfil da Empresa no Google e o atendimento pelo WhatsApp. Não tem compromisso.
+    resposta: É uma conversa gratuita de 30 minutos por vídeo sobre o seu anúncio, redes, site e material da marca. Em até 48 horas, você recebe um PDF de 1 página com os 3 problemas que mais travam a sua venda e as 3 ações para começar. Sem compromisso.
   - id: faq-arranque
-    pergunta: Dá pra testar antes de assinar a gestão mensal?
-    resposta: Sim, com o Arranque 30 dias, a partir de R$ 1.800 uma única vez. Instalamos o rastreamento, colocamos 1 campanha no ar com 8 criativos e entregamos o relatório no dia 30. Se você seguir para a gestão mensal, o valor do Arranque é abatido da implantação.
+    pergunta: Dá pra testar antes de assinar um plano mensal?
+    resposta: "Sim, com o Arranque 30 dias: a partir de R$ 1.800, pagos uma única vez, mais a verba de anúncio. Instalamos o rastreamento, colocamos 1 campanha no ar com 8 criativos e entregamos o relatório no dia 30. Se você continuar com a gente, esse valor é abatido da implantação."
   - id: faq-implantacao
     pergunta: O que é a taxa de implantação?
-    resposta: É o trabalho do primeiro mês, que é maior que o dos outros, cobrado uma única vez. Inclui acessos, rastreamento (GA4, pixel e conversões), configuração das contas e briefing. Custa R$ 1.000 na Gestão mensal e R$ 1.500 no 360 completo.
+    resposta: É o trabalho extra do primeiro mês, cobrado uma única vez. Inclui acessos, configuração das contas, rastreamento das vendas e o briefing inicial. Custa R$ 1.000 na Gestão mensal e R$ 1.500 no 360 completo.
   - id: faq-verba-minima
     pergunta: Qual a verba mínima para começar a anunciar?
-    resposta: Para Meta Ads e Google Ads, recomendamos pelo menos R$ 1.500 por mês de verba de mídia. Abaixo disso, o algoritmo demora mais para aprender e o retorno fica mais imprevisível. Somando a gestão mensal (R$ 2.500), o custo total de entrada fica a partir de R$ 4.000 por mês.
+    resposta: Na Meta e no Google, recomendamos pelo menos R$ 1.500 por mês de verba de anúncio. Abaixo disso, as plataformas demoram mais para aprender e o resultado fica menos previsível. Somando a Gestão mensal (R$ 2.500), o custo total começa em R$ 4.000 por mês.
   - id: faq-tempo-resultado
     pergunta: Em quanto tempo eu vejo resultado?
-    resposta: Depende do objetivo. Campanhas de resposta direta (venda, mensagem) costumam dar sinais claros em 2 a 4 semanas. Marca e conteúdo pedem 2 a 3 meses de consistência.
+    resposta: Depende do objetivo. Campanha de venda ou de mensagem costuma dar os primeiros sinais em 2 a 4 semanas. Marca e conteúdo pedem de 2 a 3 meses de constância.
   - id: faq-fidelidade
     pergunta: Vocês trabalham com contrato de fidelidade?
-    resposta: Na gestão mensal, o contrato mínimo é de 3 meses. Depois, fica mês a mês com aviso de 30 dias. Não cobramos multa rescisória.
+    resposta: Na Gestão mensal e no 360 completo, o contrato mínimo é de 3 meses. Depois, segue mês a mês, e para encerrar basta avisar com 30 dias, sem multa. O Pontual e o Arranque 30 dias não têm contrato mensal.
   - id: faq-quem-cria
     pergunta: Quem cria as artes dos anúncios e dos posts?
-    resposta: O nosso próprio time de criação. Não terceirizamos para fornecedor externo. É por isso que o anúncio e o post saem com a mesma cara.
+    resposta: O nosso próprio time, com direção de arte do Vinicius Mafra. Não terceirizamos a criação. Por isso o anúncio, o post e o impresso saem com a mesma cara.
   - id: faq-impressao
     pergunta: Vocês fazem a impressão ou só entregam o arquivo?
-    resposta: Entregamos o arquivo fechado, pronto para a gráfica. Se precisar, indicamos gráficas parceiras em Curitiba e acompanhamos a aprovação da prova.
+    resposta: Entregamos o arquivo fechado, pronto para a gráfica, mas não imprimimos. Se precisar, indicamos gráficas parceiras em Curitiba e acompanhamos a prova com você.
   - id: faq-fora-curitiba
     pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. A maioria dos clientes é de outras cidades — o atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e entregáveis digitais.
+    resposta: "Sim, atendemos todo o Brasil. A maioria dos clientes é de fora de Curitiba. Tudo é feito a distância: WhatsApp, reuniões por vídeo e aprovações por e-mail."
   - id: faq-segmento
     pergunta: Vocês atendem o meu segmento?
-    resposta: A nossa especialidade é educação, ou seja, escolas e cursos que precisam encher turma. O time também já operou contas de comércio eletrônico, serviço, indústria e campanha política. Se o seu segmento é outro, conte no formulário que a gente responde se consegue ajudar.
+    resposta: A nossa especialidade é educação, ou seja, escolas e cursos que precisam encher turma. O time também já operou contas de comércio eletrônico, serviço, indústria e campanha política. Se o seu segmento for outro, conte no formulário e a gente responde se consegue ajudar.
   - id: faq-relatorio
     pergunta: Como é o relatório?
-    resposta: Todo mês você recebe um relatório fechado que mostra quanto foi investido, quanto voltou em faturamento, quanto custou cada venda e qual foi o retorno — além do que vamos fazer na próxima rodada. Nada de relatório só com alcance e impressão.
+    resposta: "Nos planos mensais, todo mês você recebe um relatório com quanto investiu, quanto voltou, quanto custou cada venda e o que muda na próxima rodada. Junto vem uma reunião: de 30 minutos na Gestão mensal e de 1 hora no 360 completo. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio)."
   - id: faq-dia-a-dia
     pergunta: Quem cuida da minha conta no dia a dia?
-    resposta: O Derek Gonçalves é o seu primeiro contato e quem coordena a sua conta. A Natália cuida da mídia paga e o Vinicius, da direção de arte e do design.
+    resposta: O Derek Gonçalves é o seu primeiro contato e coordena a sua conta, principalmente pelo WhatsApp. A Natália Arruda cuida dos anúncios, e o Vinicius Mafra, da direção de arte e do design.
   - id: faq-troca-agencia
     pergunta: Já tenho agência. Como funciona a troca?
     resposta: "[CONFIRMAR: como é a transição de outra agência — acessos às contas, histórico, prazo]"
   - id: faq-sem-verba
     pergunta: E se eu ainda não tiver verba para anúncio?
-    resposta: Sem problema. Começamos pelo Raio-X e te dizemos por onde vale começar. Dá para entrar pelo plano Pontual (a partir de R$ 800 por projeto), com uma entrega fechada como identidade visual, site ou impresso.
+    resposta: Sem problema. O Raio-X gratuito mostra por onde vale começar. Dá para entrar pelo Pontual, a partir de R$ 800 por projeto, com uma entrega fechada como identidade visual, site ou impresso.
   - id: faq-dono-contas
     pergunta: Quem é o dono das contas de anúncio, do site e dos arquivos?
     resposta: "[CONFIRMAR: titularidade das contas de anúncio, do domínio/site e dos arquivos abertos]"

@@ -1,32 +1,32 @@
 # Hub de serviços (/servicos/) — PROMPT seção 9.3.
 seo:
   titulo: Serviços de marketing digital em Curitiba | Olorin
-  descricao: Tráfego pago, redes sociais, identidade visual, material impresso, site e rastreamento feitos pelo mesmo time. Preços abertos.
+  descricao: Tráfego pago, redes sociais, identidade visual, material impresso, site e rastreamento feitos pelo mesmo time. Preço aberto.
 etiqueta: Serviços
 titulo: Serviços de marketing digital
-texto: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Você pode contratar uma frente só — mas quando elas rodam juntas, uma empurra a outra.
+texto: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Você pode contratar uma frente só. Quando elas rodam juntas, uma empurra a outra.
 escolher:
   titulo: Como escolher por onde começar
   situacoes:
     - situacao: Você já anuncia, mas não sabe quanto cada venda custou.
       servico: trafego-pago
-      porque: Começamos pelas campanhas e pelo relatório, para o retorno aparecer.
-    - situacao: Sua marca parece diferente em cada lugar — no feed, no cartão, no site.
+      porque: Arrumamos as campanhas e o rastreamento. O relatório passa a mostrar quanto custou cada venda.
+    - situacao: "Sua marca parece diferente em cada lugar: no feed, no cartão e no site."
       servico: identidade-visual
-      porque: Primeiro a marca com cara de marca. Depois, tudo sai com a mesma cara.
+      porque: Primeiro, uma identidade clara. Depois, anúncio, post, site e impresso saem com a mesma cara.
     - situacao: O anúncio leva gente para um site lento ou confuso.
       servico: site-e-loja-virtual
-      porque: Um site rápido e claro no celular faz o mesmo investimento render mais.
-  nao_sei: Não sabe por onde começar? É para isso que serve o Raio-X gratuito.
+      porque: Um site rápido e claro no celular aproveita melhor cada visita que o anúncio traz.
+  nao_sei: Não sabe por onde começar? O Raio-X gratuito mostra isso em 30 minutos de conversa e um PDF em até 48 horas.
 combinacoes:
   titulo: Combinações mais comuns
   itens:
     - nome: Tráfego pago + redes sociais
       plano: Gestão mensal
-      texto: Anúncio e conteúdo todo mês, com criação de peças inclusa e relatório fechado. A partir de R$ 2.500/mês + verba.
+      texto: Anúncio na Meta ou no Google, 8 criativos e 8 posts por mês, otimização semanal e relatório com reunião. R$ 2.500/mês + verba, com implantação única de R$ 1.000.
     - nome: A marca inteira
       plano: 360 completo
-      texto: Estratégia, anúncio, redes, criação, material impresso e site sob o mesmo comando. A partir de R$ 5.000/mês + verba.
+      texto: Meta e Google, 15 criativos, 12 posts e 4 Reels por mês, site e impresso, com reunião mensal de 1 hora. R$ 5.000/mês + verba, com implantação única de R$ 1.500.
     - nome: Uma entrega fechada
       plano: Pontual
-      texto: Identidade visual, site, impresso ou auditoria da conta de anúncio, com prazo e escopo definidos. A partir de R$ 800/projeto.
+      texto: Identidade visual, site, impresso ou auditoria da conta de anúncio, com prazo e escopo definidos. A partir de R$ 800 por projeto.

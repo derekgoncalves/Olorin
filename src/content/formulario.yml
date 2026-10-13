@@ -27,7 +27,7 @@ investimento:
   - De R$ 2 a 5 mil por mês
   - De R$ 5 a 15 mil por mês
   - Acima de R$ 15 mil por mês
-sem_verba: "Sem problema: começamos pelo Raio-X e te dizemos por onde vale começar."
+sem_verba: Sem problema. No Raio-X, mostramos por onde vale começar mesmo sem verba de anúncio.
 consentimento: Concordo em ser contatado pela Olorin sobre este pedido, conforme a
 consentimento_link: Política de Privacidade
 botao_continuar: Continuar
@@ -35,7 +35,7 @@ botao_voltar: Voltar e editar contatos
 botao_enviar: Pedir orçamento
 botao_enviar_diagnostico: Quero meu Raio-X
 botao_enviando: Enviando…
-nota: Seus dados são usados só para esse contato. Nada de lista de disparo.
+nota: Usamos seus dados só para responder este pedido. Nada de mensagem em massa.
 alternativa_wa: Prefere conversar agora?
 alternativa_wa_link: Chame no WhatsApp
 erros:

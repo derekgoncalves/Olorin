@@ -200,29 +200,43 @@ html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__dest
 	position: absolute;
 	left: 0;
 	right: 0.46em; /* não passa por baixo do cursor */
-	bottom: 0;
+	bottom: 0.04em;
 	height: 0.1em;
 	background: var(--verde);
 	transform-origin: left;
 	pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media screen and (prefers-reduced-motion: no-preference) {
 	/* ---------- 1. Entrada do banner (home e páginas internas), só CSS: começa na primeira pintura ---------- */
+	/* Ordem e atrasos (só variáveis: sozinhas não mudam nada; ficam fora da condição para o CSS sair menor).
+	   Filhos do bloco de texto entram em sequência e quem vem depois do h1 espera o título começar.
+	   Vale para a home (.o-hero__texto), as páginas internas com e sem coluna lateral e a landing de campanha. */
+	:is(.o-hero__texto, .o-pagina-topo__texto, .o-promo-topo__texto, .o-pagina-topo > .o-wrap:not(.o-pagina-topo__grade)) > * {
+		--atraso: calc(var(--k, 0) * 70ms + var(--extra, 0s));
+
+		&:nth-child(2) { --k: 1; }
+		&:nth-child(3) { --k: 2; }
+		&:nth-child(4) { --k: 3; }
+		&:nth-child(5) { --k: 4; }
+		&:nth-child(6) { --k: 5; }
+		&:nth-child(n + 7) { --k: 6; }
+		&:is(h1 ~ *) { --extra: 0.18s; }
+	}
+	.o-pagina-topo .o-janela { --mov-d: 0.25s; }
+	.o-hero__janela { --mov-d: 0.55s; }
+	.o-hero__barras i {
+		--mov-d: 0.8s;
+
+		&:nth-child(2) { --mov-d: 0.86s; }
+		&:nth-child(3) { --mov-d: 0.92s; }
+		&:nth-child(4) { --mov-d: 0.98s; }
+	}
+
 	html.js:not(.o-pausado, .o-mov-fim):not(:has(> head > link[rel="canonical"][href*="/educacao/"])) {
-		/* Filhos do bloco de texto do banner entram em sequência; quem vem depois do h1 espera o título começar.
-		   Vale para a home (.o-hero__texto), as páginas internas com e sem coluna lateral e a landing de campanha. */
 		& :is(.o-hero__texto, .o-pagina-topo__texto, .o-promo-topo__texto, .o-pagina-topo > .o-wrap:not(.o-pagina-topo__grade)) > * {
-			--atraso: calc(var(--k, 0) * 70ms + var(--extra, 0s));
 			animation: o-mov-sobe 0.7s var(--mov-saida) var(--atraso) backwards;
 
-			&:nth-child(2) { --k: 1; }
-			&:nth-child(3) { --k: 2; }
-			&:nth-child(4) { --k: 3; }
-			&:nth-child(5) { --k: 4; }
-			&:nth-child(6) { --k: 5; }
-			&:nth-child(n + 7) { --k: 6; }
-			&:is(h1 ~ *) { --extra: 0.18s; }
 			/* Etiqueta: sobe de dentro da máscara. */
 			&.o-etiqueta { animation-name: o-mov-mascara; }
 			/* Título: com JS vira palavra por palavra (.o-mov-dividido); se o JS não chegar a tempo, sobe inteiro. */
@@ -239,20 +253,11 @@ html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__dest
 		}
 		& :is(.o-hero, .o-pagina-topo, .o-erro, .o-obrigado) .o-janela {
 			transform-origin: 50% 0;
-			animation: o-mov-janela 0.8s var(--mov-volta) 0.1s backwards;
-		}
-		& .o-pagina-topo .o-janela {
-			animation-delay: 0.3s;
-		}
-		& .o-hero .o-hero__janela {
-			animation-delay: 0.55s;
+			animation: o-mov-janela 0.8s var(--mov-volta) var(--mov-d, 0.1s) backwards;
 		}
 		& .o-hero__barras i {
-			animation: o-barras 0.6s var(--mov-saida) 0.8s backwards;
+			animation: o-barras 0.6s var(--mov-saida) var(--mov-d) backwards;
 		}
-		& .o-hero__barras i:nth-child(2) { animation-delay: 0.86s; }
-		& .o-hero__barras i:nth-child(3) { animation-delay: 0.92s; }
-		& .o-hero__barras i:nth-child(4) { animation-delay: 0.98s; }
 	}
 
 	/* Palavras (banner e títulos de seção): cada uma sobe da própria máscara, em cascata. */
@@ -262,15 +267,13 @@ html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__dest
 
 	/* ---------- 2. Rolagem: classes postas pelo JS (html.o-mov) só abaixo da dobra ---------- */
 	html.js.o-mov:not(.o-pausado) {
-		& .o-mov-mascara:not(.is-in),
-		& .o-mov-titulo:not(.is-in) {
-			clip-path: inset(0 0 100% 0);
+		/* Antes de entrar: invisível só por opacidade (um recorte no próprio elemento faria o
+		   IntersectionObserver nunca ver o alvo). Ao entrar, o recorte vem da própria animação. */
+		& :is(.o-mov-mascara, .o-mov-titulo, .o-mov-jan):not(.is-in) {
+			opacity: 0;
 		}
 		& .o-mov-mascara.is-in {
 			animation: o-mov-mascara 0.7s var(--mov-saida) var(--atraso, 0s) backwards;
-		}
-		& .o-mov-jan:not(.is-in) {
-			clip-path: inset(0 100% 100% 0);
 		}
 		& .o-mov-jan.is-in {
 			transform-origin: 50% 0;
@@ -318,7 +321,6 @@ html.o-mov.o-pausado .o-reveal {
 			transition-delay: 0s, var(--atraso, 0s), var(--atraso, 0s);
 		}
 		& .o-plano:hover {
-			z-index: 2;
 			translate: 0 -6px;
 		}
 		& .o-plano--destaque:hover {
@@ -333,16 +335,17 @@ html.o-mov.o-pausado .o-reveal {
 	}
 }
 
-/* ---------- 5. Barra fina de progresso da leitura (só onde há scroll-timeline em CSS) ---------- */
+/* ---------- 5. Barra fina de progresso da leitura (só onde há scroll-timeline em CSS) ----------
+   Fica no alto do cabeçalho, que é sempre preto (verde nunca sobre branco); some junto com ele. */
 @supports (animation-timeline: scroll()) {
-	@media (prefers-reduced-motion: no-preference) {
-		html:not(.o-pausado):not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-main::before {
+	@media screen and (prefers-reduced-motion: no-preference) {
+		html:not(.o-pausado):not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-topo::before {
 			content: "";
-			position: fixed;
+			position: absolute;
 			top: 0;
 			left: 0;
 			right: 0;
-			z-index: 101;
+			z-index: 1;
 			height: 2px;
 			background: var(--verde);
 			transform-origin: left;

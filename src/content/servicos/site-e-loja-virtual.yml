@@ -16,7 +16,7 @@ quem_faz_nota: "[CONFIRMAR: responsável principal por sites e lojas]"
 
 seo:
   title: Criação de Sites e Lojas Virtuais em Curitiba | Olorin
-  description: Site institucional, loja virtual e página de captação rápidos, bonitos no celular e feitos para trazer contato e venda. Projetos a partir de R$ 800.
+  description: Site institucional, loja virtual e página de captação rápidos, bonitos no celular e feitos para trazer contato e venda. Sites a partir de R$ 800.
 
 card:
   titulo: Site e loja virtual
@@ -106,7 +106,7 @@ preco:
   titulo: Quanto custa
   formato: Plano Pontual
   valor: A partir de R$ 800/projeto
-  faixa: "[CONFIRMAR: faixa de preço por escopo para site e loja (página de captação; site institucional; loja virtual)]"
+  faixa: "Site e página de captação a partir de R$ 800. Loja virtual (e-commerce) a partir de R$ 10.000."
   detalhe: Escopo e prazo são definidos no briefing, e o preço vem detalhado na proposta, antes de começar. O site também faz parte do [360 completo](/planos/).
   inclui:
     - Site institucional, loja virtual ou página de captação, conforme o briefing
@@ -131,7 +131,7 @@ combina_com:
 faq:
   - id: site-quanto-custa
     pergunta: Quanto custa um site ou uma loja virtual?
-    resposta: "A partir de R$ 800, no plano Pontual. O valor final depende do escopo: página de captação, site institucional ou loja virtual. O preço vem detalhado na proposta, antes de começar. O site também faz parte do [360 completo](/planos/): R$ 5.000/mês, mais R$ 1.500 de implantação e a verba de anúncio à parte."
+    resposta: "Site institucional e página de captação a partir de R$ 800, no plano Pontual. Loja virtual (e-commerce) a partir de R$ 10.000. O preço vem detalhado na proposta, antes de começar. O site também faz parte do [360 completo](/planos/): R$ 5.000/mês, mais R$ 1.500 de implantação e a verba de anúncio à parte."
   - id: site-prazo
     pergunta: Quanto tempo leva para o site ficar pronto?
     resposta: Depende do tamanho do projeto. O prazo é definido no briefing, junto com o escopo, antes de começarmos.
