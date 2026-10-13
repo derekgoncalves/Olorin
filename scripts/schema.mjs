@@ -37,7 +37,7 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 				{ '@type': 'Country', name: 'Brasil' },
 			],
 			knowsAbout: ['Tráfego pago', 'Meta Ads', 'Google Ads', 'Gestão de redes sociais', 'Identidade visual', 'Material impresso', 'Criação de sites', 'Google Tag Manager', 'Google Analytics 4'],
-			sameAs: [cfg.INSTAGRAM_URL].concat(cfg.GBP_URL ? [cfg.GBP_URL] : []),
+			sameAs: [cfg.INSTAGRAM_URL, cfg.FACEBOOK_URL, cfg.LINKEDIN_URL, cfg.X_URL, cfg.GBP_URL].filter(Boolean),
 			employee: equipe.map((p) => ({ '@id': `${base}/sobre/#${p.slug}` })),
 		},
 		{
