@@ -33,3 +33,6 @@ site-estatico/leads/pedidos.csv
 # Backups baixados do servidor pelo npm run deploy
 backups/
 docs/screenshots/
+
+# Cópias de trabalho dos agentes (worktrees)
+.claude/

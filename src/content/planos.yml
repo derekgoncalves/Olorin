@@ -1,48 +1,52 @@
-# Planos e preços (PROMPT seção 2 e 12.5). Não alterar valores sem ordem do dono.
-# Escopo em quantidades, Arranque 30 dias e taxa de implantação: plano de negócio aprovado pelo dono em 10/10/2026.
-# 13/10/2026 (dono): Gestão a partir de R$ 2.500 sustenta clientes de ticket baixo e médio; 360 a partir de R$ 5.000
-# é para quem quer mais e para clientes grandes. Loja virtual (e-commerce) a partir de R$ 10.000.
-# "para" = linha curta de quem é o plano, logo abaixo do nome.
+# Planos e preços. Não alterar valores sem ordem do dono.
+# Molde do dono (13/10/2026): entregas pontuais de design a partir de R$ 800; cada serviço mensal
+# avulso a partir de R$ 1.500; Gestão mensal R$ 2.500 (o ÚNICO preço fechado, com quantidades);
+# Marketing 360 a partir de R$ 5.000 (sem quantidades); sites a partir de R$ 3.000; lojas virtuais
+# a partir de R$ 10.000. O Arranque 30 dias saiu da grade (avaliação em docs/PENDENCIAS.md).
+# Campos do card:
+#   de          "A partir de" (vazio = preço fechado; o card mostra o selo "preco_fechado")
+#   para        linha curta de quem é o plano, logo abaixo do nome
+#   itens       o que entra (no Marketing 360 sem quantidades)
+#   calculadora true = aparece como opção na calculadora de custo total
 planos:
   - id: pontual
     nome: Pontual
-    para: Uma entrega fechada, sem mensalidade
+    para: Uma entrega de design, sem mensalidade
     de: A partir de
     valor: 800
-    periodo: /projeto
+    periodo: /entrega
     itens:
-      - Uma entrega específica e fechada
-      - Identidade visual, site ou impresso
-      - Loja virtual (e-commerce) a partir de R$ 10.000
-      - Auditoria da conta de anúncio
-      - Prazo e escopo definidos no briefing
-    selos: []
-    servicos_preselecao: []
-    calculadora: false
-  - id: arranque-30-dias
-    nome: Arranque 30 dias
-    para: Para testar a Olorin antes de assinar
-    tag: Para testar
-    de: A partir de
-    valor: 1800
-    periodo: /uma vez
-    itens:
-      - Rastreamento instalado (GA4, pixel e conversões)
-      - 1 campanha no ar na Meta ou no Google
-      - 8 criativos de anúncio
-      - Relatório com resultado no dia 30
+      - Logotipo e identidade visual
+      - Post ou peça avulsa
+      - Impresso específico, como cartão, folder ou banner
+      - Pacotes de peças com prazo fechado
     selos:
       - Sem contrato mensal
-      - Valor abatido da implantação se continuar
-    custo_total: "Verba de anúncio à parte, direto na sua conta (recomendamos a partir de R$ 1.500 no mês)"
-    servicos_preselecao: [trafego-pago, rastreamento-e-relatorio]
+    servicos_preselecao: [identidade-visual, material-impresso]
     calculadora: false
+  - id: avulso
+    nome: Serviço avulso
+    para: Um serviço por mês, no seu ritmo
+    de: A partir de
+    valor: 1500
+    periodo: /mês cada
+    itens:
+      - Redes sociais
+      - Tráfego pago na Meta ou no Google
+      - Design do mês
+      - Mídias e dados
+    selos:
+      - Relatório mensal
+    # PENDENTE: confirmar se o serviço avulso tem contrato mínimo de 3 meses e taxa de implantação
+    servicos_preselecao: []
+    calculadora: true
+    calculadora_nome: Avulso
   - id: gestao-mensal
     nome: Gestão mensal
     tag: Mais procurado
     destaque: true
-    para: Para pequenas e médias marcas que querem constância
-    de: A partir de
+    para: Anúncio e conteúdo juntos, com quantidade definida
+    de: ""
     valor: 2500
     periodo: /mês
     itens:
@@ -53,45 +57,70 @@ planos:
       - Relatório mensal + reunião de 30 minutos
     selos:
       - Sem multa após 3 meses
-      - Relatório mensal
       - Otimização semanal
     implantacao: "Implantação única: R$ 1.000 (rastreamento, contas e briefing)"
     custo_total: "Com verba de anúncio: a partir de R$ 4.000/mês no total"
     servicos_preselecao: [trafego-pago, redes-sociais]
     calculadora: true
-  - id: 360-completo
-    nome: 360 completo
-    tag: Para quem quer mais
-    para: Para marcas maiores, com mais canais e mais volume
+    calculadora_nome: Gestão
+  - id: marketing-360
+    nome: Marketing 360
+    tag: Cuidado de perto
+    para: A marca inteira sob o mesmo comando, sem contar peça
     de: A partir de
     valor: 5000
     periodo: /mês
     itens:
-      - Meta Ads e Google Ads
-      - 15 criativos de anúncio por mês
-      - 12 posts + 4 Reels por mês
-      - Site e material impresso sob o mesmo comando
-      - Reunião estratégica mensal de 1 hora
-      - Volume e canais sob medida acima disso
+      - Anúncio, redes, marca, site e impresso juntos
+      - Reunião semanal com o time
+      - Planejamento estratégico todo mês
+      # PENDENTE: confirmar "prioridade na fila de criação" como diferencial do Marketing 360
+      - Prioridade na fila de criação
+      - Escopo sob medida, sem quantidade fechada
     selos:
-      - Relatório mensal
-      - Reunião estratégica mensal
-    implantacao: "Implantação única: R$ 1.500 (rastreamento, contas e briefing)"
+      - Reunião semanal
+      - Planejamento mensal
+    implantacao: "Implantação a partir de R$ 1.500 (rastreamento, contas e briefing)"
     custo_total: "Com verba de anúncio: a partir de R$ 6.500/mês no total"
-    servicos_preselecao: [trafego-pago, redes-sociais, identidade-visual, material-impresso, site-e-loja-virtual]
+    servicos_preselecao: [trafego-pago, redes-sociais, identidade-visual, material-impresso, site-e-loja-virtual, rastreamento-e-relatorio]
     calculadora: true
+    calculadora_nome: Marketing 360
+preco_fechado: Preço fechado
 botao: Quero esse
-nota: Valores de gestão. A verba de anúncio (recomendamos a partir de R$ 1.500/mês) é investida à parte, direto nas plataformas Meta e Google.
-contrato: Gestão mensal e 360 com contrato mínimo de 3 meses e taxa única de implantação. Depois, mês a mês com aviso de 30 dias. Sem multa rescisória.
-total_entrada: "Custo total de entrada: a partir de R$ 4.000/mês (gestão R$ 2.500 + verba mínima recomendada de R$ 1.500)."
+nota: Valores de gestão. A verba de anúncio (recomendamos a partir de R$ 1.500/mês) é investida à parte, direto nas plataformas Meta e Google, na sua conta.
+contrato: Gestão mensal e Marketing 360 com contrato mínimo de 3 meses e taxa única de implantação. Depois, mês a mês com aviso de 30 dias. Sem multa rescisória.
+total_entrada: "Custo total para começar a anunciar: a partir de R$ 3.000/mês (serviço avulso de R$ 1.500 + verba mínima recomendada de R$ 1.500)."
+# Projetos de site: fora da grade de planos (dono, 13/10/2026).
+projetos:
+  etiqueta: Sites e lojas virtuais
+  titulo: Projeto fechado, sem mensalidade.
+  itens:
+    - nome: Site
+      de: A partir de
+      valor: 3000
+      texto: Institucional, landing page ou página de captação. Rápido, bonito no celular e pronto para o anúncio.
+      servicos_preselecao: [site-e-loja-virtual]
+    - nome: Loja virtual
+      de: A partir de
+      valor: 10000
+      texto: E-commerce completo, com catálogo, pagamento, frete e rastreamento das vendas.
+      servicos_preselecao: [site-e-loja-virtual, rastreamento-e-relatorio]
+  botao: Pedir orçamento do projeto
+  link: { texto: Ver como fazemos sites, url: /servicos/site-e-loja-virtual/ }
 calculadora:
   titulo: Quanto custa começar?
-  texto: Escolha o formato e quanto quer investir em anúncio. A conta aparece na hora.
+  texto: Escolha o formato e a verba de anúncio. A conta sai na hora, em forma de recibo.
   rotulo_plano: Formato
   rotulo_verba: Verba de anúncio por mês
+  rotulo_objetivo: O que você quer mais
+  objetivos: [Vendas, Matrículas, Contatos, Doações ou inscrições]
   verbas: [1500, 3000, 5000, 10000]
   verba_minima: 1500
+  linha_gestao: Gestão Olorin
+  linha_verba: Verba de anúncio (vai direto para a Meta e o Google)
+  linha_total: Total por mês
   resultado_prefixo: a partir de
   resultado_sufixo: por mês
+  botao_wa: Mandar esta conta no WhatsApp
   aviso: A verba vai direto para a Meta e o Google, na sua conta. A Olorin cobra só a gestão.
   tabela_titulo: Custo total por mês (gestão + verba)

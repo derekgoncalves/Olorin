@@ -1,50 +1,59 @@
-/* Redes sociais: quadrados com contorno, sombra dura no hover (mesma linguagem dos botões). */
-.o-redes {
+/* Redes sociais: só o logo, sem caixa em volta (dono, 13/10/2026). Área de toque de 44 px. */
+.o-redes,
+.o-rodape .o-redes {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	align-items: center;
+	gap: 4px 6px;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
-.o-redes__link {
+.o-redes__link,
+.o-rodape .o-redes__link {
 	display: inline-grid;
 	place-items: center;
 	width: 44px;
 	height: 44px;
-	border: 2px solid currentColor;
+	padding: 0;
 	color: inherit;
 	text-decoration: none;
-	transition: transform var(--dur-rapida, 0.18s) var(--curva, ease), box-shadow var(--dur-rapida, 0.18s) var(--curva, ease), background-color var(--dur-rapida, 0.18s), color var(--dur-rapida, 0.18s);
+	transition: color var(--dur-rapida, 0.18s), transform var(--dur-rapida, 0.18s) var(--curva, ease);
+}
+.o-redes li:first-child .o-redes__link {
+	margin-left: -10px;
 }
 .o-redes__link .o-icone {
-	--tam: 20px;
+	--tam: 22px;
 }
 .o-redes__link:hover,
-.o-redes__link:focus-visible {
-	transform: translate(-2px, -2px);
-	box-shadow: 4px 4px 0 currentColor;
-}
-.o-ctx-preto .o-redes__link:hover,
-.o-ctx-preto .o-redes__link:focus-visible,
-.o-rodape .o-redes__link:hover,
-.o-rodape .o-redes__link:focus-visible {
-	box-shadow: 4px 4px 0 var(--verde);
+.o-redes__link:focus-visible,
+.o-rodape .o-redes__link:hover {
+	color: var(--cor-destaque);
+	text-decoration: none;
+	transform: translateY(-2px);
 }
 .o-ctx-violeta .o-redes__link:hover,
 .o-ctx-violeta .o-redes__link:focus-visible {
-	box-shadow: 4px 4px 0 var(--preto);
+	color: var(--preto);
 }
 .o-redes__titulo {
-	margin: 0 0 10px;
+	margin: 0 0 6px;
 }
 /* Rodapé e menu do celular */
 .o-rodape__redes {
-	margin-top: 20px;
+	margin-top: 14px;
+}
+.o-rodape .o-redes__link:hover,
+.o-rodape .o-redes__link:focus-visible {
+	color: var(--verde);
 }
 .o-menu__redes {
 	justify-content: center;
 	margin-top: 16px;
+}
+.o-menu__redes li:first-child .o-redes__link {
+	margin-left: 0;
 }
 /* Bloco final (orçamento) */
 .o-orcamento__redes {
