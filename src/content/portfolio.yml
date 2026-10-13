@@ -1,27 +1,33 @@
 # ============================================================
-# PORTFÓLIO — design e sites (home + página /portfolio/)
+# PORTFÓLIO — home (bloco Resultados), páginas de serviço e /portfolio/
 # ------------------------------------------------------------
-# Só entram no site os itens com "publicado: true" (trabalho real,
-# com o cliente de acordo). A página /portfolio/ e o item "Portfólio"
-# do menu aparecem sozinhos quando houver pelo menos 1 item publicado.
-# Na home aparecem os 6 primeiros publicados.
+# Tudo vai ao ar (dono, 13/10/2026). As imagens abaixo são ILUSTRATIVAS
+# (fotos de banco de imagem, com títulos de tipo de trabalho, sem nome de cliente)
+# e estão na lista de pendências para virar trabalho real.
 #
-# Para adicionar um trabalho:
-#   1. Salve a imagem em src/assets/img-src/portfolio/ (JPG ou WebP, 1200 px de largura).
-#   2. Cadastre a imagem em src/assets/manifest.json (copie um item "portfolio-..." e troque
-#      arquivo, alt e autorização).
-#   3. Acrescente o item abaixo com publicado: true. "link" é opcional (site no ar,
-#      post no Instagram ou Behance).
+# Campos:
+#   titulo     tipo de trabalho (ou nome do cliente, quando for real e autorizado)
+#   rotulo     linha pequena abaixo do título
+#   imagem     id da imagem (src/assets/manifest.json ou manifest-<area>.json)
+#   servicos   slugs dos serviços: o trabalho aparece no portfólio da página de cada um
+#   link       opcional (site no ar, post no Instagram ou Behance)
 #
-# As 8 imagens abaixo são ILUSTRATIVAS: ficam fora do ar (publicado: false).
+# Para trocar uma imagem só pelo FTP (sem novo build): suba um arquivo com o MESMO
+# nome em /assets/img/ (as larguras e formatos estão em docs/PENDENCIAS.md).
 # ============================================================
 filtros:
-  - { id: design, rotulo: Design }
-  - { id: site, rotulo: Sites }
+  - { id: identidade-visual, rotulo: Identidade }
+  - { id: redes-sociais, rotulo: Redes }
+  - { id: material-impresso, rotulo: Impressos }
+  - { id: site-e-loja-virtual, rotulo: Sites }
+  - { id: trafego-pago, rotulo: Tráfego }
 itens:
-  - { titulo: Ateliê de moda, rotulo: Design · Identidade visual, imagem: portfolio-marca-identidade, categorias: [design], publicado: false }
-  - { titulo: Escritório de advocacia, rotulo: Site · Institucional, imagem: portfolio-site-institucional, categorias: [site], publicado: false }
-  - { titulo: Cafeteria, rotulo: Design · Catálogo impresso, imagem: portfolio-campanha-trafego, categorias: [design], publicado: false }
-  - { titulo: Estúdio de estética, rotulo: Design · Redes sociais, imagem: portfolio-impresso-catalogo, categorias: [design], publicado: false }
-  - { titulo: Marcenaria autoral, rotulo: Design · Fotografia, imagem: portfolio-marca-producao, categorias: [design], publicado: false }
-  - { titulo: Loja infantil, rotulo: Design · Ponto de venda, imagem: portfolio-impresso-loja, categorias: [design], publicado: false }
+  # PENDENTE: as 8 imagens do portfólio são ilustrativas; trocar por trabalhos reais autorizados
+  - { titulo: Paleta e identidade, rotulo: Identidade visual, imagem: portfolio-marca-identidade, servicos: [identidade-visual] }
+  - { titulo: Campanha de marca, rotulo: Tráfego pago · Redes sociais, imagem: portfolio-redes-conteudo, servicos: [trafego-pago, redes-sociais] }
+  - { titulo: Site institucional, rotulo: Sites, imagem: portfolio-site-institucional, servicos: [site-e-loja-virtual] }
+  - { titulo: Tipografia e direção de arte, rotulo: Identidade visual, imagem: portfolio-campanha-trafego, servicos: [identidade-visual, material-impresso] }
+  - { titulo: Feed com cara de marca, rotulo: Redes sociais, imagem: portfolio-impresso-catalogo, servicos: [redes-sociais] }
+  - { titulo: Painel de resultados, rotulo: Tráfego pago · Dados, imagem: portfolio-campanha-google-ads, servicos: [trafego-pago, rastreamento-e-relatorio] }
+  - { titulo: Vitrine e ponto de venda, rotulo: Impressos, imagem: portfolio-impresso-loja, servicos: [material-impresso] }
+  - { titulo: Produção de conteúdo, rotulo: Redes sociais, imagem: portfolio-marca-producao, servicos: [redes-sociais] }

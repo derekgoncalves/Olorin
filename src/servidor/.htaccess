@@ -76,8 +76,10 @@ AddDefaultCharset utf-8
 	RewriteRule ^(wp-admin|wp-login\.php|wp-content|wp-includes|feed)(/.*)?$ / [L,R=301]
 	# Atalhos que as pessoas costumam digitar
 	RewriteRule ^(orcamento|contato)/?$ /#orcamento [NE,L,R=301]
-	RewriteRule ^diagnostico/?$ /#diagnostico [NE,L,R=301]
+	RewriteRule ^(diagnostico|raio-x)/?$ /#raio-x [NE,L,R=301]
 	RewriteRule ^privacidade/?$ /politica-de-privacidade/ [L,R=301]
+	# Página Sobre virou Quem somos (13/10/2026)
+	RewriteRule ^(sobre|equipe|time)/?$ /quem-somos/ [L,R=301]
 </IfModule>
 
 # ------------------------------------------------------------

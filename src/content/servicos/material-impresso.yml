@@ -6,8 +6,8 @@
 # ============================================================
 slug: material-impresso
 ordem: 4
-nome: Material impresso
-chip: Material impresso       # igual à opção do formulário e à lista do enviar.php
+nome: Impressos
+chip: Impressos   # um nome por serviço (dono, 13/10/2026): igual no menu, no card, no formulário e no enviar.php
 icone: impresso
 janela: grafica.pdf
 atualizado: "2026-10-13"
@@ -19,7 +19,7 @@ seo:
   description: Cartão, folder, catálogo, banner, adesivo, fachada e embalagem. Arquivo fechado pronto para a gráfica e acompanhamento da prova.
 
 card:
-  titulo: Material impresso
+  titulo: Impressos
   resumo: Cartão, folder, catálogo, banner, adesivo, fachada e embalagem. Do arquivo fechado ao acompanhamento da prova na gráfica.
   resumo_curto: Do cartão à fachada, pronto para a gráfica.
 

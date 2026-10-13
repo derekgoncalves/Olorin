@@ -8,8 +8,8 @@
 # ============================================================
 slug: rastreamento-e-relatorio
 ordem: 6
-nome: Rastreamento e relatório
-chip: Rastreamento e relatório   # igual à opção do formulário e à lista do enviar.php
+nome: Dados
+chip: Dados   # um nome por serviço (dono, 13/10/2026): igual no menu, no card, no formulário e no enviar.php
 icone: dados
 janela: painel.exe
 atualizado: "2026-10-13"
@@ -21,7 +21,7 @@ seo:
   description: Google Tag Manager, pixel, conversões e painel de acompanhamento para saber quanto entrou, quanto saiu e qual foi o retorno.
 
 card:
-  titulo: Rastreamento e relatório
+  titulo: Dados
   resumo: Google Tag Manager, pixel da Meta e painel para saber quanto cada anúncio vendeu.
   resumo_curto: Medição do site e dos anúncios, com painel de acompanhamento.
 

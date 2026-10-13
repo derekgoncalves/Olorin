@@ -6,8 +6,8 @@
 # ============================================================
 slug: site-e-loja-virtual
 ordem: 5
-nome: Site e loja virtual
-chip: Site ou loja virtual # igual à opção do formulário e à lista do enviar.php
+nome: Sites
+chip: Sites   # um nome por serviço (dono, 13/10/2026): igual no menu, no card, no formulário e no enviar.php
 icone: site
 janela: site.html
 atualizado: "2026-10-13"
@@ -19,7 +19,7 @@ seo:
   description: Site institucional, loja virtual e página de captação rápidos, bonitos no celular e feitos para trazer contato e venda. Sites a partir de R$ 800.
 
 card:
-  titulo: Site e loja virtual
+  titulo: Sites
   resumo: Site institucional, loja virtual e página de captação. Rápidos, bonitos no celular e feitos para trazer contato e venda.
   resumo_curto: Site institucional, loja virtual e página de captação.
 

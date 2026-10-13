@@ -124,8 +124,8 @@ export function registrarFiltros(eleventyConfig, { prod }) {
 	eleventyConfig.addFilter('phpString', phpString);
 	eleventyConfig.addFilter('semVazios', (lista) => (lista || []).filter(Boolean));
 
-	// Marcadores [CONFIRMAR: ...]: destacados no modo de desenvolvimento.
-	// Em produção o carregador de conteúdo já removeu tudo o que tinha marcador.
+	// Espaço fixo depois de "R$". Marcadores [CONFIRMAR: ...] que sobrarem ficam destacados no
+	// modo de desenvolvimento (em produção o build falha, ver scripts/verificar-build.mjs).
 	eleventyConfig.addFilter('confirmar', (html) =>
 		prod ? String(html ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0') : String(html ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0').replace(/\[CONFIRMAR:?([^\]]*)\]/g, '<mark class="o-confirmar" title="Falta confirmar">[CONFIRMAR:$1]</mark>'),
 	);

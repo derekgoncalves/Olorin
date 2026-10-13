@@ -6,8 +6,8 @@
 # ============================================================
 slug: identidade-visual
 ordem: 3
-nome: Identidade visual e criação
-chip: Identidade visual e criação   # igual à opção do formulário e à lista do enviar.php
+nome: Identidade visual
+chip: Identidade visual   # um nome por serviço (dono, 13/10/2026): igual no menu, no card, no formulário e no enviar.php
 icone: marca
 janela: marca.ai
 atualizado: "2026-10-13"
@@ -18,7 +18,7 @@ seo:
   description: Logotipo, manual de marca, papelaria e todo o material visual. Uma marca com cara de marca, não de improviso. Projetos a partir de R$ 800.
 
 card:
-  titulo: Identidade visual e criação
+  titulo: Identidade visual
   resumo: Logotipo, manual de marca, papelaria e material de apoio. A marca com cara de marca, não de improviso.
   resumo_curto: Logotipo, manual de marca e papelaria.
 

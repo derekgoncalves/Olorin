@@ -1,7 +1,7 @@
 {#- ===== SEÇÃO: Faixa de logos de clientes (letreiro) — src/content/clientes.yml ===== -#}
 {%- set cl = conteudo.clientes or {} -%}
-{%- set logos = (cl.itens or []) | filtrarPor("autorizado", true) -%}
-{%- if logos.length >= (cl.minimo or 5) %}
+{%- set logos = cl.itens or [] -%}
+{%- if logos.length %}
 <section class="o-sec o-sec--compacta o-clientes o-ctx-branco" data-secao="clientes" aria-labelledby="clientes-titulo">
 	<div class="o-wrap">
 		<h2 class="o-etiqueta o-clientes__titulo" id="clientes-titulo">{{ cl.etiqueta }}</h2>
@@ -9,7 +9,7 @@
 	<div class="o-faixa o-faixa--logos" data-o-faixa>
 		<ul class="o-faixa__trilho">
 		{%- for c in logos %}
-			<li><img src="/assets/img/clientes/{{ c.logo }}" alt="{{ c.nome }}" loading="lazy" decoding="async" height="48"></li>
+			<li{% if c.vaga %} class="o-faixa__vaga"{% endif %}><img src="/assets/img/clientes/{{ c.logo }}" alt="{{ c.nome }}" loading="lazy" decoding="async" width="{{ c.largura or 160 }}" height="48"></li>
 		{%- endfor %}
 		</ul>
 		<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>

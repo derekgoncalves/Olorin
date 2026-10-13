@@ -1,22 +1,17 @@
 # Menu principal. "submenu: servicos" lista automaticamente os 6 serviços (src/content/servicos/).
-# "so_com_cases: true" só aparece quando houver case aprovado (src/content/cases.yml).
-# "so_com_portfolio: true" só aparece quando houver trabalho publicado (src/content/portfolio.yml).
 # Todos os itens levam a páginas de verdade (nada de âncora no meio da home).
+# Ordem (13/10/2026): o que a pessoa procura primeiro (serviço e preço), depois prova e confiança.
 principal:
   - rotulo: Serviços
     url: /servicos/
     submenu: servicos
-  - rotulo: Como trabalhamos
-    url: /como-trabalhamos/
   - rotulo: Planos
     url: /planos/
   - rotulo: Portfólio
     url: /portfolio/
-    so_com_portfolio: true
-  - rotulo: Cases
-    url: /cases/
-    so_com_cases: true
+  - rotulo: Como trabalhamos
+    url: /como-trabalhamos/
+  - rotulo: Quem somos
+    url: /quem-somos/
   - rotulo: Educação
     url: /educacao/
-  - rotulo: Sobre
-    url: /sobre/

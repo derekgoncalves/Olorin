@@ -124,7 +124,7 @@ for (const largura of [360, 1440]) {
 
 console.log('\n2. Acessibilidade (axe-core)');
 const axe = readFileSync(path.resolve('node_modules/axe-core/axe.min.js'), 'utf8');
-for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/sobre/', '/promo/', '/obrigado/', '/politica-de-privacidade/']) {
+for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/quem-somos/', '/promo/', '/obrigado/', '/politica-de-privacidade/']) {
 	for (const largura of [390, 1280]) {
 		const ctx = await navegador.newContext({ viewport: { width: largura, height: 900 }, reducedMotion: 'reduce' });
 		const p = await ctx.newPage();

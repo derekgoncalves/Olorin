@@ -1,4 +1,4 @@
-{#- ===== SEÇÃO: Portfólio de design e sites com filtros — src/content/portfolio.yml (só itens publicados) ===== -#}
+{#- ===== SEÇÃO: Portfólio com filtros por serviço — src/content/portfolio.yml (todos os itens vão ao ar) ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- set t = P.portfolio -%}
 {%- set p = conteudo.portfolio -%}
@@ -13,14 +13,14 @@
 		<div class="o-filtros" role="group" aria-label="Filtrar trabalhos" data-o-filtros hidden>
 			<button class="o-filtro" type="button" aria-pressed="true" data-filtro="*">{{ t.filtro_todos }}</button>
 			{%- for f in p.filtros %}
-			{%- if (trabalhos | filtrarPor("categorias", f.id)).length %}
+			{%- if (trabalhos | filtrarPor("servicos", f.id)).length %}
 			<button class="o-filtro" type="button" aria-pressed="false" data-filtro="{{ f.id }}">{{ f.rotulo }}</button>
 			{%- endif %}
 			{%- endfor %}
 		</div>
 		<ul class="o-trabalhos" data-o-trabalhos>
 		{%- for item in trabalhos %}
-			<li class="o-trabalho" data-categorias="{{ item.categorias | join(' ') }}">
+			<li class="o-trabalho" data-categorias="{{ item.servicos | join(' ') }}">
 				<figure>
 					<span class="o-trabalho__barra" aria-hidden="true">projeto_{{ "0" + loop.index if loop.index < 10 else loop.index }}.jpg</span>
 					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 767px) 46vw, (max-width: 1100px) 30vw, 300px" }) | safe }}

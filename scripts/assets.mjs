@@ -54,6 +54,11 @@ export const ORDEM_CSS = [
 	'componentes/estilo.css',
 	'componentes/sociais.css',
 	'componentes/prova.css',
+	// 13/10/2026 (versão final): cada área do site tem o seu arquivo.
+	'componentes/fundos.css', // fundos animados e interações de desktop (todas as páginas)
+	'componentes/home.css', // blocos novos da home (resultados, Raio-X, atalho do banner)
+	'componentes/perfil.css', // Quem somos e perfis da equipe
+	'componentes/educacao.css', // LP Olorin Educação (tema próprio: .o-tema-educacao)
 	'animacoes.css',
 	'responsivo.css',
 ];

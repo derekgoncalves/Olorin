@@ -7,7 +7,9 @@
 	  indexavel               → false gera "noindex, follow"
 	  canonical               → caminho canônico (padrão: a própria URL)
 	  og_imagem               → caminho da imagem de compartilhamento (1200×630)
-	  cabecalho               → "completo" (padrão) ou "minimo" (landings de campanha)
+	  cabecalho               → "completo" (padrão), "minimo" (landings de campanha) ou "educacao" (LP Olorin Educação)
+	  tema                    → classe extra no <body> (o-tema-<tema>), ex.: "educacao"
+	  fontes_extra            → [{ href, tipo }] fontes a mais pré-carregadas só nesta página
 	  migalhas                → [{ nome, url }] para a trilha e o BreadcrumbList
 -#}
 {%- set cfg = site.config -%}
@@ -48,6 +50,9 @@
 	{%- for fonte in assets.fontes %}
 	<link rel="preload" href="{{ fonte.href }}" as="font" type="{{ fonte.tipo }}" crossorigin>
 	{%- endfor %}
+	{%- for fonte in fontes_extra or [] %}
+	<link rel="preload" href="{{ fonte.href }}" as="font" type="{{ fonte.tipo }}" crossorigin>
+	{%- endfor %}
 	<script>
 		{#- Antes da primeira pintura: marca "js" e decide a variante do formulário (A/B) sem pulo de layout. -#}
 		(function (d, w) {
@@ -76,14 +81,14 @@
 	} | jsonSeguro | safe }};</script>
 	<script src="{{ assets.js }}" defer></script>
 </head>
-<body class="o-modo-{{ modoPagina }}{% if cabecalho != 'minimo' %} o-tem-barra{% endif %}" data-mode="{{ 'campanha' if modoPagina == 'promo' else modoPagina }}">
+<body class="o-modo-{{ modoPagina }}{% if tema %} o-tema-{{ tema }}{% endif %}{% if cabecalho != 'minimo' %} o-tem-barra{% endif %}" data-mode="{{ 'campanha' if modoPagina == 'promo' else modoPagina }}">
 {% include "partials/svg-simbolos.njk" %}
 <a class="o-pular" href="#conteudo">Pular para o conteúdo</a>
-{% if cabecalho == "minimo" %}{% include "partials/cabecalho-minimo.njk" %}{% else %}{% include "partials/cabecalho.njk" %}{% endif %}
+{% if cabecalho == "minimo" %}{% include "partials/cabecalho-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/cabecalho-educacao.njk" %}{% else %}{% include "partials/cabecalho.njk" %}{% endif %}
 <main id="conteudo" class="o-main" tabindex="-1">
 {{ content | safe }}
 </main>
-{% if cabecalho == "minimo" %}{% include "partials/rodape-minimo.njk" %}{% else %}{% include "partials/rodape.njk" %}{% endif %}
+{% if cabecalho == "minimo" %}{% include "partials/rodape-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/rodape-educacao.njk" %}{% else %}{% include "partials/rodape.njk" %}{% endif %}
 {% include "partials/flutuantes.njk" %}
 {% if temRastreamento %}{% include "partials/cookies.njk" %}{% endif %}
 </body>

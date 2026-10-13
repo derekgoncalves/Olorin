@@ -6,8 +6,8 @@
 # ============================================================
 slug: redes-sociais
 ordem: 2
-nome: Redes sociais e conteúdo
-chip: Redes sociais e conteúdo   # igual à opção do formulário e à lista do enviar.php
+nome: Redes sociais
+chip: Redes sociais   # um nome por serviço (dono, 13/10/2026): igual no menu, no card, no formulário e no enviar.php
 icone: redes
 janela: feed.exe
 atualizado: "2026-10-13"
@@ -19,7 +19,7 @@ seo:
   description: Calendário editorial, posts, stories e legendas com a mesma cara do seu anúncio e do seu site. Incluso na Gestão mensal, R$ 2.500/mês.
 
 card:
-  titulo: Redes sociais e conteúdo
+  titulo: Redes sociais
   resumo: Calendário editorial, posts, stories e legendas. Um feed que sustenta o anúncio, em vez de brigar com ele.
   resumo_curto: Calendário, posts, stories e legendas.
 

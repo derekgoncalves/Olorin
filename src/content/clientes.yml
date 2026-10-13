@@ -1,16 +1,17 @@
 # ============================================================
-# FAIXA DE LOGOS DE CLIENTES (home, logo abaixo dos números)
+# FAIXA DE LOGOS DE CLIENTES (home, bloco Resultados)
 # ------------------------------------------------------------
-# A faixa só aparece com 5 ou mais logos com "autorizado: true"
-# (cliente de acordo em aparecer no site).
-#
-# Para adicionar um logo:
-#   1. Salve o arquivo em src/assets/clientes/
-#      (SVG de preferência; ou PNG com fundo transparente, ~400 px de largura).
-#   2. Acrescente uma linha em "itens", como no exemplo comentado.
-# Os logos aparecem em cinza e ganham cor quando o mouse passa por cima.
+# Aparece sempre, com quantos logos houver (dono, 13/10/2026: sem mínimo).
+# Os arquivos ficam em src/assets/clientes/ (no servidor: /assets/img/clientes/).
+# Para trocar um logo só pelo FTP: suba o arquivo novo com o MESMO nome e a mesma extensão
+# (.svg). Logo em PNG muda a extensão, então precisa de um novo build (docs/PENDENCIAS.md).
+# "vaga: true" = espaço reservado ("Sua marca aqui"), à espera do logo de um cliente real.
 # ============================================================
 etiqueta: Quem já confiou na Olorin
-minimo: 5
-itens: []
-#  - { nome: "Nome do cliente", logo: nome-do-arquivo.svg, autorizado: true }
+itens:
+  # PENDENTE: enviar os logos reais (SVG ou PNG) da Izeta e do Anacleto; hoje são letreiros feitos com o nome
+  - { nome: Izeta, logo: izeta.svg, largura: 232 }
+  - { nome: Anacleto, logo: anacleto.svg, largura: 416 }
+  # PENDENTE: até 6 logos de outros clientes autorizados (substituem as vagas "Sua marca aqui")
+  - { nome: Sua marca aqui, logo: vaga-01.svg, largura: 299, vaga: true }
+  - { nome: Sua marca aqui, logo: vaga-02.svg, largura: 299, vaga: true }

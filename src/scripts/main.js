@@ -22,6 +22,10 @@ import { iniciarMovimento, iniciarRevelarMovimento } from './modulos/movimento.j
 import { iniciarFlutuantes } from './modulos/flutuantes.js';
 import { iniciarCursor } from './modulos/cursor.js';
 import { iniciarCliques, iniciarRolagem, iniciarSecoes, iniciarObrigado } from './modulos/medicao.js';
+import { iniciarFundos } from './modulos/fundos.js';
+import { iniciarServico } from './modulos/servico.js';
+import { iniciarPerfil } from './modulos/perfil.js';
+import { iniciarEducacao } from './modulos/educacao.js';
 
 function rodar(lista) {
 	lista.forEach((fn) => {
@@ -35,5 +39,5 @@ function rodar(lista) {
 
 rodar([iniciarConsentimento, iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarFormularios, iniciarChecklist, iniciarFaq, iniciarPlanos, iniciarCliques, iniciarObrigado, iniciarPausa, iniciarMovimento]);
 quandoLivre(() =>
-	rodar([iniciarFaixas, iniciarRevelarMovimento, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor]),
+	rodar([iniciarFaixas, iniciarRevelarMovimento, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor, iniciarFundos, iniciarServico, iniciarPerfil, iniciarEducacao]),
 );

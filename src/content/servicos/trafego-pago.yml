@@ -7,7 +7,7 @@
 slug: trafego-pago
 ordem: 1
 nome: Tráfego pago
-chip: Tráfego pago            # igual à opção do formulário e à lista do enviar.php
+chip: Tráfego pago   # um nome por serviço (dono, 13/10/2026): igual no menu, no card, no formulário e no enviar.php
 icone: trafego
 janela: campanhas.exe
 atualizado: "2026-10-13"

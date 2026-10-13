@@ -1,42 +1,36 @@
-# Cases (PROMPT seção 12.2).
-# exibir: true   → aparece na seção Resultados da home. Os 3 exemplos abaixo ficaram ocultos em 10/10/2026 (plano de negócio: só prova real no site).
-# aprovado: true → além disso, ganha página própria em /cases/<slug>/, entra no menu ("Cases"),
-#                  aparece nas páginas dos serviços listados e no sitemap.
-#                  Só marque com o cliente de acordo e com TODOS estes campos preenchidos
-#                  (o build para com um aviso se faltar algum):
-#   cliente: Nome do cliente (ou deixe vazio e use só o segmento)
-#   situacao: Como estava antes (1 a 3 frases)
-#   o_que_fizemos: [lista do que foi feito]
-#   periodo: "90 dias (jan a mar/2026)"
-#   verba: "R$ 9 mil em anúncio no período"     (opcional)
-#   medicao: "Faturamento do painel da loja"     (opcional: como o resultado foi medido)
-#   imagem: id de uma imagem do src/assets/manifest.json   (opcional)
-#   depoimento: { texto: "...", nome: "...", cargo: "..." } (opcional, só autorizado)
+# Cases (PROMPT seção 12.2). Todos vão ao ar: home (Resultados), páginas de serviço e Olorin Educação.
+# Regra: nenhum número inventado. O resultado de um case só entra quando o dono informar
+# o número, o período e como foi medido. Até lá, o card mostra o que foi feito.
+# "pagina: true" cria também /cases/<slug>/ e exige todos estes campos (o build avisa se faltar):
+#   slug, segmento, situacao, o_que_fizemos (lista), resultado, periodo, servicos
+# Campos do card:
+#   cliente     nome do cliente
+#   logo        arquivo em src/assets/clientes/ (no servidor: /assets/img/clientes/)
+#   segmento    tipo de organização
+#   servicos    slugs dos serviços (o case aparece na página de cada um)
+#   resumo      o que a Olorin fez, em 1 frase
+#   resultado   número curto (só confirmado); sem número, use "destaque" (texto curto)
+#   detalhe     linha de apoio abaixo do número ou do destaque
 itens:
-  - slug: e-commerce-de-moda
-    exibir: false
-    aprovado: false
-    janela: case_01.exe
-    segmento: E-commerce de moda
-    servicos_texto: Tráfego pago + conteúdo + site
-    servicos: [trafego-pago, redes-sociais, site-e-loja-virtual]
-    resultado: R$ 380k
-    detalhe: faturado em 90 dias
-  - slug: clinica-estetica
-    exibir: false
-    aprovado: false
-    janela: case_02.exe
-    segmento: Clínica estética
-    servicos_texto: Meta Ads + identidade visual
-    servicos: [trafego-pago, identidade-visual]
-    resultado: 8x
-    detalhe: de retorno sobre investimento
-  - slug: industria-alimenticia
-    exibir: false
-    aprovado: false
-    janela: case_03.exe
-    segmento: Indústria alimentícia
-    servicos_texto: Impresso + redes sociais + campanha
-    servicos: [material-impresso, redes-sociais, trafego-pago]
-    resultado: 3 meses
-    detalhe: do zero ao mercado
+  - slug: izeta
+    cliente: Izeta
+    logo: izeta.svg
+    segmento: Educação
+    janela: case_izeta.exe
+    servicos_texto: Tráfego pago · Redes sociais · Dados
+    servicos: [trafego-pago, redes-sociais, rastreamento-e-relatorio]
+    # PENDENTE: confirmar o que a Olorin fez para a Izeta e enviar o resultado (número, período e como foi medido)
+    resumo: Campanhas de matrícula, conteúdo para as redes e acompanhamento de cada contato que chegou.
+    destaque: Captação de alunos
+    detalhe: Turmas, campanhas e relatório de matrículas sob o mesmo cuidado.
+  - slug: anacleto
+    cliente: Anacleto
+    logo: anacleto.svg
+    segmento: Educação
+    janela: case_anacleto.exe
+    servicos_texto: Tráfego pago · Identidade visual · Redes sociais
+    servicos: [trafego-pago, identidade-visual, redes-sociais]
+    # PENDENTE: confirmar o que a Olorin fez para o Anacleto e enviar o resultado (número, período e como foi medido)
+    resumo: Comunicação de matrícula com cara de marca, do anúncio ao feed.
+    destaque: Marca e matrícula
+    detalhe: Calendário de captação, peças e campanhas falando a mesma língua.
