@@ -18,6 +18,9 @@
 			<p class="o-planos__nota">{{ p.contrato }}</p>
 			{%- if site.config.SHOW_TOTAL_COST %}<p class="o-planos__total">{{ p.total_entrada }}</p>{% endif %}
 		</div>
-		{{ ui.calculadora() }}
+		{%- if t.link_mais %}
+		<p class="o-planos__mais"><a class="o-btn o-btn--contorno" href="{{ t.link_mais.url }}" data-cta="planos-ver-mais">{{ t.link_mais.texto }}</a></p>
+		{%- endif %}
+		{%- if not t.sem_calculadora %}{{ ui.calculadora() }}{% endif %}
 	</div>
 </section>

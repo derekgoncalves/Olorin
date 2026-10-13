@@ -1,6 +1,7 @@
 {#- ===== SEÇÃO: CTA final + formulário completo — src/content/home.yml → orcamento ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- from "components/formulario.njk" import formulario with context -%}
+{%- import "components/ui.njk" as ui with context -%}
 {%- set t = P.orcamento -%}
 <section class="o-sec o-orcamento o-ctx-violeta" id="orcamento" data-secao="orcamento" aria-labelledby="orcamento-titulo">
 	<div class="o-wrap">
@@ -20,6 +21,12 @@
 						<p class="o-orcamento__telefone"><a href="{{ waLink(origemWaFinal or 'orcamento-final') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ site.config.TELEFONE_EXIBICAO }}</a></p>
 					</div>
 				</div>
+				{%- if t.redes_titulo %}
+				<div class="o-orcamento__redes">
+					<p class="o-etiqueta o-redes__titulo">{{ t.redes_titulo }}</p>
+					{{ ui.redes("", "orcamento") }}
+				</div>
+				{%- endif %}
 			</div>
 		</div>
 	</div>

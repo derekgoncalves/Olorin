@@ -1,7 +1,7 @@
 {#- ===== SEÇÃO: Resultados — números (src/content/claims.json), cases (cases.yml) e depoimentos (depoimentos.yml) ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- set r = P.resultados -%}
-{%- set numeros = conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else [] -%}
+{%- set numeros = [] if r.ocultar_numeros else (conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else []) -%}
 {%- set cases = [] if r.ocultar_cases else (conteudo.cases.itens | filtrarPor("exibir", true)) -%}
 {%- set depoimentos = conteudo.depoimentos.itens | filtrarPor("autorizado", true) -%}
 {%- if numeros.length or cases.length or depoimentos.length %}

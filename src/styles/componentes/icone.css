@@ -24,3 +24,7 @@
 .o-icone--pixel { --icone: var(--icone-pixel); }
 .o-icone--estrela { --icone: var(--icone-estrela); }
 .o-icone--whatsapp { --icone: var(--icone-whatsapp); }
+.o-icone--instagram { --icone: var(--icone-instagram); }
+.o-icone--facebook { --icone: var(--icone-facebook); }
+.o-icone--x { --icone: var(--icone-x); }
+.o-icone--linkedin { --icone: var(--icone-linkedin); }

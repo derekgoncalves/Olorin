@@ -6,7 +6,7 @@
 		<p class="o-etiqueta">{{ c.etiqueta }}</p>
 		<h2 class="o-titulo" id="checklist-titulo">{{ c.titulo }}</h2>
 		<p class="o-checklist__dica" id="checklist-dica">{{ c.dica }}</p>
-		<ul class="o-checklist" data-o-checklist aria-describedby="checklist-dica">
+		<ul class="o-checklist{% if c.itens.length % 2 == 0 and c.itens.length < 6 %} o-checklist--par{% endif %}" data-o-checklist aria-describedby="checklist-dica">
 		{%- for item in c.itens %}
 			<li class="o-checklist__item"><button class="o-check" type="button" aria-pressed="false" data-o-check><span class="o-check__num" aria-hidden="true">{{ "0" + loop.index if loop.index < 10 else loop.index }}</span><span class="o-check__texto">{{ item }}</span></button></li>
 		{%- endfor %}
@@ -22,7 +22,7 @@
 					</div>
 				</div>
 			</div>
-			<a class="o-btn o-btn--preto" href="#metodo" data-cta="checklist-resolver">{{ c.cta }}</a>
+			<a class="o-btn o-btn--preto" href="{{ c.cta_destino or '#metodo' }}" data-cta="checklist-resolver">{{ c.cta }}</a>
 		</div>
 	</div>
 </section>

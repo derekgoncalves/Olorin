@@ -1,11 +1,14 @@
 {#- Rodapé completo. -#}
 {%- set cfg = site.config -%}
+{%- import "components/ui.njk" as ui with context -%}
 {%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
 <footer class="o-rodape">
 	<div class="o-wrap o-rodape__grade">
 		<div class="o-rodape__marca">
 			<a class="o-rodape__logo" href="/" aria-label="Olorin Digital — página inicial"><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></a>
 			<p>{{ cfg.LEMA }}</p>
+			<p class="o-rodape__titulo o-redes__titulo">Siga a Olorin</p>
+			{{ ui.redes("o-rodape__redes", "rodape") }}
 		</div>
 		<nav class="o-rodape__col" aria-label="Serviços">
 			<p class="o-rodape__titulo">Serviços</p>
@@ -19,9 +22,9 @@
 			<p class="o-rodape__titulo">A Olorin</p>
 			<ul>
 				<li><a href="/sobre/">Sobre e equipe</a></li>
-				<li><a href="/#metodo">Método Olorin</a></li>
-				<li><a href="/#planos">Planos e preços</a></li>
-				<li><a href="/#duvidas">Dúvidas</a></li>
+				<li><a href="/como-trabalhamos/">Como trabalhamos</a></li>
+				<li><a href="/planos/">Planos e preços</a></li>
+				<li><a href="/planos/#duvidas">Dúvidas</a></li>
 				<li><a href="/politica-de-privacidade/">Política de Privacidade</a></li>
 			</ul>
 		</nav>
@@ -30,7 +33,6 @@
 			<ul>
 				<li><a href="{{ waLink('rodape') }}" target="_blank" rel="noopener" id="cta-whatsapp-rodape">WhatsApp {{ cfg.TELEFONE_EXIBICAO }}</a></li>
 				<li><a href="mailto:{{ cfg.EMAIL }}">{{ cfg.EMAIL }}</a></li>
-				<li><a href="{{ cfg.INSTAGRAM_URL }}" target="_blank" rel="noopener">Instagram {{ cfg.INSTAGRAM_HANDLE }}</a></li>
 				{%- if cfg.GBP_URL %}
 				<li><a href="{{ cfg.GBP_URL }}" target="_blank" rel="noopener">Avaliações no Google</a></li>
 				{%- endif %}
@@ -41,7 +43,7 @@
 	<div class="o-rodape__gigante" aria-hidden="true"><svg viewBox="0 0 731 125.6" focusable="false"><use href="#s-logo"></use></svg></div>
 	<div class="o-rodape__base">
 		<div class="o-wrap o-rodape__base-dentro">
-			<p>{{ cfg.NOME }} © {{ "2026" }} · {{ cfg.CIDADE }}, {{ cfg.UF }}</p>
+			<p>{{ cfg.NOME }} © 2026 · {{ cfg.CIDADE }}, {{ cfg.UF }}</p>
 			<p>
 				<a href="/politica-de-privacidade/">Política de Privacidade</a>
 				{%- if temRastreamento %} · <button type="button" data-o-cookies-abrir>Preferências de cookies</button>{% endif %}

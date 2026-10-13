@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+modo: hub
+slug: como-trabalhamos
+pagina_dados: como-trabalhamos
+og_imagem: /assets/img/og/home.jpg
+migalhas:
+  - { nome: Home, url: / }
+  - { nome: Como trabalhamos, url: /como-trabalhamos/ }
+eleventyComputed:
+  titulo: "{{ conteudo.paginas['como-trabalhamos'].seo.titulo }}"
+  descricao: "{{ conteudo.paginas['como-trabalhamos'].seo.descricao }}"
+---
+{#- Página Como trabalhamos — textos em src/content/paginas/como-trabalhamos.yml; etapas do método em src/content/home.yml. -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set h = conteudo.paginas['como-trabalhamos'] -%}
+<section class="o-pagina-topo o-ctx-preto" data-secao="metodo-hero">
+	<div class="o-wrap">
+		{{ ui.migalhas(migalhas) }}
+		<p class="o-etiqueta">{{ h.etiqueta }}</p>
+		<h1 class="o-pagina-topo__titulo">{{ h.titulo }}</h1>
+		<p class="o-pagina-topo__sub">{{ h.sub }}</p>
+		<div class="o-hero__acoes">
+			<a class="o-btn o-btn--verde o-btn--grande" id="cta-diagnostico-metodo" href="#orcamento">{{ conteudo.home.hero.botao if site.config.OFERTA_DIAGNOSTICO else conteudo.home.hero.botao_sem_diagnostico }}</a>
+			<a class="o-link-wa" href="{{ waLink('metodo-hero') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ conteudo.home.hero.link_whatsapp }}</a>
+		</div>
+	</div>
+</section>
+{% include "secoes/metodo.njk" %}
+<section class="o-sec o-ctx-branco" id="raio-x" data-secao="raio-x" aria-labelledby="raio-x-titulo">
+	<div class="o-wrap">
+		<p class="o-etiqueta">{{ h.raio_x.etiqueta }}</p>
+		<h2 class="o-titulo o-titulo--g" id="raio-x-titulo">{{ h.raio_x.titulo }}</h2>
+		<p class="o-apoio">{{ h.raio_x.texto }}</p>
+		<ol class="o-passos o-passos--raio-x">
+		{%- for p in h.raio_x.passos %}
+			<li class="o-passo"><span class="o-passo__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-passo__titulo">{{ p.titulo }}</h3><p>{{ p.texto }}</p></li>
+		{%- endfor %}
+		</ol>
+	</div>
+</section>
+{% include "secoes/relatorio.njk" %}
+{%- set origemWaForm = "metodo-form" -%}
+{%- set origemWaFinal = "metodo-final" -%}
+{% include "secoes/orcamento.njk" %}

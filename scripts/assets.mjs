@@ -52,6 +52,8 @@ export const ORDEM_CSS = [
 	'componentes/promo.css',
 	'componentes/erro.css',
 	'componentes/estilo.css',
+	'componentes/sociais.css',
+	'componentes/prova.css',
 	'animacoes.css',
 	'responsivo.css',
 ];

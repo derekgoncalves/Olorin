@@ -1,6 +1,9 @@
 {#- Cabeçalho completo: logo, menu (com submenu de serviços), WhatsApp e diagnóstico. -#}
 {%- set cfg = site.config -%}
 {%- set temCases = conteudo.casesAprovados and conteudo.casesAprovados.length -%}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre"] -%}
+{%- set destinoForm = "#orcamento" if temFormulario else "/#orcamento" -%}
 {%- set rotuloPrincipal = "Raio-X gratuito" if cfg.OFERTA_DIAGNOSTICO else "Pedir orçamento" -%}
 <header class="o-topo" data-o-topo>
 	<div class="o-topo__dentro">
@@ -32,7 +35,7 @@
 		</nav>
 		<div class="o-topo__ctas">
 			<a class="o-btn o-btn--contorno o-btn--pequeno o-topo__wa" id="cta-whatsapp-topo" href="{{ waLink('topo') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-topo__wa-texto">Falar no WhatsApp</span></a>
-			<a class="o-btn o-btn--verde o-btn--pequeno" id="cta-orcamento-topo" href="/#diagnostico">{{ rotuloPrincipal }}</a>
+			<a class="o-btn o-btn--verde o-btn--pequeno" id="cta-orcamento-topo" href="{{ destinoForm }}">{{ rotuloPrincipal }}</a>
 		</div>
 		<button class="o-hamburguer" type="button" aria-expanded="false" aria-controls="menu-celular" data-o-hamburguer>
 			<span class="o-sr">Abrir menu</span><i></i><i></i><i></i>
@@ -66,8 +69,9 @@
 		</ul>
 	</nav>
 	<div class="o-menu__ctas">
-		<a class="o-btn o-btn--verde" href="/#diagnostico" data-cta="menu-diagnostico">{{ rotuloPrincipal }}</a>
+		<a class="o-btn o-btn--verde" href="{{ destinoForm }}" data-cta="menu-diagnostico">{{ rotuloPrincipal }}</a>
 		<a class="o-btn o-btn--contorno" href="{{ waLink('menu') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>Falar no WhatsApp</a>
 	</div>
-	<p class="o-menu__rodape">{{ cfg.INSTAGRAM_HANDLE }} · {{ cfg.CIDADE }}, {{ cfg.UF }}</p>
+	{{ ui.redes("o-menu__redes", "menu") }}
+	<p class="o-menu__rodape">{{ cfg.CIDADE }}, {{ cfg.UF }} · atendimento em todo o Brasil</p>
 </div>

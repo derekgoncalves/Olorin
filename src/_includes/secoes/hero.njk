@@ -8,7 +8,7 @@
 			<h1 class="o-hero__titulo">{{ h.titulo_1 }}<br> {{ h.titulo_2 }} <span class="o-hero__destaque">{{ h.titulo_destaque }}</span></h1>
 			<p class="o-hero__paragrafo">{{ h.paragrafo }}</p>
 			<div class="o-hero__acoes">
-				<a class="o-btn o-btn--verde o-btn--grande" id="cta-diagnostico-hero" href="#diagnostico">{{ h.botao if site.config.OFERTA_DIAGNOSTICO else h.botao_sem_diagnostico }}</a>
+				<a class="o-btn o-btn--verde o-btn--grande" id="cta-diagnostico-hero" href="{{ h.botao_destino or '#diagnostico' }}">{{ h.botao if site.config.OFERTA_DIAGNOSTICO else h.botao_sem_diagnostico }}</a>
 				<a class="o-link-wa" id="cta-whatsapp-hero" href="{{ waLink('hero') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ h.link_whatsapp }}</a>
 			</div>
 			<p class="o-nota"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ h.microtexto }}</p>

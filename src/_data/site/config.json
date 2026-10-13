@@ -10,6 +10,9 @@
   "EMAIL": "digital@olorin.com.br",
   "INSTAGRAM_HANDLE": "@olorin.digital_",
   "INSTAGRAM_URL": "https://instagram.com/olorin.digital_",
+  "FACEBOOK_URL": "",
+  "X_URL": "",
+  "LINKEDIN_URL": "",
   "GTM_ID": "",
   "GA4_ID": "",
   "META_PIXEL_ID": "",
@@ -21,7 +24,14 @@
   "SHOW_TOTAL_COST": true,
   "OFERTA_DIAGNOSTICO": true,
   "FORM_TOP_VARIANT": "b",
-  "APPROVED_ASSETS": ["equipe-natalia", "equipe-natalia-quadrada", "equipe-vinicius", "equipe-vinicius-quadrada", "equipe-derek", "equipe-derek-quadrada"],
+  "APPROVED_ASSETS": [
+    "equipe-natalia",
+    "equipe-natalia-quadrada",
+    "equipe-vinicius",
+    "equipe-vinicius-quadrada",
+    "equipe-derek",
+    "equipe-derek-quadrada"
+  ],
   "CURSOR_ESTRELA": true,
   "ATUALIZADO_EM": "2026-10-08"
 }

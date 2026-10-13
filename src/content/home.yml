@@ -3,52 +3,53 @@
 # ------------------------------------------------------------
 # Para reordenar: mude a ordem das linhas em "secoes".
 # Para esconder um bloco: apague a linha (ou comente com #).
-# Regra da marca: violeta e verde nunca encostam. Cuidado ao
-# colocar "faixa-servicos" (verde) ao lado de "metodo" ou
-# "orcamento" (violeta).
+# Regra da marca: violeta e verde nunca encostam. Por isso
+# "resultados" (verde) fica depois de "equipe" (preto) e nunca
+# ao lado de "metodo" ou "orcamento" (violeta).
+# Ordem definida na análise da home (13/10/2026): promessa e
+# prova nas 2 primeiras telas, preço completo depois do valor.
 # ============================================================
 secoes:
   - hero
-  - formulario-topo
-  - faixa-servicos
+  - barra-prova
   - checklist
-  - metodo
   - servicos
-  - resultados
-  # portfolio: escondido até haver trabalhos reais autorizados (plano de negócio, 10/10/2026).
-  #   Para voltar, troque as imagens em portfolio.yml e tire o "#" da linha abaixo.
-  # - portfolio
+  - metodo
   - equipe
-  - relatorio
-  - faixa-palavras
+  # resultados: só aparece quando houver case aprovado (cases.yml). Os números já estão na barra-prova.
+  - resultados
+  # portfolio: escondido até haver trabalhos reais autorizados. Para voltar, troque as imagens em portfolio.yml e tire o "#".
+  # - portfolio
   - planos
   - duvidas
   - orcamento
 
 seo:
   titulo: Olorin Digital | Agência de marketing em Curitiba
-  descricao: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Foco em venda, preço aberto e Raio-X gratuito da sua marca.
+  descricao: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Preço aberto e Raio-X gratuito da sua marca.
 
 hero:
-  linha_superior: Agência de marketing digital em Curitiba · Especialista em captação de alunos
+  linha_superior: Agência de marketing digital · Curitiba para todo o Brasil
   titulo_1: Não é sobre aparecer.
   titulo_2: É sobre
   titulo_destaque: vender.
-  paragrafo: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Sua marca falando a mesma língua em todo lugar — e cada real investido com nome, sobrenome e retorno.
+  paragrafo: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Sua marca fala a mesma língua em todo lugar, e você vê quanto cada real investido trouxe de volta.
   botao: Quero meu Raio-X gratuito
   botao_sem_diagnostico: Pedir orçamento
+  botao_destino: "#orcamento"
   link_whatsapp: ou fale no WhatsApp
-  microtexto: Sem compromisso · Resposta em até 1 dia útil
-  link_nicho:
-    texto: Tem escola ou curso? Veja como enchemos turma
-    url: /educacao/
+  microtexto: 30 min por vídeo + PDF em até 48 h · Sem compromisso
   prova:
-    - Preços abertos
+    - "Preço aberto: a partir de R$ 800"
     - Sem multa após 3 meses
-    - Relatório mensal
+    - Relatório mensal com faturamento
   janela: relatorio.exe
   janela_rotulo: Vendas do mês
 
+barra_prova:
+  titulo: A Olorin em números
+
+# Usado nas páginas de serviço (formulário logo abaixo do banner). Não aparece mais na home.
 formulario_topo:
   titulo: Raio-X Olorin gratuito
   texto: Conte rapidinho quem você é. A gente olha anúncio, redes, site e material da marca e te diz onde está travando e por onde vale começar.
@@ -58,58 +59,59 @@ formulario_topo:
     - PDF com 3 problemas e 3 ações em 48 horas
     - Sem compromisso e com preço aberto na proposta
 
-faixa_servicos:
-  - Tráfego pago
-  - Redes sociais
-  - Identidade visual
-  - Material impresso
-  - Site
-  - Criativos
-  - Relatório
-
 checklist:
   etiqueta: Checklist rápido
   titulo: Se você se reconhece aqui, o problema não é falta de esforço.
   dica: Marque o que acontece com você.
   itens:
-    - Você tem um fornecedor pro anúncio, outro pro post e outro pra arte — e nenhum conversa com o outro.
-    - "Cada peça parece de uma empresa diferente: o anúncio, o feed, o cartão de visita e o site."
+    - Você tem um fornecedor pro anúncio, outro pro post e outro pra arte, e nenhum conversa com o outro.
     - Você investe todo mês e não sabe dizer quanto custou cada venda.
-    - O relatório mostra alcance e impressão, mas nunca mostra faturamento.
-    - O material impresso ficou parado no tempo enquanto o digital foi atualizado.
-    - Cada pergunta vira telefone sem fio, e ninguém sabe dizer quem está cuidando da sua conta.
+    - O relatório mostra alcance e curtida, mas nunca mostra faturamento.
+    - "Cada peça parece de uma empresa diferente: o anúncio, o feed, o site e o cartão de visita."
   contador_um: marcado
   contador_varios: marcados
   resposta_titulo: Isso tem solução, e não é trabalhar mais.
   resposta: Quando anúncio, conteúdo, site e impresso são feitos por gente que não conversa, cada um puxa para um lado. Com o mesmo time cuidando de tudo, a marca fala uma língua só e cada real investido aparece no relatório.
   resposta_padrao: Se você marcou dois ou mais, a gente começa pelo Raio-X.
-  cta: Ver como a gente resolve
-
-metodo:
-  etiqueta: Método Olorin
-  titulo: Quatro etapas. Zero achismo.
-  texto: Sem caixa-preta. Você sabe o que está sendo feito, por quê e quanto está voltando.
-  etapas:
-    - nome: Raio-X
-      texto: Olhamos tudo o que já existe — conta de anúncio, redes, site e material da marca. Antes de criar qualquer coisa, descobrimos o que está travando.
-    - nome: Direção
-      texto: Estratégia e identidade alinhadas — o que falar, para quem, em qual canal e com qual cara. Uma marca só, em todos os pontos de contato.
-    - nome: Execução
-      texto: Campanha no ar, conteúdo publicado, arquivo fechado para a gráfica e site no ar. Tudo saindo pela mesma porta, no mesmo ritmo.
-    - nome: Leitura
-      texto: Relatório que qualquer pessoa entende — quanto entrou, quanto saiu, qual foi o retorno e o que vem na próxima rodada.
-  cta_texto: Quer saber em qual dessas etapas sua marca está travada?
-  cta: Pedir meu Raio-X
+  cta: Ver o que a gente faz
+  cta_destino: "#servicos"
 
 servicos:
   etiqueta: O que a Olorin faz
   titulo: A marca inteira, não só o anúncio.
-  texto: Você pode contratar uma frente só. Mas quando elas rodam juntas, uma empurra a outra.
+  texto: Contrate uma frente só ou junte várias. Quando elas rodam juntas, uma empurra a outra.
   ver_detalhes: Ver detalhes
-  faixa_texto: Precisa de um desses agora?
-  faixa_botao: Chamar no WhatsApp
+  faixa_texto: Não sabe por onde começar?
+  faixa_botao: Perguntar no WhatsApp
+
+metodo:
+  curto: true
+  etiqueta: Método Olorin
+  titulo: Quatro etapas. Zero achismo.
+  texto: "Sem caixa-preta: você sabe o que está sendo feito, por quê e quanto está voltando."
+  link_mais:
+    texto: Ver como trabalhamos
+    url: /como-trabalhamos/
+  # "texto" aparece na página Como trabalhamos e no Sobre; "resumo" aparece na home.
+  etapas:
+    - nome: Raio-X
+      resumo: Olhamos anúncio, redes, site e material da marca antes de criar qualquer coisa.
+      texto: Olhamos tudo o que já existe, da conta de anúncio às redes, ao site e ao material da marca. Antes de criar qualquer coisa, descobrimos o que está travando.
+    - nome: Direção
+      resumo: Definimos o que falar, para quem, em qual canal e com qual cara.
+      texto: Estratégia e identidade alinhadas, com o que falar, para quem, em qual canal e com qual cara. Uma marca só, em todos os pontos de contato.
+    - nome: Execução
+      resumo: Campanha, conteúdo, site e impresso saindo pela mesma porta, no mesmo ritmo.
+      texto: Campanha no ar, conteúdo publicado, arquivo fechado para a gráfica e site no ar. Tudo saindo pela mesma porta, no mesmo ritmo.
+    - nome: Leitura
+      resumo: Relatório com quanto entrou, quanto saiu e o que vem na próxima rodada.
+      texto: Relatório que qualquer pessoa entende, com quanto entrou, quanto saiu, qual foi o retorno e o que vem na próxima rodada.
+  cta_texto: Quer saber em qual dessas etapas sua marca está travada?
+  cta: Pedir meu Raio-X
+  cta_destino: "#orcamento"
 
 resultados:
+  ocultar_numeros: true
   etiqueta: Resultados
   titulo: Número é a única coisa que não dá pra maquiar.
   janela_prefixo: case_
@@ -128,75 +130,42 @@ equipe:
   botao: Falar com a equipe no WhatsApp
   link_sobre: Conheça a Olorin
 
-relatorio:
-  etiqueta: Como é o nosso relatório
-  titulo: Relatório que mostra faturamento, não só alcance.
-  texto: Todo mês você recebe um painel como este — com o que foi investido, o que voltou e o que vamos fazer na próxima rodada. Sem sigla solta e sem gráfico bonito que não diz nada.
-  aviso: Exemplo ilustrativo, com dados fictícios
-  janela: painel.exe
-  mes: Mês de exemplo
-  indicadores:
-    - rotulo: Investimento em anúncio
-      valor: R$ 3.000
-      variacao: mesmo valor do mês anterior
-      tendencia: neutra
-    - rotulo: Faturamento atribuído
-      valor: R$ 14.400
-      variacao: +18% sobre o mês anterior
-      tendencia: alta
-    - rotulo: Custo por venda
-      valor: R$ 62,50
-      variacao: −12% sobre o mês anterior
-      tendencia: alta
-    - rotulo: Retorno sobre o investimento
-      valor: 4,8x
-      variacao: era 4,1x no mês anterior
-      tendencia: alta
-  grafico_titulo: Faturamento atribuído por semana
-  grafico:
-    - rotulo: Semana 1
-      valor: 2800
-    - rotulo: Semana 2
-      valor: 3300
-    - rotulo: Semana 3
-      valor: 3900
-    - rotulo: Semana 4
-      valor: 4400
-  proxima_titulo: O que faremos na próxima rodada
-  proxima:
-    - Aumentar a verba da campanha de remarketing, que teve o menor custo por venda.
-    - Trocar os dois anúncios com pior taxa de clique por versões novas.
-    - Revisar a página de destino, que perde gente no celular.
-  glossario: "Retorno sobre o investimento (ROAS): quanto voltou em faturamento para cada R$ 1 investido em anúncio."
-
-faixa_palavras:
-  - Agência de marketing em Curitiba
-  - Marketing para escolas e cursos
-  - Gestão de tráfego pago
-  - Criação de site
-  - Gestão de redes sociais
-  - Material impresso
-  - Identidade visual
-
 planos:
   etiqueta: Planos
-  titulo: Formatos de trabalho.
-  texto: Preço aberto, sem letra miúda, com o que entra em cada formato. Quer testar antes de assinar? Comece pelo Arranque 30 dias.
+  titulo: Preço aberto. Sem letra miúda.
+  texto: Você sabe quanto vai pagar antes de falar com a gente. Quer testar antes de assinar? Comece pelo Arranque 30 dias.
+  sem_calculadora: true
+  link_mais:
+    texto: Comparar planos e simular o custo total
+    url: /planos/
 
 duvidas:
   etiqueta: Dúvidas
   titulo: Dúvidas.
   texto: Ficou alguma dúvida que não está aqui?
   botao: Perguntar no WhatsApp
+  # Só estas 6 aparecem na home. Todas as perguntas ficam na página /planos/.
+  ids:
+    - faq-raio-x
+    - faq-arranque
+    - faq-implantacao
+    - faq-verba-minima
+    - faq-fidelidade
+    - faq-dono-contas
+  link_mais:
+    texto: Ver todas as dúvidas
+    url: /planos/#duvidas
 
 orcamento:
-  etiqueta: Orçamento sem compromisso
+  etiqueta: Raio-X Olorin gratuito
   titulo_1: Vamos olhar sua
   titulo_2: marca juntos.
   lista:
+    - 30 minutos por vídeo com quem executa
+    - PDF em até 48 horas com 3 problemas e 3 ações
+    - Proposta com preço aberto, sem compromisso
     - Resposta em até 1 dia útil
-    - Proposta montada pra sua marca, não modelo pronto
-    - Você fala com quem faz
   janela: whatsapp.exe
   wa_etiqueta: Prefere resolver agora?
   wa_texto: Chama no WhatsApp
+  redes_titulo: Acompanhe o trabalho da Olorin
