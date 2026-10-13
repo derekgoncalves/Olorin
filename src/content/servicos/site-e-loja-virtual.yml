@@ -35,7 +35,7 @@ hero:
 resposta_curta: >-
   Criamos site institucional, loja virtual e página de captação: rápidos, bonitos no celular e feitos para
   transformar visita em contato ou venda. É para quem anuncia, vende pela internet ou quer um site com a
-  mesma cara do resto da marca. Os projetos começam em R$ 800, no plano Pontual, com escopo e prazo
+  mesma cara do resto da marca. Os projetos começam em R$ 800, no plano Pontual. Escopo e prazo são
   definidos no briefing (a conversa em que combinamos o projeto), antes de começar.
 
 dores:
@@ -137,7 +137,7 @@ faq:
     resposta: Depende do tamanho do projeto. O prazo é definido no briefing, junto com o escopo, antes de começarmos.
   - id: site-velocidade
     pergunta: Como sei que o site vai ser rápido?
-    resposta: Velocidade e acessibilidade são o padrão em todo projeto. Como referência, o site anterior da Olorin tirou 97 em desempenho e 100 em acessibilidade no celular no PageSpeed, a ferramenta do Google que dá notas de 0 a 100 (medição de 08/10/2026).
+    resposta: Velocidade e acessibilidade são o padrão em todo projeto. Como referência, o site anterior da Olorin foi medido em 08/10/2026 no PageSpeed, a ferramenta do Google que dá notas de 0 a 100. No celular, tirou 97 em desempenho e 100 em acessibilidade.
   - id: site-anuncio
     pergunta: O site já sai pronto para receber anúncio?
     resposta: Sai com o rastreamento configurado, então dá para medir o que acontece depois do clique. Se você anunciar com a gente, a Natália Arruda cuida das campanhas, e o anúncio sai com a cara do site.

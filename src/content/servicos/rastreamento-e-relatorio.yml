@@ -77,7 +77,7 @@ entregas:
       texto: Investimento, faturamento atribuído (o que as campanhas trouxeram em vendas), custo por venda e retorno, num lugar só.
       icone: dados
     - titulo: Relatório com faturamento, não só alcance
-      texto: Quanto entrou, quanto saiu e o que muda, com toda sigla explicada. Veja um [exemplo ilustrativo](/#relatorio).
+      texto: Quanto entrou, quanto saiu e o que muda, com toda sigla explicada. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio).
       frequencia: todo mês nos planos mensais
       icone: relogio
     - titulo: Conferência depois da configuração
@@ -116,7 +116,7 @@ preco:
   formato: Incluso nos planos
   valor: "[CONFIRMAR: valor do rastreamento contratado sozinho, fora dos planos]"
   sem_valor: Quer só o rastreamento? Conte no formulário o que você usa hoje. Respondemos em até 1 dia útil, com o preço aberto na proposta.
-  detalhe: Vem no Arranque 30 dias (a partir de R$ 1.800, uma vez) e na implantação da Gestão mensal (R$ 1.000) e do 360 completo (R$ 1.500). Verba de anúncio à parte. Veja os [planos](/planos/).
+  detalhe: Vem no Arranque 30 dias (a partir de R$ 1.800, uma vez). Na Gestão mensal e no 360 completo, entra na implantação (R$ 1.000 e R$ 1.500). Verba de anúncio à parte. Veja os [planos](/planos/).
   contrato: Arranque sem contrato mensal. Gestão mensal e 360 com mínimo de 3 meses; depois, mês a mês, sem multa.
   inclui:
     - Google Tag Manager e Google Analytics configurados
@@ -148,7 +148,7 @@ faq:
     resposta: "Instalado não quer dizer funcionando certo. Conferimos o que existe: o que mede certo, o que falta e o que está repetido. Para começar sem custo, peça o Raio-X Olorin."
   - id: rastreamento-relatorio
     pergunta: O que aparece no relatório?
-    resposta: Quanto foi investido, quanto voltou em faturamento, quanto custou cada venda e o retorno, comparado ao mês anterior. Siglas como ROAS (quanto voltou para cada R$ 1 em anúncio) vêm explicadas. Veja um [exemplo ilustrativo](/#relatorio).
+    resposta: Quanto foi investido, quanto voltou em faturamento, quanto custou cada venda e o retorno, comparado ao mês anterior. Siglas como ROAS (quanto voltou para cada R$ 1 em anúncio) vêm explicadas. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio).
   - id: rastreamento-fora-curitiba
     pergunta: Vocês atendem fora de Curitiba?
     resposta: "Sim. A maioria dos clientes é de fora de Curitiba. Tudo é feito a distância: WhatsApp, reuniões por vídeo e aprovações por e-mail."

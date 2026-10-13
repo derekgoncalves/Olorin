@@ -34,9 +34,9 @@ hero:
 
 resposta_curta: >-
   Gestão de redes sociais é planejar, criar e publicar posts e legendas com a mesma cara do seu anúncio e
-  do seu site. Está inclusa na Gestão mensal (R$ 2.500/mês, com 8 posts no feed por mês) e no 360 completo
-  (R$ 5.000/mês, com 12 posts e 4 Reels por mês). A verba de anúncio é à parte. Marca e conteúdo pedem de 2
-  a 3 meses de consistência.
+  do seu site. Está inclusa na Gestão mensal, por R$ 2.500/mês, com 8 posts no feed por mês. No 360
+  completo, por R$ 5.000/mês, são 12 posts e 4 Reels por mês. A verba de anúncio é à parte. Marca e
+  conteúdo pedem de 2 a 3 meses de consistência.
 
 dores:
   titulo: Isso acontece com você?
@@ -144,7 +144,7 @@ faq:
     resposta: Marca e conteúdo pedem de 2 a 3 meses de consistência. Anúncios de venda ou de mensagem costumam dar sinais claros em 2 a 4 semanas.
   - id: redes-aprovacao
     pergunta: Posso aprovar o conteúdo antes de ir ao ar?
-    resposta: Sim. Você aprova por e-mail antes de qualquer publicação.
+    resposta: Sim. As aprovações são feitas por e-mail, antes de o conteúdo ir ao ar.
   - id: redes-fora-curitiba
     pergunta: Vocês atendem fora de Curitiba?
     resposta: "Sim. A maioria dos clientes é de fora de Curitiba. Tudo é feito a distância: WhatsApp, reuniões por vídeo e aprovações por e-mail."

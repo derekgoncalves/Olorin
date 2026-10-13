@@ -49,9 +49,8 @@ para_quem:
   e:
     - Quem já anuncia e quer saber quanto cada campanha devolveu.
     - Quem vende pelo site ou pelo WhatsApp e quer mais pedidos com o mesmo investimento.
-    - Quem pode investir a partir de R$ 1.500 por mês em anúncio, além da gestão.
   nao_e:
-    - Quem tem menos de R$ 1.500 por mês para anúncio. Comece pelo Raio-X Olorin, que é gratuito.
+    - Quem tem menos de R$ 1.500 por mês para anúncio, além da gestão. Comece pelo Raio-X Olorin, que é gratuito.
     - Quem procura resultado garantido ou quer "viralizar" do dia para a noite.
     - "[CONFIRMAR: outros critérios de quem não é cliente ideal]"
 
@@ -63,7 +62,7 @@ entregas:
       frequencia: no início do trabalho
       icone: trafego
     - titulo: Públicos e segmentações
-      texto: Públicos limpos e sem sobreposição, para o anúncio chegar em quem tem cara de cliente.
+      texto: Públicos limpos, sem sobreposição, para chegar em quem tem cara de cliente.
       frequencia: ajustados toda semana
       icone: dados
     - titulo: Peças de anúncio com a cara da marca
@@ -71,22 +70,22 @@ entregas:
       frequencia: todo mês
       icone: marca
     - titulo: Otimização semanal
-      texto: Verba, públicos e anúncios ajustados pelo que está vendendo, e não no achismo.
+      texto: Verba, públicos e anúncios ajustados pelo que vende, e não no achismo.
       frequencia: toda semana
       icone: relogio
     - titulo: Relatório mensal com retorno
-      texto: Faturamento, custo e retorno de cada campanha, em linguagem simples. Veja um [exemplo ilustrativo](/#relatorio).
+      texto: Faturamento, custo e retorno de cada campanha, em linguagem simples. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio).
       frequencia: todo mês
       icone: dados
     - titulo: Rastreamento correto
-      texto: Pixel e conversões configurados na implantação. Veja [Rastreamento e relatório](/servicos/rastreamento-e-relatorio/).
+      texto: Pixel e conversões configurados na implantação, para o dado chegar certo.
       icone: site
 
 como_funciona:
   titulo: Como funciona
   etapas:
     - nome: Raio-X
-      texto: Olhamos a conta de anúncio, o site e o rastreamento para achar onde o dinheiro escapa.
+      texto: Olhamos conta de anúncio, site e rastreamento para achar onde o dinheiro escapa.
     - nome: Direção
       texto: Definimos objetivo, público e verba de cada campanha. Você aprova antes de ir ao ar.
     - nome: Execução
@@ -139,7 +138,7 @@ faq:
     resposta: "A gestão custa R$ 2.500/mês, mais R$ 1.000 de implantação. A verba vai direto para a Meta ou o Google, a partir de R$ 1.500/mês. Quer testar antes? O Arranque 30 dias custa a partir de R$ 1.800, uma vez: 1 campanha, rastreamento, 8 peças e relatório no dia 30, sem contrato mensal. Se continuar, o valor é abatido da implantação."
   - id: trafego-tempo-resultado
     pergunta: Em quanto tempo vejo resultado?
-    resposta: Campanhas de venda e de mensagem costumam dar sinais claros em 2 a 4 semanas. Campanhas de marca pedem de 2 a 3 meses de consistência.
+    resposta: Campanhas de venda e de mensagem costumam dar sinais claros em 2 a 4 semanas. Campanhas de marca pedem de 2 a 3 meses.
   - id: trafego-meta-ou-google
     pergunta: Meta Ads ou Google Ads, qual escolher?
     resposta: Depende de onde está o seu cliente. No Google, você aparece para quem já procura o que vende. Na Meta, chega em quem ainda não te conhece. A Gestão mensal cobre um dos dois; o 360 completo, os dois.

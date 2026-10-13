@@ -17,8 +17,8 @@ import {
 	iniciarFaixas,
 	iniciarPausa,
 	iniciarContadores,
-	iniciarRevelar,
 } from './modulos/interacoes.js';
+import { iniciarMovimento, iniciarRevelarMovimento } from './modulos/movimento.js';
 import { iniciarFlutuantes } from './modulos/flutuantes.js';
 import { iniciarCursor } from './modulos/cursor.js';
 import { iniciarCliques, iniciarRolagem, iniciarSecoes, iniciarObrigado } from './modulos/medicao.js';
@@ -33,7 +33,7 @@ function rodar(lista) {
 	});
 }
 
-rodar([iniciarConsentimento, iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarFormularios, iniciarChecklist, iniciarFaq, iniciarPlanos, iniciarCliques, iniciarObrigado, iniciarPausa]);
+rodar([iniciarConsentimento, iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarFormularios, iniciarChecklist, iniciarFaq, iniciarPlanos, iniciarCliques, iniciarObrigado, iniciarPausa, iniciarMovimento]);
 quandoLivre(() =>
-	rodar([iniciarFaixas, iniciarRevelar, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor]),
+	rodar([iniciarFaixas, iniciarRevelarMovimento, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor]),
 );
