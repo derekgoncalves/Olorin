@@ -85,6 +85,9 @@ export default function () {
 		}
 	}
 
+	// Portfólio: só trabalhos reais publicados (gera /portfolio/ e o item do menu quando houver).
+	conteudo.portfolioPublicado = ((conteudo.portfolio && conteudo.portfolio.itens) || []).filter((i) => i && i.publicado);
+
 	// Equipe: atalho por slug.
 	conteudo.pessoaPorSlug = Object.fromEntries(((conteudo.equipe && conteudo.equipe.pessoas) || []).map((p) => [p.slug, p]));
 

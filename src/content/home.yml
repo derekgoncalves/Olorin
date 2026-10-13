@@ -12,14 +12,16 @@
 secoes:
   - hero
   - barra-prova
+  # faixa-clientes: letreiro de logos, só aparece com 5+ logos autorizados (src/content/clientes.yml).
+  - faixa-clientes
   - checklist
   - servicos
   - metodo
   - equipe
   # resultados: só aparece quando houver case aprovado (cases.yml). Os números já estão na barra-prova.
   - resultados
-  # portfolio: escondido até haver trabalhos reais autorizados. Para voltar, troque as imagens em portfolio.yml e tire o "#".
-  # - portfolio
+  # portfolio: só aparece com trabalho real publicado (src/content/portfolio.yml).
+  - portfolio
   - planos
   - duvidas
   - orcamento
@@ -119,8 +121,13 @@ resultados:
 portfolio:
   etiqueta: Portfólio
   titulo: Dá pra ver a diferença.
+  texto: Identidade visual, peças e sites feitos pelo time da Olorin.
   filtro_todos: Tudo
-  botao: Ver mais trabalhos no Instagram
+  botao: Ver mais no Instagram
+  limite: 6
+  link_mais:
+    texto: Ver o portfólio completo
+    url: /portfolio/
 
 equipe:
   etiqueta: Quem toca

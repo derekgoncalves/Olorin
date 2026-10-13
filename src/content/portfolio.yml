@@ -1,17 +1,27 @@
-# Portfólio da home. Imagens = ids do src/assets/manifest.json.
-# As 8 imagens atuais são ilustrativas (provisórias) — troque pelos trabalhos reais.
+# ============================================================
+# PORTFÓLIO — design e sites (home + página /portfolio/)
+# ------------------------------------------------------------
+# Só entram no site os itens com "publicado: true" (trabalho real,
+# com o cliente de acordo). A página /portfolio/ e o item "Portfólio"
+# do menu aparecem sozinhos quando houver pelo menos 1 item publicado.
+# Na home aparecem os 6 primeiros publicados.
+#
+# Para adicionar um trabalho:
+#   1. Salve a imagem em src/assets/img-src/portfolio/ (JPG ou WebP, 1200 px de largura).
+#   2. Cadastre a imagem em src/assets/manifest.json (copie um item "portfolio-..." e troque
+#      arquivo, alt e autorização).
+#   3. Acrescente o item abaixo com publicado: true. "link" é opcional (site no ar,
+#      post no Instagram ou Behance).
+#
+# As 8 imagens abaixo são ILUSTRATIVAS: ficam fora do ar (publicado: false).
+# ============================================================
 filtros:
-  - { id: marca, rotulo: Marca }
-  - { id: campanha, rotulo: Campanha }
-  - { id: site, rotulo: Site }
-  - { id: impresso, rotulo: Impresso }
-  - { id: redes-sociais, rotulo: Redes sociais }
+  - { id: design, rotulo: Design }
+  - { id: site, rotulo: Sites }
 itens:
-  - { titulo: Ateliê de moda, rotulo: Marca · Identidade visual, imagem: portfolio-marca-identidade, categorias: [marca] }
-  - { titulo: Loja de tecnologia, rotulo: Campanha · Tráfego pago, imagem: portfolio-redes-conteudo, categorias: [campanha] }
-  - { titulo: Escritório de advocacia, rotulo: Site · Institucional, imagem: portfolio-site-institucional, categorias: [site] }
-  - { titulo: Cafeteria, rotulo: Impresso · Catálogo, imagem: portfolio-campanha-trafego, categorias: [impresso] }
-  - { titulo: Estúdio de estética, rotulo: Redes sociais · Conteúdo, imagem: portfolio-impresso-catalogo, categorias: [redes-sociais] }
-  - { titulo: Marcenaria autoral, rotulo: Marca · Fotografia, imagem: portfolio-marca-producao, categorias: [marca] }
-  - { titulo: Clínica médica, rotulo: Campanha · Google Ads, imagem: portfolio-campanha-google-ads, categorias: [campanha] }
-  - { titulo: Loja infantil, rotulo: Impresso · Ponto de venda, imagem: portfolio-impresso-loja, categorias: [impresso] }
+  - { titulo: Ateliê de moda, rotulo: Design · Identidade visual, imagem: portfolio-marca-identidade, categorias: [design], publicado: false }
+  - { titulo: Escritório de advocacia, rotulo: Site · Institucional, imagem: portfolio-site-institucional, categorias: [site], publicado: false }
+  - { titulo: Cafeteria, rotulo: Design · Catálogo impresso, imagem: portfolio-campanha-trafego, categorias: [design], publicado: false }
+  - { titulo: Estúdio de estética, rotulo: Design · Redes sociais, imagem: portfolio-impresso-catalogo, categorias: [design], publicado: false }
+  - { titulo: Marcenaria autoral, rotulo: Design · Fotografia, imagem: portfolio-marca-producao, categorias: [design], publicado: false }
+  - { titulo: Loja infantil, rotulo: Design · Ponto de venda, imagem: portfolio-impresso-loja, categorias: [design], publicado: false }

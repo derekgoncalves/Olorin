@@ -52,6 +52,7 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ 'src/assets/fonts': 'assets/fonts' }, { filter: ['**/*', '!**/.gitkeep'] });
 	eleventyConfig.addPassthroughCopy({ 'src/assets/brand': 'assets/img/brand' });
 	eleventyConfig.addPassthroughCopy({ 'src/assets/og': 'assets/img/og' });
+	eleventyConfig.addPassthroughCopy({ 'src/assets/clientes': 'assets/img/clientes' }, { filter: ['**/*', '!**/.gitkeep'] });
 	eleventyConfig.addPassthroughCopy({ 'src/php/config.example.php': 'config.example.php' });
 	eleventyConfig.addPassthroughCopy({ 'src/servidor/.htaccess': '.htaccess' });
 	eleventyConfig.addPassthroughCopy({ 'src/servidor/leads.htaccess': 'leads/.htaccess' });

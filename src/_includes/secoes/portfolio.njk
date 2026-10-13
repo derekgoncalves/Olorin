@@ -1,28 +1,38 @@
-{#- ===== SEÇÃO: Portfólio com filtros — src/content/portfolio.yml ===== -#}
+{#- ===== SEÇÃO: Portfólio de design e sites com filtros — src/content/portfolio.yml (só itens publicados) ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- set t = P.portfolio -%}
 {%- set p = conteudo.portfolio -%}
+{%- set trabalhos = conteudo.portfolioPublicado or [] -%}
+{%- if t.limite %}{% set trabalhos = trabalhos.slice(0, t.limite) %}{% endif %}
+{%- if trabalhos.length %}
 <section class="o-sec o-portfolio o-ctx-branco" id="portfolio" data-secao="portfolio" aria-labelledby="portfolio-titulo">
 	<div class="o-wrap">
 		<p class="o-etiqueta">{{ t.etiqueta }}</p>
 		<h2 class="o-titulo o-titulo--g" id="portfolio-titulo">{{ t.titulo }}</h2>
+		{%- if t.texto %}<p class="o-apoio">{{ t.texto }}</p>{% endif %}
 		<div class="o-filtros" role="group" aria-label="Filtrar trabalhos" data-o-filtros hidden>
 			<button class="o-filtro" type="button" aria-pressed="true" data-filtro="*">{{ t.filtro_todos }}</button>
 			{%- for f in p.filtros %}
+			{%- if (trabalhos | filtrarPor("categorias", f.id)).length %}
 			<button class="o-filtro" type="button" aria-pressed="false" data-filtro="{{ f.id }}">{{ f.rotulo }}</button>
+			{%- endif %}
 			{%- endfor %}
 		</div>
 		<ul class="o-trabalhos" data-o-trabalhos>
-		{%- for item in p.itens %}
+		{%- for item in trabalhos %}
 			<li class="o-trabalho" data-categorias="{{ item.categorias | join(' ') }}">
 				<figure>
 					<span class="o-trabalho__barra" aria-hidden="true">projeto_{{ "0" + loop.index if loop.index < 10 else loop.index }}.jpg</span>
 					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 767px) 46vw, (max-width: 1100px) 30vw, 300px" }) | safe }}
-					<figcaption class="o-trabalho__legenda"><strong>{{ item.titulo }}</strong><span>{{ item.rotulo }}</span></figcaption>
+					<figcaption class="o-trabalho__legenda"><strong>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.titulo }}</a>{% else %}{{ item.titulo }}{% endif %}</strong><span>{{ item.rotulo }}</span></figcaption>
 				</figure>
 			</li>
 		{%- endfor %}
 		</ul>
-		<p class="o-centro"><a class="o-btn o-btn--contorno" href="{{ site.config.INSTAGRAM_URL }}" target="_blank" rel="noopener">{{ t.botao }}</a></p>
+		<p class="o-centro">
+			{%- if t.link_mais and (conteudo.portfolioPublicado.length > trabalhos.length) %}<a class="o-btn o-btn--preto" href="{{ t.link_mais.url }}">{{ t.link_mais.texto }}</a> {% endif -%}
+			<a class="o-btn o-btn--contorno" href="{{ site.config.INSTAGRAM_URL }}" target="_blank" rel="noopener">{{ t.botao }}</a>
+		</p>
 	</div>
 </section>
+{%- endif %}

@@ -1,6 +1,7 @@
 {#- Cabeçalho completo: logo, menu (com submenu de serviços), WhatsApp e diagnóstico. -#}
 {%- set cfg = site.config -%}
 {%- set temCases = conteudo.casesAprovados and conteudo.casesAprovados.length -%}
+{%- set temPortfolio = conteudo.portfolioPublicado and conteudo.portfolioPublicado.length -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre"] -%}
 {%- set destinoForm = "#orcamento" if temFormulario else "/#orcamento" -%}
@@ -11,7 +12,7 @@
 		<nav class="o-nav" aria-label="Principal">
 			<ul class="o-nav__lista">
 			{%- for item in navegacao.principal %}
-				{%- if not item.so_com_cases or temCases %}
+				{%- if (not item.so_com_cases or temCases) and (not item.so_com_portfolio or temPortfolio) %}
 				{%- set atual = (page.url == item.url) or (item.submenu and page.url.startsWith("/servicos/")) %}
 				<li class="o-nav__item{% if item.submenu %} o-nav__item--sub{% endif %}"{% if item.submenu %} data-o-sub{% endif %}>
 					<a class="o-nav__link" href="{{ item.url }}"{% if atual %} aria-current="page"{% endif %}>{{ item.rotulo }}</a>
@@ -50,7 +51,7 @@
 	<nav class="o-menu__nav" aria-label="Principal (celular)">
 		<ul class="o-menu__lista">
 		{%- for item in navegacao.principal %}
-			{%- if not item.so_com_cases or temCases %}
+			{%- if (not item.so_com_cases or temCases) and (not item.so_com_portfolio or temPortfolio) %}
 			<li>
 				{%- if item.submenu %}
 				<button class="o-menu__grupo" type="button" aria-expanded="false" aria-controls="menu-celular-servicos" data-o-acordeao>{{ item.rotulo }}<span class="o-icone o-icone--mais" aria-hidden="true"></span></button>

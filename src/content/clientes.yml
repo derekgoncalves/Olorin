@@ -1,0 +1,16 @@
+# ============================================================
+# FAIXA DE LOGOS DE CLIENTES (home, logo abaixo dos números)
+# ------------------------------------------------------------
+# A faixa só aparece com 5 ou mais logos com "autorizado: true"
+# (cliente de acordo em aparecer no site).
+#
+# Para adicionar um logo:
+#   1. Salve o arquivo em src/assets/clientes/
+#      (SVG de preferência; ou PNG com fundo transparente, ~400 px de largura).
+#   2. Acrescente uma linha em "itens", como no exemplo comentado.
+# Os logos aparecem em cinza e ganham cor quando o mouse passa por cima.
+# ============================================================
+etiqueta: Quem já confiou na Olorin
+minimo: 5
+itens: []
+#  - { nome: "Nome do cliente", logo: nome-do-arquivo.svg, autorizado: true }

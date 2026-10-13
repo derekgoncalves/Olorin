@@ -1,0 +1,22 @@
+# Página /portfolio/ — só existe quando houver trabalho publicado em src/content/portfolio.yml.
+etiqueta: Portfólio
+titulo: Design e sites feitos pela Olorin.
+sub: Identidade visual, peças gráficas, redes sociais e sites. Use os filtros para ver só design ou só sites.
+
+portfolio:
+  etiqueta: Trabalhos
+  titulo: Dá pra ver a diferença.
+  filtro_todos: Tudo
+  botao: Ver mais no Instagram
+
+orcamento:
+  etiqueta: Raio-X Olorin gratuito
+  titulo_1: Quer algo assim
+  titulo_2: para a sua marca?
+  lista:
+    - 30 minutos por vídeo com quem executa
+    - PDF em até 48 horas com 3 problemas e 3 ações
+    - Proposta com preço aberto, sem compromisso
+  janela: whatsapp.exe
+  wa_etiqueta: Prefere resolver agora?
+  wa_texto: Chama no WhatsApp
