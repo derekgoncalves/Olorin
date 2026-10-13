@@ -1,13 +1,17 @@
-{#- ===== SEÇÃO: Planos + calculadora — src/content/planos.yml ===== -#}
+{#- ===== SEÇÃO: Planos + projetos de site + calculadora — src/content/planos.yml ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set t = P.planos -%}
 {%- set p = conteudo.planos -%}
 <section class="o-sec o-planos o-ctx-branco" id="planos" data-secao="planos" aria-labelledby="planos-titulo">
 	<div class="o-wrap">
-		<p class="o-etiqueta">{{ t.etiqueta }}</p>
-		<h2 class="o-titulo o-titulo--g" id="planos-titulo">{{ t.titulo }}</h2>
-		<p class="o-apoio">{{ t.texto }}</p>
+		<div class="o-planos__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ t.etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="planos-titulo">{{ t.titulo }}</h2>
+			</div>
+			<p class="o-apoio">{{ t.texto }}</p>
+		</div>
 		<div class="o-planos__grade">
 		{%- for plano in p.planos %}
 			{{ ui.cardPlano(plano) }}
@@ -18,9 +22,29 @@
 			<p class="o-planos__nota">{{ p.contrato }}</p>
 			{%- if site.config.SHOW_TOTAL_COST %}<p class="o-planos__total">{{ p.total_entrada }}</p>{% endif %}
 		</div>
+		{%- if p.projetos %}
+		{%- set pj = p.projetos %}
+		<div class="o-projetos o-ctx-preto">
+			<div class="o-projetos__texto">
+				<p class="o-etiqueta">{{ pj.etiqueta }}</p>
+				<h3 class="o-projetos__titulo">{{ pj.titulo }}</h3>
+				{%- if pj.link %}<a class="o-link-seta" href="{{ pj.link.url }}">{{ pj.link.texto }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>{% endif %}
+			</div>
+			<ul class="o-projetos__lista">
+			{%- for item in pj.itens %}
+				<li class="o-projeto">
+					<p class="o-projeto__nome">{{ item.nome }}</p>
+					<p class="o-projeto__preco"><span class="o-projeto__de">{{ item.de }}</span> <strong>{{ item.valor | reais }}</strong></p>
+					<p class="o-projeto__texto">{{ item.texto }}</p>
+					<a class="o-btn o-btn--verde o-btn--pequeno" href="#orcamento" data-o-plano="{{ item.nome | lower | replace(' ', '-') }}" data-servicos="{{ item.servicos_preselecao | join(' ') }}" data-cta="projeto-{{ loop.index }}">{{ pj.botao }}<span class="o-sr"> — {{ item.nome }}</span></a>
+				</li>
+			{%- endfor %}
+			</ul>
+		</div>
+		{%- endif %}
+		{%- if not t.sem_calculadora %}{{ ui.calculadora() }}{% endif %}
 		{%- if t.link_mais %}
 		<p class="o-planos__mais"><a class="o-btn o-btn--contorno" href="{{ t.link_mais.url }}" data-cta="planos-ver-mais">{{ t.link_mais.texto }}</a></p>
 		{%- endif %}
-		{%- if not t.sem_calculadora %}{{ ui.calculadora() }}{% endif %}
 	</div>
 </section>

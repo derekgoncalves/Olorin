@@ -1,10 +1,10 @@
 # Equipe (PROMPT seção 2 e 12.3). Só fatos confirmados — não aumentar.
 # "foto" = id da imagem no src/assets/manifest.json (sem o "-quadrada").
-# "frase" aparece nos cartões (home e páginas de serviço); "bio" aparece na página /sobre/.
+# "frase" aparece nos cartões (home e páginas de serviço); "bio" aparece em /quem-somos/ e no perfil /quem-somos/<slug>/.
 pessoas:
   - slug: natalia-arruda
     nome: Natália Arruda
-    funcao: Mídia paga
+    funcao: Coordenadora de Mídia Paga
     frase: Mais de seis anos operando contas de anúncio de e-commerce, serviço, indústria, educação e campanha política.
     bio: Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, cuida das campanhas na Meta (Facebook e Instagram) e no Google.
     foto: equipe-natalia
@@ -12,7 +12,7 @@ pessoas:
     servicos: [trafego-pago]
   - slug: vinicius-mafra
     nome: Vinicius Mafra
-    funcao: Direção de arte e design
+    funcao: Coordenador de Design
     frase: Mais de 10 anos à frente de projetos, de influenciadores digitais a produções culturais.
     bio: Diretor de arte e designer há mais de 10 anos. Já esteve à frente de projetos de influenciadores digitais a produções culturais. Na Olorin, responde pela identidade visual e pela direção de arte.
     foto: equipe-vinicius
@@ -20,7 +20,7 @@ pessoas:
     servicos: [identidade-visual, redes-sociais, material-impresso, site-e-loja-virtual]
   - slug: derek-goncalves
     nome: Derek Gonçalves
-    funcao: Atendimento e comunicação 360
+    funcao: Coordenador de Atendimento
     frase: Seu primeiro contato e quem coordena a sua conta.
     bio: Comunicador digital com atuação 360. Na Olorin, cuida do atendimento. É o seu primeiro contato e quem coordena a sua conta no dia a dia.
     foto: equipe-derek

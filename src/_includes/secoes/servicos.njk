@@ -4,12 +4,16 @@
 {%- set t = P.servicos -%}
 <section class="o-sec o-servicos o-ctx-preto" id="servicos" data-secao="servicos" aria-labelledby="servicos-titulo">
 	<div class="o-wrap">
-		<p class="o-etiqueta">{{ t.etiqueta }}</p>
-		<h2 class="o-titulo o-titulo--g" id="servicos-titulo">{{ t.titulo }}</h2>
-		<p class="o-apoio">{{ t.texto }}</p>
-		<div class="o-cards-servico">
+		<div class="o-servicos__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ t.etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="servicos-titulo">{{ t.titulo }}</h2>
+			</div>
+			<p class="o-apoio">{{ t.texto }}</p>
+		</div>
+		<div class="o-cards-servico" data-o-holofote>
 		{%- for s in conteudo.servicos %}
-			{{ ui.cardServico(s) }}
+			{{ ui.cardServico(s, "h3", loop.index) }}
 		{%- endfor %}
 		</div>
 	</div>

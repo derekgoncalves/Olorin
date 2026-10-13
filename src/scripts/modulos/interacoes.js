@@ -1,5 +1,5 @@
 /* Componentes interativos: checklist, método, portfólio, FAQ, calculadora, planos, faixas e contadores. */
-import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz } from '../util.js';
+import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz, linkWhatsApp } from '../util.js';
 import { track } from './rastreamento.js';
 
 /* Checklist de dores: botões com aria-pressed; a partir de 2 marcados aparece a resposta. */
@@ -82,29 +82,52 @@ export function iniciarFaq() {
 	if (alvo && alvo.tagName === 'DETAILS') alvo.open = true;
 }
 
-/* Calculadora de custo de entrada. */
+/* Calculadora de custo total (recibo): gestão + verba, com o objetivo, e o link de WhatsApp com a conta pronta. */
 export function iniciarCalculadora() {
 	const calc = $('[data-o-calc]');
 	if (!calc) return;
 	const form = $('[data-o-calc-form]', calc);
+	const recibo = $('[data-o-calc-recibo]', calc);
 	const tabela = $('[data-o-calc-tabela]', calc);
-	const conta = $('[data-o-calc-conta]', calc);
-	const total = $('[data-o-calc-total]', calc);
-	if (!form) return;
+	if (!form || !recibo) return;
+	const nome = $('[data-o-calc-nome]', recibo);
+	const gestao = $('[data-o-calc-gestao]', recibo);
+	const verbaEl = $('[data-o-calc-verba]', recibo);
+	const total = $('[data-o-calc-total]', recibo);
+	const prefixo = $('[data-o-calc-prefixo]', recibo);
+	const wa = $('[data-o-calc-wa]', recibo);
+	const rotuloGestao = nome ? nome.textContent.split(' · ')[0] : 'Gestão Olorin';
 	form.hidden = false;
+	recibo.hidden = false;
 	if (tabela) tabela.classList.add('o-sr');
 	const reais = (n) => 'R$ ' + Number(n).toLocaleString('pt-BR');
 	let usou = false;
 	function calcular(registrar) {
 		const plano = $('input[name="calc-plano"]:checked', form);
 		const verba = $('input[name="calc-verba"]:checked', form);
+		const objetivo = $('input[name="calc-objetivo"]:checked', form);
 		if (!plano || !verba) return;
 		const g = Number(plano.value);
 		const v = Number(verba.value);
-		if (conta) conta.textContent = 'Gestão ' + reais(g) + ' + verba ' + reais(v);
+		const aPartir = plano.getAttribute('data-a-partir') === 'sim';
+		const nomePlano = plano.getAttribute('data-nome');
+		if (nome) nome.textContent = rotuloGestao + ' · ' + nomePlano;
+		if (gestao) gestao.textContent = reais(g);
+		if (verbaEl) verbaEl.textContent = reais(v);
 		if (total) total.textContent = reais(g + v);
+		if (prefixo) prefixo.hidden = !aPartir;
+		if (wa) {
+			const de = aPartir ? 'a partir de ' : '';
+			const msg =
+				'Olá! Fiz a conta no site da Olorin: ' + nomePlano + ' (' + de + reais(g) + '/mês) + verba de anúncio de ' + reais(v) + '/mês = ' + de + reais(g + v) + '/mês.' +
+				(objetivo ? ' Quero mais ' + objetivo.value.toLowerCase() + '.' : '') + ' Podemos conversar?';
+			wa.href = linkWhatsApp(msg, 'calculadora');
+		}
 		if (registrar) {
-			track('calculator_use', { plano: plano.getAttribute('data-plano'), verba_faixa: String(v), primeira_vez: !usou });
+			recibo.classList.remove('is-impresso');
+			void recibo.offsetWidth;
+			recibo.classList.add('is-impresso');
+			track('calculator_use', { plano: plano.getAttribute('data-plano'), verba_faixa: String(v), objetivo: objetivo ? objetivo.value : '', primeira_vez: !usou });
 			usou = true;
 		}
 	}
@@ -127,6 +150,7 @@ export function iniciarPlanos() {
 			$$('input[name="servicos[]"]', destino).forEach((c) => {
 				c.checked = servicos.indexOf(c.getAttribute('data-servico')) > -1;
 			});
+			destino.dispatchEvent(new CustomEvent('o-servicos'));
 		}
 		track('pricing_plan_click', { plano });
 	});

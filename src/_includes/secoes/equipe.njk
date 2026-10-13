@@ -11,12 +11,12 @@
 			</div>
 			<div>
 				<p class="o-apoio">{{ t.texto }}</p>
-				{%- if t.apoio %}<p class="o-apoio">{{ t.apoio | confirmar | safe }}</p>{% endif %}
+				{%- if t.apoio %}<p class="o-apoio">{{ t.apoio }}</p>{% endif %}
 			</div>
 		</div>
 		<div class="o-equipe__grade">
 		{%- for p in conteudo.equipe.pessoas %}
-			{{ ui.cardPessoa(p) }}
+			{{ ui.cardPessoa(p, "h3", false, "/quem-somos/" + p.slug + "/") }}
 		{%- endfor %}
 		</div>
 		<div class="o-equipe__acoes">

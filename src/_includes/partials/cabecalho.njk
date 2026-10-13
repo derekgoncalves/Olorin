@@ -4,7 +4,7 @@
 {%- set temPortfolio = conteudo.portfolioPublicado and conteudo.portfolioPublicado.length -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre"] -%}
-{%- set destinoForm = "#orcamento" if temFormulario else "/#orcamento" -%}
+{%- set destinoForm = "#raio-x" if modo == "home" else ("#orcamento" if temFormulario else "/#raio-x") -%}
 {%- set rotuloPrincipal = "Raio-X gratuito" if cfg.OFERTA_DIAGNOSTICO else "Pedir orçamento" -%}
 <header class="o-topo" data-o-topo>
 	<div class="o-topo__dentro">

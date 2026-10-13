@@ -15,9 +15,9 @@
 {% macro etiqueta(texto, classe="") %}<p class="o-etiqueta {{ classe }}">{{ texto }}</p>{% endmacro %}
 
 {#- Card de serviço: o card inteiro é clicável por um único link no título (::after estendido). -#}
-{% macro cardServico(s, nivel="h3") %}
+{% macro cardServico(s, nivel="h3", num=0) %}
 <article class="o-card-servico" data-servico="{{ s.slug }}">
-	<span class="o-icone o-icone--{{ s.icone }} o-card-servico__icone" aria-hidden="true"></span>
+	<p class="o-card-servico__topo" aria-hidden="true"><span class="o-icone o-icone--{{ s.icone }} o-card-servico__icone"></span>{% if num %}<span class="o-card-servico__num">{{ "0" + num if num < 10 else num }}</span>{% endif %}</p>
 	<{{ nivel }} class="o-card-servico__titulo"><a class="o-card-servico__link" href="/servicos/{{ s.slug }}/" data-o-card-servico="{{ s.slug }}">{{ s.card.titulo }}</a></{{ nivel }}>
 	<p class="o-card-servico__texto">{{ s.card.resumo }}</p>
 	<p class="o-card-servico__mais" aria-hidden="true">{{ conteudo.home.servicos.ver_detalhes }} <span class="o-icone o-icone--seta"></span></p>
@@ -25,28 +25,30 @@
 {% endmacro %}
 
 {#- Card de pessoa da equipe, com foto em moldura de janela. -#}
-{% macro cardPessoa(p, nivel="h3", compacto=false) %}
-<article class="o-pessoa{% if compacto %} o-pessoa--compacta{% endif %}" id="{{ p.slug }}">
+{% macro cardPessoa(p, nivel="h3", compacto=false, link="") %}
+<article class="o-pessoa{% if compacto %} o-pessoa--compacta{% endif %}{% if link %} o-pessoa--link{% endif %}" id="{{ p.slug }}">
 	<figure class="o-pessoa__foto o-janela">
 		<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ p.janela }}</span><span class="o-janela__ctrl"></span></div>
 		{{ imagem(imagens, p.foto + ("-quadrada" if compacto else ""), { sizes: "(max-width: 640px) 160px, 160px" if compacto else "(max-width: 640px) 88vw, (max-width: 1100px) 44vw, 380px" }) | safe }}
 	</figure>
 	<div class="o-pessoa__texto">
-		<{{ nivel }} class="o-pessoa__nome">{{ p.nome }}</{{ nivel }}>
-		<p class="o-pessoa__funcao">{{ p.funcao }}</p>
+		<{{ nivel }} class="o-pessoa__nome">{% if link %}<a class="o-pessoa__link" href="{{ link }}">{{ p.nome }}</a>{% else %}{{ p.nome }}{% endif %}</{{ nivel }}>
+		<p class="o-pessoa__funcao">{{ p.cargo or p.funcao }}</p>
 		<p class="o-pessoa__frase">{{ p.frase }}</p>
+		{%- if link %}<p class="o-pessoa__mais" aria-hidden="true">{{ conteudo.home.equipe.ver_perfil or "Ver perfil" }} <span class="o-icone o-icone--seta"></span></p>{% endif %}
 	</div>
 </article>
 {% endmacro %}
 
 {#- Card de plano com preço, itens, selos e "Quero esse". -#}
 {% macro cardPlano(plano, destinoForm="#orcamento") %}
+{#- Sempre as mesmas 9 linhas (subgrid): os cartões ficam alinhados mesmo quando um texto quebra. -#}
 {%- set p = conteudo.planos -%}
 <article class="o-plano{% if plano.destaque %} o-plano--destaque{% endif %}" data-plano="{{ plano.id }}">
 	{%- if plano.tag %}<p class="o-plano__tag">{{ plano.tag }}</p>{% endif %}
 	<h3 class="o-plano__nome">{{ plano.nome }}</h3>
-	{%- if plano.para %}<p class="o-plano__para">{{ plano.para }}</p>{% endif %}
-	<p class="o-plano__de">{{ plano.de }}</p>
+	<p class="o-plano__para">{{ plano.para }}</p>
+	<p class="o-plano__de{% if not plano.de %} o-plano__de--fechado{% endif %}">{{ plano.de or p.preco_fechado }}</p>
 	<p class="o-plano__preco"><span class="o-plano__valor">{{ plano.valor | reais }}</span> <span class="o-plano__periodo">{{ plano.periodo }}</span></p>
 	<ul class="o-lista-pixel o-plano__itens">
 	{%- for item in plano.itens %}
@@ -57,14 +59,11 @@
 	<ul class="o-plano__selos" aria-label="Garantias do plano">
 	{%- for selo in plano.selos %}<li>{{ selo }}</li>{% endfor %}
 	</ul>
+	{%- else %}
+	<span class="o-plano__vazio"></span>
 	{%- endif %}
-	{%- if plano.implantacao %}
-	<p class="o-plano__total">{{ plano.implantacao }}</p>
-	{%- endif %}
-	{%- if site.config.SHOW_TOTAL_COST and plano.custo_total %}
-	<p class="o-plano__total">{{ plano.custo_total }}</p>
-	{%- endif %}
-	<a class="o-btn o-plano__botao{% if plano.destaque %} o-btn--preto{% else %} o-btn--contorno{% endif %}" href="{{ destinoForm }}" data-o-plano="{{ plano.id }}" data-servicos="{{ plano.servicos_preselecao | join(' ') }}" data-cta="planos-{{ plano.id }}">{{ p.botao }}<span class="o-sr"> — plano {{ plano.nome }}</span></a>
+	<p class="o-plano__total">{{ plano.implantacao }}{% if site.config.SHOW_TOTAL_COST and plano.custo_total %}{% if plano.implantacao %}<br>{% endif %}{{ plano.custo_total }}{% endif %}</p>
+	<a class="o-btn o-plano__botao{% if plano.destaque %} o-btn--preto{% else %} o-btn--contorno{% endif %}" href="{{ destinoForm }}" data-o-plano="{{ plano.id }}" data-servicos="{{ plano.servicos_preselecao | join(' ') }}" data-cta="planos-{{ plano.id }}">{{ p.botao }}<span class="o-sr"> — {{ plano.nome }}</span></a>
 </article>
 {% endmacro %}
 
@@ -93,19 +92,24 @@
 
 {#- Calculadora de custo de entrada. Sem JavaScript, a tabela equivalente fica visível. -#}
 {% macro calculadora() %}
+{#- Calculadora de custo total em forma de recibo. Sem JavaScript, a tabela equivalente fica visível. -#}
 {%- set c = conteudo.planos.calculadora -%}
 {%- set planosCalc = conteudo.planos.planos | filtrarPor("calculadora", true) -%}
-<div class="o-calc" data-o-calc>
+{%- set destaques = planosCalc | filtrarPor("destaque", true) -%}
+{%- set ini = destaques[0] if destaques.length else planosCalc[0] -%}
+<div class="o-calc" id="calculadora" data-o-calc>
 	<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">calculadora.exe</span><span class="o-janela__ctrl"></span></div>
 	<div class="o-calc__corpo">
-		<h3 class="o-calc__titulo">{{ c.titulo }}</h3>
-		<p class="o-calc__texto">{{ c.texto }}</p>
+		<div class="o-calc__intro">
+			<h3 class="o-calc__titulo">{{ c.titulo }}</h3>
+			<p class="o-calc__texto">{{ c.texto }}</p>
+		</div>
 		<form class="o-calc__form" data-o-calc-form hidden>
 			<fieldset class="o-calc__grupo">
 				<legend>{{ c.rotulo_plano }}</legend>
 				<div class="o-calc__opcoes">
 				{%- for plano in planosCalc %}
-					<label class="o-chip o-chip--escuro"><input type="radio" name="calc-plano" value="{{ plano.valor }}" data-plano="{{ plano.id }}" data-nome="{{ plano.nome }}"{% if loop.first %} checked{% endif %}><span>{{ plano.nome }} · {{ plano.valor | reais }}</span></label>
+					<label class="o-chip o-chip--escuro o-chip--opcao"><input type="radio" name="calc-plano" value="{{ plano.valor }}" data-plano="{{ plano.id }}" data-nome="{{ plano.calculadora_nome or plano.nome }}" data-a-partir="{{ 'sim' if plano.de else '' }}"{% if plano.id == ini.id %} checked{% endif %}><span>{{ plano.calculadora_nome or plano.nome }} <small>{{ plano.valor | reais }}</small></span></label>
 				{%- endfor %}
 				</div>
 			</fieldset>
@@ -113,19 +117,37 @@
 				<legend>{{ c.rotulo_verba }}</legend>
 				<div class="o-calc__opcoes">
 				{%- for verba in c.verbas %}
-					<label class="o-chip o-chip--escuro"><input type="radio" name="calc-verba" value="{{ verba }}"{% if loop.first %} checked{% endif %}><span>{{ verba | reais }}</span></label>
+					<label class="o-chip o-chip--escuro o-chip--opcao"><input type="radio" name="calc-verba" value="{{ verba }}"{% if loop.first %} checked{% endif %}><span>{{ verba | reais }}</span></label>
 				{%- endfor %}
 				</div>
 			</fieldset>
-			<output class="o-calc__resultado" aria-live="polite" data-o-calc-resultado>
-				<span class="o-calc__conta" data-o-calc-conta>Gestão {{ planosCalc[0].valor | reais }} + verba {{ c.verbas[0] | reais }}</span>
-				<span class="o-calc__total">{{ c.resultado_prefixo }} <strong data-o-calc-total>{{ (planosCalc[0].valor + c.verbas[0]) | reais }}</strong> {{ c.resultado_sufixo }}</span>
-			</output>
+			{%- if c.objetivos %}
+			<fieldset class="o-calc__grupo">
+				<legend>{{ c.rotulo_objetivo }}</legend>
+				<div class="o-calc__opcoes">
+				{%- for obj in c.objetivos %}
+					<label class="o-chip o-chip--escuro o-chip--opcao"><input type="radio" name="calc-objetivo" value="{{ obj }}"{% if loop.first %} checked{% endif %}><span>{{ obj }}</span></label>
+				{%- endfor %}
+				</div>
+			</fieldset>
+			{%- endif %}
 		</form>
+		<div class="o-calc__recibo" data-o-calc-recibo hidden>
+			<p class="o-calc__recibo-topo" aria-hidden="true"><span>olorin digital</span><span>recibo nº 0001</span></p>
+			<dl class="o-calc__linhas">
+				<div><dt data-o-calc-nome>{{ c.linha_gestao }} · {{ ini.calculadora_nome or ini.nome }}</dt><dd data-o-calc-gestao>{{ ini.valor | reais }}</dd></div>
+				<div><dt>{{ c.linha_verba }}</dt><dd data-o-calc-verba>{{ c.verbas[0] | reais }}</dd></div>
+			</dl>
+			<output class="o-calc__resultado" aria-live="polite" data-o-calc-resultado>
+				<span class="o-calc__rotulo-total">{{ c.linha_total }}</span>
+				<span class="o-calc__total"><small data-o-calc-prefixo{% if not ini.de %} hidden{% endif %}>{{ c.resultado_prefixo }}</small> <strong data-o-calc-total>{{ (ini.valor + c.verbas[0]) | reais }}</strong></span>
+			</output>
+			<a class="o-btn o-btn--verde o-calc__wa" id="cta-whatsapp-calculadora" href="{{ waLink('calculadora') }}" target="_blank" rel="noopener" data-o-calc-wa><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ c.botao_wa }}</a>
+		</div>
 		<table class="o-calc__tabela" data-o-calc-tabela>
 			<caption>{{ c.tabela_titulo }}</caption>
 			<thead>
-				<tr><th scope="col">Verba de anúncio</th>{% for plano in planosCalc %}<th scope="col">{{ plano.nome }} ({{ plano.valor | reais }})</th>{% endfor %}</tr>
+				<tr><th scope="col">Verba de anúncio</th>{% for plano in planosCalc %}<th scope="col">{{ plano.calculadora_nome or plano.nome }} ({{ plano.valor | reais }})</th>{% endfor %}</tr>
 			</thead>
 			<tbody>
 			{%- for verba in c.verbas %}

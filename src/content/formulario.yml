@@ -1,6 +1,6 @@
 # Textos e opções do formulário de orçamento (o mesmo componente em todas as páginas).
 # ATENÇÃO: os nomes das opções de "servicos" precisam ser idênticos aos da lista do enviar.php.
-barra_topo: diagnostico.exe
+barra_topo: raio-x.exe
 barra_fim: orcamento.exe
 etapa1_legenda: Seus contatos
 etapa2_legenda: O que você precisa
@@ -11,6 +11,7 @@ rotulos:
   site_opcional: (opcional)
   servicos: O que você precisa agora?
   servicos_dica: Pode marcar mais de um.
+  selecionar_tudo: Selecionar tudo
   investimento: Quanto você investe hoje em anúncio por mês?
   mensagem: Quer contar mais alguma coisa?
   mensagem_opcional: (opcional)

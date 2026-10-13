@@ -282,6 +282,59 @@ function iniciarUm(caixa) {
 	}
 }
 
+/* "Selecionar tudo" nos serviços: só aparece com JS; "Ainda não sei" fica de fora. */
+function iniciarSelecionarTudo(caixa) {
+	const todos = $('[data-o-todos]', caixa);
+	if (!todos) return;
+	const rotulo = todos.closest('[data-o-todos-rotulo]');
+	const caixas = $$('input[name="servicos[]"]', caixa).filter((c) => c.getAttribute('data-servico') !== 'nao-sei');
+	if (!caixas.length) return;
+	if (rotulo) rotulo.hidden = false;
+	function sincronizar() {
+		const n = caixas.filter((c) => c.checked).length;
+		todos.checked = n === caixas.length;
+		todos.indeterminate = n > 0 && n < caixas.length;
+	}
+	todos.addEventListener('change', () => {
+		caixas.forEach((c) => {
+			c.checked = todos.checked;
+		});
+		const naoSei = $('input[data-servico="nao-sei"]', caixa);
+		if (naoSei && todos.checked) naoSei.checked = false;
+	});
+	caixas.forEach((c) => c.addEventListener('change', sincronizar));
+	caixa.addEventListener('o-servicos', sincronizar);
+	sincronizar();
+}
+
+/* Atalho do banner: o WhatsApp digitado vai para o formulário do Raio-X e o foco segue para o nome. */
+function iniciarAtalhos() {
+	$$('[data-o-atalho]').forEach((atalho) => {
+		const campoAtalho = $('input[type="tel"]', atalho);
+		if (campoAtalho) {
+			campoAtalho.addEventListener('input', (e) => {
+				if (e.inputType && e.inputType.indexOf('delete') === 0) return;
+				campoAtalho.value = mascaraTelefone(campoAtalho.value);
+			});
+		}
+		atalho.addEventListener('submit', (e) => {
+			const caixa = doc.getElementById(atalho.getAttribute('data-o-atalho'));
+			if (!caixa) return;
+			e.preventDefault();
+			const tel = $('input[name="whatsapp"]', caixa);
+			const nome = $('input[name="nome"]', caixa);
+			if (tel && campoAtalho && campoAtalho.value.trim()) tel.value = mascaraTelefone(campoAtalho.value);
+			track('hero_shortcut', { preenchido: !!(campoAtalho && campoAtalho.value.trim()) });
+			caixa.scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
+			if (nome) window.setTimeout(() => nome.focus({ preventScroll: true }), movimentoReduzido ? 0 : 500);
+		});
+	});
+}
+
 export function iniciarFormularios() {
-	$$('[data-o-form]').forEach(iniciarUm);
+	$$('[data-o-form]').forEach((caixa) => {
+		iniciarUm(caixa);
+		iniciarSelecionarTudo(caixa);
+	});
+	iniciarAtalhos();
 }
