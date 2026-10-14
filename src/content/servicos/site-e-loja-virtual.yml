@@ -1,7 +1,7 @@
 # ============================================================
 # SERVIÇO: Sites — fonte ÚNICA da página /servicos/site-e-loja-virtual/ e da landing /promo/site-e-loja-virtual/.
-# Texto proposto vai ao ar; o que o dono ainda precisa confirmar leva "# PENDENTE:" na linha de cima
-# (npm run pendencias lista tudo). Preços no molde do dono (13/10/2026), iguais a src/content/planos.yml.
+# Textos com as confirmações do dono (14/10/2026): texto base do cliente, prazos de 45 e 60 dias, acompanhamento
+# quinzenal e ajustes semanais. Preços iguais a src/content/planos.yml.
 # ============================================================
 slug: site-e-loja-virtual
 ordem: 5
@@ -11,7 +11,6 @@ icone: site
 janela: site.html
 cena: site
 atualizado: "2026-10-14"
-# PENDENTE: confirmar quem coordena o desenvolvimento dos sites e das lojas virtuais
 quem_faz: [vinicius-mafra, derek-goncalves]
 
 seo:
@@ -44,8 +43,8 @@ o_que_e:
   titulo: Visita que vira contato.
   texto:
     - "O site é para onde o anúncio, o post e a indicação levam a pessoa. Se ele demora, confunde ou não tem a sua cara, o interesse acaba ali, e o dinheiro do anúncio vai junto."
-    - A Olorin cria sites institucionais, lojas virtuais e páginas de captação com o mesmo cuidado da sua marca, pensados primeiro para o celular, fáceis de ler, com o botão de contato sempre à mão e a medição configurada desde o primeiro dia.
-    - "Escopo, prazo e preço são combinados no briefing, antes de começar. Do site de uma página à loja com catálogo inteiro, com o mesmo cuidado."
+    - A Olorin cria sites institucionais, lojas virtuais e páginas de captação com a identidade da sua marca, pensados primeiro para o celular, fáceis de ler, com o botão de contato sempre à mão e a medição configurada desde o primeiro dia.
+    - "Escopo, prazo e preço são combinados no briefing, antes de começar, do site de uma página à loja com catálogo inteiro."
   destaques:
     - Rápido no celular
     - A mesma cara da marca
@@ -97,23 +96,21 @@ como_funciona:
   titulo: Do briefing ao ar.
   etapas:
     - { nome: Briefing, texto: "Conversamos sobre objetivo, público e conteúdo, e fechamos escopo, prazo e preço." }
-    - { nome: Desenho, texto: Você vê o site no celular e no computador e aprova antes da construção. }
-    - { nome: Construção, texto: "Páginas montadas, textos no lugar, medição configurada e testes de velocidade." }
+    - { nome: Desenho, texto: "Você vê o site no celular e no computador, pede ajustes e aprova antes da construção." }
+    - { nome: Construção, texto: "Páginas montadas com os seus textos, medição configurada e testes de velocidade, com reunião a cada quinze dias." }
     - { nome: Publicação, texto: "Site no ar, conferido de ponta a ponta, e a primeira leitura das visitas." }
   prazos_titulo: Prazo de cada projeto
   prazos_janela: prazos.txt
-  # PENDENTE: confirmar os prazos típicos de site, loja virtual e página de captação
   prazos:
-    - "Página de captação: de 1 a 2 semanas, do briefing ao ar."
-    - "Site institucional: de 3 a 6 semanas, conforme o número de páginas."
-    - "Loja virtual: de 6 a 10 semanas, conforme o catálogo e as integrações."
+    - "Site institucional e página de captação: cerca de 45 dias, do briefing ao ar."
+    - "Loja virtual: cerca de 60 dias, conforme o catálogo e as integrações."
+    - "Em todos: acompanhamento a cada quinze dias e rodadas de ajuste semanais. O prazo exato sai na proposta."
 
 precisamos:
   titulo: Para começar, precisamos de
   itens:
     - Acesso ao domínio e à hospedagem (se não tiver, a gente ajuda a contratar).
-    # PENDENTE: confirmar quem escreve os textos do site (cliente ou Olorin) e se entra no preço
-    - "Textos, fotos e a lista de produtos ou serviços, ou o combinado de que a Olorin escreve."
+    - "Os textos base, as fotos e a lista de produtos ou serviços. A Olorin ajusta os textos para a web."
     - Aprovação do desenho antes da construção.
 
 para_quem:
@@ -130,18 +127,18 @@ preco:
   formato: Projeto de site
   rotulo: A partir de
   valor: R$ 3.000
-  detalhe: "Site institucional e página de captação a partir de R$ 3.000; loja virtual a partir de R$ 10.000. Projeto fechado: escopo, prazo e preço combinados no briefing, antes de começar. No Marketing 360, o site entra no mesmo pacote do anúncio e das redes."
+  detalhe: "Site institucional e página de captação a partir de R$ 3.000; loja virtual a partir de R$ 10.000. Projeto fechado: escopo, prazo e preço combinados no briefing, antes de começar. O texto base é seu; domínio, hospedagem e plataforma da loja ficam à parte. No Marketing 360, o site entra no mesmo pacote do anúncio e das redes."
   contrato: Projeto fechado, sem mensalidade obrigatória.
   inclui:
     - Desenho no celular e no computador
     - Construção e publicação
     - Velocidade e acessibilidade conferidas
     - Medição de visitas e contatos
-  # PENDENTE: confirmar o que fica de fora do projeto de site (domínio, hospedagem, plataforma da loja, manutenção)
   nao_inclui:
+    - Textos do zero (você manda o texto base e a gente ajusta)
     - Domínio e hospedagem (ficam no seu nome)
     - Mensalidade da plataforma da loja e taxas de pagamento
-    - Manutenção mensal depois da entrega (à parte)
+    - Manutenção depois da entrega (oferecida e combinada à parte)
   schema:
     valor: "3000"
     minimo: true
@@ -157,17 +154,18 @@ faq:
   - id: site-quanto-custa
     pergunta: Quanto custa um site?
     resposta: "Site institucional ou página de captação a partir de R$ 3.000 e loja virtual a partir de R$ 10.000. O preço final sai no briefing, com escopo e prazo fechados antes de começar."
-  # PENDENTE: confirmar os prazos típicos de cada projeto
   - id: site-prazo
     pergunta: Quanto tempo leva?
-    resposta: "Uma página de captação leva de 1 a 2 semanas; um site institucional, de 3 a 6; uma loja virtual, de 6 a 10. O prazo do seu projeto sai no briefing."
+    resposta: "Um site institucional ou uma página de captação leva cerca de 45 dias; uma loja virtual, cerca de 60. Há acompanhamento a cada quinze dias e rodadas de ajuste semanais. O prazo exato sai na proposta."
+  - id: site-textos
+    pergunta: Quem escreve os textos do site?
+    resposta: "O texto base é seu, porque ninguém conhece o seu negócio melhor. A Olorin organiza, ajusta para a web e pode refinar depois do site no ar."
   - id: site-velocidade
     pergunta: O site vai ser rápido no celular?
     resposta: "Sim. Velocidade e acessibilidade são o padrão: imagens leves, texto legível, navegação por teclado e conferência antes de publicar."
   - id: site-anuncio
     pergunta: Vocês fazem o anúncio para o site?
     resposta: "Sim. O [tráfego pago](/servicos/trafego-pago/) é coordenado pelo mesmo time, então o anúncio e o site falam a mesma língua."
-  # PENDENTE: confirmar a titularidade do domínio, da hospedagem e dos arquivos do site
   - id: site-dono
     pergunta: De quem é o site?
     resposta: Seu. Domínio, hospedagem e arquivos ficam no seu nome. Se um dia o trabalho acabar, tudo continua com você.

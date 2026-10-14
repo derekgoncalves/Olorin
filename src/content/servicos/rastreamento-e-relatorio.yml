@@ -1,8 +1,8 @@
 # ============================================================
 # SERVIÇO: Dados — fonte ÚNICA da página /servicos/rastreamento-e-relatorio/ e da landing /promo/rastreamento-e-relatorio/.
-# Texto proposto vai ao ar; o que o dono ainda precisa confirmar leva "# PENDENTE:" na linha de cima
-# (npm run pendencias lista tudo). Preços no molde do dono (13/10/2026), iguais a src/content/planos.yml
-# (o serviço avulso "Mídias e dados" sai a partir de R$ 1.500/mês).
+# Textos com as confirmações do dono (14/10/2026): Dados sozinho a partir de R$ 1.500/mês, sem taxa de
+# implantação; dados de venda do relatório combinados no início; ferramenta do painel não é citada.
+# Preços iguais a src/content/planos.yml.
 # ============================================================
 slug: rastreamento-e-relatorio
 ordem: 6
@@ -12,7 +12,6 @@ icone: dados
 janela: painel.exe
 cena: dados
 atualizado: "2026-10-14"
-# PENDENTE: confirmar quem configura o rastreamento e quem monta o painel (proposta: Natália e Derek)
 quem_faz: [natalia-arruda, derek-goncalves]
 
 seo:
@@ -27,8 +26,7 @@ card:
 hero:
   eyebrow: Rastreamento com Google Tag Manager e GA4 em Curitiba e no Brasil
   h1: Dado que decide.
-  sub: Tag Manager, Google Analytics, pixel e conversões configurados direito, e um painel que mostra quanto entrou, quanto saiu e qual foi o retorno. Cuidado que dá para medir.
-  # PENDENTE: confirmar o preço do rastreamento contratado sozinho (proposta: a partir de R$ 1.500/mês)
+  sub: Tag Manager, Google Analytics, pixel e conversões configurados direito, e um painel que mostra quanto entrou, quanto saiu e qual foi o retorno. Resultado que dá pra ver.
   preco_rotulo: Sozinho, a partir de
   preco: R$ 1.500/mês
   janela_linhas:
@@ -39,7 +37,8 @@ hero:
 # Resumo usado na landing /promo/ e no JSON-LD (não aparece com rótulo na página do serviço).
 resposta_curta: >-
   Rastreamento é configurar o Google Tag Manager, o Google Analytics, o pixel da Meta e as conversões para cada
-  venda, matrícula ou contato chegar ao relatório com a sua origem. Sozinho, a partir de R$ 1.500/mês; na Gestão
+  venda, matrícula ou contato chegar ao relatório com a sua origem. Sozinho, a partir de R$ 1.500/mês, sem taxa de
+  implantação; na Gestão
   mensal e no Marketing 360, a configuração já vem na implantação e o relatório vem todo mês.
 
 o_que_e:
@@ -47,7 +46,7 @@ o_que_e:
   texto:
     - "Sem rastreamento, o anúncio otimiza no escuro e o relatório mostra o que é fácil de contar, não o que importa. Com ele, cada venda, matrícula ou contato chega com a sua origem: qual anúncio, qual página, qual campanha."
     - A Olorin configura o Google Tag Manager, o Google Analytics 4, o pixel da Meta e as conversões do Google Ads, confere se cada evento chega certo e monta um painel simples, que você abre quando quiser.
-    - "Todo mês, a leitura vira decisão: onde investir mais, o que cortar e o que testar. Cuidado que dá para medir."
+    - "Todo mês, a leitura vira decisão: onde investir mais, o que cortar e o que testar. Resultado que dá pra ver."
   destaques:
     - Conversões conferidas
     - Painel que qualquer pessoa entende
@@ -82,10 +81,9 @@ entregas:
       texto: Links etiquetados (UTM) e formulários que guardam de onde a pessoa veio.
       frequencia: em toda campanha
       icone: seta
-    # PENDENTE: confirmar a ferramenta do painel (proposta: Looker Studio, gratuito) e a frequência de atualização
     - titulo: Painel de acompanhamento
-      texto: Investimento, resultado e retorno num painel simples, aberto a qualquer hora.
-      frequencia: atualizado todo dia
+      texto: Investimento, resultado e retorno num painel simples, que você abre quando quiser.
+      frequencia: acesso a qualquer hora
       icone: estrela
     - titulo: Leitura mensal
       texto: Os números do mês em linguagem simples e o que muda na próxima rodada. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio).
@@ -94,7 +92,7 @@ entregas:
 
 portfolio:
   titulo: Na prática.
-  texto: Cases em que a medição mostrou onde estava o resultado.
+  texto: Trabalhos em que a medição mostrou onde estava o resultado.
 
 como_funciona:
   titulo: Do Raio-X ao painel.
@@ -103,7 +101,6 @@ como_funciona:
     - { nome: Plano, texto: "Definimos o que contar (venda, matrícula, contato) e onde cada número vai aparecer." }
     - { nome: Configuração, texto: "Tag Manager, Analytics, pixel e conversões configurados e testados um a um." }
     - { nome: Leitura, texto: Painel no ar e leitura mensal do que os números dizem. }
-  # PENDENTE: confirmar o ritmo dos primeiros 90 dias de rastreamento
   prazos:
     - "Até 30 dias: rastreamento configurado e testado, e o painel no ar."
     - "Até 60 dias: o primeiro mês completo de dados e o ajuste do que não fechou."
@@ -114,8 +111,7 @@ precisamos:
   itens:
     - Acesso ao site, ao Google Tag Manager e ao Google Analytics (se não tiver, a gente cria).
     - Acesso de gestão às contas de anúncio da Meta e do Google.
-    # PENDENTE: confirmar os dados de venda pedidos para o relatório
-    - Os números de venda que não passam pelo site, para o relatório fechar a conta.
+    - Os dados de venda combinados com você no início, para o relatório fechar a conta.
 
 para_quem:
   e:
@@ -130,9 +126,8 @@ preco:
   titulo: Preço aberto.
   formato: Rastreamento e relatório
   rotulo: Sozinho, a partir de
-  # PENDENTE: confirmar o preço do rastreamento contratado sozinho e o contrato mínimo
   valor: R$ 1.500/mês
-  detalhe: "Sozinho, para quem já tem site e anúncio e quer medir certo. Na Gestão mensal (R$ 2.500/mês) e no Marketing 360 (a partir de R$ 5.000/mês), a configuração entra na implantação e o relatório vem todo mês."
+  detalhe: "Sozinho, sem taxa de implantação, para quem já tem site e anúncio e quer medir certo. Na Gestão mensal (R$ 2.500/mês) e no Marketing 360 (a partir de R$ 5.000/mês), a configuração entra na implantação e o relatório vem todo mês."
   contrato: Contrato mínimo de 3 meses. Depois, mês a mês com aviso de 30 dias, sem multa.
   inclui:
     - Tag Manager, Analytics, pixel e conversões
@@ -161,7 +156,7 @@ faq:
     resposta: "É configurar as ferramentas que contam o que acontece no site e nos anúncios (Google Tag Manager, Google Analytics, pixel da Meta e conversões), para cada venda, matrícula ou contato chegar ao relatório com a sua origem."
   - id: rastreamento-quanto-custa
     pergunta: Quanto custa?
-    resposta: "Sozinho, a partir de R$ 1.500/mês. Na Gestão mensal e no Marketing 360, a configuração já vem na implantação e o relatório vem todo mês."
+    resposta: "Sozinho, a partir de R$ 1.500/mês, sem taxa de implantação e com contrato mínimo de 3 meses. Na Gestão mensal e no Marketing 360, a configuração já vem na implantação e o relatório vem todo mês."
   - id: rastreamento-gestao-mensal
     pergunta: Já vem na Gestão mensal?
     resposta: "Sim. Na Gestão mensal e no Marketing 360, o rastreamento é configurado na implantação, e o relatório mensal faz parte do plano."
