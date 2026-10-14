@@ -7,9 +7,9 @@ categoria: Educação
 autor: derek-goncalves
 ---
 
-Quando a turma não fecha, a primeira suspeita costuma cair no anúncio. Às vezes é ele mesmo. Mas, na maioria das instituições que a gente conhece, o problema está no meio do caminho: entre o clique e a matrícula existem várias etapas, e o aluno pode desistir em qualquer uma delas.
+Quando a turma não fecha, a primeira suspeita costuma cair no anúncio. Às vezes é ele mesmo. Muitas vezes, porém, o problema está no meio do caminho: entre o clique e a matrícula existem várias etapas, e o aluno pode desistir em qualquer uma delas.
 
-Escola, faculdade, universidade, curso livre ou pós-graduação: o caminho é parecido. A pessoa vê um anúncio, abre uma página, manda uma mensagem, conhece a instituição, pensa, compara e decide. Se você só olha a ponta (quantos cliques ou quantas matrículas), fica sem saber onde mexer. Se mede cada etapa, sabe exatamente qual delas está vazando.
+Escola, faculdade, universidade, curso livre ou pós-graduação: o caminho é parecido. Quem só olha as pontas (cliques e matrículas) fica sem saber onde mexer. Quem mede cada etapa sabe qual delas está vazando.
 
 ## As seis etapas do caminho
 
@@ -36,20 +36,20 @@ O número que importa aqui não é a curtida. É o custo de cada contato que o a
 
 Mandar o anúncio para a página inicial do site obriga a pessoa a procurar o que ela já tinha escolhido. Uma página por curso resolve: modalidade, duração, turno, diferenciais, fotos, perguntas frequentes e um botão só, para o WhatsApp ou para um formulário curto (nome, WhatsApp e curso de interesse).
 
-Abra a página no seu celular, com a internet do celular. Se demorar para carregar ou se o botão estiver escondido, o interessado vai embora antes de falar com você.
+Abra a página no celular, com a internet do celular. Se demorar ou se o botão estiver escondido, o interessado vai embora antes de falar com você.
 
 Número da etapa: de cada 100 visitas na página, quantas viram contato.
 
 ## 3. Primeira resposta: o minuto que mais pesa
 
-Quem procura uma instituição costuma falar com várias ao mesmo tempo. Quem responde primeiro, e bem, sai na frente. Essa é a etapa mais barata de melhorar e uma das que mais pesam no resultado.
+Quem procura uma instituição costuma falar com várias ao mesmo tempo. Quem responde primeiro, e bem, sai na frente. E costuma ser a etapa mais barata de melhorar.
 
 - Combine um prazo de resposta no horário comercial e acompanhe se ele está sendo cumprido.
 - Fora do horário, deixe uma mensagem automática dizendo quando alguém vai responder.
 - Tenha respostas prontas para as dúvidas de sempre: valores, horários, bolsas, documentos.
 - Termine toda conversa com um próximo passo concreto, como agendar uma visita ou uma aula experimental.
 
-Uma dica que funciona: use as etiquetas do WhatsApp Business para marcar cada contato pela etapa em que ele está, como "novo", "em conversa", "visita agendada", "matriculado" e "não seguiu". No fim do mês, você conta as etiquetas e tem o funil inteiro na mão.
+Use as etiquetas do WhatsApp Business para marcar a etapa de cada contato: "novo", "em conversa", "visita agendada", "matriculado" e "não seguiu". No fim do mês, basta contar as etiquetas.
 
 Para saber como está o seu atendimento hoje, mande uma mensagem como se fosse um interessado e anote quanto tempo levou para alguém responder.
 
@@ -65,7 +65,7 @@ Números da etapa: contatos que agendaram e agendados que compareceram. Muita fa
 
 Matrícula é uma decisão com peso, e quase ninguém decide na hora. Depois da visita, mande uma mensagem com um resumo do que a pessoa viu, a data de início da turma e a lista de documentos. Combine um novo contato.
 
-Duas ou três mensagens úteis em algumas semanas funcionam melhor do que cobrar resposta todo dia. Se a pessoa disser que não vai seguir, pergunte o motivo e anote: preço, distância, horário ou outra instituição. Essa lista vale ouro para a próxima temporada.
+Duas ou três mensagens úteis em algumas semanas funcionam melhor do que cobrar resposta todo dia. Se a pessoa não seguir, pergunte o motivo e anote: preço, distância, horário ou outra instituição. Essa lista orienta a próxima temporada.
 
 Os anúncios também ajudam aqui: quem visitou a página do curso pode voltar a ver a sua instituição nas redes enquanto decide.
 

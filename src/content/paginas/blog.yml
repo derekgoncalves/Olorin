@@ -1,5 +1,5 @@
 # ============================================================
-# BLOG — textos fixos da página /blog/ e de todos os artigos.
+# BLOG: textos fixos da página /blog/ e de todos os artigos.
 # Os artigos em si ficam em src/blog/artigos/ (um arquivo .md por artigo).
 # Passo a passo para publicar um artigo novo: docs/BLOG.md.
 # O bloco da home ("Blog da Olorin") fica em src/content/home.yml → blog.
@@ -11,7 +11,7 @@ seo:
 # Topo da página /blog/
 etiqueta: Blog da Olorin
 titulo: Marketing sem rodeio.
-sub: Anúncio, redes sociais e captação explicados passo a passo, por quem coordena cada frente na Olorin.
+sub: Anúncios, redes e captação explicados passo a passo, por quem coordena cada frente na Olorin.
 categorias_rotulo: Categorias
 categoria_etiqueta: Categoria
 um_artigo: artigo
@@ -28,7 +28,7 @@ artigo:
   cta_janela: proximo_passo.exe
   cta_etiqueta: Próximo passo
   cta_titulo: Quer colocar isso em prática?
-  cta_texto: No Raio-X gratuito, a gente olha anúncio, redes, site e material da sua marca e mostra, sem rodeio, por onde vale começar.
+  cta_texto: No Raio-X gratuito, a gente olha os seus anúncios, as suas redes, a sua marca e o seu site e mostra, sem rodeio, por onde vale começar.
   cta_botao: Quero meu Raio-X grátis
   cta_whatsapp: Conversar no WhatsApp
   # {x} vira o título do artigo.

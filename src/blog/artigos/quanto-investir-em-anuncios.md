@@ -7,7 +7,7 @@ categoria: Tráfego pago
 autor: natalia-arruda
 ---
 
-"Quanto eu preciso investir para começar?" é a pergunta que mais ouvimos antes de qualquer campanha. Não existe um número que sirva para todo mundo, mas existe um jeito de chegar no seu. E, depois que a campanha está no ar, existe um jeito simples de saber se ela está dando certo, sem depender de achismo.
+"Quanto eu preciso investir para começar?" é uma das perguntas que mais ouvimos antes de uma campanha. Não existe um número que sirva para todo mundo, mas existe um jeito de chegar no seu. E, depois que a campanha está no ar, existe um jeito simples de saber se ela está dando certo, sem depender de achismo.
 
 ## Primeiro, separe as duas contas
 
@@ -16,7 +16,7 @@ Anunciar tem dois custos diferentes, e misturar os dois é a origem de muita con
 - **Verba de anúncio:** o dinheiro que vai direto para a Meta (Instagram e Facebook) ou para o Google, pago no seu cartão, na conta de anúncio da sua empresa.
 - **Gestão:** o que você paga a quem planeja, monta, cria as peças, ajusta e mostra o resultado.
 
-Quando as duas coisas viram um valor só, fica impossível responder a pergunta mais importante: quanto do dinheiro realmente foi para o anúncio? Por isso, peça sempre os dois números separados. Na Olorin, a verba fica na sua conta, e a nossa recomendação é começar com pelo menos R$ 1.500 por mês de verba na Meta ou no Google, fora a gestão.
+Quando as duas viram um valor só, ninguém sabe quanto do dinheiro realmente foi para o anúncio. Peça sempre os dois números separados. Na Olorin, a verba fica na sua conta, e a nossa recomendação é começar com pelo menos R$ 1.500 por mês de verba na Meta ou no Google, fora a gestão.
 
 ## Faça a conta de trás para frente
 
@@ -27,9 +27,9 @@ O jeito mais seguro de definir a verba é partir do que uma venda vale para voc�
 3. **De cada 10 pessoas que entram em contato, quantas compram?** Use o seu histórico, mesmo que seja uma estimativa.
 4. **Quanto você pode pagar por contato:** é o valor aceito por venda multiplicado pela sua taxa de conversão.
 
-Um exemplo com números redondos, só para ilustrar: se você aceita pagar até R$ 200 de anúncio por venda e 2 de cada 10 contatos compram, pode pagar até R$ 40 por contato. Com R$ 1.500 no mês, isso daria algo perto de 37 contatos, o suficiente para começar a ler o resultado.
+Um exemplo com números redondos: se você aceita pagar até R$ 200 de anúncio por venda e 2 de cada 10 contatos compram, pode pagar até R$ 40 por contato. Com R$ 1.500 no mês, isso daria algo perto de 37 contatos, o suficiente para começar a ler o resultado.
 
-Se a conta mostrar que a verba disponível compra pouquíssimos contatos por mês, vale começar por outra frente, como melhorar o perfil ou a página, antes de anunciar.
+Se a verba disponível compra pouquíssimos contatos por mês, talvez valha começar melhorando o perfil ou a página.
 
 ## Entenda a fase de aprendizado
 
@@ -54,11 +54,11 @@ O segundo número é o que paga as contas. Um contato barato que nunca compra sa
 
 ## Teste peças, não só públicos
 
-Hoje, as plataformas encontram bem o público quando a peça é clara. Por isso, a peça (a imagem ou o vídeo, mais o texto) é a alavanca que você mais controla.
+Hoje, boa parte da escolha de quem vê o anúncio fica com a própria plataforma. O que continua nas suas mãos é a peça (a imagem ou o vídeo, mais o texto), e ela pesa muito no resultado.
 
 Comece com três a cinco peças com ângulos diferentes: uma que mostra a oferta, uma com prova real (um depoimento autorizado, por exemplo), uma de bastidor e uma que responde uma dúvida comum. Varie o formato também: vídeo curto na vertical, imagem e carrossel.
 
-Deixe cada peça rodar o bastante para juntar resultado antes de julgar. Depois, pause a que traz o contato mais caro e crie uma nova inspirada na que foi melhor. Repita.
+Deixe cada peça juntar resultado antes de julgar. Depois, pause a que traz o contato mais caro e crie uma nova inspirada na melhor.
 
 ## Dê tempo, mas com prazo combinado
 
@@ -68,7 +68,7 @@ Combine antes um critério de decisão. Por exemplo: "se em quatro semanas o cus
 
 ## A leitura da semana, em 15 minutos
 
-Separe um horário fixo na semana e responda sempre as mesmas perguntas:
+Num horário fixo da semana, responda as mesmas perguntas:
 
 1. Quanto foi investido e quantos contatos chegaram? Qual foi o custo por contato?
 2. Como esse número se compara com a semana anterior e com a meta?
@@ -76,7 +76,7 @@ Separe um horário fixo na semana e responda sempre as mesmas perguntas:
 4. Quantos contatos viraram conversa de verdade? Quantos compraram?
 5. Qual é a decisão da semana: manter, pausar uma peça, criar uma nova ou ajustar a página e o atendimento?
 
-Anote a decisão e confira na semana seguinte se ela funcionou.
+Anote a decisão e confira o efeito na semana seguinte.
 
 ## Sinais de que algo está fora do lugar
 
