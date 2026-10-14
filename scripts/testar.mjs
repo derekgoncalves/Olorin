@@ -126,7 +126,9 @@ for (const largura of [360, 1440]) {
 
 console.log('\n2. Acessibilidade (axe-core)');
 const axe = readFileSync(path.resolve('node_modules/axe-core/axe.min.js'), 'utf8');
-for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/quem-somos/', '/promo/', '/obrigado/', '/politica-de-privacidade/']) {
+// Blog: a página geral e um artigo (o primeiro do sitemap), para valer mesmo quando os artigos mudarem.
+const artigoBlog = paginas.find((u) => /^\/blog\/[^/]+\/$/.test(u));
+for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/quem-somos/', '/blog/', ...(artigoBlog ? [artigoBlog] : []), '/promo/', '/obrigado/', '/politica-de-privacidade/']) {
 	for (const largura of [390, 1280]) {
 		const ctx = await navegador.newContext({ viewport: { width: largura, height: 900 }, reducedMotion: 'reduce' });
 		const p = await ctx.newPage();
