@@ -211,152 +211,240 @@
         "webp"
       ]
     },
-    "portfolio-marca-identidade": {
-      "arquivo_original": "src/assets/img-src/portfolio/marca-identidade.webp",
+    "portfolio-bravo-film-festival": {
+      "arquivo_original": "src/assets/img-src/portfolio/bravo-film-festival.webp",
       "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "pessoa_ou_cliente": "BRAVO Film Festival",
       "servico_tags": [
-        "identidade-visual"
+        "identidade-visual",
+        "redes-sociais"
       ],
-      "alt": "Catálogo de cores aberto ao lado de um tablet com ilustrações coloridas",
+      "alt": "Arte do BRAVO Film Festival: o nome BRAVO em letras altas douradas, com a silhueta de uma pessoa saltando contra o céu",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória (não é trabalho da Olorin). Substituir por trabalhos reais.",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-005). Trocar pelo arquivo original quando chegar.",
       "larguras": [
-        300,
-        600
+        320,
+        480,
+        640,
+        860
       ],
       "formatos": [
         "avif",
         "webp"
       ]
     },
-    "portfolio-campanha-trafego": {
-      "arquivo_original": "src/assets/img-src/portfolio/campanha-trafego.webp",
+    "portfolio-ambulatorio-da-moda": {
+      "arquivo_original": "src/assets/img-src/portfolio/ambulatorio-da-moda.webp",
       "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
-        "trafego-pago"
-      ],
-      "alt": "Tablet com um estudo da letra A, caneta, fone de ouvido e um impresso laranja sobre a mesa",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
-      "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-impresso-catalogo": {
-      "arquivo_original": "src/assets/img-src/portfolio/impresso-catalogo.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
-        "material-impresso"
-      ],
-      "alt": "Celular mostrando um perfil com fotos organizadas em grade",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
-      "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-site-institucional": {
-      "arquivo_original": "src/assets/img-src/portfolio/site-institucional.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
-        "site-e-loja-virtual"
-      ],
-      "alt": "Estação de trabalho com dois monitores mostrando código, em um ambiente escuro",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
-      "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-redes-conteudo": {
-      "arquivo_original": "src/assets/img-src/portfolio/redes-conteudo.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "pessoa_ou_cliente": "Ambulatório da M.O.D.A",
       "servico_tags": [
         "redes-sociais"
       ],
-      "alt": "Mão erguendo um celular contra o céu azul",
+      "alt": "Post do Ambulatório da M.O.D.A que anuncia a segunda temporada, com fitas de \"confirmada\" cruzando a foto",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-027). Trocar pelo arquivo original quando chegar.",
       "larguras": [
         320,
-        640
+        480,
+        640,
+        860
       ],
       "formatos": [
         "avif",
         "webp"
       ]
     },
-    "portfolio-campanha-google-ads": {
-      "arquivo_original": "src/assets/img-src/portfolio/campanha-google-ads.webp",
+    "portfolio-benca": {
+      "arquivo_original": "src/assets/img-src/portfolio/benca.webp",
       "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "pessoa_ou_cliente": "Bença (curta-metragem)",
+      "servico_tags": [
+        "identidade-visual",
+        "material-impresso"
+      ],
+      "alt": "Cartaz do curta-metragem Bença em um painel iluminado na parede",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-135). Trocar pelo arquivo original quando chegar.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-viva-sem-veneno": {
+      "arquivo_original": "src/assets/img-src/portfolio/viva-sem-veneno.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Viva Sem Veneno",
+      "servico_tags": [
+        "redes-sociais",
+        "identidade-visual"
+      ],
+      "alt": "Logo do movimento Viva Sem Veneno em branco e laranja sobre foto de galões de agrotóxico",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-006, topo, com desfoque leve de 0,8 px no arquivo para a textura pesar menos). Trocar pelo arquivo original quando chegar.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-cartas-para-o-futuro": {
+      "arquivo_original": "src/assets/img-src/portfolio/cartas-para-o-futuro.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Cartas para o Futuro (série documental)",
+      "servico_tags": [
+        "identidade-visual",
+        "material-impresso"
+      ],
+      "alt": "Cartaz da série documental Cartas para o Futuro colado em um muro",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-010). Trocar pelo arquivo original quando chegar.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-governo-rs": {
+      "arquivo_original": "src/assets/img-src/portfolio/governo-rs.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Governo do Estado do Rio Grande do Sul",
+      "servico_tags": [
+        "identidade-visual",
+        "material-impresso"
+      ],
+      "alt": "Cartaz do workshop do Governo do Estado do RS segurado por uma pessoa",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-008). Trocar pelo arquivo original quando chegar.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-toro-audio": {
+      "arquivo_original": "src/assets/img-src/portfolio/toro-audio.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "TORO AUDIO",
+      "servico_tags": [
+        "redes-sociais"
+      ],
+      "alt": "Post da TORO AUDIO sobre 20 documentários de música, com o selo verde \"Assista online\"",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-004). Trocar pelo arquivo original quando chegar.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-izeta": {
+      "arquivo_original": "src/assets/img-src/portfolio/izeta.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "iZETA Educação",
+      "servico_tags": [
+        "site-e-loja-virtual",
+        "trafego-pago",
+        "redes-sociais"
+      ],
+      "alt": "Logo da iZETA Educação",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Card de logo 4:5 composto em SVG e rasterizado com sharp: logo real enviado pelo dono (izeta.png) sobre #EAF1F2.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-anacleto-abduch": {
+      "arquivo_original": "src/assets/img-src/portfolio/anacleto-abduch.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Dr. José Anacleto Abduch Advocacia",
+      "servico_tags": [
+        "site-e-loja-virtual",
+        "trafego-pago",
+        "redes-sociais"
+      ],
+      "alt": "Logo do escritório Dr. José Anacleto Abduch Advocacia",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Card de logo 4:5 composto em SVG e rasterizado com sharp: logo real enviado pelo dono (anacleto.png) sobre creme #F1ECE2.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-john-deere": {
+      "arquivo_original": "src/assets/img-src/portfolio/john-deere.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "John Deere",
       "servico_tags": [
         "trafego-pago"
       ],
-      "alt": "Notebook aberto mostrando um painel com gráficos de resultados",
+      "alt": "Logo da John Deere: cervo amarelo sobre fundo verde",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
+      "observacoes": "Card de logo 4:5 composto em SVG e rasterizado com sharp: marca John Deere (simple-icons, CC0) em amarelo #FFDE00 sobre verde #367C2B, nome em Inter Black.",
       "larguras": [
-        300,
-        600
+        320,
+        480,
+        640,
+        860
       ],
       "formatos": [
         "avif",
         "webp"
       ]
     },
-    "portfolio-marca-producao": {
-      "arquivo_original": "src/assets/img-src/portfolio/marca-producao.webp",
+    "portfolio-central-sul-moveis": {
+      "arquivo_original": "src/assets/img-src/portfolio/central-sul-moveis.webp",
       "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "pessoa_ou_cliente": "Central Sul Móveis",
       "servico_tags": [
-        "identidade-visual"
+        "trafego-pago"
       ],
-      "alt": "Pessoa trabalhando com ferramentas em uma bancada iluminada",
+      "alt": "Nome da Central Sul Móveis em letras claras sobre fundo marrom",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
+      "observacoes": "Card de logo 4:5 composto em SVG e rasterizado com sharp: letreiro tipográfico provisório (Inter) sobre marrom #33281F. Falta o logo real da Central Sul Móveis.",
       "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-impresso-loja": {
-      "arquivo_original": "src/assets/img-src/portfolio/impresso-loja.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
-        "material-impresso"
-      ],
-      "alt": "Roupas infantis estampadas penduradas em uma arara",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
-      "larguras": [
-        300,
-        600
+        320,
+        480,
+        640,
+        860
       ],
       "formatos": [
         "avif",

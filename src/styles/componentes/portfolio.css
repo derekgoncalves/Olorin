@@ -1,4 +1,7 @@
-/* Portfólio com filtros (botões com aria-pressed). */
+/* Portfólio: filtros (botões com aria-pressed) e grade de trabalhos.
+   Mesma disposição do "Na prática" dos perfis: quadros colados (6 px de respiro), imagem 4:5
+   sem moldura e legenda por cima, no canto de baixo, sobre um degradê escuro.
+   Grade: 3 colunas a partir de 720 px e 2 abaixo disso. */
 .o-filtros {
 	display: flex;
 	flex-wrap: wrap;
@@ -17,11 +20,10 @@
 	letter-spacing: 0.03em;
 	text-transform: uppercase;
 	cursor: pointer;
-	transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform var(--dur-rapida) var(--curva), box-shadow var(--dur-rapida) var(--curva);
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
-.o-filtro:hover {
-	transform: translate(-2px, -2px);
-	box-shadow: 3px 3px 0 var(--cor-texto);
+.o-filtro__curto {
+	display: none;
 }
 .o-filtro[aria-pressed="true"] {
 	border-color: var(--cor-destaque);
@@ -29,75 +31,135 @@
 	color: var(--cor-sobre-destaque);
 }
 .o-trabalhos {
-	columns: 4 220px;
-	column-gap: 12px;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 6px;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
-.o-trabalho {
-	margin: 0 0 12px;
-	break-inside: avoid;
+.o-trabalhos > .o-trabalho {
+	min-width: 0;
+	margin: 0;
 }
-.o-trabalho[hidden] {
+.o-trabalhos > .o-trabalho[hidden] {
 	display: none;
 }
+/* Sem moldura; só uma linha bem fina na beirada, para artes de fundo preto (ou claro)
+   não se misturarem com o fundo da página. */
 .o-trabalho figure {
 	position: relative;
 	margin: 0;
+	aspect-ratio: 4 / 5;
 	overflow: hidden;
-	border: var(--borda) solid var(--cor-texto);
-	background: var(--preto);
-	animation: o-surgir 0.45s var(--curva) both;
+	background: #111;
+	outline: 1px solid rgba(255, 255, 255, 0.14);
+	outline-offset: -1px;
 }
-.o-trabalho img {
+.o-ctx-branco .o-trabalho figure {
+	outline-color: rgba(0, 0, 0, 0.08);
+}
+.o-trabalho__imagem {
+	display: block;
+	height: 100%;
+}
+.o-trabalho__imagem img {
 	display: block;
 	width: 100%;
-	height: auto;
-	transition: transform 0.6s var(--curva);
-}
-.o-trabalho__barra {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 2;
-	padding: 6px 10px;
-	background: var(--branco);
-	color: var(--preto);
-	font-family: var(--fonte-pixel);
-	font-size: 12px;
-	transform: translateY(-100%);
-	transition: transform 0.35s var(--curva);
+	height: 100%;
+	object-fit: cover;
 }
 .o-trabalho__legenda {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	padding: 10px 12px 12px;
-	border-top: var(--borda) solid var(--cor-texto);
-	background: var(--cor-fundo);
-	color: var(--cor-texto);
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: grid;
+	gap: 3px;
+	padding: 72px 14px 13px;
+	/* Degradê suave (sem faixa marcada nas artes claras) e escuro o bastante atrás do texto. */
+	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.06) 18%, rgba(0, 0, 0, 0.2) 34%, rgba(0, 0, 0, 0.42) 50%, rgba(0, 0, 0, 0.64) 66%, rgba(0, 0, 0, 0.8) 82%, rgba(0, 0, 0, 0.88));
+	color: #fff;
 }
 .o-trabalho__legenda strong {
-	font-family: var(--fonte-titulo);
-	font-weight: 900;
+	font-weight: 700;
 	font-size: 14px;
-	line-height: 1.15;
-	text-transform: uppercase;
+	line-height: 1.3;
 	overflow-wrap: break-word;
 }
-.o-trabalho__legenda span {
-	font-size: 13px;
-	color: var(--cor-apoio);
+.o-trabalho__legenda a {
+	color: inherit;
+}
+/* Com link, o quadro inteiro vira a área de clique. */
+.o-trabalho__legenda a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+.o-trabalho__tipo {
+	font-size: 12px;
+	line-height: 1.35;
+	color: rgba(255, 255, 255, 0.8);
 	overflow-wrap: break-word;
 }
-.o-trabalho figure > picture {
-	overflow: hidden;
+/* Cada tipo de serviço é um bloco: a linha quebra entre eles, não no meio de "Tráfego pago". */
+.o-trabalho__tipo > span {
+	display: inline-block;
+	max-width: 100%;
 }
-.o-trabalho:hover img {
-	transform: scale(1.04);
+
+@media (max-width: 719px) {
+	.o-filtro__longo {
+		display: none;
+	}
+	.o-filtro__curto {
+		display: inline;
+	}
+	.o-trabalhos {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 4px;
+	}
+	.o-trabalho__legenda {
+		gap: 2px;
+		padding: 52px 9px 9px;
+	}
+	.o-trabalho__legenda strong {
+		font-size: 12px;
+	}
+	.o-trabalho__tipo {
+		font-size: 11px;
+	}
 }
-.o-trabalho:hover .o-trabalho__barra {
-	transform: none;
+/* Quadro estreito: só o nome, como nos perfis, para a legenda não cobrir a arte. */
+@media (max-width: 479px) {
+	.o-trabalho__legenda {
+		padding-top: 44px;
+	}
+	.o-trabalho__tipo {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.o-pausado) .o-filtro {
+		transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform var(--dur-rapida) var(--curva), box-shadow var(--dur-rapida) var(--curva);
+	}
+	html:not(.o-pausado) .o-filtro:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 3px 3px 0 var(--cor-texto);
+	}
+	html:not(.o-pausado) .o-trabalho figure {
+		animation: o-surgir 0.45s var(--curva) both;
+	}
+	html:not(.o-pausado) .o-trabalho__imagem img {
+		transition: scale 0.5s var(--curva);
+	}
+	html:not(.o-pausado) .o-trabalho:hover .o-trabalho__imagem img {
+		scale: 1.05;
+	}
 }
