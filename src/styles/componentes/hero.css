@@ -14,6 +14,12 @@
 	align-items: center;
 	gap: clamp(40px, 5vw, 96px);
 }
+/* A coluna de texto é o contêiner do tamanho do título (cqi). Fica aqui, numa regra simples, para
+   entrar no CSS crítico da página (a regra geral de tipografia.css usa :where e fica de fora):
+   sem ela, a 1ª pintura mediria pela tela e o título "pularia" quando o CSS completo chegasse. */
+.o-hero__texto {
+	container-type: inline-size;
+}
 .o-hero__linha {
 	margin-bottom: clamp(20px, 3vh, 28px);
 }

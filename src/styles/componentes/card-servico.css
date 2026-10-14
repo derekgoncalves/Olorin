@@ -31,13 +31,6 @@
 	color: var(--cor-destaque);
 	transition: color 0.25s, transform 0.4s var(--curva);
 }
-.o-card-servico__num {
-	font-family: var(--fonte-pixel);
-	font-size: 12px;
-	letter-spacing: 0.12em;
-	color: var(--cor-apoio);
-	transition: color 0.25s;
-}
 .o-card-servico__titulo {
 	margin: 0;
 	font-family: var(--fonte-titulo);
@@ -89,8 +82,8 @@
 	background: var(--cor-destaque);
 	color: var(--cor-sobre-destaque);
 }
-.o-card-servico:hover :is(.o-card-servico__icone, .o-card-servico__num, .o-card-servico__texto, .o-card-servico__mais),
-.o-card-servico:focus-within :is(.o-card-servico__icone, .o-card-servico__num, .o-card-servico__texto, .o-card-servico__mais) {
+.o-card-servico:hover :is(.o-card-servico__icone, .o-card-servico__texto, .o-card-servico__mais),
+.o-card-servico:focus-within :is(.o-card-servico__icone, .o-card-servico__texto, .o-card-servico__mais) {
 	color: inherit;
 }
 .o-card-servico:hover .o-card-servico__icone,
