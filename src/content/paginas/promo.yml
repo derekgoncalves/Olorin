@@ -1,12 +1,12 @@
 # Landing de campanha geral (/promo/) — PROMPT seção 11.2. Não indexada.
 seo:
   titulo: Raio-X gratuito de marketing | Olorin Digital
-  descricao: Raio-X gratuito da sua marca. 30 minutos por vídeo e, em até 48 horas, um PDF com os 3 problemas que mais travam a venda. Sem compromisso.
+  descricao: "Raio-X gratuito da sua marca: 30 minutos por vídeo e, em até 48 horas, um PDF com o que mais trava o seu resultado. Sem compromisso."
 etiqueta: Raio-X gratuito
-titulo: Descubra onde o seu marketing está travado.
-sub: Olhamos o seu anúncio, as suas redes, o seu site e o material da marca, e mostramos o que mais trava a sua venda. De graça e sem compromisso.
+titulo: Onde a sua marca trava?
+sub: A gente olha anúncio, redes, site e material da marca e mostra, sem rodeio, por onde vale começar. De graça e sem compromisso.
 titulo_sem_diagnostico: Peça seu orçamento.
-sub_sem_diagnostico: Anúncio, conteúdo, site e impresso feitos pelo mesmo time. Preço aberto e resposta em até 1 dia útil.
+sub_sem_diagnostico: Anúncio, redes, marca, site e impresso com o mesmo cuidado. Preço aberto e resposta em até 1 dia útil.
 prova_titulo: A Olorin em números
 passos:
   titulo: Como funciona
@@ -16,11 +16,11 @@ passos:
     - titulo: Conversamos por 30 minutos
       texto: Por vídeo, olhamos com você o anúncio, as redes, o site e o material da marca.
     - titulo: Você recebe o Raio-X
-      texto: Em até 48 horas, um PDF de 1 página com os 3 problemas que mais travam a venda e as 3 ações para começar. Se fizer sentido seguir, a proposta vem com preço aberto.
+      texto: Em até 48 horas, um PDF de 1 página com os 3 pontos que mais travam o seu resultado e as 3 ações para começar. Se fizer sentido seguir, a proposta vem com preço aberto.
 preco:
-  titulo: Quanto custa trabalhar com a gente
+  titulo: Quanto custa.
 faq_titulo: Dúvidas rápidas
 faq: [faq-tempo-resultado, faq-verba-minima, faq-fidelidade, faq-fora-curitiba]
 cta_final:
-  titulo: Quer saber o que está travando a sua venda?
+  titulo: Quer saber onde a sua marca trava?
   botao: Quero meu Raio-X

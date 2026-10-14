@@ -2,6 +2,7 @@
 import { $, $$, doc, raiz, temIO, movimentoReduzido, gravarArmazenamento, linkWhatsApp } from '../util.js';
 import { track } from './rastreamento.js';
 import { ultimoToque, primeiroToqueTexto, origem } from './origem.js';
+import { desenharTudo } from './ancoras.js';
 
 // DDDs válidos no Brasil (Anatel).
 const DDDS = '11 12 13 14 15 16 17 18 19 21 22 24 27 28 31 32 33 34 35 37 38 41 42 43 44 45 46 47 48 49 51 53 54 55 61 62 63 64 65 66 67 68 69 71 73 74 75 77 79 81 82 83 84 85 86 87 88 89 91 92 93 94 95 96 97 98 99'.split(' ');
@@ -73,6 +74,7 @@ function iniciarUm(caixa) {
 			if (legenda) legenda.focus({ preventScroll: true });
 			const topo = caixa.getBoundingClientRect().top;
 			if (topo < 0 || topo > window.innerHeight * 0.6) {
+				desenharTudo();
 				caixa.scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
 			}
 		}
@@ -325,6 +327,7 @@ function iniciarAtalhos() {
 			const nome = $('input[name="nome"]', caixa);
 			if (tel && campoAtalho && campoAtalho.value.trim()) tel.value = mascaraTelefone(campoAtalho.value);
 			track('hero_shortcut', { preenchido: !!(campoAtalho && campoAtalho.value.trim()) });
+			desenharTudo();
 			caixa.scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
 			if (nome) window.setTimeout(() => nome.focus({ preventScroll: true }), movimentoReduzido ? 0 : 500);
 		});

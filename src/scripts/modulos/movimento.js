@@ -1,7 +1,7 @@
 /* Movimento: entrada do banner (título palavra por palavra), revelação na rolagem
    (títulos com máscara, janelas que abrem, cartões em cascata) e transição entre páginas.
    O CSS fica em src/styles/animacoes.css. A página de educação fica de fora. */
-import { $, $$, doc, raiz, temIO, movimentoReduzido } from '../util.js';
+import { $, $$, doc, raiz, temIO, movimentoReduzido, abaixoDaDobra } from '../util.js';
 import { iniciarRevelar } from './interacoes.js';
 
 const educacao = !!$('link[rel="canonical"][href*="/educacao/"]');
@@ -86,12 +86,10 @@ export function iniciarRevelarMovimento() {
 	if (movimentoReduzido || !temIO) return;
 	window.requestAnimationFrame(() => {
 		const main = $('.o-main') || doc.body;
-		const altura = window.innerHeight;
 		const itens = [];
 		/* 1º só lê (posição), depois escreve: sem leitura e escrita intercaladas. */
-		$$(ALVOS, main).forEach((el) => {
-			if (el.closest(ENTRADA) || el.getBoundingClientRect().top <= altura) return;
-			if (el.matches('.o-janela') && el.querySelector('form')) return;
+		const candidatos = $$(ALVOS, main).filter((el) => !el.closest(ENTRADA) && !(el.matches('.o-janela') && el.querySelector('form')));
+		abaixoDaDobra(candidatos).forEach((el) => {
 			const pai = el.parentElement.closest(ALVOS);
 			if (pai && itens.indexOf(pai) > -1) return;
 			itens.push(el);

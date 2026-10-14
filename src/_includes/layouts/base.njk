@@ -54,10 +54,12 @@
 	<link rel="preload" href="{{ fonte.href }}" as="font" type="{{ fonte.tipo }}" crossorigin>
 	{%- endfor %}
 	<script>
-		{#- Antes da primeira pintura: marca "js" e decide a variante do formulário (A/B) sem pulo de layout. -#}
+		{#- Antes da primeira pintura: marca "js", desenha a página inteira quando a rolagem vai para longe
+		    (âncora no endereço, recarregar ou voltar; ver ancoras.js) e decide a variante do formulário (A/B). -#}
 		(function (d, w) {
 			var h = d.documentElement, modo = "{{ cfg.FORM_TOP_VARIANT }}", v = null, q = /[?&]v=(a|b)(&|$)/.exec(w.location.search);
 			h.classList.add("js");
+			try { var nv = w.performance.getEntriesByType("navigation")[0]; if (w.location.hash.length > 1 || (nv && nv.type !== "navigate")) { h.classList.add("o-cv-tudo"); } } catch (e) {}
 			try { v = w.sessionStorage.getItem("olorin_variante"); } catch (e) {}
 			if (q) { v = q[1]; } else if (modo !== "ab") { v = modo; } else if (v !== "a" && v !== "b") { v = Math.random() < 0.5 ? "a" : "b"; }
 			try { w.sessionStorage.setItem("olorin_variante", v); } catch (e) {}

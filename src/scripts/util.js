@@ -11,6 +11,24 @@ export const movimentoReduzido = mm('(prefers-reduced-motion: reduce)');
 export const ponteiroFino = mm('(hover: hover) and (pointer: fine)');
 export const temIO = 'IntersectionObserver' in window;
 
+/**
+ * Lista os elementos que começam abaixo da dobra sem obrigar o navegador a desenhar as seções
+ * que ele ainda deixou de lado (content-visibility, ver base.css): mede primeiro a seção do
+ * <main> e só mede o elemento quando a seção já começa dentro da tela.
+ */
+export function abaixoDaDobra(elementos) {
+	const altura = window.innerHeight;
+	const topos = new Map();
+	return elementos.filter((el) => {
+		const secao = el.closest('.o-main > *');
+		if (secao && secao !== el) {
+			if (!topos.has(secao)) topos.set(secao, secao.getBoundingClientRect().top);
+			if (topos.get(secao) > altura) return true;
+		}
+		return el.getBoundingClientRect().top > altura;
+	});
+}
+
 /** Executa quando o navegador estiver ocioso (não atrapalha a primeira pintura nem as interações). */
 export function quandoLivre(fn) {
 	if ('requestIdleCallback' in window) {

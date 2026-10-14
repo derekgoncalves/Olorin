@@ -5,6 +5,7 @@
  */
 import { quandoLivre } from './util.js';
 import { iniciarConsentimento } from './modulos/consentimento.js';
+import { iniciarAncoras, manterAncora } from './modulos/ancoras.js';
 import { iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarIndice } from './modulos/cabecalho.js';
 import { iniciarFormularios } from './modulos/formulario.js';
 import {
@@ -37,7 +38,7 @@ function rodar(lista) {
 	});
 }
 
-rodar([iniciarConsentimento, iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarFormularios, iniciarChecklist, iniciarFaq, iniciarPlanos, iniciarCliques, iniciarObrigado, iniciarPausa, iniciarMovimento]);
+rodar([iniciarAncoras, iniciarConsentimento, iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarFormularios, iniciarChecklist, iniciarFaq, iniciarPlanos, iniciarCliques, iniciarObrigado, iniciarPausa, iniciarMovimento]);
 quandoLivre(() =>
-	rodar([iniciarFaixas, iniciarRevelarMovimento, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor, iniciarFundos, iniciarServico, iniciarPerfil, iniciarEducacao]),
+	rodar([iniciarFaixas, iniciarRevelarMovimento, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor, iniciarFundos, iniciarServico, iniciarPerfil, iniciarEducacao, manterAncora]),
 );

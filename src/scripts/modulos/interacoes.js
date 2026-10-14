@@ -1,5 +1,5 @@
 /* Componentes interativos: checklist, método, portfólio, FAQ, calculadora, planos, faixas e contadores. */
-import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz, linkWhatsApp } from '../util.js';
+import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz, linkWhatsApp, abaixoDaDobra } from '../util.js';
 import { track } from './rastreamento.js';
 
 /* Checklist de dores: botões com aria-pressed; a partir de 2 marcados aparece a resposta. */
@@ -156,30 +156,45 @@ export function iniciarPlanos() {
 	});
 }
 
-/* Faixas animadas: duplica os itens para o letreiro não ter buraco (lê medidas uma vez, depois escreve). */
+/* Faixas animadas: duplica os itens para o letreiro não ter buraco. Cada faixa é medida quando
+   chega perto da tela (lê medidas uma vez, depois escreve). */
 export function iniciarFaixas() {
 	const faixas = $$('[data-o-faixa]');
 	if (!faixas.length || movimentoReduzido) return;
-	window.requestAnimationFrame(() => {
-		const medidas = faixas.map((f) => {
-			const trilho = $('.o-faixa__trilho', f);
-			return { f, trilho, largura: trilho.scrollWidth, tela: f.clientWidth };
-		});
-		medidas.forEach(({ f, trilho, largura, tela }) => {
-			if (!largura) return;
-			const originais = $$('li', trilho);
-			const conjuntos = Math.max(1, Math.ceil(tela / largura));
-			const fragmento = doc.createDocumentFragment();
-			for (let i = 1; i < conjuntos * 2; i++) {
-				originais.forEach((li) => {
-					const c = li.cloneNode(true);
-					c.setAttribute('aria-hidden', 'true');
-					fragmento.appendChild(c);
-				});
-			}
-			trilho.appendChild(fragmento);
-			f.style.setProperty('--letreiro-tempo', Math.max(18, Math.round((largura * conjuntos) / 55)) + 's');
-		});
+	if (!temIO) {
+		window.requestAnimationFrame(() => completarFaixas(faixas));
+		return;
+	}
+	const io = new IntersectionObserver(
+		(entradas) => {
+			const perto = entradas.filter((en) => en.isIntersecting).map((en) => en.target);
+			perto.forEach((f) => io.unobserve(f));
+			if (perto.length) completarFaixas(perto);
+		},
+		{ rootMargin: '300px 0px' },
+	);
+	faixas.forEach((f) => io.observe(f));
+}
+
+function completarFaixas(faixas) {
+	const medidas = faixas.map((f) => {
+		const trilho = $('.o-faixa__trilho', f);
+		return { f, trilho, largura: trilho.scrollWidth, tela: f.clientWidth };
+	});
+	medidas.forEach(({ f, trilho, largura, tela }) => {
+		if (!largura) return;
+		const originais = $$('li', trilho);
+		const conjuntos = Math.max(1, Math.ceil(tela / largura));
+		const fragmento = doc.createDocumentFragment();
+		for (let i = 1; i < conjuntos * 2; i++) {
+			originais.forEach((li) => {
+				const c = li.cloneNode(true);
+				c.setAttribute('aria-hidden', 'true');
+				fragmento.appendChild(c);
+			});
+		}
+		trilho.appendChild(fragmento);
+		f.style.setProperty('--letreiro-tempo', Math.max(18, Math.round((largura * conjuntos) / 55)) + 's');
 	});
 }
 
@@ -246,8 +261,7 @@ export function iniciarRevelar() {
 	if (movimentoReduzido || !temIO) return;
 	const seletor = '.o-sec:not(.o-hero) .o-titulo, .o-check, .o-card-servico, .o-etapa, .o-numero, .o-case, .o-plano, .o-faq__item, .o-pessoa, .o-entrega, .o-dor, .o-passo, .o-painel, .o-calc';
 	window.requestAnimationFrame(() => {
-		const altura = window.innerHeight;
-		const itens = $$(seletor).filter((el) => el.getBoundingClientRect().top > altura);
+		const itens = abaixoDaDobra($$(seletor));
 		const grupos = new Map();
 		itens.forEach((el) => {
 			const pai = el.parentElement;
