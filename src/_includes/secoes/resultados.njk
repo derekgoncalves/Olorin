@@ -36,7 +36,7 @@
 		<div class="o-faixa o-faixa--logos" data-o-faixa>
 			<ul class="o-faixa__trilho">
 			{%- for c in logos %}
-				<li{% if c.vaga %} class="o-faixa__vaga"{% endif %}><img src="/assets/img/clientes/{{ c.logo }}" alt="{{ c.nome }}" loading="lazy" decoding="async" width="{{ c.largura or 160 }}" height="48"></li>
+				<li><img src="/assets/img/clientes/{{ c.logo }}" alt="{{ c.nome }}" loading="lazy" decoding="async" width="{{ c.largura or 120 }}" height="{{ c.altura or 40 }}" style="--logo-a: {{ c.altura or 40 }}"></li>
 			{%- endfor %}
 			</ul>
 			<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>

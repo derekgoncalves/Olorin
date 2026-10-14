@@ -1,18 +1,35 @@
 # ============================================================
 # FAIXA DE LOGOS DE CLIENTES (home, bloco Resultados)
 # ------------------------------------------------------------
-# Aparece sempre, com quantos logos houver (dono, 13/10/2026: sem mínimo).
+# Marcas atendidas pela Olorin e pelo time (tráfego da Nat, design do Vini).
 # Os arquivos ficam em src/assets/clientes/ (no servidor: /assets/img/clientes/).
-# Para trocar um logo só pelo FTP: suba o arquivo novo com o MESMO nome e a mesma extensão
-# (.svg). Logo em PNG muda a extensão, então precisa de um novo build (docs/PENDENCIAS.md).
-# "vaga: true" = espaço reservado ("Sua marca aqui"), à espera do logo de um cliente real.
+# Logos em uma cor só (preto, fundo transparente), em SVG.
+#
+# TROCAR UM LOGO SÓ PELO FTP (sem novo build): suba o arquivo novo para
+# /assets/img/clientes/ com o MESMO nome e a MESMA extensão (ex.: bravo.svg), em
+# preto com fundo transparente e sem margem em volta. O site mantém a altura
+# definida abaixo e a largura acompanha a proporção do arquivo novo.
+# Nome ou extensão diferente (ex.: .png) precisa de um novo build.
+#
+# Campos: nome = texto alternativo (o nome do cliente); logo = arquivo;
+# altura = altura do logo em px no computador (no celular encolhe sozinha), ajustada
+# a olho para todos terem o mesmo peso visual; largura = altura x proporção do
+# arquivo (só reserva o espaço enquanto a imagem carrega).
 # ============================================================
-etiqueta: Quem já confiou na Olorin
+etiqueta: Quem confia na Olorin
 itens:
-  # PENDENTE: enviar os logos reais (SVG) da iZETA e do Anacleto Abduch; hoje são letreiros feitos com o nome
-  # (para trocar pelo FTP: mesmo nome de arquivo em /assets/img/clientes/)
-  - { nome: iZETA, logo: izeta.svg, largura: 219 }
-  - { nome: Anacleto Abduch, logo: anacleto-duas-linhas.svg, largura: 187 }
-  # PENDENTE: até 6 logos de outros clientes autorizados (substituem as vagas "Sua marca aqui")
-  - { nome: Sua marca aqui, logo: vaga-01.svg, largura: 299, vaga: true }
-  - { nome: Sua marca aqui, logo: vaga-02.svg, largura: 299, vaga: true }
+  - { nome: John Deere, logo: john-deere.svg, largura: 136, altura: 28 }
+  - { nome: iZETA, logo: izeta.svg, largura: 96, altura: 38 }
+  # PENDENTE: logo oficial do BRAVO Film Festival em vetor (hoje vetorizado da arte do Behance do Vini)
+  - { nome: BRAVO Film Festival, logo: bravo.svg, largura: 66, altura: 56 }
+  # PENDENTE: logo oficial do Governo do Estado do RS em vetor (hoje vetorizado de uma imagem pequena; sem o "Novas Façanhas")
+  - { nome: Governo do Estado do Rio Grande do Sul, logo: governo-rs.svg, largura: 61, altura: 34 }
+  - { nome: Bença, logo: benca.svg, largura: 107, altura: 27 }
+  - { nome: Dr. José Anacleto Abduch Advocacia, logo: anacleto.svg, largura: 176, altura: 28 }
+  - { nome: Viva Sem Veneno, logo: viva-sem-veneno.svg, largura: 50, altura: 56 }
+  # PENDENTE: logo oficial da TORO AUDIO em vetor (hoje redesenhado a partir da arte do Behance do Vini)
+  - { nome: TORO AUDIO, logo: toro-audio.svg, largura: 90, altura: 42 }
+  - { nome: Ambulatório da M.O.D.A, logo: ambulatorio-moda.svg, largura: 122, altura: 34 }
+  # PENDENTE: logo real da Central Sul Móveis (hoje só o nome escrito; trocar central-sul-moveis.svg pelo FTP)
+  - { nome: Central Sul Móveis, logo: central-sul-moveis.svg, largura: 193, altura: 17 }
+  - { nome: Cartas para o Futuro, logo: cartas-para-o-futuro.svg, largura: 86, altura: 42 }

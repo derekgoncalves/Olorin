@@ -96,3 +96,24 @@
 html:not(.js) .o-faixa__pausar {
 	display: none;
 }
+
+/* Faixa de logos de clientes (clientes.yml): cada logo tem a sua altura (--logo-a, em px no
+   computador), ajustada para o peso visual ficar igual; no celular tudo encolhe até 70%.
+   O seletor duplo vence as regras antigas de prova.css (carregado depois). */
+.o-faixa--logos {
+	--logo-escala: clamp(0.7px, 0.5px + 0.035vw, 1px);
+}
+.o-faixa.o-faixa--logos {
+	/* esmaece só nas margens da página, para o botão de pausa (na borda do conteúdo) ficar inteiro */
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
+	mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
+}
+.o-faixa.o-faixa--logos img {
+	width: auto;
+	height: calc(var(--logo-a, 40) * var(--logo-escala));
+	max-width: none;
+}
+/* Pausa alinhada à borda direita do conteúdo (a mesma do título à esquerda). */
+.o-faixa.o-faixa--logos .o-faixa__pausar {
+	right: max(var(--margem), (100% - var(--largura-max)) / 2);
+}
