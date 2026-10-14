@@ -2,7 +2,7 @@
 /* Títulos: o tamanho segue a largura da COLUNA onde o título está (container query), não só
    a da tela. A fonte é expandida (uma palavra de 11 letras ocupa ~10,5em), então o teto de
    9cqi garante que nenhuma palavra vaze a coluna nem encoste no bloco ao lado. */
-:where(.o-hero__texto, .o-pagina-topo__texto, .o-metodo__cabeca, .o-faq__cabeca, .o-equipe__cabeca > div, .o-duas-colunas > *, .o-form-topo__texto, .o-sec-cabeca, .o-orcamento .o-wrap) {
+.o-hero__texto, .o-pagina-topo__texto, .o-metodo__cabeca, .o-faq__cabeca, .o-equipe__cabeca > div, .o-duas-colunas > *, .o-form-topo__texto, .o-sec-cabeca, .o-orcamento .o-wrap {
 	container-type: inline-size;
 }
 .o-titulo {

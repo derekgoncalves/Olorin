@@ -335,7 +335,7 @@ fontes_extra:
 				</ul>
 				<p class="o-edu-plano__selos">{% for selo in (plano.selos or []) %}<span>{{ selo }}</span>{% endfor %}</p>
 				<p class="o-edu-plano__extra">{{ plano.implantacao or "" }}{% if plano.custo_total and cfg.SHOW_TOTAL_COST %}{% if plano.implantacao %}<br>{% endif %}{{ plano.custo_total }}{% endif %}</p>
-				<a class="o-btn {{ 'o-btn--branco' if plano.destaque else 'o-btn--violeta' }} o-edu-plano__botao" href="#orcamento" data-o-plano="{{ plano.id }}" data-servicos="{{ plano.servicos_preselecao | join(' ') }}" data-cta="edu-planos-{{ plano.id }}">{{ P.botao }}<span class="o-sr"> — {{ plano.nome }}</span></a>
+				<a class="o-btn {{ 'o-btn--branco' if plano.destaque else 'o-btn--violeta' }} o-edu-plano__botao" href="#orcamento" data-o-plano="{{ plano.id }}" data-servicos="{{ plano.servicos_preselecao | join(' ') }}" data-cta="edu-planos-{{ plano.id }}">{{ P.botao }}<span class="o-sr">: {{ plano.nome }}</span></a>
 			</li>
 		{%- endfor %}
 		</ul>

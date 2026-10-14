@@ -63,7 +63,7 @@
 	<span class="o-plano__vazio"></span>
 	{%- endif %}
 	<p class="o-plano__total">{{ plano.implantacao }}{% if site.config.SHOW_TOTAL_COST and plano.custo_total %}{% if plano.implantacao %}<br>{% endif %}{{ plano.custo_total }}{% endif %}</p>
-	<a class="o-btn o-plano__botao{% if plano.destaque %} o-btn--preto{% else %} o-btn--contorno{% endif %}" href="{{ destinoForm }}" data-o-plano="{{ plano.id }}" data-servicos="{{ plano.servicos_preselecao | join(' ') }}" data-cta="planos-{{ plano.id }}">{{ p.botao }}<span class="o-sr"> — {{ plano.nome }}</span></a>
+	<a class="o-btn o-plano__botao{% if plano.destaque %} o-btn--preto{% else %} o-btn--contorno{% endif %}" href="{{ destinoForm }}" data-o-plano="{{ plano.id }}" data-servicos="{{ plano.servicos_preselecao | join(' ') }}" data-cta="planos-{{ plano.id }}">{{ p.botao }}<span class="o-sr">: {{ plano.nome }}</span></a>
 </article>
 {% endmacro %}
 
