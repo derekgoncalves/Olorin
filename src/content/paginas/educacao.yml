@@ -17,7 +17,7 @@ marca:
   nome: Olorin Educação
   sub: educação
   lema: Do clique à matrícula.
-  apoio: Do curso livre à pós-graduação, o mesmo cuidado.
+  apoio: Do curso livre à pós-graduação, resultado que dá pra ver.
   parte_de: A Olorin Educação é a área de escolas e cursos da Olorin Digital.
 
 # Mensagens prontas dos links de WhatsApp desta página.
@@ -104,7 +104,7 @@ regua:
 chamada:
   etiqueta: Para quem é
   titulo: Feita para quem vende matrícula.
-  texto: Escola, curso ou pós-graduação. Se a receita depende de turma cheia, a Olorin Educação cuida da sua captação.
+  texto: Escola, curso ou pós-graduação. Se a receita depende de turma cheia, a Olorin Educação toca a sua captação.
   nota: Curitiba e todo o Brasil, com atendimento remoto.
   janela: chamada.exe
   turma: Lista de chamada
@@ -199,7 +199,6 @@ raio_x:
     - Grátis e sem compromisso
     - Tempo de resposta medido no PDF
     - Proposta com preço aberto
-  # PENDENTE: conferir no artigo da Harvard Business Review o "quase 7 vezes" antes de usar o número em anúncio
   dado:
     antes: Quem responde em até 1 hora tem quase
     numero: 7 vezes
@@ -241,26 +240,24 @@ metodo:
   cta: Pedir o Raio-X
 
 cases:
-  etiqueta: Cases de educação
-  titulo: Quem já confia.
-  texto: Uma edtech de saúde e um professor de Direito Público. Públicos bem diferentes, o mesmo cuidado.
+  etiqueta: Clientes
+  titulo: Quem já atendemos.
+  texto: Uma edtech de educação em saúde e um especialista em Direito Público.
   ficha: Ficha nº
   rotulos:
     segmento: Segmento
     cursos: Cursos
     onde: Onde
-    fizemos: O que a Olorin faz
     servicos: Serviços
-    resultado: Resultado
-  carimbo: Cliente Olorin
+  carimbo: Atendido pela Olorin
   site: Ver o site
 
 equipe:
   etiqueta: Quem coordena
   titulo: Fale com quem coordena.
-  texto: Um time inteiro cuidando da sua captação, com uma pessoa respondendo por cada frente.
+  texto: Um time inteiro na sua captação, com uma pessoa respondendo por cada frente.
   frases:
-    natalia-arruda: Mais de seis anos em mídia paga, com contas de educação no currículo. Cuida dos anúncios na Meta e no Google.
+    natalia-arruda: Mais de seis anos em mídia paga, com contas de educação no currículo. Dirige a estratégia e os anúncios na Meta e no Google.
     vinicius-mafra: Mais de 10 anos de direção de arte. Dá cara de marca a quem costuma ter comunicação burocrática.
     derek-goncalves: Seu primeiro contato e quem coordena a sua captação no dia a dia.
   botao: Falar com a equipe no WhatsApp
@@ -289,10 +286,10 @@ duvidas:
 faq:
   - id: faq-edu-quem
     pergunta: Que tipo de escola ou curso vocês atendem?
-    resposta: Quem vende matrícula. Escolas particulares, cursos livres e profissionalizantes, escolas de idiomas, pré-vestibular, pós-graduação e educação executiva. Do curso de uma sala só à rede com várias unidades, com o mesmo cuidado.
+    resposta: Quem vende matrícula. Escolas particulares, cursos livres e profissionalizantes, escolas de idiomas, pré-vestibular, pós-graduação e educação executiva. Do curso de uma sala só à rede com várias unidades.
   - id: faq-edu-pequena
     pergunta: Funciona para escola ou curso pequeno?
-    resposta: Sim. O cuidado não muda com o tamanho. Para começar, um serviço avulso (a partir de R$ 1.500 por mês) ou a Gestão mensal (R$ 2.500 por mês) costuma bastar. No Raio-X, dizemos qual faz sentido para você.
+    resposta: Sim. Para começar, um serviço avulso (a partir de R$ 1.500 por mês) ou a Gestão mensal (R$ 2.500 por mês) costuma bastar. No Raio-X, dizemos qual faz sentido para você.
   - id: faq-edu-quando
     pergunta: Quando devo começar a captação para o ano que vem?
     resposta: O quanto antes. Em escola, a família costuma decidir entre outubro e janeiro, com pico em novembro. Começar cedo dá tempo de testar anúncio e baixar o custo por matrícula antes do pico. Em outubro, ainda dá tempo.
@@ -302,11 +299,9 @@ faq:
   - id: faq-edu-medir
     pergunta: Como vocês medem matrícula, se ela fecha na secretaria?
     resposta: Combinamos com a sua equipe um jeito simples de registrar de onde veio cada aluno. Pode ser uma etiqueta no WhatsApp ou uma pergunta na ficha de matrícula. Assim o boletim do mês mostra contatos, visitas e matrículas por canal, e quanto custou cada uma.
-  # PENDENTE: confirmar se a Olorin entrega as mensagens prontas de atendimento (régua) para a equipe da escola
   - id: faq-edu-atendimento
     pergunta: Preciso de alguém para atender os interessados?
-    resposta: Sim, a matrícula fecha com a sua equipe. Nós trazemos o interessado, deixamos mensagens prontas para cada etapa e medimos o tempo de resposta. Se travar no atendimento, o boletim mostra.
-  # PENDENTE: confirmar o texto sobre o prazo dos primeiros resultados
+    resposta: Sim, a matrícula fecha com a sua equipe. Nós trazemos o interessado, organizamos as mensagens da sua escola prontas para cada etapa e medimos o tempo de resposta. Se travar no atendimento, o boletim mostra.
   - id: faq-edu-prazo
     pergunta: Em quanto tempo aparece matrícula?
     resposta: Os primeiros contatos costumam chegar nos primeiros dias de campanha. A matrícula depende do ciclo do seu curso. Em curso livre, pode sair na mesma semana; em escola, a família visita e compara antes. Por isso começamos cedo e medimos cada etapa.
@@ -315,7 +310,7 @@ faq:
     resposta: Recomendamos a partir de R$ 1.500 por mês, investidos direto na Meta e no Google, na sua conta. Na temporada de matrícula, vale concentrar mais. Com a Gestão mensal (R$ 2.500), o custo total começa em R$ 4.000 por mês.
   - id: faq-edu-fidelidade
     pergunta: Preciso ficar o ano inteiro?
-    resposta: Não. Na Gestão mensal e no Marketing 360, o contrato mínimo é de 3 meses. Depois, fica mês a mês, com aviso de 30 dias e sem multa.
+    resposta: Não. No serviço avulso, na Gestão mensal e no Marketing 360, o contrato mínimo é de 3 meses. Depois, fica mês a mês, com aviso de 30 dias e sem multa.
   - id: faq-edu-fora
     pergunta: Vocês atendem fora de Curitiba?
     resposta: Sim. O atendimento é 100% remoto, com reunião por vídeo e relatório online.

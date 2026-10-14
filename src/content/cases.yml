@@ -1,68 +1,41 @@
-# Cases (PROMPT seção 12.2). Todos vão ao ar: home (Resultados), páginas de serviço e Olorin Educação.
-# Regra: nenhum número inventado. O resultado de um case só entra quando o dono informar
-# o número, o período e como foi medido. Até lá, o card mostra o que foi feito.
-# "pagina: true" cria também /cases/<slug>/ e exige todos estes campos (o build avisa se faltar):
-#   slug, segmento, situacao, o_que_fizemos (lista), resultado, periodo, servicos
-# Campos do card:
-#   cliente     nome do cliente
-#   logo        arquivo em src/assets/clientes/ (no servidor: /assets/img/clientes/)
-#   segmento    tipo de organização
-#   servicos    slugs dos serviços (o case aparece na página de cada um)
-#   resumo      o que a Olorin fez, em 1 frase
-#   resultado   número curto (só confirmado); sem número, use "destaque" (texto curto)
-#   detalhe     linha de apoio abaixo do número ou do destaque
-# Bloco "edu": só a ficha da Olorin Educação (/educacao/).
-#   nome, campos (rótulo + valor), resultado (só confirmado), site, site_texto, logo_largura
+# Cases (PROMPT seção 12.2).
+# Dono, 14/10/2026: por enquanto a Olorin não mostra cases de destaque. A home e as páginas
+# de serviço ficam sem o bloco de cases até haver resultados fortes. Para ligar de novo,
+# troque "destaque_no_site" para true e preencha resumo, destaque e detalhe de cada case.
+# A iZETA e o Dr. José Anacleto Abduch aparecem só de forma genérica: na Olorin Educação
+# (bloco "Quem já atendemos", campos do bloco "edu") e no portfólio. Sem resultado e sem detalhe.
+# Regra: nenhum número inventado. Resultado só com número, período e como foi medido.
+# "pagina: true" cria também /cases/<slug>/ e exige: slug, segmento, situacao, o_que_fizemos
+# (lista), resultado, periodo, servicos (o build avisa se faltar).
+destaque_no_site: false
 itens:
   - slug: izeta
     cliente: iZETA
     logo: izeta.svg
-    segmento: Edtech de saúde ocupacional
-    janela: case_izeta.exe
-    # PENDENTE: confirmar os serviços que a Olorin presta para a iZETA
-    servicos_texto: Tráfego pago · Redes sociais · Dados
-    servicos: [trafego-pago, redes-sociais, rastreamento-e-relatorio]
-    # PENDENTE: confirmar o que a Olorin fez para a iZETA e enviar o resultado (número, período e como foi medido)
-    resumo: Captação para os cursos, com campanhas, conteúdo e acompanhamento de cada contato que chegou.
-    destaque: Captação de alunos
-    detalhe: Pós, preparatório e cursos livres sob o mesmo cuidado.
+    segmento: Educação em saúde
+    janela: cliente_izeta.exe
+    servicos_texto: Sites · Tráfego pago · Redes sociais
+    servicos: [site-e-loja-virtual, trafego-pago, redes-sociais]
     edu:
       nome: iZETA Educação
       campos:
         - rotulo: Segmento
-          valor: Edtech de saúde corporativa e ocupacional
-        - rotulo: Cursos
-          valor: Pós lato sensu com PUCPR, USCS e IDOMED, preparatório da prova de título ANAMT e cursos livres
-        - rotulo: Onde
-          valor: Curitiba, com cursos online
-      # PENDENTE: resultado da iZETA (número, período e como foi medido, com autorização)
-      resultado: Em breve aqui, com número, período e como medimos.
+          valor: Educação em saúde
       site: https://izeta.com.br/
       site_texto: izeta.com.br
       logo_largura: 219
   - slug: anacleto
     cliente: José Anacleto Abduch
     logo: anacleto.svg
-    segmento: Educação executiva
-    janela: case_anacleto.exe
-    # PENDENTE: confirmar os serviços que a Olorin presta para o Dr. José Anacleto Abduch
-    servicos_texto: Tráfego pago · Identidade visual · Redes sociais
-    servicos: [trafego-pago, identidade-visual, redes-sociais]
-    # PENDENTE: confirmar o que a Olorin fez para o Dr. José Anacleto Abduch e enviar o resultado (número, período e como foi medido)
-    resumo: Comunicação dos cursos e palestras, com marca, peças e campanhas para encher cada turma.
-    destaque: Cursos e palestras
-    detalhe: Marca de professor, do anúncio ao convite da turma in company.
+    segmento: Direito Público
+    janela: cliente_anacleto.exe
+    servicos_texto: Sites · Tráfego pago · Redes sociais
+    servicos: [site-e-loja-virtual, trafego-pago, redes-sociais]
     edu:
       nome: Dr. José Anacleto Abduch
       campos:
-        - rotulo: Quem é
-          valor: Procurador do Estado do Paraná, doutor em Direito Administrativo pela UFPR e autor do livro "Licitação e Contratação Pública"
-        - rotulo: Cursos
-          valor: Lei 14.133/21 para agentes públicos, advogados e pareceristas, online ao vivo, presencial e in company
         - rotulo: Segmento
-          valor: Educação executiva e marca de professor
-      # PENDENTE: resultado do Dr. José Anacleto Abduch (número, período e como foi medido, com autorização)
-      resultado: Em breve aqui, com número, período e como medimos.
+          valor: Direito Público
       site: https://joseanacletoabduch.com.br/
       site_texto: joseanacletoabduch.com.br
       logo_largura: 750

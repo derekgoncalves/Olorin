@@ -243,7 +243,7 @@ fontes_extra:
 	</div>
 </section>
 
-{#- ===== 8. Cases: fichas da iZETA e do Dr. José Anacleto Abduch ===== -#}
+{#- ===== 8. Quem já atendemos: fichas genéricas da iZETA e do Dr. José Anacleto Abduch (cases.yml → edu) ===== -#}
 {%- set t = E.cases -%}
 <section class="o-sec o-edu-sec o-edu-cases o-ctx-violeta o-com-grao" id="cases" data-secao="cases" aria-labelledby="edu-cases-titulo">
 	<div class="o-edu-fundo o-edu-fundo--cases" aria-hidden="true"></div>
@@ -256,7 +256,7 @@ fontes_extra:
 			<p class="o-edu-apoio">{{ t.texto }}</p>
 		</div>
 		<div class="o-edu-fichas">
-		{%- for c in conteudo.casesTodos %}{% if c.edu %}
+		{%- for c in conteudo.casesEdu %}
 			<article class="o-janela o-edu-ficha o-ctx-branco" id="case-{{ c.slug }}" aria-labelledby="edu-case-{{ c.slug }}" data-o-edu-entra>
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
 				<div class="o-edu-ficha__corpo">
@@ -269,15 +269,13 @@ fontes_extra:
 					{%- for campo in c.edu.campos %}
 						<div><dt>{{ campo.rotulo }}</dt><dd>{{ campo.valor }}</dd></div>
 					{%- endfor %}
-						<div><dt>{{ t.rotulos.fizemos }}</dt><dd>{{ c.resumo }}</dd></div>
 						<div><dt>{{ t.rotulos.servicos }}</dt><dd>{{ c.servicos_texto }}</dd></div>
-						<div class="o-edu-ficha__resultado"><dt>{{ t.rotulos.resultado }}</dt><dd>{{ c.edu.resultado }}</dd></div>
 					</dl>
 					<p class="o-edu-ficha__site"><a class="o-edu-link" href="{{ c.edu.site }}" target="_blank" rel="noopener">{{ t.site }}: {{ c.edu.site_texto }}<span class="o-sr"> (abre em nova aba)</span></a></p>
 					<p class="o-edu-carimbo o-edu-carimbo--ficha" aria-hidden="true">{{ t.carimbo }}</p>
 				</div>
 			</article>
-		{%- endif %}{% endfor %}
+		{%- endfor %}
 		</div>
 	</div>
 </section>

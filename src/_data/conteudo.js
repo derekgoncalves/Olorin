@@ -50,10 +50,14 @@ export default function () {
 		.map((s) => ({ valor: s.chip, slug: s.slug }))
 		.concat(conteudo.formulario && conteudo.formulario.servicos_extra ? [{ valor: conteudo.formulario.servicos_extra, slug: 'nao-sei' }] : []);
 
-	// Cases: todos vão ao ar (home, serviços e Olorin Educação). Os que têm "pagina: true"
-	// ganham também /cases/<slug>/, e para isso precisam dos campos abaixo.
+	// Cases: o bloco de destaque (home e páginas de serviço) só aparece com "destaque_no_site: true"
+	// em cases.yml (desligado pelo dono em 14/10/2026). A Olorin Educação mostra os clientes do bloco
+	// "edu" de forma genérica (casesEdu). Os que têm "pagina: true" ganham também /cases/<slug>/,
+	// e para isso precisam dos campos abaixo.
 	const OBRIGATORIOS = ['slug', 'segmento', 'situacao', 'o_que_fizemos', 'resultado', 'periodo', 'servicos'];
-	conteudo.casesTodos = ((conteudo.cases && conteudo.cases.itens) || []).filter(Boolean);
+	const casesItens = ((conteudo.cases && conteudo.cases.itens) || []).filter(Boolean);
+	conteudo.casesTodos = conteudo.cases && conteudo.cases.destaque_no_site ? casesItens : [];
+	conteudo.casesEdu = casesItens.filter((c) => c.edu);
 	conteudo.casesAprovados = conteudo.casesTodos.filter((c) => c.pagina);
 	for (const c of conteudo.casesAprovados) {
 		const faltando = OBRIGATORIOS.filter((campo) => !c[campo] || (Array.isArray(c[campo]) && !c[campo].length));

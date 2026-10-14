@@ -9,7 +9,7 @@ pagination:
 permalink: "/quem-somos/{{ pessoa.slug }}/"
 eleventyComputed:
   og_imagem: "/assets/img/og/perfil-{{ pessoa.slug }}.jpg"
-  titulo: "{{ pessoa.nome }}, {{ pessoa.cargo or pessoa.funcao }} | Olorin"
+  titulo: "{{ pessoa.titulo_seo or (pessoa.nome + ', ' + (pessoa.cargo or pessoa.funcao) + ' | Olorin') }}"
   descricao: "{{ pessoa.descricao or pessoa.frase }}"
   slug: "perfil-{{ pessoa.slug }}"
   pessoasSchema: "{{ pessoa.slug }}"

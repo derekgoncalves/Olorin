@@ -1,9 +1,10 @@
 # ============================================================
 # HOME — textos e ORDEM dos blocos
 # ------------------------------------------------------------
-# Ordem fixada pelo dono (13/10/2026): 1 banner, 2 resultados (números, logos,
-# cases e portfólio), 3 serviços, 4 Raio-X (mini formulário), 5 planos (com a
-# calculadora), 6 checklist, 7 método, 8 quem toca, 9 dúvidas, 10 formulário.
+# Ordem fixada pelo dono (13/10/2026, revista em 14/10/2026): 1 banner, 2 resultados
+# (números, faixa de logos e portfólio; os cases saíram da home), 3 serviços, 4 Raio-X
+# (mini formulário), 5 planos (com a calculadora), 6 método (banner), 7 quem toca,
+# 8 dúvidas, 9 formulário. O checklist saiu para a home ficar mais curta (14/10/2026).
 # Só checklist, método e dúvidas podem sair (comente a linha com #).
 # Regra da marca: violeta e verde nunca encostam. Cores dos blocos, em ordem:
 # preto, verde+branco, preto, violeta, branco, preto, violeta, preto, branco, violeta.
@@ -14,7 +15,7 @@ secoes:
   - servicos
   - raio-x
   - planos
-  - checklist
+  # - checklist
   - metodo
   - equipe
   - duvidas
@@ -22,7 +23,7 @@ secoes:
 
 seo:
   titulo: Olorin Digital | Agência de marketing em Curitiba
-  descricao: Anúncio, redes sociais, identidade visual, site e impresso com o mesmo cuidado, da menor à maior organização. Preço aberto e Raio-X gratuito.
+  descricao: Do clique ao cliente, resultado que dá pra ver. Anúncio, redes sociais, identidade visual, site e impresso num time só, com preço aberto e Raio-X gratuito.
 
 hero:
   linha_superior: Agência de marketing digital · Curitiba para todo o Brasil
@@ -65,13 +66,13 @@ resultados:
   etiqueta: Resultados
   titulo: Prova, não promessa.
   texto: O que a Olorin já fez, para quem e com que cara.
-  clientes_titulo: Quem já confiou na Olorin
+  clientes_titulo: Marcas que já passaram pelo nosso time
   cases_etiqueta: Cases
   cases_titulo: De perto.
   case_link: Ver o serviço
   portfolio_etiqueta: Portfólio
   portfolio_titulo: Resultado que dá pra ver.
-  portfolio_texto: Identidade, redes, impressos, sites e campanhas feitos pelo time da Olorin.
+  portfolio_texto: Identidade, redes, impressos, sites e campanhas feitos pelo nosso time.
   filtro_todos: Tudo
   limite: 8
   link_mais:
@@ -99,14 +100,14 @@ planos:
 checklist:
   etiqueta: Sinais de alerta
   titulo: Não é falta de esforço.
-  texto: Se pelo menos dois destes aparecem aí, a sua marca precisa de cuidado, não de mais trabalho.
+  texto: Se pelo menos dois destes aparecem aí, a sua marca precisa de ajuste, não de mais trabalho.
   itens:
     - { janela: erro_01.exe, titulo: Ninguém conversa, texto: "Um fornecedor faz o anúncio, outro o post, outro a arte. Cada um puxa para um lado." }
     - { janela: erro_02.exe, titulo: Dinheiro no escuro, texto: Você investe todo mês e não sabe quanto custou cada resultado. }
     - { janela: erro_03.exe, titulo: Relatório de curtida, texto: "O relatório mostra alcance e curtida, nunca venda, matrícula ou inscrição." }
     - { janela: erro_04.exe, titulo: Marca com várias caras, texto: "Anúncio, feed, site e cartão parecem de empresas diferentes." }
   resposta_titulo: Tem conserto. E não é trabalhar mais.
-  resposta: Com um time só cuidando de tudo, a marca fala uma língua e cada real investido aparece no relatório.
+  resposta: Com um time só tocando tudo, a marca fala uma língua e cada real investido aparece no relatório.
   cta: Pedir meu Raio-X
   cta_destino: "#raio-x"
 
@@ -139,7 +140,7 @@ metodo:
 
 equipe:
   etiqueta: Quem toca
-  titulo: Um time inteiro cuidando da sua marca.
+  titulo: Fale com quem coordena.
   texto: Cada frente tem alguém que coordena e responde por ela. Você fala com quem coordena, sem intermediário.
   botao: Falar com a equipe no WhatsApp
   link_sobre: Conheça quem somos
@@ -150,14 +151,12 @@ duvidas:
   titulo: Perguntas diretas.
   texto: Ficou alguma dúvida que não está aqui?
   botao: Perguntar no WhatsApp
-  # Só estas 6 aparecem na home. Todas as perguntas ficam na página /planos/.
+  # Só estas 4 aparecem na home. Todas as perguntas ficam na página /planos/.
   ids:
     - faq-raio-x
     - faq-uma-frente
-    - faq-segmento
     - faq-verba-minima
     - faq-fidelidade
-    - faq-dono-contas
   link_mais:
     texto: Ver todas as dúvidas
     url: /planos/#duvidas

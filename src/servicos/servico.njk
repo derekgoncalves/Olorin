@@ -76,7 +76,7 @@ eleventyComputed:
 			<li><a href="#entregas">O que entra</a></li>
 			{%- if casesServico.length or trabalhos.length %}<li><a href="#trabalhos">Trabalhos</a></li>{% endif %}
 			<li><a href="#como-funciona">Como funciona</a></li>
-			<li><a href="#quem-cuida">Quem cuida</a></li>
+			<li><a href="#quem-cuida">Quem coordena</a></li>
 			<li><a href="#preco">Preço</a></li>
 			<li><a href="#perguntas">Dúvidas</a></li>
 			<li><a href="#orcamento">Raio-X grátis</a></li>
@@ -250,11 +250,11 @@ eleventyComputed:
 	{%- endif %}
 </section>
 
-{#- 8 · Quem cuida -#}
+{#- 8 · Quem coordena -#}
 <section class="o-sec o-sec--compacta o-ctx-preto o-servico-quem" id="quem-cuida" data-secao="quem-cuida" aria-labelledby="quem-titulo">
 	<div class="o-wrap o-servico-quem__grade">
 		<div>
-			<p class="o-etiqueta">Quem cuida</p>
+			<p class="o-etiqueta">Quem coordena</p>
 			<h2 class="o-titulo o-titulo--m" id="quem-titulo">{{ s.quem_cuida_titulo or "Quem coordena." }}</h2>
 			<p class="o-apoio">{{ s.quem_faz_nota or "Cada frente tem alguém que coordena e responde por ela. Você fala direto com quem coordena." }}</p>
 			<a class="o-link-seta" href="/quem-somos/">Conheça o time da Olorin <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>

@@ -1,21 +1,21 @@
 # Página /quem-somos/ e perfis /quem-somos/<pessoa>/ — só fatos (equipe.yml e claims.json).
 seo:
   titulo: Quem somos | Olorin Digital, agência em Curitiba
-  descricao: Conheça quem coordena anúncio, redes, marca, site e dados na Olorin. De Curitiba para todo o Brasil, com o mesmo cuidado para toda organização.
+  descricao: Conheça quem coordena anúncio, redes, marca, site e dados na Olorin. De Curitiba para todo o Brasil, para organizações de todo tipo e tamanho.
 etiqueta: Quem somos
-titulo: Um time inteiro cuidando da sua marca.
-sub: A Olorin Digital é uma agência de marketing digital de Curitiba. Cuida de anúncio, redes, marca, impresso, site e dados de organizações de todo tipo e tamanho, do Brasil inteiro, com o mesmo cuidado.
+titulo: Um time inteiro, do clique ao cliente.
+sub: A Olorin Digital é uma agência de marketing digital de Curitiba. Faz anúncio, redes, marca, impresso, site e dados para organizações de todo tipo e tamanho, do Brasil inteiro.
 dica_pilha: Passe o mouse ou toque para ver cada perfil.
 historia:
   etiqueta: Por que a Olorin existe
-  titulo: Do clique ao cliente.
+  titulo: Tudo no mesmo time.
   paragrafos:
     - "A Olorin nasceu para juntar o que quase sempre vive separado: estratégia, anúncio, conteúdo, arte, site e impresso. Quando cada parte fica com um fornecedor diferente, a marca fala várias línguas e ninguém sabe dizer quanto cada real trouxe de volta."
     - Aqui, cada frente tem alguém que coordena e responde por ela, e todas conversam entre si. O preço é aberto, o relatório é fácil de entender e não prometemos o que o número não sustenta.
-    - "Seja um negócio de bairro, uma escola com várias unidades ou uma indústria, o cuidado é o mesmo. Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 2 milhões em verba de anúncio."
-  apoio: Da menor à maior organização, o mesmo cuidado.
+    - "Seja um negócio de bairro, uma escola com várias unidades ou uma indústria, o jeito de trabalhar é o mesmo. Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 2 milhões em verba de anúncio."
+  apoio: Da menor à maior organização, resultado que dá pra ver.
   educacao:
-    texto: "Escolas e cursos têm um cuidado só deles: a Olorin Educação, para encher turma no calendário certo."
+    texto: "Escolas e cursos têm uma frente só deles: a Olorin Educação, para encher turma no calendário certo."
     link: { texto: Conhecer a Olorin Educação, url: /educacao/ }
 equipe:
   etiqueta: O time
@@ -36,8 +36,7 @@ remoto:
     - A maioria dos clientes é de fora de Curitiba. O processo foi feito para funcionar a distância.
     - Conversa pelo WhatsApp, reunião por vídeo, aprovação por e-mail e arquivos entregues pela internet.
     - O Derek é o seu primeiro contato e coordena a sua conta no dia a dia.
-    # PENDENTE: confirmar que Natália e Vinicius participam do início de cada projeto e das reuniões de planejamento
-    - Natália e Vinicius entram no começo de cada projeto e nas reuniões de planejamento.
+    - Na Gestão mensal, Natália e Vinicius entram na primeira reunião. No Marketing 360, estão em todas as reuniões semanais.
 contato:
   titulo: Quer conversar com a gente?
   botao: Falar com a equipe no WhatsApp

@@ -31,13 +31,14 @@ planos:
     valor: 1500
     periodo: /mês cada
     itens:
-      - Redes sociais
+      - Redes sociais, a partir de 6 posts e 2 Reels por mês
       - Tráfego pago na Meta ou no Google
       - Design do mês
-      - Mídias e dados
+      - Dados, sem taxa de implantação
     selos:
       - Relatório mensal
-    # PENDENTE: confirmar se o serviço avulso tem contrato mínimo de 3 meses e taxa de implantação
+      - Contrato de 3 meses
+    implantacao: "Implantação única: R$ 1.000 (Dados sozinho não tem)"
     servicos_preselecao: []
     calculadora: true
     calculadora_nome: Avulso
@@ -51,7 +52,7 @@ planos:
     periodo: /mês
     itens:
       - Meta Ads ou Google Ads
-      - 8 criativos de anúncio por mês
+      - 4 criativos de anúncio por mês
       - 8 posts no feed por mês
       - Otimização semanal das campanhas
       - Relatório mensal + reunião de 30 minutos
@@ -65,17 +66,16 @@ planos:
     calculadora_nome: Gestão
   - id: marketing-360
     nome: Marketing 360
-    tag: Cuidado de perto
+    tag: Tudo junto
     para: A marca inteira sob o mesmo comando, sem contar peça
     de: A partir de
     valor: 5000
     periodo: /mês
     itens:
       - Anúncio, redes, marca, site e impresso juntos
-      - Reunião semanal com o time
+      - Reunião semanal com todo o time
       - Planejamento estratégico todo mês
-      # PENDENTE: confirmar "prioridade na fila de criação" como diferencial do Marketing 360
-      - Prioridade na fila de criação
+      - Produção prioritária
       - Escopo sob medida, sem quantidade fechada
     selos:
       - Reunião semanal
@@ -88,8 +88,8 @@ planos:
 preco_fechado: Preço fechado
 botao: Quero esse
 nota: Valores de gestão. A verba de anúncio (recomendamos a partir de R$ 1.500/mês) é investida à parte, direto nas plataformas Meta e Google, na sua conta.
-contrato: Gestão mensal e Marketing 360 com contrato mínimo de 3 meses e taxa única de implantação. Depois, mês a mês com aviso de 30 dias. Sem multa rescisória.
-total_entrada: "Custo total para começar a anunciar: a partir de R$ 3.000/mês (serviço avulso de R$ 1.500 + verba mínima recomendada de R$ 1.500)."
+contrato: Serviço avulso, Gestão mensal e Marketing 360 têm contrato mínimo de 3 meses e taxa única de implantação (Dados sozinho não tem). Depois, mês a mês com aviso de 30 dias, sem multa.
+total_entrada: "Custo total para começar a anunciar: a partir de R$ 3.000/mês (serviço avulso de R$ 1.500 + verba mínima recomendada de R$ 1.500), mais a implantação única de R$ 1.000."
 # Projetos de site: fora da grade de planos (dono, 13/10/2026).
 projetos:
   etiqueta: Sites e lojas virtuais
@@ -98,12 +98,12 @@ projetos:
     - nome: Site
       de: A partir de
       valor: 3000
-      texto: Institucional, landing page ou página de captação. Rápido, bonito no celular e pronto para o anúncio.
+      texto: Institucional, landing page ou página de captação. Rápido, bonito no celular e pronto para o anúncio. Textos seus, domínio e hospedagem à parte.
       servicos_preselecao: [site-e-loja-virtual]
     - nome: Loja virtual
       de: A partir de
       valor: 10000
-      texto: E-commerce completo, com catálogo, pagamento, frete e rastreamento das vendas.
+      texto: E-commerce completo, com catálogo, pagamento, frete e rastreamento das vendas. Plataforma, domínio e hospedagem à parte.
       servicos_preselecao: [site-e-loja-virtual, rastreamento-e-relatorio]
   botao: Pedir orçamento do projeto
   link: { texto: Ver como fazemos sites, url: /servicos/site-e-loja-virtual/ }
