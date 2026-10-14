@@ -10,30 +10,30 @@
 # ============================================================
 
 seo:
-  titulo: Marketing para escolas e cursos | Olorin Educação
-  descricao: Captação de alunos para escolas, cursos, idiomas, pré-vestibular e pós. Anúncio, Instagram e atendimento, com o custo por matrícula todo mês.
+  titulo: Marketing para instituições de ensino | Olorin Educação
+  descricao: Captação de alunos para instituições de ensino: universidades, escolas, cursos, idiomas, pré-vestibular e pós. Anúncio, Instagram e atendimento, com o custo por matrícula todo mês.
 
 marca:
   nome: Olorin Educação
   sub: educação
   lema: Do clique à matrícula.
   apoio: Do curso livre à pós-graduação, resultado que dá pra ver.
-  parte_de: A Olorin Educação é a área de escolas e cursos da Olorin Digital.
+  parte_de: A Olorin Educação é a área de instituições de ensino da Olorin Digital.
 
 # Mensagens prontas dos links de WhatsApp desta página.
 whatsapp:
-  padrao: Oi! Vim pela página Olorin Educação e quero o Raio-X da minha escola.
+  padrao: Oi! Vim pela página Olorin Educação e quero o Raio-X da minha instituição.
   equipe: Oi! Vim pela página Olorin Educação e quero falar com a equipe.
   duvida: Oi! Vim pela página Olorin Educação e tenho uma dúvida.
   # Assunto do link "Chame no WhatsApp" embaixo dos formulários ("...quero falar sobre ...").
-  assunto_form: o Raio-X da minha escola
+  assunto_form: o Raio-X da minha instituição
 
 # Formulário: o mesmo do site (formulario.yml). Só nesta página, estes textos valem por cima dos
 # de formulario.yml (ver src/educacao/index.11tydata.js). Use só textos aqui, sem listas.
 formulario:
   placeholders:
-    site: "@suaescola ou suaescola.com.br"
-    mensagem: "Ex.: somos uma escola de idiomas e queremos mais matrículas para o próximo semestre."
+    site: "@suainstituicao ou seusite.com.br"
+    mensagem: "Ex.: somos uma faculdade e queremos mais matrículas para o próximo semestre."
 
 cabecalho:
   menu:
@@ -69,14 +69,14 @@ hero:
   boletim:
     janela: boletim.exe
     titulo: Boletim da captação
-    escola: Escola Exemplo
+    escola: Instituição Exemplo
     periodo: Raio-X gratuito
     coluna_materia: Matéria
     coluna_nota: Nota
     materias:
       - nome: Anúncio na Meta e no Google
         nota: "8,5"
-      - nome: Instagram da escola
+      - nome: Instagram da instituição
         nota: "7,0"
       - nome: Site e página de matrícula
         nota: "6,0"
@@ -96,7 +96,7 @@ regua:
   - Captação de alunos
   - Campanha de matrícula
   - Meta Ads e Google Ads
-  - Instagram da escola
+  - Instagram da instituição
   - Página de matrícula
   - Atendimento no WhatsApp
   - Custo por matrícula
@@ -104,12 +104,13 @@ regua:
 chamada:
   etiqueta: Para quem é
   titulo: Feita para quem vende matrícula.
-  texto: Escola, curso ou pós-graduação. Se a receita depende de turma cheia, a Olorin Educação toca a sua captação.
+  texto: Universidade, escola, curso ou pós-graduação. Se a receita depende de turma cheia, a Olorin Educação toca a sua captação.
   nota: Curitiba e todo o Brasil, com atendimento remoto.
   janela: chamada.exe
   turma: Lista de chamada
   presente: presente
   itens:
+    - Universidades e faculdades
     - Escolas particulares
     - Cursos livres
     - Cursos profissionalizantes
@@ -136,9 +137,9 @@ lousa:
       certo: Calendário com antecedência.
     - erro: O site não diz preço, turma, horário nem como se matricular.
       certo: Página de matrícula completa.
-    - erro: Cada peça parece de uma escola diferente.
+    - erro: Cada peça parece de uma instituição diferente.
       certo: Uma marca só, do anúncio ao folder.
-  cta_texto: Reconheceu a sua escola?
+  cta_texto: Reconheceu a sua instituição?
   cta: Comece pelo Raio-X
 
 calendario:
@@ -270,9 +271,9 @@ planos:
   # Linha curta de cada plano nesta página (preço, itens e regras continuam em planos.yml).
   para:
     pontual: Folder de matrícula, identidade ou peça avulsa
-    avulso: Um serviço por mês, no ritmo da escola
+    avulso: Um serviço por mês, no ritmo da instituição
     gestao-mensal: Anúncio e conteúdo juntos, com quantidade definida
-    marketing-360: Toda a comunicação da escola sob o mesmo comando
+    marketing-360: Toda a comunicação da instituição sob o mesmo comando
   carne: carnê olorin
   projetos: Site ou página de matrícula?
 
@@ -285,10 +286,10 @@ duvidas:
 # Perguntas desta página (também vão para o JSON-LD da página).
 faq:
   - id: faq-edu-quem
-    pergunta: Que tipo de escola ou curso vocês atendem?
-    resposta: Quem vende matrícula. Escolas particulares, cursos livres e profissionalizantes, escolas de idiomas, pré-vestibular, pós-graduação e educação executiva. Do curso de uma sala só à rede com várias unidades.
+    pergunta: Que tipo de instituição vocês atendem?
+    resposta: Quem vende matrícula. Universidades e faculdades, escolas particulares, cursos livres e profissionalizantes, escolas de idiomas, pré-vestibular, pós-graduação e educação executiva. Do curso de uma sala só à rede com várias unidades.
   - id: faq-edu-pequena
-    pergunta: Funciona para escola ou curso pequeno?
+    pergunta: Funciona para instituição ou curso pequeno?
     resposta: Sim. Para começar, um serviço avulso (a partir de R$ 1.500 por mês) ou a Gestão mensal (R$ 2.500 por mês) costuma bastar. No Raio-X, dizemos qual faz sentido para você.
   - id: faq-edu-quando
     pergunta: Quando devo começar a captação para o ano que vem?
@@ -301,7 +302,7 @@ faq:
     resposta: Combinamos com a sua equipe um jeito simples de registrar de onde veio cada aluno. Pode ser uma etiqueta no WhatsApp ou uma pergunta na ficha de matrícula. Assim o boletim do mês mostra contatos, visitas e matrículas por canal, e quanto custou cada uma.
   - id: faq-edu-atendimento
     pergunta: Preciso de alguém para atender os interessados?
-    resposta: Sim, a matrícula fecha com a sua equipe. Nós trazemos o interessado, organizamos as mensagens da sua escola prontas para cada etapa e medimos o tempo de resposta. Se travar no atendimento, o boletim mostra.
+    resposta: Sim, a matrícula fecha com a sua equipe. Nós trazemos o interessado, organizamos as mensagens da sua instituição prontas para cada etapa e medimos o tempo de resposta. Se travar no atendimento, o boletim mostra.
   - id: faq-edu-prazo
     pergunta: Em quanto tempo aparece matrícula?
     resposta: Os primeiros contatos costumam chegar nos primeiros dias de campanha. A matrícula depende do ciclo do seu curso. Em curso livre, pode sair na mesma semana; em escola, a família visita e compara antes. Por isso começamos cedo e medimos cada etapa.
