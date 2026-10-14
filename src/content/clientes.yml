@@ -9,9 +9,10 @@
 # ============================================================
 etiqueta: Quem já confiou na Olorin
 itens:
-  # PENDENTE: enviar os logos reais (SVG ou PNG) da Izeta e do Anacleto; hoje são letreiros feitos com o nome
-  - { nome: Izeta, logo: izeta.svg, largura: 232 }
-  - { nome: Anacleto, logo: anacleto.svg, largura: 416 }
+  # PENDENTE: enviar os logos reais (SVG) da iZETA e do Anacleto Abduch; hoje são letreiros feitos com o nome
+  # (para trocar pelo FTP: mesmo nome de arquivo em /assets/img/clientes/)
+  - { nome: iZETA, logo: izeta.svg, largura: 219 }
+  - { nome: Anacleto Abduch, logo: anacleto-duas-linhas.svg, largura: 187 }
   # PENDENTE: até 6 logos de outros clientes autorizados (substituem as vagas "Sua marca aqui")
   - { nome: Sua marca aqui, logo: vaga-01.svg, largura: 299, vaga: true }
   - { nome: Sua marca aqui, logo: vaga-02.svg, largura: 299, vaga: true }
