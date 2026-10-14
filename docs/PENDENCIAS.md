@@ -45,12 +45,22 @@ O site vai ao ar completo. Onde faltava informação, ele mostra um **texto prop
 
 | Prio. | O que mandar | Onde |
 |---|---|---|
-| A | Cases iZETA e Anacleto Abduch: o que a Olorin fez, o resultado (número, período e como foi medido) e a autorização para mostrar | `cases.yml` |
+| A | Cases iZETA e Anacleto Abduch (os destaques da Olorin Educação): conferir a descrição de cada um (quem é, cursos, cidade), os serviços prestados, o que a Olorin fez, o resultado (número, período e como foi medido) e a autorização para mostrar. No ar, o campo Resultado diz "Em breve aqui" | `cases.yml` |
 | A | Logos reais (SVG) da iZETA e do Anacleto Abduch. Hoje são letreiros feitos com o nome | `clientes.yml` |
 | B | Até 6 logos de outros clientes autorizados (substituem as vagas "Sua marca aqui") | `clientes.yml` |
 | A | Portfólio: as 8 imagens são ilustrativas. Trocar por trabalhos reais e autorizados (título, serviço e imagem) | `portfolio.yml` |
 
-## 5. Jurídico e cadastro
+## 5. Olorin Educação (/educacao/)
+
+| Prio. | O que confirmar | O que está no ar hoje | Onde |
+|---|---|---|---|
+| B | Lema da LP | "Cuidado não tem tamanho de turma." (o lema do site adaptado para escolas) | `paginas/educacao.yml` |
+| B | A Olorin entrega as mensagens prontas de atendimento para a equipe da escola? | "Nós trazemos o interessado, deixamos mensagens prontas para cada etapa e medimos o tempo de resposta." | `paginas/educacao.yml` |
+| B | Prazo dos primeiros resultados | "Os primeiros contatos costumam chegar nos primeiros dias de campanha. A matrícula depende do ciclo do seu curso…" | `paginas/educacao.yml` |
+| C | Calendário de captação: trocar título e texto a cada temporada | "Ainda dá tempo." e a decisão das famílias entre outubro e janeiro (de março a agosto, algo como "Comece cedo.") | `paginas/educacao.yml` |
+| C | Dado da Harvard Business Review | "Quem responde em até 1 hora tem quase 7 vezes mais chance de uma conversa de verdade…" (bate com o artigo "The Short Life of Online Sales Leads", de 2011; vale reler antes de usar em anúncio) | `paginas/educacao.yml` |
+
+## 6. Jurídico e cadastro
 
 | Prio. | O que confirmar | Onde |
 |---|---|---|
@@ -59,7 +69,7 @@ O site vai ao ar completo. Onde faltava informação, ele mostra um **texto prop
 | B | Prazo de guarda dos pedidos do formulário (no ar: até 24 meses após o último contato) | `paginas/privacidade.yml` |
 | B | Revisão da política por um advogado (recomendado) | `paginas/privacidade.yml` |
 
-## 6. Contas e IDs de medição (quando tiver)
+## 7. Contas e IDs de medição (quando tiver)
 
 Campos vazios ficam desligados. Ficam em `src/_data/site/config.json` e pedem um build novo (o passo a passo está em `docs/TRACKING.md`).
 
@@ -71,13 +81,14 @@ Campos vazios ficam desligados. Ficam em `src/_data/site/config.json` e pedem um
 | `SCHEDULING_URL` | Link de agenda (Calendly ou Google Agenda), que aparece na página de obrigado |
 | `GBP_URL` | Link do Perfil da Empresa no Google (Google Meu Negócio) |
 
-## 7. O que dá para trocar só pelo WebFTP (sem build novo)
+## 8. O que dá para trocar só pelo WebFTP (sem build novo)
 
 Suba o arquivo novo **com o mesmo nome**, na mesma pasta, substituindo o antigo. Textos, preços e menus ficam dentro das páginas e precisam de build novo.
 
 | No servidor (dentro de `public_html`) | O que é | Como deve ser |
 |---|---|---|
 | `assets/img/clientes/izeta.svg` e `assets/img/clientes/anacleto-duas-linhas.svg` | Logos da faixa de clientes | SVG, de preferência com o desenho em uma cor só e cerca de 48 px de altura |
+| `assets/img/clientes/izeta.svg` e `assets/img/clientes/anacleto.svg` | Logos dos cases na Olorin Educação | SVG com o logo real, com o mesmo nome |
 | `assets/img/clientes/vaga-01.svg` e `vaga-02.svg` | Espaços "Sua marca aqui" | SVG do logo do cliente. O nome lido pelo leitor de tela só muda com build novo |
 | `assets/img/og/*.jpg` | Imagens que aparecem quando alguém compartilha o link | JPG de 1200 × 630 px |
 | Fotos do portfólio, por exemplo `assets/img/portfolio-marca-identidade-300.avif` | Cada foto tem 4 arquivos: AVIF e WebP, em 2 larguras (300 e 600 px; a de redes tem 320 e 640) | Os 4 com o mesmo nome e a **mesma proporção** da foto atual. Mais fácil: mande as fotos e o Claude gera o pacote |

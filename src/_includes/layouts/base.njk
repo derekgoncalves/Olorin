@@ -66,8 +66,10 @@
 			h.setAttribute("data-form-variant", v);
 		})(document, window);
 	</script>
-	<style>{{ assets.fontFace | safe }}</style>
-	<link rel="stylesheet" href="{{ assets.css }}">
+	{#- A LP Olorin Educação tem o próprio arquivo de CSS (ver SO_EDUCACAO em scripts/assets.mjs). -#}
+	{%- set cssEducacao = tema == "educacao" %}
+	<style>{{ (assets.fontFaceEducacao if cssEducacao else assets.fontFace) | safe }}</style>
+	<link rel="stylesheet" href="{{ assets.cssEducacao if cssEducacao else assets.css }}">
 	{%- include "partials/schema.njk" %}
 	<script>window.OLORIN_CONFIG = {{ {
 		whatsapp: cfg.WHATSAPP,
