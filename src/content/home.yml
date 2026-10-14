@@ -18,6 +18,7 @@ secoes:
   # - checklist
   - metodo
   - equipe
+  - blog      # os 3 artigos mais recentes do blog (textos no bloco "blog:" abaixo)
   - duvidas
   - orcamento
 
@@ -145,6 +146,13 @@ equipe:
   botao: Falar com a equipe no WhatsApp
   link_sobre: Conheça quem somos
   ver_perfil: Ver perfil
+
+# Bloco do blog: os 3 artigos mais recentes de src/blog/artigos/ (sem artigo publicado, o bloco some).
+blog:
+  etiqueta: Blog da Olorin
+  titulo: Para ler e aplicar.
+  texto: Anúncio, redes sociais e captação explicados passo a passo, sem jargão.
+  botao: Ver todos os artigos
 
 duvidas:
   etiqueta: Dúvidas

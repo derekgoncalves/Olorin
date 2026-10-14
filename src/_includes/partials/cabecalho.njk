@@ -13,7 +13,8 @@
 			<ul class="o-nav__lista">
 			{%- for item in navegacao.principal %}
 				{%- if (not item.so_com_cases or temCases) and (not item.so_com_portfolio or temPortfolio) %}
-				{%- set atual = (page.url == item.url) or (item.submenu and page.url.startsWith("/servicos/")) %}
+				{#- Marcado na própria página e nas de dentro dela (ex.: Blog em /blog/<artigo>/). -#}
+				{%- set atual = (page.url == item.url) or (item.submenu and page.url.startsWith("/servicos/")) or (item.url != "/" and page.url and page.url.startsWith(item.url)) %}
 				<li class="o-nav__item{% if item.submenu %} o-nav__item--sub{% endif %}"{% if item.submenu %} data-o-sub{% endif %}>
 					<a class="o-nav__link" href="{{ item.url }}"{% if atual %} aria-current="page"{% endif %}>{{ item.rotulo }}</a>
 					{%- if item.submenu %}
