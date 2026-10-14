@@ -107,8 +107,7 @@
 		{%- for item in trabalhos %}
 			<li class="o-trabalho" data-categorias="{{ item.servicos | join(' ') }}">
 				<figure>
-					<span class="o-trabalho__barra" aria-hidden="true">projeto_{{ "0" + loop.index if loop.index < 10 else loop.index }}.jpg</span>
-					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 767px) 46vw, (max-width: 1100px) 30vw, 300px" }) | safe }}
+					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 46vw, (max-width: 1023px) 30vw, 310px", classePicture: "o-trabalho__imagem" }) | safe }}
 					<figcaption class="o-trabalho__legenda"><strong>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.titulo }}</a>{% else %}{{ item.titulo }}{% endif %}</strong><span>{{ item.rotulo }}</span></figcaption>
 				</figure>
 			</li>

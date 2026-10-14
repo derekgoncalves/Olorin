@@ -1,33 +1,48 @@
 # ============================================================
-# PORTFÓLIO — home (bloco Resultados), páginas de serviço e /portfolio/
+# PORTFÓLIO: home (bloco Resultados), páginas de serviço e /portfolio/
 # ------------------------------------------------------------
-# Tudo vai ao ar (dono, 13/10/2026). As imagens abaixo são ILUSTRATIVAS
-# (fotos de banco de imagem, com títulos de tipo de trabalho, sem nome de cliente)
-# e estão na lista de pendências para virar trabalho real.
+# Só trabalho real, com o nome do cliente (dono, 14/10/2026):
+#   - artes do time: projetos do Vinícius Mafra no Behance (recortes 4:5 dos PDFs);
+#   - cards de logo para clientes de site, tráfego e redes (logo centrado sobre uma cor da marca).
+#
+# Ordem: a home mostra os primeiros itens (limite em home.yml → resultados.limite, hoje 8;
+# no máximo 2 cards de logo entre eles). /portfolio/ mostra todos, nesta ordem.
+# Cada página de serviço mostra os itens que têm o slug dela em "servicos".
 #
 # Campos:
-#   titulo     tipo de trabalho (ou nome do cliente, quando for real e autorizado)
-#   rotulo     linha pequena abaixo do título
-#   imagem     id da imagem (src/assets/manifest.json ou manifest-<area>.json)
-#   servicos   slugs dos serviços: o trabalho aparece no portfólio da página de cada um
+#   titulo     nome do cliente ou do projeto
+#   rotulo     só o tipo geral de serviço, com " · " entre eles (Redes sociais · Tráfego pago)
+#   imagem     id da imagem em src/assets/manifest.json (todas na proporção 4:5)
+#   servicos   slugs dos serviços: identidade-visual, redes-sociais, material-impresso,
+#              site-e-loja-virtual, trafego-pago, rastreamento-e-relatorio
 #   link       opcional (site no ar, post no Instagram ou Behance)
 #
+# Para incluir um trabalho:
+#   1. salve a imagem em src/assets/img-src/portfolio/<nome>.webp, já recortada em 4:5
+#      (retrato, 1080 x 1350 px é o ideal; mínimo 640 x 800);
+#   2. crie a entrada "portfolio-<nome>" em src/assets/manifest.json (copie uma das existentes);
+#   3. acrescente uma linha em "itens" abaixo, na posição em que ele deve aparecer.
 # Para trocar uma imagem só pelo FTP (sem novo build): suba um arquivo com o MESMO
 # nome em /assets/img/ (as larguras e formatos estão em docs/PENDENCIAS.md).
 # ============================================================
 filtros:
-  - { id: identidade-visual, rotulo: Identidade }
-  - { id: redes-sociais, rotulo: Redes }
+  - { id: identidade-visual, rotulo: Identidade visual }
+  - { id: redes-sociais, rotulo: Redes sociais }
   - { id: material-impresso, rotulo: Impressos }
   - { id: site-e-loja-virtual, rotulo: Sites }
-  - { id: trafego-pago, rotulo: Tráfego }
+  - { id: trafego-pago, rotulo: Tráfego pago }
+  - { id: rastreamento-e-relatorio, rotulo: Dados }
 itens:
-  # PENDENTE: as 8 imagens do portfólio são ilustrativas; trocar por trabalhos reais autorizados
-  - { titulo: Paleta e identidade, rotulo: Identidade visual, imagem: portfolio-marca-identidade, servicos: [identidade-visual] }
-  - { titulo: Campanha de marca, rotulo: Tráfego pago · Redes sociais, imagem: portfolio-redes-conteudo, servicos: [trafego-pago, redes-sociais] }
-  - { titulo: Site institucional, rotulo: Sites, imagem: portfolio-site-institucional, servicos: [site-e-loja-virtual] }
-  - { titulo: Tipografia e direção de arte, rotulo: Identidade visual, imagem: portfolio-campanha-trafego, servicos: [identidade-visual, material-impresso] }
-  - { titulo: Feed com cara de marca, rotulo: Redes sociais, imagem: portfolio-impresso-catalogo, servicos: [redes-sociais] }
-  - { titulo: Painel de resultados, rotulo: Tráfego pago · Dados, imagem: portfolio-campanha-google-ads, servicos: [trafego-pago, rastreamento-e-relatorio] }
-  - { titulo: Vitrine e ponto de venda, rotulo: Impressos, imagem: portfolio-impresso-loja, servicos: [material-impresso] }
-  - { titulo: Produção de conteúdo, rotulo: Redes sociais, imagem: portfolio-marca-producao, servicos: [redes-sociais] }
+  # PENDENTE: as 7 artes do Behance são recortes do PDF (print do navegador); trocar pelos arquivos originais
+  - { titulo: BRAVO Film Festival, rotulo: Identidade visual · Redes sociais, imagem: portfolio-bravo-film-festival, servicos: [identidade-visual, redes-sociais] }
+  - { titulo: Ambulatório da M.O.D.A, rotulo: Redes sociais, imagem: portfolio-ambulatorio-da-moda, servicos: [redes-sociais] }
+  - { titulo: Bença, rotulo: Identidade visual · Impressos, imagem: portfolio-benca, servicos: [identidade-visual, material-impresso] }
+  - { titulo: Viva Sem Veneno, rotulo: Redes sociais · Identidade visual, imagem: portfolio-viva-sem-veneno, servicos: [redes-sociais, identidade-visual] }
+  - { titulo: Cartas para o Futuro, rotulo: Identidade visual · Impressos, imagem: portfolio-cartas-para-o-futuro, servicos: [identidade-visual, material-impresso] }
+  - { titulo: iZETA, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-izeta, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
+  - { titulo: Anacleto Abduch, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-anacleto-abduch, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
+  - { titulo: Governo do Estado do RS, rotulo: Identidade visual · Impressos, imagem: portfolio-governo-rs, servicos: [identidade-visual, material-impresso] }
+  - { titulo: TORO AUDIO, rotulo: Redes sociais, imagem: portfolio-toro-audio, servicos: [redes-sociais] }
+  - { titulo: John Deere, rotulo: Tráfego pago, imagem: portfolio-john-deere, servicos: [trafego-pago] }
+  # PENDENTE: logo real da Central Sul Móveis (hoje o card mostra só o nome em letreiro)
+  - { titulo: Central Sul Móveis, rotulo: Tráfego pago, imagem: portfolio-central-sul-moveis, servicos: [trafego-pago] }

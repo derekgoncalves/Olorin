@@ -1,7 +1,9 @@
-# Página /portfolio/ — só existe quando houver trabalho publicado em src/content/portfolio.yml.
+# Página /portfolio/: só existe quando houver trabalho em src/content/portfolio.yml.
+# Os trabalhos são do time da Olorin, inclusive projetos que cada um fez para estas marcas
+# antes da agência (como as artes do Behance do Vinícius).
 etiqueta: Portfólio
-titulo: Feito pela Olorin.
-sub: Identidade visual, peças gráficas, redes sociais, sites e campanhas. Use os filtros para ver cada frente.
+titulo: Feito pelo nosso time.
+sub: Projetos do time da Olorin, inclusive o que cada um de nós já fez para estas marcas.
 
 cases:
   etiqueta: Cases

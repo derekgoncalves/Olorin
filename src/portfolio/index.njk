@@ -9,13 +9,13 @@ pagination:
   size: 200
   alias: lista
 permalink: /portfolio/
-titulo: Portfólio de design e sites | Olorin Digital
-descricao: Identidade visual, peças gráficas, redes sociais e sites criados pela Olorin Digital, agência de marketing de Curitiba.
+titulo: Portfólio de design, sites e tráfego | Olorin Digital
+descricao: Identidade visual, redes sociais, impressos, sites e tráfego pago feitos pelo time da Olorin Digital, agência de marketing de Curitiba.
 migalhas:
   - { nome: Home, url: / }
   - { nome: Portfólio, url: /portfolio/ }
 ---
-{#- Portfólio completo. Só é gerado se houver ao menos 1 item com "publicado: true" em src/content/portfolio.yml. -#}
+{#- Portfólio completo: todos os itens de src/content/portfolio.yml (a página só é gerada se houver ao menos 1). -#}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set h = conteudo.paginas.portfolio -%}
 <section class="o-pagina-topo o-servico-topo o-ctx-preto" data-secao="portfolio-hero">

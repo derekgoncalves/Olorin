@@ -1,4 +1,6 @@
-/* Portfólio com filtros (botões com aria-pressed). */
+/* Portfólio: filtros (botões com aria-pressed) e grade de trabalhos.
+   Cada card: imagem 4:5 sem borda + legenda emoldurada (título e tipo de serviço).
+   Grade: 4 colunas a partir de 1024 px, 3 de 720 a 1023 px e 2 abaixo disso. */
 .o-filtros {
 	display: flex;
 	flex-wrap: wrap;
@@ -17,11 +19,7 @@
 	letter-spacing: 0.03em;
 	text-transform: uppercase;
 	cursor: pointer;
-	transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform var(--dur-rapida) var(--curva), box-shadow var(--dur-rapida) var(--curva);
-}
-.o-filtro:hover {
-	transform: translate(-2px, -2px);
-	box-shadow: 3px 3px 0 var(--cor-texto);
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 .o-filtro[aria-pressed="true"] {
 	border-color: var(--cor-destaque);
@@ -29,53 +27,46 @@
 	color: var(--cor-sobre-destaque);
 }
 .o-trabalhos {
-	columns: 4 220px;
-	column-gap: 12px;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: clamp(12px, 1.4vw, 20px);
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
-.o-trabalho {
-	margin: 0 0 12px;
-	break-inside: avoid;
+.o-trabalhos > .o-trabalho {
+	display: flex;
+	min-width: 0;
+	margin: 0;
 }
-.o-trabalho[hidden] {
+.o-trabalhos > .o-trabalho[hidden] {
 	display: none;
 }
 .o-trabalho figure {
-	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 	margin: 0;
-	overflow: hidden;
-	border: var(--borda) solid var(--cor-texto);
-	background: var(--preto);
-	animation: o-surgir 0.45s var(--curva) both;
 }
-.o-trabalho img {
+.o-trabalho__imagem {
+	display: block;
+	aspect-ratio: 4 / 5;
+	overflow: hidden;
+	background: #1a1a1a;
+}
+.o-trabalho__imagem img {
 	display: block;
 	width: 100%;
-	height: auto;
-	transition: transform 0.6s var(--curva);
-}
-.o-trabalho__barra {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 2;
-	padding: 6px 10px;
-	background: var(--branco);
-	color: var(--preto);
-	font-family: var(--fonte-pixel);
-	font-size: 12px;
-	transform: translateY(-100%);
-	transition: transform 0.35s var(--curva);
+	height: 100%;
+	object-fit: cover;
 }
 .o-trabalho__legenda {
 	display: flex;
+	flex: 1 1 auto;
 	flex-direction: column;
-	gap: 2px;
-	padding: 10px 12px 12px;
-	border-top: var(--borda) solid var(--cor-texto);
+	gap: 4px;
+	padding: 12px 14px 14px;
+	border: var(--borda) solid var(--cor-texto);
 	background: var(--cor-fundo);
 	color: var(--cor-texto);
 }
@@ -87,17 +78,52 @@
 	text-transform: uppercase;
 	overflow-wrap: break-word;
 }
+.o-trabalho__legenda a {
+	color: inherit;
+}
 .o-trabalho__legenda span {
 	font-size: 13px;
+	line-height: 1.35;
 	color: var(--cor-apoio);
 	overflow-wrap: break-word;
 }
-.o-trabalho figure > picture {
-	overflow: hidden;
+
+@media (max-width: 1023px) {
+	.o-trabalhos {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
 }
-.o-trabalho:hover img {
-	transform: scale(1.04);
+@media (max-width: 719px) {
+	.o-trabalhos {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 10px;
+	}
+	.o-trabalho__legenda {
+		padding: 10px 10px 12px;
+	}
+	.o-trabalho__legenda strong {
+		font-size: 13px;
+	}
+	.o-trabalho__legenda span {
+		font-size: 12px;
+	}
 }
-.o-trabalho:hover .o-trabalho__barra {
-	transform: none;
+
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.o-pausado) .o-filtro {
+		transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform var(--dur-rapida) var(--curva), box-shadow var(--dur-rapida) var(--curva);
+	}
+	html:not(.o-pausado) .o-filtro:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 3px 3px 0 var(--cor-texto);
+	}
+	html:not(.o-pausado) .o-trabalho figure {
+		animation: o-surgir 0.45s var(--curva) both;
+	}
+	html:not(.o-pausado) .o-trabalho__imagem img {
+		transition: transform 0.6s var(--curva);
+	}
+	html:not(.o-pausado) .o-trabalho:hover .o-trabalho__imagem img {
+		transform: scale(1.04);
+	}
 }
