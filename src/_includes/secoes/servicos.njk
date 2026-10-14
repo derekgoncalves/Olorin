@@ -16,11 +16,12 @@
 			{{ ui.cardServico(s, "h3", loop.index) }}
 		{%- endfor %}
 		</div>
-	</div>
-	<div class="o-faixa-cta o-ctx-branco">
-		<div class="o-wrap o-faixa-cta__dentro">
-			<p class="o-faixa-cta__texto">{{ t.faixa_texto }}</p>
-			<a class="o-btn o-btn--preto" href="{{ waLink('servicos-faixa') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.faixa_botao }}</a>
+		{#- Fecho da grade, no mesmo fundo preto: "Não sabe por onde começar?" + WhatsApp. -#}
+		{%- if t.faixa_texto %}
+		<div class="o-servicos__fim">
+			<p class="o-servicos__fim-texto">{{ t.faixa_texto }}</p>
+			<a class="o-btn o-btn--verde o-servicos__fim-botao" href="{{ waLink('servicos-faixa') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.faixa_botao }}</a>
 		</div>
+		{%- endif %}
 	</div>
 </section>

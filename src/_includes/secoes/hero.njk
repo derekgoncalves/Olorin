@@ -7,7 +7,8 @@
 	<div class="o-wrap o-hero__grade">
 		<div class="o-hero__texto">
 			<p class="o-etiqueta o-hero__linha">{{ h.linha_superior }}</p>
-			<h1 class="o-hero__titulo">{{ h.titulo_1 }}<br> {{ h.titulo_2 }} <span class="o-hero__destaque">{{ h.titulo_destaque }}</span></h1>
+			{#- Título em 2 partes: a chamada (linha menor) e a promessa (maior, com o destaque verde). -#}
+			<h1 class="o-hero__titulo"><span class="o-hero__t1">{{ h.titulo_1 }}</span> <span class="o-hero__t2">{{ h.titulo_2 }} <span class="o-hero__destaque">{{ h.titulo_destaque }}</span></span></h1>
 			<p class="o-hero__paragrafo">{{ h.paragrafo }}</p>
 			{%- if h.atalho %}
 			{#- Atalho: o WhatsApp digitado aqui vai para o formulário do Raio-X (bloco 4). Sem JS, só leva até ele. -#}

@@ -12,8 +12,9 @@
 			</div>
 			<p class="o-apoio">{{ t.texto }}</p>
 		</div>
+		{#- Sempre do menor para o maior preço, em qualquer largura (o "Mais procurado" fica no lugar dele). -#}
 		<div class="o-planos__grade">
-		{%- for plano in p.planos %}
+		{%- for plano in p.planos | sort(false, false, "valor") %}
 			{{ ui.cardPlano(plano) }}
 		{%- endfor %}
 		</div>
@@ -36,7 +37,7 @@
 					<p class="o-projeto__nome">{{ item.nome }}</p>
 					<p class="o-projeto__preco"><span class="o-projeto__de">{{ item.de }}</span> <strong>{{ item.valor | reais }}</strong></p>
 					<p class="o-projeto__texto">{{ item.texto }}</p>
-					<a class="o-btn o-btn--verde o-btn--pequeno" href="#orcamento" data-o-plano="{{ item.nome | lower | replace(' ', '-') }}" data-servicos="{{ item.servicos_preselecao | join(' ') }}" data-cta="projeto-{{ loop.index }}">{{ pj.botao }}<span class="o-sr"> — {{ item.nome }}</span></a>
+					<a class="o-btn o-btn--verde o-btn--pequeno" href="#orcamento" data-o-plano="{{ item.nome | lower | replace(' ', '-') }}" data-servicos="{{ item.servicos_preselecao | join(' ') }}" data-cta="projeto-{{ loop.index }}">{{ pj.botao }}<span class="o-sr">: {{ item.nome }}</span></a>
 				</li>
 			{%- endfor %}
 			</ul>
