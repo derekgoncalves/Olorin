@@ -117,6 +117,12 @@ export function listarArtigos() {
 		});
 }
 
+/** "rascunho: true" (ou "sim") no front matter: o artigo fica fora do site. */
+export function ehRascunho(dados) {
+	const valor = dados && dados.rascunho;
+	return valor === true || /^(true|sim)$/i.test(String(valor ?? '').trim());
+}
+
 /** Foto própria do artigo: o campo "imagem" ou um arquivo com o mesmo nome do artigo. */
 export function fotoPropria(slug, dados) {
 	if (dados && dados.imagem) {
@@ -239,6 +245,11 @@ export function registrarBlog(eleventyConfig) {
 	// (o formato "md" está ligado em eleventy.config.js → templateFormats)
 	// O modelo para copiar (_modelo.md) não vira página.
 	eleventyConfig.ignores.add(`${PASTA_ARTIGOS}/_*.md`);
+	// Artigo com "rascunho: true" também não vira página (some do site, da home, do sitemap e do feed).
+	// No "npm run dev", reinicie o comando depois de ligar ou desligar o rascunho.
+	for (const a of listarArtigos()) {
+		if (ehRascunho(a.dados)) eleventyConfig.ignores.add(`${PASTA_ARTIGOS}/${path.basename(a.arquivo)}`);
+	}
 	eleventyConfig.addWatchTarget(PASTA_ARTIGOS);
 
 	// Links para outros sites abrem em nova aba.
@@ -258,14 +269,14 @@ export function registrarBlog(eleventyConfig) {
 	eleventyConfig.addCollection('artigos', (api) =>
 		api
 			.getAll()
-			.filter((item) => ehArtigo(item) && item.url && !item.data.rascunho)
+			.filter((item) => ehArtigo(item) && item.url && !ehRascunho(item.data))
 			.sort(porData),
 	);
 
 	// Artigos separados por categoria (ordem alfabética), cada grupo do mais novo para o mais antigo.
 	eleventyConfig.addCollection('blogCategorias', (api) => {
 		const grupos = new Map();
-		for (const item of api.getAll().filter((i) => ehArtigo(i) && i.url && !i.data.rascunho).sort(porData)) {
+		for (const item of api.getAll().filter((i) => ehArtigo(i) && i.url && !ehRascunho(i.data)).sort(porData)) {
 			const a = item.data.artigo;
 			if (!grupos.has(a.categoriaSlug)) grupos.set(a.categoriaSlug, { nome: a.categoria, slug: a.categoriaSlug, tema: a.tema, artigos: [] });
 			grupos.get(a.categoriaSlug).artigos.push(item);

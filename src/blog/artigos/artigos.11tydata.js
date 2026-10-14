@@ -1,14 +1,14 @@
 // Vale para todos os artigos desta pasta (um arquivo .md por artigo). Como escrever: docs/BLOG.md.
 // O endereço sai do nome do arquivo: do-clique-a-matricula.md → /blog/do-clique-a-matricula/
-import { prepararArtigo, slugificar } from '../../../scripts/blog.mjs';
+import { ehRascunho, prepararArtigo, slugificar } from '../../../scripts/blog.mjs';
 
 export default {
 	layout: 'layouts/artigo.njk',
 	modo: 'hub',
 	pagina_dados: 'blog',
 	eleventyComputed: {
-		// "rascunho: true" no artigo: a página não é gerada (some do site, da home e do sitemap).
-		permalink: (d) => (d.rascunho === true ? false : `/blog/${slugificar(d.page.fileSlug)}/`),
+		// "rascunho: true" no artigo: a página não é gerada (o arquivo já fica de fora em scripts/blog.mjs).
+		permalink: (d) => (ehRascunho(d) ? false : `/blog/${slugificar(d.page.fileSlug)}/`),
 		artigo: (d) => prepararArtigo(d),
 		// (o Eleventy roda cada função uma vez "de teste" com valores vazios: daí os "?.")
 		titulo: (d) => d.artigo?.tituloPagina,
