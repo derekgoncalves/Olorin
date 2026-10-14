@@ -198,7 +198,7 @@ fontes_extra:
 			<p class="o-edu-dado__texto">{{ t.dado.antes }} <strong>{{ t.dado.numero }}</strong> {{ t.dado.depois }}</p>
 			<p class="o-edu-dado__fonte">Fonte: <a href="{{ t.dado.fonte_url }}" target="_blank" rel="noopener">{{ t.dado.fonte }}<span class="o-sr"> (abre em nova aba)</span></a></p>
 		</div>
-		{{ formulario({ id: "form-raio-x", posicao: "topo", modo: "educacao", origemWa: "educacao-form-raio-x" }) }}
+		{{ formulario({ id: "form-raio-x", posicao: "topo", modo: "educacao", origemWa: "educacao-form-raio-x", nomeServico: E.whatsapp.assunto_form }) }}
 	</div>
 </section>
 
@@ -381,7 +381,7 @@ fontes_extra:
 			<h2 class="o-edu-h2 o-edu-h2--g" id="edu-final-titulo">{{ t.titulo }}</h2>
 		</div>
 		<div class="o-edu-final__grade">
-			{{ formulario({ id: "form-fim", posicao: "fim", modo: "educacao", origemWa: "educacao-form-fim" }) }}
+			{{ formulario({ id: "form-fim", posicao: "fim", modo: "educacao", origemWa: "educacao-form-fim", nomeServico: E.whatsapp.assunto_form }) }}
 			<div class="o-edu-final__lado">
 				<ul class="o-lista-pixel o-edu-final__lista">
 				{%- for item in t.lista %}<li>{{ item }}</li>{% endfor %}

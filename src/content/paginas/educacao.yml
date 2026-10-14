@@ -26,6 +26,15 @@ whatsapp:
   padrao: Oi! Vim pela página Olorin Educação e quero o Raio-X da minha escola.
   equipe: Oi! Vim pela página Olorin Educação e quero falar com a equipe.
   duvida: Oi! Vim pela página Olorin Educação e tenho uma dúvida.
+  # Assunto do link "Chame no WhatsApp" embaixo dos formulários ("...quero falar sobre ...").
+  assunto_form: o Raio-X da minha escola
+
+# Formulário: o mesmo do site (formulario.yml). Só nesta página, estes textos valem por cima dos
+# de formulario.yml (ver src/educacao/index.11tydata.js). Use só textos aqui, sem listas.
+formulario:
+  placeholders:
+    site: "@suaescola ou suaescola.com.br"
+    mensagem: "Ex.: somos uma escola de idiomas e queremos mais matrículas para o próximo semestre."
 
 cabecalho:
   menu:

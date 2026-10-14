@@ -39,11 +39,25 @@ function marcarMes() {
 	}
 }
 
+/* Peças que começam abaixo da dobra. Mede primeiro a seção do <main> e só mede a peça quando a
+   seção já começa dentro da tela, para não obrigar o navegador a desenhar seções que ele ainda
+   deixou de lado (content-visibility). */
+function abaixoDaTela(elementos, limite) {
+	const topos = new Map();
+	return elementos.filter((el) => {
+		const secao = el.closest('.o-main > *');
+		if (secao && secao !== el) {
+			if (!topos.has(secao)) topos.set(secao, secao.getBoundingClientRect().top);
+			if (topos.get(secao) > limite) return true;
+		}
+		return el.getBoundingClientRect().top > limite;
+	});
+}
+
 function iniciarEntradas() {
 	if (movimentoReduzido || !temIO || pausado()) return;
-	const altura = window.innerHeight;
 	/* Primeiro só lê as posições; depois escreve as classes. */
-	const abaixo = $$('[data-o-edu-entra]').filter((el) => el.getBoundingClientRect().top > altura * 0.92);
+	const abaixo = abaixoDaTela($$('[data-o-edu-entra]'), window.innerHeight * 0.92);
 	if (!abaixo.length) return;
 	abaixo.forEach((el) => el.classList.add('o-edu-espera'));
 	const io = new IntersectionObserver(
