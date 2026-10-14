@@ -21,6 +21,9 @@
 	cursor: pointer;
 	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
+.o-filtro__curto {
+	display: none;
+}
 .o-filtro[aria-pressed="true"] {
 	border-color: var(--cor-destaque);
 	background: var(--cor-destaque);
@@ -48,17 +51,24 @@
 	width: 100%;
 	margin: 0;
 }
+/* Sem borda; só uma linha fina por cima da beirada, para artes de fundo preto (ou claro)
+   não se misturarem com o fundo da página. */
 .o-trabalho__imagem {
 	display: block;
 	aspect-ratio: 4 / 5;
 	overflow: hidden;
 	background: #1a1a1a;
+	outline: 1px solid rgba(255, 255, 255, 0.16);
+	outline-offset: -1px;
 }
 .o-trabalho__imagem img {
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+.o-ctx-branco .o-trabalho__imagem {
+	outline-color: rgba(0, 0, 0, 0.1);
 }
 .o-trabalho__legenda {
 	display: flex;
@@ -81,11 +91,16 @@
 .o-trabalho__legenda a {
 	color: inherit;
 }
-.o-trabalho__legenda span {
+.o-trabalho__tipo {
 	font-size: 13px;
 	line-height: 1.35;
 	color: var(--cor-apoio);
 	overflow-wrap: break-word;
+}
+/* Cada tipo de serviço é um bloco: a linha quebra entre eles, não no meio de "Tráfego pago". */
+.o-trabalho__tipo > span {
+	display: inline-block;
+	max-width: 100%;
 }
 
 @media (max-width: 1023px) {
@@ -94,6 +109,12 @@
 	}
 }
 @media (max-width: 719px) {
+	.o-filtro__longo {
+		display: none;
+	}
+	.o-filtro__curto {
+		display: inline;
+	}
 	.o-trabalhos {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 10px;
@@ -102,9 +123,9 @@
 		padding: 10px 10px 12px;
 	}
 	.o-trabalho__legenda strong {
-		font-size: 13px;
+		font-size: clamp(11px, 3.5vw, 13px);
 	}
-	.o-trabalho__legenda span {
+	.o-trabalho__tipo {
 		font-size: 12px;
 	}
 }

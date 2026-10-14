@@ -99,7 +99,7 @@
 			<button class="o-filtro" type="button" aria-pressed="true" data-filtro="*">{{ r.filtro_todos }}</button>
 			{%- for f in conteudo.portfolio.filtros %}
 			{%- if (trabalhos | filtrarPor("servicos", f.id)).length %}
-			<button class="o-filtro" type="button" aria-pressed="false" data-filtro="{{ f.id }}">{{ f.rotulo }}</button>
+			<button class="o-filtro" type="button" aria-pressed="false" data-filtro="{{ f.id }}">{% if f.curto %}<span class="o-filtro__longo">{{ f.rotulo }}</span><span class="o-filtro__curto">{{ f.curto }}</span>{% else %}{{ f.rotulo }}{% endif %}</button>
 			{%- endif %}
 			{%- endfor %}
 		</div>
@@ -108,7 +108,7 @@
 			<li class="o-trabalho" data-categorias="{{ item.servicos | join(' ') }}">
 				<figure>
 					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 46vw, (max-width: 1023px) 30vw, 310px", classePicture: "o-trabalho__imagem" }) | safe }}
-					<figcaption class="o-trabalho__legenda"><strong>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.titulo }}</a>{% else %}{{ item.titulo }}{% endif %}</strong><span>{{ item.rotulo }}</span></figcaption>
+					<figcaption class="o-trabalho__legenda"><strong>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.titulo }}</a>{% else %}{{ item.titulo }}{% endif %}</strong><span class="o-trabalho__tipo">{% for tipo in item.rotulo.split(" · ") %}<span>{{ tipo }}{% if not loop.last %} ·{% endif %}</span>{% if not loop.last %} {% endif %}{% endfor %}</span></figcaption>
 				</figure>
 			</li>
 		{%- endfor %}

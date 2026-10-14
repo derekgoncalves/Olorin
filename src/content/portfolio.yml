@@ -25,12 +25,13 @@
 # Para trocar uma imagem só pelo FTP (sem novo build): suba um arquivo com o MESMO
 # nome em /assets/img/ (as larguras e formatos estão em docs/PENDENCIAS.md).
 # ============================================================
+# Filtros: só aparecem os que têm trabalho. "curto" é o nome usado no celular (cabe em 2 linhas).
 filtros:
-  - { id: identidade-visual, rotulo: Identidade visual }
-  - { id: redes-sociais, rotulo: Redes sociais }
+  - { id: identidade-visual, rotulo: Identidade visual, curto: Identidade }
+  - { id: redes-sociais, rotulo: Redes sociais, curto: Redes }
   - { id: material-impresso, rotulo: Impressos }
   - { id: site-e-loja-virtual, rotulo: Sites }
-  - { id: trafego-pago, rotulo: Tráfego pago }
+  - { id: trafego-pago, rotulo: Tráfego pago, curto: Tráfego }
   - { id: rastreamento-e-relatorio, rotulo: Dados }
 itens:
   # PENDENTE: as 7 artes do Behance são recortes do PDF (print do navegador); trocar pelos arquivos originais
