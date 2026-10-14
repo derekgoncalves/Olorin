@@ -12,7 +12,9 @@ const ALVOS =
 	'.o-etiqueta, .o-titulo, .o-janela, .o-check, .o-card-servico, .o-etapa, .o-numero, .o-case, .o-plano, .o-faq__item, .o-pessoa, .o-entrega, .o-dor, .o-passo, .o-painel, .o-calc, .o-trabalho, .o-depoimento, .o-combinacao';
 
 /* Quebra o texto em palavras sem mudar o que é lido: os espaços continuam como nós de texto
-   e o leitor de tela lê a mesma frase. Devolve quantas palavras animam (no máximo 11). */
+   e o leitor de tela lê a mesma frase. Palavras com hífen ("caixa-preta") viram duas partes,
+   para a linha quebrar no mesmo lugar que o texto inteiro (sem pulo quando o texto volta).
+   Devolve quantas palavras animam (no máximo 11). */
 function dividir(el) {
 	const nos = [];
 	const andar = doc.createTreeWalker(el, 4);
@@ -26,11 +28,15 @@ function dividir(el) {
 				f.appendChild(doc.createTextNode(parte));
 				return;
 			}
-			const s = doc.createElement('span');
-			s.className = 'o-mov-p';
-			s.style.setProperty('--i', Math.min(i++, 10));
-			s.textContent = parte;
-			f.appendChild(s);
+			const pedacos = parte.match(/[^-]*-+|[^-]+$/g) || [parte];
+			const indice = Math.min(i++, 10);
+			pedacos.forEach((pedaco) => {
+				const s = doc.createElement('span');
+				s.className = 'o-mov-p';
+				s.style.setProperty('--i', indice);
+				s.textContent = pedaco;
+				f.appendChild(s);
+			});
 		});
 		no.parentNode.replaceChild(f, no);
 	});
