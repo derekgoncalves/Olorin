@@ -26,10 +26,10 @@ seo:
 
 hero:
   linha_superior: Agência de marketing digital · Curitiba para todo o Brasil
-  titulo_1: Cuidado
-  titulo_2: não tem
-  titulo_destaque: tamanho.
-  paragrafo: Anúncio, redes, marca, site e impresso cuidados por um time inteiro, como se você fosse o único cliente. Da menor à maior organização, com cada resultado medido.
+  titulo_1: "Do clique ao cliente:"
+  titulo_2: resultado que
+  titulo_destaque: dá pra ver.
+  paragrafo: Anúncio, redes, marca, site e impresso feitos por um time inteiro, como se você fosse o único cliente. Da menor à maior organização, com cada resultado medido.
   atalho:
     rotulo: Seu WhatsApp com DDD
     placeholder: (41) 99999-9999
@@ -70,7 +70,7 @@ resultados:
   cases_titulo: De perto.
   case_link: Ver o serviço
   portfolio_etiqueta: Portfólio
-  portfolio_titulo: Dá para ver o cuidado.
+  portfolio_titulo: Resultado que dá pra ver.
   portfolio_texto: Identidade, redes, impressos, sites e campanhas feitos pelo time da Olorin.
   filtro_todos: Tudo
   limite: 8
