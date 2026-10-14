@@ -31,9 +31,12 @@ perguntas:
   - id: faq-fidelidade
     pergunta: Vocês trabalham com contrato de fidelidade?
     resposta: Nos formatos mensais (serviço avulso, Gestão mensal e Marketing 360), o contrato mínimo é de 3 meses. Depois, segue mês a mês, e para encerrar basta avisar com 30 dias, sem multa. Entregas pontuais e projetos de site não têm contrato mensal.
+  - id: faq-arrependimento
+    pergunta: Posso desistir depois de contratar?
+    resposta: "Sim. Se você contratou a distância, pelo site, WhatsApp ou e-mail, pode desistir em até 7 dias da assinatura, com devolução do que pagou. Depois disso, vale o contrato: mínimo de 3 meses nos formatos mensais e, depois, aviso de 30 dias, sem multa."
   - id: faq-quem-cria
     pergunta: Quem cria as artes dos anúncios e dos posts?
-    resposta: O time da Olorin, com direção de criação do Vinicius Mafra. Quando um projeto pede um especialista a mais, como fotografia, vídeo ou programação, a gente coordena tudo e responde pelo resultado. Por isso o anúncio, o post e o impresso saem com a mesma cara.
+    resposta: O time da Olorin, com direção de criação do Vinicius Mafra. Quando um projeto pede um especialista a mais, como fotografia, vídeo ou programação, a gente coordena tudo e responde pela entrega. Por isso o anúncio, o post e o impresso saem com a mesma cara.
   - id: faq-impressao
     pergunta: Vocês fazem a impressão ou só entregam o arquivo?
     resposta: Entregamos o arquivo fechado, pronto para a gráfica. Se precisar, indicamos gráficas parceiras e acompanhamos a prova com você.

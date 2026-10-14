@@ -63,7 +63,7 @@ hero:
   link_whatsapp: ou fale agora no WhatsApp
   prova:
     - Preço aberto
-    - Sem multa rescisória
+    - Sem multa depois de 3 meses
     - Custo por matrícula todo mês
   # Exemplo ilustrativo (não é cliente): mostra o Raio-X como um boletim, com nota por canal.
   boletim:

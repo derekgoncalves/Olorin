@@ -87,7 +87,7 @@ window.OLORIN_IDS = {
 
 Cache: o `.htaccess` manda o navegador conferir o `olorin-ids.js` a cada visita (`Cache-Control: no-cache`, sem `Expires`). Ele tem menos de 2 KB e não atrapalha a primeira pintura (`defer`).
 
-**Com GTM, onde ficam GA4, Pixel e Google Ads?** Nas variáveis do contêiner (seção 7.1). Se as duas variáveis do Google Ads do contêiner forem do tipo "Variável JavaScript" apontando para `OLORIN_CONFIG.adsNumero` e `OLORIN_CONFIG.adsLabel`, o ID e o rótulo do Ads também podem ficar só no `olorin-ids.js`. No `gtm-container.json` atual elas são constantes: troque no GTM.
+**Com GTM, onde ficam GA4, Pixel e Google Ads?** Nas variáveis do contêiner (seção 7.1). Se as duas variáveis do Google Ads do contêiner forem do tipo "Variável JavaScript" apontando para `OLORIN_CONFIG.adsNumero` e `OLORIN_CONFIG.adsLabel`, o ID e o rótulo do Ads também podem ficar só no `olorin-ids.js`. O `gtm-container.json` do repositório já vem assim (desde 14/10/2026): basta preencher `GADS_CONVERSION_ID` e `GADS_CONVERSION_LABEL` no `olorin-ids.js`.
 
 **Ao publicar um zip novo:** o zip traz um `olorin-ids.js` com os valores do `config.json`. Antes de subir, baixe o seu `olorin-ids.js` do servidor e, depois de descompactar, envie de volta (ou copie os IDs também para o `config.json` do projeto, e o zip já sai com eles).
 
@@ -396,7 +396,7 @@ Parâmetros do Pixel: `Lead` envia `content_name` = `servico_pagina` (ou `geral`
 3. Espaço de trabalho: **Existente** (Default Workspace).
 4. Opção: **Mesclar** > **Renomear tags, acionadores e variáveis conflitantes**.
 5. Confirme. Vão aparecer 20 tags, 19 acionadores, 31 variáveis e 5 pastas.
-6. Em **Variáveis**, abra as 4 constantes e troque os `XXXX` pelos IDs reais (seção 8).
+6. Em **Variáveis**, abra as constantes de GA4 e Pixel e troque os `XXXX` pelos IDs reais (seção 8). As duas do Google Ads leem o `olorin-ids.js` sozinhas.
 7. Ainda não anuncia no Google ou na Meta? **Pause** as tags daquela ferramenta (clique com o botão direito na tag > Pausar). Assim elas não disparam com IDs falsos.
 8. **Visualizar** (seção 10). Só depois: **Enviar** > **Publicar**.
 

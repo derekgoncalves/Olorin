@@ -44,7 +44,7 @@ planos:
     calculadora_nome: Avulso
   - id: gestao-mensal
     nome: Gestão mensal
-    tag: Mais procurado
+    tag: Recomendado
     destaque: true
     para: Anúncios e conteúdo juntos, com quantidade definida
     de: ""
@@ -103,7 +103,7 @@ projetos:
     - nome: Ecommerce e sistemas web personalizados
       de: A partir de
       valor: 10000
-      texto: Loja virtual completa, com catálogo, pagamento, frete e rastreamento das vendas, ou um sistema web sob medida. Plataforma, domínio e hospedagem à parte.
+      texto: Loja virtual completa, com catálogo, pagamento, frete e rastreamento das vendas, ou um sistema web sob medida. Textos e fotos seus; plataforma, domínio e hospedagem à parte.
       servicos_preselecao: [site-e-loja-virtual, rastreamento-e-relatorio]
   botao: Pedir orçamento do projeto
   link: { texto: Ver como fazemos sites, url: /servicos/site-e-loja-virtual/ }
@@ -122,5 +122,5 @@ calculadora:
   resultado_prefixo: a partir de
   resultado_sufixo: por mês
   botao_wa: Mandar esta conta no WhatsApp
-  aviso: A verba vai direto para a Meta e o Google, na sua conta. A Olorin cobra só a gestão.
+  aviso: "A verba vai direto para a Meta e o Google, na sua conta. A Olorin cobra a gestão e, uma vez no início, a implantação: R$ 1.000 (Marketing 360: a partir de R$ 1.500). Formatos mensais com contrato mínimo de 3 meses."
   tabela_titulo: Custo total por mês (gestão + verba)
