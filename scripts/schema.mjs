@@ -4,7 +4,7 @@
  */
 import { textoPuro } from './filtros.mjs';
 
-export function montarSchema({ cfg, content, modo, url, descricao, migalhas, servico, faq, pessoas, imagemOg }) {
+export function montarSchema({ cfg, content, modo, url, descricao, migalhas, servico, faq, pessoas, artigo, blog, imagemOg }) {
 	const base = cfg.URL.replace(/\/$/, '');
 	const empresaId = `${base}/#empresa`;
 	const equipe = (content.equipe && content.equipe.pessoas) || [];
@@ -50,7 +50,8 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			publisher: { '@id': empresaId },
 		},
 		{
-			'@type': 'WebPage',
+			// /blog/ é uma página de coleção (lista de artigos); as demais, página comum.
+			'@type': blog ? 'CollectionPage' : 'WebPage',
 			'@id': `${url}#pagina`,
 			url,
 			description: descricao,
@@ -117,6 +118,34 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 	// pessoas: true (Quem somos, o time todo) ou o slug de uma pessoa (página de perfil).
 	if (pessoas) {
 		equipe.filter((p) => pessoas === true || pessoas === p.slug).forEach((p) => grafo.push(pessoa(p)));
+	}
+
+	// Blog: cada artigo é um BlogPosting; /blog/ é o Blog com a lista de artigos.
+	const blogId = `${base}/blog/#blog`;
+	const noBlog = { '@type': 'Blog', '@id': blogId, url: `${base}/blog/`, name: `Blog da ${cfg.NOME.split(' ')[0]}`, inLanguage: 'pt-BR', publisher: { '@id': empresaId } };
+	const absoluta = (caminho) => (caminho ? `${base}${caminho}` : undefined);
+	const postagem = (a, completa) => ({
+		'@type': 'BlogPosting',
+		'@id': `${base}${a.url}#artigo`,
+		url: `${base}${a.url}`,
+		headline: a.titulo,
+		description: completa ? a.descricao : undefined,
+		datePublished: a.data,
+		dateModified: a.atualizado || a.data,
+		inLanguage: 'pt-BR',
+		articleSection: a.categoria,
+		timeRequired: completa ? `PT${a.minutos}M` : undefined,
+		image: [absoluta(a.capaUrl), absoluta(a.og)].filter(Boolean),
+		author: { '@type': 'Person', '@id': `${base}/quem-somos/${a.autor.slug}/#pessoa`, name: a.autor.nome, url: `${base}/quem-somos/${a.autor.slug}/` },
+		publisher: { '@id': empresaId },
+		isPartOf: { '@id': blogId },
+		mainEntityOfPage: completa ? { '@id': `${url}#pagina` } : undefined,
+	});
+	if (artigo && artigo.autor) {
+		grafo.push(postagem(artigo, true), noBlog);
+	}
+	if (blog) {
+		grafo.push({ ...noBlog, description: descricao, mainEntityOfPage: { '@id': `${url}#pagina` }, blogPost: blog.map((item) => postagem(item.data.artigo, false)) });
 	}
 
 	return { '@context': 'https://schema.org', '@graph': JSON.parse(JSON.stringify(grafo)) };

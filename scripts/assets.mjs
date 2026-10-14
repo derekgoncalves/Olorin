@@ -58,6 +58,7 @@ export const ORDEM_CSS = [
 	'componentes/fundos.css', // fundos animados e interações de desktop (todas as páginas)
 	'componentes/home.css', // blocos novos da home (resultados, Raio-X, atalho do banner)
 	'componentes/perfil.css', // Quem somos e perfis da equipe
+	'componentes/blog.css', // Blog: bloco da home, /blog/ e artigos (fora do CSS da LP Educação)
 	'componentes/educacao.css', // LP Olorin Educação (tema próprio: .o-tema-educacao)
 	'animacoes.css',
 	'responsivo.css',
@@ -67,6 +68,8 @@ export const ORDEM_CSS = [
    completo na ordem acima; as outras páginas carregam o olorin.<hash>.css, sem estes arquivos
    (as fontes da LP também ficam fora do @font-face embutido delas). */
 const SO_EDUCACAO = ['componentes/educacao.css'];
+/* E o contrário: arquivos que a LP Olorin Educação não usa (ficam fora do CSS dela, que é mais justo). */
+const FORA_DA_EDUCACAO = ['componentes/blog.css'];
 
 /* Fontes pagas da marca. Métricas verticais iguais às das substitutas (medidas no manual)
    para que títulos, botões e etiquetas fiquem na mesma altura. */
@@ -120,7 +123,7 @@ export async function fontesLicenciadas() {
 
 async function construirCss({ prod, saida, educacao = false }) {
 	let css = '';
-	for (const arquivo of ORDEM_CSS.filter((a) => educacao || !SO_EDUCACAO.includes(a))) {
+	for (const arquivo of ORDEM_CSS.filter((a) => (educacao ? !FORA_DA_EDUCACAO.includes(a) : !SO_EDUCACAO.includes(a)))) {
 		const caminho = path.join('src/styles', arquivo);
 		if (!existsSync(caminho)) {
 			throw new Error(`CSS não encontrado: ${caminho} (confira ORDEM_CSS em scripts/assets.mjs)`);

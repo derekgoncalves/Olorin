@@ -32,11 +32,21 @@ eleventyExcludeFromCollections: true
 - {{ f.pergunta | textoPuro }} {{ f.resposta | textoPuro }}
 {%- endfor %}
 
+{%- if collections.artigos and collections.artigos.length %}
+
+## Blog
+Artigos práticos do time da Olorin, por categoria, em [{{ "/blog/" | urlAbsoluta }}]({{ "/blog/" | urlAbsoluta }}).
+{% for item in collections.artigos %}
+- [{{ item.data.artigo.titulo }}]({{ item.data.artigo.url | urlAbsoluta }}) ({{ item.data.artigo.categoria }}, {{ item.data.artigo.autor.nome }}, {{ item.data.artigo.data | dataBR }}): {{ item.data.artigo.descricao }}
+{%- endfor %}
+{%- endif %}
+
 ## Páginas
 - [Serviços]({{ "/servicos/" | urlAbsoluta }})
 - [Planos e preços]({{ "/planos/" | urlAbsoluta }})
 - [Como trabalhamos (Método Olorin)]({{ "/como-trabalhamos/" | urlAbsoluta }})
 - [Portfólio]({{ "/portfolio/" | urlAbsoluta }})
+- [Blog: artigos sobre tráfego pago, redes sociais e captação]({{ "/blog/" | urlAbsoluta }})
 - [Olorin Educação: marketing para escolas e cursos]({{ "/educacao/" | urlAbsoluta }})
 - [Quem somos: a Olorin e a equipe]({{ "/quem-somos/" | urlAbsoluta }})
 {%- for p in conteudo.equipe.pessoas %}

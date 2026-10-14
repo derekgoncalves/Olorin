@@ -252,6 +252,29 @@ html:not(.js) .o-nav__item--sub:focus-within .o-sub {
 	background: var(--verde);
 }
 
+/* Menu com 7 itens (Blog entrou em 14/10/2026): espaçamento um pouco mais justo para tudo caber
+   numa linha só, sem quebrar os botões, de 1101 a 1440 px. Só no cabeçalho do site (a LP Educação
+   tem o dela); seletores mais fortes para valer por cima de responsivo.css. */
+@media (max-width: 1366px) {
+	.o-topo:not(.o-edu-topo) .o-topo__dentro {
+		gap: 20px;
+	}
+	.o-topo:not(.o-edu-topo) .o-nav__lista {
+		gap: 14px;
+	}
+}
+@media (max-width: 1180px) {
+	.o-topo:not(.o-edu-topo) .o-topo__dentro {
+		gap: 14px;
+	}
+	.o-topo:not(.o-edu-topo) .o-nav__lista {
+		gap: 11px;
+	}
+	.o-topo:not(.o-edu-topo) .o-nav__link {
+		letter-spacing: 0.05em;
+	}
+}
+
 /* Cabeçalho mínimo (landings de campanha) */
 .o-topo--minimo .o-topo__unico {
 	margin-left: auto;

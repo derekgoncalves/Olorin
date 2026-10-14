@@ -12,6 +12,7 @@ import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import sharp from 'sharp';
+import { PASTA_IMAGENS as PASTA_BLOG, EXTENSOES_IMAGEM, idImagemBlog } from './blog.mjs';
 
 const QUALIDADE = { avif: 52, webp: 74, jpg: 78 };
 
@@ -53,7 +54,29 @@ async function lerManifestos() {
 			imagens[id] = cfg;
 		}
 	}
+	// Blog: toda imagem de src/assets/img-src/blog/ (fotos dos artigos e capas/ geradas por
+	// "npm run capas") entra sozinha, sem mexer no manifesto. Id: "blog-" + nome do arquivo
+	// sem extensão ("capas/meu-artigo.jpg" → "blog-capas-meu-artigo"). Ver docs/BLOG.md.
+	for (const [id, cfg] of Object.entries(await imagensDoBlog())) {
+		if (imagens[id]) throw new Error(`Imagem "${id}" do blog repete um id do manifesto (renomeie o arquivo em ${PASTA_BLOG}/).`);
+		imagens[id] = cfg;
+	}
 	return { imagens };
+}
+
+async function imagensDoBlog(pasta = PASTA_BLOG, saida = {}) {
+	if (!existsSync(pasta)) return saida;
+	for (const item of await readdir(pasta, { withFileTypes: true })) {
+		const caminho = path.join(pasta, item.name);
+		if (item.isDirectory()) {
+			await imagensDoBlog(caminho, saida);
+		} else if (EXTENSOES_IMAGEM.test(item.name)) {
+			const id = idImagemBlog(path.relative(PASTA_BLOG, caminho));
+			if (saida[id]) throw new Error(`Duas imagens do blog com o mesmo nome: ${caminho} (troque o nome de uma delas).`);
+			saida[id] = { arquivo_original: caminho, alt: '', larguras: [480, 800, 1200, 1600], largura_padrao: 800, formatos: ['avif', 'webp'] };
+		}
+	}
+	return saida;
 }
 
 export async function processarImagens({ saida }) {

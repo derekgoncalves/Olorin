@@ -1,0 +1,28 @@
+{#-
+	Componentes do blog. Importar com:
+	{% import "components/blog.njk" as blog with context %}
+	"a" é o objeto "artigo" de cada artigo (item.data.artigo; ver prepararArtigo em scripts/blog.mjs).
+-#}
+
+{#- Capa do artigo: foto própria ou capa gerada (npm run capas). Sem arquivo, um bloco tipográfico. -#}
+{% macro capa(a, sizes, prioridade=false, classe="") %}
+{%- if a.capa and imagens[a.capa] -%}
+{{ imagem(imagens, a.capa, { alt: a.capaAlt, sizes: sizes, prioridade: prioridade, classePicture: ("o-capa " + classe) | trim }) | safe }}
+{%- else -%}
+<div class="o-capa o-capa--falsa o-capa--{{ a.tema }} {{ classe }}" aria-hidden="true"><span>{{ a.categoria }}</span></div>
+{%- endif -%}
+{% endmacro %}
+
+{#- Card de artigo: janela "<slug>.md", capa, categoria, título (link que cobre o card), resumo e data. -#}
+{% macro card(a, nivel="h3", sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 400px") %}
+<article class="o-card-artigo o-janela" data-artigo="{{ a.slug }}">
+	<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ a.slug }}.md</span><span class="o-janela__ctrl"></span></div>
+	{{ capa(a, sizes, false, "o-card-artigo__capa") }}
+	<div class="o-card-artigo__corpo">
+		<p class="o-card-artigo__categoria">{{ a.categoria }}</p>
+		<{{ nivel }} class="o-card-artigo__titulo"><a class="o-card-artigo__link" href="{{ a.url }}">{{ a.titulo }}</a></{{ nivel }}>
+		<p class="o-card-artigo__resumo">{{ a.descricao }}</p>
+		<p class="o-card-artigo__meta"><time datetime="{{ a.data }}">{{ a.data | dataCurta }}</time> · {{ a.minutos }} min<span class="o-card-artigo__leitura"> de leitura</span></p>
+	</div>
+</article>
+{% endmacro %}
