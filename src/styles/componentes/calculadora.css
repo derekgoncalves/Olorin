@@ -82,8 +82,15 @@
 	padding: 20px 22px 34px;
 	background: var(--preto);
 	color: var(--branco);
-	-webkit-mask: radial-gradient(circle 7px at 50% 100%, transparent 96%, #000) 50% 100% / 18px 100% repeat-x;
-	mask: radial-gradient(circle 7px at 50% 100%, transparent 96%, #000) 50% 100% / 18px 100% repeat-x;
+	/* Borda serrilhada: os furos ficam numa faixa de altura fixa (14 px) colada na base e o resto é
+	   uma camada lisa. Com a faixa em 100% da altura (fracionada), a última linha de pixels escapava
+	   do recorte e aparecia como um fio preto embaixo dos furos. */
+	-webkit-mask:
+		radial-gradient(circle 7px at 50% 100%, transparent 96%, #000) 50% 100% / 18px 14px repeat-x,
+		linear-gradient(#000, #000) 0 0 / 100% calc(100% - 13px) no-repeat;
+	mask:
+		radial-gradient(circle 7px at 50% 100%, transparent 96%, #000) 50% 100% / 18px 14px repeat-x,
+		linear-gradient(#000, #000) 0 0 / 100% calc(100% - 13px) no-repeat;
 }
 .o-calc__recibo-topo {
 	display: flex;

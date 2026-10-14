@@ -31,7 +31,7 @@ eleventyComputed:
 			<div class="o-janela__barra"><span class="o-janela__titulo">{{ h.janela }}</span><span class="o-janela__ctrl"></span></div>
 			<div class="o-cena__palco">
 				<ul class="o-cena-hub o-cena-hub--metodo o-cena-hub--precos">
-				{%- for plano in conteudo.planos.planos %}
+				{%- for plano in conteudo.planos.planos | sort(false, false, "valor") %}
 					<li class="o-cena-hub__app"><span class="o-cena-hub__valor">{{ plano.valor | reais }}</span><span class="o-cena-hub__nome">{{ plano.nome }}</span></li>
 				{%- endfor %}
 				</ul>

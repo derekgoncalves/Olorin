@@ -1,22 +1,28 @@
 /**
- * Fundos animados e interações de desktop: a grade de pixels acende sob o mouse, um clique no fundo
+ * Fundos animados e interações de desktop: a grade de pixels acende de leve sob o mouse (e quase some
+ * sobre o texto), um clique no fundo
  * solta um respingo de pixels e os cards de serviço ganham um holofote que segue o ponteiro.
  * Só com mouse e sem prefers-reduced-motion; sem JS, os fundos ficam estáticos (e nada some).
  */
 import { $$, doc, raiz, movimentoReduzido, ponteiroFino } from '../util.js';
 
 const INTERATIVO = 'a, button, input, label, select, textarea, summary, [role="button"], .o-janela';
+/* Sobre estes elementos a luz da grade quase some (o texto fica sempre legível). */
+const TEXTO = 'h1, h2, h3, p, ul, ol, dl, form, .o-btn';
 
-/* Atualiza --mx/--my de um elemento no máximo uma vez por quadro (lê a posição e escreve no mesmo quadro). */
-function seguir(area, alvo) {
+/* Atualiza --mx/--my de um elemento no máximo uma vez por quadro (lê a posição e escreve no mesmo quadro).
+   Com "texto", marca .is-texto enquanto o ponteiro está sobre um bloco de texto. */
+function seguir(area, alvo, texto) {
 	let pedido = 0;
 	let ex = 0;
 	let ey = 0;
 	area.addEventListener(
 		'pointermove',
 		(e) => {
+			if (raiz.classList.contains('o-pausado')) return;
 			ex = e.clientX;
 			ey = e.clientY;
+			if (texto) alvo.classList.toggle('is-texto', !!(e.target.closest && e.target.closest(TEXTO)));
 			if (pedido) return;
 			pedido = window.requestAnimationFrame(() => {
 				pedido = 0;
@@ -53,7 +59,7 @@ export function iniciarFundos() {
 	$$('[data-o-fundo]').forEach((fundo) => {
 		const secao = fundo.parentElement;
 		fundo.classList.add('is-ativo');
-		seguir(secao, fundo);
+		seguir(secao, fundo, true);
 		secao.addEventListener('pointerdown', (e) => {
 			if (e.button !== 0 || e.target.closest(INTERATIVO)) return;
 			const r = fundo.getBoundingClientRect();

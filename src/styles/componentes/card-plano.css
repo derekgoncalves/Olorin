@@ -157,3 +157,12 @@
 	line-height: 1.5;
 	text-transform: uppercase;
 }
+
+/* Coluna única (tablet e celular): os planos seguem a ordem de preço, do menor ao maior, como no
+   desktop. O "Mais procurado" fica no lugar dele e se destaca pela cor, pelo selo e pela sombra
+   (vence o order: -1 antigo de responsivo.css pela especificidade). */
+@media (max-width: 960px) {
+	.o-planos__grade > .o-plano--destaque {
+		order: 0;
+	}
+}

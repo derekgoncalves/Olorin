@@ -1,8 +1,5 @@
 /* Card de serviço: o card inteiro é clicável (um único <a> no título, estendido com ::after).
    Subgrid: ícone, título, texto e "Ver o serviço" ficam na mesma altura em toda a linha. */
-.o-servicos {
-	padding-bottom: 0;
-}
 .o-cards-servico {
 	position: relative;
 	display: grid;
@@ -33,13 +30,6 @@
 	--tam: 40px;
 	color: var(--cor-destaque);
 	transition: color 0.25s, transform 0.4s var(--curva);
-}
-.o-card-servico__num {
-	font-family: var(--fonte-pixel);
-	font-size: 12px;
-	letter-spacing: 0.12em;
-	color: var(--cor-apoio);
-	transition: color 0.25s;
 }
 .o-card-servico__titulo {
 	margin: 0;
@@ -92,8 +82,8 @@
 	background: var(--cor-destaque);
 	color: var(--cor-sobre-destaque);
 }
-.o-card-servico:hover :is(.o-card-servico__icone, .o-card-servico__num, .o-card-servico__texto, .o-card-servico__mais),
-.o-card-servico:focus-within :is(.o-card-servico__icone, .o-card-servico__num, .o-card-servico__texto, .o-card-servico__mais) {
+.o-card-servico:hover :is(.o-card-servico__icone, .o-card-servico__texto, .o-card-servico__mais),
+.o-card-servico:focus-within :is(.o-card-servico__icone, .o-card-servico__texto, .o-card-servico__mais) {
 	color: inherit;
 }
 .o-card-servico:hover .o-card-servico__icone,
@@ -104,18 +94,45 @@
 	gap: 16px;
 }
 
-/* Faixa "Não sabe por onde começar?" */
-.o-faixa-cta {
-	margin-top: clamp(64px, 8vw, 112px);
-	padding-block: clamp(22px, 2.6vw, 32px);
-}
-.o-faixa-cta__dentro {
+/* Fecho da grade de serviços: "Não sabe por onde começar?" + WhatsApp, no mesmo fundo preto,
+   como uma última linha da grade (mesmas bordas finas). */
+.o-servicos__fim {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	gap: 16px 32px;
+	gap: 18px 32px;
+	padding: clamp(24px, 2.8vw, 36px) clamp(22px, 2.4vw, 32px);
+	border: 1px solid var(--cor-linha);
+	border-top: 0;
 }
+.o-servicos__fim-texto {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin: 0 !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(20px, 2.3vw, 32px);
+	line-height: 1.05;
+	text-transform: uppercase;
+	text-wrap: balance;
+}
+/* Quadradinho verde antes da pergunta (o pixel da marca) */
+.o-servicos__fim-texto::before {
+	content: "";
+	flex: none;
+	width: 0.5em;
+	aspect-ratio: 1;
+	background: var(--verde);
+}
+.o-servicos__fim-botao {
+	flex: none;
+}
+
+/* Título da faixa final das landings de campanha (campanha-blocos.njk) */
 .o-faixa-cta__texto {
 	margin: 0;
 	font-family: var(--fonte-titulo);
@@ -123,4 +140,18 @@
 	font-size: clamp(19px, 2.6vw, 38px);
 	line-height: 1.05;
 	text-transform: uppercase;
+}
+@media (max-width: 640px) {
+	/* Botão na largura toda, com o texto numa linha só (ícone colado no texto) */
+	.o-servicos__fim-botao {
+		flex: 1 1 100%;
+		gap: 8px;
+		padding-inline: 12px;
+	}
+}
+@media (max-width: 400px) {
+	.o-servicos__fim-botao {
+		font-size: 12px;
+		letter-spacing: 0;
+	}
 }

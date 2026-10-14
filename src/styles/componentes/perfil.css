@@ -18,21 +18,25 @@
 	width: min(100%, 470px);
 	justify-self: end;
 }
+/* Pilha de fotos espalhadas: duas atrás (lado a lado, quase sem se cobrir) e uma na frente, embaixo.
+   Os rostos das duas de trás ficam na metade de cima da foto, então a da frente só cobre a parte
+   de baixo delas; a da frente é a 1ª pessoa de equipe.yml (Natália, rosto mais baixo na foto).
+   Os 3 rostos aparecem inteiros em qualquer largura (testado em 390, 768, 1024 e 1440 px). */
 .o-quem-pilha__lista {
 	position: relative;
-	aspect-ratio: 1 / 1.18;
+	aspect-ratio: 1 / 1.34;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 .o-quem-pilha__item {
 	position: absolute;
-	width: 54%;
+	width: 51%;
 	transition: rotate 0.35s var(--curva), translate 0.35s var(--curva);
 }
-.o-quem-pilha__item:nth-child(1) { left: 0; top: 9%; z-index: 1; rotate: -5deg; }
+.o-quem-pilha__item:nth-child(1) { left: 25%; top: 46%; z-index: 3; rotate: -2deg; }
 .o-quem-pilha__item:nth-child(2) { right: 0; top: 0; z-index: 2; rotate: 4deg; }
-.o-quem-pilha__item:nth-child(3) { left: 23%; top: 38%; z-index: 3; rotate: -1.5deg; }
+.o-quem-pilha__item:nth-child(3) { left: 0; top: 4%; z-index: 1; rotate: -5deg; }
 .o-quem-pilha__item:hover,
 .o-quem-pilha__item:focus-within {
 	z-index: 5;
@@ -578,6 +582,13 @@
 	}
 }
 @media (max-width: 640px) {
+	/* Fotos menores: a legenda fica só com o nome, para não cobrir o rosto (o cargo está no time, abaixo). */
+	.o-quem-janela__legenda {
+		padding-top: 22px;
+	}
+	.o-quem-janela__legenda span {
+		display: none;
+	}
 	.o-perfil__grade {
 		grid-template-columns: minmax(0, 1fr);
 	}
