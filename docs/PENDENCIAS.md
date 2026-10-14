@@ -1,95 +1,75 @@
 # Pendências do site Olorin (versão final, 14/10/2026)
 
-O site vai ao ar completo. Onde faltava informação, ele mostra um **texto proposto**, uma **imagem ilustrativa** ou um espaço **"Sua marca aqui"**. Nada fica escondido e nenhum número, depoimento ou cliente foi inventado. Esta lista diz o que confirmar e onde trocar.
+O site vai ao ar completo. Onde ainda falta um arquivo ou uma confirmação, ele mostra um **texto proposto** ou um **material provisório**, e nada fica escondido. Nenhum número, depoimento ou cliente foi inventado. Esta lista diz o que falta e onde trocar.
 
 - No código, cada item está marcado com `# PENDENTE:` no arquivo indicado. Para ver a lista com arquivo e linha exatos, rode `npm run pendencias`.
 - **Para responder:** mande as respostas no chat do projeto (o Claude atualiza os arquivos e gera um zip novo) ou edite o arquivo indicado seguindo o `docs/EDITAR.md` e rode `npm run build`.
 - **Prioridade:** A = mexe com preço, contrato ou dado legal; B = deixa a página completa; C = detalhe.
 
-## 1. Preços e contratos
-
-| Prio. | O que confirmar | O que está no ar hoje | Onde |
-|---|---|---|---|
-| A | Serviço avulso (a partir de R$ 1.500/mês cada): tem contrato mínimo de 3 meses? Tem taxa de implantação? | "Nos formatos mensais, o contrato mínimo é de 3 meses. Depois, segue mês a mês…" (sem taxa no avulso) | `planos.yml`, `faq.yml`, `servicos/trafego-pago.yml` |
-| A | Dados (rastreamento) contratado sozinho: preço e contrato mínimo | "Sozinho, a partir de R$ 1.500/mês" | `servicos/rastreamento-e-relatorio.yml` |
-| A | Titularidade: as contas de anúncio, o domínio, a hospedagem e os arquivos ficam no nome do cliente? | "Você. As contas de anúncio, o domínio e o site ficam no nome da sua organização…" | `faq.yml`, `servicos/trafego-pago.yml`, `servicos/site-e-loja-virtual.yml` |
-| B | Marketing 360: "Prioridade na fila de criação" é um diferencial real? | Aparece na lista do plano | `planos.yml` |
-| B | Identidade visual: o que entra em cada faixa de preço (o que entra nos R$ 800) | "Projeto a partir de R$ 800" | `servicos/identidade-visual.yml` |
-| B | Impressos: R$ 800 é uma peça ou um pacote? Valores de pacotes maiores | "A partir de R$ 800" | `servicos/material-impresso.yml` |
-| B | Sites: o que fica de fora (domínio, hospedagem, plataforma da loja, manutenção) e quem escreve os textos | Lista "Não inclui" proposta | `servicos/site-e-loja-virtual.yml` |
-| C | Troca de agência: como é a transição (acessos, histórico, prazo) | Resposta proposta na dúvida "Já tenho agência" | `faq.yml` |
-
-**Arranque 30 dias.** Saiu da grade de planos, como você pediu. Recomendação: deixar fora por enquanto. Se quiser trazer de volta, use um banner separado na página de Planos com **R$ 3.500 em pagamento único** (a implantação de R$ 1.000 + o primeiro mês da Gestão mensal de R$ 2.500), acima dos R$ 2.500 da Gestão, como pede o molde de preços.
-
-## 2. Como cada serviço funciona
-
-| Prio. | O que confirmar | Onde |
-|---|---|---|
-| B | Ritmo dos primeiros 90 dias de tráfego pago, redes sociais e dados | os 3 arquivos em `servicos/` |
-| B | Prazos típicos: identidade visual (e rodadas de ajuste), impressos, site, loja virtual e página de captação | `identidade-visual.yml`, `material-impresso.yml`, `site-e-loja-virtual.yml` |
-| B | Redes sociais no avulso: quantas publicações por mês e se stories e Reels entram | `servicos/redes-sociais.yml` |
-| B | O que pedimos no início do tráfego pago e quais dados de venda entram no relatório | `trafego-pago.yml`, `rastreamento-e-relatorio.yml` |
-| C | Ferramenta do painel (proposta: Looker Studio, gratuito) e frequência de atualização | `servicos/rastreamento-e-relatorio.yml` |
-
-## 3. Time
-
-| Prio. | O que confirmar | Onde |
-|---|---|---|
-| B | Quem coordena cada frente. Hoje: Tráfego pago = Natália; Redes sociais = Vinicius e Derek; Identidade visual = Vinicius; Impressos = Vinicius; Sites = Vinicius e Derek; Dados = Natália e Derek. Os perfis de cada pessoa listam as frentes a partir daqui | campo `quem_faz` de cada arquivo em `servicos/` |
-| B | Natália e Vinicius participam do início de cada projeto e das reuniões de planejamento? | `paginas/sobre.yml` |
-| B | Cargos: Coordenadora de Mídia Paga, Coordenador de Design e Coordenador de Atendimento | `equipe.yml` |
-| C | Links de LinkedIn e Instagram de cada pessoa, se quiserem mostrar no perfil | `equipe.yml` (campo `redes`) |
-| C | Foto da Natália: a original é pequena (417 × 533 px). Uma de pelo menos 900 × 1125 px fica melhor | `src/assets/img-src/equipe/` |
-
-## 4. Cases, logos e portfólio
+## 1. Arquivos para mandar
 
 | Prio. | O que mandar | Onde |
 |---|---|---|
-| A | Cases iZETA e Anacleto Abduch (os destaques da Olorin Educação): conferir a descrição de cada um (quem é, cursos, cidade), os serviços prestados, o que a Olorin fez, o resultado (número, período e como foi medido) e a autorização para mostrar. No ar, o campo Resultado diz "Em breve aqui" | `cases.yml` |
-| A | Logos reais (SVG) da iZETA e do Anacleto Abduch. Hoje são letreiros feitos com o nome | `clientes.yml` |
-| B | Até 6 logos de outros clientes autorizados (substituem as vagas "Sua marca aqui") | `clientes.yml` |
-| A | Portfólio: as 8 imagens são ilustrativas. Trocar por trabalhos reais e autorizados (título, serviço e imagem) | `portfolio.yml` |
+| B | Originais das 7 artes do Behance do Vinicius (BRAVO, Ambulatório da M.O.D.A, Bença, Viva Sem Veneno, Cartas para o Futuro, TORO AUDIO e Governo do RS). Hoje são recortes do PDF | `portfolio.yml` e `src/assets/img-src/portfolio/` |
+| B | Logo real da Central Sul Móveis. Hoje a faixa e o card do portfólio mostram só o nome escrito | `clientes.yml`, `portfolio.yml` |
+| C | Logos oficiais em vetor do BRAVO Film Festival, do Governo do Estado do RS e da TORO AUDIO. Hoje foram vetorizados a partir das artes | `clientes.yml` |
+| C | Foto maior da Natália (a original tem 417 × 533 px; o ideal é pelo menos 900 × 1125 px) | `src/assets/img-src/equipe/` |
 
-## 5. Olorin Educação (/educacao/)
+## 2. Blog
 
-| Prio. | O que confirmar | O que está no ar hoje | Onde |
-|---|---|---|---|
-| B | A Olorin entrega as mensagens prontas de atendimento para a equipe da escola? | "Nós trazemos o interessado, deixamos mensagens prontas para cada etapa e medimos o tempo de resposta." | `paginas/educacao.yml` |
-| B | Prazo dos primeiros resultados | "Os primeiros contatos costumam chegar nos primeiros dias de campanha. A matrícula depende do ciclo do seu curso…" | `paginas/educacao.yml` |
-| C | Calendário de captação: trocar título e texto a cada temporada | "Ainda dá tempo." e a decisão das famílias entre outubro e janeiro (de março a agosto, algo como "Comece cedo.") | `paginas/educacao.yml` |
-| C | Dado da Harvard Business Review | "Quem responde em até 1 hora tem quase 7 vezes mais chance de uma conversa de verdade…" (bate com o artigo "The Short Life of Online Sales Leads", de 2011; vale reler antes de usar em anúncio) | `paginas/educacao.yml` |
+| Prio. | O que fazer | Onde |
+|---|---|---|
+| B | Os 3 artigos de partida foram escritos pelo Claude. Vale o time ler, ajustar o tom e confirmar cada dado antes de divulgar | `src/blog/artigos/` |
+| C | Publicar artigos novos com frequência. O passo a passo está em `docs/BLOG.md` (ou `BLOG.txt`) | `src/blog/artigos/` |
 
-## 6. Jurídico e cadastro
+## 3. Textos propostos que valem conferir
 
 | Prio. | O que confirmar | Onde |
 |---|---|---|
-| A | Razão social e CNPJ. Hoje a política diz que são informados a quem pedir pelo e-mail | `paginas/privacidade.yml` |
-| A | Encarregado pelo tratamento de dados (DPO). Proposta no ar: Derek Gonçalves | `paginas/privacidade.yml` |
-| B | Prazo de guarda dos pedidos do formulário (no ar: até 24 meses após o último contato) | `paginas/privacidade.yml` |
-| B | Revisão da política por um advogado (recomendado) | `paginas/privacidade.yml` |
+| B | Ritmo dos primeiros 90 dias de tráfego pago, redes sociais e dados ("Até 30 dias…", "Até 60…", "Até 90…") | os 3 arquivos em `servicos/` |
+| B | Identidade visual e impressos: o que entra nos R$ 800 e os valores de projetos maiores | `identidade-visual.yml`, `material-impresso.yml` |
+| B | Pagamento dos projetos pontuais: "metade na aprovação da proposta e metade na entrega" | `identidade-visual.yml`, `material-impresso.yml` |
+| C | Troca de agência: como é a transição (acessos, histórico, prazo) | `faq.yml` |
+| C | Calendário de captação da Olorin Educação: trocar título e texto a cada temporada (de março a agosto, algo como "Comece cedo.") | `paginas/educacao.yml` |
 
-## 7. Contas e IDs de medição (quando tiver)
+## 4. Jurídico e cadastro
 
-Campos vazios ficam desligados. Ficam em `src/_data/site/config.json` e pedem um build novo (o passo a passo está em `docs/TRACKING.md`).
+A política de privacidade, o aviso de cookies e os textos de preço e contrato foram revisados pelo Claude com base na LGPD e no Código de Defesa do Consumidor. Não substitui um advogado, mas não há pendência aberta além destas:
+
+| Prio. | O que decidir | Onde |
+|---|---|---|
+| A | CNPJ e razão social no site. Hoje a política diz que são informados por e-mail, como você pediu. O Decreto 7.962/2013 pede nome empresarial e CNPJ visíveis em site que faz oferta ao consumidor, então mostrar no rodapé é o mais seguro | `paginas/privacidade.yml` |
+| A | Direito de arrependimento: quem contrata pela internet pode desistir em até 7 dias e receber de volta o que pagou. A FAQ já explica. Sugestão: cobrar a implantação só depois do 7º dia, ou começar o trabalho com o cliente ciente disso por escrito | `faq.yml` |
+| A | HTTPS ativo na Locaweb (o cadeado). O formulário e o aviso de cookies dependem dele | painel da Locaweb |
+| B | Ao criar as contas de anúncio, deixar **desligadas** a correspondência avançada da Meta e as conversões otimizadas do Google. O site não envia e-mail nem telefone para elas, e a política diz isso | Gerenciador de Eventos e Google Ads |
+
+## 5. Contas e IDs de medição (quando tiver)
+
+Os IDs ficam no arquivo `olorin-ids.js`, na raiz do `public_html`, e podem ser preenchidos **pelo WebFTP com o site no ar, sem build novo**. Campo vazio fica desligado, e o aviso de cookies aparece sozinho quando há algum ID. Passo a passo em `COMO-PUBLICAR-final.txt` e em `docs/TRACKING.md`, seção 2.
 
 | Campo | O que é |
 |---|---|
-| `GTM_ID` | Contêiner do Google Tag Manager (GTM-XXXXXXX). Com ele, o aviso de cookies passa a aparecer |
+| `GTM_ID` | Contêiner do Google Tag Manager (GTM-XXXXXXX). Com ele, GA4 e Pixel ficam configurados dentro do GTM |
 | `GA4_ID`, `META_PIXEL_ID` | Só se não usar o GTM |
 | `GADS_CONVERSION_ID`, `GADS_CONVERSION_LABEL` | Conversão do Google Ads no envio do formulário |
 | `SCHEDULING_URL` | Link de agenda (Calendly ou Google Agenda), que aparece na página de obrigado |
-| `GBP_URL` | Link do Perfil da Empresa no Google (Google Meu Negócio) |
 
-## 8. O que dá para trocar só pelo WebFTP (sem build novo)
+O link do Perfil da Empresa no Google (`GBP_URL`) fica em `src/_data/site/config.json` e pede build novo.
+
+## 6. O que dá para trocar só pelo WebFTP (sem build novo)
 
 Suba o arquivo novo **com o mesmo nome**, na mesma pasta, substituindo o antigo. Textos, preços e menus ficam dentro das páginas e precisam de build novo.
 
 | No servidor (dentro de `public_html`) | O que é | Como deve ser |
 |---|---|---|
-| `assets/img/clientes/izeta.svg` e `assets/img/clientes/anacleto-duas-linhas.svg` | Logos da faixa de clientes | SVG, de preferência com o desenho em uma cor só e cerca de 48 px de altura |
-| `assets/img/clientes/izeta.svg` e `assets/img/clientes/anacleto.svg` | Logos dos cases na Olorin Educação | SVG com o logo real, com o mesmo nome |
-| `assets/img/clientes/vaga-01.svg` e `vaga-02.svg` | Espaços "Sua marca aqui" | SVG do logo do cliente. O nome lido pelo leitor de tela só muda com build novo |
+| `olorin-ids.js` | IDs de medição e link de agenda | Edite só o que está entre as aspas. Ao subir um zip novo, guarde o seu antes e envie de volta depois |
+| `assets/img/clientes/*.svg` (por exemplo `central-sul-moveis.svg`) | Logos da faixa "Quem confia na Olorin" | SVG em preto, fundo transparente e sem margem. A altura se mantém e a largura segue a proporção |
+| `assets/img/clientes/izeta-cor.svg` e `anacleto-cor.svg` | Logos coloridos da Olorin Educação | SVG com o mesmo nome |
 | `assets/img/og/*.jpg` | Imagens que aparecem quando alguém compartilha o link | JPG de 1200 × 630 px |
-| Fotos do portfólio, por exemplo `assets/img/portfolio-marca-identidade-300.avif` | Cada foto tem 4 arquivos: AVIF e WebP, em 2 larguras (300 e 600 px; a de redes tem 320 e 640) | Os 4 com o mesmo nome e a **mesma proporção** da foto atual. Mais fácil: mande as fotos e o Claude gera o pacote |
-| Fotos do time, por exemplo `assets/img/equipe-derek-480.webp` | Cada pessoa tem a foto 4:5 (em 3 ou 4 larguras, de 320 a 660 px) e a quadrada (160 e 320 px), em AVIF e WebP | Mesma regra das fotos do portfólio |
+| Fotos do portfólio, por exemplo `assets/img/portfolio-benca-480.avif` | Cada trabalho tem 8 arquivos: AVIF e WebP em 320, 480, 640 e 860 px de largura, na proporção 4:5 | Os 8 com o mesmo nome. Mais fácil: mande as imagens e o Claude gera o pacote |
+| Fotos do time, por exemplo `assets/img/equipe-derek-480.webp` | Cada pessoa tem a foto 4:5 (de 320 a 660 px) e a quadrada (160 e 320 px), em AVIF e WebP | Mesma regra das fotos do portfólio |
 | `favicon.ico` | Ícone da aba do navegador | ICO de 32 × 32 px |
+
+## Resolvido nesta rodada (14/10/2026)
+
+Preços (Gestão mensal R$ 3.000, implantação de R$ 1.000, contrato mínimo de 3 meses, Dados sem implantação), prazos, cargos e quem coordena cada frente, redes sociais em criativos, portfólio só com trabalhos reais, logos dos clientes, cases sem resultado, política de privacidade, IDs editáveis pelo WebFTP e o blog.

@@ -47,7 +47,7 @@ const rel = (a) => path.relative(SAIDA, a);
 const textos = arquivos.filter((a) => /\.(html|php|txt|xml|webmanifest|css|js|json)$/.test(a) || path.basename(a) === '.htaccess');
 
 // 1. Arquivos obrigatórios e proibidos
-for (const obrigatorio of ['index.html', '404.html', '.htaccess', 'enviar.php', 'config.example.php', 'robots.txt', 'sitemap.xml', 'llms.txt', 'site.webmanifest', 'favicon.ico', 'leads/.htaccess', 'obrigado/index.html', 'politica-de-privacidade/index.html', 'quem-somos/index.html', 'servicos/index.html']) {
+for (const obrigatorio of ['index.html', '404.html', '.htaccess', 'enviar.php', 'config.example.php', 'olorin-ids.js', 'robots.txt', 'sitemap.xml', 'llms.txt', 'site.webmanifest', 'favicon.ico', 'leads/.htaccess', 'obrigado/index.html', 'politica-de-privacidade/index.html', 'quem-somos/index.html', 'servicos/index.html']) {
 	if (!existsSync(path.join(SAIDA, obrigatorio))) erro(obrigatorio, 'arquivo obrigatório não foi gerado');
 }
 for (const a of arquivos) {
