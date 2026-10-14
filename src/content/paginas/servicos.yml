@@ -1,12 +1,18 @@
-# Hub de serviços (/servicos/) — PROMPT seção 9.3.
+# Hub de serviços (/servicos/). Preços no molde do dono (13/10/2026), iguais a src/content/planos.yml.
 seo:
-  titulo: Serviços de marketing digital em Curitiba | Olorin
-  descricao: Tráfego pago, redes sociais, identidade visual, material impresso, site e rastreamento feitos pelo mesmo time. Preço aberto.
-etiqueta: Serviços
-titulo: Serviços de marketing digital
-texto: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Você pode contratar uma frente só. Quando elas rodam juntas, uma empurra a outra.
+  titulo: Serviços de Marketing Digital em Curitiba | Olorin
+  descricao: Tráfego pago, redes sociais, identidade visual, impressos, sites e dados coordenados pelo mesmo time. Preço aberto, a partir de R$ 800.
+etiqueta: Serviços de marketing digital em Curitiba
+titulo: Seis frentes, um cuidado.
+texto: Anúncio, redes, marca, impresso, site e dados coordenados pelo mesmo time. Contrate uma frente só ou junte todas. Quando rodam juntas, uma empurra a outra.
+janela: servicos.exe
+cards:
+  etiqueta: O que fazemos
+  titulo: Escolha a frente.
+  texto: Cada serviço tem página própria, com o que entra, como funciona, quem coordena e o preço.
 escolher:
-  titulo: Como escolher por onde começar
+  etiqueta: Por onde começar
+  titulo: Qual é o seu caso?
   situacoes:
     - situacao: Você já anuncia, mas não sabe quanto cada venda custou.
       servico: trafego-pago
@@ -17,16 +23,39 @@ escolher:
     - situacao: O anúncio leva gente para um site lento ou confuso.
       servico: site-e-loja-virtual
       porque: Um site rápido e claro no celular aproveita melhor cada visita que o anúncio traz.
-  nao_sei: Não sabe por onde começar? O Raio-X gratuito mostra isso em 30 minutos de conversa e um PDF em até 48 horas.
+  nao_sei: Ainda em dúvida? O Raio-X gratuito mostra por onde começar, com 30 minutos por vídeo e um PDF em até 48 horas.
 combinacoes:
-  titulo: Combinações mais comuns
+  etiqueta: Combinações
+  titulo: Junto rende mais.
+  texto: Os formatos mais pedidos, com o preço aberto. A verba de anúncio vai direto para a Meta ou o Google.
   itens:
-    - nome: Tráfego pago + redes sociais
-      plano: Gestão mensal
-      texto: Anúncio na Meta ou no Google, 8 criativos e 8 posts por mês, otimização semanal e relatório com reunião. R$ 2.500/mês + verba, com implantação única de R$ 1.000.
-    - nome: A marca inteira
-      plano: 360 completo
-      texto: Meta e Google, 15 criativos, 12 posts e 4 Reels por mês, site e impresso, com reunião mensal de 1 hora. R$ 5.000/mês + verba, com implantação única de R$ 1.500.
-    - nome: Uma entrega fechada
-      plano: Pontual
-      texto: Identidade visual, site, impresso ou auditoria da conta de anúncio, com prazo e escopo definidos. A partir de R$ 800 por projeto.
+    - plano: Gestão mensal
+      janela: gestao_mensal.exe
+      nome: Tráfego pago + redes sociais
+      de: ""
+      valor: R$ 2.500/mês
+      texto: Meta Ads ou Google Ads, 8 criativos e 8 posts por mês, otimização semanal e relatório com reunião. Implantação única de R$ 1.000.
+      servicos: [trafego-pago, redes-sociais]
+    - plano: Marketing 360
+      janela: marketing_360.exe
+      nome: A marca inteira
+      de: A partir de
+      valor: R$ 5.000/mês
+      texto: Anúncio, redes, marca, site e impresso juntos, sem quantidade fechada, com reunião semanal e planejamento estratégico todo mês.
+      servicos: [trafego-pago, redes-sociais, identidade-visual, material-impresso, site-e-loja-virtual, rastreamento-e-relatorio]
+    - plano: Pontual
+      janela: pontual.exe
+      nome: Uma peça de design
+      de: A partir de
+      valor: R$ 800
+      texto: Logotipo, identidade visual, post avulso ou impresso, com prazo e escopo fechados e sem contrato mensal.
+      servicos: [identidade-visual, material-impresso]
+    - plano: Sites
+      janela: projeto_site.exe
+      nome: Site ou loja virtual
+      de: A partir de
+      valor: R$ 3.000
+      texto: Site institucional e página de captação a partir de R$ 3.000; loja virtual a partir de R$ 10.000. Projeto fechado.
+      servicos: [site-e-loja-virtual]
+  botao: Quero esse
+  link: { texto: Ver planos e calculadora, url: /planos/ }

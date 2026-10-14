@@ -1,154 +1,181 @@
 # ============================================================
-# SERVIÇO: Site e loja virtual — fonte ÚNICA da página /servicos/site-e-loja-virtual/
-# e da landing de campanha /promo/site-e-loja-virtual/ (PROMPT seções 9 e 11).
-# Só fatos do PROMPT.md e de planos.yml. O que falta confirmar vai com [CONFIRMAR: ...]
-# (não aparece no site publicado; itens de lista com marcador somem inteiros).
+# SERVIÇO: Sites — fonte ÚNICA da página /servicos/site-e-loja-virtual/ e da landing /promo/site-e-loja-virtual/.
+# Texto proposto vai ao ar; o que o dono ainda precisa confirmar leva "# PENDENTE:" na linha de cima
+# (npm run pendencias lista tudo). Preços no molde do dono (13/10/2026), iguais a src/content/planos.yml.
 # ============================================================
 slug: site-e-loja-virtual
 ordem: 5
 nome: Sites
-chip: Sites   # um nome por serviço (dono, 13/10/2026): igual no menu, no card, no formulário e no enviar.php
+chip: Sites   # um nome por serviço: igual no menu, no card, no formulário e no enviar.php
 icone: site
 janela: site.html
-atualizado: "2026-10-13"
+cena: site
+atualizado: "2026-10-14"
+# PENDENTE: confirmar quem coordena o desenvolvimento dos sites e das lojas virtuais
 quem_faz: [vinicius-mafra, derek-goncalves]
-quem_faz_nota: "[CONFIRMAR: responsável principal por sites e lojas]"
 
 seo:
   title: Criação de Sites e Lojas Virtuais em Curitiba | Olorin
-  description: Site institucional, loja virtual e página de captação rápidos, bonitos no celular e feitos para trazer contato e venda. Sites a partir de R$ 800.
+  description: Site institucional, loja virtual e página de captação rápidos e bonitos no celular. Sites a partir de R$ 3.000 e lojas a partir de R$ 10.000.
 
 card:
   titulo: Sites
-  resumo: Site institucional, loja virtual e página de captação. Rápidos, bonitos no celular e feitos para trazer contato e venda.
+  resumo: Site institucional, loja virtual e página de captação, rápidos e feitos para trazer contato e venda.
   resumo_curto: Site institucional, loja virtual e página de captação.
 
 hero:
-  eyebrow: Criação de sites e lojas virtuais em Curitiba e para todo o Brasil
-  h1: Site rápido, bonito no celular e feito para trazer cliente.
-  sub: Site institucional, loja virtual e página de captação com a cara da sua marca, feitos pelo mesmo time do anúncio e do conteúdo. Velocidade e acessibilidade são o padrão, não um extra.
+  eyebrow: Criação de sites e lojas virtuais em Curitiba e no Brasil
+  h1: Site que trabalha.
+  sub: Site institucional, loja virtual e página de captação com a cara da sua marca, rápidos no celular e feitos para transformar visita em contato ou venda.
+  preco_rotulo: Sites a partir de
+  preco: R$ 3.000
   janela_linhas:
-    - Site institucional · no ar
     - Versão do celular · aprovada
+    - Velocidade · conferida
     - Medição de visitas · configurada
 
+# Resumo usado na landing /promo/ e no JSON-LD (não aparece com rótulo na página do serviço).
 resposta_curta: >-
-  Criamos site institucional, loja virtual e página de captação: rápidos, bonitos no celular e feitos para
-  transformar visita em contato ou venda. É para quem anuncia, vende pela internet ou quer um site com a
-  mesma cara do resto da marca. Os projetos começam em R$ 800, no plano Pontual. Escopo e prazo são
-  definidos no briefing (a conversa em que combinamos o projeto), antes de começar.
+  A Olorin cria site institucional, loja virtual e página de captação: rápidos, bonitos no celular e feitos
+  para transformar visita em contato ou venda. Sites a partir de R$ 3.000 e lojas virtuais a partir de
+  R$ 10.000, em projeto fechado, com escopo, prazo e preço combinados antes de começar.
+
+o_que_e:
+  titulo: Visita que vira contato.
+  texto:
+    - "O site é para onde o anúncio, o post e a indicação levam a pessoa. Se ele demora, confunde ou não tem a sua cara, o interesse acaba ali, e o dinheiro do anúncio vai junto."
+    - A Olorin cria sites institucionais, lojas virtuais e páginas de captação com o mesmo cuidado da sua marca, pensados primeiro para o celular, fáceis de ler, com o botão de contato sempre à mão e a medição configurada desde o primeiro dia.
+    - "Escopo, prazo e preço são combinados no briefing, antes de começar. Do site de uma página à loja com catálogo inteiro, com o mesmo cuidado."
+  destaques:
+    - Rápido no celular
+    - A mesma cara da marca
+    - Medição desde o primeiro dia
 
 dores:
-  titulo: Isso acontece com você?
+  titulo: Site que espanta?
+  texto: Se um destes aparece aí, o seu site está perdendo cliente.
   itens:
-    - O anúncio leva a pessoa ao site, mas a página demora a abrir no celular, e ela desiste.
-    - No celular, o texto fica miúdo, o botão some e pedir orçamento vira uma maratona.
-    - O site não tem as cores, as fontes e o jeito de falar do feed e do anúncio.
-    - Você não sabe quantos contatos ou vendas vieram do site no mês passado.
+    - { titulo: Lento no celular, texto: "O anúncio leva a pessoa ao site, mas a página demora a abrir, e ela desiste." }
+    - { titulo: Botão sumido, texto: No celular o texto fica miúdo e pedir orçamento vira uma maratona. }
+    - { titulo: Cara de outra marca, texto: "O site não tem as cores, as fontes e o jeito de falar do feed e do anúncio." }
+    - { titulo: Sem medição, texto: Você não sabe quantos contatos ou vendas vieram do site no mês passado. }
+
+entregas:
+  titulo: O que entra.
+  texto: Do briefing ao site no ar, tudo o que faz a visita virar contato.
+  itens:
+    - titulo: Site institucional
+      texto: Páginas que apresentam a empresa e os serviços e levam a pessoa até o contato.
+      frequencia: a partir de R$ 3.000
+      icone: site
+    - titulo: Loja virtual
+      texto: Catálogo, carrinho, pagamento e frete, para vender sem depender de mensagem.
+      frequencia: a partir de R$ 10.000
+      icone: estrela
+    - titulo: Página de captação
+      texto: Uma página só para a oferta ou a campanha, feita para receber quem clica no anúncio.
+      frequencia: no projeto ou à parte
+      icone: trafego
+    - titulo: Celular primeiro
+      texto: Desenho pensado primeiro para a tela pequena, onde está a maior parte das visitas.
+      frequencia: em todas as páginas
+      icone: redes
+    - titulo: Velocidade e acessibilidade
+      texto: Imagens leves, texto legível e navegação por teclado, como padrão e não como extra.
+      frequencia: conferidas antes de publicar
+      icone: relogio
+    - titulo: Medição configurada
+      texto: Google Analytics, pixel e conversões, para saber de onde veio cada contato e cada venda.
+      frequencia: na publicação
+      icone: dados
+
+portfolio:
+  titulo: Na prática.
+  texto: Sites e páginas que a Olorin já colocou no ar.
+
+como_funciona:
+  titulo: Do briefing ao ar.
+  etapas:
+    - { nome: Briefing, texto: "Conversamos sobre objetivo, público e conteúdo, e fechamos escopo, prazo e preço." }
+    - { nome: Desenho, texto: Você vê o site no celular e no computador e aprova antes da construção. }
+    - { nome: Construção, texto: "Páginas montadas, textos no lugar, medição configurada e testes de velocidade." }
+    - { nome: Publicação, texto: "Site no ar, conferido de ponta a ponta, e a primeira leitura das visitas." }
+  prazos_titulo: Prazo de cada projeto
+  prazos_janela: prazos.txt
+  # PENDENTE: confirmar os prazos típicos de site, loja virtual e página de captação
+  prazos:
+    - "Página de captação: de 1 a 2 semanas, do briefing ao ar."
+    - "Site institucional: de 3 a 6 semanas, conforme o número de páginas."
+    - "Loja virtual: de 6 a 10 semanas, conforme o catálogo e as integrações."
+
+precisamos:
+  titulo: Para começar, precisamos de
+  itens:
+    - Acesso ao domínio e à hospedagem (se não tiver, a gente ajuda a contratar).
+    # PENDENTE: confirmar quem escreve os textos do site (cliente ou Olorin) e se entra no preço
+    - "Textos, fotos e a lista de produtos ou serviços, ou o combinado de que a Olorin escreve."
+    - Aprovação do desenho antes da construção.
 
 para_quem:
   e:
     - Quem anuncia e precisa de um site rápido e claro para receber quem clica.
     - Quem quer vender pela internet com uma loja virtual.
     - Quem vai lançar uma oferta e precisa de uma página só para ela.
-    - Quem prefere uma entrega fechada, com escopo e prazo definidos antes.
   nao_e:
-    - Quem precisa de um projeto por menos de R$ 800.
-    - "[CONFIRMAR: Quem quer um site só para dizer que tem um. O nosso lema é outro: não é sobre aparecer, é sobre vender.]"
-    - "[CONFIRMAR: outros critérios de quem não é cliente ideal para sites e lojas]"
-
-entregas:
-  titulo: O que entregamos
-  itens:
-    - titulo: Site institucional
-      texto: Quem vocês são, o que fazem e como falar com vocês, organizado para levar a visita até o contato.
-      icone: site
-    - titulo: Loja virtual
-      texto: O seu cliente escolhe o produto e compra sem se perder no caminho.
-      icone: estrela
-    - titulo: Página de captação
-      texto: "Uma página só, para uma oferta, com um objetivo: fazer a pessoa deixar o contato. É para onde o anúncio manda quem clica."
-      icone: seta
-    - titulo: Rastreamento configurado
-      texto: O site já sai contando visitas, contatos e pedidos. Para ir além, veja [Rastreamento e relatório](/servicos/rastreamento-e-relatorio/).
-      icone: dados
-    - titulo: Velocidade e acessibilidade como padrão
-      texto: Páginas leves no celular, que funcionam também com leitor de tela ou só pelo teclado.
-      icone: relogio
-    - titulo: A mesma cara da sua marca
-      texto: Logotipo, cores e fontes iguais aos do anúncio, do feed e do impresso.
-      icone: marca
-
-como_funciona:
-  titulo: Como funciona
-  etapas:
-    - nome: Raio-X
-      texto: Olhamos o site atual, os anúncios e as redes para achar onde a pessoa trava antes do contato ou da compra.
-    - nome: Direção
-      texto: "No briefing, combinamos escopo, prazo e o papel de cada página: o que dizer, para quem e o que a pessoa deve fazer ali."
-    - nome: Execução
-      texto: Criamos o site, leve no celular e com o rastreamento configurado. Você aprova por e-mail.
-    - nome: Leitura
-      texto: Você vê o que acontece depois do clique. Na Gestão mensal ou no 360 completo, isso vira relatório todo mês.
-  prazos:
-    - "[CONFIRMAR: prazo típico de cada etapa de um projeto de site ou loja virtual (briefing, criação, ajustes e publicação)]"
-
-precisamos:
-  titulo: O que precisamos de você
-  itens:
-    - Um tempo para o briefing, em que definimos juntos o escopo e o prazo.
-    - "O que a marca já tem: logotipo, manual de marca, fotos e o site atual, se existir."
-    - Para a loja virtual, fotos, preços e descrições dos produtos.
-    - Retorno nas aprovações por e-mail, para o projeto não travar.
-    - "[CONFIRMAR: quem escreve os textos do site e quais acessos pedimos no início (domínio, hospedagem, site atual)]"
+    - Quem procura um site por menos de R$ 3.000 ou uma loja por menos de R$ 10.000.
+    - Quem quer um site só para dizer que tem um, sem objetivo de contato ou de venda.
 
 preco:
-  titulo: Quanto custa
-  formato: Plano Pontual
-  valor: A partir de R$ 800/projeto
-  faixa: "Site e página de captação a partir de R$ 800. Loja virtual (e-commerce) a partir de R$ 10.000."
-  detalhe: Escopo e prazo são definidos no briefing, e o preço vem detalhado na proposta, antes de começar. O site também faz parte do [360 completo](/planos/).
+  titulo: Preço aberto.
+  formato: Projeto de site
+  rotulo: A partir de
+  valor: R$ 3.000
+  detalhe: "Site institucional e página de captação a partir de R$ 3.000; loja virtual a partir de R$ 10.000. Projeto fechado: escopo, prazo e preço combinados no briefing, antes de começar. No Marketing 360, o site entra no mesmo pacote do anúncio e das redes."
+  contrato: Projeto fechado, sem mensalidade obrigatória.
   inclui:
-    - Site institucional, loja virtual ou página de captação, conforme o briefing
-    - Velocidade e acessibilidade no celular
-    - Rastreamento configurado
-    - "[CONFIRMAR: rodadas de ajuste incluídas, plataforma da loja virtual e se o cliente consegue atualizar o site e cadastrar produtos sozinho]"
+    - Desenho no celular e no computador
+    - Construção e publicação
+    - Velocidade e acessibilidade conferidas
+    - Medição de visitas e contatos
+  # PENDENTE: confirmar o que fica de fora do projeto de site (domínio, hospedagem, plataforma da loja, manutenção)
   nao_inclui:
-    - Anúncios e redes sociais (na Gestão mensal ou no 360 completo)
-    - Material impresso (à parte ou no 360 completo)
-    - "[CONFIRMAR: hospedagem, domínio e manutenção depois da entrega — inclusos ou à parte]"
+    - Domínio e hospedagem (ficam no seu nome)
+    - Mensalidade da plataforma da loja e taxas de pagamento
+    - Manutenção mensal depois da entrega (à parte)
   schema:
-    valor: "800"
+    valor: "3000"
     minimo: true
-    descricao: Projeto pontual de site, a partir de R$ 800.
+    descricao: Criação de site institucional a partir de R$ 3.000 e de loja virtual a partir de R$ 10.000, em projeto fechado.
 
 combina_com:
-  - slug: rastreamento-e-relatorio
-    porque: Com o painel, você vê quanto entrou, quanto saiu e qual foi o retorno, e não só quantas visitas chegaram.
   - slug: trafego-pago
-    porque: O site confirma o que o anúncio prometeu. A Natália Arruda cuida das campanhas, e o mesmo time faz o anúncio e o site.
+    porque: O site recebe quem clica. Com tráfego pago, quem clica tem cara de cliente.
+  - slug: rastreamento-e-relatorio
+    porque: Com a medição certa, você sabe quanto cada página trouxe de contato e de venda.
 
 faq:
   - id: site-quanto-custa
-    pergunta: Quanto custa um site ou uma loja virtual?
-    resposta: "Site institucional e página de captação a partir de R$ 800, no plano Pontual. Loja virtual (e-commerce) a partir de R$ 10.000. O preço vem detalhado na proposta, antes de começar. O site também faz parte do [360 completo](/planos/): R$ 5.000/mês, mais R$ 1.500 de implantação e a verba de anúncio à parte."
+    pergunta: Quanto custa um site?
+    resposta: "Site institucional ou página de captação a partir de R$ 3.000 e loja virtual a partir de R$ 10.000. O preço final sai no briefing, com escopo e prazo fechados antes de começar."
+  # PENDENTE: confirmar os prazos típicos de cada projeto
   - id: site-prazo
-    pergunta: Quanto tempo leva para o site ficar pronto?
-    resposta: Depende do tamanho do projeto. O prazo é definido no briefing, junto com o escopo, antes de começarmos.
+    pergunta: Quanto tempo leva?
+    resposta: "Uma página de captação leva de 1 a 2 semanas; um site institucional, de 3 a 6; uma loja virtual, de 6 a 10. O prazo do seu projeto sai no briefing."
   - id: site-velocidade
-    pergunta: Como sei que o site vai ser rápido?
-    resposta: Velocidade e acessibilidade são o padrão em todo projeto. Como referência, o site anterior da Olorin foi medido em 08/10/2026 no PageSpeed, a ferramenta do Google que dá notas de 0 a 100. No celular, tirou 97 em desempenho e 100 em acessibilidade.
+    pergunta: O site vai ser rápido no celular?
+    resposta: "Sim. Velocidade e acessibilidade são o padrão: imagens leves, texto legível, navegação por teclado e conferência antes de publicar."
   - id: site-anuncio
-    pergunta: O site já sai pronto para receber anúncio?
-    resposta: Sai com o rastreamento configurado, então dá para medir o que acontece depois do clique. Se você anunciar com a gente, a Natália Arruda cuida das campanhas, e o anúncio sai com a cara do site.
+    pergunta: Vocês fazem o anúncio para o site?
+    resposta: "Sim. O [tráfego pago](/servicos/trafego-pago/) é coordenado pelo mesmo time, então o anúncio e o site falam a mesma língua."
+  # PENDENTE: confirmar a titularidade do domínio, da hospedagem e dos arquivos do site
   - id: site-dono
-    pergunta: Quem fica com o domínio, a hospedagem e os arquivos do site?
-    resposta: "[CONFIRMAR: titularidade do domínio, da hospedagem e dos arquivos do site, e o que acontece se o cliente encerrar o trabalho]"
+    pergunta: De quem é o site?
+    resposta: Seu. Domínio, hospedagem e arquivos ficam no seu nome. Se um dia o trabalho acabar, tudo continua com você.
   - id: site-fora-curitiba
     pergunta: Vocês atendem fora de Curitiba?
-    resposta: "Sim. A maioria dos clientes é de fora de Curitiba. Tudo é feito a distância: WhatsApp, reuniões por vídeo, aprovações por e-mail e arquivos entregues pela internet."
+    resposta: "Sim. A Olorin atende todo o Brasil a distância: WhatsApp, reunião por vídeo e aprovação por e-mail."
 
 campanha:
-  titulo: Chega de site que faz o cliente desistir.
-  subtitulo: Raio-X Olorin gratuito do seu site, dos anúncios e da marca, com 30 minutos por vídeo e um PDF com o que mais trava a sua venda. Projetos a partir de R$ 800. Sem compromisso.
+  titulo: Chega de site que espanta cliente.
+  subtitulo: Raio-X gratuito do seu site, com 30 minutos por vídeo e um PDF com o que mais trava o contato. Sites a partir de R$ 3.000. Sem compromisso.
   faq: [site-quanto-custa, site-prazo, site-velocidade, site-fora-curitiba]
