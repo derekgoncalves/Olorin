@@ -130,7 +130,6 @@
 	--edu-linha-clara: rgba(255, 255, 255, 0.1);
 	--edu-tinta: rgba(126, 59, 237, 0.22);
 	--edu-indigo: rgba(30, 6, 90, 0.5);
-	background: var(--violeta);
 	font-family: var(--edu-texto);
 	font-size: 17px;
 	line-height: 1.6;
@@ -430,7 +429,8 @@
 	--cor-sombra: var(--preto);
 	border-bottom-width: 2px;
 }
-.o-edu-topo.is-scrolled {
+/* [class~=] em vez de .is-scrolled: a regra não precisa ir para o CSS embutido das outras páginas */
+.o-edu-topo[class~="is-scrolled"] {
 	background: var(--violeta);
 	border-bottom-color: var(--preto);
 }
@@ -489,7 +489,8 @@
 .o-edu-topo__voltar:hover {
 	text-decoration: underline;
 }
-:is(.o-edu-topo__voltar, .o-edu-menu__voltar) .o-icone {
+.o-edu-topo__voltar .o-icone,
+.o-edu-menu__voltar .o-icone {
 	--tam: 12px;
 	rotate: 180deg;
 }
@@ -746,7 +747,8 @@
 	padding-bottom: 12px;
 	border-bottom: 4px double var(--violeta);
 }
-:is(.o-edu-boletim__topo, .o-edu-funil__topo) strong {
+.o-edu-boletim__topo strong,
+.o-edu-funil__topo strong {
 	font-family: var(--edu-titulo);
 	font-weight: 900;
 	font-size: clamp(22px, 0.9vw + 15px, 29px);
@@ -754,7 +756,8 @@
 	letter-spacing: -0.01em;
 	color: var(--violeta);
 }
-:is(.o-edu-boletim__topo, .o-edu-funil__topo) span {
+.o-edu-boletim__topo span,
+.o-edu-funil__topo span {
 	font-family: var(--edu-detalhe);
 	font-size: 14px;
 	color: rgba(0, 0, 0, 0.74);
@@ -1289,12 +1292,21 @@
 .o-edu-raio__grade {
 	display: grid;
 	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+	grid-template-areas: "texto form" "texto dado";
+	grid-template-rows: auto 1fr;
 	align-items: start;
-	gap: clamp(40px, 5vw, 88px);
+	gap: 44px clamp(40px, 5vw, 88px);
 }
 .o-edu-raio__texto {
+	grid-area: texto;
 	max-width: none;
 	margin-bottom: 0;
+}
+.o-edu-raio__grade > .o-form {
+	grid-area: form;
+}
+.o-edu-raio__grade > .o-edu-dado {
+	grid-area: dado;
 }
 .o-edu-varredura {
 	position: absolute;
@@ -1350,7 +1362,7 @@
 	box-shadow: 3px 3px 0 var(--preto);
 }
 .o-edu-raio__lista {
-	margin: 0 0 28px;
+	margin: 0;
 }
 .o-edu-dado {
 	position: relative;
@@ -2067,7 +2079,7 @@
 	letter-spacing: -0.04em;
 	white-space: nowrap;
 	color: transparent;
-	-webkit-text-stroke: 2px rgba(255, 255, 255, 0.16);
+	-webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
 }
 .o-edu-final__grade {
 	display: grid;
@@ -2244,8 +2256,10 @@
    Movimento (só sem prefers-reduced-motion; o botão "Pausar animações" mostra tudo pronto)
    ========================================================================== */
 @media screen and (prefers-reduced-motion: no-preference) {
-	/* Banner: entra na primeira pintura (o título fica parado, para não atrasar a pintura principal) */
-	html.js:not(.o-pausado) {
+	/* Banner: entra na primeira pintura, só com CSS (o título fica parado, para não atrasar a pintura
+	   principal). Sem "html.js" de propósito: tudo termina visível mesmo sem JavaScript, e regras com
+	   "html.js" iriam para o CSS embutido de todas as páginas do site (scripts/pos-processar.mjs). */
+	html:not(.o-pausado) {
 		& .o-edu-hero__texto > :not(.o-edu-h1) {
 			animation: o-edu-sobe 0.7s var(--mov-saida) backwards;
 		}
@@ -2313,12 +2327,13 @@
 		}
 	}
 	/* Depois da entrada, o boletim respira (classe posta pelo JS) */
-	html.js.o-edu-entrou:not(.o-pausado) .o-edu-boletim {
+	html.o-edu-entrou:not(.o-pausado) .o-edu-boletim {
 		animation: o-edu-respira 7s ease-in-out infinite alternate;
 	}
 
-	/* Entradas na rolagem: o JS põe .o-edu-espera só no que está abaixo da dobra e .is-visto ao chegar */
-	html.js:not(.o-pausado) {
+	/* Entradas na rolagem: o JS põe .o-edu-espera só no que está abaixo da dobra e .is-visto ao chegar
+	   (sem JS, a classe nunca aparece e nada fica escondido) */
+	html:not(.o-pausado) {
 		& .o-edu-espera:is(.o-edu-chamada, .o-edu-calendario, .o-edu-funil, .o-edu-ficha) {
 			transition: opacity 0.6s var(--mov-saida), translate 0.8s var(--mov-saida);
 		}
@@ -2573,6 +2588,11 @@
 	:is(.o-edu-duas, .o-edu-raio__grade, .o-edu-metodo, .o-edu-final__grade, .o-edu-faq__grade) {
 		grid-template-columns: minmax(0, 1fr);
 	}
+	.o-edu-raio__grade {
+		grid-template-areas: "texto" "dado" "form";
+		grid-template-rows: auto;
+		row-gap: 36px;
+	}
 	.o-edu-faq__cabeca {
 		position: static;
 	}
@@ -2733,7 +2753,10 @@
 }
 @media (max-width: 420px) {
 	.o-edu-rodape__grade {
-		grid-template-columns: minmax(0, 1fr);
+		column-gap: 20px;
+	}
+	.o-edu-rodape__col:last-child {
+		grid-column: 1 / -1;
 	}
 	.o-edu-chamada__marca {
 		font-size: 11px;

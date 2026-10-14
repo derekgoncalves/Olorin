@@ -193,10 +193,10 @@ fontes_extra:
 			<ul class="o-lista-pixel o-edu-raio__lista">
 			{%- for item in t.itens %}<li>{{ item }}</li>{% endfor %}
 			</ul>
-			<div class="o-edu-dado">
-				<p class="o-edu-dado__texto">{{ t.dado.antes }} <strong>{{ t.dado.numero }}</strong> {{ t.dado.depois }}</p>
-				<p class="o-edu-dado__fonte">Fonte: <a href="{{ t.dado.fonte_url }}" target="_blank" rel="noopener">{{ t.dado.fonte }}<span class="o-sr"> (abre em nova aba)</span></a></p>
-			</div>
+		</div>
+		<div class="o-edu-dado">
+			<p class="o-edu-dado__texto">{{ t.dado.antes }} <strong>{{ t.dado.numero }}</strong> {{ t.dado.depois }}</p>
+			<p class="o-edu-dado__fonte">Fonte: <a href="{{ t.dado.fonte_url }}" target="_blank" rel="noopener">{{ t.dado.fonte }}<span class="o-sr"> (abre em nova aba)</span></a></p>
 		</div>
 		{{ formulario({ id: "form-raio-x", posicao: "topo", modo: "educacao", origemWa: "educacao-form-raio-x" }) }}
 	</div>
