@@ -732,7 +732,9 @@
 	}
 	.o-blog-grade--home .o-card-artigo:not(:first-child) .o-janela__barra,
 	.o-blog-grade--2 .o-card-artigo .o-janela__barra,
-	.o-blog-grade--2 .o-card-artigo__resumo {
+	.o-blog-grade--2 .o-card-artigo__resumo,
+	.o-blog-grade--home .o-card-artigo:not(:first-child) .o-card-artigo__leitura,
+	.o-blog-grade--2 .o-card-artigo__leitura {
 		display: none;
 	}
 	.o-blog-grade--home .o-card-artigo:not(:first-child) .o-card-artigo__capa,

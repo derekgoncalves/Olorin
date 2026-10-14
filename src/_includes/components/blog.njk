@@ -22,7 +22,7 @@
 		<p class="o-card-artigo__categoria">{{ a.categoria }}</p>
 		<{{ nivel }} class="o-card-artigo__titulo"><a class="o-card-artigo__link" href="{{ a.url }}">{{ a.titulo }}</a></{{ nivel }}>
 		<p class="o-card-artigo__resumo">{{ a.descricao }}</p>
-		<p class="o-card-artigo__meta"><time datetime="{{ a.data }}">{{ a.data | dataCurta }}</time> · {{ a.minutos }} min de leitura</p>
+		<p class="o-card-artigo__meta"><time datetime="{{ a.data }}">{{ a.data | dataCurta }}</time> · {{ a.minutos }} min<span class="o-card-artigo__leitura"> de leitura</span></p>
 	</div>
 </article>
 {% endmacro %}
