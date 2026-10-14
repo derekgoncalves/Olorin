@@ -302,7 +302,7 @@ faq:
     resposta: Um teste de atendimento e uma análise da sua captação. Mandamos mensagem como um interessado e medimos o tempo de resposta. Depois olhamos anúncio, Instagram, site e Perfil da Empresa no Google. Numa conversa de 30 minutos por vídeo, mostramos o que vimos. Em até 48 horas, você recebe um PDF de 1 página com o que mais trava a matrícula e por onde começar. Sem compromisso.
   - id: faq-edu-medir
     pergunta: Como vocês medem matrícula, se ela fecha na secretaria?
-    resposta: Combinamos com a sua equipe um jeito simples de registrar de onde veio cada aluno, como uma etiqueta no WhatsApp ou uma pergunta na ficha de matrícula. Assim o boletim do mês mostra contatos, visitas e matrículas por canal, e quanto custou cada uma.
+    resposta: Combinamos com a sua equipe um jeito simples de registrar de onde veio cada aluno. Pode ser uma etiqueta no WhatsApp ou uma pergunta na ficha de matrícula. Assim o boletim do mês mostra contatos, visitas e matrículas por canal, e quanto custou cada uma.
   # PENDENTE: confirmar se a Olorin entrega as mensagens prontas de atendimento (régua) para a equipe da escola
   - id: faq-edu-atendimento
     pergunta: Preciso de alguém para atender os interessados?

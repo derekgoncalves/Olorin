@@ -904,6 +904,13 @@
 	color: var(--branco);
 	box-shadow: 0 0 0 10px var(--branco);
 }
+/* Régua parada (reduzir movimento): o 1º item começa na margem da página, sem a letra cortada
+   (a faixa passa 3vw da tela de cada lado por causa da inclinação). */
+@media (prefers-reduced-motion: reduce) {
+	.o-edu-regua .o-faixa__trilho {
+		padding-left: calc(3vw + var(--margem));
+	}
+}
 
 /* ---------- 3. Para quem: lista de chamada ---------- */
 .o-edu-duas {
@@ -1418,6 +1425,11 @@
 .o-tema-educacao .o-form > .o-janela__barra {
 	background: var(--preto);
 	color: var(--branco);
+}
+/* A estrela do cursor (cursor.js) fica branca sobre .o-form; aqui o formulário é papel branco com
+   botões violeta: preta, que aparece nos dois. */
+.o-tema-educacao:has(.o-form:hover) .o-cursor {
+	--cor-cursor: var(--preto) !important;
 }
 .o-tema-educacao .o-form__progresso {
 	font-family: var(--edu-detalhe);
@@ -2740,11 +2752,13 @@
 	.o-edu-dado {
 		padding-right: 22px;
 	}
+	/* Relógio em cima do texto, que fica com a largura toda */
 	.o-edu-dado::before {
+		position: static;
+		display: block;
 		width: 24px;
 		height: 24px;
-		right: 16px;
-		top: 16px;
+		margin-bottom: 12px;
 	}
 	.o-edu-faixa-cta .o-btn,
 	.o-edu-acoes .o-btn {
@@ -2761,5 +2775,24 @@
 	.o-edu-chamada__marca {
 		font-size: 11px;
 		padding-inline: 5px;
+	}
+}
+/* Celular pequeno (320–374 px): carimbo da chamada embaixo do nome ("profissionalizantes" não
+   cabe ao lado) e botões com menos folga lateral ("Raio-X" não quebra no hífen). */
+@media (max-width: 374px) {
+	.o-edu-chamada__lista li {
+		grid-template-columns: 58px minmax(0, 1fr);
+		row-gap: 6px;
+	}
+	.o-edu-chamada__lista .o-edu-chamada__marca {
+		grid-column: 2;
+		justify-self: start;
+		margin-left: -12px;
+	}
+	.o-tema-educacao .o-btn {
+		padding-inline: 16px;
+	}
+	.o-edu-faixa-cta {
+		padding: 16px;
 	}
 }
