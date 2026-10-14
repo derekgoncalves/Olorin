@@ -54,7 +54,6 @@ O site vai ao ar completo. Onde faltava informação, ele mostra um **texto prop
 
 | Prio. | O que confirmar | O que está no ar hoje | Onde |
 |---|---|---|---|
-| B | Lema da LP | "Cuidado não tem tamanho de turma." (o lema do site adaptado para escolas) | `paginas/educacao.yml` |
 | B | A Olorin entrega as mensagens prontas de atendimento para a equipe da escola? | "Nós trazemos o interessado, deixamos mensagens prontas para cada etapa e medimos o tempo de resposta." | `paginas/educacao.yml` |
 | B | Prazo dos primeiros resultados | "Os primeiros contatos costumam chegar nos primeiros dias de campanha. A matrícula depende do ciclo do seu curso…" | `paginas/educacao.yml` |
 | C | Calendário de captação: trocar título e texto a cada temporada | "Ainda dá tempo." e a decisão das famílias entre outubro e janeiro (de março a agosto, algo como "Comece cedo.") | `paginas/educacao.yml` |
