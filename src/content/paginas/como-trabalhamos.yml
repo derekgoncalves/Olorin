@@ -5,8 +5,12 @@ seo:
   descricao: As 4 etapas do Método Olorin, como funciona o Raio-X gratuito e o relatório mensal que mostra faturamento, não só alcance.
 
 etiqueta: Como trabalhamos
-titulo: Sem caixa-preta, do Raio-X ao relatório.
-sub: Você sabe o que está sendo feito, por quê e quanto está voltando. Aqui está o caminho completo, do primeiro contato ao relatório de todo mês.
+titulo: Sem caixa-preta.
+sub: Você sabe o que está sendo feito, por quê e quanto está voltando. Do primeiro contato ao relatório de todo mês, o caminho é este, para qualquer frente e qualquer tamanho de marca.
+janela: metodo.exe
+janela_linhas:
+  - Raio-X · gratuito
+  - Relatório · todo mês
 
 metodo:
   etiqueta: Método Olorin
@@ -24,17 +28,17 @@ raio_x:
     - titulo: Você conta sobre a marca
       texto: Preenche o formulário em 2 etapas, com o que você faz e quanto investe hoje. A gente responde em até 1 dia útil.
     - titulo: Conversa de 30 minutos
-      texto: Por vídeo, com quem executa. Olhamos anúncio, redes, site e material da marca com você.
+      texto: Por vídeo, com quem coordena. Olhamos anúncio, redes, site e material da marca com você.
     - titulo: PDF em até 48 horas
-      texto: Uma página com os 3 problemas que mais travam a sua venda e as 3 ações para começar. Se fizer sentido, vem junto a proposta.
+      texto: Uma página com os 3 pontos que mais travam a sua venda e as 3 ações para começar. Se fizer sentido, vem junto a proposta, com preço aberto.
 
 orcamento:
   etiqueta: Raio-X Olorin gratuito
   titulo_1: Vamos olhar sua
   titulo_2: marca juntos.
   lista:
-    - 30 minutos por vídeo com quem executa
-    - PDF em até 48 horas com 3 problemas e 3 ações
+    - 30 minutos por vídeo com quem coordena
+    - PDF em até 48 horas com 3 pontos e 3 ações
     - Proposta com preço aberto, sem compromisso
     - Resposta em até 1 dia útil
   janela: whatsapp.exe
@@ -43,8 +47,8 @@ orcamento:
 
 relatorio:
   etiqueta: Como é o nosso relatório
-  titulo: Relatório que mostra faturamento, não só alcance.
-  texto: Todo mês você recebe um painel como este — com o que foi investido, o que voltou e o que vamos fazer na próxima rodada. Sem sigla solta e sem gráfico bonito que não diz nada.
+  titulo: Faturamento, não só alcance.
+  texto: Todo mês você recebe um painel como este, com o que foi investido, o que voltou e o que muda na próxima rodada. Sem sigla solta e sem gráfico bonito que não diz nada.
   aviso: Exemplo ilustrativo, com dados fictícios
   janela: painel.exe
   mes: Mês de exemplo

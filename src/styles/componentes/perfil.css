@@ -624,3 +624,21 @@
 		to { rotate: 360deg; }
 	}
 }
+
+/* Variante de "o nosso jeito" com passos numerados (Raio-X em /como-trabalhamos/) */
+.o-jeito--passos {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.o-jeito__icone--num {
+	font-family: var(--fonte-pixel);
+	font-size: 13px;
+	letter-spacing: 0.04em;
+}
+.o-metodo-raio-x__acao {
+	margin: clamp(8px, 1vw, 16px) 0 0;
+}
+@media (max-width: 960px) {
+	.o-jeito--passos {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

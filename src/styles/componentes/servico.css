@@ -479,6 +479,13 @@
 	white-space: nowrap;
 	color: var(--branco);
 }
+.o-cena-hub--metodo {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.o-cena-hub--metodo .o-cena-hub__nome {
+	font-size: 12px;
+	text-transform: uppercase;
+}
 .o-cena-hub__app:nth-child(1) { --n: 0; }
 .o-cena-hub__app:nth-child(2) { --n: 1; }
 .o-cena-hub__app:nth-child(3) { --n: 2; }
