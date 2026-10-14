@@ -45,6 +45,13 @@
 	line-height: 1.05;
 	text-transform: uppercase;
 }
+/* O nome cabe na coluna do texto mesmo quando o cartão fica estreito (celular pequeno). */
+.o-pessoa:not(.o-pessoa--compacta) .o-pessoa__texto {
+	container-type: inline-size;
+}
+.o-pessoa:not(.o-pessoa--compacta) .o-pessoa__nome {
+	font-size: clamp(15px, min(1.6vw, 11.5cqi), 24px);
+}
 .o-pessoa__funcao {
 	margin: 0 0 10px !important;
 	font-family: var(--fonte-pixel);

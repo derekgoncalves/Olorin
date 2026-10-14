@@ -61,13 +61,16 @@
 }
 /* Opção única (rádio): sem o desenho de caixinha */
 .o-chip--opcao span {
+	flex-wrap: wrap;
 	justify-content: space-between;
+	row-gap: 2px;
 	min-height: 46px;
 }
 .o-chip--opcao span::before {
 	display: none;
 }
 .o-chip--opcao small {
+	white-space: nowrap;
 	font-weight: 400;
 	font-size: 12px;
 	opacity: 0.8;

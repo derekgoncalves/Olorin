@@ -21,6 +21,13 @@
 	align-items: start;
 	gap: clamp(32px, 5vw, 80px);
 }
+.o-promo-topo__texto {
+	container-type: inline-size;
+}
+/* Título do anúncio: o tamanho segue a coluna, para caber até palavra longa ("espantando"). */
+.o-promo-topo .o-pagina-topo__titulo {
+	font-size: clamp(28px, min(5vw, 9.5cqi), 68px);
+}
 .o-promo-topo__texto .o-lista-pixel {
 	margin-top: 22px;
 }
@@ -131,11 +138,14 @@
 	margin-bottom: 18px;
 	animation: o-girar 8s linear 1;
 }
+.o-obrigado__janela .o-janela__corpo {
+	container-type: inline-size;
+}
 .o-obrigado__titulo {
 	margin: 0 0 12px !important;
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(40px, 6vw, 88px);
+	font-size: clamp(30px, min(6vw, 13cqi), 88px);
 	line-height: 0.95;
 	text-transform: uppercase;
 }

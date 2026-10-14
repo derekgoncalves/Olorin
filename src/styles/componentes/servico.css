@@ -1050,6 +1050,7 @@
 	align-items: baseline;
 	gap: 2px 8px;
 	margin: 6px 0 0 !important;
+	container-type: inline-size;
 }
 .o-combinacao__preco span {
 	font-size: 13px;
@@ -1059,7 +1060,7 @@
 .o-combinacao__preco strong {
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(20px, 1.9vw, 28px);
+	font-size: clamp(20px, min(1.9vw, 11cqi), 28px);
 	line-height: 1;
 	white-space: nowrap;
 }
