@@ -18,18 +18,18 @@
 # ============================================================
 etiqueta: Quem confia na Olorin
 itens:
-  - { nome: John Deere, logo: john-deere.svg, largura: 126, altura: 26 }
+  - { nome: John Deere, logo: john-deere.svg, largura: 136, altura: 28 }
   - { nome: iZETA, logo: izeta.svg, largura: 96, altura: 38 }
   # PENDENTE: logo oficial do BRAVO Film Festival em vetor (hoje vetorizado da arte do Behance do Vini)
   - { nome: BRAVO Film Festival, logo: bravo.svg, largura: 66, altura: 56 }
   # PENDENTE: logo oficial do Governo do Estado do RS em vetor (hoje vetorizado de uma imagem pequena; sem o "Novas Façanhas")
-  - { nome: Governo do Estado do Rio Grande do Sul, logo: governo-rs.svg, largura: 72, altura: 40 }
+  - { nome: Governo do Estado do Rio Grande do Sul, logo: governo-rs.svg, largura: 61, altura: 34 }
   - { nome: Bença, logo: benca.svg, largura: 107, altura: 27 }
-  - { nome: Dr. José Anacleto Abduch Advocacia, logo: anacleto.svg, largura: 157, altura: 25 }
+  - { nome: Dr. José Anacleto Abduch Advocacia, logo: anacleto.svg, largura: 176, altura: 28 }
   - { nome: Viva Sem Veneno, logo: viva-sem-veneno.svg, largura: 50, altura: 56 }
   # PENDENTE: logo oficial da TORO AUDIO em vetor (hoje redesenhado a partir da arte do Behance do Vini)
   - { nome: TORO AUDIO, logo: toro-audio.svg, largura: 90, altura: 42 }
-  - { nome: Ambulatório da M.O.D.A, logo: ambulatorio-moda.svg, largura: 119, altura: 33 }
+  - { nome: Ambulatório da M.O.D.A, logo: ambulatorio-moda.svg, largura: 122, altura: 34 }
   # PENDENTE: logo real da Central Sul Móveis (hoje só o nome escrito; trocar central-sul-moveis.svg pelo FTP)
-  - { nome: Central Sul Móveis, logo: central-sul-moveis.svg, largura: 216, altura: 19 }
+  - { nome: Central Sul Móveis, logo: central-sul-moveis.svg, largura: 193, altura: 17 }
   - { nome: Cartas para o Futuro, logo: cartas-para-o-futuro.svg, largura: 86, altura: 42 }

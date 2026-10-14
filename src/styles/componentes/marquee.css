@@ -103,6 +103,11 @@ html:not(.js) .o-faixa__pausar {
 .o-faixa--logos {
 	--logo-escala: clamp(0.7px, 0.5px + 0.035vw, 1px);
 }
+.o-faixa.o-faixa--logos {
+	/* esmaece só nas margens da página, para o botão de pausa (na borda do conteúdo) ficar inteiro */
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
+	mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
+}
 .o-faixa.o-faixa--logos img {
 	width: auto;
 	height: calc(var(--logo-a, 40) * var(--logo-escala));
