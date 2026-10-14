@@ -49,7 +49,7 @@ fontes_extra:
 		</div>
 		<div class="o-edu-hero__visual">
 			{%- set b = h.boletim %}
-			<figure class="o-janela o-edu-boletim">
+			<figure class="o-janela o-edu-boletim o-ctx-branco">
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ b.janela }}</span><span class="o-janela__ctrl"></span></div>
 				<div class="o-edu-boletim__corpo">
 					<p class="o-edu-boletim__topo"><strong>{{ b.titulo }}</strong><span>{{ b.escola }} · {{ b.periodo }}</span></p>
@@ -75,7 +75,7 @@ fontes_extra:
 </section>
 
 {#- ===== 2. Régua (faixa animada) ===== -#}
-<div class="o-faixa o-edu-regua" data-o-faixa>
+<div class="o-faixa o-edu-regua o-ctx-branco" data-o-faixa>
 	<ul class="o-faixa__trilho">
 	{%- for item in E.regua %}
 		<li>{{ item }}</li>
@@ -257,7 +257,7 @@ fontes_extra:
 		</div>
 		<div class="o-edu-fichas">
 		{%- for c in conteudo.casesTodos %}{% if c.edu %}
-			<article class="o-janela o-edu-ficha" id="case-{{ c.slug }}" aria-labelledby="edu-case-{{ c.slug }}" data-o-edu-entra>
+			<article class="o-janela o-edu-ficha o-ctx-branco" id="case-{{ c.slug }}" aria-labelledby="edu-case-{{ c.slug }}" data-o-edu-entra>
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
 				<div class="o-edu-ficha__corpo">
 					<div class="o-edu-ficha__topo">
@@ -300,7 +300,7 @@ fontes_extra:
 					<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ p.janela }}</span><span class="o-janela__ctrl"></span></div>
 					{{ imagem(imagens, p.foto, { sizes: "(max-width: 767px) 36vw, (max-width: 1100px) 30vw, 380px" }) | safe }}
 				</figure>
-				<h3 class="o-edu-pessoa__nome"><a href="/quem-somos/#{{ p.slug }}">{{ p.nome }}<span class="o-sr"> ({{ t.ver_perfil | lower }})</span></a></h3>
+				<h3 class="o-edu-pessoa__nome"><a href="/quem-somos/#{{ p.slug }}">{{ p.nome }}</a></h3>
 				<p class="o-edu-pessoa__cargo">{{ p.cargo or p.funcao }}</p>
 				<p class="o-edu-pessoa__frase">{{ t.frases[p.slug] or p.frase }}</p>
 			</li>
