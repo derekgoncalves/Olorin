@@ -11,26 +11,58 @@
 #   resumo      o que a Olorin fez, em 1 frase
 #   resultado   número curto (só confirmado); sem número, use "destaque" (texto curto)
 #   detalhe     linha de apoio abaixo do número ou do destaque
+# Bloco "edu": só a ficha da Olorin Educação (/educacao/).
+#   nome, campos (rótulo + valor), resultado (só confirmado), site, site_texto, logo_largura
 itens:
   - slug: izeta
-    cliente: Izeta
+    cliente: iZETA
     logo: izeta.svg
-    segmento: Educação
+    segmento: Edtech de saúde ocupacional
     janela: case_izeta.exe
+    # PENDENTE: confirmar os serviços que a Olorin presta para a iZETA
     servicos_texto: Tráfego pago · Redes sociais · Dados
     servicos: [trafego-pago, redes-sociais, rastreamento-e-relatorio]
-    # PENDENTE: confirmar o que a Olorin fez para a Izeta e enviar o resultado (número, período e como foi medido)
-    resumo: Campanhas de matrícula, conteúdo para as redes e acompanhamento de cada contato que chegou.
+    # PENDENTE: confirmar o que a Olorin fez para a iZETA e enviar o resultado (número, período e como foi medido)
+    resumo: Captação para os cursos, com campanhas, conteúdo e acompanhamento de cada contato que chegou.
     destaque: Captação de alunos
-    detalhe: Turmas, campanhas e relatório de matrículas sob o mesmo cuidado.
+    detalhe: Pós, preparatório e cursos livres sob o mesmo cuidado.
+    edu:
+      nome: iZETA Educação
+      campos:
+        - rotulo: Segmento
+          valor: Edtech de saúde corporativa e ocupacional
+        - rotulo: Cursos
+          valor: Pós lato sensu com PUCPR, USCS e IDOMED, preparatório da prova de título ANAMT e cursos livres
+        - rotulo: Onde
+          valor: Curitiba, com cursos online
+      # PENDENTE: resultado da iZETA (número, período e como foi medido, com autorização)
+      resultado: Em breve aqui, com número, período e como medimos.
+      site: https://izeta.com.br/
+      site_texto: izeta.com.br
+      logo_largura: 219
   - slug: anacleto
-    cliente: Anacleto
+    cliente: José Anacleto Abduch
     logo: anacleto.svg
-    segmento: Educação
+    segmento: Educação executiva
     janela: case_anacleto.exe
+    # PENDENTE: confirmar os serviços que a Olorin presta para o Dr. José Anacleto Abduch
     servicos_texto: Tráfego pago · Identidade visual · Redes sociais
     servicos: [trafego-pago, identidade-visual, redes-sociais]
-    # PENDENTE: confirmar o que a Olorin fez para o Anacleto e enviar o resultado (número, período e como foi medido)
-    resumo: Comunicação de matrícula com cara de marca, do anúncio ao feed.
-    destaque: Marca e matrícula
-    detalhe: Calendário de captação, peças e campanhas falando a mesma língua.
+    # PENDENTE: confirmar o que a Olorin fez para o Dr. José Anacleto Abduch e enviar o resultado (número, período e como foi medido)
+    resumo: Comunicação dos cursos e palestras, com marca, peças e campanhas para encher cada turma.
+    destaque: Cursos e palestras
+    detalhe: Marca de professor, do anúncio ao convite da turma in company.
+    edu:
+      nome: Dr. José Anacleto Abduch
+      campos:
+        - rotulo: Quem é
+          valor: Procurador do Estado do Paraná, doutor em Direito Administrativo pela UFPR e autor do livro "Licitação e Contratação Pública"
+        - rotulo: Cursos
+          valor: Lei 14.133/21 para agentes públicos, advogados e pareceristas, online ao vivo, presencial e in company
+        - rotulo: Segmento
+          valor: Educação executiva e marca de professor
+      # PENDENTE: resultado do Dr. José Anacleto Abduch (número, período e como foi medido, com autorização)
+      resultado: Em breve aqui, com número, período e como medimos.
+      site: https://joseanacletoabduch.com.br/
+      site_texto: joseanacletoabduch.com.br
+      logo_largura: 750
