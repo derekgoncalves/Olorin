@@ -81,5 +81,5 @@ Suba o arquivo novo **com o mesmo nome**, na mesma pasta, substituindo o antigo.
 | `assets/img/clientes/vaga-01.svg` e `vaga-02.svg` | Espaços "Sua marca aqui" | SVG do logo do cliente. O nome lido pelo leitor de tela só muda com build novo |
 | `assets/img/og/*.jpg` | Imagens que aparecem quando alguém compartilha o link | JPG de 1200 × 630 px |
 | Fotos do portfólio, por exemplo `assets/img/portfolio-marca-identidade-300.avif` | Cada foto tem 4 arquivos: AVIF e WebP, em 2 larguras (300 e 600 px; a de redes tem 320 e 640) | Os 4 com o mesmo nome e a **mesma proporção** da foto atual. Mais fácil: mande as fotos e o Claude gera o pacote |
-| Fotos do time, por exemplo `assets/img/equipe-derek-480.webp` | Cada pessoa tem a foto 4:5 (3 larguras) e a quadrada (160 e 320 px), em AVIF e WebP | Mesma regra das fotos do portfólio |
+| Fotos do time, por exemplo `assets/img/equipe-derek-480.webp` | Cada pessoa tem a foto 4:5 (em 3 ou 4 larguras, de 320 a 660 px) e a quadrada (160 e 320 px), em AVIF e WebP | Mesma regra das fotos do portfólio |
 | `favicon.ico` | Ícone da aba do navegador | ICO de 32 × 32 px |
