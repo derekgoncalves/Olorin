@@ -202,7 +202,7 @@ eleventyComputed:
 		{%- for item in trabalhos %}
 			<li class="o-trabalho">
 				<figure>
-					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 46vw, (max-width: 1023px) 30vw, 310px", classePicture: "o-trabalho__imagem" }) | safe }}
+					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 48vw, (max-width: 1400px) 30vw, 430px", classePicture: "o-trabalho__imagem" }) | safe }}
 					<figcaption class="o-trabalho__legenda"><strong>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.titulo }}</a>{% else %}{{ item.titulo }}{% endif %}</strong><span class="o-trabalho__tipo">{% for tipo in item.rotulo.split(" · ") %}<span>{{ tipo }}{% if not loop.last %} ·{% endif %}</span>{% if not loop.last %} {% endif %}{% endfor %}</span></figcaption>
 				</figure>
 			</li>

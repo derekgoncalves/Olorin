@@ -5,9 +5,11 @@
 #   - artes do time: projetos do Vinícius Mafra no Behance (recortes 4:5 dos PDFs);
 #   - cards de logo para clientes de site, tráfego e redes (logo centrado sobre uma cor da marca).
 #
-# Ordem: a home mostra os primeiros itens (limite em home.yml → resultados.limite, hoje 8;
-# no máximo 2 cards de logo entre eles). /portfolio/ mostra todos, nesta ordem.
-# Cada página de serviço mostra os itens que têm o slug dela em "servicos".
+# Ordem: a home mostra os primeiros itens (limite em home.yml → resultados.limite; no máximo
+# 2 cards de logo entre eles). A grade tem 3 colunas no computador e 2 no celular: com 6 itens
+# as duas fecham sem sobra. /portfolio/ mostra todos, nesta ordem (claros e escuros alternados).
+# Cada página de serviço mostra os itens que têm o slug dela em "servicos"; cada perfil da
+# equipe mostra até 6 itens das frentes da pessoa.
 #
 # Campos:
 #   titulo     nome do cliente ou do projeto
@@ -39,11 +41,11 @@ itens:
   - { titulo: Ambulatório da M.O.D.A, rotulo: Redes sociais, imagem: portfolio-ambulatorio-da-moda, servicos: [redes-sociais] }
   - { titulo: Bença, rotulo: Identidade visual · Impressos, imagem: portfolio-benca, servicos: [identidade-visual, material-impresso] }
   - { titulo: Viva Sem Veneno, rotulo: Redes sociais · Identidade visual, imagem: portfolio-viva-sem-veneno, servicos: [redes-sociais, identidade-visual] }
-  - { titulo: Cartas para o Futuro, rotulo: Identidade visual · Impressos, imagem: portfolio-cartas-para-o-futuro, servicos: [identidade-visual, material-impresso] }
   - { titulo: iZETA, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-izeta, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
+  - { titulo: Cartas para o Futuro, rotulo: Identidade visual · Impressos, imagem: portfolio-cartas-para-o-futuro, servicos: [identidade-visual, material-impresso] }
   - { titulo: Anacleto Abduch, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-anacleto-abduch, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
-  - { titulo: Governo do Estado do RS, rotulo: Identidade visual · Impressos, imagem: portfolio-governo-rs, servicos: [identidade-visual, material-impresso] }
   - { titulo: TORO AUDIO, rotulo: Redes sociais, imagem: portfolio-toro-audio, servicos: [redes-sociais] }
+  - { titulo: Governo do Estado do RS, rotulo: Identidade visual · Impressos, imagem: portfolio-governo-rs, servicos: [identidade-visual, material-impresso] }
   - { titulo: John Deere, rotulo: Tráfego pago, imagem: portfolio-john-deere, servicos: [trafego-pago] }
   # PENDENTE: logo real da Central Sul Móveis (hoje o card mostra só o nome em letreiro)
   - { titulo: Central Sul Móveis, rotulo: Tráfego pago, imagem: portfolio-central-sul-moveis, servicos: [trafego-pago] }
