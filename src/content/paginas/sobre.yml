@@ -1,30 +1,58 @@
-# Página /sobre/ — só fatos (PROMPT seções 2 e 12.3).
+# Página /quem-somos/ e perfis /quem-somos/<pessoa>/ — só fatos (equipe.yml e claims.json).
 seo:
-  titulo: Sobre a Olorin Digital | Agência de marketing em Curitiba
-  descricao: Conheça o time de 3 especialistas da Olorin, o Método Olorin e como atendemos marcas de todo o Brasil, 100% a distância, a partir de Curitiba.
-etiqueta: Sobre a Olorin
-titulo: Um time de 3 especialistas cuidando da sua marca inteira.
-sub: A Olorin Digital é uma agência de marketing digital de Curitiba, especialista em captação de alunos para escolas e cursos. Atendemos marcas de todo o Brasil, 100% a distância.
+  titulo: Quem somos | Olorin Digital, agência em Curitiba
+  descricao: Conheça quem coordena anúncio, redes, marca, site e dados na Olorin. De Curitiba para todo o Brasil, com o mesmo cuidado para toda organização.
+etiqueta: Quem somos
+titulo: Um time inteiro cuidando da sua marca.
+sub: A Olorin Digital é uma agência de marketing digital de Curitiba. Cuida de anúncio, redes, marca, impresso, site e dados de organizações de todo tipo e tamanho, do Brasil inteiro, com o mesmo cuidado.
+dica_pilha: Passe o mouse ou toque para ver cada perfil.
 historia:
-  titulo: Por que a Olorin existe
+  etiqueta: Por que a Olorin existe
+  titulo: Cuidado não tem tamanho.
   paragrafos:
-    - "A Olorin nasceu para juntar o que quase sempre vive separado: estratégia, anúncio, conteúdo, arte, site e impresso."
-    - Quando cada parte fica com um fornecedor diferente, a marca fala várias línguas e ninguém sabe dizer quanto cada real trouxe de volta.
-    - Aqui, tudo sai do mesmo time. O preço é aberto, o relatório é fácil de entender e não prometemos o que o número não sustenta.
-    - Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 2 milhões em verba de anúncio.
-  lema: Não é sobre aparecer. É sobre vender.
+    - "A Olorin nasceu para juntar o que quase sempre vive separado: estratégia, anúncio, conteúdo, arte, site e impresso. Quando cada parte fica com um fornecedor diferente, a marca fala várias línguas e ninguém sabe dizer quanto cada real trouxe de volta."
+    - Aqui, cada frente tem alguém que coordena e responde por ela, e todas conversam entre si. O preço é aberto, o relatório é fácil de entender e não prometemos o que o número não sustenta.
+    - "Seja um negócio de bairro, uma escola com várias unidades ou uma indústria, o cuidado é o mesmo. Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 2 milhões em verba de anúncio."
+  apoio: Da menor à maior organização, o mesmo cuidado.
+  educacao:
+    texto: "Escolas e cursos têm um cuidado só deles: a Olorin Educação, para encher turma no calendário certo."
+    link: { texto: Conhecer a Olorin Educação, url: /educacao/ }
 equipe:
-  titulo: Quem toca a Olorin
-metodo:
-  titulo: Como trabalhamos
-  texto: Todo projeto passa pelas mesmas quatro etapas, do Raio-X ao relatório.
+  etiqueta: O time
+  titulo: Quem coordena.
+  texto: Cada pessoa responde por uma frente, e todas trabalham juntas na sua marca. Você fala direto com quem coordena.
+jeito:
+  etiqueta: O nosso jeito
+  titulo: Combinado é combinado.
+  itens:
+    - { titulo: Preço aberto, texto: Você sabe quanto vai pagar antes de falar com a gente. Está tudo na página de planos. }
+    - { titulo: Fale com quem coordena, texto: Cada frente tem uma pessoa que responde por ela. Nada de recado perdido no caminho. }
+    - { titulo: Número que se entende, texto: "Relatório em linguagem simples: quanto entrou, quanto saiu e o que muda." }
+    - { titulo: Sem promessa vazia, texto: Não garantimos o que o número não sustenta. Mostramos o que dá para medir. }
 remoto:
-  titulo: 100% remoto, de Curitiba para todo o Brasil
+  etiqueta: Onde estamos
+  titulo: De Curitiba para o Brasil.
   itens:
     - A maioria dos clientes é de fora de Curitiba. O processo foi feito para funcionar a distância.
-    - Conversa pelo WhatsApp, reuniões por vídeo, aprovações por e-mail e arquivos entregues pela internet.
+    - Conversa pelo WhatsApp, reunião por vídeo, aprovação por e-mail e arquivos entregues pela internet.
     - O Derek é o seu primeiro contato e coordena a sua conta no dia a dia.
-    - "[CONFIRMAR: Natália e Vinicius participam do início de cada projeto e da reunião mensal]"
+    # PENDENTE: confirmar que Natália e Vinicius participam do início de cada projeto e das reuniões de planejamento
+    - Natália e Vinicius entram no começo de cada projeto e nas reuniões de planejamento.
 contato:
   titulo: Quer conversar com a gente?
   botao: Falar com a equipe no WhatsApp
+# Textos fixos das páginas de perfil (/quem-somos/<pessoa>/)
+perfil:
+  coordena: Coordena
+  frentes: frentes que coordena
+  frente: frente que coordena
+  sobre: Sobre
+  dia_a_dia: O que coordena
+  trabalhos: Trabalhos
+  trabalhos_texto: Peças e projetos das frentes que coordena.
+  trabalhos_link: Ver o portfólio completo
+  time: Também no time
+  conversa: Falar com quem coordena
+  whatsapp: WhatsApp
+  copiar: Copiar link
+  copiado: Link copiado

@@ -1,28 +1,38 @@
 # Equipe (PROMPT seção 2 e 12.3). Só fatos confirmados — não aumentar.
 # "foto" = id da imagem no src/assets/manifest.json (sem o "-quadrada").
 # "frase" aparece nos cartões (home e páginas de serviço); "bio" aparece em /quem-somos/ e no perfil /quem-somos/<slug>/.
+# As frentes de cada pessoa saem do quem_faz de cada serviço (src/content/servicos/*.yml).
+# "destaques" são os números do perfil, tirados só da bio; o perfil acrescenta sozinho "frentes que coordena".
+# PENDENTE: links das redes de cada pessoa (LinkedIn, Instagram), se quiserem mostrar no perfil (campo redes: [{ nome, url }])
 pessoas:
   - slug: natalia-arruda
     nome: Natália Arruda
     funcao: Coordenadora de Mídia Paga
     frase: Mais de seis anos operando contas de anúncio de e-commerce, serviço, indústria, educação e campanha política.
     bio: Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, cuida das campanhas na Meta (Facebook e Instagram) e no Google.
+    descricao: "Natália Arruda coordena a mídia paga da Olorin Digital: mais de seis anos em Meta Ads e Google Ads, inclusive em contas de educação."  # meta description do perfil (até 155 caracteres)
     foto: equipe-natalia
     janela: natalia.jpg
-    servicos: [trafego-pago]
+    destaques:
+      - { valor: "6+", rotulo: anos em mídia paga }
+      - { valor: "5", rotulo: segmentos atendidos }
   - slug: vinicius-mafra
     nome: Vinicius Mafra
     funcao: Coordenador de Design
     frase: Mais de 10 anos à frente de projetos, de influenciadores digitais a produções culturais.
     bio: Diretor de arte e designer há mais de 10 anos. Já esteve à frente de projetos de influenciadores digitais a produções culturais. Na Olorin, responde pela identidade visual e pela direção de arte.
+    descricao: "Vinicius Mafra coordena o design da Olorin Digital: mais de 10 anos em direção de arte e identidade visual, de influenciadores a produções culturais."  # meta description do perfil (até 155 caracteres)
     foto: equipe-vinicius
     janela: vinicius.jpg
-    servicos: [identidade-visual, redes-sociais, material-impresso, site-e-loja-virtual]
+    destaques:
+      - { valor: "10+", rotulo: anos em design e direção de arte }
   - slug: derek-goncalves
     nome: Derek Gonçalves
     funcao: Coordenador de Atendimento
     frase: Seu primeiro contato e quem coordena a sua conta.
     bio: Comunicador digital com atuação 360. Na Olorin, cuida do atendimento. É o seu primeiro contato e quem coordena a sua conta no dia a dia.
+    descricao: "Derek Gonçalves coordena o atendimento da Olorin Digital: é o primeiro contato e quem cuida da sua conta no dia a dia."  # meta description do perfil (até 155 caracteres)
     foto: equipe-derek
     janela: derek.jpg
-    servicos: [redes-sociais, rastreamento-e-relatorio]
+    destaques:
+      - { valor: "1º", rotulo: contato da sua conta }

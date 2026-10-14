@@ -11,7 +11,8 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 
 	const pessoa = (p) => ({
 		'@type': 'Person',
-		'@id': `${base}/quem-somos/#${p.slug}`,
+		'@id': `${base}/quem-somos/${p.slug}/#pessoa`,
+		url: `${base}/quem-somos/${p.slug}/`,
 		name: p.nome,
 		jobTitle: p.cargo || p.funcao,
 		description: textoPuro(p.bio || p.frase),
@@ -38,7 +39,7 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			],
 			knowsAbout: ['Tráfego pago', 'Meta Ads', 'Google Ads', 'Gestão de redes sociais', 'Identidade visual', 'Material impresso', 'Criação de sites', 'Google Tag Manager', 'Google Analytics 4'],
 			sameAs: [cfg.INSTAGRAM_URL, cfg.FACEBOOK_URL, cfg.LINKEDIN_URL, cfg.X_URL, cfg.GBP_URL].filter(Boolean),
-			employee: equipe.map((p) => ({ '@id': `${base}/quem-somos/#${p.slug}` })),
+			employee: equipe.map((p) => ({ '@id': `${base}/quem-somos/${p.slug}/#pessoa` })),
 		},
 		{
 			'@type': 'WebSite',
@@ -113,8 +114,9 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 		});
 	}
 
+	// pessoas: true (Quem somos, o time todo) ou o slug de uma pessoa (página de perfil).
 	if (pessoas) {
-		equipe.forEach((p) => grafo.push(pessoa(p)));
+		equipe.filter((p) => pessoas === true || pessoas === p.slug).forEach((p) => grafo.push(pessoa(p)));
 	}
 
 	return { '@context': 'https://schema.org', '@graph': JSON.parse(JSON.stringify(grafo)) };

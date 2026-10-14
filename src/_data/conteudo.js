@@ -67,6 +67,10 @@ export default function () {
 
 	// Equipe: atalho por slug.
 	conteudo.pessoaPorSlug = Object.fromEntries(((conteudo.equipe && conteudo.equipe.pessoas) || []).map((p) => [p.slug, p]));
+	// Frentes de cada pessoa: vêm do quem_faz de cada serviço (fonte única), em src/content/servicos/*.yml.
+	((conteudo.equipe && conteudo.equipe.pessoas) || []).forEach((p) => {
+		p.servicos = servicos.filter((s) => (s.quem_faz || []).includes(p.slug)).map((s) => s.slug);
+	});
 
 	// FAQ geral: atalho por id.
 	conteudo.faqPorId = Object.fromEntries(((conteudo.faq && conteudo.faq.perguntas) || []).map((p) => [p.id, p]));
