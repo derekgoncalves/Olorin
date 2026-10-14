@@ -1,10 +1,10 @@
 # Página /quem-somos/ e perfis /quem-somos/<pessoa>/ — só fatos (equipe.yml e claims.json).
 seo:
   titulo: Quem somos | Olorin Digital, agência em Curitiba
-  descricao: Conheça quem coordena anúncio, redes, marca, site e dados na Olorin. De Curitiba para todo o Brasil, para organizações de todo tipo e tamanho.
+  descricao: Conheça quem coordena anúncios, redes, marca, site, impressos e dados na Olorin. De Curitiba para todo o Brasil, para organizações de todo tipo e tamanho.
 etiqueta: Quem somos
 titulo: Um time inteiro, do clique ao cliente.
-sub: A Olorin Digital é uma agência de marketing digital de Curitiba. Faz anúncio, redes, marca, impresso, site e dados para organizações de todo tipo e tamanho, do Brasil inteiro.
+sub: A Olorin Digital é uma agência de marketing digital de Curitiba. Faz anúncios, redes, marca, site, impressos e dados para organizações de todo tipo e tamanho, do Brasil inteiro.
 dica_pilha: Passe o mouse ou toque para ver cada perfil.
 historia:
   etiqueta: Por que a Olorin existe
@@ -15,7 +15,7 @@ historia:
     - "Seja um negócio de bairro, uma escola com várias unidades ou uma indústria, o jeito de trabalhar é o mesmo. Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 2 milhões em verba de anúncio."
   apoio: Da menor à maior organização, resultado que dá pra ver.
   educacao:
-    texto: "Escolas e cursos têm uma frente só deles: a Olorin Educação, para encher turma no calendário certo."
+    texto: "Instituições de ensino têm uma frente só delas: a Olorin Educação, para encher turma no calendário certo."
     link: { texto: Conhecer a Olorin Educação, url: /educacao/ }
 equipe:
   etiqueta: O time
@@ -23,7 +23,7 @@ equipe:
   texto: Cada pessoa responde por uma frente, e todas trabalham juntas na sua marca. Você fala direto com quem coordena.
 jeito:
   etiqueta: O nosso jeito
-  titulo: Combinado é combinado.
+  titulo: Combinado não sai caro.
   itens:
     - { titulo: Preço aberto, texto: Você sabe quanto vai pagar antes de falar com a gente. Está tudo na página de planos. }
     - { titulo: Fale com quem coordena, texto: Cada frente tem uma pessoa que responde por ela. Nada de recado perdido no caminho. }

@@ -1,18 +1,18 @@
 # Hub de serviços (/servicos/). Preços no molde do dono (13/10/2026), iguais a src/content/planos.yml.
 seo:
   titulo: Serviços de Marketing Digital em Curitiba | Olorin
-  descricao: Tráfego pago, redes sociais, identidade visual, impressos, sites e dados coordenados pelo mesmo time. Preço aberto, a partir de R$ 800.
+  descricao: "Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time. Tráfego pago, redes sociais, sites e relatórios com preço aberto."
 etiqueta: Serviços de marketing digital em Curitiba
-titulo: Seis frentes, um time só.
-texto: Anúncio, redes, marca, impresso, site e dados coordenados pelo mesmo time. Contrate uma frente só ou junte todas. Quando rodam juntas, uma empurra a outra.
+titulo: Entregas que geram resultados.
+texto: Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time. Contrate uma frente só ou junte todas. Quando rodam juntas, uma puxa a outra.
 janela: servicos.exe
 cards:
   etiqueta: O que fazemos
   titulo: Escolha a frente.
-  texto: Cada serviço tem página própria, com o que entra, como funciona, quem coordena e o preço.
+  texto: Cada serviço tem página própria, com o que pode entrar, como funciona, quem coordena e o preço.
 escolher:
   etiqueta: Por onde começar
-  titulo: Qual é o seu caso?
+  titulo: Este é o seu caso?
   situacoes:
     - situacao: Você já anuncia, mas não sabe quanto cada venda custou.
       servico: trafego-pago
@@ -33,15 +33,15 @@ combinacoes:
       janela: gestao_mensal.exe
       nome: Tráfego pago + redes sociais
       de: ""
-      valor: R$ 2.500/mês
-      texto: Meta Ads ou Google Ads, 8 criativos e 8 posts por mês, otimização semanal e relatório com reunião. Implantação única de R$ 1.000.
+      valor: R$ 3.000/mês
+      texto: Meta Ads ou Google Ads, 4 criativos de anúncio e 8 posts no feed por mês, otimização semanal e relatório com reunião. Implantação única de R$ 1.000.
       servicos: [trafego-pago, redes-sociais]
     - plano: Marketing 360
       janela: marketing_360.exe
       nome: A marca inteira
       de: A partir de
       valor: R$ 5.000/mês
-      texto: Anúncio, redes, marca, site e impresso juntos, sem quantidade fechada, com reunião semanal e planejamento estratégico todo mês.
+      texto: Anúncios, redes, marca, site, impressos e dados juntos, sem quantidade fechada, com reunião semanal e planejamento estratégico todo mês.
       servicos: [trafego-pago, redes-sociais, identidade-visual, material-impresso, site-e-loja-virtual, rastreamento-e-relatorio]
     - plano: Pontual
       janela: pontual.exe
@@ -52,10 +52,10 @@ combinacoes:
       servicos: [identidade-visual, material-impresso]
     - plano: Sites
       janela: projeto_site.exe
-      nome: Site ou loja virtual
+      nome: Site, ecommerce ou sistema web
       de: A partir de
       valor: R$ 3.000
-      texto: Site institucional e página de captação a partir de R$ 3.000; loja virtual a partir de R$ 10.000. Projeto fechado.
+      texto: Site institucional e página de captação a partir de R$ 3.000; ecommerce e sistemas web personalizados a partir de R$ 10.000. Projeto fechado.
       servicos: [site-e-loja-virtual]
   botao: Quero esse
   link: { texto: Ver planos e calculadora, url: /planos/ }

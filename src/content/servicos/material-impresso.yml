@@ -60,7 +60,7 @@ dores:
     - { titulo: Tudo em cima da hora, texto: "O evento é amanhã e o material ainda nem foi para a gráfica." }
 
 entregas:
-  titulo: O que entra.
+  titulo: O que pode entrar.
   texto: Peças com a cara da marca e o arquivo certo para cada gráfica.
   itens:
     - titulo: Cartão e papelaria

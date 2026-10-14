@@ -61,7 +61,7 @@ dores:
     - { titulo: Cara de improviso, texto: A marca parece menor do que o negócio que você construiu. }
 
 entregas:
-  titulo: O que entra.
+  titulo: O que pode entrar.
   texto: O que pode entrar no projeto, com o escopo fechado na proposta e arquivos prontos para usar.
   itens:
     - titulo: Imersão e referências

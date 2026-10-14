@@ -73,7 +73,7 @@ eleventyComputed:
 	<div class="o-wrap">
 		<ul class="o-indice__lista">
 			<li><a href="#o-que-e">O que é</a></li>
-			<li><a href="#entregas">O que entra</a></li>
+			<li><a href="#entregas">O que pode entrar</a></li>
 			{%- if casesServico.length or trabalhos.length %}<li><a href="#trabalhos">Trabalhos</a></li>{% endif %}
 			<li><a href="#como-funciona">Como funciona</a></li>
 			<li><a href="#quem-cuida">Quem coordena</a></li>
@@ -294,7 +294,7 @@ eleventyComputed:
 			<div class="o-preco__listas">
 				{%- if s.preco.inclui and s.preco.inclui.length %}
 				<div>
-					<h3 class="o-preco__subtitulo">O que entra</h3>
+					<h3 class="o-preco__subtitulo">O que pode entrar</h3>
 					<ul class="o-lista-pixel">{% for i in s.preco.inclui %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
 				</div>
 				{%- endif %}

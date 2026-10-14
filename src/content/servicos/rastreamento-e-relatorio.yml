@@ -12,7 +12,7 @@ icone: dados
 janela: painel.exe
 cena: dados
 atualizado: "2026-10-14"
-quem_faz: [natalia-arruda, derek-goncalves]
+quem_faz: [natalia-arruda]
 
 seo:
   title: Rastreamento e Relatório de Marketing (GTM e GA4) | Olorin
@@ -25,8 +25,8 @@ card:
 
 hero:
   eyebrow: Rastreamento com Google Tag Manager e GA4 em Curitiba e no Brasil
-  h1: Dado que decide.
-  sub: Tag Manager, Google Analytics, pixel e conversões configurados direito, e um painel que mostra quanto entrou, quanto saiu e qual foi o retorno. Resultado que dá pra ver.
+  h1: Dados que decidem.
+  sub: Tag Manager, Google Analytics, pixel e conversões configurados direito, e um painel que mostra quanto entrou, quanto saiu e qual foi o retorno. Resultado que dá para medir.
   preco_rotulo: Sozinho, a partir de
   preco: R$ 1.500/mês
   janela_linhas:
@@ -62,7 +62,7 @@ dores:
     - { titulo: Relatório sem resposta, texto: O relatório tem muito gráfico e nenhuma resposta sobre o que fazer. }
 
 entregas:
-  titulo: O que entra.
+  titulo: O que pode entrar.
   texto: Da configuração ao painel, para cada resultado chegar com a sua origem.
   itens:
     - titulo: Google Tag Manager
@@ -127,7 +127,7 @@ preco:
   formato: Rastreamento e relatório
   rotulo: Sozinho, a partir de
   valor: R$ 1.500/mês
-  detalhe: "Sozinho, sem taxa de implantação, para quem já tem site e anúncio e quer medir certo. Na Gestão mensal (R$ 2.500/mês) e no Marketing 360 (a partir de R$ 5.000/mês), a configuração entra na implantação e o relatório vem todo mês."
+  detalhe: "Sozinho, sem taxa de implantação, para quem já tem site e anúncio e quer medir certo. Na Gestão mensal (R$ 3.000/mês) e no Marketing 360 (a partir de R$ 5.000/mês), a configuração entra na implantação e o relatório vem todo mês."
   contrato: Contrato mínimo de 3 meses. Depois, mês a mês com aviso de 30 dias, sem multa.
   inclui:
     - Tag Manager, Analytics, pixel e conversões

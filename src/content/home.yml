@@ -23,14 +23,14 @@ secoes:
 
 seo:
   titulo: Olorin Digital | Agência de marketing em Curitiba
-  descricao: Do clique ao cliente, resultado que dá pra ver. Anúncio, redes sociais, identidade visual, site e impresso num time só, com preço aberto e Raio-X gratuito.
+  descricao: Do clique ao cliente, resultado que dá pra ver. Anúncios, redes, marca, site, impressos e dados num time só, com preço aberto e Raio-X gratuito.
 
 hero:
   linha_superior: Agência de marketing digital · Curitiba para todo o Brasil
   titulo_1: "Do clique ao cliente:"
   titulo_2: resultado que
   titulo_destaque: dá pra ver.
-  paragrafo: Anúncio, redes, marca, site e impresso feitos por um time inteiro, como se você fosse o único cliente. Da menor à maior organização, com cada resultado medido.
+  paragrafo: Anúncios, redes, marca, site, impressos e dados feitos por um time inteiro, como se você fosse o único cliente. Da menor à maior organização, com cada resultado medido.
   atalho:
     rotulo: Seu WhatsApp com DDD
     placeholder: (41) 99999-9999
@@ -66,7 +66,7 @@ resultados:
   etiqueta: Resultados
   titulo: Prova, não promessa.
   texto: O que a Olorin já fez, para quem e com que cara.
-  clientes_titulo: Marcas que já passaram pelo nosso time
+  clientes_titulo: Quem confia na Olorin
   cases_etiqueta: Cases
   cases_titulo: De perto.
   case_link: Ver o serviço
@@ -83,7 +83,7 @@ resultados:
 servicos:
   etiqueta: O que a Olorin faz
   titulo: A marca inteira. Num lugar só.
-  texto: Contrate um serviço ou junte vários. Quando rodam juntos, um empurra o outro.
+  texto: Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time. Contrate uma frente só ou junte todas. Quando rodam juntas, uma puxa a outra.
   ver_detalhes: Ver o serviço
   faixa_texto: Não sabe por onde começar?
   faixa_botao: Perguntar no WhatsApp

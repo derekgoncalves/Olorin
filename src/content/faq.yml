@@ -4,7 +4,7 @@
 # Regra: no máximo 3 frases curtas por resposta. Texto proposto e ainda não confirmado
 # fica marcado com "# PENDENTE:" na linha de cima (npm run pendencias).
 # Preços seguem o molde do dono (13/10/2026): pontual a partir de R$ 800, serviço mensal
-# a partir de R$ 1.500, Gestão mensal R$ 2.500 (único preço fechado), Marketing 360 a partir
+# a partir de R$ 1.500, Gestão mensal R$ 3.000 (único preço fechado), Marketing 360 a partir
 # de R$ 5.000, sites a partir de R$ 3.000, lojas virtuais a partir de R$ 10.000.
 perguntas:
   - id: faq-raio-x
@@ -45,7 +45,7 @@ perguntas:
     resposta: "Todo mês você recebe um relatório com quanto investiu, quanto voltou, quanto custou cada resultado e o que muda na próxima rodada. Na Gestão mensal, junto vem uma reunião de 30 minutos; no Marketing 360, reunião toda semana e planejamento estratégico todo mês. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio)."
   - id: faq-dia-a-dia
     pergunta: Quem acompanha a minha conta no dia a dia?
-    resposta: O Derek Gonçalves, diretor de operações e relacionamento, é o seu primeiro contato, principalmente pelo WhatsApp. A Natália Arruda dirige a estratégia e as mídias pagas, e o Vinicius Mafra dirige a criação e o design.
+    resposta: O Derek Gonçalves, diretor de operações e relacionamento, é o seu primeiro contato, principalmente pelo WhatsApp. A Natália Arruda dirige a estratégia, as mídias pagas, os dados e os relatórios, e o Vinicius Mafra dirige a criação e o design.
   - id: faq-troca-agencia
     pergunta: Já tenho agência. Como funciona a troca?
     # PENDENTE: confirmar como é a transição de outra agência (acessos, histórico, prazo)

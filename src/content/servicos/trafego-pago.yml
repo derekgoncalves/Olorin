@@ -26,8 +26,8 @@ card:
 
 hero:
   eyebrow: Gestão de tráfego pago em Curitiba e no Brasil
-  h1: Anúncio que volta.
-  sub: Meta Ads e Google Ads acompanhados de perto, com ajuste toda semana e um relatório que mostra quanto cada real investido devolveu.
+  h1: Anúncios que lucram.
+  sub: Meta Ads e Google Ads cuidados de perto, com ajuste toda semana e um relatório que mostra quanto cada centavo investido devolveu.
   preco_rotulo: Gestão a partir de
   preco: R$ 1.500/mês
   janela_linhas:
@@ -39,7 +39,7 @@ hero:
 resposta_curta: >-
   Gestão de tráfego pago é planejar, montar e ajustar os seus anúncios na Meta (Instagram e Facebook) e no
   Google para buscar venda, matrícula ou contato. Sozinha, a gestão sai a partir de R$ 1.500/mês; com as redes
-  sociais junto, na Gestão mensal, R$ 2.500/mês. Nos dois formatos, implantação única de R$ 1.000 e contrato
+  sociais junto, na Gestão mensal, R$ 3.000/mês. Nos dois formatos, implantação única de R$ 1.000 e contrato
   mínimo de 3 meses. A verba de anúncio é à parte, paga direto à Meta ou ao Google, e recomendamos a partir
   de R$ 1.500/mês.
 
@@ -64,7 +64,7 @@ dores:
     - { titulo: Promessa quebrada, texto: "O anúncio promete uma coisa, o site mostra outra, e a pessoa desiste no caminho." }
 
 entregas:
-  titulo: O que entra.
+  titulo: O que pode entrar.
   texto: Da estrutura da conta ao relatório do mês, com o mesmo time.
   itens:
     - titulo: Campanhas por objetivo
@@ -130,7 +130,7 @@ preco:
   formato: Gestão de tráfego pago
   rotulo: A partir de
   valor: R$ 1.500/mês
-  detalhe: "Sozinha, para uma plataforma (Meta ou Google). Com as redes sociais junto, na Gestão mensal: R$ 2.500/mês, com 4 criativos de anúncio e 8 posts no feed por mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses. A verba de anúncio é à parte, paga direto à Meta ou ao Google, e recomendamos a partir de R$ 1.500/mês."
+  detalhe: "Sozinha, para uma plataforma (Meta ou Google). Com as redes sociais junto, na Gestão mensal: R$ 3.000/mês, com 4 criativos de anúncio e 8 posts no feed por mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses. A verba de anúncio é à parte, paga direto à Meta ou ao Google, e recomendamos a partir de R$ 1.500/mês."
   total: "Custo por mês a partir de R$ 3.000 (gestão + verba mínima recomendada), mais a implantação de R$ 1.000 no início."
   contrato: Depois de 3 meses, segue mês a mês com aviso de 30 dias, sem multa.
   inclui:
@@ -157,7 +157,7 @@ combina_com:
 faq:
   - id: trafego-quanto-investir
     pergunta: Quanto preciso investir por mês?
-    resposta: "A gestão sai a partir de R$ 1.500/mês, ou R$ 2.500/mês na Gestão mensal, com as redes sociais junto. Nos dois, implantação única de R$ 1.000 e contrato mínimo de 3 meses. A verba de anúncio vai direto para a Meta ou o Google, e recomendamos a partir de R$ 1.500/mês. Na [calculadora](/planos/#calculadora) a conta sai na hora."
+    resposta: "A gestão sai a partir de R$ 1.500/mês, ou R$ 3.000/mês na Gestão mensal, com as redes sociais junto. Nos dois, implantação única de R$ 1.000 e contrato mínimo de 3 meses. A verba de anúncio vai direto para a Meta ou o Google, e recomendamos a partir de R$ 1.500/mês. Na [calculadora](/planos/#calculadora) a conta sai na hora."
   - id: trafego-tempo-resultado
     pergunta: Em quanto tempo vejo resultado?
     resposta: Campanhas de venda e de contato costumam dar os primeiros sinais em 2 a 4 semanas. Campanhas de marca pedem de 2 a 3 meses de constância. Não existe resultado garantido, mas o relatório mostra desde o primeiro mês o que está funcionando.

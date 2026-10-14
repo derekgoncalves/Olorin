@@ -10,7 +10,7 @@ pessoas:
     funcao: Diretora de Estratégia e Mídias Pagas
     titulo_seo: "Natália Arruda, Estratégia e Mídias Pagas | Olorin"  # <title> do perfil (até 60 caracteres)
     frase: Mais de seis anos operando contas de anúncio de e-commerce, serviço, indústria, educação e campanha política.
-    bio: Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, dirige a estratégia e as campanhas na Meta (Facebook e Instagram) e no Google.
+    bio: Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, dirige a estratégia, as campanhas na Meta (Facebook e Instagram) e no Google, os dados e os relatórios.
     descricao: "Natália Arruda dirige estratégia e mídias pagas na Olorin Digital: mais de seis anos em Meta Ads e Google Ads, inclusive em contas de educação."  # meta description do perfil (até 155 caracteres)
     foto: equipe-natalia
     janela: natalia.jpg
@@ -31,10 +31,11 @@ pessoas:
     nome: Derek Gonçalves
     funcao: Diretor de Operações e Relacionamento
     titulo_seo: "Derek Gonçalves, Operações e Relacionamento | Olorin"  # <title> do perfil (até 60 caracteres)
-    frase: Seu primeiro contato e quem coordena a sua conta.
-    bio: Comunicador digital com atuação 360. Na Olorin, dirige as operações e o relacionamento com os clientes. É o seu primeiro contato e quem coordena a sua conta no dia a dia.
-    descricao: "Derek Gonçalves dirige operações e relacionamento na Olorin Digital: é o primeiro contato e quem acompanha a sua conta no dia a dia."  # meta description do perfil (até 155 caracteres)
+    frase: Mais de 8 anos em comunicação política e institucional. É o seu primeiro contato e quem coordena a sua conta.
+    bio: Comunicador digital com atuação 360 e mais de 8 anos de experiência em comunicação política e institucional. Na Olorin, dirige as operações e o relacionamento com os clientes. É o seu primeiro contato e quem coordena a sua conta no dia a dia.
+    descricao: "Derek Gonçalves dirige operações e relacionamento na Olorin Digital: mais de 8 anos em comunicação política e institucional."  # meta description do perfil (até 155 caracteres)
     foto: equipe-derek
     janela: derek.jpg
     destaques:
+      - { valor: "8+", rotulo: anos em comunicação política e institucional }
       - { valor: "1º", rotulo: contato da sua conta }
