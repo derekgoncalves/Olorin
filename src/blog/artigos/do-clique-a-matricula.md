@@ -92,4 +92,4 @@ A leitura é direta. Poucos contatos apontam para o anúncio ou a página. Muito
 - Monte a planilha com as seis etapas e preencha com o que já tem.
 - Escolha uma etapa só para melhorar neste mês.
 
-Medir o caminho inteiro não exige um sistema caro. Exige constância: os mesmos números, do mesmo jeito, todo mês. É assim que a [Olorin Educação](/educacao/) acompanha a captação das instituições que atende, com o custo de cada matrícula no relatório do mês.
+Medir o caminho inteiro não exige um sistema caro. Exige constância: os mesmos números, do mesmo jeito, todo mês. É assim que a [Olorin Educação](/educacao/) trabalha a captação: com o custo de cada matrícula no relatório do mês.

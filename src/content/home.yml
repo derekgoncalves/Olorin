@@ -4,10 +4,11 @@
 # Ordem fixada pelo dono (13/10/2026, revista em 14/10/2026): 1 banner, 2 resultados
 # (números, faixa de logos e portfólio; os cases saíram da home), 3 serviços, 4 Raio-X
 # (mini formulário), 5 planos (com a calculadora), 6 método (banner), 7 quem toca,
-# 8 dúvidas, 9 formulário. O checklist saiu para a home ficar mais curta (14/10/2026).
+# 8 blog (os 3 artigos mais recentes), 9 dúvidas, 10 formulário. O checklist saiu para a
+# home ficar mais curta (14/10/2026).
 # Só checklist, método e dúvidas podem sair (comente a linha com #).
 # Regra da marca: violeta e verde nunca encostam. Cores dos blocos, em ordem:
-# preto, verde+branco, preto, violeta, branco, preto, violeta, preto, branco, violeta.
+# preto, verde+branco, preto, violeta, branco, violeta, preto, violeta, branco, violeta.
 # ============================================================
 secoes:
   - hero

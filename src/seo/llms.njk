@@ -5,7 +5,7 @@ eleventyExcludeFromCollections: true
 {%- set cfg = site.config -%}
 # {{ cfg.NOME }}
 
-> {{ cfg.LEMA if cfg.LEMA.endsWith(".") else cfg.LEMA + "." }} Agência de marketing digital em {{ cfg.CIDADE }} ({{ cfg.UF }}) que atende todo o Brasil: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, impressos, sites e lojas virtuais, rastreamento e relatórios. Um time inteiro cuida de organizações de todo tipo e tamanho com o mesmo cuidado, preço aberto e relatório em linguagem simples. Escolas e cursos têm uma frente própria, a Olorin Educação.
+> {{ cfg.LEMA if cfg.LEMA.endsWith(".") else cfg.LEMA + "." }} Agência de marketing digital em {{ cfg.CIDADE }} ({{ cfg.UF }}) que atende todo o Brasil. Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, impressos, sites, ecommerce e sistemas web personalizados, rastreamento e relatórios. Atende organizações de todo tipo e tamanho, com preço aberto e relatório em linguagem simples. Instituições de ensino têm uma frente própria, a Olorin Educação.
 
 - Site: {{ cfg.URL }}/
 - WhatsApp: {{ cfg.TELEFONE_EXIBICAO }} (https://wa.me/{{ cfg.WHATSAPP }})
@@ -47,7 +47,7 @@ Artigos práticos do time da Olorin, por categoria, em [{{ "/blog/" | urlAbsolut
 - [Como trabalhamos (Método Olorin)]({{ "/como-trabalhamos/" | urlAbsoluta }})
 - [Portfólio]({{ "/portfolio/" | urlAbsoluta }})
 - [Blog: artigos sobre tráfego pago, redes sociais e captação]({{ "/blog/" | urlAbsoluta }})
-- [Olorin Educação: marketing para escolas e cursos]({{ "/educacao/" | urlAbsoluta }})
+- [Olorin Educação: marketing para instituições de ensino]({{ "/educacao/" | urlAbsoluta }})
 - [Quem somos: a Olorin e a equipe]({{ "/quem-somos/" | urlAbsoluta }})
 {%- for p in conteudo.equipe.pessoas %}
 - [{{ p.nome }}, {{ p.cargo or p.funcao }}]({{ ("/quem-somos/" + p.slug + "/") | urlAbsoluta }})
