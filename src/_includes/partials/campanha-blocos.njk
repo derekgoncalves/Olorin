@@ -35,6 +35,7 @@
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">preco.txt</span><span class="o-janela__ctrl"></span></div>
 				<div class="o-janela__corpo">
 					{%- if precoCampanha.formato %}<p class="o-preco__formato">{{ precoCampanha.formato }}</p>{% endif %}
+					{%- if precoCampanha.rotulo %}<p class="o-preco__rotulo">{{ precoCampanha.rotulo }}</p>{% endif %}
 					{%- if precoCampanha.valor %}<p class="o-preco__valor">{{ precoCampanha.valor }}</p>{% endif %}
 					{%- if precoCampanha.detalhe %}<p class="o-preco__detalhe">{{ precoCampanha.detalhe | emLinha | safe }}</p>{% endif %}
 					{%- if precoCampanha.total and site.config.SHOW_TOTAL_COST %}<p class="o-preco__total">{{ precoCampanha.total }}</p>{% endif %}

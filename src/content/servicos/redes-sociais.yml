@@ -96,8 +96,8 @@ como_funciona:
   titulo: Do plano ao post.
   etapas:
     - { nome: Raio-X, texto: "Olhamos o seu perfil, os concorrentes e o que o anúncio promete." }
-    - { nome: Direção, texto: Definimos o tom, os temas e o calendário do mês. Você aprova antes de produzir. }
-    - { nome: Execução, texto: Artes e legendas prontas, aprovadas e publicadas no dia certo. }
+    - { nome: Direção, texto: "Definimos o tom, os temas e o calendário do mês. Você aprova antes de produzir." }
+    - { nome: Execução, texto: "Artes e legendas prontas, aprovadas e publicadas no dia certo." }
     - { nome: Leitura, texto: "Todo mês, o que funcionou e o que muda no próximo calendário." }
   # PENDENTE: confirmar o ritmo dos primeiros 90 dias de redes sociais
   prazos:

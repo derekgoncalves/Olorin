@@ -179,7 +179,7 @@
 	font-weight: 900;
 	font-size: clamp(24px, 6.4cqi, 40px);
 	line-height: 1.02;
-	text-transform: uppercase;
+	text-transform: none; /* nome do cliente como ele escreve (iZETA) */
 }
 .o-case__resumo {
 	max-width: 52ch;

@@ -94,8 +94,8 @@ como_funciona:
   titulo: Da tela ao papel.
   etapas:
     - { nome: Raio-X, texto: "Entendemos onde a peça vai ser usada, por quem e com qual objetivo." }
-    - { nome: Direção, texto: Formato, papel e acabamento definidos com você e com a gráfica. }
-    - { nome: Execução, texto: Arte criada, aprovada e arquivo fechado para impressão. }
+    - { nome: Direção, texto: "Formato, papel e acabamento definidos com você e com a gráfica." }
+    - { nome: Execução, texto: "Arte criada, aprovada e arquivo fechado para impressão." }
     - { nome: Leitura, texto: "Prova conferida e material entregue do jeito combinado." }
   prazos_titulo: Prazo de cada peça
   # PENDENTE: confirmar prazos médios de criação de impressos

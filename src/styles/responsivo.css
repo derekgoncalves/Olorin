@@ -111,7 +111,6 @@
 		grid-row: auto;
 	}
 	.o-escolher,
-	.o-combinacoes,
 	.o-passos,
 	.o-planos-resumo {
 		grid-template-columns: minmax(0, 1fr);

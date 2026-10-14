@@ -96,8 +96,8 @@ como_funciona:
   titulo: Do Raio-X ao relatório.
   etapas:
     - { nome: Raio-X, texto: "Olhamos a conta de anúncio, o site e o rastreamento para achar onde o dinheiro escapa." }
-    - { nome: Direção, texto: Definimos objetivo, público e verba de cada campanha. Você aprova antes de ir ao ar. }
-    - { nome: Execução, texto: Campanhas no ar, peças do nosso time e ajuste toda semana. }
+    - { nome: Direção, texto: "Definimos objetivo, público e verba de cada campanha. Você aprova antes de ir ao ar." }
+    - { nome: Execução, texto: "Campanhas no ar, peças do nosso time e ajuste toda semana." }
     - { nome: Leitura, texto: "Todo mês, quanto entrou, quanto saiu e o que muda na próxima rodada." }
   # PENDENTE: confirmar o ritmo dos primeiros 90 dias de tráfego pago
   prazos:
