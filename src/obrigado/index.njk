@@ -22,8 +22,12 @@ eleventyComputed:
 				<p class="o-nota"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ o.prazo }}</p>
 				<div class="o-obrigado__acoes">
 					<a class="o-btn o-btn--branco o-btn--grande" id="cta-whatsapp-obrigado" href="{{ waLink('obrigado', { tipo: 'obrigado' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ o.botao }}</a>
+					{#- Link de agenda: do config.json (build) ou do public_html/olorin-ids.js (SCHEDULING_URL).
+					    Sem link no build, fica escondido e o main.js mostra quando houver um endereço https://. -#}
 					{%- if site.config.SCHEDULING_URL %}
-					<a class="o-btn o-btn--contorno" id="cta-agendar-obrigado" href="{{ site.config.SCHEDULING_URL }}" target="_blank" rel="noopener">{{ o.agendar }}</a>
+					<span class="o-obrigado__agendar" data-o-agendar><a class="o-btn o-btn--contorno" id="cta-agendar-obrigado" href="{{ site.config.SCHEDULING_URL }}" target="_blank" rel="noopener">{{ o.agendar }}</a></span>
+					{%- else %}
+					<span class="o-obrigado__agendar" data-o-agendar hidden><a class="o-btn o-btn--contorno" id="cta-agendar-obrigado">{{ o.agendar }}</a></span>
 					{%- endif %}
 				</div>
 			</div>

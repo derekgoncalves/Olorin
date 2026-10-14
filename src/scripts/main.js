@@ -4,6 +4,7 @@
  * O que é essencial inicia na hora; o resto, quando o navegador estiver livre.
  */
 import { quandoLivre } from './util.js';
+import { aplicarIds } from './modulos/ids.js';
 import { iniciarConsentimento } from './modulos/consentimento.js';
 import { iniciarAncoras, manterAncora } from './modulos/ancoras.js';
 import { iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarIndice } from './modulos/cabecalho.js';
@@ -38,6 +39,8 @@ function rodar(lista) {
 	});
 }
 
+// Primeiro: IDs de medição e agendamento editados no servidor (olorin-ids.js), antes de qualquer leitura.
+rodar([aplicarIds]);
 rodar([iniciarAncoras, iniciarConsentimento, iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarFormularios, iniciarChecklist, iniciarFaq, iniciarPlanos, iniciarCliques, iniciarObrigado, iniciarPausa, iniciarMovimento]);
 quandoLivre(() =>
 	rodar([iniciarFaixas, iniciarRevelarMovimento, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor, iniciarFundos, iniciarServico, iniciarPerfil, iniciarEducacao, manterAncora]),
