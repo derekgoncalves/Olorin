@@ -1,47 +1,48 @@
-{#- Rodapé completo. -#}
+{#- Rodapé da LP Olorin Educação: marca, lema, âncoras da página, links do site da Olorin e contato.
+    Textos: paginas/educacao.yml → marca, cabecalho e rodape. -#}
 {%- set cfg = site.config -%}
+{%- set E = conteudo.paginas.educacao -%}
+{%- set r = E.rodape -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
-<footer class="o-rodape">
-	<div class="o-wrap o-rodape__grade">
-		<div class="o-rodape__marca">
-			<a class="o-rodape__logo" href="/" aria-label="Olorin Digital — página inicial"><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></a>
-			<p>{{ cfg.LEMA }}</p>
-			<p class="o-rodape__titulo o-redes__titulo">Siga a Olorin</p>
-			{{ ui.redes("o-rodape__redes", "rodape") }}
+<footer class="o-rodape o-edu-rodape">
+	<div class="o-wrap o-edu-rodape__grade">
+		<div class="o-edu-rodape__marca">
+			<a class="o-edu-marca" href="#inicio" aria-label="{{ E.marca.nome }}, voltar ao início da página">
+				<svg class="o-edu-marca__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
+				<span class="o-edu-marca__sub" aria-hidden="true">{{ E.marca.sub }}</span>
+			</a>
+			<p class="o-edu-rodape__lema">{{ cfg.LEMA }}</p>
+			<p class="o-edu-rodape__apoio">{{ E.marca.apoio }}</p>
+			<p class="o-edu-rodape__parte">{{ E.marca.parte_de }}</p>
+			{{ ui.redes("o-edu-rodape__redes", "rodape-educacao") }}
 		</div>
-		<nav class="o-rodape__col" aria-label="Serviços">
-			<p class="o-rodape__titulo">Serviços</p>
+		<nav class="o-edu-rodape__col" aria-label="{{ r.nesta_pagina }} (rodapé)">
+			<p class="o-rodape__titulo">{{ r.nesta_pagina }}</p>
 			<ul>
-			{%- for s in conteudo.servicos %}
-				<li><a href="/servicos/{{ s.slug }}/">{{ s.nome }}</a></li>
+			{%- for item in E.cabecalho.menu.concat(E.cabecalho.menu_extra) %}
+				<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
 			{%- endfor %}
 			</ul>
 		</nav>
-		<nav class="o-rodape__col" aria-label="A Olorin">
-			<p class="o-rodape__titulo">A Olorin</p>
+		<nav class="o-edu-rodape__col" aria-label="{{ r.olorin }}">
+			<p class="o-rodape__titulo">{{ r.olorin }}</p>
 			<ul>
-				<li><a href="/quem-somos/">Quem somos</a></li>
-				<li><a href="/como-trabalhamos/">Como trabalhamos</a></li>
-				<li><a href="/planos/">Planos e preços</a></li>
-				{%- if conteudo.portfolioPublicado and conteudo.portfolioPublicado.length %}<li><a href="/portfolio/">Portfólio</a></li>{% endif %}
-				<li><a href="/planos/#duvidas">Dúvidas</a></li>
-				<li><a href="/politica-de-privacidade/">Política de Privacidade</a></li>
+			{%- for item in r.links_olorin %}
+				<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
+			{%- endfor %}
 			</ul>
 		</nav>
-		<div class="o-rodape__col">
-			<p class="o-rodape__titulo">Contato</p>
+		<div class="o-edu-rodape__col">
+			<p class="o-rodape__titulo">{{ r.contato }}</p>
 			<ul>
-				<li><a href="{{ waLink('rodape') }}" target="_blank" rel="noopener" id="cta-whatsapp-rodape">WhatsApp {{ cfg.TELEFONE_EXIBICAO }}</a></li>
+				<li><a href="{{ waLink('educacao-rodape', { mensagem: E.whatsapp.padrao }) }}" target="_blank" rel="noopener" id="cta-whatsapp-rodape">WhatsApp {{ cfg.TELEFONE_EXIBICAO }}</a></li>
 				<li><a href="mailto:{{ cfg.EMAIL }}">{{ cfg.EMAIL }}</a></li>
-				{%- if cfg.GBP_URL %}
-				<li><a href="{{ cfg.GBP_URL }}" target="_blank" rel="noopener">Avaliações no Google</a></li>
-				{%- endif %}
-				<li>{{ cfg.CIDADE }}, {{ cfg.UF }} · atendimento 100% remoto</li>
+				<li>{{ cfg.CIDADE }}, {{ cfg.UF }} · {{ r.remoto }}</li>
 			</ul>
 		</div>
 	</div>
-	<div class="o-rodape__gigante" aria-hidden="true"><svg viewBox="0 0 731 125.6" focusable="false"><use href="#s-logo"></use></svg></div>
+	<div class="o-edu-rodape__gigante" aria-hidden="true"><span>{{ E.marca.sub }}</span></div>
 	<div class="o-rodape__base">
 		<div class="o-wrap o-rodape__base-dentro">
 			<p>{{ cfg.NOME }} © 2026 · {{ cfg.CIDADE }}, {{ cfg.UF }}</p>

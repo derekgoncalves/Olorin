@@ -1,78 +1,53 @@
-{#- Cabeçalho completo: logo, menu (com submenu de serviços), WhatsApp e diagnóstico. -#}
+{#- Cabeçalho da LP Olorin Educação: marca "Olorin educação", menu de âncoras da página,
+    link de volta para o site da Olorin, WhatsApp e Raio-X. Textos: paginas/educacao.yml → cabecalho. -#}
 {%- set cfg = site.config -%}
-{%- set temCases = conteudo.casesAprovados and conteudo.casesAprovados.length -%}
-{%- set temPortfolio = conteudo.portfolioPublicado and conteudo.portfolioPublicado.length -%}
+{%- set E = conteudo.paginas.educacao -%}
+{%- set c = E.cabecalho -%}
 {%- import "components/ui.njk" as ui with context -%}
-{%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre"] -%}
-{%- set destinoForm = "#orcamento" if temFormulario else "/#orcamento" -%}
-{%- set rotuloPrincipal = "Raio-X gratuito" if cfg.OFERTA_DIAGNOSTICO else "Pedir orçamento" -%}
-<header class="o-topo" data-o-topo>
+{%- set waTopo = waLink('educacao-topo', { mensagem: E.whatsapp.padrao }) -%}
+<header class="o-topo o-edu-topo o-ctx-violeta" data-o-topo>
 	<div class="o-topo__dentro">
-		<a class="o-logo" href="/" aria-label="Olorin Digital — página inicial"><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></a>
-		<nav class="o-nav" aria-label="Principal">
+		<a class="o-edu-marca" href="#inicio" aria-label="{{ E.marca.nome }}, início da página">
+			<svg class="o-edu-marca__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
+			<span class="o-edu-marca__sub" aria-hidden="true">{{ E.marca.sub }}</span>
+		</a>
+		<nav class="o-nav o-edu-nav" aria-label="Nesta página" data-o-indice>
 			<ul class="o-nav__lista">
-			{%- for item in navegacao.principal %}
-				{%- if (not item.so_com_cases or temCases) and (not item.so_com_portfolio or temPortfolio) %}
-				{%- set atual = (page.url == item.url) or (item.submenu and page.url.startsWith("/servicos/")) %}
-				<li class="o-nav__item{% if item.submenu %} o-nav__item--sub{% endif %}"{% if item.submenu %} data-o-sub{% endif %}>
-					<a class="o-nav__link" href="{{ item.url }}"{% if atual %} aria-current="page"{% endif %}>{{ item.rotulo }}</a>
-					{%- if item.submenu %}
-					<button class="o-nav__abrir" type="button" aria-expanded="false" aria-controls="submenu-servicos" data-o-sub-botao>
-						<span class="o-sr">Abrir a lista de serviços</span><span class="o-icone o-icone--seta" aria-hidden="true"></span>
-					</button>
-					<div class="o-sub" id="submenu-servicos" data-o-sub-painel>
-						<ul class="o-sub__lista">
-						{%- for s in conteudo.servicos %}
-							<li><a class="o-sub__link" href="/servicos/{{ s.slug }}/"{% if page.url == "/servicos/" + s.slug + "/" %} aria-current="page"{% endif %}><span class="o-icone o-icone--{{ s.icone }}" aria-hidden="true"></span><span><strong>{{ s.nome }}</strong><small>{{ s.card.resumo_curto }}</small></span></a></li>
-						{%- endfor %}
-						</ul>
-						<a class="o-sub__todos" href="/servicos/">Ver todos os serviços <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
-					</div>
-					{%- endif %}
-				</li>
-				{%- endif %}
+			{%- for item in c.menu %}
+				<li class="o-nav__item"><a class="o-nav__link" href="{{ item.url }}">{{ item.rotulo }}</a></li>
 			{%- endfor %}
 			</ul>
 		</nav>
 		<div class="o-topo__ctas">
-			<a class="o-btn o-btn--contorno o-btn--pequeno o-topo__wa" id="cta-whatsapp-topo" href="{{ waLink('topo') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-topo__wa-texto">Falar no WhatsApp</span></a>
-			<a class="o-btn o-btn--verde o-btn--pequeno" id="cta-orcamento-topo" href="{{ destinoForm }}">{{ rotuloPrincipal }}</a>
+			<a class="o-edu-topo__voltar" href="/"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ c.voltar }}</a>
+			<a class="o-btn o-btn--contorno o-btn--pequeno o-topo__wa" id="cta-whatsapp-topo" href="{{ waTopo }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-topo__wa-texto">{{ c.whatsapp }}</span></a>
+			<a class="o-btn o-btn--branco o-btn--pequeno" id="cta-orcamento-topo" href="#raio-x">{{ c.botao }}</a>
 		</div>
 		<button class="o-hamburguer" type="button" aria-expanded="false" aria-controls="menu-celular" data-o-hamburguer>
 			<span class="o-sr">Abrir menu</span><i></i><i></i><i></i>
 		</button>
 	</div>
 </header>
-<div class="o-menu" id="menu-celular" role="dialog" aria-modal="true" aria-label="Menu" data-o-menu inert>
+<div class="o-menu o-edu-menu" id="menu-celular" role="dialog" aria-modal="true" aria-label="Menu" data-o-menu inert>
 	<div class="o-menu__topo">
-		<a class="o-logo" href="/" aria-label="Olorin Digital — página inicial"><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></a>
-		<button class="o-menu__fechar" type="button" data-o-menu-fechar><span class="o-sr">Fechar menu</span><span aria-hidden="true">✕</span></button>
+		<a class="o-edu-marca" href="#inicio" aria-label="{{ E.marca.nome }}, início da página">
+			<svg class="o-edu-marca__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
+			<span class="o-edu-marca__sub" aria-hidden="true">{{ E.marca.sub }}</span>
+		</a>
+		<button class="o-menu__fechar o-edu-menu__fechar" type="button" data-o-menu-fechar><span class="o-sr">Fechar menu</span></button>
 	</div>
-	<nav class="o-menu__nav" aria-label="Principal (celular)">
+	<nav class="o-menu__nav" aria-label="Nesta página (celular)">
 		<ul class="o-menu__lista">
-		{%- for item in navegacao.principal %}
-			{%- if (not item.so_com_cases or temCases) and (not item.so_com_portfolio or temPortfolio) %}
-			<li>
-				{%- if item.submenu %}
-				<button class="o-menu__grupo" type="button" aria-expanded="false" aria-controls="menu-celular-servicos" data-o-acordeao>{{ item.rotulo }}<span class="o-icone o-icone--mais" aria-hidden="true"></span></button>
-				<ul class="o-menu__sub" id="menu-celular-servicos" hidden>
-				{%- for s in conteudo.servicos %}
-					<li><a href="/servicos/{{ s.slug }}/">{{ s.nome }}</a></li>
-				{%- endfor %}
-					<li><a href="/servicos/">Ver todos os serviços</a></li>
-				</ul>
-				{%- else %}
-				<a href="{{ item.url }}">{{ item.rotulo }}</a>
-				{%- endif %}
-			</li>
-			{%- endif %}
+		{%- for item in c.menu.concat(c.menu_extra) %}
+			<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
 		{%- endfor %}
 		</ul>
 	</nav>
 	<div class="o-menu__ctas">
-		<a class="o-btn o-btn--verde" href="{{ destinoForm }}" data-cta="menu-diagnostico">{{ rotuloPrincipal }}</a>
-		<a class="o-btn o-btn--contorno" href="{{ waLink('menu') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>Falar no WhatsApp</a>
+		<a class="o-btn o-btn--branco" href="#raio-x" data-cta="menu-diagnostico">{{ c.botao }}</a>
+		<a class="o-btn o-btn--contorno" href="{{ waLink('educacao-menu', { mensagem: E.whatsapp.padrao }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ c.whatsapp }}</a>
 	</div>
-	{{ ui.redes("o-menu__redes", "menu") }}
+	<a class="o-edu-menu__voltar" href="/"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ c.voltar_longo }}</a>
+	{{ ui.redes("o-menu__redes", "menu-educacao") }}
 	<p class="o-menu__rodape">{{ cfg.CIDADE }}, {{ cfg.UF }} · atendimento em todo o Brasil</p>
 </div>
