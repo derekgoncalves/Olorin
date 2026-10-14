@@ -362,6 +362,7 @@
 .o-perfil__numeros div {
 	display: flex;
 	flex-direction: column-reverse;
+	justify-content: flex-end; /* número no topo, rótulo embaixo: todos os números na mesma linha */
 	gap: 8px;
 	min-width: 84px;
 	text-align: center;
