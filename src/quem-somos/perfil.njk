@@ -7,8 +7,8 @@ pagination:
   alias: pessoa
   addAllPagesToCollections: true
 permalink: "/quem-somos/{{ pessoa.slug }}/"
-og_imagem: /assets/img/og/sobre.jpg
 eleventyComputed:
+  og_imagem: "/assets/img/og/perfil-{{ pessoa.slug }}.jpg"
   titulo: "{{ pessoa.nome }}, {{ pessoa.cargo or pessoa.funcao }} | Olorin"
   descricao: "{{ pessoa.descricao or pessoa.frase }}"
   slug: "perfil-{{ pessoa.slug }}"
