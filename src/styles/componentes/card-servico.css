@@ -149,7 +149,16 @@
 	text-transform: uppercase;
 }
 @media (max-width: 640px) {
+	/* Botão na largura toda, com o texto numa linha só (ícone colado no texto) */
 	.o-servicos__fim-botao {
 		flex: 1 1 100%;
+		gap: 8px;
+		padding-inline: 12px;
+	}
+}
+@media (max-width: 400px) {
+	.o-servicos__fim-botao {
+		font-size: 12px;
+		letter-spacing: 0;
 	}
 }

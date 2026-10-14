@@ -48,7 +48,7 @@
 	mask: radial-gradient(150px circle at var(--mx, 70%) var(--my, 40%), #000, rgba(0, 0, 0, 0.4) 35%, rgba(0, 0, 0, 0.1) 70%, transparent);
 }
 .o-fundo.is-ativo.is-perto .o-fundo__luz {
-	opacity: 0.4;
+	opacity: 0.5;
 }
 .o-fundo.is-ativo.is-perto.is-texto .o-fundo__luz {
 	opacity: 0.12;
