@@ -1,27 +1,4 @@
-/* Página Sobre. */
-.o-sobre-foto {
-	--janela-barra: var(--verde);
-	--janela-tinta: var(--preto);
-	--janela-borda: var(--verde);
-	--janela-sombra: rgba(236, 255, 54, 0.25);
-	margin: 0;
-	overflow: hidden;
-}
-.o-sobre-foto img {
-	display: block;
-	width: 100%;
-	aspect-ratio: 4 / 5;
-	object-fit: cover;
-}
-.o-sobre-lema {
-	margin-top: 28px !important;
-	font-family: var(--fonte-titulo);
-	font-weight: 900;
-	font-size: clamp(20px, 2.4vw, 32px);
-	line-height: 1.05;
-	text-transform: uppercase;
-	color: var(--violeta);
-}
+/* Quem somos: lista de frentes nos cartões do time. */
 .o-pessoa__servicos {
 	display: flex;
 	flex-wrap: wrap;
@@ -40,14 +17,4 @@
 .o-pessoa__servicos a:hover {
 	border-color: var(--verde);
 	color: var(--verde);
-}
-.o-sobre-contato {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-	gap: 16px 32px;
-	margin-top: clamp(40px, 5vw, 72px);
-	padding-top: 32px;
-	border-top: 2px dashed var(--cor-linha);
 }

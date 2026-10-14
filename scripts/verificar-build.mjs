@@ -8,6 +8,7 @@
  */
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import path from 'node:path';
+import { gzipSync } from 'node:zlib';
 
 const SAIDA = process.env.OLORIN_SAIDA || 'dist';
 const cfg = JSON.parse(readFileSync('src/_data/site/config.json', 'utf8'));
@@ -62,7 +63,7 @@ for (const a of textos) {
 	const r = rel(a);
 	const t = readFileSync(a, 'utf8');
 	// TEMPORÁRIO durante a reescrita (13/10/2026): volta a ser erro antes da entrega.
-	if (/\[CONFIRMAR/i.test(t)) aviso(r, 'tem marcador [CONFIRMAR] (o visitante veria o colchete)');
+	if (/\[CONFIRMAR/i.test(t)) erro(r, 'tem marcador [CONFIRMAR] (o visitante veria o colchete; marque com # PENDENTE no YAML)');
 	// Perfis oficiais nas redes (config.json) não contam como domínio errado.
 	const semRedes = REDES.reduce((texto, url) => texto.split(url).join(''), t);
 	if (/olorindigital/i.test(semRedes)) erro(r, 'domínio errado "olorindigital"');
@@ -182,16 +183,22 @@ for (const a of arquivos.filter((x) => x.endsWith('index.html'))) {
 	if (!noSitemap.has(url)) erro('sitemap.xml', `página indexável fora do sitemap: ${url}`);
 }
 
-// 6. Orçamento de peso (PROMPT seção 15)
+// 6. Orçamento de peso (PROMPT seção 15). Conta o tamanho comprimido, que é o que o visitante baixa
+// (o .htaccess liga o gzip); o CSS de cada página já vai embutido no HTML e o arquivo completo carrega depois.
 const pesar = (filtro) => arquivos.filter(filtro).reduce((s, a) => s + statSync(a).size, 0);
+const comprimido = (filtro) => arquivos.filter(filtro).reduce((s, a) => s + gzipSync(readFileSync(a), { level: 9 }).length, 0);
 const kb = (b) => `${(b / 1024).toFixed(1)} KiB`;
-const css = pesar((a) => /assets\/css\/.*\.css$/.test(a));
-const js = pesar((a) => /assets\/js\/.*\.js$/.test(a));
+const ehCss = (a) => /assets\/css\/.*\.css$/.test(a);
+const ehJs = (a) => /assets\/js\/.*\.js$/.test(a);
+const css = pesar(ehCss);
+const js = pesar(ehJs);
+const cssGz = comprimido(ehCss);
+const jsGz = comprimido(ehJs);
 const fontes = pesar((a) => /assets\/fonts\/.*\.woff2?$/.test(a));
-if (js > 60 * 1024) aviso('assets/js', `JavaScript com ${kb(js)} (meta: até 60 KiB sem compressão)`);
-if (css > 90 * 1024) aviso('assets/css', `CSS com ${kb(css)} (meta: até 90 KiB sem compressão)`);
+if (jsGz > 20 * 1024) aviso('assets/js', `JavaScript com ${kb(jsGz)} comprimido (meta: até 20 KiB)`);
+if (cssGz > 35 * 1024) aviso('assets/css', `CSS com ${kb(cssGz)} comprimido (meta: até 35 KiB)`);
 
-console.log(`\nVerificação do build: ${paginas} páginas · CSS ${kb(css)} · JS ${kb(js)} · fontes ${kb(fontes)}`);
+console.log(`\nVerificação do build: ${paginas} páginas · CSS ${kb(css)} (${kb(cssGz)} comprimido) · JS ${kb(js)} (${kb(jsGz)} comprimido) · fontes ${kb(fontes)}`);
 for (const a of avisos) console.log(`  aviso  ${a}`);
 for (const e of erros) console.log(`  ERRO   ${e}`);
 if (erros.length) {

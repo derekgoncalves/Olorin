@@ -104,6 +104,8 @@ for (const largura of [360, 1440]) {
 	for (const pg of paginas) {
 		erros = [];
 		await p.goto(estatico.url + pg, { waitUntil: 'load' });
+		// Desenha a página inteira (as seções abaixo da dobra usam content-visibility; ver base.css).
+		await p.evaluate(() => document.documentElement.classList.add('o-cv-tudo'));
 		const r = await p.evaluate(() => ({
 			h1: document.querySelectorAll('h1').length,
 			largura: document.documentElement.scrollWidth,
@@ -129,6 +131,8 @@ for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/
 		const ctx = await navegador.newContext({ viewport: { width: largura, height: 900 }, reducedMotion: 'reduce' });
 		const p = await ctx.newPage();
 		await p.goto(estatico.url + pg, { waitUntil: 'load' });
+		// Desenha a página inteira (as seções abaixo da dobra usam content-visibility; ver base.css).
+		await p.evaluate(() => document.documentElement.classList.add('o-cv-tudo'));
 		await p.addScriptTag({ content: axe });
 		const resultado = await p.evaluate(async () =>
 			// eslint-disable-next-line no-undef
