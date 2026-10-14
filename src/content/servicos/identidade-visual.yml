@@ -1,6 +1,8 @@
 # ============================================================
-# SERVIÇO: Identidade visual — fonte ÚNICA de /servicos/identidade-visual/ e /promo/identidade-visual/.
+# SERVIÇO: Identidade visual. Fonte ÚNICA de /servicos/identidade-visual/ e /promo/identidade-visual/.
 # Texto proposto vai ao ar; "# PENDENTE:" marca o que o dono ainda precisa confirmar.
+# Confirmado pelo dono (14/10/2026): a partir de R$ 800, valor final conforme o escopo (sem detalhar faixas);
+# primeira versão em cerca de 7 dias úteis, em média, e rodadas de ajuste semanais.
 # ============================================================
 slug: identidade-visual
 ordem: 3
@@ -14,7 +16,7 @@ quem_faz: [vinicius-mafra]
 
 seo:
   title: Identidade Visual e Logotipo em Curitiba | Olorin
-  description: Logotipo, paleta, tipografia e manual de marca para a sua empresa ter uma cara só, do feed ao cartão. A partir de R$ 800.
+  description: Logotipo, paleta, tipografia e manual de marca para a sua empresa ter uma cara só, do feed ao cartão. A partir de R$ 800, conforme o escopo.
 
 card:
   titulo: Identidade visual
@@ -34,8 +36,9 @@ hero:
 
 resposta_curta: >-
   Identidade visual é o conjunto que faz a sua marca ser reconhecida: logotipo, cores, tipografia e as regras
-  de uso. Na Olorin, o projeto sai a partir de R$ 800, com prazo e escopo fechados. Para quem precisa de
-  design todo mês, o design avulso sai a partir de R$ 1.500/mês.
+  de uso. Na Olorin, o projeto sai a partir de R$ 800, e o valor final depende do escopo, fechado na proposta.
+  Para quem precisa de design todo mês, o design avulso sai a partir de R$ 1.500/mês, com implantação de
+  R$ 1.000 e contrato mínimo de 3 meses.
 
 o_que_e:
   titulo: Reconhecida de longe.
@@ -59,7 +62,7 @@ dores:
 
 entregas:
   titulo: O que entra.
-  texto: Um projeto com começo, meio e fim, e arquivos prontos para usar.
+  texto: O que pode entrar no projeto, com o escopo fechado na proposta e arquivos prontos para usar.
   itens:
     - titulo: Imersão e referências
       texto: Conversa sobre o negócio, o público e os concorrentes, e um painel de referências para alinhar o caminho.
@@ -67,7 +70,7 @@ entregas:
       icone: mais
     - titulo: Logotipo e variações
       texto: Versão principal, reduzida, símbolo e versões para fundo claro e escuro.
-      frequencia: com rodadas de ajuste
+      frequencia: ajustes toda semana
       icone: marca
     - titulo: Paleta e tipografia
       texto: Cores com os códigos certos para tela e impressão, e as letras da marca.
@@ -87,7 +90,7 @@ entregas:
       icone: site
 
 portfolio:
-  titulo: Dá para ver o cuidado.
+  titulo: Resultado que dá pra ver.
   texto: Identidade, tipografia e direção de arte feitas pelo time da Olorin.
 
 como_funciona:
@@ -95,14 +98,13 @@ como_funciona:
   etapas:
     - { nome: Raio-X, texto: "Olhamos a marca que existe hoje, onde ela aparece e o que o público precisa sentir." }
     - { nome: Direção, texto: Painel de referências e caminho criativo aprovados antes de desenhar. }
-    - { nome: Execução, texto: "Logotipo, paleta, tipografia e aplicações, com rodadas de ajuste." }
+    - { nome: Execução, texto: "Logotipo, paleta, tipografia e aplicações, com rodadas de ajuste toda semana." }
     - { nome: Leitura, texto: "Manual e arquivos finais entregues, com a marca aplicada no dia a dia." }
   prazos_titulo: Prazo do projeto
-  # PENDENTE: confirmar prazos e número de rodadas de ajuste do projeto de identidade visual
   prazos:
-    - "Semana 1: imersão, referências e caminho criativo."
-    - "Semanas 2 a 4: logotipo, paleta e tipografia, com duas rodadas de ajuste."
-    - "Até a semana 6: manual, aplicações e arquivos finais."
+    - "Primeira versão em cerca de 7 dias úteis, em média, depois da imersão."
+    - "Rodadas de ajuste toda semana, até a aprovação."
+    - "Arquivos finais na entrega. O prazo exato sai na proposta."
 
 precisamos:
   titulo: Para começar, precisamos de
@@ -125,14 +127,13 @@ preco:
   formato: Identidade visual
   rotulo: Projeto a partir de
   valor: R$ 800
-  # PENDENTE: confirmar o escopo de cada faixa de preço da identidade visual
-  detalhe: "Entrega pontual, com escopo e prazo fechados na proposta. O valor final depende do tamanho do projeto: só logotipo, identidade completa ou identidade com manual e aplicações. Para design todo mês, o design avulso sai a partir de R$ 1.500/mês."
+  detalhe: "Entrega pontual, com escopo e prazo fechados na proposta. O valor final depende do que entra no projeto. Para design todo mês, o design avulso sai a partir de R$ 1.500/mês, com implantação de R$ 1.000 e contrato mínimo de 3 meses."
   contrato: Sem contrato mensal. Metade na aprovação da proposta e metade na entrega.
   inclui:
     - Imersão e painel de referências
     - Logotipo e variações
-    - Paleta e tipografia
     - Arquivos finais em todos os formatos
+    - Paleta, tipografia e manual, conforme o escopo
   nao_inclui:
     - Impressão de material (a gráfica cobra à parte)
     - Registro da marca no INPI
@@ -140,7 +141,7 @@ preco:
   schema:
     valor: "800"
     minimo: true
-    descricao: Projeto de identidade visual a partir de R$ 800, com logotipo, paleta, tipografia e arquivos finais.
+    descricao: Projeto de identidade visual a partir de R$ 800, com logotipo e arquivos finais. O valor final depende do escopo combinado na proposta.
 
 combina_com:
   - slug: material-impresso
@@ -151,10 +152,10 @@ combina_com:
 faq:
   - id: identidade-prazo
     pergunta: Quanto tempo leva uma identidade visual?
-    resposta: Um projeto completo costuma levar de 4 a 6 semanas, contando a imersão, as rodadas de ajuste e o manual. Um logotipo simples sai mais rápido.
+    resposta: A primeira versão sai em cerca de 7 dias úteis, em média. Depois, as rodadas de ajuste são semanais até a aprovação. O prazo exato do seu projeto sai na proposta.
   - id: identidade-ajustes
     pergunta: E se eu não gostar da primeira versão?
-    resposta: O projeto prevê rodadas de ajuste. Por isso a direção criativa é aprovada antes de desenhar, para ninguém se surpreender no fim.
+    resposta: O projeto prevê rodadas de ajuste toda semana. E a direção criativa é aprovada antes de desenhar, para ninguém se surpreender no fim.
   - id: identidade-arquivos
     pergunta: Os arquivos ficam comigo?
     resposta: "Sim. Você recebe todos os arquivos finais, em vetor, PNG e SVG, e pode usar com qualquer fornecedor."

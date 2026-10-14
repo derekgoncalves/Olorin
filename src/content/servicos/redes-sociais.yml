@@ -1,6 +1,8 @@
 # ============================================================
-# SERVIÇO: Redes sociais — fonte ÚNICA de /servicos/redes-sociais/ e /promo/redes-sociais/.
+# SERVIÇO: Redes sociais. Fonte ÚNICA de /servicos/redes-sociais/ e /promo/redes-sociais/.
 # Texto proposto vai ao ar; "# PENDENTE:" marca o que o dono ainda precisa confirmar.
+# Confirmado pelo dono (14/10/2026): avulso a partir de 6 posts e 2 Reels por mês, com implantação de R$ 1.000
+# e contrato mínimo de 3 meses; Gestão mensal com 8 posts no feed e 4 criativos de anúncio por mês.
 # ============================================================
 slug: redes-sociais
 ordem: 2
@@ -10,33 +12,33 @@ icone: redes
 janela: feed.exe
 cena: redes
 atualizado: "2026-10-14"
-# PENDENTE: confirmar quem coordena redes sociais (proposta: Vinicius no design, Derek no atendimento e nas legendas)
 quem_faz: [vinicius-mafra, derek-goncalves]
 
 seo:
   title: Gestão de Redes Sociais em Curitiba | Olorin Digital
-  description: Calendário, posts, stories e legendas com a cara da sua marca, feitos pelo mesmo time do anúncio. A partir de R$ 1.500/mês.
+  description: Calendário, posts, Reels e legendas com a cara da sua marca, feitos pelo mesmo time do anúncio. A partir de R$ 1.500/mês.
 
 card:
   titulo: Redes sociais
-  resumo: Calendário editorial, posts, stories e legendas que sustentam o anúncio, em vez de brigar com ele.
-  resumo_curto: Posts, stories e legendas com a cara da marca.
+  resumo: Calendário editorial, posts, Reels e legendas que sustentam o anúncio, em vez de brigar com ele.
+  resumo_curto: Posts, Reels e legendas com a cara da marca.
 
 hero:
   eyebrow: Gestão de redes sociais em Curitiba e no Brasil
   h1: Feed com cara de marca.
-  sub: Posts, stories e legendas feitos pelo mesmo time que cria os seus anúncios. Quem clica no anúncio e abre o seu perfil encontra a mesma marca.
+  sub: Posts, Reels e legendas feitos pelo mesmo time que cria os seus anúncios. Quem clica no anúncio e abre o seu perfil encontra a mesma marca.
   preco_rotulo: A partir de
   preco: R$ 1.500/mês
   janela_linhas:
     - Calendário do mês · aprovado
-    - Post, story e legenda · no ar
+    - Post, Reels e legenda · no ar
     - Relatório · todo mês
 
 resposta_curta: >-
-  Gestão de redes sociais é planejar, criar e publicar posts, stories e legendas com a mesma cara do seu
-  anúncio e do seu site. Sozinha, sai a partir de R$ 1.500/mês; com o tráfego pago junto, na Gestão mensal,
-  R$ 2.500/mês, com 8 posts no feed e 8 criativos de anúncio por mês.
+  Gestão de redes sociais é planejar, criar e publicar posts, Reels e legendas com a mesma cara do seu
+  anúncio e do seu site. Sozinha, sai a partir de R$ 1.500/mês, com a partir de 6 posts e 2 Reels por mês;
+  com o tráfego pago junto, na Gestão mensal, R$ 2.500/mês, com 8 posts no feed e 4 criativos de anúncio por
+  mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses.
 
 o_que_e:
   titulo: Perfil que confirma a promessa.
@@ -68,12 +70,11 @@ entregas:
       icone: relogio
     - titulo: Posts e carrosséis
       texto: Artes para o feed feitas pelo time de design da Olorin, com a cara da sua marca.
-      frequencia: toda semana
+      frequencia: a partir de 6 por mês
       icone: marca
-    # PENDENTE: confirmar se stories e Reels entram no serviço avulso de redes sociais e em que quantidade
-    - titulo: Stories e Reels
-      texto: Formatos rápidos para manter o perfil vivo entre um post e outro.
-      frequencia: conforme o plano
+    - titulo: Reels
+      texto: Vídeos curtos editados pelo time, para o perfil ganhar alcance entre um post e outro.
+      frequencia: a partir de 2 por mês
       icone: redes
     - titulo: Legendas no tom certo
       texto: Texto que conversa com quem você quer atrair, com chamada para a ação certa.
@@ -99,7 +100,6 @@ como_funciona:
     - { nome: Direção, texto: "Definimos o tom, os temas e o calendário do mês. Você aprova antes de produzir." }
     - { nome: Execução, texto: "Artes e legendas prontas, aprovadas e publicadas no dia certo." }
     - { nome: Leitura, texto: "Todo mês, o que funcionou e o que muda no próximo calendário." }
-  # PENDENTE: confirmar o ritmo dos primeiros 90 dias de redes sociais
   prazos:
     - "Até 30 dias: tom de voz definido, primeiro calendário aprovado e o perfil em dia."
     - "Até 60 dias: formatos ajustados pelo que mais engajou e trouxe contato."
@@ -126,12 +126,11 @@ preco:
   formato: Gestão de redes sociais
   rotulo: A partir de
   valor: R$ 1.500/mês
-  # PENDENTE: confirmar a quantidade de publicações do serviço avulso de redes sociais
-  detalhe: "Sozinha, com a quantidade de publicações combinada na proposta. Com o tráfego pago junto, na Gestão mensal: R$ 2.500/mês, com 8 posts no feed e 8 criativos de anúncio por mês."
-  contrato: Gestão mensal e Marketing 360 com contrato mínimo de 3 meses e implantação única. Depois, mês a mês com aviso de 30 dias, sem multa.
+  detalhe: "Sozinha, a partir de 6 posts e 2 Reels por mês. Com o tráfego pago junto, na Gestão mensal: R$ 2.500/mês, com 8 posts no feed e 4 criativos de anúncio por mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses."
+  contrato: Depois de 3 meses, segue mês a mês com aviso de 30 dias, sem multa.
   inclui:
     - Calendário editorial do mês
-    - Posts, stories e legendas
+    - Posts, Reels e legendas
     - Publicação e agendamento
     - Leitura mensal do que funcionou
   nao_inclui:
@@ -142,7 +141,7 @@ preco:
     valor: "1500"
     minimo: true
     unidade: MON
-    descricao: Gestão de redes sociais a partir de R$ 1.500 por mês, com calendário, posts, stories e legendas.
+    descricao: Gestão de redes sociais a partir de R$ 1.500 por mês, com calendário, a partir de 6 posts e 2 Reels por mês e legendas. Implantação de R$ 1.000 e contrato mínimo de 3 meses.
 
 combina_com:
   - slug: trafego-pago
@@ -153,7 +152,7 @@ combina_com:
 faq:
   - id: redes-quantos-posts
     pergunta: Quantos posts entram por mês?
-    resposta: "Na Gestão mensal, 8 posts no feed e 8 criativos de anúncio por mês, por R$ 2.500/mês. No serviço avulso, a partir de R$ 1.500/mês, a quantidade é combinada na proposta, conforme o seu momento."
+    resposta: "No serviço avulso, a partir de R$ 1.500/mês, são a partir de 6 posts e 2 Reels por mês, e a quantidade final é combinada na proposta. Na Gestão mensal, por R$ 2.500/mês, 8 posts no feed e 4 criativos de anúncio por mês. Nos dois, implantação única de R$ 1.000 e contrato mínimo de 3 meses."
   - id: redes-aprovacao
     pergunta: Eu aprovo antes de publicar?
     resposta: Sempre. O calendário do mês e cada arte passam pela sua aprovação antes de irem ao ar.
@@ -161,7 +160,7 @@ faq:
     pergunta: Vocês fazem fotos e vídeos?
     resposta: As artes, as legendas e a edição são feitas pelo time. Ensaio fotográfico e gravação ficam à parte e podem ser orçados junto.
   - id: redes-quais-redes
-    pergunta: Quais redes vocês cuidam?
+    pergunta: Em quais redes vocês trabalham?
     resposta: Instagram e Facebook na maioria dos casos, e LinkedIn para marcas que vendem para outras empresas. No Raio-X, a gente indica onde vale estar.
 
 campanha:

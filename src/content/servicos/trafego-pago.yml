@@ -1,7 +1,9 @@
 # ============================================================
-# SERVIÇO: Tráfego pago — fonte ÚNICA da página /servicos/trafego-pago/ e da landing /promo/trafego-pago/.
+# SERVIÇO: Tráfego pago. Fonte ÚNICA da página /servicos/trafego-pago/ e da landing /promo/trafego-pago/.
 # Texto proposto vai ao ar; o que o dono ainda precisa confirmar leva "# PENDENTE:" na linha de cima
 # (npm run pendencias lista tudo). Preços no molde do dono (13/10/2026), iguais a src/content/planos.yml.
+# Confirmado pelo dono (14/10/2026): serviço avulso com implantação de R$ 1.000 e contrato mínimo de 3 meses;
+# Gestão mensal com 4 criativos de anúncio e 8 posts no feed; o que pedimos no início é combinado com o cliente.
 # ============================================================
 slug: trafego-pago
 ordem: 1
@@ -25,7 +27,7 @@ card:
 hero:
   eyebrow: Gestão de tráfego pago em Curitiba e no Brasil
   h1: Anúncio que volta.
-  sub: Meta Ads e Google Ads cuidados de perto, com ajuste toda semana e um relatório que mostra quanto cada real investido devolveu.
+  sub: Meta Ads e Google Ads acompanhados de perto, com ajuste toda semana e um relatório que mostra quanto cada real investido devolveu.
   preco_rotulo: Gestão a partir de
   preco: R$ 1.500/mês
   janela_linhas:
@@ -35,16 +37,18 @@ hero:
 
 # Resumo usado na landing /promo/ e no JSON-LD (não aparece com rótulo na página do serviço).
 resposta_curta: >-
-  Gestão de tráfego pago é cuidar dos seus anúncios na Meta (Instagram e Facebook) e no Google para o
-  investimento virar venda, matrícula ou contato. Sozinha, a gestão sai a partir de R$ 1.500/mês; com as
-  redes sociais junto, na Gestão mensal, R$ 2.500/mês. A verba de anúncio é à parte, a partir de R$ 1.500/mês.
+  Gestão de tráfego pago é planejar, montar e ajustar os seus anúncios na Meta (Instagram e Facebook) e no
+  Google para buscar venda, matrícula ou contato. Sozinha, a gestão sai a partir de R$ 1.500/mês; com as redes
+  sociais junto, na Gestão mensal, R$ 2.500/mês. Nos dois formatos, implantação única de R$ 1.000 e contrato
+  mínimo de 3 meses. A verba de anúncio é à parte, paga direto à Meta ou ao Google, e recomendamos a partir
+  de R$ 1.500/mês.
 
 o_que_e:
   titulo: Cada real com destino.
   texto:
     - "Tráfego pago é o anúncio que aparece para quem tem cara de cliente: no Instagram e no Facebook (Meta Ads), para quem ainda não conhece você, e no Google (Google Ads), para quem já está procurando o que você vende."
     - A Olorin monta as campanhas pelo objetivo do seu negócio, seja venda, matrícula, contato ou inscrição, cria as peças com a cara da sua marca e ajusta tudo toda semana pelo que dá resultado, não pelo que dá curtida.
-    - "No fim do mês, chega um relatório que qualquer pessoa entende: quanto foi investido, quanto voltou e o que muda na próxima rodada. Da menor à maior conta, com o mesmo cuidado."
+    - "No fim do mês, chega um relatório que qualquer pessoa entende: quanto foi investido, quanto voltou e o que muda na próxima rodada. Resultado que dá pra ver."
   destaques:
     - Otimização toda semana
     - Peças com a cara da marca
@@ -52,7 +56,7 @@ o_que_e:
 
 dores:
   titulo: Dinheiro no escuro?
-  texto: Se um destes aparece aí, a sua conta de anúncio precisa de cuidado.
+  texto: Se um destes aparece aí, a sua conta de anúncio precisa de revisão.
   itens:
     - { titulo: Sem saber o custo, texto: Você investe todo mês e não sabe quanto custou cada venda ou cada contato. }
     - { titulo: Relatório de vaidade, texto: "O relatório mostra alcance e impressões, nunca faturamento, matrícula ou pedido." }
@@ -61,7 +65,7 @@ dores:
 
 entregas:
   titulo: O que entra.
-  texto: Da estrutura da conta ao relatório do mês, tudo sob o mesmo cuidado.
+  texto: Da estrutura da conta ao relatório do mês, com o mesmo time.
   itens:
     - titulo: Campanhas por objetivo
       texto: Estrutura separada para venda, matrícula, contato ou reconhecimento, cada uma com a sua meta.
@@ -90,7 +94,7 @@ entregas:
 
 portfolio:
   titulo: Na prática.
-  texto: Cases e campanhas em que o anúncio puxou o resultado.
+  texto: Campanhas e peças de anúncio feitas pelo time da Olorin.
 
 como_funciona:
   titulo: Do Raio-X ao relatório.
@@ -99,7 +103,6 @@ como_funciona:
     - { nome: Direção, texto: "Definimos objetivo, público e verba de cada campanha. Você aprova antes de ir ao ar." }
     - { nome: Execução, texto: "Campanhas no ar, peças do nosso time e ajuste toda semana." }
     - { nome: Leitura, texto: "Todo mês, quanto entrou, quanto saiu e o que muda na próxima rodada." }
-  # PENDENTE: confirmar o ritmo dos primeiros 90 dias de tráfego pago
   prazos:
     - "Até 30 dias: conta organizada, rastreamento conferido e as primeiras campanhas no ar."
     - "Até 60 dias: públicos e peças ajustados pelo que deu resultado no primeiro mês."
@@ -110,8 +113,7 @@ precisamos:
   itens:
     - Acesso à conta de anúncio da Meta ou do Google (se não tiver, a gente ajuda a criar).
     - Acesso ao site ou à página de destino, para conferir o rastreamento.
-    # PENDENTE: confirmar os materiais pedidos no início do tráfego pago
-    - Fotos, catálogo ou tabela de preços e a margem dos produtos ou cursos.
+    - Os materiais e as informações do negócio que a campanha pede, combinados com você no início.
     - Aprovação do plano e das peças antes de irem ao ar.
 
 para_quem:
@@ -128,10 +130,9 @@ preco:
   formato: Gestão de tráfego pago
   rotulo: A partir de
   valor: R$ 1.500/mês
-  detalhe: "Sozinha, para uma plataforma (Meta ou Google). Com as redes sociais junto, na Gestão mensal: R$ 2.500/mês, com 8 criativos e 8 posts por mês. A verba de anúncio é à parte, direto na Meta ou no Google, a partir de R$ 1.500/mês."
-  total: "Custo total para começar: a partir de R$ 3.000/mês (gestão + verba mínima recomendada)."
-  # PENDENTE: confirmar contrato mínimo e taxa de implantação da gestão avulsa de tráfego pago
-  contrato: Gestão mensal e Marketing 360 com contrato mínimo de 3 meses e implantação única. Depois, mês a mês com aviso de 30 dias, sem multa.
+  detalhe: "Sozinha, para uma plataforma (Meta ou Google). Com as redes sociais junto, na Gestão mensal: R$ 2.500/mês, com 4 criativos de anúncio e 8 posts no feed por mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses. A verba de anúncio é à parte, paga direto à Meta ou ao Google, e recomendamos a partir de R$ 1.500/mês."
+  total: "Custo por mês a partir de R$ 3.000 (gestão + verba mínima recomendada), mais a implantação de R$ 1.000 no início."
+  contrato: Depois de 3 meses, segue mês a mês com aviso de 30 dias, sem multa.
   inclui:
     - Campanhas na Meta ou no Google
     - Peças de anúncio com a cara da marca
@@ -145,7 +146,7 @@ preco:
     valor: "1500"
     minimo: true
     unidade: MON
-    descricao: Gestão de tráfego pago (Meta Ads ou Google Ads) a partir de R$ 1.500 por mês. Verba de anúncio à parte.
+    descricao: Gestão de tráfego pago (Meta Ads ou Google Ads) a partir de R$ 1.500 por mês, com implantação de R$ 1.000 e contrato mínimo de 3 meses. Verba de anúncio à parte.
 
 combina_com:
   - slug: redes-sociais
@@ -156,14 +157,13 @@ combina_com:
 faq:
   - id: trafego-quanto-investir
     pergunta: Quanto preciso investir por mês?
-    resposta: "A gestão sai a partir de R$ 1.500/mês, ou R$ 2.500/mês na Gestão mensal, com as redes sociais junto. A verba de anúncio vai direto para a Meta ou o Google, a partir de R$ 1.500/mês. Na [calculadora](/planos/#calculadora) a conta sai na hora."
+    resposta: "A gestão sai a partir de R$ 1.500/mês, ou R$ 2.500/mês na Gestão mensal, com as redes sociais junto. Nos dois, implantação única de R$ 1.000 e contrato mínimo de 3 meses. A verba de anúncio vai direto para a Meta ou o Google, e recomendamos a partir de R$ 1.500/mês. Na [calculadora](/planos/#calculadora) a conta sai na hora."
   - id: trafego-tempo-resultado
     pergunta: Em quanto tempo vejo resultado?
-    resposta: Campanhas de venda e de contato costumam dar os primeiros sinais em 2 a 4 semanas. Campanhas de marca pedem de 2 a 3 meses de constância.
+    resposta: Campanhas de venda e de contato costumam dar os primeiros sinais em 2 a 4 semanas. Campanhas de marca pedem de 2 a 3 meses de constância. Não existe resultado garantido, mas o relatório mostra desde o primeiro mês o que está funcionando.
   - id: trafego-meta-ou-google
     pergunta: Meta Ads ou Google Ads, qual escolher?
     resposta: "Depende de onde está o seu cliente. No Google, você aparece para quem já procura o que você vende. Na Meta, chega em quem ainda não te conhece. A gestão avulsa e a Gestão mensal cobrem uma plataforma; o Marketing 360, as duas."
-  # PENDENTE: confirmar a titularidade das contas de anúncio
   - id: trafego-dono-conta
     pergunta: Quem é o dono da conta de anúncio?
     resposta: Você. A conta fica no seu nome e no seu cartão, e a Olorin entra como parceira, com acesso de gestão. Se um dia o trabalho acabar, tudo continua com você.

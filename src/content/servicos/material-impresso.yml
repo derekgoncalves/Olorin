@@ -1,6 +1,8 @@
 # ============================================================
-# SERVIÇO: Impressos — fonte ÚNICA de /servicos/material-impresso/ e /promo/material-impresso/.
+# SERVIÇO: Impressos. Fonte ÚNICA de /servicos/material-impresso/ e /promo/material-impresso/.
 # Texto proposto vai ao ar; "# PENDENTE:" marca o que o dono ainda precisa confirmar.
+# Confirmado pelo dono (14/10/2026): a partir de R$ 800 (nunca menos), valor final conforme as peças, sem
+# detalhar pacotes; primeira versão em cerca de 7 dias úteis, em média, e rodadas de ajuste semanais.
 # ============================================================
 slug: material-impresso
 ordem: 4
@@ -14,7 +16,7 @@ quem_faz: [vinicius-mafra]
 
 seo:
   title: Design de Material Impresso em Curitiba | Olorin
-  description: Cartão, folder, catálogo, banner, fachada e embalagem com arquivo fechado para a gráfica e prova acompanhada. A partir de R$ 800.
+  description: Cartão, folder, catálogo, banner, fachada e embalagem com arquivo fechado para a gráfica e prova acompanhada. A partir de R$ 800, conforme as peças.
 
 card:
   titulo: Impressos
@@ -25,7 +27,7 @@ hero:
   eyebrow: Design de material impresso em Curitiba
   h1: Bonito na mão.
   sub: Cartão, folder, catálogo, banner, fachada e embalagem com a cara da sua marca e o arquivo certo para a gráfica, sem surpresa na entrega.
-  preco_rotulo: Peças a partir de
+  preco_rotulo: Projeto a partir de
   preco: R$ 800
   janela_linhas:
     - Arte · aprovada
@@ -34,8 +36,8 @@ hero:
 
 resposta_curta: >-
   Design de material impresso é criar cartão, folder, catálogo, banner, fachada e embalagem com a cara da
-  sua marca e entregar o arquivo fechado para a gráfica. Na Olorin, as peças saem a partir de R$ 800, com
-  prazo combinado. A impressão é paga direto à gráfica.
+  sua marca e entregar o arquivo fechado para a gráfica. Na Olorin, o projeto sai a partir de R$ 800, e o
+  valor final depende das peças, combinado na proposta. A impressão é paga direto à gráfica.
 
 o_que_e:
   titulo: Do arquivo à gráfica.
@@ -95,14 +97,13 @@ como_funciona:
   etapas:
     - { nome: Raio-X, texto: "Entendemos onde a peça vai ser usada, por quem e com qual objetivo." }
     - { nome: Direção, texto: "Formato, papel e acabamento definidos com você e com a gráfica." }
-    - { nome: Execução, texto: "Arte criada, aprovada e arquivo fechado para impressão." }
+    - { nome: Execução, texto: "Arte criada, com rodadas de ajuste toda semana, e arquivo fechado para impressão." }
     - { nome: Leitura, texto: "Prova conferida e material entregue do jeito combinado." }
   prazos_titulo: Prazo de cada peça
-  # PENDENTE: confirmar prazos médios de criação de impressos
   prazos:
-    - "Peças simples, como cartão e flyer: de 3 a 5 dias úteis."
-    - "Folder, catálogo e embalagem: de 1 a 3 semanas, conforme o tamanho."
-    - "A impressão segue o prazo da gráfica escolhida."
+    - "Primeira versão em cerca de 7 dias úteis, em média."
+    - "Rodadas de ajuste toda semana, até a aprovação e o arquivo fechado."
+    - "A impressão segue o prazo da gráfica. O prazo exato sai na proposta."
 
 precisamos:
   titulo: Para começar, precisamos de
@@ -125,8 +126,7 @@ preco:
   formato: Design de impressos
   rotulo: A partir de
   valor: R$ 800
-  # PENDENTE: confirmar o que entra em R$ 800 (uma peça ou um pacote) e os valores de pacotes maiores
-  detalhe: "Entrega pontual, com escopo e prazo fechados na proposta: uma peça específica ou um pacote de peças. A impressão é paga direto à gráfica, e a Olorin pode indicar e acompanhar."
+  detalhe: "Entrega pontual, com escopo e prazo fechados na proposta. O valor final depende das peças e do tamanho de cada uma. A impressão é paga direto à gráfica, e a Olorin pode indicar e acompanhar."
   contrato: Sem contrato mensal. Metade na aprovação da proposta e metade na entrega.
   inclui:
     - Criação da arte com a cara da marca
@@ -139,7 +139,7 @@ preco:
   schema:
     valor: "800"
     minimo: true
-    descricao: Design de material impresso a partir de R$ 800, com arquivo fechado para a gráfica.
+    descricao: Design de material impresso a partir de R$ 800, com arquivo fechado para a gráfica. O valor final depende das peças; a impressão é paga à parte.
 
 combina_com:
   - slug: identidade-visual
@@ -153,7 +153,7 @@ faq:
     resposta: A Olorin cria a arte, fecha o arquivo e acompanha a prova. A impressão é feita por uma gráfica parceira ou pela sua, e é paga direto a ela.
   - id: impresso-prazo
     pergunta: Quanto tempo leva?
-    resposta: Peças simples, como cartão e flyer, saem em poucos dias úteis. Catálogo e embalagem levam de 1 a 3 semanas. O prazo da impressão depende da gráfica.
+    resposta: A primeira versão sai em cerca de 7 dias úteis, em média, com rodadas de ajuste toda semana até a aprovação. O prazo exato sai na proposta, e o da impressão depende da gráfica.
   - id: impresso-arquivo
     pergunta: Os arquivos ficam comigo?
     resposta: "Sim. Você recebe o arquivo aberto e o arquivo fechado para a gráfica, e pode reimprimir quando quiser."
