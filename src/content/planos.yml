@@ -100,10 +100,10 @@ projetos:
       valor: 3000
       texto: Institucional, landing page ou página de captação. Rápido, bonito no celular e pronto para o anúncio. Textos seus, domínio e hospedagem à parte.
       servicos_preselecao: [site-e-loja-virtual]
-    - nome: Ecommerce e sistemas web personalizados
+    - nome: Ecommerce e sistemas web
       de: A partir de
       valor: 10000
-      texto: Loja virtual completa, com catálogo, pagamento, frete e rastreamento das vendas, ou um sistema web sob medida. Textos e fotos seus; plataforma, domínio e hospedagem à parte.
+      texto: Loja virtual completa, com catálogo, pagamento, frete e rastreamento das vendas, ou um sistema web personalizado. Textos e fotos seus; plataforma, domínio e hospedagem à parte.
       servicos_preselecao: [site-e-loja-virtual, rastreamento-e-relatorio]
   botao: Pedir orçamento do projeto
   link: { texto: Ver como fazemos sites, url: /servicos/site-e-loja-virtual/ }

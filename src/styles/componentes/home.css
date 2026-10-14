@@ -538,6 +538,16 @@
 		grid-template-columns: minmax(0, 1fr);
 	}
 }
+/* Coluna de texto estreita (tablet em pé): campo em cima, botão embaixo, para o número caber */
+@container (max-width: 520px) {
+	.o-atalho__linha {
+		flex-direction: column;
+	}
+	.o-atalho .o-atalho__botao {
+		width: 100%;
+		justify-content: center;
+	}
+}
 @media (max-width: 560px) {
 	.o-atalho__linha {
 		flex-direction: column;

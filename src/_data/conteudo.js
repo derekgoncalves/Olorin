@@ -66,7 +66,7 @@ export default function () {
 		}
 	}
 
-	// Portfólio: todos os trabalhos vão ao ar (os ilustrativos ficam listados nas pendências).
+	// Portfólio: todos os trabalhos vão ao ar (só trabalhos reais, com o nome do cliente).
 	conteudo.portfolioPublicado = ((conteudo.portfolio && conteudo.portfolio.itens) || []).filter(Boolean);
 
 	// Equipe: atalho por slug.

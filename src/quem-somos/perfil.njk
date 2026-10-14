@@ -96,12 +96,12 @@ eleventyComputed:
 			</div>
 			<p class="o-apoio">{{ t.trabalhos_texto }}</p>
 		</div>
-		<ul class="o-perfil-feed__grade">
+		<ul class="o-trabalhos">
 		{%- for item in trabalhos %}
-			<li class="o-perfil-feed__item">
+			<li class="o-trabalho">
 				<figure>
-					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 767px) 33vw, 380px" }) | safe }}
-					<figcaption><strong>{{ item.titulo }}</strong><span>{{ item.rotulo }}</span></figcaption>
+					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 48vw, (max-width: 1400px) 30vw, 430px", classePicture: "o-trabalho__imagem" }) | safe }}
+					<figcaption class="o-trabalho__legenda"><strong>{{ item.titulo }}</strong><span class="o-trabalho__tipo">{% for tipo in item.rotulo.split(" · ") %}<span>{{ tipo }}{% if not loop.last %} ·{% endif %}</span>{% if not loop.last %} {% endif %}{% endfor %}</span></figcaption>
 				</figure>
 			</li>
 		{%- endfor %}

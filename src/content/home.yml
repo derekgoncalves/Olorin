@@ -74,7 +74,7 @@ resultados:
   portfolio_titulo: Resultado que dá pra ver.
   portfolio_texto: Identidade, redes, impressos, sites e campanhas feitos pelo nosso time.
   filtro_todos: Tudo
-  limite: 8
+  limite: 6
   link_mais:
     texto: Ver o portfólio completo
     url: /portfolio/

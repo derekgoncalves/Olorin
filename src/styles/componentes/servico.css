@@ -1260,3 +1260,7 @@
 		16.7%, 100% { background: transparent; color: var(--branco); }
 	}
 }
+/* Hub: título mais longo ("Entregas que geram resultados.") cabe sem vazar do 320 ao 1920 */
+.o-servico-topo--hub .o-pagina-topo__titulo {
+	font-size: clamp(30px, 9.4cqi, 88px);
+}
