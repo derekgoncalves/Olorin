@@ -1,6 +1,7 @@
 /* Cliques em CTAs, WhatsApp e cards de serviço; profundidade de rolagem; seções vistas; lead na /obrigado/. */
 import { $, $$, doc, CONFIG, temIO, origemWhatsApp, lerArmazenamento, gravarArmazenamento } from '../util.js';
 import { track } from './rastreamento.js';
+import { converter } from './consentimento.js';
 
 export function iniciarCliques() {
 	doc.addEventListener('click', (e) => {
@@ -8,7 +9,9 @@ export function iniciarCliques() {
 		if (!link) return;
 		const href = link.getAttribute('href') || '';
 		if (/^https:\/\/wa\.me\//.test(href)) {
-			track('whatsapp_click', { origem: origemWhatsApp(href), servico: link.getAttribute('data-servico') || (CONFIG.slug || '').replace(/^(servico|promo)-/, '') });
+			const origem = origemWhatsApp(href);
+			track('whatsapp_click', { origem, servico: link.getAttribute('data-servico') || (CONFIG.slug || '').replace(/^(servico|promo)-/, '') });
+			converter('whatsapp', { origem });
 		}
 		const id = link.id && link.id.indexOf('cta-') === 0 ? link.id : link.getAttribute('data-cta');
 		if (id) {
@@ -65,19 +68,31 @@ export function iniciarSecoes() {
 	$$('[data-secao]').forEach((s) => io.observe(s));
 }
 
-/* /obrigado/: generate_lead uma única vez por envio (token guardado na sessão). */
+/* /obrigado/: link de agenda (do build ou do olorin-ids.js) e generate_lead uma única vez por envio
+   (token guardado na sessão). */
 export function iniciarObrigado() {
 	if (!$('[data-o-obrigado]')) return;
+	const agenda = $('[data-o-agendar]');
+	const url = CONFIG.agendamento || '';
+	if (agenda && /^https:\/\/[^\s"'<>]+$/.test(url)) {
+		const link = $('a', agenda);
+		link.href = url;
+		link.target = '_blank';
+		link.rel = 'noopener';
+		agenda.hidden = false;
+	}
 	const pendente = lerArmazenamento('sessionStorage', 'olorin_lead_pendente');
 	const feitos = lerArmazenamento('sessionStorage', 'olorin_leads_registrados') || [];
 	if (!pendente || feitos.indexOf(pendente.token) > -1) return;
-	track('generate_lead', {
+	const lead = {
 		plano: pendente.plano || '',
 		servicos: pendente.servicos || '',
 		verba_faixa: pendente.verba_faixa || '',
 		servico_pagina: pendente.servico_pagina || '',
 		posicao: pendente.posicao || '',
-	});
+	};
+	track('generate_lead', lead);
+	converter('lead', lead);
 	feitos.push(pendente.token);
 	gravarArmazenamento('sessionStorage', 'olorin_leads_registrados', feitos);
 	gravarArmazenamento('sessionStorage', 'olorin_lead_pendente', null);

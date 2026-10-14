@@ -16,7 +16,6 @@
 {%- set modoPagina = modo or "simples" -%}
 {%- set urlCanonica = (canonical or page.url) | urlAbsoluta -%}
 {%- set imagemOg = (og_imagem or "/assets/img/og/home.jpg") | urlAbsoluta -%}
-{%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -83,6 +82,9 @@
 		slug: slug or "",
 		cursor: cfg.CURSOR_ESTRELA
 	} | jsonSeguro | safe }};</script>
+	{#- IDs de medição e link de agenda editáveis com o site no ar (public_html/olorin-ids.js, ver
+	    src/servidor/olorin-ids.njk). Com defer, roda antes do pacote principal, na ordem do HTML. -#}
+	<script src="/olorin-ids.js" defer></script>
 	<script src="{{ assets.js }}" defer></script>
 </head>
 <body class="o-modo-{{ modoPagina }}{% if tema %} o-tema-{{ tema }}{% endif %}{% if cabecalho != 'minimo' %} o-tem-barra{% endif %}" data-mode="{{ 'campanha' if modoPagina == 'promo' else modoPagina }}">
@@ -94,6 +96,8 @@
 </main>
 {% if cabecalho == "minimo" %}{% include "partials/rodape-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/rodape-educacao.njk" %}{% else %}{% include "partials/rodape.njk" %}{% endif %}
 {% include "partials/flutuantes.njk" %}
-{% if temRastreamento %}{% include "partials/cookies.njk" %}{% endif %}
+{#- O aviso de cookies vai escondido em todas as páginas: os IDs também podem chegar pelo olorin-ids.js,
+    e o main.js só mostra o aviso quando existe algum. -#}
+{% include "partials/cookies.njk" %}
 </body>
 </html>
