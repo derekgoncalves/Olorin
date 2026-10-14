@@ -2,11 +2,16 @@
 # Os valores dos planos vêm de src/content/planos.yml (fonte única).
 seo:
   titulo: Planos e preços | Olorin Digital
-  descricao: Preço aberto para tráfego pago, redes sociais, site e impresso. Compare os planos, simule o custo com a verba de anúncio e tire suas dúvidas.
+  descricao: Preço aberto. Avulso a partir de R$ 1.500/mês, Gestão mensal R$ 2.500/mês e Marketing 360 a partir de R$ 5.000. Simule com a verba de anúncio.
 
 etiqueta: Planos e preços
-titulo: Quanto custa trabalhar com a Olorin.
-sub: Preço aberto, com o que entra em cada formato. Você sabe quanto vai pagar antes de falar com a gente, e pode começar testando por 30 dias.
+titulo: Preço na mesa.
+sub: Preço aberto, com o que entra em cada formato. Você sabe quanto vai pagar antes de falar com a gente, da peça avulsa ao Marketing 360.
+calculadora_botao: Fazer a conta na calculadora
+janela: precos.txt
+janela_linhas:
+  - Verba de anúncio · à parte
+  - Calculadora · logo abaixo
 
 planos:
   etiqueta: Formatos de trabalho
@@ -15,7 +20,7 @@ planos:
 
 duvidas:
   etiqueta: Dúvidas
-  titulo: Tudo o que costumam perguntar.
+  titulo: Tudo respondido.
   texto: Ficou alguma dúvida que não está aqui?
   botao: Perguntar no WhatsApp
 

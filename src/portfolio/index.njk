@@ -18,14 +18,47 @@ migalhas:
 {#- Portfólio completo. Só é gerado se houver ao menos 1 item com "publicado: true" em src/content/portfolio.yml. -#}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set h = conteudo.paginas.portfolio -%}
-<section class="o-pagina-topo o-ctx-preto" data-secao="portfolio-hero">
+<section class="o-pagina-topo o-servico-topo o-ctx-preto" data-secao="portfolio-hero">
+	<div class="o-fundo o-fundo--colunas" aria-hidden="true" data-o-fundo><div class="o-fundo__luz"></div><b></b><b></b><b></b><b></b><b></b></div>
 	<div class="o-wrap">
-		{{ ui.migalhas(migalhas) }}
-		<p class="o-etiqueta">{{ h.etiqueta }}</p>
-		<h1 class="o-pagina-topo__titulo">{{ h.titulo }}</h1>
-		<p class="o-pagina-topo__sub">{{ h.sub }}</p>
+		<div class="o-pagina-topo__texto">
+			{{ ui.migalhas(migalhas) }}
+			<p class="o-etiqueta">{{ h.etiqueta }}</p>
+			<h1 class="o-pagina-topo__titulo">{{ h.titulo }}</h1>
+			<p class="o-pagina-topo__sub">{{ h.sub }}</p>
+		</div>
 	</div>
 </section>
+{%- set casesPortfolio = conteudo.casesTodos or [] -%}
+{%- if casesPortfolio.length %}
+<section class="o-sec o-ctx-preto o-servico-trabalhos o-portfolio-cases" data-secao="portfolio-cases" aria-labelledby="cases-titulo">
+	<div class="o-wrap">
+		<div class="o-vitrine__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ h.cases.etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="cases-titulo">{{ h.cases.titulo }}</h2>
+			</div>
+			<p class="o-apoio">{{ h.cases.texto }}</p>
+		</div>
+		<div class="o-cases o-cases--{{ casesPortfolio.length if casesPortfolio.length < 3 else 3 }}">
+		{%- for c in casesPortfolio %}
+			<article class="o-case o-janela">
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-janela__corpo o-case__corpo">
+					<p class="o-case__segmento">{{ c.segmento }}</p>
+					<h3 class="o-case__cliente">{{ c.cliente }}</h3>
+					{%- if c.resumo %}<p class="o-case__resumo">{{ c.resumo }}</p>{% endif %}
+					{%- if c.resultado %}<p class="o-case__resultado" data-o-contador>{{ c.resultado }}</p>{% elif c.destaque %}<p class="o-case__destaque">{{ c.destaque }}</p>{% endif %}
+					{%- if c.detalhe %}<p class="o-case__resumo">{{ c.detalhe }}</p>{% endif %}
+					{%- if c.servicos_texto %}<p class="o-case__servicos"><span class="o-sr">Serviços: </span>{{ c.servicos_texto }}</p>{% endif %}
+					{%- if c.pagina %}<a class="o-link-seta o-case__link" href="/cases/{{ c.slug }}/">Ver o case completo <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>{% elif c.servicos and c.servicos.length %}<a class="o-link-seta o-case__link" href="/servicos/{{ c.servicos[0] }}/">Ver o serviço<span class="o-sr"> (case {{ c.cliente }})</span> <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>{% endif %}
+				</div>
+			</article>
+		{%- endfor %}
+		</div>
+	</div>
+</section>
+{%- endif %}
 {% include "secoes/portfolio.njk" %}
 {%- set origemWaForm = "portfolio-form" -%}
 {%- set origemWaFinal = "portfolio-final" -%}

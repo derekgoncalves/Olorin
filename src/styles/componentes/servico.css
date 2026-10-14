@@ -486,6 +486,14 @@
 	font-size: 12px;
 	text-transform: uppercase;
 }
+.o-cena-hub__valor {
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(20px, 2.4vw, 32px);
+	line-height: 1;
+	color: var(--verde);
+	white-space: nowrap;
+}
 .o-cena-hub__app:nth-child(1) { --n: 0; }
 .o-cena-hub__app:nth-child(2) { --n: 1; }
 .o-cena-hub__app:nth-child(3) { --n: 2; }

@@ -3,14 +3,15 @@ seo:
   titulo: Política de Privacidade | Olorin Digital
   descricao: Como a Olorin Digital trata os dados de quem visita o site e pede orçamento, conforme a LGPD (Lei nº 13.709/2018).
 titulo: Política de Privacidade
-atualizado: "2026-10-08"
+atualizado: "2026-10-14"
 introducao: Esta política explica como a Olorin Digital trata os dados pessoais de quem visita o site olorin.com.br e pede orçamento, de acordo com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).
 secoes:
   - id: responsavel
     titulo: 1. Quem é responsável pelos seus dados
     paragrafos:
       - A controladora dos dados é a Olorin Digital, agência de marketing digital com atendimento em Curitiba, PR. Para qualquer assunto sobre os seus dados, escreva para [digital@olorin.com.br](mailto:digital@olorin.com.br).
-      - "[CONFIRMAR: razão social, CNPJ e nome do encarregado pelo tratamento de dados (DPO)]"
+      # PENDENTE: razão social e CNPJ (trocar a frase abaixo pelos dados) e confirmar o encarregado pelo tratamento de dados (proposta: Derek Gonçalves)
+      - "O encarregado pelo tratamento de dados (DPO) é Derek Gonçalves, no mesmo e-mail. A razão social e o CNPJ da Olorin Digital são informados a quem pedir pelo e-mail acima."
   - id: dados
     titulo: 2. Quais dados coletamos
     lista:
