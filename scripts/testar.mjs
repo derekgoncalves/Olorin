@@ -104,6 +104,8 @@ for (const largura of [360, 1440]) {
 	for (const pg of paginas) {
 		erros = [];
 		await p.goto(estatico.url + pg, { waitUntil: 'load' });
+		// Desenha a página inteira (as seções abaixo da dobra usam content-visibility; ver base.css).
+		await p.evaluate(() => document.documentElement.classList.add('o-cv-tudo'));
 		const r = await p.evaluate(() => ({
 			h1: document.querySelectorAll('h1').length,
 			largura: document.documentElement.scrollWidth,
@@ -124,11 +126,15 @@ for (const largura of [360, 1440]) {
 
 console.log('\n2. Acessibilidade (axe-core)');
 const axe = readFileSync(path.resolve('node_modules/axe-core/axe.min.js'), 'utf8');
-for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/sobre/', '/promo/', '/obrigado/', '/politica-de-privacidade/']) {
+// Blog: a página geral e um artigo (o primeiro do sitemap), para valer mesmo quando os artigos mudarem.
+const artigoBlog = paginas.find((u) => /^\/blog\/[^/]+\/$/.test(u));
+for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/quem-somos/', '/blog/', ...(artigoBlog ? [artigoBlog] : []), '/promo/', '/obrigado/', '/politica-de-privacidade/']) {
 	for (const largura of [390, 1280]) {
 		const ctx = await navegador.newContext({ viewport: { width: largura, height: 900 }, reducedMotion: 'reduce' });
 		const p = await ctx.newPage();
 		await p.goto(estatico.url + pg, { waitUntil: 'load' });
+		// Desenha a página inteira (as seções abaixo da dobra usam content-visibility; ver base.css).
+		await p.evaluate(() => document.documentElement.classList.add('o-cv-tudo'));
 		await p.addScriptTag({ content: axe });
 		const resultado = await p.evaluate(async () =>
 			// eslint-disable-next-line no-undef

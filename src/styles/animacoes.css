@@ -118,3 +118,243 @@ html.o-pausado .o-cursor {
 		display: none;
 	}
 }
+
+/* ==========================================================================
+   MOVIMENTO — entrada do banner, revelação na rolagem, microinterações e
+   transição entre páginas (JS: src/scripts/modulos/movimento.js).
+   Regras: só transform, opacity e clip-path; 300–900 ms; overshoot só nas janelas;
+   tudo dentro de "prefers-reduced-motion: no-preference"; nada some sem html.js;
+   o botão "Pausar animações" (html.o-pausado) mostra tudo no estado final.
+   A página de educação (/educacao/) fica de fora: é reconhecida pelo link canônico.
+   ========================================================================== */
+:root {
+	--mov-saida: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out expo */
+	--mov-quart: cubic-bezier(0.25, 1, 0.5, 1); /* ease-out quart */
+	--mov-volta: cubic-bezier(0.3, 1.3, 0.5, 1); /* overshoot leve (só janelas) */
+}
+
+/* Sobe e aparece (a distância muda por elemento com --mov-dist). */
+@keyframes o-mov-sobe {
+	from {
+		opacity: 0;
+		transform: translateY(var(--mov-dist, 18px));
+	}
+}
+/* Máscara: o texto sobe de trás de uma linha fixa. O recorte acompanha o deslocamento,
+   então a "janela" visível fica parada (folga de 0,3em para acentos e cedilha). */
+@keyframes o-mov-mascara {
+	from {
+		transform: translateY(calc(100% + 0.6em));
+		clip-path: inset(-0.3em -0.2em calc(100% + 0.3em));
+	}
+	to {
+		transform: translateY(0);
+		clip-path: inset(-0.3em -0.2em);
+	}
+}
+/* Janela .exe abrindo: a barra de título corre da esquerda para a direita,
+   depois o corpo desenrola de cima para baixo, com uma escala que passa um pouco e volta. */
+@keyframes o-mov-janela {
+	0% {
+		transform: scale(0.95);
+		clip-path: inset(0 100% calc(100% - 36px) 0);
+	}
+	30% {
+		clip-path: inset(0 0 calc(100% - 36px) 0);
+	}
+	100% {
+		transform: scale(1);
+		clip-path: inset(-60px);
+	}
+}
+/* Traço que se desenha da esquerda para a direita (marcador e barra de progresso). */
+@keyframes o-mov-escala-x {
+	from {
+		transform: scaleX(0);
+	}
+}
+@keyframes o-mov-vt-sai {
+	to {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+}
+@keyframes o-mov-vt-entra {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+}
+
+/* Palavras do título quebradas pelo JS durante a animação (o texto lido não muda). */
+html.js .o-mov-p {
+	display: inline-block;
+}
+
+/* Marcador verde sob a palavra destacada do banner (estado final, também sem movimento). */
+html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__destaque {
+	position: relative;
+}
+html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__destaque::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0.46em; /* não passa por baixo do cursor */
+	bottom: 0.04em;
+	height: 0.1em;
+	background: var(--verde);
+	transform-origin: left;
+	pointer-events: none;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+	/* ---------- 1. Entrada do banner (home e páginas internas), só CSS: começa na primeira pintura ---------- */
+	/* Ordem e atrasos (só variáveis: sozinhas não mudam nada; ficam fora da condição para o CSS sair menor).
+	   Filhos do bloco de texto entram em sequência e quem vem depois do h1 espera o título começar.
+	   Vale para a home (.o-hero__texto), as páginas internas com e sem coluna lateral e a landing de campanha. */
+	:is(.o-hero__texto, .o-pagina-topo__texto, .o-promo-topo__texto, .o-pagina-topo > .o-wrap:not(.o-pagina-topo__grade)) > * {
+		--atraso: calc(var(--k, 0) * 70ms + var(--extra, 0s));
+
+		&:nth-child(2) { --k: 1; }
+		&:nth-child(3) { --k: 2; }
+		&:nth-child(4) { --k: 3; }
+		&:nth-child(5) { --k: 4; }
+		&:nth-child(6) { --k: 5; }
+		&:nth-child(n + 7) { --k: 6; }
+		&:is(h1 ~ *) { --extra: 0.18s; }
+	}
+	.o-pagina-topo .o-janela { --mov-d: 0.25s; }
+	.o-hero__janela { --mov-d: 0.55s; }
+	.o-hero__barras i {
+		--mov-d: 0.8s;
+
+		&:nth-child(2) { --mov-d: 0.86s; }
+		&:nth-child(3) { --mov-d: 0.92s; }
+		&:nth-child(4) { --mov-d: 0.98s; }
+	}
+
+	html.js:not(.o-pausado, .o-mov-fim):not(:has(> head > link[rel="canonical"][href*="/educacao/"])) {
+		& :is(.o-hero__texto, .o-pagina-topo__texto, .o-promo-topo__texto, .o-pagina-topo > .o-wrap:not(.o-pagina-topo__grade)) > * {
+			animation: o-mov-sobe 0.7s var(--mov-saida) var(--atraso) backwards;
+
+			/* Etiqueta: sobe de dentro da máscara. */
+			&.o-etiqueta { animation-name: o-mov-mascara; }
+			/* Título: com JS vira palavra por palavra (.o-mov-dividido); se o JS não chegar a tempo, sobe inteiro. */
+			&.o-mov-dividido { animation: none; }
+		}
+		/* Marcador da palavra destacada: desenha depois do título. */
+		& .o-hero__destaque::before {
+			animation: o-mov-escala-x 0.6s var(--mov-saida) 0.95s backwards;
+		}
+		/* Celular (com os símbolos) sobe; a janelinha abre por cima e as barras crescem. */
+		& .o-hero__visual {
+			--mov-dist: 56px;
+			animation: o-mov-sobe 0.9s var(--mov-saida) 0.12s backwards;
+		}
+		& :is(.o-hero, .o-pagina-topo, .o-erro, .o-obrigado) .o-janela {
+			transform-origin: 50% 0;
+			animation: o-mov-janela 0.8s var(--mov-volta) var(--mov-d, 0.1s) backwards;
+		}
+		& .o-hero__barras i {
+			animation: o-barras 0.6s var(--mov-saida) var(--mov-d) backwards;
+		}
+	}
+
+	/* Palavras (banner e títulos de seção): cada uma sobe da própria máscara, em cascata. */
+	html.js:not(.o-pausado) .o-mov-p {
+		animation: o-mov-mascara 0.8s var(--mov-saida) calc(var(--atraso, 0s) + var(--i, 0) * 45ms) backwards;
+	}
+
+	/* ---------- 2. Rolagem: classes postas pelo JS (html.o-mov) só abaixo da dobra ---------- */
+	html.js.o-mov:not(.o-pausado) {
+		/* Antes de entrar: invisível só por opacidade (um recorte no próprio elemento faria o
+		   IntersectionObserver nunca ver o alvo). Ao entrar, o recorte vem da própria animação. */
+		& :is(.o-mov-mascara, .o-mov-titulo, .o-mov-jan):not(.is-in) {
+			opacity: 0;
+		}
+		& .o-mov-mascara.is-in {
+			animation: o-mov-mascara 0.7s var(--mov-saida) var(--atraso, 0s) backwards;
+		}
+		& .o-mov-jan.is-in {
+			transform-origin: 50% 0;
+			animation: o-mov-janela 0.85s var(--mov-volta) var(--atraso, 0s) backwards;
+		}
+	}
+
+	/* ---------- 4. Transição entre páginas (navegadores sem suporte ignoram) ---------- */
+	@view-transition {
+		navigation: auto;
+	}
+	.o-topo {
+		view-transition-name: o-topo;
+	}
+	:root::view-transition-old(root) {
+		animation: o-mov-vt-sai 0.2s cubic-bezier(0.25, 1, 0.5, 1) both;
+	}
+	:root::view-transition-new(root) {
+		animation: o-mov-vt-entra 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+	:root::view-transition-group(o-topo) {
+		animation-duration: 0.3s;
+	}
+}
+
+/* Pausado: o que entra na rolagem aparece direto, sem transição. */
+html.o-mov.o-pausado .o-reveal {
+	opacity: 1;
+	transform: none;
+	transition: none;
+}
+
+/* ---------- 3. Microinterações (só com mouse; links e botões com seta, cartões) ---------- */
+@media (hover: hover) and (pointer: fine) {
+	html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) {
+		& :is(.o-link-seta, .o-btn) .o-icone--seta {
+			transition: transform 0.35s var(--mov-saida);
+		}
+		& :is(.o-link-seta, .o-btn):is(:hover, :focus-visible) .o-icone--seta {
+			transform: translateX(4px);
+		}
+		/* Cartões: leve elevação (translate não briga com o transform da entrada na rolagem). */
+		& .o-plano {
+			transition: translate 0.35s var(--mov-saida), opacity var(--dur-lenta) var(--curva), transform var(--dur-lenta) var(--curva);
+			transition-delay: 0s, var(--atraso, 0s), var(--atraso, 0s);
+		}
+		& .o-plano:hover {
+			translate: 0 -6px;
+		}
+		& .o-plano--destaque:hover {
+			translate: 0 -20px;
+		}
+		& .o-escolher__item {
+			transition: translate 0.35s var(--mov-saida);
+		}
+		& .o-escolher__item:hover {
+			translate: -4px -4px;
+		}
+	}
+}
+
+/* ---------- 5. Barra fina de progresso da leitura (só onde há scroll-timeline em CSS) ----------
+   Fica no alto do cabeçalho, que é sempre preto (verde nunca sobre branco); some junto com ele. */
+@supports (animation-timeline: scroll()) {
+	@media screen and (prefers-reduced-motion: no-preference) {
+		html:not(.o-pausado):not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-topo::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1;
+			height: 2px;
+			background: var(--verde);
+			transform-origin: left;
+			pointer-events: none;
+			animation-name: o-mov-escala-x;
+			animation-duration: auto;
+			animation-timing-function: linear;
+			animation-fill-mode: both;
+			animation-timeline: scroll(root);
+		}
+	}
+}

@@ -110,6 +110,25 @@ li {
 	overflow-x: clip;
 }
 
+/* Desempenho no celular: as seções depois do banner só calculam estilo e layout quando chegam
+   perto da tela (a altura fica estimada até lá). Antes de rolar até uma âncora, ao recarregar
+   e ao voltar no histórico, tudo é desenhado de uma vez (html.o-cv-tudo, ver ancoras.js). */
+.o-main > section:not(:first-child),
+.o-rodape {
+	content-visibility: auto;
+	contain-intrinsic-size: auto 900px;
+}
+.o-cv-tudo .o-main > section,
+.o-cv-tudo .o-rodape {
+	content-visibility: visible;
+}
+@media print {
+	.o-main > section,
+	.o-rodape {
+		content-visibility: visible;
+	}
+}
+
 .o-wrap {
 	width: min(100% - 2 * var(--margem), var(--largura-max));
 	margin-inline: auto;

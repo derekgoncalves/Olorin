@@ -1,9 +1,11 @@
 /**
- * Lista todos os marcadores [CONFIRMAR: ...] do conteúdo (o que ainda falta o dono responder).
+ * Lista o que ainda falta o dono confirmar no conteúdo.
  *
  *   npm run pendencias
  *
- * Esses textos não aparecem no site publicado até serem trocados pelo texto confirmado.
+ * Convenção (13/10/2026): o texto proposto vai ao ar e fica marcado com um comentário
+ * "# PENDENTE: o que confirmar" na linha de cima do .yml. Marcadores [CONFIRMAR: ...]
+ * antigos também são listados (e travam o build, porque apareceriam para o visitante).
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
@@ -19,6 +21,11 @@ function varrer(pasta) {
 			readFileSync(caminho, 'utf8')
 				.split('\n')
 				.forEach((linha, i) => {
+					const pendente = linha.match(/^\s*#\s*PENDENTE:\s*(.+)$/);
+					if (pendente) {
+						itens.push({ arquivo: caminho, linha: i + 1, texto: pendente[1].trim() });
+						return;
+					}
 					if (linha.trim().startsWith('#')) return;
 					for (const m of linha.matchAll(/\[CONFIRMAR:?\s*([^\]]*)\]/g)) {
 						itens.push({ arquivo: caminho, linha: i + 1, texto: m[1].trim() || '(sem descrição)' });
@@ -37,4 +44,4 @@ for (const it of itens) {
 	}
 	console.log(`  linha ${String(it.linha).padStart(3)}  ${it.texto}`);
 }
-console.log(`\n${itens.length} pendência(s). Detalhes e quem responde: docs/CONTENT-TODO.md\n`);
+console.log(`\n${itens.length} pendência(s). Lista comentada para o dono: docs/PENDENCIAS.md\n`);

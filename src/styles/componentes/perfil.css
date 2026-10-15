@@ -1,0 +1,586 @@
+/* Quem somos (/quem-somos/) e perfis da equipe (/quem-somos/<pessoa>/, no estilo de perfil de rede social).
+   JS: src/scripts/modulos/perfil.js (botão de copiar ou compartilhar o link do perfil). */
+
+/* ---------- Quem somos: banner com a pilha de janelas do time ---------- */
+.o-quem-topo .o-pagina-topo__grade {
+	grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+}
+.o-quem-topo .o-pagina-topo__texto {
+	container-type: inline-size;
+}
+.o-quem-topo .o-pagina-topo__titulo {
+	max-width: none;
+	font-size: clamp(34px, 9.4cqi, 88px);
+	line-height: 1;
+}
+.o-quem-pilha {
+	position: relative;
+	width: min(100%, 470px);
+	justify-self: end;
+}
+/* Pilha de fotos espalhadas: duas atrás (lado a lado, quase sem se cobrir) e uma na frente, embaixo.
+   Os rostos das duas de trás ficam na metade de cima da foto, então a da frente só cobre a parte
+   de baixo delas; a da frente é a 1ª pessoa de equipe.yml (Natália, rosto mais baixo na foto).
+   Os 3 rostos aparecem inteiros em qualquer largura (testado em 390, 768, 1024 e 1440 px). */
+.o-quem-pilha__lista {
+	position: relative;
+	aspect-ratio: 1 / 1.34;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.o-quem-pilha__item {
+	position: absolute;
+	width: 51%;
+	transition: rotate 0.35s var(--curva), translate 0.35s var(--curva);
+}
+.o-quem-pilha__item:nth-child(1) { left: 25%; top: 46%; z-index: 3; rotate: -2deg; }
+.o-quem-pilha__item:nth-child(2) { right: 0; top: 0; z-index: 2; rotate: 4deg; }
+.o-quem-pilha__item:nth-child(3) { left: 0; top: 4%; z-index: 1; rotate: -5deg; }
+.o-quem-pilha__item:hover,
+.o-quem-pilha__item:focus-within {
+	z-index: 5;
+	rotate: 0deg;
+	translate: 0 -10px;
+}
+.o-quem-janela {
+	--janela-borda: var(--verde);
+	--janela-barra: var(--verde);
+	--janela-tinta: var(--preto);
+	--janela-corpo: var(--preto);
+	--janela-sombra: rgba(236, 255, 54, 0.18);
+	display: block;
+	color: var(--branco);
+	text-decoration: none;
+}
+.o-quem-janela img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+.o-quem-janela:focus-visible {
+	outline: 3px solid var(--verde);
+	outline-offset: 4px;
+}
+.o-quem-janela__legenda {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: grid;
+	gap: 3px;
+	padding: 30px 14px 12px;
+	background: linear-gradient(transparent, rgba(0, 0, 0, 0.88) 46%);
+}
+.o-quem-janela__legenda strong {
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(12px, 1.25vw, 16px);
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+.o-quem-janela__legenda span {
+	font-family: var(--fonte-pixel);
+	font-size: 10px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-quem-pilha__dica {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin: 18px 0 0;
+	font-family: var(--fonte-pixel);
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--cor-apoio);
+}
+.o-quem-pilha__dica .o-icone {
+	--tam: 10px;
+	color: var(--verde);
+}
+
+/* ---------- Quem somos: história ---------- */
+.o-quem-historia__grade {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	align-items: start;
+	gap: clamp(32px, 6vw, 96px);
+}
+.o-quem-historia__cabeca {
+	container-type: inline-size;
+}
+.o-quem-historia__cabeca .o-titulo {
+	margin-bottom: 22px;
+}
+.o-quem-historia__apoio {
+	margin: 0 !important;
+	font-family: var(--fonte-pixel);
+	font-size: 13px;
+	letter-spacing: 0.08em;
+	line-height: 1.5;
+	text-transform: uppercase;
+	color: var(--violeta);
+}
+.o-quem-historia__texto p {
+	max-width: 62ch;
+	margin: 0 0 22px;
+	font-size: clamp(16px, 1.25vw, 19px);
+	line-height: 1.7;
+}
+.o-quem-historia__texto p:first-child {
+	font-size: clamp(18px, 1.55vw, 23px);
+	line-height: 1.55;
+}
+.o-quem-historia__texto .o-quem-historia__edu {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	margin: 32px 0 0;
+	padding: 18px 20px;
+	border: var(--borda) solid var(--preto);
+	box-shadow: 6px 6px 0 var(--violeta);
+	font-size: 15px;
+	line-height: 1.6;
+}
+.o-quem-historia__edu > .o-icone {
+	--tam: 28px;
+	color: var(--violeta);
+}
+.o-quem-historia__edu .o-link-seta {
+	color: var(--violeta);
+}
+
+/* ---------- Quem somos: time ---------- */
+.o-quem-equipe .o-pessoa__servicos {
+	position: relative;
+	z-index: 3;
+}
+
+/* ---------- Quem somos: o nosso jeito (janelas alinhadas em subgrid) ---------- */
+.o-jeito {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0 clamp(16px, 2vw, 28px);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.o-jeito__item {
+	--janela-borda: var(--preto);
+	--janela-barra: var(--preto);
+	--janela-tinta: var(--branco);
+	--janela-corpo: var(--branco);
+	--janela-sombra: var(--violeta);
+	display: grid;
+	grid-row: span 4;
+	grid-template-rows: subgrid;
+	row-gap: 0;
+	margin-bottom: clamp(16px, 2vw, 28px);
+	color: var(--preto);
+}
+.o-jeito__corpo {
+	display: grid;
+	grid-row: span 3;
+	grid-template-rows: subgrid;
+	row-gap: 12px;
+	padding: clamp(20px, 2.4vw, 28px);
+}
+.o-jeito__icone {
+	display: inline-grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	background: var(--violeta);
+	color: var(--branco);
+}
+.o-jeito__icone .o-icone {
+	--tam: 18px;
+}
+.o-jeito__titulo {
+	margin: 4px 0 0 !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(16px, 1.4vw, 19px);
+	line-height: 1.12;
+	text-transform: uppercase;
+}
+.o-jeito__texto {
+	margin: 0 !important;
+	font-size: 15px;
+	color: var(--cor-apoio);
+}
+
+/* ---------- Quem somos: remoto ---------- */
+.o-quem-remoto .o-lista-pixel {
+	margin-bottom: 0;
+}
+.o-quem-remoto__contato {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 14px 20px;
+	margin: 32px 0 0 !important;
+	font-weight: 700;
+}
+
+/* ---------- Perfil: capa, foto, nome e números ---------- */
+.o-perfil {
+	position: relative;
+	padding: var(--altura-topo) 0 clamp(36px, 4vw, 56px);
+	border-bottom: var(--borda) solid var(--verde);
+}
+.o-perfil__capa {
+	position: relative;
+	height: clamp(150px, 19vw, 260px);
+	overflow: hidden;
+	isolation: isolate;
+	background: var(--violeta);
+}
+.o-perfil__capa::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: var(--pixel-branco) 14px 14px / 28px 28px;
+	opacity: 0.16;
+}
+.o-perfil__o {
+	position: absolute;
+	height: auto;
+	color: var(--branco);
+}
+.o-perfil__o--1 {
+	right: 8%;
+	top: 50%;
+	width: clamp(110px, 15vw, 220px);
+	translate: 0 -50%;
+}
+.o-perfil__o--2 {
+	right: 34%;
+	top: 14%;
+	width: clamp(40px, 5vw, 72px);
+	opacity: 0.4;
+}
+.o-perfil__o--3 {
+	left: 54%;
+	bottom: 10%;
+	width: clamp(28px, 3.2vw, 46px);
+	opacity: 0.28;
+}
+.o-perfil__grade {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	align-items: start;
+	gap: 24px clamp(20px, 3vw, 44px);
+	padding-top: 24px;
+}
+.o-perfil__foto {
+	--janela-borda: var(--branco);
+	--janela-barra: var(--branco);
+	--janela-tinta: var(--preto);
+	--janela-corpo: var(--preto);
+	--janela-sombra: rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 1;
+	width: clamp(136px, 15vw, 200px);
+	margin: calc(-1 * clamp(72px, 8vw, 120px)) 0 0;
+}
+.o-perfil__foto img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+	object-fit: cover;
+}
+.o-perfil__cabeca {
+	min-width: 0;
+	container-type: inline-size;
+}
+.o-perfil__nome {
+	margin: 4px 0 8px;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(30px, 9cqi, 64px);
+	line-height: 1;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+}
+.o-perfil__cargo {
+	margin: 0 0 18px;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-perfil__cargo span {
+	color: var(--cor-apoio);
+}
+.o-perfil__frentes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 22px;
+	padding: 0;
+	list-style: none;
+}
+.o-perfil__frentes a {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 7px 12px;
+	border: 1px solid var(--cor-linha);
+	font-size: 13px;
+	text-decoration: none;
+	transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.o-perfil__frentes .o-icone {
+	--tam: 14px;
+	color: var(--verde);
+}
+.o-perfil__frentes a:hover {
+	border-color: var(--verde);
+	background: var(--verde);
+	color: var(--preto);
+}
+.o-perfil__frentes a:hover .o-icone {
+	color: var(--preto);
+}
+.o-perfil__acoes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+.o-perfil__numeros {
+	display: flex;
+	gap: clamp(20px, 2.4vw, 36px);
+	margin: 0;
+	padding-top: 8px;
+}
+.o-perfil__numeros div {
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: flex-end; /* número no topo, rótulo embaixo: todos os números na mesma linha */
+	gap: 8px;
+	min-width: 84px;
+	text-align: center;
+}
+.o-perfil__numeros dd {
+	margin: 0;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(28px, 3vw, 44px);
+	line-height: 1;
+}
+.o-perfil__numeros dt {
+	max-width: 15ch;
+	margin: 0 auto;
+	font-family: var(--fonte-pixel);
+	font-size: 10px;
+	letter-spacing: 0.06em;
+	line-height: 1.45;
+	text-transform: uppercase;
+	color: var(--cor-apoio);
+}
+
+/* ---------- Perfil: sobre e o que coordena ---------- */
+.o-perfil-sobre__grade {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	align-items: start;
+	gap: clamp(32px, 6vw, 96px);
+}
+.o-perfil-sobre__bio {
+	max-width: 52ch;
+	margin: 0 !important;
+	font-size: clamp(17px, 1.4vw, 21px);
+	line-height: 1.6;
+}
+.o-perfil-sobre__frase {
+	max-width: 52ch;
+	margin: 22px 0 0 !important;
+	padding-left: 18px;
+	border-left: 4px solid var(--violeta);
+	font-size: 15px;
+	color: var(--cor-apoio);
+}
+.o-perfil-frentes {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: var(--borda) solid var(--preto);
+}
+.o-perfil-frente {
+	position: relative;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	align-items: center;
+	column-gap: 18px;
+	padding: 20px 6px;
+	border-bottom: var(--borda) solid var(--preto);
+	transition: background-color 0.2s, color 0.2s, padding 0.25s var(--curva);
+}
+.o-perfil-frente > .o-icone:first-child {
+	--tam: 32px;
+	grid-column: 1;
+	grid-row: 1 / span 2;
+	color: var(--violeta);
+}
+.o-perfil-frente__nome {
+	grid-column: 2;
+	margin: 0 !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: 18px;
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+.o-perfil-frente__nome a {
+	text-decoration: none;
+}
+.o-perfil-frente__nome a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+.o-perfil-frente__nome a:focus-visible {
+	outline: none;
+}
+.o-perfil-frente:has(a:focus-visible) {
+	outline: 3px solid var(--violeta);
+	outline-offset: 2px;
+}
+.o-perfil-frente p {
+	grid-column: 2;
+	margin: 4px 0 0 !important;
+	font-size: 14px;
+	color: var(--cor-apoio);
+}
+.o-perfil-frente__seta {
+	--tam: 18px;
+	grid-column: 3;
+	grid-row: 1 / span 2;
+	color: var(--violeta);
+	transition: translate 0.2s var(--curva);
+}
+@media (hover: hover) {
+	.o-perfil-frente:hover {
+		--cor-apoio: rgba(255, 255, 255, 0.86);
+		padding-inline: 18px;
+		background: var(--violeta);
+		color: var(--branco);
+	}
+	.o-perfil-frente:hover > .o-icone:first-child,
+	.o-perfil-frente:hover .o-perfil-frente__seta {
+		color: var(--branco);
+	}
+	.o-perfil-frente:hover .o-perfil-frente__seta {
+		translate: 4px 0;
+	}
+}
+
+/* ---------- Perfil: feed de trabalhos (cards em portfolio.css) ---------- */
+.o-perfil-feed .o-vitrine__acoes {
+	margin: 28px 0 0;
+}
+.o-perfil-time .o-titulo {
+	margin-bottom: 24px;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1100px) {
+	.o-jeito {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.o-perfil__grade {
+		grid-template-columns: auto minmax(0, 1fr);
+	}
+	.o-perfil__numeros {
+		grid-column: 1 / -1;
+		justify-content: flex-start;
+	}
+	.o-perfil__numeros div {
+		text-align: left;
+	}
+	.o-perfil__numeros dt {
+		margin: 0;
+	}
+}
+@media (max-width: 960px) {
+	.o-quem-topo .o-pagina-topo__grade,
+	.o-quem-historia__grade,
+	.o-perfil-sobre__grade {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.o-quem-pilha {
+		justify-self: center;
+		width: min(100%, 420px);
+	}
+}
+@media (max-width: 640px) {
+	/* Fotos menores: a legenda fica só com o nome, para não cobrir o rosto (o cargo está no time, abaixo). */
+	.o-quem-janela__legenda {
+		padding-top: 22px;
+	}
+	.o-quem-janela__legenda span {
+		display: none;
+	}
+	.o-perfil__grade {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.o-perfil__foto {
+		width: 136px;
+	}
+	.o-perfil__numeros {
+		flex-wrap: wrap;
+		gap: 20px 28px;
+	}
+}
+@media (max-width: 560px) {
+	.o-jeito {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* ---------- Movimento: o "O" girando na capa do perfil ---------- */
+@media (prefers-reduced-motion: no-preference) {
+	.o-perfil__o--1 {
+		animation: o-perfil-gira 18s linear infinite;
+	}
+	.o-perfil__o--2 {
+		animation: o-perfil-gira 26s linear infinite reverse;
+	}
+	.o-perfil__o--3 {
+		animation: o-perfil-gira 14s linear infinite;
+	}
+	html.o-pausado .o-perfil__o {
+		animation-play-state: paused;
+	}
+	@keyframes o-perfil-gira {
+		to { rotate: 360deg; }
+	}
+}
+
+/* Variante de "o nosso jeito" com passos numerados (Raio-X em /como-trabalhamos/) */
+.o-jeito--passos {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.o-jeito__icone--num {
+	font-family: var(--fonte-pixel);
+	font-size: 13px;
+	letter-spacing: 0.04em;
+}
+.o-metodo-raio-x__acao {
+	margin: clamp(8px, 1vw, 16px) 0 0;
+}
+@media (max-width: 960px) {
+	.o-jeito--passos {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

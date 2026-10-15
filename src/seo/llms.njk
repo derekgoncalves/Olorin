@@ -5,7 +5,7 @@ eleventyExcludeFromCollections: true
 {%- set cfg = site.config -%}
 # {{ cfg.NOME }}
 
-> {{ cfg.LEMA }}. Agência de marketing digital em {{ cfg.CIDADE }} ({{ cfg.UF }}) que atende todo o Brasil: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, material impresso, site e loja virtual, rastreamento e relatório — feitos pelo mesmo time, com preço aberto e relatório em linguagem simples.
+> {{ cfg.LEMA if cfg.LEMA.endsWith(".") else cfg.LEMA + "." }} Agência de marketing digital em {{ cfg.CIDADE }} ({{ cfg.UF }}) que atende todo o Brasil. Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, impressos, sites, ecommerce e sistemas web personalizados, rastreamento e relatórios. Atende organizações de todo tipo e tamanho, com preço aberto e relatório em linguagem simples. Instituições de ensino têm uma frente própria, a Olorin Educação.
 
 - Site: {{ cfg.URL }}/
 - WhatsApp: {{ cfg.TELEFONE_EXIBICAO }} (https://wa.me/{{ cfg.WHATSAPP }})
@@ -15,7 +15,7 @@ eleventyExcludeFromCollections: true
 
 ## Serviços
 {% for s in conteudo.servicos %}
-- [{{ s.nome }}]({{ ("/servicos/" + s.slug + "/") | urlAbsoluta }}): {{ s.resposta_curta | textoPuro }}{% if s.preco and s.preco.valor %} Preço: {{ s.preco.valor }}.{% endif %}
+- [{{ s.nome }}]({{ ("/servicos/" + s.slug + "/") | urlAbsoluta }}): {{ s.resposta_curta | textoPuro }}{% if s.preco and s.preco.valor %} Preço: {{ (s.preco.rotulo | lower + " ") if s.preco.rotulo }}{{ s.preco.valor }}.{% endif %}
 {%- endfor %}
 
 ## Planos
@@ -32,7 +32,24 @@ eleventyExcludeFromCollections: true
 - {{ f.pergunta | textoPuro }} {{ f.resposta | textoPuro }}
 {%- endfor %}
 
+{%- if collections.artigos and collections.artigos.length %}
+
+## Blog
+Artigos práticos do time da Olorin, por categoria, em [{{ "/blog/" | urlAbsoluta }}]({{ "/blog/" | urlAbsoluta }}).
+{% for item in collections.artigos %}
+- [{{ item.data.artigo.titulo }}]({{ item.data.artigo.url | urlAbsoluta }}) ({{ item.data.artigo.categoria }}, {{ item.data.artigo.autor.nome }}, {{ item.data.artigo.data | dataBR }}): {{ item.data.artigo.descricao }}
+{%- endfor %}
+{%- endif %}
+
 ## Páginas
 - [Serviços]({{ "/servicos/" | urlAbsoluta }})
-- [Sobre a Olorin e a equipe]({{ "/sobre/" | urlAbsoluta }})
+- [Planos e preços]({{ "/planos/" | urlAbsoluta }})
+- [Como trabalhamos (Método Olorin)]({{ "/como-trabalhamos/" | urlAbsoluta }})
+- [Portfólio]({{ "/portfolio/" | urlAbsoluta }})
+- [Blog: artigos sobre tráfego pago, redes sociais e captação]({{ "/blog/" | urlAbsoluta }})
+- [Olorin Educação: marketing para instituições de ensino]({{ "/educacao/" | urlAbsoluta }})
+- [Quem somos: a Olorin e a equipe]({{ "/quem-somos/" | urlAbsoluta }})
+{%- for p in conteudo.equipe.pessoas %}
+- [{{ p.nome }}, {{ p.cargo or p.funcao }}]({{ ("/quem-somos/" + p.slug + "/") | urlAbsoluta }})
+{%- endfor %}
 - [Política de Privacidade]({{ "/politica-de-privacidade/" | urlAbsoluta }})

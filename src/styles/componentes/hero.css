@@ -14,20 +14,41 @@
 	align-items: center;
 	gap: clamp(40px, 5vw, 96px);
 }
+/* A coluna de texto é o contêiner do tamanho do título (cqi). Fica aqui, numa regra simples, para
+   entrar no CSS crítico da página (a regra geral de tipografia.css usa :where e fica de fora):
+   sem ela, a 1ª pintura mediria pela tela e o título "pularia" quando o CSS completo chegasse. */
+.o-hero__texto {
+	container-type: inline-size;
+}
 .o-hero__linha {
 	margin-bottom: clamp(20px, 3vh, 28px);
 }
+/* Título em blocos: no desktop são 3 linhas, a chamada "Do clique ao cliente:" a 0,7em ocupa a mesma
+   largura que "resultado que" (a fonte é expandida: ~10,9em nas duas), e "dá pra ver." fecha em verde.
+   No celular a chamada quebra em 2 linhas do mesmo tamanho (4 linhas no total).
+   O tamanho segue a coluna (9cqi: "resultado que" sempre cabe numa linha, sem vazar). */
 .o-hero__titulo {
 	margin: 0 0 clamp(20px, 3vh, 32px);
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(38px, 6.3vw, 88px);
-	line-height: 0.9;
+	font-size: clamp(24px, 9cqi, 88px);
+	line-height: 0.92;
 	letter-spacing: -0.015em;
 	text-transform: uppercase;
 }
+.o-hero__t1,
+.o-hero__t2 {
+	display: block;
+	text-wrap: balance;
+}
+.o-hero__t1 {
+	margin-bottom: 0.1em;
+	font-size: 0.7em;
+	line-height: 1;
+}
 .o-hero__destaque {
 	color: var(--verde);
+	white-space: nowrap;
 }
 .o-hero__destaque::after {
 	content: "";
@@ -201,4 +222,13 @@
 	height: 22px;
 	background: var(--verde);
 	box-shadow: -22px 22px 0 rgba(236, 255, 54, 0.55);
+}
+
+/* Celular: a chamada do título no mesmo tamanho, em 2 linhas ("Do clique / ao cliente:"). */
+@media (max-width: 767px) {
+	.o-hero__t1 {
+		margin-bottom: 0;
+		font-size: 1em;
+		line-height: inherit;
+	}
 }

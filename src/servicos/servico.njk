@@ -13,35 +13,57 @@ eleventyComputed:
   slug: "servico-{{ servico.slug }}"
   og_imagem: "/assets/img/og/servico-{{ servico.slug }}.jpg"
 ---
-{#- Página de serviço (modo completo) — conteúdo em src/content/servicos/<slug>.yml. Ordem da seção 9.2 do PROMPT. -#}
+{#- Página de serviço — conteúdo em src/content/servicos/<slug>.yml (a mesma fonte da landing /promo/<slug>/).
+    Ordem: banner com a cena do serviço, prova, o que é, sinais de alerta, entregas, portfólio do serviço,
+    como funciona, quem cuida, preço e para quem é, combina com, dúvidas e o formulário. -#}
 {%- import "components/ui.njk" as ui with context -%}
-{%- from "components/formulario.njk" import formulario with context -%}
 {%- set s = servico -%}
 {%- set trilha = [{ nome: "Home", url: "/" }, { nome: "Serviços", url: "/servicos/" }, { nome: s.nome, url: "/servicos/" + s.slug + "/" }] -%}
-{%- set casesServico = conteudo.cases.itens | filtrarPor("aprovado", true) | filtrarPor("servicos", s.slug) -%}
+{%- set casesServico = (conteudo.casesTodos or []) | filtrarPor("servicos", s.slug) -%}
+{%- set trabalhos = (conteudo.portfolioPublicado or []) | filtrarPor("servicos", s.slug) -%}
+{%- set numeros = conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else [] -%}
+{%- set cena = s.cena or s.icone -%}
 
-{#- 1-2 · Trilha + banner do serviço -#}
-<section class="o-pagina-topo o-ctx-preto" data-secao="servico-hero">
+{#- 1 · Banner com a cena viva do serviço -#}
+<section class="o-pagina-topo o-servico-topo o-ctx-preto" data-secao="servico-hero">
+	<div class="o-fundo o-fundo--colunas" aria-hidden="true" data-o-fundo><div class="o-fundo__luz"></div><b></b><b></b><b></b><b></b><b></b></div>
 	<div class="o-wrap o-pagina-topo__grade">
 		<div class="o-pagina-topo__texto">
 			{{ ui.migalhas(trilha) }}
 			<p class="o-etiqueta">{{ s.hero.eyebrow }}</p>
 			<h1 class="o-pagina-topo__titulo">{{ s.hero.h1 }}</h1>
 			<p class="o-pagina-topo__sub">{{ s.hero.sub }}</p>
-			<div class="o-hero__acoes">
-				<a class="o-btn o-btn--verde o-btn--grande" id="cta-diagnostico-servico" href="#diagnostico">{{ conteudo.home.hero.botao if site.config.OFERTA_DIAGNOSTICO else conteudo.home.hero.botao_sem_diagnostico }}</a>
-				<a class="o-link-wa" href="{{ waLink('servico-' + s.slug + '-hero', { tipo: 'servico', x: s.nome }) }}" target="_blank" rel="noopener" data-servico="{{ s.slug }}"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ conteudo.home.hero.link_whatsapp }}</a>
-			</div>
-			<p class="o-nota"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ conteudo.home.hero.microtexto }}</p>
+			<p class="o-servico-topo__preco"><span>{{ s.hero.preco_rotulo }}</span> <strong>{{ s.hero.preco }}</strong></p>
+			<form class="o-atalho" action="#orcamento" method="get" data-o-atalho="form-fim" novalidate>
+				<label class="o-atalho__rotulo" for="atalho-whatsapp">{{ conteudo.home.hero.atalho.rotulo }}</label>
+				<div class="o-atalho__linha">
+					<input class="o-atalho__campo" id="atalho-whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="{{ conteudo.home.hero.atalho.placeholder }}" aria-describedby="atalho-ajuda">
+					<button class="o-btn o-btn--verde o-atalho__botao" id="cta-diagnostico-servico" type="submit">{{ conteudo.home.hero.atalho.botao }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></button>
+				</div>
+				<p class="o-atalho__ajuda" id="atalho-ajuda"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ conteudo.home.hero.atalho.ajuda }}</p>
+			</form>
+			<p class="o-hero__wa"><a class="o-link-wa" href="{{ waLink('servico-' + s.slug + '-hero', { tipo: 'servico', x: s.nome }) }}" target="_blank" rel="noopener" data-servico="{{ s.slug }}"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ conteudo.home.hero.link_whatsapp }}</a></p>
 		</div>
-		<div class="o-janela o-servico-janela" aria-hidden="true">
+		<div class="o-janela o-cena o-cena--{{ cena }}" aria-hidden="true" data-o-cena>
 			<div class="o-janela__barra"><span class="o-janela__titulo">{{ s.janela }}</span><span class="o-janela__ctrl"></span></div>
-			<div class="o-servico-janela__corpo">
-				<span class="o-icone o-icone--{{ s.icone }} o-servico-janela__icone"></span>
-				<ul class="o-servico-janela__linhas">
-				{%- for linha in s.hero.janela_linhas %}<li>{{ linha }}</li>{% endfor %}
-				</ul>
+			<div class="o-cena__palco">
+			{%- if cena == "trafego" %}
+				<div class="o-cena-trafego"><p class="o-cena__rotulo">retorno</p><div class="o-cena-trafego__barras"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="o-cena__seta"></span></div>
+			{%- elif cena == "redes" %}
+				<div class="o-cena-redes"><div class="o-cena-redes__feed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="o-cena-redes__curtida"></span></div>
+			{%- elif cena == "marca" %}
+				<div class="o-cena-marca"><svg class="o-cena-marca__o" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><span class="o-cena-marca__cores"><i></i><i></i><i></i><i></i></span><span class="o-cena-marca__regua"></span></div>
+			{%- elif cena == "impresso" %}
+				<div class="o-cena-impresso"><div class="o-cena-impresso__folha"><svg viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><i></i><i></i><i></i></div><div class="o-cena-impresso__maquina"><i></i></div></div>
+			{%- elif cena == "site" %}
+				<div class="o-cena-site"><i class="o-cena-site__menu"></i><i class="o-cena-site__hero"></i><i class="o-cena-site__bloco"></i><i class="o-cena-site__bloco"></i><i class="o-cena-site__bloco"></i><i class="o-cena-site__botao"></i></div>
+			{%- else %}
+				<div class="o-cena-dados"><div class="o-cena-dados__kpis"><i></i><i></i><i></i></div><svg class="o-cena-dados__linha" viewBox="0 0 200 80" preserveAspectRatio="none" focusable="false"><polyline points="0,72 28,64 56,66 84,46 112,50 140,30 168,26 200,8" pathLength="100"></polyline></svg></div>
+			{%- endif %}
 			</div>
+			<ul class="o-cena__linhas">
+			{%- for linha in s.hero.janela_linhas %}<li>{{ linha }}</li>{% endfor %}
+			</ul>
 		</div>
 	</div>
 </section>
@@ -50,88 +72,149 @@ eleventyComputed:
 <nav class="o-indice" aria-label="Nesta página" data-o-indice>
 	<div class="o-wrap">
 		<ul class="o-indice__lista">
-			<li><a href="#resposta">Resumo</a></li>
-			<li><a href="#para-quem">Para quem é</a></li>
-			<li><a href="#entregas">O que entregamos</a></li>
+			<li><a href="#o-que-e">O que é</a></li>
+			<li><a href="#entregas">O que pode entrar</a></li>
+			{%- if casesServico.length or trabalhos.length %}<li><a href="#trabalhos">Trabalhos</a></li>{% endif %}
 			<li><a href="#como-funciona">Como funciona</a></li>
-			<li><a href="#quem-faz">Quem faz</a></li>
-			<li><a href="#preco">Quanto custa</a></li>
+			<li><a href="#quem-cuida">Quem coordena</a></li>
+			<li><a href="#preco">Preço</a></li>
 			<li><a href="#perguntas">Dúvidas</a></li>
-			<li><a href="#orcamento">Pedir Raio-X</a></li>
+			<li><a href="#orcamento">Raio-X grátis</a></li>
 		</ul>
 	</div>
 </nav>
 
-{#- Etapa 1 do formulário logo abaixo do banner -#}
-<section class="o-sec o-sec--compacta o-form-topo o-ctx-preto" id="diagnostico" data-secao="formulario-topo" aria-labelledby="diagnostico-titulo">
-	<div class="o-wrap o-form-topo__grade">
-		<div class="o-form-topo__texto">
-			<h2 class="o-titulo o-titulo--m" id="diagnostico-titulo">{{ conteudo.home.formulario_topo.titulo }}</h2>
-			<p class="o-apoio">{{ conteudo.home.formulario_topo.texto }}</p>
-			<ul class="o-lista-pixel">{% for item in conteudo.home.formulario_topo.itens %}<li>{{ item }}</li>{% endfor %}</ul>
-		</div>
-		{{ formulario({ id: "form-topo", posicao: "topo", modo: "servico", servico: s.slug, nomeServico: s.nome, origemWa: "servico-" + s.slug + "-form-topo" }) }}
-	</div>
-</section>
-
-{#- 3 · Resposta curta -#}
-<section class="o-sec o-sec--compacta o-ctx-branco" id="resposta" data-secao="resposta-curta" aria-labelledby="resposta-titulo">
-	<div class="o-wrap o-resposta">
-		<p class="o-etiqueta" id="resposta-titulo">Resumo em 30 segundos</p>
-		<p class="o-resposta__texto">{{ s.resposta_curta | emLinha | confirmar | safe }}</p>
-		<p class="o-atualizado">Atualizado em <time datetime="{{ s.atualizado }}">{{ s.atualizado | dataBR }}</time></p>
-	</div>
-</section>
-
-{#- 4 · Dores -#}
-{%- if s.dores and s.dores.itens.length %}
-<section class="o-sec o-ctx-branco o-servico-dores" data-secao="dores" aria-labelledby="dores-titulo">
+{#- 2 · Prova (números informados pelo dono) -#}
+{%- if numeros.length %}
+<section class="o-sec o-sec--compacta o-servico-prova o-ctx-verde" data-secao="prova" aria-label="O time em números">
 	<div class="o-wrap">
-		<h2 class="o-titulo o-titulo--g" id="dores-titulo">{{ s.dores.titulo }}</h2>
-		<ul class="o-dores">
+		<dl class="o-numeros o-numeros--faixa">
+		{%- for n in numeros %}
+			<div class="o-numero"><dt class="o-numero__rotulo">{{ n.rotulo }}</dt><dd class="o-numero__valor" data-o-contador>{{ n.valor }}</dd></div>
+		{%- endfor %}
+		</dl>
+	</div>
+</section>
+{%- endif %}
+
+{#- 3 · O que é -#}
+<section class="o-sec o-servico-oque o-ctx-branco" id="o-que-e" data-secao="o-que-e" aria-labelledby="oque-titulo">
+	<div class="o-wrap o-servico-oque__grade">
+		<div class="o-servico-oque__cabeca">
+			<p class="o-etiqueta">{{ s.o_que_e.etiqueta or ("O que é " + (s.nome | lower)) }}</p>
+			<h2 class="o-titulo o-titulo--g" id="oque-titulo">{{ s.o_que_e.titulo }}</h2>
+			<a class="o-servico-oque__preco" href="#preco"><span>{{ s.hero.preco_rotulo }}</span> <strong>{{ s.hero.preco }}</strong> <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+		</div>
+		<div class="o-servico-oque__texto">
+			{%- for p in s.o_que_e.texto %}<p>{{ p | emLinha | safe }}</p>{% endfor %}
+			{%- if s.o_que_e.destaques %}
+			<ul class="o-servico-oque__destaques">
+			{%- for d in s.o_que_e.destaques %}<li><span class="o-icone o-icone--pixel" aria-hidden="true"></span>{{ d }}</li>{% endfor %}
+			</ul>
+			{%- endif %}
+		</div>
+	</div>
+</section>
+
+{#- 4 · Sinais de alerta -#}
+{%- if s.dores and s.dores.itens.length %}
+<section class="o-sec o-alertas o-ctx-preto" data-secao="dores" aria-labelledby="dores-titulo">
+	<div class="o-fundo o-fundo--linhas" aria-hidden="true"></div>
+	<div class="o-wrap">
+		<div class="o-alertas__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ s.dores.etiqueta or "Sinais de alerta" }}</p>
+				<h2 class="o-titulo o-titulo--g" id="dores-titulo">{{ s.dores.titulo }}</h2>
+			</div>
+			{%- if s.dores.texto %}<p class="o-apoio">{{ s.dores.texto }}</p>{% endif %}
+		</div>
+		<ul class="o-alertas__lista">
 		{%- for d in s.dores.itens %}
-			<li class="o-dor"><span class="o-dor__num" aria-hidden="true">0{{ loop.index }}</span><p>{{ d | emLinha | safe }}</p></li>
+			<li class="o-alerta o-janela">
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">erro_0{{ loop.index }}.exe</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-janela__corpo o-alerta__corpo">
+					<span class="o-alerta__icone" aria-hidden="true">!</span>
+					<div>
+						{%- if d.titulo %}<h3 class="o-alerta__titulo">{{ d.titulo }}</h3>{% endif %}
+						<p class="o-alerta__texto">{{ (d.texto or d) | emLinha | safe }}</p>
+					</div>
+				</div>
+			</li>
 		{%- endfor %}
 		</ul>
 	</div>
 </section>
 {%- endif %}
 
-{#- 5 · Para quem é / não é -#}
-<section class="o-sec o-ctx-preto" id="para-quem" data-secao="para-quem" aria-labelledby="para-quem-titulo">
+{#- 5 · O que entra -#}
+<section class="o-sec o-ctx-branco o-servico-entregas" id="entregas" data-secao="entregas" aria-labelledby="entregas-titulo">
 	<div class="o-wrap">
-		<h2 class="o-titulo o-titulo--g" id="para-quem-titulo">Para quem é (e para quem não é)</h2>
-		<div class="o-para-quem">
-			<div class="o-para-quem__col o-para-quem__col--sim">
-				<h3 class="o-para-quem__titulo"><span class="o-icone o-icone--check" aria-hidden="true"></span>É para…</h3>
-				<ul class="o-lista-pixel">{% for i in s.para_quem.e %}<li>{{ i | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
+		<div class="o-vitrine__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ s.entregas.etiqueta or "Entregas" }}</p>
+				<h2 class="o-titulo o-titulo--g" id="entregas-titulo">{{ s.entregas.titulo }}</h2>
 			</div>
-			<div class="o-para-quem__col o-para-quem__col--nao">
-				<h3 class="o-para-quem__titulo"><span class="o-icone o-icone--mais o-icone--x" aria-hidden="true"></span>Não é para…</h3>
-				<ul class="o-lista-pixel">{% for i in s.para_quem.nao_e %}<li>{{ i | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
-			</div>
+			{%- if s.entregas.texto %}<p class="o-apoio">{{ s.entregas.texto }}</p>{% endif %}
 		</div>
-	</div>
-</section>
-
-{#- 6 · Entregas -#}
-<section class="o-sec o-ctx-branco" id="entregas" data-secao="entregas" aria-labelledby="entregas-titulo">
-	<div class="o-wrap">
-		<h2 class="o-titulo o-titulo--g" id="entregas-titulo">{{ s.entregas.titulo }}</h2>
 		<ul class="o-entregas">
 		{%- for e in s.entregas.itens %}
 			<li class="o-entrega">
 				<span class="o-icone o-icone--{{ e.icone or s.icone }} o-entrega__icone" aria-hidden="true"></span>
 				<h3 class="o-entrega__titulo">{{ e.titulo }}</h3>
-				<p class="o-entrega__texto">{{ e.texto | emLinha | confirmar | safe }}</p>
-				{%- if e.frequencia %}<p class="o-entrega__freq"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ e.frequencia | confirmar | safe }}</p>{% endif %}
+				<p class="o-entrega__texto">{{ e.texto | emLinha | safe }}</p>
+				<p class="o-entrega__freq">{% if e.frequencia %}<span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ e.frequencia }}{% endif %}</p>
 			</li>
 		{%- endfor %}
 		</ul>
 	</div>
 </section>
 
-{#- 7 · Como funciona (Método Olorin adaptado) -#}
+{#- 6 · Trabalhos do serviço: cases e portfólio -#}
+{%- if casesServico.length or trabalhos.length %}
+<section class="o-sec o-ctx-preto o-servico-trabalhos" id="trabalhos" data-secao="trabalhos" aria-labelledby="trabalhos-titulo">
+	<div class="o-wrap">
+		<div class="o-vitrine__cabeca">
+			<div>
+				<p class="o-etiqueta">Portfólio · {{ s.nome }}</p>
+				<h2 class="o-titulo o-titulo--g" id="trabalhos-titulo">{{ s.portfolio.titulo or "Na prática." }}</h2>
+			</div>
+			{%- if s.portfolio.texto %}<p class="o-apoio">{{ s.portfolio.texto }}</p>{% endif %}
+		</div>
+		{%- if casesServico.length %}
+		<div class="o-cases o-cases--{{ casesServico.length if casesServico.length < 3 else 3 }} o-servico-cases">
+		{%- for c in casesServico %}
+			<article class="o-case o-janela">
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-janela__corpo o-case__corpo">
+					<p class="o-case__segmento">{{ c.segmento }}</p>
+					<h3 class="o-case__cliente">{{ c.cliente }}</h3>
+					{%- if c.resumo %}<p class="o-case__resumo">{{ c.resumo }}</p>{% endif %}
+					{%- if c.resultado %}<p class="o-case__resultado" data-o-contador>{{ c.resultado }}</p>{% elif c.destaque %}<p class="o-case__destaque">{{ c.destaque }}</p>{% endif %}
+					{%- if c.servicos_texto %}<p class="o-case__servicos"><span class="o-sr">Serviços: </span>{{ c.servicos_texto }}</p>{% endif %}
+					{%- if c.pagina %}<a class="o-link-seta o-case__link" href="/cases/{{ c.slug }}/">Ver o case completo <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>{% endif %}
+				</div>
+			</article>
+		{%- endfor %}
+		</div>
+		{%- endif %}
+		{%- if trabalhos.length %}
+		<ul class="o-trabalhos o-servico-trabalhos__grade">
+		{%- for item in trabalhos %}
+			<li class="o-trabalho">
+				<figure>
+					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 48vw, (max-width: 1400px) 30vw, 430px", classePicture: "o-trabalho__imagem" }) | safe }}
+					<figcaption class="o-trabalho__legenda"><strong>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.titulo }}</a>{% else %}{{ item.titulo }}{% endif %}</strong><span class="o-trabalho__tipo">{% for tipo in item.rotulo.split(" · ") %}<span>{{ tipo }}{% if not loop.last %} ·{% endif %}</span>{% if not loop.last %} {% endif %}{% endfor %}</span></figcaption>
+				</figure>
+			</li>
+		{%- endfor %}
+		</ul>
+		{%- endif %}
+		<p class="o-vitrine__acoes"><a class="o-btn o-btn--contorno" href="/portfolio/">Ver o portfólio completo</a></p>
+	</div>
+</section>
+{%- endif %}
+
+{#- 7 · Como funciona (Método Olorin aplicado ao serviço) -#}
 <section class="o-sec o-metodo o-ctx-violeta" id="como-funciona" data-secao="como-funciona" aria-labelledby="como-titulo">
 	<div class="o-wrap o-metodo__grade">
 		<div class="o-metodo__cabeca">
@@ -141,98 +224,107 @@ eleventyComputed:
 		</div>
 		<ol class="o-etapas" data-o-etapas>
 		{%- for e in s.como_funciona.etapas %}
-			<li class="o-etapa"><span class="o-etapa__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-etapa__nome">{{ e.nome }}</h3><p class="o-etapa__texto">{{ e.texto | emLinha | confirmar | safe }}</p></li>
+			<li class="o-etapa"><span class="o-etapa__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-etapa__nome">{{ e.nome }}</h3><p class="o-etapa__texto">{{ e.texto | emLinha | safe }}</p></li>
 		{%- endfor %}
 		</ol>
 	</div>
-	{%- if s.como_funciona.prazos and s.como_funciona.prazos.length %}
-	<div class="o-wrap o-prazos">
-		<p class="o-etiqueta">Primeiros 90 dias</p>
-		<ul class="o-lista-pixel">{% for p in s.como_funciona.prazos %}<li>{{ p | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
+	{%- if (s.como_funciona.prazos and s.como_funciona.prazos.length) or (s.precisamos and s.precisamos.itens.length) %}
+	<div class="o-wrap o-servico-ritmo">
+		{%- if s.como_funciona.prazos and s.como_funciona.prazos.length %}
+		<div class="o-janela o-servico-ritmo__caixa">
+			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ s.como_funciona.prazos_janela or "primeiros_90_dias.txt" }}</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-janela__corpo">
+				<h3 class="o-servico-ritmo__titulo">{{ s.como_funciona.prazos_titulo or "Os primeiros 90 dias" }}</h3>
+				<ol class="o-servico-ritmo__lista">{% for p in s.como_funciona.prazos %}<li>{{ p | emLinha | safe }}</li>{% endfor %}</ol>
+			</div>
+		</div>
+		{%- endif %}
+		{%- if s.precisamos and s.precisamos.itens.length %}
+		<div class="o-servico-ritmo__precisamos">
+			<h3 class="o-servico-ritmo__titulo">{{ s.precisamos.titulo }}</h3>
+			<ul class="o-lista-pixel">{% for i in s.precisamos.itens %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
+		</div>
+		{%- endif %}
 	</div>
 	{%- endif %}
 </section>
 
-{#- 8 · O que precisamos de você -#}
-{%- if s.precisamos and s.precisamos.itens.length %}
-<section class="o-sec o-sec--compacta o-ctx-branco" data-secao="precisamos" aria-labelledby="precisamos-titulo">
-	<div class="o-wrap o-duas-colunas">
-		<h2 class="o-titulo o-titulo--m" id="precisamos-titulo">{{ s.precisamos.titulo }}</h2>
-		<ul class="o-lista-pixel">{% for i in s.precisamos.itens %}<li>{{ i | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
-	</div>
-</section>
-{%- endif %}
-
-{#- 9 · Quem faz -#}
-<section class="o-sec o-sec--compacta o-ctx-preto" id="quem-faz" data-secao="quem-faz" aria-labelledby="quem-faz-titulo">
-	<div class="o-wrap">
-		<p class="o-etiqueta">Quem faz</p>
-		<h2 class="o-titulo o-titulo--m" id="quem-faz-titulo">Quem cuida disso na Olorin</h2>
+{#- 8 · Quem coordena -#}
+<section class="o-sec o-sec--compacta o-ctx-preto o-servico-quem" id="quem-cuida" data-secao="quem-cuida" aria-labelledby="quem-titulo">
+	<div class="o-wrap o-servico-quem__grade">
+		<div>
+			<p class="o-etiqueta">Quem coordena</p>
+			<h2 class="o-titulo o-titulo--m" id="quem-titulo">{{ s.quem_cuida_titulo or "Quem coordena." }}</h2>
+			<p class="o-apoio">{{ s.quem_faz_nota or "Cada frente tem alguém que coordena e responde por ela. Você fala direto com quem coordena." }}</p>
+			<a class="o-link-seta" href="/quem-somos/">Conheça o time da Olorin <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+		</div>
 		<div class="o-quem-faz">
 		{%- for slugPessoa in s.quem_faz %}
 			{%- set pessoa = conteudo.pessoaPorSlug[slugPessoa] %}
-			{%- if pessoa %}{{ ui.cardPessoa(pessoa, "h3", true) }}{% endif %}
-		{%- endfor %}
-		</div>
-		{%- if s.quem_faz_nota %}<p class="o-apoio">{{ s.quem_faz_nota | confirmar | safe }}</p>{% endif %}
-		<a class="o-link-seta" href="/sobre/">Conheça o time da Olorin <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
-	</div>
-</section>
-
-{#- 10 · Resultados e cases do serviço (só com case aprovado) -#}
-{%- if casesServico.length %}
-<section class="o-sec o-resultados o-ctx-verde" data-secao="cases-servico" aria-labelledby="cases-servico-titulo">
-	<div class="o-wrap">
-		<h2 class="o-titulo o-titulo--g" id="cases-servico-titulo">Resultados com {{ s.nome | lower }}</h2>
-		<div class="o-cases">
-		{%- for c in casesServico %}
-			<article class="o-case o-janela">
-				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
-				<div class="o-janela__corpo"><h3 class="o-case__segmento">{{ c.segmento }}</h3><p class="o-case__servicos">{{ c.servicos_texto }}</p><p class="o-case__resultado">{{ c.resultado }}</p><p class="o-case__detalhe">{{ c.detalhe }}</p><a class="o-case__link" href="/cases/{{ c.slug }}/">Ver o case completo</a></div>
-			</article>
+			{%- if pessoa %}{{ ui.cardPessoa(pessoa, "h3", true, "/quem-somos/" + pessoa.slug + "/") }}{% endif %}
 		{%- endfor %}
 		</div>
 	</div>
 </section>
-{%- endif %}
 
-{#- 11 · Quanto custa -#}
-<section class="o-sec o-ctx-branco" id="preco" data-secao="preco" aria-labelledby="preco-titulo">
+{#- 9 · Preço e para quem é -#}
+<section class="o-sec o-ctx-branco o-servico-preco" id="preco" data-secao="preco" aria-labelledby="preco-titulo">
 	<div class="o-wrap">
-		<h2 class="o-titulo o-titulo--g" id="preco-titulo">{{ s.preco.titulo }}</h2>
+		<div class="o-vitrine__cabeca">
+			<div>
+				<p class="o-etiqueta">Quanto custa</p>
+				<h2 class="o-titulo o-titulo--g" id="preco-titulo">{{ s.preco.titulo }}</h2>
+			</div>
+			<p class="o-apoio">Você sabe quanto vai pagar antes de falar com a gente.</p>
+		</div>
 		<div class="o-preco">
 			<div class="o-preco__caixa o-janela">
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">preco.txt</span><span class="o-janela__ctrl"></span></div>
 				<div class="o-janela__corpo">
-					{%- if s.preco.formato %}<p class="o-preco__formato">{{ s.preco.formato | confirmar | safe }}</p>{% endif %}
-					{%- if s.preco.valor %}<p class="o-preco__valor">{{ s.preco.valor | confirmar | safe }}</p>{% elif s.preco.sem_valor %}<p class="o-preco__detalhe o-preco__sem-valor">{{ s.preco.sem_valor | emLinha | safe }}</p>{% endif %}
-					{%- if s.preco.faixa %}<p class="o-preco__detalhe">{{ s.preco.faixa | emLinha | confirmar | safe }}</p>{% endif %}
-					{%- if s.preco.detalhe %}<p class="o-preco__detalhe">{{ s.preco.detalhe | emLinha | confirmar | safe }}</p>{% endif %}
-					{%- if s.preco.total and site.config.SHOW_TOTAL_COST %}<p class="o-preco__total">{{ s.preco.total | confirmar | safe }}</p>{% endif %}
-					{%- if s.preco.contrato %}<p class="o-preco__detalhe">{{ s.preco.contrato | confirmar | safe }}</p>{% endif %}
-					<a class="o-btn o-btn--verde" href="#orcamento" data-cta="servico-{{ s.slug }}-preco">{{ "Quero meu Raio-X gratuito" if site.config.OFERTA_DIAGNOSTICO else "Pedir orçamento" }}</a>
+					{%- if s.preco.formato %}<p class="o-preco__formato">{{ s.preco.formato }}</p>{% endif %}
+					{%- if s.preco.rotulo %}<p class="o-preco__rotulo">{{ s.preco.rotulo }}</p>{% endif %}
+					<p class="o-preco__valor">{{ s.preco.valor }}</p>
+					{%- if s.preco.detalhe %}<p class="o-preco__detalhe">{{ s.preco.detalhe | emLinha | safe }}</p>{% endif %}
+					{%- if s.preco.total and site.config.SHOW_TOTAL_COST %}<p class="o-preco__total">{{ s.preco.total }}</p>{% endif %}
+					{%- if s.preco.contrato %}<p class="o-preco__detalhe o-preco__contrato">{{ s.preco.contrato }}</p>{% endif %}
+					<a class="o-btn o-btn--verde" href="#orcamento" data-cta="servico-{{ s.slug }}-preco">{{ conteudo.home.hero.botao if site.config.OFERTA_DIAGNOSTICO else "Pedir orçamento" }}</a>
 				</div>
 			</div>
 			<div class="o-preco__listas">
 				{%- if s.preco.inclui and s.preco.inclui.length %}
-				<h3 class="o-preco__subtitulo">O que está incluso</h3>
-				<ul class="o-lista-pixel">{% for i in s.preco.inclui %}<li>{{ i | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
+				<div>
+					<h3 class="o-preco__subtitulo">O que pode entrar</h3>
+					<ul class="o-lista-pixel">{% for i in s.preco.inclui %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
+				</div>
 				{%- endif %}
 				{%- if s.preco.nao_inclui and s.preco.nao_inclui.length %}
-				<h3 class="o-preco__subtitulo">O que não está incluso</h3>
-				<ul class="o-lista-pixel o-lista-pixel--nao">{% for i in s.preco.nao_inclui %}<li>{{ i | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
+				<div>
+					<h3 class="o-preco__subtitulo">O que fica de fora</h3>
+					<ul class="o-lista-pixel o-lista-pixel--nao">{% for i in s.preco.nao_inclui %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
+				</div>
 				{%- endif %}
-				<p class="o-preco__planos"><a class="o-link-seta" href="/#planos">Ver todos os planos e a calculadora <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></p>
+				{%- if s.para_quem %}
+				<div>
+					<h3 class="o-preco__subtitulo">É para quem</h3>
+					<ul class="o-lista-pixel">{% for i in s.para_quem.e %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
+				</div>
+				<div>
+					<h3 class="o-preco__subtitulo">Não é para quem</h3>
+					<ul class="o-lista-pixel o-lista-pixel--nao">{% for i in s.para_quem.nao_e %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
+				</div>
+				{%- endif %}
+				<p class="o-preco__planos"><a class="o-link-seta" href="/planos/#calculadora">Ver os planos e fazer a conta na calculadora <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></p>
 			</div>
 		</div>
 	</div>
 </section>
 
-{#- 12 · Combina com -#}
+{#- 10 · Combina com -#}
 {%- if s.combina_com and s.combina_com.length %}
 <section class="o-sec o-sec--compacta o-ctx-preto" data-secao="combina-com" aria-labelledby="combina-titulo">
 	<div class="o-wrap">
-		<h2 class="o-titulo o-titulo--m" id="combina-titulo">Combina com</h2>
+		<p class="o-etiqueta">Junto fica melhor</p>
+		<h2 class="o-titulo o-titulo--m" id="combina-titulo">Combina com.</h2>
 		<ul class="o-combina">
 		{%- for c in s.combina_com %}
 			{%- set outro = conteudo.servicoPorSlug[c.slug] %}
@@ -240,7 +332,7 @@ eleventyComputed:
 			<li class="o-combina__item">
 				<span class="o-icone o-icone--{{ outro.icone }}" aria-hidden="true"></span>
 				<h3 class="o-combina__titulo"><a href="/servicos/{{ outro.slug }}/">{{ outro.nome }}</a></h3>
-				<p>{{ c.porque | emLinha | confirmar | safe }}</p>
+				<p>{{ c.porque | emLinha | safe }}</p>
 			</li>
 			{%- endif %}
 		{%- endfor %}
@@ -249,19 +341,19 @@ eleventyComputed:
 </section>
 {%- endif %}
 
-{#- 13 · FAQ específico -#}
+{#- 11 · Dúvidas do serviço -#}
 <section class="o-sec o-faq o-ctx-branco" id="perguntas" data-secao="faq-servico" aria-labelledby="perguntas-titulo">
 	<div class="o-wrap o-faq__grade">
 		<div class="o-faq__cabeca">
 			<p class="o-etiqueta">Dúvidas sobre {{ s.nome | lower }}</p>
-			<h2 class="o-titulo o-titulo--m" id="perguntas-titulo">Perguntas frequentes</h2>
+			<h2 class="o-titulo o-titulo--m" id="perguntas-titulo">Perguntas diretas.</h2>
 			<a class="o-btn o-btn--contorno" href="{{ waLink('servico-' + s.slug + '-faq', { tipo: 'servico', x: s.nome }) }}" target="_blank" rel="noopener" data-servico="{{ s.slug }}"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>Perguntar no WhatsApp</a>
 		</div>
 		{{ ui.faqLista(s.faq) }}
 	</div>
 </section>
 
-{#- 14 · CTA final + formulário completo (serviço já marcado) -#}
+{#- 12 · Formulário completo (serviço já marcado) -#}
 {%- set servicoForm = s.slug -%}
 {%- set nomeServicoForm = s.nome -%}
 {%- set origemWaForm = "servico-" + s.slug + "-form-fim" -%}

@@ -1,27 +1,41 @@
 # Equipe (PROMPT seção 2 e 12.3). Só fatos confirmados — não aumentar.
 # "foto" = id da imagem no src/assets/manifest.json (sem o "-quadrada").
+# "frase" aparece nos cartões (home e páginas de serviço); "bio" aparece em /quem-somos/ e no perfil /quem-somos/<slug>/.
+# As frentes de cada pessoa saem do quem_faz de cada serviço (src/content/servicos/*.yml).
+# "destaques" são os números do perfil, tirados só da bio; o perfil acrescenta sozinho "frentes que coordena".
+# Links de LinkedIn e Instagram de cada pessoa: por enquanto não (dono, 14/10/2026). Campo opcional redes: [{ nome, url }].
 pessoas:
   - slug: natalia-arruda
     nome: Natália Arruda
-    funcao: Mídia paga
-    frase: Mais de seis anos operando contas de e-commerce, serviço, indústria, educação e campanha política.
-    bio: Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, cuida das campanhas de Meta Ads e Google Ads.
+    funcao: Diretora de Estratégia e Mídias Pagas
+    titulo_seo: "Natália Arruda, Estratégia e Mídias Pagas | Olorin"  # <title> do perfil (até 60 caracteres)
+    frase: Mais de seis anos operando contas de anúncio de e-commerce, serviço, indústria, educação e campanha política.
+    bio: Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, dirige a estratégia, as campanhas na Meta (Facebook e Instagram) e no Google, os dados e os relatórios.
+    descricao: "Natália Arruda dirige estratégia e mídias pagas na Olorin Digital: mais de seis anos em Meta Ads e Google Ads, inclusive em contas de educação."  # meta description do perfil (até 155 caracteres)
     foto: equipe-natalia
     janela: natalia.jpg
-    servicos: [trafego-pago]
+    destaques:
+      - { valor: "6+", rotulo: anos em mídia paga }
+      - { valor: "5", rotulo: segmentos atendidos }
   - slug: vinicius-mafra
     nome: Vinicius Mafra
-    funcao: Direção de arte e design
+    funcao: Diretor de Criação e Design
     frase: Mais de 10 anos à frente de projetos, de influenciadores digitais a produções culturais.
-    bio: Diretor de arte e designer há mais de 10 anos. Esteve à frente de diversos projetos, de influenciadores digitais a produções culturais. Na Olorin, responde pela identidade visual e pela direção de arte.
+    bio: Diretor de arte e designer há mais de 10 anos. Já esteve à frente de projetos de influenciadores digitais a produções culturais. Na Olorin, dirige a criação, a identidade visual e a direção de arte.
+    descricao: "Vinicius Mafra dirige criação e design na Olorin Digital: mais de 10 anos em direção de arte e identidade visual, de influenciadores a produções culturais."  # meta description do perfil (até 155 caracteres)
     foto: equipe-vinicius
     janela: vinicius.jpg
-    servicos: [identidade-visual, redes-sociais, material-impresso, site-e-loja-virtual]
+    destaques:
+      - { valor: "10+", rotulo: anos em design e direção de arte }
   - slug: derek-goncalves
     nome: Derek Gonçalves
-    funcao: Atendimento e comunicação 360
-    frase: Seu primeiro contato e quem coordena a sua conta.
-    bio: Comunicador digital com atuação 360. É o atendimento da Olorin — o seu primeiro contato e quem coordena a sua conta no dia a dia.
+    funcao: Diretor de Operações e Relacionamento
+    titulo_seo: "Derek Gonçalves, Operações e Relacionamento | Olorin"  # <title> do perfil (até 60 caracteres)
+    frase: Mais de 8 anos em comunicação política e institucional. É o seu primeiro contato e quem coordena a sua conta.
+    bio: Comunicador digital com atuação 360 e mais de 8 anos de experiência em comunicação política e institucional. Na Olorin, dirige as operações e o relacionamento com os clientes. É o seu primeiro contato e quem coordena a sua conta no dia a dia.
+    descricao: "Derek Gonçalves dirige operações e relacionamento na Olorin Digital: mais de 8 anos em comunicação política e institucional."  # meta description do perfil (até 155 caracteres)
     foto: equipe-derek
     janela: derek.jpg
-    servicos: [redes-sociais, rastreamento-e-relatorio]
+    destaques:
+      - { valor: "8+", rotulo: anos em comunicação política e institucional }
+      - { valor: "1º", rotulo: contato da sua conta }

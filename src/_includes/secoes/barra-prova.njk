@@ -1,0 +1,20 @@
+{#- ===== SEÇÃO: Barra de prova (números logo abaixo do banner) — src/content/claims.json + home.yml → barra_prova ===== -#}
+{%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
+{%- set t = P.barra_prova -%}
+{%- set numeros = conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else [] -%}
+{%- if numeros.length %}
+<section class="o-sec o-sec--compacta o-prova-barra o-ctx-verde" id="numeros" data-secao="barra-prova" aria-labelledby="numeros-titulo">
+	<div class="o-wrap">
+		<h2 class="o-etiqueta o-prova-barra__titulo" id="numeros-titulo">{{ t.titulo }}</h2>
+		<dl class="o-numeros o-numeros--barra">
+		{%- for n in numeros %}
+			<div class="o-numero">
+				<dt class="o-numero__rotulo">{{ n.rotulo }}</dt>
+				<dd class="o-numero__valor" data-o-contador>{{ n.valor }}</dd>
+				{%- if n.periodo or n.criterio %}<dd class="o-numero__base">base: {{ [n.criterio, n.periodo] | semVazios | join(", ") }}</dd>{% endif %}
+			</div>
+		{%- endfor %}
+		</dl>
+	</div>
+</section>
+{%- endif %}

@@ -1,6 +1,6 @@
 # Textos e opções do formulário de orçamento (o mesmo componente em todas as páginas).
 # ATENÇÃO: os nomes das opções de "servicos" precisam ser idênticos aos da lista do enviar.php.
-barra_topo: diagnostico.exe
+barra_topo: raio-x.exe
 barra_fim: orcamento.exe
 etapa1_legenda: Seus contatos
 etapa2_legenda: O que você precisa
@@ -11,6 +11,7 @@ rotulos:
   site_opcional: (opcional)
   servicos: O que você precisa agora?
   servicos_dica: Pode marcar mais de um.
+  selecionar_tudo: Selecionar tudo
   investimento: Quanto você investe hoje em anúncio por mês?
   mensagem: Quer contar mais alguma coisa?
   mensagem_opcional: (opcional)
@@ -27,7 +28,7 @@ investimento:
   - De R$ 2 a 5 mil por mês
   - De R$ 5 a 15 mil por mês
   - Acima de R$ 15 mil por mês
-sem_verba: "Sem problema: começamos pelo Raio-X e te dizemos por onde vale começar."
+sem_verba: Sem problema. No Raio-X, mostramos por onde vale começar mesmo sem verba de anúncio.
 consentimento: Concordo em ser contatado pela Olorin sobre este pedido, conforme a
 consentimento_link: Política de Privacidade
 botao_continuar: Continuar
@@ -35,7 +36,7 @@ botao_voltar: Voltar e editar contatos
 botao_enviar: Pedir orçamento
 botao_enviar_diagnostico: Quero meu Raio-X
 botao_enviando: Enviando…
-nota: Seus dados são usados só para esse contato. Nada de lista de disparo.
+nota: Usamos seus dados só para responder este pedido. Nada de mensagem em massa.
 alternativa_wa: Prefere conversar agora?
 alternativa_wa_link: Chame no WhatsApp
 erros:

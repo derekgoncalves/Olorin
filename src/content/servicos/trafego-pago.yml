@@ -1,159 +1,177 @@
 # ============================================================
-# SERVIÇO: Tráfego pago — fonte ÚNICA da página /servicos/trafego-pago/
-# e da landing de campanha /promo/trafego-pago/ (PROMPT seções 9 e 11).
-# Só fatos do PROMPT.md. O que falta confirmar vai com [CONFIRMAR: ...]
-# (não aparece no site publicado; itens de lista com marcador somem inteiros).
+# SERVIÇO: Tráfego pago. Fonte ÚNICA da página /servicos/trafego-pago/ e da landing /promo/trafego-pago/.
+# Texto proposto vai ao ar; o que o dono ainda precisa confirmar leva "# PENDENTE:" na linha de cima
+# (npm run pendencias lista tudo). Preços no molde do dono (13/10/2026), iguais a src/content/planos.yml.
+# Confirmado pelo dono (14/10/2026): serviço avulso com implantação de R$ 1.000 e contrato mínimo de 3 meses;
+# Gestão mensal com 4 criativos de anúncio e 8 posts no feed; o que pedimos no início é combinado com o cliente.
 # ============================================================
 slug: trafego-pago
 ordem: 1
 nome: Tráfego pago
-chip: Tráfego pago            # igual à opção do formulário e à lista do enviar.php
+chip: Tráfego pago   # um nome por serviço: igual no menu, no card, no formulário e no enviar.php
 icone: trafego
 janela: campanhas.exe
-atualizado: "2026-10-08"
+cena: trafego
+atualizado: "2026-10-14"
 quem_faz: [natalia-arruda]
 
 seo:
   title: Gestão de Tráfego Pago em Curitiba | Olorin Digital
-  description: Campanhas de Meta Ads e Google Ads com otimização semanal e relatório que mostra o retorno. Gestão a partir de R$ 2.500/mês.
+  description: Meta Ads e Google Ads com otimização semanal e relatório que mostra o retorno. Gestão a partir de R$ 1.500/mês, verba à parte.
 
 card:
   titulo: Tráfego pago
-  resumo: "Meta Ads e Google Ads: campanhas de venda, mensagem, cadastro e reconhecimento. Funil estruturado, públicos limpos e otimização semanal."
+  resumo: Meta Ads e Google Ads para venda, matrícula e contato, com otimização toda semana.
   resumo_curto: Meta Ads e Google Ads com otimização semanal.
 
 hero:
-  eyebrow: Gestão de tráfego pago em Curitiba e para todo o Brasil
-  h1: Tráfego pago que mostra quanto cada real investido devolveu.
-  sub: Meta Ads e Google Ads para venda, mensagem, cadastro e reconhecimento, com funil estruturado, públicos limpos e otimização toda semana.
+  eyebrow: Gestão de tráfego pago em Curitiba e no Brasil
+  h1: Anúncios que lucram.
+  sub: Meta Ads e Google Ads cuidados de perto, com ajuste toda semana e um relatório que mostra quanto cada centavo investido devolveu.
+  preco_rotulo: Gestão a partir de
+  preco: R$ 1.500/mês
   janela_linhas:
     - Campanha de venda · no ar
     - Otimização · toda semana
     - Relatório · todo mês
 
+# Resumo usado na landing /promo/ e no JSON-LD (não aparece com rótulo na página do serviço).
 resposta_curta: >-
-  Gestão de tráfego pago é cuidar das campanhas de Meta Ads e Google Ads para que o dinheiro investido
-  vire venda, mensagem ou cadastro — e não só alcance. É para quem já anuncia (ou quer começar) e quer saber
-  quanto cada real devolveu. A gestão mensal custa R$ 2.500, e recomendamos uma verba de anúncio a partir de
-  R$ 1.500 por mês, paga direto às plataformas. Em campanhas de resposta direta, os primeiros sinais claros
-  costumam aparecer em 2 a 4 semanas.
+  Gestão de tráfego pago é planejar, montar e ajustar os seus anúncios na Meta (Instagram e Facebook) e no
+  Google para buscar venda, matrícula ou contato. Sozinha, a gestão sai a partir de R$ 1.500/mês; com as redes
+  sociais junto, na Gestão mensal, R$ 3.000/mês. Nos dois formatos, implantação única de R$ 1.000 e contrato
+  mínimo de 3 meses. A verba de anúncio é à parte, paga direto à Meta ou ao Google, e recomendamos a partir
+  de R$ 1.500/mês.
+
+o_que_e:
+  titulo: Cada real com destino.
+  texto:
+    - "Tráfego pago é o anúncio que aparece para quem tem cara de cliente: no Instagram e no Facebook (Meta Ads), para quem ainda não conhece você, e no Google (Google Ads), para quem já está procurando o que você vende."
+    - A Olorin monta as campanhas pelo objetivo do seu negócio, seja venda, matrícula, contato ou inscrição, cria as peças com a cara da sua marca e ajusta tudo toda semana pelo que dá resultado, não pelo que dá curtida.
+    - "No fim do mês, chega um relatório que qualquer pessoa entende: quanto foi investido, quanto voltou e o que muda na próxima rodada. Resultado que dá pra ver."
+  destaques:
+    - Otimização toda semana
+    - Peças com a cara da marca
+    - Relatório com retorno, não com curtida
 
 dores:
-  titulo: Isso acontece com você?
+  titulo: Dinheiro no escuro?
+  texto: Se um destes aparece aí, a sua conta de anúncio precisa de revisão.
   itens:
-    - Você investe todo mês e não sabe dizer quanto custou cada venda.
-    - O relatório só mostra alcance e impressão, nunca faturamento.
-    - A conta de anúncio virou uma bagunça de campanhas, públicos repetidos e testes sem fim.
-    - O anúncio promete uma coisa e o site mostra outra — e a pessoa desiste no meio do caminho.
+    - { titulo: Sem saber o custo, texto: Você investe todo mês e não sabe quanto custou cada venda ou cada contato. }
+    - { titulo: Relatório de vaidade, texto: "O relatório mostra alcance e impressões, nunca faturamento, matrícula ou pedido." }
+    - { titulo: Conta bagunçada, texto: A conta virou um amontoado de campanhas antigas e públicos repetidos. }
+    - { titulo: Promessa quebrada, texto: "O anúncio promete uma coisa, o site mostra outra, e a pessoa desiste no caminho." }
+
+entregas:
+  titulo: O que pode entrar.
+  texto: Da estrutura da conta ao relatório do mês, com o mesmo time.
+  itens:
+    - titulo: Campanhas por objetivo
+      texto: Estrutura separada para venda, matrícula, contato ou reconhecimento, cada uma com a sua meta.
+      frequencia: na implantação
+      icone: trafego
+    - titulo: Públicos limpos
+      texto: Segmentações sem sobreposição, para o anúncio chegar em quem tem cara de cliente.
+      frequencia: revisados toda semana
+      icone: dados
+    - titulo: Peças com a cara da marca
+      texto: Criativos feitos pelo time de design da Olorin, com a mesma cara do feed e do site.
+      frequencia: todo mês
+      icone: marca
+    - titulo: Otimização semanal
+      texto: Verba, públicos e anúncios ajustados pelo que vende, e não no achismo.
+      frequencia: toda semana
+      icone: relogio
+    - titulo: Rastreamento certo
+      texto: Pixel, conversões e etiquetas configurados, para cada resultado chegar ao relatório.
+      frequencia: na implantação
+      icone: site
+    - titulo: Relatório com retorno
+      texto: Quanto entrou, quanto saiu e o que muda, em linguagem simples. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio).
+      frequencia: todo mês
+      icone: dados
+
+portfolio:
+  titulo: Na prática.
+  texto: Marcas que já anunciaram com o nosso time.
+
+como_funciona:
+  titulo: Do Raio-X ao relatório.
+  etapas:
+    - { nome: Raio-X, texto: "Olhamos a conta de anúncio, o site e o rastreamento para achar onde o dinheiro escapa." }
+    - { nome: Direção, texto: "Definimos objetivo, público e verba de cada campanha. Você aprova antes de ir ao ar." }
+    - { nome: Execução, texto: "Campanhas no ar, peças do nosso time e ajuste toda semana." }
+    - { nome: Leitura, texto: "Todo mês, quanto entrou, quanto saiu e o que muda na próxima rodada." }
+  prazos:
+    - "Até 30 dias: conta organizada, rastreamento conferido e as primeiras campanhas no ar."
+    - "Até 60 dias: públicos e peças ajustados pelo que deu resultado no primeiro mês."
+    - "Até 90 dias: verba concentrada no que dá retorno e a meta do trimestre seguinte."
+
+precisamos:
+  titulo: Para começar, precisamos de
+  itens:
+    - Acesso à conta de anúncio da Meta ou do Google (se não tiver, a gente ajuda a criar).
+    - Acesso ao site ou à página de destino, para conferir o rastreamento.
+    - Os materiais e as informações do negócio que a campanha pede, combinados com você no início.
+    - Aprovação do plano e das peças antes de irem ao ar.
 
 para_quem:
   e:
-    - Quem já anuncia no Instagram, no Facebook ou no Google e quer enxergar o retorno de verdade.
-    - Quem vende pelo site, pela loja virtual ou pelo WhatsApp e quer mais pedidos com o mesmo investimento.
-    - Quem tem (ou pode ter) pelo menos R$ 1.500 por mês para investir em anúncio, além da gestão.
-    - Quem quer o anúncio com a mesma cara do feed, do site e do material impresso.
+    - Quem já anuncia e quer saber quanto cada campanha devolveu.
+    - Quem vende pelo site, pelo WhatsApp ou na matrícula e quer mais resultado com o mesmo investimento.
+    - Quem tem a partir de R$ 1.500 por mês para anúncio, além da gestão.
   nao_e:
-    - Quem quer começar a anunciar com menos de R$ 1.500 por mês de verba. Nesse caso, começamos pelo Raio-X.
-    - Quem procura resultado garantido ou "viralizar" do dia para a noite.
-    - "[CONFIRMAR: outros critérios de quem não é cliente ideal]"
-
-entregas:
-  titulo: O que entregamos
-  itens:
-    - titulo: Estrutura de campanhas e funil
-      texto: Campanhas separadas por objetivo — venda, mensagem, cadastro e reconhecimento — para cada real ter uma função clara.
-      frequencia: no início do trabalho
-      icone: trafego
-    - titulo: Públicos e segmentações
-      texto: Públicos limpos, sem sobreposição, para o anúncio chegar em quem tem cara de cliente.
-      frequencia: ajustados na otimização semanal
-      icone: dados
-    - titulo: Criativos alinhados à marca
-      texto: Peças de anúncio feitas pelo nosso próprio time de criação, com a mesma cara do feed e do site.
-      icone: marca
-    - titulo: Otimização semanal
-      texto: Ajuste de verba, públicos e anúncios com base no que está vendendo — não no achismo.
-      frequencia: toda semana
-      icone: relogio
-    - titulo: Relatório mensal com retorno
-      texto: Faturamento, custo e retorno de cada campanha, em linguagem simples, com o que muda na próxima rodada.
-      frequencia: todo mês
-      icone: dados
-    - titulo: Rastreamento correto
-      texto: Pixel, conversões e eventos configurados para o dado chegar certo. Veja [Rastreamento e relatório](/servicos/rastreamento-e-relatorio/).
-      icone: site
-
-como_funciona:
-  titulo: Como funciona
-  etapas:
-    - nome: Diagnóstico
-      texto: Olhamos a conta de anúncio, o histórico das campanhas, o site e o rastreamento. Descobrimos onde o dinheiro está escapando antes de mexer em qualquer coisa.
-    - nome: Direção
-      texto: Definimos o objetivo de cada campanha, para quem falar e quanto investir em cada frente. Você aprova o plano antes de ir ao ar.
-    - nome: Execução
-      texto: Campanhas no ar com criativos do nosso time, públicos limpos e otimização toda semana.
-    - nome: Leitura
-      texto: Todo mês, um relatório com quanto entrou, quanto saiu, qual foi o retorno e o que muda na próxima rodada.
-  prazos:
-    - "[CONFIRMAR: o que acontece nos primeiros 30 dias]"
-    - "[CONFIRMAR: o que acontece até os 60 dias]"
-    - "[CONFIRMAR: o que acontece até os 90 dias]"
-
-precisamos:
-  titulo: O que precisamos de você
-  itens:
-    - Acesso à conta de anúncio da Meta e/ou do Google Ads (ou ajuda para criar uma).
-    - Acesso ao site ou à loja virtual para conferir o rastreamento.
-    - "[CONFIRMAR: materiais e informações pedidos no início (fotos, catálogo, margens)]"
-    - Aprovação dos criativos e do plano de campanhas antes de irem ao ar.
+    - Quem procura resultado garantido ou quer viralizar do dia para a noite.
+    - Quem ainda não tem verba para anúncio. Aí o Raio-X gratuito mostra por onde começar.
 
 preco:
-  titulo: Quanto custa
-  formato: Gestão mensal
-  valor: R$ 2.500/mês
-  detalhe: Valor da gestão. A verba de anúncio é investida à parte, direto nas plataformas Meta e Google — recomendamos a partir de R$ 1.500/mês.
-  total: "Custo total de entrada: a partir de R$ 4.000/mês (gestão + verba mínima recomendada)."
-  contrato: Contrato mínimo de 3 meses. Depois, mês a mês com aviso de 30 dias e sem multa rescisória.
+  titulo: Preço aberto.
+  formato: Gestão de tráfego pago
+  rotulo: A partir de
+  valor: R$ 1.500/mês
+  detalhe: "Sozinha, para uma plataforma (Meta ou Google). Com as redes sociais junto, na Gestão mensal: R$ 3.000/mês, com 4 criativos de anúncio e 8 posts no feed por mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses. A verba de anúncio é à parte, paga direto à Meta ou ao Google, e recomendamos a partir de R$ 1.500/mês."
+  total: "Custo por mês a partir de R$ 3.000 (gestão + verba mínima recomendada), mais a implantação de R$ 1.000 no início."
+  contrato: Depois de 3 meses, segue mês a mês com aviso de 30 dias, sem multa.
   inclui:
-    - Tráfego pago e conteúdo todo mês (plano Gestão mensal)
-    - Criação das peças de anúncio
-    - Otimização semanal das campanhas
-    - Relatório fechado todo mês
+    - Campanhas na Meta ou no Google
+    - Peças de anúncio com a cara da marca
+    - Otimização semanal
+    - Relatório mensal com retorno
   nao_inclui:
-    - A verba de anúncio (paga direto à Meta e ao Google)
-    - Site, loja virtual e material impresso (contratados à parte ou no plano 360 completo)
+    - A verba de anúncio (vai direto para a plataforma, na sua conta)
+    - Meta e Google ao mesmo tempo (no [Marketing 360](/planos/))
+    - Site, loja e impresso (à parte ou no Marketing 360)
   schema:
-    valor: "2500"
+    valor: "1500"
+    minimo: true
     unidade: MON
-    descricao: Gestão mensal de tráfego pago (Meta Ads e Google Ads). Verba de anúncio à parte.
+    descricao: Gestão de tráfego pago (Meta Ads ou Google Ads) a partir de R$ 1.500 por mês, com implantação de R$ 1.000 e contrato mínimo de 3 meses. Verba de anúncio à parte.
 
 combina_com:
   - slug: redes-sociais
-    porque: O anúncio vende melhor quando o feed confirma o que ele promete. Na Gestão mensal, os dois já andam juntos.
+    porque: O anúncio vende mais quando o feed confirma o que ele promete. Na Gestão mensal, os dois andam juntos.
   - slug: rastreamento-e-relatorio
-    porque: Sem pixel e conversões configurados, a otimização trabalha no escuro. O dado certo é o que deixa o tráfego mostrar retorno.
+    porque: Sem pixel e conversões, a otimização trabalha no escuro.
 
 faq:
   - id: trafego-quanto-investir
     pergunta: Quanto preciso investir por mês?
-    resposta: Recomendamos a partir de R$ 1.500 por mês de verba de anúncio, pagos direto à Meta e ao Google. A gestão mensal custa R$ 2.500. Somando os dois, o custo total de entrada fica a partir de R$ 4.000 por mês.
+    resposta: "A gestão sai a partir de R$ 1.500/mês, ou R$ 3.000/mês na Gestão mensal, com as redes sociais junto. Nos dois, implantação única de R$ 1.000 e contrato mínimo de 3 meses. A verba de anúncio vai direto para a Meta ou o Google, e recomendamos a partir de R$ 1.500/mês. Na [calculadora](/planos/#calculadora) a conta sai na hora."
   - id: trafego-tempo-resultado
     pergunta: Em quanto tempo vejo resultado?
-    resposta: Campanhas de resposta direta (venda e mensagem) costumam dar sinais claros em 2 a 4 semanas. Campanhas de marca e reconhecimento pedem de 2 a 3 meses de consistência.
+    resposta: Campanhas de venda e de contato costumam dar os primeiros sinais em 2 a 4 semanas. Campanhas de marca pedem de 2 a 3 meses de constância. Não existe resultado garantido, mas o relatório mostra desde o primeiro mês o que está funcionando.
   - id: trafego-meta-ou-google
     pergunta: Meta Ads ou Google Ads, qual escolher?
-    resposta: Depende de onde o seu cliente está. No Google, você aparece para quem já está procurando o que você vende. Na Meta (Instagram e Facebook), você chega em quem ainda não te conhece. No diagnóstico, olhamos o seu negócio e indicamos por onde começar — e muitas vezes os dois trabalham juntos.
+    resposta: "Depende de onde está o seu cliente. No Google, você aparece para quem já procura o que você vende. Na Meta, chega em quem ainda não te conhece. A gestão avulsa e a Gestão mensal cobrem uma plataforma; o Marketing 360, as duas."
   - id: trafego-dono-conta
     pergunta: Quem é o dono da conta de anúncio?
-    resposta: "[CONFIRMAR: titularidade da conta de anúncio]"
-  - id: trafego-relatorio
-    pergunta: Como é o relatório?
-    resposta: Todo mês você recebe um relatório fechado com o que foi investido, quanto voltou em faturamento, quanto custou cada venda e qual foi o retorno — além do que muda na próxima rodada. Veja um [exemplo ilustrativo](/#relatorio).
+    resposta: Você. A conta fica no seu nome e no seu cartão, e a Olorin entra como parceira, com acesso de gestão. Se um dia o trabalho acabar, tudo continua com você.
   - id: trafego-fora-curitiba
     pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo e aprovações por e-mail.
+    resposta: "Sim. A Olorin atende todo o Brasil a distância: WhatsApp, reunião por vídeo e aprovação por e-mail."
 
 campanha:
   titulo: Pare de pagar anúncio que não volta.
-  subtitulo: Raio-X gratuito da sua conta de Meta Ads e Google Ads, feito por quem executa. Sem compromisso.
+  subtitulo: Raio-X gratuito da sua conta de anúncio, com 30 minutos por vídeo e um PDF com o que mais trava a sua venda. Sem compromisso.
   faq: [trafego-quanto-investir, trafego-tempo-resultado, trafego-meta-ou-google, trafego-fora-curitiba]

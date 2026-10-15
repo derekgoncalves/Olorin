@@ -68,10 +68,6 @@
 }
 
 /* Resposta curta (para leitores apressados e buscas com IA) */
-.o-resposta {
-	max-width: 900px;
-	margin-inline: 0;
-}
 .o-resposta__texto {
 	margin: 0 0 14px;
 	padding: clamp(18px, 2.4vw, 28px);

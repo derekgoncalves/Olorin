@@ -7,11 +7,12 @@
  *
  * Uso nos templates: {{ imagem("equipe-natalia", { sizes: "...", classe: "..." }) | safe }}
  */
-import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, copyFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import sharp from 'sharp';
+import { PASTA_IMAGENS as PASTA_BLOG, EXTENSOES_IMAGEM, idImagemBlog } from './blog.mjs';
 
 const QUALIDADE = { avif: 52, webp: 74, jpg: 78 };
 
@@ -38,8 +39,48 @@ async function preparar(entrada, cfg) {
 	return { img, largura, altura };
 }
 
+// Além do manifest.json principal, qualquer src/assets/manifest-<area>.json entra junto
+// (cada área do site cuida do seu arquivo; ids repetidos travam o build).
+async function lerManifestos() {
+	const pasta = 'src/assets';
+	const arquivos = ['manifest.json'].concat(
+		(await readdir(pasta)).filter((n) => /^manifest-[\w-]+\.json$/.test(n)).sort(),
+	);
+	const imagens = {};
+	for (const nome of arquivos) {
+		const dados = JSON.parse(await readFile(path.join(pasta, nome), 'utf8'));
+		for (const [id, cfg] of Object.entries(dados.imagens || {})) {
+			if (imagens[id]) throw new Error(`Imagem "${id}" aparece em mais de um manifesto (src/assets/${nome}).`);
+			imagens[id] = cfg;
+		}
+	}
+	// Blog: toda imagem de src/assets/img-src/blog/ (fotos dos artigos e capas/ geradas por
+	// "npm run capas") entra sozinha, sem mexer no manifesto. Id: "blog-" + nome do arquivo
+	// sem extensão ("capas/meu-artigo.jpg" → "blog-capas-meu-artigo"). Ver docs/BLOG.md.
+	for (const [id, cfg] of Object.entries(await imagensDoBlog())) {
+		if (imagens[id]) throw new Error(`Imagem "${id}" do blog repete um id do manifesto (renomeie o arquivo em ${PASTA_BLOG}/).`);
+		imagens[id] = cfg;
+	}
+	return { imagens };
+}
+
+async function imagensDoBlog(pasta = PASTA_BLOG, saida = {}) {
+	if (!existsSync(pasta)) return saida;
+	for (const item of await readdir(pasta, { withFileTypes: true })) {
+		const caminho = path.join(pasta, item.name);
+		if (item.isDirectory()) {
+			await imagensDoBlog(caminho, saida);
+		} else if (EXTENSOES_IMAGEM.test(item.name)) {
+			const id = idImagemBlog(path.relative(PASTA_BLOG, caminho));
+			if (saida[id]) throw new Error(`Duas imagens do blog com o mesmo nome: ${caminho} (troque o nome de uma delas).`);
+			saida[id] = { arquivo_original: caminho, alt: '', larguras: [480, 800, 1200, 1600], largura_padrao: 800, formatos: ['avif', 'webp'] };
+		}
+	}
+	return saida;
+}
+
 export async function processarImagens({ saida }) {
-	const manifesto = JSON.parse(await readFile('src/assets/manifest.json', 'utf8'));
+	const manifesto = await lerManifestos();
 	const cache = '.cache/img';
 	await mkdir(cache, { recursive: true });
 	await mkdir(path.join(saida, 'assets/img'), { recursive: true });

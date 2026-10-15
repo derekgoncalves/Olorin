@@ -8,7 +8,7 @@
 		<h2 class="o-titulo o-titulo--m" id="prova-titulo">{{ pc.prova_titulo }}</h2>
 		<dl class="o-numeros">
 		{%- for n in numeros %}
-			<div class="o-numero"><dt class="o-numero__rotulo">{{ n.rotulo }}</dt><dd class="o-numero__valor">{{ n.valor }}</dd></div>
+			<div class="o-numero"><dt class="o-numero__rotulo">{{ n.rotulo }}</dt><dd class="o-numero__valor">{{ n.valor }}</dd>{%- if n.periodo or n.criterio %}<dd class="o-numero__base">base: {{ [n.criterio, n.periodo] | semVazios | join(", ") }}</dd>{% endif %}</div>
 		{%- endfor %}
 		</dl>
 	</div>
@@ -35,6 +35,7 @@
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">preco.txt</span><span class="o-janela__ctrl"></span></div>
 				<div class="o-janela__corpo">
 					{%- if precoCampanha.formato %}<p class="o-preco__formato">{{ precoCampanha.formato }}</p>{% endif %}
+					{%- if precoCampanha.rotulo %}<p class="o-preco__rotulo">{{ precoCampanha.rotulo }}</p>{% endif %}
 					{%- if precoCampanha.valor %}<p class="o-preco__valor">{{ precoCampanha.valor }}</p>{% endif %}
 					{%- if precoCampanha.detalhe %}<p class="o-preco__detalhe">{{ precoCampanha.detalhe | emLinha | safe }}</p>{% endif %}
 					{%- if precoCampanha.total and site.config.SHOW_TOTAL_COST %}<p class="o-preco__total">{{ precoCampanha.total }}</p>{% endif %}
@@ -48,6 +49,7 @@
 		{%- endfor %}
 		</ul>
 		<p class="o-planos__nota">{{ conteudo.planos.nota }}</p>
+		<p class="o-planos__nota">{{ conteudo.planos.contrato }}</p>
 		{%- if site.config.SHOW_TOTAL_COST %}<p class="o-planos__total">{{ conteudo.planos.total_entrada }}</p>{% endif %}
 		{%- endif %}
 	</div>

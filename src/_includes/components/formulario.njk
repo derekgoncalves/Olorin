@@ -9,7 +9,7 @@
 {%- set f = conteudo.formulario -%}
 {%- set cfg = site.config -%}
 {%- set id = o.id -%}
-{%- set diagnostico = cfg.OFERTA_DIAGNOSTICO and (o.posicao == "topo" or o.posicao == "promo") -%}
+{%- set diagnostico = cfg.OFERTA_DIAGNOSTICO and (o.posicao == "topo" or o.posicao == "promo" or o.posicao == "fim") -%}
 {%- set opcoesServico = conteudo.opcoesServico -%}
 <div class="o-form o-form--{{ o.posicao }}" id="{{ id }}" data-o-form data-posicao="{{ o.posicao }}" data-etapa="1" data-o-erros="{{ f.erros | dump | escape }}">
 	<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ f.barra_topo if o.posicao == "topo" else f.barra_fim }}</span><span class="o-janela__ctrl"></span></div>
@@ -40,7 +40,8 @@
 			<legend class="o-form__legenda" tabindex="-1">{{ f.etapa2_legenda }}</legend>
 			<fieldset class="o-campo o-campo--grupo">
 				<legend class="o-campo__rotulo">{{ f.rotulos.servicos }} <span class="o-campo__opcional">{{ f.rotulos.servicos_dica }}</span></legend>
-				<div class="o-chips">
+				<div class="o-chips" data-o-chips>
+					<label class="o-chip o-chip--todos" hidden data-o-todos-rotulo><input type="checkbox" data-o-todos><span>{{ f.rotulos.selecionar_tudo or "Selecionar tudo" }}</span></label>
 				{%- for op in opcoesServico %}
 					<label class="o-chip"><input type="checkbox" name="servicos[]" value="{{ op.valor }}" data-servico="{{ op.slug }}"{% if o.servico == op.slug %} checked{% endif %}><span>{{ op.valor }}</span></label>
 				{%- endfor %}

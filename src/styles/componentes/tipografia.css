@@ -1,24 +1,31 @@
 /* Títulos, textos de apoio, notas e listas. */
+/* Títulos: o tamanho segue a largura da COLUNA onde o título está (container query), não só
+   a da tela. A fonte é expandida (uma palavra de 11 letras ocupa ~10,5em), então o teto de
+   9cqi garante que nenhuma palavra vaze a coluna nem encoste no bloco ao lado. */
+.o-hero__texto, .o-pagina-topo__texto, .o-metodo__cabeca, .o-faq__cabeca, .o-equipe__cabeca > div, .o-duas-colunas > *, .o-form-topo__texto, .o-sec-cabeca, .o-orcamento .o-wrap {
+	container-type: inline-size;
+}
 .o-titulo {
 	max-width: 24ch;
 	margin: 0 0 clamp(20px, 3vw, 36px);
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(26px, 4vw, 52px);
+	font-size: clamp(24px, min(4vw, 9cqi), 52px);
 	line-height: 1.05;
 	text-wrap: balance;
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
+	overflow-wrap: break-word;
 }
 .o-titulo--m {
-	font-size: clamp(24px, 3vw, 40px);
+	font-size: clamp(22px, min(3vw, 9cqi), 40px);
 }
 .o-titulo--g {
-	font-size: clamp(28px, 4.6vw, 68px);
+	font-size: clamp(26px, min(4.6vw, 9cqi), 68px);
 }
 .o-titulo--gg {
 	max-width: none;
-	font-size: clamp(32px, 6.4vw, 104px);
+	font-size: clamp(30px, min(6.4vw, 9cqi), 104px);
 	line-height: 0.92;
 }
 

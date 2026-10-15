@@ -120,11 +120,12 @@ export function registrarFiltros(eleventyConfig, { prod }) {
 	eleventyConfig.addFilter('reais', (n) => `R$\u00a0${Number(n).toLocaleString('pt-BR')}`);
 	eleventyConfig.addFilter('encontrar', (lista, campo, valor) => (lista || []).find((i) => i && i[campo] === valor));
 	eleventyConfig.addFilter('filtrarPor', (lista, campo, valor) => (lista || []).filter((i) => i && [].concat(i[campo] || []).includes(valor)));
+	eleventyConfig.addFilter('filtrarIds', (lista, ids) => (ids || []).map((id) => (lista || []).find((i) => i && i.id === id)).filter(Boolean));
 	eleventyConfig.addFilter('phpString', phpString);
 	eleventyConfig.addFilter('semVazios', (lista) => (lista || []).filter(Boolean));
 
-	// Marcadores [CONFIRMAR: ...]: destacados no modo de desenvolvimento.
-	// Em produção o carregador de conteúdo já removeu tudo o que tinha marcador.
+	// Espaço fixo depois de "R$". Marcadores [CONFIRMAR: ...] que sobrarem ficam destacados no
+	// modo de desenvolvimento (em produção o build falha, ver scripts/verificar-build.mjs).
 	eleventyConfig.addFilter('confirmar', (html) =>
 		prod ? String(html ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0') : String(html ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0').replace(/\[CONFIRMAR:?([^\]]*)\]/g, '<mark class="o-confirmar" title="Falta confirmar">[CONFIRMAR:$1]</mark>'),
 	);

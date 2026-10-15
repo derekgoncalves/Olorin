@@ -1,0 +1,26 @@
+{#- ===== SEÇÃO: Blog (os 3 artigos mais recentes). Textos em src/content/home.yml → blog;
+    artigos em src/blog/artigos/ (ver docs/BLOG.md). Sem artigo publicado, o bloco não aparece. ===== -#}
+{%- import "components/blog.njk" as blog with context -%}
+{%- set t = conteudo.home.blog -%}
+{%- set recentes = (collections.artigos or []).slice(0, 3) -%}
+{%- if recentes.length %}
+<section class="o-sec o-sec--compacta o-blog-home o-ctx-violeta" id="blog" data-secao="blog" aria-labelledby="blog-titulo">
+	<div class="o-wrap">
+		<div class="o-blog-home__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ t.etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="blog-titulo">{{ t.titulo }}</h2>
+			</div>
+			<div class="o-blog-home__acao">
+				<p class="o-apoio">{{ t.texto }}</p>
+				<a class="o-btn o-btn--branco" href="/blog/" data-cta="home-blog">{{ t.botao }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+			</div>
+		</div>
+		<div class="o-blog-grade o-blog-grade--home">
+		{%- for item in recentes %}
+			{{ blog.card(item.data.artigo, "h3", "(max-width: 900px) 92vw, 400px" if loop.first else "(max-width: 900px) 34vw, 400px") }}
+		{%- endfor %}
+		</div>
+	</div>
+</section>
+{%- endif %}

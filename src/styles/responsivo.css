@@ -78,12 +78,6 @@
 	.o-faq__cabeca {
 		position: static;
 	}
-	.o-servico-janela {
-		justify-self: start;
-	}
-	.o-sobre-foto {
-		max-width: 420px;
-	}
 	.o-cases,
 	.o-equipe__grade {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -97,7 +91,6 @@
 		margin-left: 0;
 	}
 	.o-plano--destaque {
-		order: -1;
 		translate: none;
 		margin-top: 12px;
 	}
@@ -111,7 +104,6 @@
 		grid-row: auto;
 	}
 	.o-escolher,
-	.o-combinacoes,
 	.o-passos,
 	.o-planos-resumo {
 		grid-template-columns: minmax(0, 1fr);

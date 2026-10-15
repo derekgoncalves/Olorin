@@ -2717,12 +2717,12 @@
                 "containerId": "000000000",
                 "variableId": "3",
                 "name": "Google Ads - ID de conversão",
-                "type": "c",
+                "type": "j",
                 "parameter": [
                     {
                         "type": "TEMPLATE",
-                        "key": "value",
-                        "value": "XXXXXXXXXX"
+                        "key": "name",
+                        "value": "OLORIN_CONFIG.adsNumero"
                     }
                 ],
                 "fingerprint": "1760011200000",
@@ -2735,12 +2735,12 @@
                 "containerId": "000000000",
                 "variableId": "4",
                 "name": "Google Ads - Rótulo de conversão",
-                "type": "c",
+                "type": "j",
                 "parameter": [
                     {
                         "type": "TEMPLATE",
-                        "key": "value",
-                        "value": "XXXXXXXXXXXXXXXXXXXX"
+                        "key": "name",
+                        "value": "OLORIN_CONFIG.adsLabel"
                     }
                 ],
                 "fingerprint": "1760011200000",

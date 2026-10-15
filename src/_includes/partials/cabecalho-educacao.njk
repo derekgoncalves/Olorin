@@ -1,0 +1,53 @@
+{#- Cabeçalho da LP Olorin Educação: marca "Olorin educação", menu de âncoras da página,
+    link de volta para o site da Olorin, WhatsApp e Raio-X. Textos: paginas/educacao.yml → cabecalho. -#}
+{%- set cfg = site.config -%}
+{%- set E = conteudo.paginas.educacao -%}
+{%- set c = E.cabecalho -%}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set waTopo = waLink('educacao-topo', { mensagem: E.whatsapp.padrao }) -%}
+<header class="o-topo o-edu-topo o-ctx-violeta" data-o-topo>
+	<div class="o-topo__dentro">
+		<a class="o-edu-marca" href="#inicio" aria-label="{{ E.marca.nome }}, início da página">
+			<svg class="o-edu-marca__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
+			<span class="o-edu-marca__sub" aria-hidden="true">{{ E.marca.sub }}</span>
+		</a>
+		<nav class="o-nav o-edu-nav" aria-label="Nesta página" data-o-indice>
+			<ul class="o-nav__lista">
+			{%- for item in c.menu %}
+				<li class="o-nav__item"><a class="o-nav__link" href="{{ item.url }}">{{ item.rotulo }}</a></li>
+			{%- endfor %}
+			</ul>
+		</nav>
+		<div class="o-topo__ctas">
+			<a class="o-edu-topo__voltar" href="/"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ c.voltar }}</a>
+			<a class="o-btn o-btn--contorno o-btn--pequeno o-topo__wa" id="cta-whatsapp-topo" href="{{ waTopo }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-topo__wa-texto">{{ c.whatsapp }}</span></a>
+			<a class="o-btn o-btn--branco o-btn--pequeno" id="cta-orcamento-topo" href="#raio-x">{{ c.botao }}</a>
+		</div>
+		<button class="o-hamburguer" type="button" aria-expanded="false" aria-controls="menu-celular" data-o-hamburguer>
+			<span class="o-sr">Abrir menu</span><i></i><i></i><i></i>
+		</button>
+	</div>
+</header>
+<div class="o-menu o-edu-menu" id="menu-celular" role="dialog" aria-modal="true" aria-label="Menu" data-o-menu inert>
+	<div class="o-menu__topo">
+		<a class="o-edu-marca" href="#inicio" aria-label="{{ E.marca.nome }}, início da página">
+			<svg class="o-edu-marca__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
+			<span class="o-edu-marca__sub" aria-hidden="true">{{ E.marca.sub }}</span>
+		</a>
+		<button class="o-menu__fechar o-edu-menu__fechar" type="button" data-o-menu-fechar><span class="o-sr">Fechar menu</span></button>
+	</div>
+	<nav class="o-menu__nav" aria-label="Nesta página (celular)">
+		<ul class="o-menu__lista">
+		{%- for item in c.menu.concat(c.menu_extra) %}
+			<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
+		{%- endfor %}
+		</ul>
+	</nav>
+	<div class="o-menu__ctas">
+		<a class="o-btn o-btn--branco" href="#raio-x" data-cta="menu-diagnostico">{{ c.botao }}</a>
+		<a class="o-btn o-btn--contorno" href="{{ waLink('educacao-menu', { mensagem: E.whatsapp.padrao }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ c.whatsapp }}</a>
+	</div>
+	<a class="o-edu-menu__voltar" href="/"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ c.voltar_longo }}</a>
+	{{ ui.redes("o-menu__redes", "menu-educacao") }}
+	<p class="o-menu__rodape">{{ cfg.CIDADE }}, {{ cfg.UF }} · atendimento em todo o Brasil</p>
+</div>

@@ -2,6 +2,7 @@
 import { $, $$, doc, raiz, temIO, movimentoReduzido, gravarArmazenamento, linkWhatsApp } from '../util.js';
 import { track } from './rastreamento.js';
 import { ultimoToque, primeiroToqueTexto, origem } from './origem.js';
+import { desenharTudo } from './ancoras.js';
 
 // DDDs válidos no Brasil (Anatel).
 const DDDS = '11 12 13 14 15 16 17 18 19 21 22 24 27 28 31 32 33 34 35 37 38 41 42 43 44 45 46 47 48 49 51 53 54 55 61 62 63 64 65 66 67 68 69 71 73 74 75 77 79 81 82 83 84 85 86 87 88 89 91 92 93 94 95 96 97 98 99'.split(' ');
@@ -73,6 +74,7 @@ function iniciarUm(caixa) {
 			if (legenda) legenda.focus({ preventScroll: true });
 			const topo = caixa.getBoundingClientRect().top;
 			if (topo < 0 || topo > window.innerHeight * 0.6) {
+				desenharTudo();
 				caixa.scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
 			}
 		}
@@ -282,6 +284,60 @@ function iniciarUm(caixa) {
 	}
 }
 
+/* "Selecionar tudo" nos serviços: só aparece com JS; "Ainda não sei" fica de fora. */
+function iniciarSelecionarTudo(caixa) {
+	const todos = $('[data-o-todos]', caixa);
+	if (!todos) return;
+	const rotulo = todos.closest('[data-o-todos-rotulo]');
+	const caixas = $$('input[name="servicos[]"]', caixa).filter((c) => c.getAttribute('data-servico') !== 'nao-sei');
+	if (!caixas.length) return;
+	if (rotulo) rotulo.hidden = false;
+	function sincronizar() {
+		const n = caixas.filter((c) => c.checked).length;
+		todos.checked = n === caixas.length;
+		todos.indeterminate = n > 0 && n < caixas.length;
+	}
+	todos.addEventListener('change', () => {
+		caixas.forEach((c) => {
+			c.checked = todos.checked;
+		});
+		const naoSei = $('input[data-servico="nao-sei"]', caixa);
+		if (naoSei && todos.checked) naoSei.checked = false;
+	});
+	caixas.forEach((c) => c.addEventListener('change', sincronizar));
+	caixa.addEventListener('o-servicos', sincronizar);
+	sincronizar();
+}
+
+/* Atalho do banner: o WhatsApp digitado vai para o formulário do Raio-X e o foco segue para o nome. */
+function iniciarAtalhos() {
+	$$('[data-o-atalho]').forEach((atalho) => {
+		const campoAtalho = $('input[type="tel"]', atalho);
+		if (campoAtalho) {
+			campoAtalho.addEventListener('input', (e) => {
+				if (e.inputType && e.inputType.indexOf('delete') === 0) return;
+				campoAtalho.value = mascaraTelefone(campoAtalho.value);
+			});
+		}
+		atalho.addEventListener('submit', (e) => {
+			const caixa = doc.getElementById(atalho.getAttribute('data-o-atalho'));
+			if (!caixa) return;
+			e.preventDefault();
+			const tel = $('input[name="whatsapp"]', caixa);
+			const nome = $('input[name="nome"]', caixa);
+			if (tel && campoAtalho && campoAtalho.value.trim()) tel.value = mascaraTelefone(campoAtalho.value);
+			track('hero_shortcut', { preenchido: !!(campoAtalho && campoAtalho.value.trim()) });
+			desenharTudo();
+			caixa.scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
+			if (nome) window.setTimeout(() => nome.focus({ preventScroll: true }), movimentoReduzido ? 0 : 500);
+		});
+	});
+}
+
 export function iniciarFormularios() {
-	$$('[data-o-form]').forEach(iniciarUm);
+	$$('[data-o-form]').forEach((caixa) => {
+		iniciarUm(caixa);
+		iniciarSelecionarTudo(caixa);
+	});
+	iniciarAtalhos();
 }

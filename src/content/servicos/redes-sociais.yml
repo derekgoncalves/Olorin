@@ -1,157 +1,169 @@
 # ============================================================
-# SERVIÇO: Redes sociais e conteúdo — fonte ÚNICA da página /servicos/redes-sociais/
-# e da landing de campanha /promo/redes-sociais/ (PROMPT seções 9 e 11).
-# Só fatos do PROMPT.md. O que falta confirmar vai com [CONFIRMAR: ...]
-# (não aparece no site publicado; itens de lista com marcador somem inteiros).
+# SERVIÇO: Redes sociais. Fonte ÚNICA de /servicos/redes-sociais/ e /promo/redes-sociais/.
+# Texto proposto vai ao ar; "# PENDENTE:" marca o que o dono ainda precisa confirmar.
+# Confirmado pelo dono (14/10/2026): avulso a partir de 8 criativos por mês (feed com versão para stories), com implantação de R$ 1.000
+# e contrato mínimo de 3 meses; Gestão mensal com 8 posts no feed e 4 criativos de anúncio por mês.
 # ============================================================
 slug: redes-sociais
 ordem: 2
-nome: Redes sociais e conteúdo
-chip: Redes sociais e conteúdo   # igual à opção do formulário e à lista do enviar.php
+nome: Redes sociais
+chip: Redes sociais
 icone: redes
 janela: feed.exe
-atualizado: "2026-10-08"
+cena: redes
+atualizado: "2026-10-14"
 quem_faz: [vinicius-mafra, derek-goncalves]
-quem_faz_nota: "[CONFIRMAR: divisão entre arte (Vinicius) e comunicação (Derek)]"
 
 seo:
   title: Gestão de Redes Sociais em Curitiba | Olorin Digital
-  description: Calendário editorial, posts, stories e legendas com a mesma cara do seu anúncio e do seu site. Tudo incluso na Gestão mensal, a partir de R$ 2.500/mês.
+  description: Calendário, posts, Reels e legendas com a cara da sua marca, feitos pelo mesmo time do anúncio. A partir de R$ 1.500/mês.
 
 card:
-  titulo: Redes sociais e conteúdo
-  resumo: Calendário editorial, criação de post, story e legenda. Um feed que sustenta o anúncio, em vez de brigar com ele.
-  resumo_curto: Calendário, posts, stories e legendas.
+  titulo: Redes sociais
+  resumo: Calendário editorial, posts, Reels e legendas que sustentam o anúncio, em vez de brigar com ele.
+  resumo_curto: Posts, Reels e legendas com a cara da marca.
 
 hero:
-  eyebrow: Gestão de redes sociais em Curitiba e para todo o Brasil
-  h1: Um feed que sustenta o anúncio, em vez de brigar com ele.
-  sub: Calendário editorial (o plano do que vai ao ar e quando), posts, stories e legendas feitos pelo mesmo time que cria os seus anúncios. Uma marca só, do anúncio ao feed (a grade de posts do seu perfil).
+  eyebrow: Gestão de redes sociais em Curitiba e no Brasil
+  h1: Feed com cara de marca.
+  sub: Posts, Reels e legendas feitos pelo mesmo time que cria os seus anúncios. Quem clica no anúncio e abre o seu perfil encontra a mesma marca.
+  preco_rotulo: A partir de
+  preco: R$ 1.500/mês
   janela_linhas:
-    - Calendário editorial · planejado
-    - Post, story e legenda · no ar
+    - Calendário do mês · aprovado
+    - Post, Reels e legenda · no ar
     - Relatório · todo mês
 
 resposta_curta: >-
-  Gestão de redes sociais é planejar, criar e publicar posts, stories e legendas com a mesma cara do seu
-  anúncio e do seu site. É para quem quer um perfil que ajude a vender, e não só a aparecer. Está inclusa na
-  Gestão mensal, que junta tráfego pago (anúncios no Instagram, no Facebook e no Google) e conteúdo, por
-  R$ 2.500/mês. A verba de anúncio é à parte. Também faz parte do 360 completo (a marca inteira sob o mesmo
-  comando), por R$ 5.000/mês. Como todo trabalho de marca e conteúdo, pede de 2 a 3 meses de consistência.
+  Gestão de redes sociais é planejar, criar e publicar posts, Reels e legendas com a mesma cara do seu
+  anúncio e do seu site. Sozinha, sai a partir de R$ 1.500/mês, com a partir de 8 criativos por mês;
+  com o tráfego pago junto, na Gestão mensal, R$ 3.000/mês, com 8 posts no feed e 4 criativos de anúncio por
+  mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses.
+
+o_que_e:
+  titulo: Perfil que confirma a promessa.
+  texto:
+    - Quando alguém vê o seu anúncio, a primeira coisa que faz é abrir o seu perfil. Se o feed está parado, confuso ou com cara de outra empresa, a venda morre ali.
+    - "A Olorin planeja o mês com você, cria as artes e as legendas no tom da sua marca e publica no dia certo. Tudo sai do mesmo time que faz o anúncio, então o feed e a campanha falam a mesma língua."
+    - No fim do mês, você vê o que funcionou e o que muda, sem relatório de curtida pela curtida.
+  destaques:
+    - Calendário aprovado antes de publicar
+    - Arte e legenda no mesmo tom
+    - O mesmo time do anúncio
 
 dores:
-  titulo: Isso acontece com você?
+  titulo: Perfil parado?
+  texto: Se um destes aparece aí, o seu feed está trabalhando contra você.
   itens:
-    - O anúncio leva a pessoa até o seu perfil, e o feed (a grade de posts que ela vê primeiro) parece de outra empresa.
-    - Você posta quando sobra tempo, sem plano, e o perfil passa semanas parado.
-    - Um fornecedor faz a arte, outro escreve a legenda, outro cuida do anúncio — e nenhum conversa com os outros.
-    - Cada post sai com uma cor, uma letra e um jeito de falar, e a marca não fica na cabeça de ninguém.
+    - { titulo: Posta quando sobra tempo, texto: O perfil passa semanas parado e volta do nada com três posts no mesmo dia. }
+    - { titulo: Cada post de um jeito, texto: "Cada arte sai com uma cor, uma letra e um jeito de falar." }
+    - { titulo: Feed contra o anúncio, texto: "O anúncio leva a pessoa ao perfil, e o feed parece de outra empresa." }
+    - { titulo: Ninguém conversa, texto: "Um fornecedor faz a arte, outro a legenda, outro o anúncio, e cada um puxa para um lado." }
+
+entregas:
+  titulo: O que pode entrar.
+  texto: Do plano do mês ao relatório, com a sua aprovação em cada etapa.
+  itens:
+    - titulo: Calendário editorial
+      texto: O plano do que vai ao ar no mês, com tema, formato e data de cada publicação.
+      frequencia: todo mês
+      icone: relogio
+    - titulo: Criativos para o feed
+      texto: Posts, carrosséis e vídeos curtos feitos pelo time de design da Olorin, com a cara da sua marca. O formato de cada um é combinado com você.
+      frequencia: a partir de 8 por mês
+      icone: marca
+    - titulo: Versão para stories
+      texto: Cada post do feed ganha a versão no formato dos stories, para a marca aparecer nos dois lugares.
+      frequencia: em cada post
+      icone: redes
+    - titulo: Legendas no tom certo
+      texto: Texto que conversa com quem você quer atrair, com chamada para a ação certa.
+      frequencia: em cada post
+      icone: mais
+    - titulo: Publicação no dia
+      texto: Tudo agendado e publicado no dia e na hora do calendário aprovado.
+      frequencia: toda semana
+      icone: check
+    - titulo: Leitura do mês
+      texto: O que deu resultado, o que não deu e o que muda no próximo calendário.
+      frequencia: todo mês
+      icone: dados
+
+portfolio:
+  titulo: Feed de verdade.
+  texto: Conteúdo, campanha e direção de arte para redes sociais.
+
+como_funciona:
+  titulo: Do plano ao post.
+  etapas:
+    - { nome: Raio-X, texto: "Olhamos o seu perfil, os concorrentes e o que o anúncio promete." }
+    - { nome: Direção, texto: "Definimos o tom, os temas e o calendário do mês. Você aprova antes de produzir." }
+    - { nome: Execução, texto: "Artes e legendas prontas, aprovadas e publicadas no dia certo." }
+    - { nome: Leitura, texto: "Todo mês, o que funcionou e o que muda no próximo calendário." }
+  prazos:
+    - "Até 30 dias: tom de voz definido, primeiro calendário aprovado e o perfil em dia."
+    - "Até 60 dias: formatos ajustados pelo que mais engajou e trouxe contato."
+    - "Até 90 dias: feed com cara de marca e um ritmo que o público reconhece."
+
+precisamos:
+  titulo: Para começar, precisamos de
+  itens:
+    - Acesso às contas do Instagram e do Facebook (ou do LinkedIn, se for o caso).
+    - Logo, fotos e materiais da marca que já existem.
+    - Uma pessoa do seu lado para aprovar o calendário e as artes.
 
 para_quem:
   e:
-    - Quem anuncia (ou vai anunciar) e quer um perfil que confirme o que o anúncio promete.
-    - Quem não tem tempo de cuidar dos posts e prefere deixar o plano, a arte e a legenda com um time.
-    - Quem hoje tem um fornecedor para cada coisa e quer anúncio, conteúdo e arte com o mesmo time.
-    - Quem quer tráfego pago e conteúdo no mesmo plano, com relatório todo mês.
+    - Quem anuncia e quer um perfil que confirme o que o anúncio promete.
+    - Quem não tem tempo para postar e prefere deixar plano, arte e legenda com um time.
+    - Quem quer anúncio e conteúdo com o mesmo time, em vez de um fornecedor para cada coisa.
   nao_e:
-    - 'Quem quer só aparecer, sem pensar em venda. O nosso lema é outro: "Não é sobre aparecer. É sobre vender."'
-    - Quem quer "viralizar" do dia para a noite. Marca e conteúdo pedem de 2 a 3 meses de consistência.
-    - "[CONFIRMAR: outros critérios de quem não é cliente ideal para redes sociais]"
-
-entregas:
-  titulo: O que entregamos
-  itens:
-    - titulo: Calendário editorial
-      texto: O planejamento de tudo o que vai ao ar — tema, formato e data de cada publicação.
-      icone: relogio
-    - titulo: Posts e stories
-      texto: Artes para o feed e para os stories, feitas pelo nosso próprio time de criação. A criação não é terceirizada.
-      frequencia: todo mês
-      icone: redes
-    - titulo: Legendas
-      texto: O texto de cada post, na voz da sua marca, feito pelo mesmo time que cria a arte e o anúncio.
-      icone: pixel
-    - titulo: Mesma cara no feed, no anúncio e no site
-      texto: O feed segue as mesmas cores, a mesma letra e o mesmo jeito de falar do anúncio e do site. Quem clica no anúncio e abre o seu perfil encontra a mesma marca.
-      icone: marca
-    - titulo: Relatório mensal
-      texto: Um relatório com os números do mês, em linguagem simples, com o que funcionou e o que muda na próxima rodada.
-      frequencia: todo mês
-      icone: dados
-    - titulo: Volume do mês
-      texto: "[CONFIRMAR: quantos posts e stories por mês e em quais redes sociais, em cada plano]"
-      icone: mais
-
-como_funciona:
-  titulo: Como funciona
-  etapas:
-    - nome: Diagnóstico
-      texto: Olhamos o seu perfil, os anúncios, o site e o material da marca. Vemos onde o feed ajuda e onde atrapalha a venda antes de criar qualquer post.
-    - nome: Direção
-      texto: Definimos o que falar, para quem e com qual cara. Daí sai o calendário editorial.
-    - nome: Execução
-      texto: Posts, stories e legendas criados e publicados pelo mesmo time que faz os seus anúncios. Tudo sai pela mesma porta, no mesmo ritmo.
-    - nome: Leitura
-      texto: Todo mês, um relatório que qualquer pessoa entende, com o que funcionou e o que vem na próxima rodada.
-  prazos:
-    - "[CONFIRMAR: o que acontece nos primeiros 30 dias]"
-    - "[CONFIRMAR: o que acontece até os 60 dias]"
-    - "[CONFIRMAR: o que acontece até os 90 dias]"
-
-precisamos:
-  titulo: O que precisamos de você
-  itens:
-    - Acesso aos perfis da marca nas redes sociais.
-    - "[CONFIRMAR: materiais pedidos no início (fotos, vídeos, logotipo, manual de marca)]"
-    - Retorno nas aprovações, que são feitas por e-mail.
-    - "[CONFIRMAR: escopo das aprovações em redes (calendário editorial, cada post, legendas) e prazo de resposta]"
-    - "[CONFIRMAR: quem responde comentários e mensagens no direct (vocês ou a Olorin)]"
+    - Quem quer só número de seguidor, sem objetivo por trás.
+    - Quem quer viralizar do dia para a noite.
 
 preco:
-  titulo: Quanto custa
-  formato: Faz parte da Gestão mensal
-  valor: R$ 2.500/mês
-  detalhe: Valor da Gestão mensal, que junta tráfego pago e conteúdo. A verba de anúncio é investida à parte, direto nas plataformas Meta e Google — recomendamos a partir de R$ 1.500/mês. As redes também fazem parte do 360 completo, por R$ 5.000/mês.
-  total: "Custo total de entrada: a partir de R$ 4.000/mês (gestão + verba mínima recomendada)."
-  contrato: "Na Gestão mensal, contrato mínimo de 3 meses. Depois, segue mês a mês: é só avisar com 30 dias de antecedência, sem multa para cancelar."
+  titulo: Preço aberto.
+  formato: Gestão de redes sociais
+  rotulo: A partir de
+  valor: R$ 1.500/mês
+  detalhe: "Sozinha, a partir de 8 criativos por mês. Com o tráfego pago junto, na Gestão mensal: R$ 3.000/mês, com 8 posts no feed e 4 criativos de anúncio por mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses."
+  contrato: Depois de 3 meses, segue mês a mês com aviso de 30 dias, sem multa.
   inclui:
-    - Calendário editorial
-    - Criação de post, story e legenda
-    - Feed com a mesma cara dos anúncios e do site
-    - Tráfego pago, com ajuste das campanhas toda semana (plano Gestão mensal)
-    - Relatório com os números do mês, todo mês
+    - Calendário editorial do mês
+    - Criativos, versão para stories e legendas
+    - Publicação e agendamento
+    - Leitura mensal do que funcionou
   nao_inclui:
-    - A verba de anúncio (paga direto à Meta e ao Google)
-    - Site, loja virtual e material impresso (contratados à parte; site e impresso também fazem parte do 360 completo)
-    - "[CONFIRMAR: produção de foto e vídeo (sessão ou gravação) está inclusa ou é à parte]"
+    - Verba para impulsionar posts (vai direto para a plataforma)
+    - Ensaio fotográfico e gravação de vídeo
+    - Gestão de anúncios (no [Tráfego pago](/servicos/trafego-pago/) ou na Gestão mensal)
+  schema:
+    valor: "1500"
+    minimo: true
+    unidade: MON
+    descricao: Gestão de redes sociais a partir de R$ 1.500 por mês, com calendário, a partir de 8 criativos por mês e legendas. Implantação de R$ 1.000 e contrato mínimo de 3 meses.
 
 combina_com:
   - slug: trafego-pago
-    porque: O anúncio leva a pessoa até o seu perfil, e o feed confirma o que o anúncio prometeu. Na Gestão mensal, os dois já andam juntos.
+    porque: O feed ganha gente nova e o anúncio ganha um perfil que confirma a promessa. Na Gestão mensal, os dois andam juntos.
   - slug: identidade-visual
-    porque: Com logotipo, cores e manual de marca definidos, cada post sai com a mesma cara. É a identidade que faz o feed parecer de uma empresa só.
+    porque: Com uma identidade clara, cada post sai mais rápido e com a mesma cara.
 
 faq:
-  - id: redes-quanto-custa
-    pergunta: Quanto custa a gestão de redes sociais?
-    resposta: As redes sociais estão inclusas na Gestão mensal, que custa R$ 2.500 por mês e junta tráfego pago e conteúdo. Também fazem parte do 360 completo, por R$ 5.000 por mês. A verba de anúncio é paga à parte, direto à Meta e ao Google — recomendamos a partir de R$ 1.500 por mês. Somando a gestão e a verba, o custo total de entrada fica a partir de R$ 4.000 por mês.
-  - id: redes-so-redes
-    pergunta: Dá para contratar só as redes sociais, sem tráfego pago?
-    resposta: "[CONFIRMAR: contratação só de redes sociais — se é possível, em que formato e por quanto]"
-  - id: redes-quem-cria
-    pergunta: Quem cria os posts e escreve as legendas?
-    resposta: O nosso próprio time de criação, o mesmo que faz os seus anúncios. A criação não é terceirizada. É por isso que o anúncio e o post saem com a mesma cara.
-  - id: redes-tempo-resultado
-    pergunta: Em quanto tempo vejo resultado nas redes?
-    resposta: Depende do objetivo. Marca e conteúdo pedem de 2 a 3 meses de consistência. Já os anúncios de tráfego pago feitos para vender ou gerar mensagem costumam dar sinais claros em 2 a 4 semanas.
+  - id: redes-quantos-posts
+    pergunta: Quantos posts entram por mês?
+    resposta: "No serviço avulso, a partir de R$ 1.500/mês, são a partir de 8 criativos por mês, e o formato de cada um é combinado na proposta. Na Gestão mensal, por R$ 3.000/mês, 8 posts no feed e 4 criativos de anúncio por mês. Nos dois, implantação única de R$ 1.000 e contrato mínimo de 3 meses."
   - id: redes-aprovacao
-    pergunta: Posso aprovar o conteúdo antes de ir ao ar?
-    resposta: Sim. As aprovações são feitas por e-mail, já que o atendimento é 100% remoto, com reuniões por vídeo.
-  - id: redes-fora-curitiba
-    pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo e aprovações por e-mail.
+    pergunta: Eu aprovo antes de publicar?
+    resposta: Sempre. O calendário do mês e cada arte passam pela sua aprovação antes de irem ao ar.
+  - id: redes-fotos
+    pergunta: Vocês fazem fotos e vídeos?
+    resposta: As artes, as legendas e a edição são feitas pelo time. Ensaio fotográfico e gravação ficam à parte e podem ser orçados junto.
+  - id: redes-quais-redes
+    pergunta: Em quais redes vocês trabalham?
+    resposta: Instagram e Facebook na maioria dos casos, e LinkedIn para marcas que vendem para outras empresas. No Raio-X, a gente indica onde vale estar.
 
 campanha:
-  titulo: O seu feed ajuda ou atrapalha o seu anúncio?
-  subtitulo: Raio-X gratuito do seu feed (a grade de posts do perfil), dos anúncios e do site, feito por quem executa. Sem compromisso.
-  faq: [redes-quanto-custa, redes-quem-cria, redes-tempo-resultado, redes-fora-curitiba]
+  titulo: Seu feed está espantando cliente?
+  subtitulo: Raio-X gratuito do seu perfil, com 30 minutos por vídeo e um PDF com o que trava o seu conteúdo. Sem compromisso.
+  faq: [redes-quantos-posts, redes-aprovacao, redes-fotos, redes-quais-redes]

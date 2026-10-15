@@ -52,9 +52,24 @@ export const ORDEM_CSS = [
 	'componentes/promo.css',
 	'componentes/erro.css',
 	'componentes/estilo.css',
+	'componentes/sociais.css',
+	'componentes/prova.css',
+	// 13/10/2026 (versão final): cada área do site tem o seu arquivo.
+	'componentes/fundos.css', // fundos animados e interações de desktop (todas as páginas)
+	'componentes/home.css', // blocos novos da home (resultados, Raio-X, atalho do banner)
+	'componentes/perfil.css', // Quem somos e perfis da equipe
+	'componentes/blog.css', // Blog: bloco da home, /blog/ e artigos (fora do CSS da LP Educação)
+	'componentes/educacao.css', // LP Olorin Educação (tema próprio: .o-tema-educacao)
 	'animacoes.css',
 	'responsivo.css',
 ];
+
+/* Arquivos que só a LP Olorin Educação usa. A LP carrega o olorin-educacao.<hash>.css, que é o CSS
+   completo na ordem acima; as outras páginas carregam o olorin.<hash>.css, sem estes arquivos
+   (as fontes da LP também ficam fora do @font-face embutido delas). */
+const SO_EDUCACAO = ['componentes/educacao.css'];
+/* E o contrário: arquivos que a LP Olorin Educação não usa (ficam fora do CSS dela, que é mais justo). */
+const FORA_DA_EDUCACAO = ['componentes/blog.css'];
 
 /* Fontes pagas da marca. Métricas verticais iguais às das substitutas (medidas no manual)
    para que títulos, botões e etiquetas fiquem na mesma altura. */
@@ -106,9 +121,9 @@ export async function fontesLicenciadas() {
 	return ativas;
 }
 
-async function construirCss({ prod, saida }) {
+async function construirCss({ prod, saida, educacao = false }) {
 	let css = '';
-	for (const arquivo of ORDEM_CSS) {
+	for (const arquivo of ORDEM_CSS.filter((a) => (educacao ? !FORA_DA_EDUCACAO.includes(a) : !SO_EDUCACAO.includes(a)))) {
 		const caminho = path.join('src/styles', arquivo);
 		if (!existsSync(caminho)) {
 			throw new Error(`CSS não encontrado: ${caminho} (confira ORDEM_CSS em scripts/assets.mjs)`);
@@ -138,10 +153,11 @@ async function construirCss({ prod, saida }) {
 		targets: { chrome: 100 << 16, firefox: 100 << 16, safari: 15 << 16 },
 	});
 
-	const nome = `olorin.${hash(code)}.css`;
+	const prefixo = educacao ? 'olorin-educacao.' : 'olorin.';
+	const nome = `${prefixo}${hash(code)}.css`;
 	const pasta = path.join(saida, 'assets/css');
 	await mkdir(pasta, { recursive: true });
-	await limparPasta(pasta, 'olorin.');
+	await limparPasta(pasta, prefixo);
 	await writeFile(path.join(pasta, nome), code);
 	return { href: `/assets/css/${nome}`, bytes: code.length, licenciadas, fontFace };
 }
@@ -167,7 +183,11 @@ async function construirJs({ prod, saida }) {
 }
 
 export async function construirAssets({ prod, saida }) {
-	const [css, js] = await Promise.all([construirCss({ prod, saida }), construirJs({ prod, saida })]);
+	const [css, cssEducacao, js] = await Promise.all([
+		construirCss({ prod, saida }),
+		construirCss({ prod, saida, educacao: true }),
+		construirJs({ prod, saida }),
+	]);
 	const fontes = [
 		// Pré-carregadas: só as usadas na primeira dobra.
 		css.licenciadas.find((f) => f.familia === 'Integral CF')
@@ -179,5 +199,10 @@ export async function construirAssets({ prod, saida }) {
 			? { href: css.licenciadas.find((f) => f.familia === 'Retro Computer').arquivo, tipo: css.licenciadas.find((f) => f.familia === 'Retro Computer').tipo }
 			: { href: '/assets/fonts/silkscreen-400.woff2', tipo: 'font/woff2' },
 	];
-	return { css: css.href, cssBytes: css.bytes, js: js.src, jsBytes: js.bytes, fontes, fontFace: css.fontFace, licenciadas: css.licenciadas.map((f) => f.familia) };
+	return {
+		css: css.href,
+		cssBytes: css.bytes,
+		cssEducacao: cssEducacao.href,
+		fontFaceEducacao: cssEducacao.fontFace,
+		js: js.src, jsBytes: js.bytes, fontes, fontFace: css.fontFace, licenciadas: css.licenciadas.map((f) => f.familia) };
 }

@@ -1,7 +1,7 @@
 # Rastreamento, consentimento e conversões · Olorin Digital
 
-> **Data:** 09/10/2026 · **Base:** PROMPT.md, seção 13 (e 10.2, 10.4, 10.6, 11.1).
-> **Código lido para escrever este guia:** `src/scripts/modulos/rastreamento.js`, `consentimento.js`, `medicao.js`, `origem.js`, `formulario.js`, `interacoes.js`, `flutuantes.js`, `cabecalho.js`, `src/scripts/util.js`, `src/scripts/main.js`, `src/_includes/layouts/base.njk`, `src/_includes/partials/cookies.njk`, `src/_data/site/config.json`, `scripts/filtros.mjs` (função `waLink`), `src/php/enviar.njk` e `src/servidor/.htaccess`.
+> **Data:** 09/10/2026, revisado em 14/10/2026 (IDs editáveis com o site no ar, `olorin-ids.js`) · **Base:** PROMPT.md, seção 13 (e 10.2, 10.4, 10.6, 11.1).
+> **Código lido para escrever este guia:** `src/scripts/modulos/rastreamento.js`, `consentimento.js`, `ids.js`, `medicao.js`, `origem.js`, `formulario.js`, `interacoes.js`, `flutuantes.js`, `cabecalho.js`, `src/scripts/util.js`, `src/scripts/main.js`, `src/_includes/layouts/base.njk`, `src/_includes/partials/cookies.njk`, `src/servidor/olorin-ids.njk`, `src/_data/site/config.json`, `scripts/filtros.mjs` (função `waLink`), `src/php/enviar.njk` e `src/servidor/.htaccess`.
 > **Arquivo que acompanha:** `gtm-container.json` (na raiz do projeto), um contêiner do Google Tag Manager pronto para importar.
 > Tudo o que está aqui descreve o que o código **faz de verdade**. Onde o código difere do PROMPT, isso está marcado como **Diferença** ou **Não implementado**, e a seção 12 junta tudo.
 
@@ -9,7 +9,9 @@
 
 ## 0. Resumo para o dono (sem termos técnicos)
 
-**Hoje o site não mede nada.** Os campos de identificação (GTM, GA4, Pixel, Google Ads) estão vazios em `src/_data/site/config.json`. Por isso o aviso de cookies também não aparece: ele só existe quando há alguma ferramenta para ligar.
+**Hoje o site não mede nada.** Os campos de identificação (GTM, GA4, Pixel, Google Ads) estão vazios. Por isso o aviso de cookies também não aparece: ele só aparece quando há alguma ferramenta para ligar.
+
+**Onde colar os IDs (sem novo build):** no arquivo `public_html/olorin-ids.js`, pelo WebFTP da Locaweb, com o site no ar. Ali ficam também o ID e o rótulo de conversão do Google Ads e o link de agenda da página `/obrigado/`. Passo a passo na seção 2.3.
 
 **Como vai funcionar depois de configurado:**
 
@@ -23,13 +25,13 @@
 
 **O que você precisa fazer (uma vez):**
 
-1. Criar a conta do **Google Tag Manager** e colar o código `GTM-XXXXXXX` no `config.json` (seção 8.1).
+1. Criar a conta do **Google Tag Manager** e colar o código `GTM-XXXXXXX` no `olorin-ids.js` (seções 2.3 e 8.1).
 2. Importar o arquivo `gtm-container.json` no GTM e trocar os textos `XXXX` pelos seus IDs (seção 7).
 3. Criar o **GA4**, o **Pixel da Meta** e a **conversão do Google Ads** (seções 8.2 a 8.4).
-4. Gerar o site de novo (`npm run build`) e publicar (seção 8.5).
+4. Salvar o `olorin-ids.js` no servidor e recarregar o site com Ctrl+F5 (seção 8.5). Não precisa gerar o site de novo.
 5. Testar com o **Tag Assistant** e o **Meta Pixel Helper** (seção 10).
 
-> **Importante:** para o rastreamento ficar completo, use o caminho do **GTM**. O site também sabe carregar o GA4 e o Pixel "direto" (sem GTM), mas nesse modo só a visita é medida: os cliques, o formulário e as conversões **não chegam** (detalhes na seção 3.4).
+> **Dois caminhos:** com **GTM** (recomendado), o site carrega só o GTM e ele mede tudo da seção 4. **Sem GTM**, o site liga sozinho o GA4, o Pixel e o Google Ads preenchidos no `olorin-ids.js` e manda as duas conversões principais: o pedido de orçamento (`generate_lead`, conversão do Google Ads e `Lead` da Meta) e o clique no WhatsApp (`whatsapp_click` no GA4 e `Contact` na Meta). Os outros eventos (rolagem, formulário passo a passo, FAQ) só chegam pelo GTM (seção 3.4).
 
 ---
 
@@ -37,15 +39,17 @@
 
 ```
 Página carrega
-  ├─ <head>: window.OLORIN_CONFIG = { gtm, ga4, pixel, adsId, adsLabel, modo, slug, whatsapp, ... }
+  ├─ <head>: window.OLORIN_CONFIG = { gtm, ga4, pixel, adsId, adsLabel, agendamento, modo, slug, ... } (valores do build)
   │          data-form-variant="a|b" no <html> (sorteio A/B antes da primeira pintura)
-  ├─ main.js (defer) → iniciarConsentimento()
-  │     ├─ sem nenhum ID (gtm/ga4/pixel) → para aqui: sem Consent Mode, sem aviso, nada carrega
+  ├─ /olorin-ids.js (defer) → window.OLORIN_IDS = { GTM_ID, GA4_ID, ... } (editável no servidor)
+  ├─ main.js (defer, roda depois) → aplicarIds(): cada campo preenchido do OLORIN_IDS substitui o do build
+  │  → iniciarConsentimento()
+  │     ├─ sem nenhum ID (gtm/ga4/pixel/adsId) → para aqui: sem Consent Mode, sem aviso, nada carrega
   │     └─ com ID → gtag('consent','default', tudo 'denied') → mostra o aviso (se não há escolha salva)
   ├─ track(evento, params) → window.dataLayer.push({...})   ← sempre, com ou sem consentimento
   └─ escolha que libera Análise e/ou Marketing
         → gtag('consent','update', ...) → track('consent_update')
-        → quando o navegador fica ocioso: carrega o GTM (ou, sem GTM, GA4/Pixel direto)
+        → quando o navegador fica ocioso: carrega o GTM (ou, sem GTM, GA4/Google Ads/Pixel direto)
               └─ GTM lê a fila do dataLayer e dispara as tags conforme o consentimento
 ```
 
@@ -55,27 +59,72 @@ Os eventos ficam na fila `window.dataLayer` desde o início da página. Enquanto
 
 ## 2. Onde fica cada ID
 
-Arquivo: `src/_data/site/config.json` (o PROMPT 13.1 cita `src/_data/site.config.json`; o caminho real é `site/config.json`).
+### 2.1 O arquivo `olorin-ids.js` (editável com o site no ar)
 
-| Campo no `config.json` | Formato | Usar? | O que o código faz com ele |
+No servidor: **`public_html/olorin-ids.js`**. No projeto, ele é gerado por `src/servidor/olorin-ids.njk` e sai em `dist/olorin-ids.js`, com os valores do `src/_data/site/config.json` (hoje vazios). Todas as páginas carregam esse arquivo com `defer`, **antes** do JavaScript principal (`defer` mantém a ordem). O `main.js` lê `window.OLORIN_IDS` primeiro (`modulos/ids.js`) e usa só os campos preenchidos e com formato válido; campo vazio mantém o valor do build. Valor com formato errado é ignorado e aparece um aviso `[olorin-ids]` no console (F12), nunca um erro.
+
+O conteúdo editável é só este bloco:
+
+```js
+window.OLORIN_IDS = {
+	GTM_ID: "",
+	GA4_ID: "",
+	META_PIXEL_ID: "",
+	GADS_CONVERSION_ID: "",
+	GADS_CONVERSION_LABEL: "",
+	SCHEDULING_URL: ""
+};
+```
+
+| Campo | Formato aceito | Exemplo | O que o site faz com ele |
 |---|---|---|---|
-| `GTM_ID` | `GTM-XXXXXXX` | **Sim** (recomendado) | Liga o aviso de cookies e carrega o GTM depois do consentimento. Com ele preenchido, `GA4_ID` e `META_PIXEL_ID` são ignorados pelo JavaScript |
-| `GA4_ID` | `G-XXXXXXXXXX` | Só sem GTM | Liga o aviso; carrega o GA4 direto se Análise for aceita. Mede só a visita (seção 3.4) |
-| `META_PIXEL_ID` | só números | Só sem GTM | Liga o aviso; carrega o Pixel direto se Marketing for aceito. Envia só `PageView` (seção 3.4) |
-| `GADS_CONVERSION_ID`, `GADS_CONVERSION_LABEL` | números / texto | Não (por enquanto) | **Não usados.** Vão para `window.OLORIN_CONFIG.adsId/adsLabel`, mas nenhum script os lê. A conversão do Google Ads só funciona pelo GTM. Eles também não ligam o aviso de cookies |
+| `GTM_ID` | `GTM-` + letras/números | `GTM-XXXXXXX` | Liga o aviso de cookies e carrega o GTM depois do consentimento. Com ele, o site **não** carrega GA4, Pixel nem Google Ads direto: o contêiner decide |
+| `GA4_ID` | `G-` + letras/números | `G-XXXXXXXXXX` | Sem GTM: carrega o GA4 se Análise for aceita; envia `page_view`, `generate_lead` e `whatsapp_click` |
+| `META_PIXEL_ID` | só números (6 a 20) | `123456789012345` | Sem GTM: carrega o Pixel se Marketing for aceito; envia `PageView`, `Lead` e `Contact` |
+| `GADS_CONVERSION_ID` | números, com ou sem `AW-` | `AW-123456789` | Sem GTM: carrega a tag do Google Ads se Marketing for aceito. Fica em `OLORIN_CONFIG.adsId` (`AW-123456789`) e `OLORIN_CONFIG.adsNumero` (`123456789`) |
+| `GADS_CONVERSION_LABEL` | letras, números, `_` e `-` | `AbCdEfGhIjKlMnOp` | Sem GTM: com o ID acima, envia a conversão `AW-ID/rótulo` uma vez por pedido, na `/obrigado/` |
+| `SCHEDULING_URL` | começa com `https://` | `https://calendly.com/...` | Mostra o botão "Prefere marcar um horário?" na `/obrigado/` (abre em nova aba) |
 
-No GTM, os IDs do GA4, do Pixel e do Google Ads ficam em **variáveis constantes** do contêiner (seção 7), não no `config.json`.
+Cache: o `.htaccess` manda o navegador conferir o `olorin-ids.js` a cada visita (`Cache-Control: no-cache`, sem `Expires`). Ele tem menos de 2 KB e não atrapalha a primeira pintura (`defer`).
 
-Os IDs entram no HTML **na hora do build**. Mudou o `config.json`? Rode `npm run build` e publique. O "jeito rápido" (editar o HTML pelo FTP, ver `docs/EDITAR.md`) **não serve** aqui: sem o build, o aviso de cookies nem existe no HTML.
+**Com GTM, onde ficam GA4, Pixel e Google Ads?** Nas variáveis do contêiner (seção 7.1). Se as duas variáveis do Google Ads do contêiner forem do tipo "Variável JavaScript" apontando para `OLORIN_CONFIG.adsNumero` e `OLORIN_CONFIG.adsLabel`, o ID e o rótulo do Ads também podem ficar só no `olorin-ids.js`. O `gtm-container.json` do repositório já vem assim (desde 14/10/2026): basta preencher `GADS_CONVERSION_ID` e `GADS_CONVERSION_LABEL` no `olorin-ids.js`.
 
----
+**Ao publicar um zip novo:** o zip traz um `olorin-ids.js` com os valores do `config.json`. Antes de subir, baixe o seu `olorin-ids.js` do servidor e, depois de descompactar, envie de volta (ou copie os IDs também para o `config.json` do projeto, e o zip já sai com eles).
+
+### 2.2 `config.json` (valores do build)
+
+Arquivo: `src/_data/site/config.json`. Os mesmos campos (`GTM_ID`, `GA4_ID`, `META_PIXEL_ID`, `GADS_CONVERSION_ID`, `GADS_CONVERSION_LABEL`, `SCHEDULING_URL`) entram no HTML como `window.OLORIN_CONFIG` e viram os valores iniciais do `olorin-ids.js`. Mudou o `config.json`? Rode `npm run build` e publique. O `olorin-ids.js` do servidor, se preenchido, continua valendo por cima.
+
+### 2.3 Guia rápido para o dono (WebFTP)
+
+```
+COMO TROCAR OS IDS DE MEDIÇÃO E O LINK DE AGENDA (com o site no ar)
+1. Entre no WebFTP da Locaweb e abra a pasta public_html.
+2. Ache o arquivo olorin-ids.js. Use "Editar" do WebFTP, ou baixe, abra no
+   Bloco de Notas, altere e envie de volta substituindo o antigo.
+3. Troque só o que está entre as aspas. Não apague vírgulas, aspas nem chaves.
+   GTM_ID: "GTM-XXXXXXX"                  Google Tag Manager (recomendado)
+   GA4_ID: "G-XXXXXXXXXX"                 Google Analytics, se não usar GTM
+   META_PIXEL_ID: "123456789012345"       Pixel da Meta, se não usar GTM
+   GADS_CONVERSION_ID: "AW-123456789"     ID de conversão do Google Ads
+   GADS_CONVERSION_LABEL: "AbCdEfGhIjKl"  rótulo dessa conversão
+   SCHEDULING_URL: "https://calendly.com/..."  link de agenda da /obrigado/
+   Campo vazio ("") = desligado.
+4. Salve. Abra olorin.com.br numa janela anônima e aperte Ctrl+F5.
+5. Conferir: com algum ID preenchido, o aviso de cookies aparece. Clique em
+   Aceitar tudo e confira no Tag Assistant ou no Meta Pixel Helper. O botão
+   de agenda aparece em olorin.com.br/obrigado/. Se nada mudar, aperte F12 >
+   Console: "[olorin-ids]" avisa qual campo está com formato errado.
+6. Ao subir um zip novo do site, baixe antes o seu olorin-ids.js e envie de
+   volta depois de descompactar (o zip traz um com os campos vazios).
+```
 
 ## 3. Consentimento (LGPD) e Consent Mode v2
 
 ### 3.1 Quando o aviso aparece
 
-- O HTML do aviso (`partials/cookies.njk`) só é incluído na página quando `GTM_ID`, `GA4_ID` ou `META_PIXEL_ID` está preenchido (`base.njk`, variável `temRastreamento`). O botão **"Preferências de cookies"** do rodapé (completo e mínimo) segue a mesma regra.
-- O aviso começa escondido (`hidden`). O JavaScript o mostra quando **não há escolha salva**.
+- O HTML do aviso (`partials/cookies.njk`) vai em **todas** as páginas, escondido (`hidden`), porque os IDs podem chegar pelo `olorin-ids.js` sem novo build. O JavaScript só o mostra quando existe algum ID (`gtm`, `ga4`, `pixel` ou `adsId`, do build ou do arquivo) e **não há escolha salva**.
+- O botão **"Preferências de cookies"** do rodapé e o botão "Abrir preferências de cookies" da política (seção 7 da política) seguem a mesma regra: vêm escondidos (`data-o-cookies-link`) e aparecem quando há algum ID.
 - Sem JavaScript: o aviso não aparece e nenhuma ferramenta carrega (tudo depende de JS).
 - Visual: caixa fixa no canto inferior (`position: fixed`), por isso não empurra o conteúdo (sem CLS). Em telas de até 767 px fica 68 px acima da barra fixa de WhatsApp/orçamento, para não cobrir o botão principal (`responsivo.css`).
 - É um `role="dialog"` não modal: a pessoa pode usar o site sem responder. `Esc` fecha o aviso **só se já houver uma escolha salva**.
@@ -94,7 +143,7 @@ Os IDs entram no HTML **na hora do build**. Mudou o `config.json`? Rode `npm run
 
 ### 3.3 Consent Mode v2 (como está no código)
 
-Assim que o `main.js` roda (e só se houver algum ID):
+Assim que o `main.js` roda (e só se houver algum ID, do build ou do `olorin-ids.js`):
 
 ```js
 gtag('consent', 'default', {
@@ -120,19 +169,22 @@ gtag('consent', 'update', {
 
 ### 3.4 Quando cada ferramenta carrega
 
-`carregarFerramentas()` roda **uma vez por página**, só se a escolha libera Análise **ou** Marketing, e só quando o navegador fica ocioso (`requestIdleCallback` com limite de 2 s; sem esse recurso, 300 ms).
+`carregarFerramentas()` roda a cada escolha que libera Análise **ou** Marketing, só quando o navegador fica ocioso (`requestIdleCallback` com limite de 2 s; sem esse recurso, 300 ms), e carrega cada ferramenta **uma vez por página**. Se a pessoa libera Marketing depois (pelo rodapé), o que faltava carrega na hora.
 
 | Configuração | Escolha | O que carrega | O que é medido |
 |---|---|---|---|
 | `GTM_ID` preenchido | Análise e/ou Marketing | Só o GTM (`gtm.js`). Ele decide o resto pelo consentimento | Tudo o que o contêiner tiver (seção 7) |
-| sem GTM, `GA4_ID` preenchido | Análise | gtag.js com `gtag('config', GA4_ID)` | **Só `page_view`** (e o que a "medição otimizada" do GA4 capturar). O código não chama `gtag('event', ...)`, então os eventos da seção 4 **não chegam ao GA4** |
-| sem GTM, `META_PIXEL_ID` preenchido | Marketing | Código base do Pixel + `fbq('init')` + `PageView` | **Só `PageView`.** `Lead`, `Contact` e `ViewContent` não são enviados |
+| sem GTM, `GA4_ID` | Análise | gtag.js com `gtag('config', GA4_ID)` | `page_view`, `generate_lead` (na `/obrigado/`, com `plano`, `servicos`, `verba_faixa`, `servico_pagina`, `posicao`) e `whatsapp_click` (com `origem`) |
+| sem GTM, `GADS_CONVERSION_ID` (+ `GADS_CONVERSION_LABEL`) | Marketing | gtag.js (o mesmo do GA4, se houver) com `gtag('config', 'AW-...')` | Conversão `gtag('event', 'conversion', { send_to: 'AW-ID/rótulo' })` uma vez por pedido, na `/obrigado/`. Sem rótulo, só a tag base |
+| sem GTM, `META_PIXEL_ID` | Marketing | Código base do Pixel + `fbq('init')` + `PageView` | `PageView`, `Lead` (na `/obrigado/`) e `Contact` (clique no WhatsApp). `ViewContent` só pelo GTM |
 | qualquer | Recusar | nada | nada |
+
+No modo direto, as conversões esperam numa fila até a ferramenta carregar e só saem se a escolha **atual** permitir (Análise para o GA4; Marketing para Google Ads e Pixel). Se a pessoa retirar o Marketing, o Pixel recebe `fbq('consent', 'revoke')`. Testado com Playwright (IDs falsos e chamadas externas interceptadas): vazio, GTM, modo direto com lead, só Análise, Recusar e formato errado.
 
 **Limitações conhecidas (comportamento do código, não erro de configuração):**
 
 - **Diferença:** o comentário do `consentimento.js` fala em carregar "depois da primeira interação ou quando o navegador estiver livre", e o PROMPT 13.2 pede "após interação/ociosidade". O código só espera a **ociosidade**. Não há gatilho por interação.
-- Se a pessoa **retirar** o consentimento no meio da página, o que já carregou (GTM, Pixel) continua na memória até a próxima página. As tags do GTM com consentimento param de disparar; o Pixel direto (sem GTM) não recebe `fbq('consent','revoke')`.
+- Se a pessoa **retirar** o consentimento no meio da página, o que já carregou (GTM, Pixel) continua na memória até a próxima página. As tags do GTM com consentimento param de disparar; o Pixel direto (sem GTM) recebe `fbq('consent','revoke')` e as conversões diretas deixam de sair.
 - Se a pessoa enviar o formulário **sem ter respondido ao aviso** e só aceitar já na `/obrigado/`, o `generate_lead` entra na fila **antes** do `consent update`. Como o GTM processa a fila em ordem, é provável que as tags de conversão sejam bloqueadas nesse caso. É raro, porque o aviso aparece em todas as páginas até a pessoa escolher. Vale conferir no Tag Assistant (seção 10, teste 11).
 
 ---
@@ -197,9 +249,9 @@ Observações:
 | 5 | `form_error` com `campo`, `tipo` | Também envia `posicao` (a mais) |
 | 6 | `generate_lead` com `plano`, `servicos`, `verba_faixa`, `servico_pagina` | Também envia `posicao` (a mais) |
 | 7 | `calculator_use` com `plano`, `verba_faixa` | Também envia `primeira_vez`. E `verba_faixa` aqui é um número (`3000`), enquanto no `generate_lead` é o texto da faixa (`De R$ 2 a 5 mil por mês`). Mesmo nome, formatos diferentes |
-| 8 | — | `cta_label` some quando o texto do botão parece telefone. Ex.: o link do rodapé "WhatsApp (41) 99646-0861" (`cta-whatsapp-rodape`) chega **sem** `cta_label`, porque o filtro de dados pessoais confunde o telefone da empresa com dado pessoal |
-| 9 | — | `faq_open` também dispara quando a pergunta abre pelo endereço (`/#id-da-pergunta`), sem clique. A primeira pergunta de cada lista já vem aberta no HTML; confira no teste se isso gera um `faq_open` sem clique (seção 10, teste 9) |
-| 10 | — | Se o envio for tentado com a etapa 1 inválida, o código chama a validação **duas vezes** seguidas (`formulario.js`, no `submit`) e gera `form_error` em dobro para cada campo. Só acontece em caminhos raros (a etapa 1 normalmente é validada no "Continuar") |
+| 8 | (não pede) | `cta_label` some quando o texto do botão parece telefone. Ex.: o link do rodapé "WhatsApp (41) 99646-0861" (`cta-whatsapp-rodape`) chega **sem** `cta_label`, porque o filtro de dados pessoais confunde o telefone da empresa com dado pessoal |
+| 9 | (não pede) | `faq_open` também dispara quando a pergunta abre pelo endereço (`/#id-da-pergunta`), sem clique. A primeira pergunta de cada lista já vem aberta no HTML; confira no teste se isso gera um `faq_open` sem clique (seção 10, teste 9) |
+| 10 | (não pede) | Se o envio for tentado com a etapa 1 inválida, o código chama a validação **duas vezes** seguidas (`formulario.js`, no `submit`) e gera `form_error` em dobro para cada campo. Só acontece em caminhos raros (a etapa 1 normalmente é validada no "Continuar") |
 
 ---
 
@@ -344,7 +396,7 @@ Parâmetros do Pixel: `Lead` envia `content_name` = `servico_pagina` (ou `geral`
 3. Espaço de trabalho: **Existente** (Default Workspace).
 4. Opção: **Mesclar** > **Renomear tags, acionadores e variáveis conflitantes**.
 5. Confirme. Vão aparecer 20 tags, 19 acionadores, 31 variáveis e 5 pastas.
-6. Em **Variáveis**, abra as 4 constantes e troque os `XXXX` pelos IDs reais (seção 8).
+6. Em **Variáveis**, abra as constantes de GA4 e Pixel e troque os `XXXX` pelos IDs reais (seção 8). As duas do Google Ads leem o `olorin-ids.js` sozinhas.
 7. Ainda não anuncia no Google ou na Meta? **Pause** as tags daquela ferramenta (clique com o botão direito na tag > Pausar). Assim elas não disparam com IDs falsos.
 8. **Visualizar** (seção 10). Só depois: **Enviar** > **Publicar**.
 
@@ -361,7 +413,7 @@ Use sempre a mesma conta Google da empresa. Domínio: **olorin.com.br**.
 1. Acesse `tagmanager.google.com` > **Criar conta**.
 2. Conta: `Olorin Digital` · País: Brasil · Contêiner: `olorin.com.br` · Plataforma: **Web** > Criar > aceite os termos.
 3. Copie o ID que aparece no topo (`GTM-XXXXXXX`).
-4. Cole em `src/_data/site/config.json`: `"GTM_ID": "GTM-XXXXXXX"`. Deixe `GA4_ID` e `META_PIXEL_ID` vazios.
+4. Cole no `public_html/olorin-ids.js` (seção 2.3): `GTM_ID: "GTM-XXXXXXX"`. Deixe `GA4_ID` e `META_PIXEL_ID` vazios (com GTM eles ficam no contêiner). Para o próximo zip já sair com ele, cole também no `src/_data/site/config.json`.
 5. Importe o contêiner (seção 7.4).
 
 ### 8.2 Google Analytics 4
@@ -381,7 +433,8 @@ Use sempre a mesma conta Google da empresa. Domínio: **olorin.com.br**.
 
 1. `business.facebook.com` > **Gerenciador de Eventos** > **Conectar fontes de dados** > **Web** > nome `Olorin site` > Criar.
 2. Quando perguntar como instalar, escolha a instalação **manual** e **não** cole código no site. Copie só o **ID** (15 ou 16 dígitos).
-3. Cole na variável `Meta Pixel - ID` do GTM.
+3. Cole na variável `Meta Pixel - ID` do GTM (ou, sem GTM, em `META_PIXEL_ID` no `olorin-ids.js`).
+   - Nas configurações do conjunto de dados, deixe **desligada** a "Correspondência avançada automática". Ligada, ela lê os campos do formulário (nome, telefone) e manda para a Meta, e a política de privacidade diz que o site não faz isso.
 4. Recomendado: **Configurações do negócio** > **Segurança da marca** > **Domínios** > adicionar `olorin.com.br` e verificar por **registro DNS TXT** (no painel de DNS da Locaweb ou do Registro.br). Verificar pela meta tag exigiria mudar o `base.njk` (não implementado).
 5. Depois de publicar, use **Testar eventos** no Gerenciador de Eventos junto com o Pixel Helper (seção 10).
 
@@ -394,22 +447,24 @@ Use sempre a mesma conta Google da empresa. Domínio: **olorin.com.br**.
    - Valor: opcional (pode usar um valor médio por lead)
    - Contagem: **Uma**
 3. Em **Configuração da tag** > **Usar o Gerenciador de tags do Google**: copie o **ID de conversão** (só números) e o **Rótulo de conversão**.
-4. Cole nas variáveis `Google Ads - ID de conversão` e `Google Ads - Rótulo de conversão` do GTM.
+4. Cole nas variáveis `Google Ads - ID de conversão` e `Google Ads - Rótulo de conversão` do GTM. Sem GTM: cole em `GADS_CONVERSION_ID` (pode ser `AW-123456789` ou só `123456789`) e `GADS_CONVERSION_LABEL` no `olorin-ids.js`.
 5. **Administrador** > **Configurações da conta** > **Codificação automática**: ligada (é o que cria o `gclid`, que o site guarda no pedido).
 6. Vincule o GA4 (seção 8.2, passo 7). Se também importar o `generate_lead` do GA4 como conversão no Ads, marque-o como **secundária**. Assim o mesmo lead não conta duas vezes (a tag `Google Ads - Conversão Lead do site` já é a principal).
 
-Conversões otimizadas (enhanced conversions) **não foram implementadas**: elas exigiriam mandar e-mail ou telefone para o Google, e o site, por regra, não coloca dados pessoais no `dataLayer`.
+Conversões otimizadas (enhanced conversions) **não foram implementadas**: elas exigiriam mandar e-mail ou telefone para o Google, e o site, por regra, não coloca dados pessoais no `dataLayer`. Deixe as conversões otimizadas automáticas **desligadas** na conta do Google Ads, pelo mesmo motivo da Meta (seção 8.3, passo 3).
 
-### 8.5 Publicar o site com o `GTM_ID`
+### 8.5 Ligar o `GTM_ID` com o site no ar
 
-1. Salve o `config.json` com o `GTM_ID`.
-2. `npm run build` (gera o `dist/` com o aviso de cookies e o `GTM_ID` em `window.OLORIN_CONFIG`).
-3. `npm run deploy`, ou suba o `dist/` pelo FileZilla (ver `docs/EDITAR.md`).
-4. No GTM, faça os testes da seção 10 e então **Publicar**.
+1. Pelo WebFTP, edite `public_html/olorin-ids.js` e preencha `GTM_ID` (seção 2.3). Salve.
+2. Abra o site numa janela anônima e aperte Ctrl+F5: o aviso de cookies deve aparecer.
+3. No GTM, faça os testes da seção 10 e então **Publicar**.
+4. Para o próximo zip já sair com o ID, copie também para o `src/_data/site/config.json` e rode `npm run build`.
 
-**Sobre o `.htaccess`:** a política de segurança de conteúdo (CSP) está em modo **"só observar"** (`Content-Security-Policy-Report-Only`) e já lista GTM, GA4, Google Ads e Meta. Nada é bloqueado hoje. Se um dia trocar para `Content-Security-Policy` (bloqueando), refaça o checklist inteiro e confira o console do navegador: qualquer domínio de medição que faltar na lista para de funcionar.
+### 8.6 Política de segurança de conteúdo (CSP)
 
----
+A CSP do `.htaccess` está em modo **"só observar"** (`Content-Security-Policy-Report-Only`): nada é bloqueado. Ela já lista o que GTM (inclusive o modo de visualização do Tag Assistant), GA4, Google Ads e Meta Pixel precisam: `*.googletagmanager.com`, `tagmanager.google.com`, `*.google-analytics.com`, `*.analytics.google.com`, `*.g.doubleclick.net`, `td.doubleclick.net`, `bid.g.doubleclick.net`, `www.googleadservices.com`, `www.google.com`, `www.google.com.br`, `www.gstatic.com`, `ssl.gstatic.com`, `fonts.googleapis.com` e `fonts.gstatic.com` (só a tela do Tag Assistant), `connect.facebook.net` e `www.facebook.com`. O `olorin-ids.js` é do próprio site (`'self'`).
+
+Para impor de verdade, troque `Content-Security-Policy-Report-Only` por `Content-Security-Policy` só depois de uma semana com as ferramentas ligadas e **sem avisos de CSP no console** (F12) em todas as páginas, com Aceitar tudo. Tags novas no GTM com outros domínios (Hotjar, Clarity, LinkedIn) precisam entrar na lista antes. Variáveis "JavaScript personalizado" do GTM exigiriam `'unsafe-eval'`; o contêiner do projeto não usa nenhuma.
 
 ## 9. GA4: eventos-chave e dimensões personalizadas
 
@@ -514,13 +569,14 @@ No **Gerenciador de Eventos** > **Testar eventos**, os mesmos eventos devem apar
 
 | # | Item | Situação |
 |---|---|---|
-| 1 | Sem GTM, o GA4 direto mede só `page_view` e o Pixel direto só `PageView` (o código não converte os eventos em `gtag('event')`/`fbq('track')`) | Limitação. Use o GTM |
-| 2 | `GADS_CONVERSION_ID` e `GADS_CONVERSION_LABEL` do `config.json` não são lidos por nenhum script | Não implementado (só via GTM) |
+| 1 | Sem GTM, o modo direto manda só `page_view`/`PageView`, o lead (`generate_lead`, conversão do Ads, `Lead`) e o WhatsApp (`whatsapp_click`, `Contact`). Os demais eventos da seção 4 só chegam pelo GTM | Limitação. Use o GTM para o funil completo |
+| 2 | `GADS_CONVERSION_ID` e `GADS_CONVERSION_LABEL` (build ou `olorin-ids.js`) só são usados no modo direto. Com GTM, o contêiner usa as próprias variáveis (seção 2.1) | Resolvido em 14/10/2026 para o modo direto |
 | 3 | `page_mode` é `promo` nas landings; o PROMPT 11.1 pede `campanha` | Diferença |
 | 4 | Parâmetros comuns levam só 3 UTMs (último toque) | Diferença |
 | 5 | Primeiro e último toque valem só na aba/sessão (`sessionStorage`) | Limitação |
 | 6 | GTM carrega por ociosidade, não por "interação ou ociosidade" | Diferença pequena |
 | 7 | Escolha de cookies não expira | Não implementado |
+| 7b | O aviso de cookies vai escondido em todas as páginas (cerca de 1 KB comprimido por página, entre HTML e CSS crítico) para funcionar com IDs colocados no servidor | Escolha consciente |
 | 8 | Origem `planos-{plano}` de WhatsApp | Não implementado (os planos levam ao formulário) |
 | 9 | `servico` no `whatsapp_click` vira o slug da página fora das páginas de serviço | Diferença |
 | 10 | `verba_faixa` com formatos diferentes no `calculator_use` (número) e no `generate_lead` (texto) | Inconsistência |

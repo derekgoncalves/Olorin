@@ -38,7 +38,9 @@ Para publicar: `docs/DEPLOY.md`. Para mudar textos, preços, fotos e a ordem dos
 |---|---|
 | [EDITAR](docs/EDITAR.md) | Como mudar qualquer coisa no site |
 | [DEPLOY](docs/DEPLOY.md) | Como publicar, testar e desfazer |
-| [CONTENT-TODO](docs/CONTENT-TODO.md) | O que ainda falta você confirmar |
+| [BLOG](docs/BLOG.md) | Como publicar artigos no blog |
+| [PENDENCIAS](docs/PENDENCIAS.md) | O que ainda falta mandar ou confirmar |
+| [CONTENT-TODO](docs/CONTENT-TODO.md) | Lista antiga de confirmações (histórico; a atual é a PENDENCIAS) |
 | [RELATORIO-FINAL](docs/RELATORIO-FINAL.md) | O que foi feito, números e próximos passos |
 | [PLAN](docs/PLAN.md) | Arquitetura e decisões técnicas |
 | [TRACKING](docs/TRACKING.md) | Google Tag Manager, GA4, Meta Pixel, Google Ads e consentimento |

@@ -1,9 +1,9 @@
-/* Calculadora de custo de entrada (sem JS: só a tabela). */
+/* Calculadora de custo total em forma de recibo (sem JS: só a tabela). */
 .o-calc {
-	--janela-borda: var(--preto);
 	margin-top: clamp(48px, 6vw, 80px);
 	border: var(--borda) solid var(--preto);
 	background: var(--branco);
+	color: var(--preto);
 	box-shadow: var(--sombra-janela) var(--violeta);
 }
 .o-calc > .o-janela__barra {
@@ -12,34 +12,38 @@
 }
 .o-calc__corpo {
 	display: grid;
-	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-	gap: 20px clamp(24px, 4vw, 56px);
-	padding: clamp(20px, 3vw, 40px);
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	align-items: start;
+	gap: 24px clamp(28px, 4vw, 64px);
+	padding: clamp(20px, 3vw, 44px);
+}
+.o-calc__intro,
+.o-calc__form {
+	grid-column: 1;
+}
+.o-calc__recibo {
+	grid-column: 2;
+	grid-row: 1 / span 2;
+}
+.o-calc__tabela,
+.o-calc__aviso {
+	grid-column: 1 / -1;
 }
 .o-calc__titulo {
 	margin: 0 0 10px !important;
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(20px, 2.2vw, 30px);
-	line-height: 1.05;
+	font-size: clamp(22px, 2.4vw, 34px);
+	line-height: 1.04;
 	text-transform: uppercase;
 }
 .o-calc__texto {
+	margin: 0 !important;
 	color: var(--cor-apoio);
-}
-.o-calc__corpo > .o-calc__titulo,
-.o-calc__corpo > .o-calc__texto,
-.o-calc__corpo > .o-calc__aviso {
-	grid-column: 1;
-}
-.o-calc__form,
-.o-calc__tabela {
-	grid-column: 2;
-	grid-row: 1 / span 3;
 }
 .o-calc__grupo {
 	min-width: 0;
-	margin: 0 0 16px;
+	margin: 0 0 18px;
 	padding: 0;
 	border: 0;
 }
@@ -52,34 +56,128 @@
 }
 .o-calc__opcoes {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
 	gap: 8px;
+}
+/* Opção única (rádio): sem o desenho de caixinha */
+.o-chip--opcao span {
+	flex-wrap: wrap;
+	justify-content: space-between;
+	row-gap: 2px;
+	min-height: 46px;
+}
+.o-chip--opcao span::before {
+	display: none;
+}
+.o-chip--opcao small {
+	white-space: nowrap;
+	font-weight: 400;
+	font-size: 12px;
+	opacity: 0.8;
+}
+
+/* Recibo */
+.o-calc__recibo {
+	position: relative;
+	padding: 20px 22px 34px;
+	background: var(--preto);
+	color: var(--branco);
+	/* Borda serrilhada: os furos ficam numa faixa de altura fixa (14 px) colada na base e o resto é
+	   uma camada lisa. Com a faixa em 100% da altura (fracionada), a última linha de pixels escapava
+	   do recorte e aparecia como um fio preto embaixo dos furos. */
+	-webkit-mask:
+		radial-gradient(circle 7px at 50% 100%, transparent 96%, #000) 50% 100% / 18px 14px repeat-x,
+		linear-gradient(#000, #000) 0 0 / 100% calc(100% - 13px) no-repeat;
+	mask:
+		radial-gradient(circle 7px at 50% 100%, transparent 96%, #000) 50% 100% / 18px 14px repeat-x,
+		linear-gradient(#000, #000) 0 0 / 100% calc(100% - 13px) no-repeat;
+}
+.o-calc__recibo-topo {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	margin: 0 !important;
+	padding-bottom: 12px;
+	border-bottom: 2px dashed rgba(255, 255, 255, 0.4);
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-calc__linhas {
+	margin: 0;
+}
+.o-calc__linhas > div {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 14px;
+	padding: 14px 0;
+	border-bottom: 1px dashed rgba(255, 255, 255, 0.28);
+	font-size: 14px;
+}
+.o-calc__linhas dt {
+	color: rgba(255, 255, 255, 0.82);
+}
+.o-calc__linhas dd {
+	margin: 0;
+	font-weight: 700;
+	white-space: nowrap;
 }
 .o-calc__resultado {
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
-	padding: 18px;
-	background: var(--preto);
-	color: var(--branco);
+	padding: 18px 0 20px;
 }
-.o-calc__conta {
-	font-size: 14px;
+.o-calc__rotulo-total {
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.75);
+}
+.o-calc__total small {
+	display: block;
+	font-size: 13px;
 	color: rgba(255, 255, 255, 0.8);
 }
-.o-calc__total {
-	font-size: 15px;
+.o-calc__total small[hidden] {
+	display: none;
 }
 .o-calc__total strong {
+	display: block;
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(26px, 3vw, 40px);
+	font-size: clamp(34px, 4vw, 54px);
+	line-height: 1;
+	letter-spacing: -0.02em;
 	color: var(--verde);
+	white-space: nowrap;
+}
+.o-calc__wa {
+	width: 100%;
+	justify-content: center;
 }
 .o-calc__aviso {
+	margin: 0 !important;
 	font-size: 13px;
 	color: var(--cor-apoio);
 }
+@media (prefers-reduced-motion: no-preference) {
+	.o-calc__recibo.is-impresso [data-o-calc-total] {
+		animation: o-imprime 0.5s steps(5);
+	}
+}
+@keyframes o-imprime {
+	from {
+		opacity: 0.15;
+		transform: translateY(-10px);
+	}
+}
+
+/* Tabela (sem JS) */
 .o-calc__tabela {
 	width: 100%;
 	border-collapse: collapse;

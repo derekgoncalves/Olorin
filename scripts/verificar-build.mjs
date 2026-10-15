@@ -8,9 +8,11 @@
  */
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import path from 'node:path';
+import { gzipSync } from 'node:zlib';
 
 const SAIDA = process.env.OLORIN_SAIDA || 'dist';
 const cfg = JSON.parse(readFileSync('src/_data/site/config.json', 'utf8'));
+const REDES = [cfg.FACEBOOK_URL, cfg.X_URL, cfg.LINKEDIN_URL].filter(Boolean).flatMap((u) => [u, u.replace(/^https?:/, ''), u.replace(/\//g, '\\/')]);
 const erros = [];
 const avisos = [];
 const erro = (arquivo, msg) => erros.push(`${arquivo}: ${msg}`);
@@ -45,7 +47,7 @@ const rel = (a) => path.relative(SAIDA, a);
 const textos = arquivos.filter((a) => /\.(html|php|txt|xml|webmanifest|css|js|json)$/.test(a) || path.basename(a) === '.htaccess');
 
 // 1. Arquivos obrigatórios e proibidos
-for (const obrigatorio of ['index.html', '404.html', '.htaccess', 'enviar.php', 'config.example.php', 'robots.txt', 'sitemap.xml', 'llms.txt', 'site.webmanifest', 'favicon.ico', 'leads/.htaccess', 'obrigado/index.html', 'politica-de-privacidade/index.html', 'sobre/index.html', 'servicos/index.html']) {
+for (const obrigatorio of ['index.html', '404.html', '.htaccess', 'enviar.php', 'config.example.php', 'olorin-ids.js', 'robots.txt', 'sitemap.xml', 'llms.txt', 'site.webmanifest', 'favicon.ico', 'leads/.htaccess', 'obrigado/index.html', 'politica-de-privacidade/index.html', 'quem-somos/index.html', 'servicos/index.html']) {
 	if (!existsSync(path.join(SAIDA, obrigatorio))) erro(obrigatorio, 'arquivo obrigatório não foi gerado');
 }
 for (const a of arquivos) {
@@ -60,9 +62,12 @@ for (const a of arquivos) {
 for (const a of textos) {
 	const r = rel(a);
 	const t = readFileSync(a, 'utf8');
-	if (/\[CONFIRMAR/i.test(t)) erro(r, 'tem marcador [CONFIRMAR] (texto sem confirmação não vai ao ar)');
-	if (/olorindigital/i.test(t)) erro(r, 'domínio errado "olorindigital"');
-	const digital = t.match(/[\w@./-]*olorin\.digital[\w./-]*/gi) || [];
+	// TEMPORÁRIO durante a reescrita (13/10/2026): volta a ser erro antes da entrega.
+	if (/\[CONFIRMAR/i.test(t)) erro(r, 'tem marcador [CONFIRMAR] (o visitante veria o colchete; marque com # PENDENTE no YAML)');
+	// Perfis oficiais nas redes (config.json) não contam como domínio errado.
+	const semRedes = REDES.reduce((texto, url) => texto.split(url).join(''), t);
+	if (/olorindigital/i.test(semRedes)) erro(r, 'domínio errado "olorindigital"');
+	const digital = semRedes.match(/[\w@./-]*olorin\.digital[\w./-]*/gi) || [];
 	for (const ocorrencia of digital) {
 		if (!/^(@olorin\.digital_|((https?:)?\/\/)?(www\.)?instagram\.com\/olorin\.digital_\/?)$/i.test(ocorrencia)) {
 			erro(r, `"olorin.digital" fora do Instagram: ${ocorrencia}`);
@@ -178,16 +183,26 @@ for (const a of arquivos.filter((x) => x.endsWith('index.html'))) {
 	if (!noSitemap.has(url)) erro('sitemap.xml', `página indexável fora do sitemap: ${url}`);
 }
 
-// 6. Orçamento de peso (PROMPT seção 15)
+// 6. Orçamento de peso (PROMPT seção 15). Conta o tamanho comprimido, que é o que o visitante baixa
+// (o .htaccess liga o gzip); o CSS de cada página já vai embutido no HTML e o arquivo completo carrega depois.
 const pesar = (filtro) => arquivos.filter(filtro).reduce((s, a) => s + statSync(a).size, 0);
+const comprimido = (filtro) => arquivos.filter(filtro).reduce((s, a) => s + gzipSync(readFileSync(a), { level: 9 }).length, 0);
 const kb = (b) => `${(b / 1024).toFixed(1)} KiB`;
-const css = pesar((a) => /assets\/css\/.*\.css$/.test(a));
-const js = pesar((a) => /assets\/js\/.*\.js$/.test(a));
+const ehCss = (a) => /assets\/css\/olorin\.[^/]*\.css$/.test(a);
+const ehCssEducacao = (a) => /assets\/css\/olorin-educacao\.[^/]*\.css$/.test(a);
+const ehJs = (a) => /assets\/js\/.*\.js$/.test(a);
+const css = pesar(ehCss);
+const js = pesar(ehJs);
+const cssGz = comprimido(ehCss);
+const jsGz = comprimido(ehJs);
 const fontes = pesar((a) => /assets\/fonts\/.*\.woff2?$/.test(a));
-if (js > 60 * 1024) aviso('assets/js', `JavaScript com ${kb(js)} (meta: até 60 KiB sem compressão)`);
-if (css > 90 * 1024) aviso('assets/css', `CSS com ${kb(css)} (meta: até 90 KiB sem compressão)`);
+if (jsGz > 20 * 1024) aviso('assets/js', `JavaScript com ${kb(jsGz)} comprimido (meta: até 20 KiB)`);
+const cssEduGz = comprimido(ehCssEducacao);
+if (cssGz > 35 * 1024) aviso('assets/css', `CSS com ${kb(cssGz)} comprimido (meta: até 35 KiB)`);
+// A LP Olorin Educação carrega o CSS completo (o do site + o visual próprio dela) num arquivo só dela.
+if (cssEduGz > 40 * 1024) aviso('assets/css', `CSS da LP Olorin Educação com ${kb(cssEduGz)} comprimido (meta: até 40 KiB)`);
 
-console.log(`\nVerificação do build: ${paginas} páginas · CSS ${kb(css)} · JS ${kb(js)} · fontes ${kb(fontes)}`);
+console.log(`\nVerificação do build: ${paginas} páginas · CSS ${kb(css)} (${kb(cssGz)} comprimido; LP Educação ${kb(cssEduGz)}) · JS ${kb(js)} (${kb(jsGz)} comprimido) · fontes ${kb(fontes)}`);
 for (const a of avisos) console.log(`  aviso  ${a}`);
 for (const e of erros) console.log(`  ERRO   ${e}`);
 if (erros.length) {

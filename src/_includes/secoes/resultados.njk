@@ -1,14 +1,23 @@
-{#- ===== SEÇÃO: Resultados — números (src/content/claims.json), cases (cases.yml) e depoimentos (depoimentos.yml) ===== -#}
+{#- ===== SEÇÃO: Resultados (bloco 2 da home) — números (claims.json), logos (clientes.yml),
+     cases (cases.yml) e portfólio (portfolio.yml). Textos em home.yml → resultados. ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- set r = P.resultados -%}
-{%- set numeros = conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else [] -%}
-{%- set cases = [] if r.ocultar_cases else (conteudo.cases.itens | filtrarPor("exibir", true)) -%}
+{%- set numeros = [] if r.ocultar_numeros else (conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else []) -%}
+{%- set logos = [] if r.ocultar_clientes else ((conteudo.clientes and conteudo.clientes.itens) or []) -%}
+{%- set cases = [] if r.ocultar_cases else (conteudo.casesTodos or []) -%}
+{%- set trabalhos = [] if r.ocultar_portfolio else (conteudo.portfolioPublicado or []) -%}
+{%- if r.limite %}{% set trabalhos = trabalhos.slice(0, r.limite) %}{% endif %}
 {%- set depoimentos = conteudo.depoimentos.itens | filtrarPor("autorizado", true) -%}
-{%- if numeros.length or cases.length or depoimentos.length %}
 <section class="o-sec o-resultados o-ctx-verde" id="resultados" data-secao="resultados" aria-labelledby="resultados-titulo">
+	<div class="o-resultados__barras" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 	<div class="o-wrap">
-		<p class="o-etiqueta">{{ r.etiqueta }}</p>
-		<h2 class="o-titulo o-titulo--g" id="resultados-titulo">{{ r.titulo }}</h2>
+		<div class="o-resultados__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ r.etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="resultados-titulo">{{ r.titulo }}</h2>
+			</div>
+			{%- if r.texto %}<p class="o-apoio">{{ r.texto }}</p>{% endif %}
+		</div>
 		{%- if numeros.length %}
 		<dl class="o-numeros">
 		{%- for n in numeros %}
@@ -20,17 +29,49 @@
 		{%- endfor %}
 		</dl>
 		{%- endif %}
+	</div>
+	{%- if logos.length %}
+	<div class="o-resultados__logos">
+		<h3 class="o-etiqueta o-resultados__logos-titulo o-wrap">{{ r.clientes_titulo or conteudo.clientes.etiqueta }}</h3>
+		<div class="o-faixa o-faixa--logos" data-o-faixa>
+			<ul class="o-faixa__trilho">
+			{%- for c in logos %}
+				<li><img src="/assets/img/clientes/{{ c.logo }}" alt="{{ c.nome }}" loading="lazy" decoding="async" width="{{ c.largura or 120 }}" height="{{ c.altura or 40 }}" style="--logo-a: {{ c.altura or 40 }}"></li>
+			{%- endfor %}
+			</ul>
+			<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>
+		</div>
+	</div>
+	{%- endif %}
+</section>
+{%- if cases.length or trabalhos.length or depoimentos.length %}
+<section class="o-sec o-vitrine o-ctx-branco" id="cases" data-secao="cases" aria-labelledby="{{ 'cases-titulo' if cases.length else 'portfolio-titulo' }}">
+	<div class="o-wrap">
 		{%- if cases.length %}
-		<div class="o-cases">
+		<div class="o-vitrine__cabeca">
+			<p class="o-etiqueta">{{ r.cases_etiqueta }}</p>
+			<h2 class="o-titulo o-titulo--g" id="cases-titulo">{{ r.cases_titulo }}</h2>
+		</div>
+		<div class="o-cases o-cases--{{ cases.length }}">
 		{%- for c in cases %}
-			<article class="o-case o-janela">
+			<article class="o-case o-janela" id="case-{{ c.slug }}">
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
-				<div class="o-janela__corpo">
-					<h3 class="o-case__segmento">{{ c.segmento }}</h3>
-					<p class="o-case__servicos">{{ c.servicos_texto }}</p>
+				<div class="o-janela__corpo o-case__corpo">
+					<p class="o-case__segmento">{{ c.segmento }}</p>
+					<h3 class="o-case__cliente">{{ c.cliente }}</h3>
+					{%- if c.resumo %}<p class="o-case__resumo">{{ c.resumo }}</p>{% endif %}
+					{%- if c.resultado %}
 					<p class="o-case__resultado" data-o-contador>{{ c.resultado }}</p>
-					<p class="o-case__detalhe">{{ c.detalhe }}</p>
-					{%- if c.aprovado %}<a class="o-case__link" href="/cases/{{ c.slug }}/">Ver o case completo</a>{% endif %}
+					{%- elif c.destaque %}
+					<p class="o-case__destaque">{{ c.destaque }}</p>
+					{%- endif %}
+					{%- if c.detalhe %}<p class="o-case__detalhe">{{ c.detalhe }}</p>{% endif %}
+					{%- if c.servicos_texto %}<p class="o-case__servicos"><span class="o-sr">Serviços: </span>{{ c.servicos_texto }}</p>{% endif %}
+					{%- if c.pagina %}
+					<a class="o-link-seta o-case__link" href="/cases/{{ c.slug }}/">Ver o case completo <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+					{%- elif c.servicos and c.servicos.length %}
+					<a class="o-link-seta o-case__link" href="/servicos/{{ c.servicos[0] }}/">{{ r.case_link }}<span class="o-sr"> (case {{ c.cliente }})</span> <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+					{%- endif %}
 				</div>
 			</article>
 		{%- endfor %}
@@ -45,6 +86,37 @@
 			</figure>
 		{%- endfor %}
 		</div>
+		{%- endif %}
+		{%- if trabalhos.length %}
+		<div class="o-vitrine__cabeca o-vitrine__cabeca--portfolio">
+			<div>
+				<p class="o-etiqueta">{{ r.portfolio_etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="portfolio-titulo">{{ r.portfolio_titulo }}</h2>
+			</div>
+			{%- if r.portfolio_texto %}<p class="o-apoio">{{ r.portfolio_texto }}</p>{% endif %}
+		</div>
+		<div class="o-filtros" role="group" aria-label="Filtrar trabalhos por serviço" data-o-filtros hidden>
+			<button class="o-filtro" type="button" aria-pressed="true" data-filtro="*">{{ r.filtro_todos }}</button>
+			{%- for f in conteudo.portfolio.filtros %}
+			{%- if (trabalhos | filtrarPor("servicos", f.id)).length %}
+			<button class="o-filtro" type="button" aria-pressed="false" data-filtro="{{ f.id }}">{% if f.curto %}<span class="o-filtro__longo">{{ f.rotulo }}</span><span class="o-filtro__curto">{{ f.curto }}</span>{% else %}{{ f.rotulo }}{% endif %}</button>
+			{%- endif %}
+			{%- endfor %}
+		</div>
+		<ul class="o-trabalhos" data-o-trabalhos>
+		{%- for item in trabalhos %}
+			<li class="o-trabalho" data-categorias="{{ item.servicos | join(' ') }}">
+				<figure>
+					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 48vw, (max-width: 1400px) 30vw, 430px", classePicture: "o-trabalho__imagem" }) | safe }}
+					<figcaption class="o-trabalho__legenda"><strong>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.titulo }}</a>{% else %}{{ item.titulo }}{% endif %}</strong><span class="o-trabalho__tipo">{% for tipo in item.rotulo.split(" · ") %}<span>{{ tipo }}{% if not loop.last %} ·{% endif %}</span>{% if not loop.last %} {% endif %}{% endfor %}</span></figcaption>
+				</figure>
+			</li>
+		{%- endfor %}
+		</ul>
+		<p class="o-vitrine__acoes">
+			{%- if r.link_mais %}<a class="o-btn o-btn--preto" href="{{ r.link_mais.url }}">{{ r.link_mais.texto }}</a> {% endif -%}
+			<a class="o-btn o-btn--contorno" href="{{ site.config.INSTAGRAM_URL }}" target="_blank" rel="noopener"><span class="o-icone o-icone--instagram" aria-hidden="true"></span>{{ r.botao_instagram }}</a>
+		</p>
 		{%- endif %}
 	</div>
 </section>

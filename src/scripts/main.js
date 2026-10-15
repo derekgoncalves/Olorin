@@ -4,7 +4,9 @@
  * O que é essencial inicia na hora; o resto, quando o navegador estiver livre.
  */
 import { quandoLivre } from './util.js';
+import { aplicarIds } from './modulos/ids.js';
 import { iniciarConsentimento } from './modulos/consentimento.js';
+import { iniciarAncoras, manterAncora } from './modulos/ancoras.js';
 import { iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarIndice } from './modulos/cabecalho.js';
 import { iniciarFormularios } from './modulos/formulario.js';
 import {
@@ -17,11 +19,15 @@ import {
 	iniciarFaixas,
 	iniciarPausa,
 	iniciarContadores,
-	iniciarRevelar,
 } from './modulos/interacoes.js';
+import { iniciarMovimento, iniciarRevelarMovimento } from './modulos/movimento.js';
 import { iniciarFlutuantes } from './modulos/flutuantes.js';
 import { iniciarCursor } from './modulos/cursor.js';
 import { iniciarCliques, iniciarRolagem, iniciarSecoes, iniciarObrigado } from './modulos/medicao.js';
+import { iniciarFundos } from './modulos/fundos.js';
+import { iniciarServico } from './modulos/servico.js';
+import { iniciarPerfil } from './modulos/perfil.js';
+import { iniciarEducacao } from './modulos/educacao.js';
 
 function rodar(lista) {
 	lista.forEach((fn) => {
@@ -33,7 +39,9 @@ function rodar(lista) {
 	});
 }
 
-rodar([iniciarConsentimento, iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarFormularios, iniciarChecklist, iniciarFaq, iniciarPlanos, iniciarCliques, iniciarObrigado, iniciarPausa]);
+// Primeiro: IDs de medição e agendamento editados no servidor (olorin-ids.js), antes de qualquer leitura.
+rodar([aplicarIds]);
+rodar([iniciarAncoras, iniciarConsentimento, iniciarCabecalho, iniciarSubmenu, iniciarMenuCelular, iniciarFormularios, iniciarChecklist, iniciarFaq, iniciarPlanos, iniciarCliques, iniciarObrigado, iniciarPausa, iniciarMovimento]);
 quandoLivre(() =>
-	rodar([iniciarFaixas, iniciarRevelar, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor]),
+	rodar([iniciarFaixas, iniciarRevelarMovimento, iniciarContadores, iniciarMetodo, iniciarPortfolio, iniciarCalculadora, iniciarFlutuantes, iniciarIndice, iniciarRolagem, iniciarSecoes, iniciarCursor, iniciarFundos, iniciarServico, iniciarPerfil, iniciarEducacao, manterAncora]),
 );

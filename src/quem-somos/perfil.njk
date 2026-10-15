@@ -1,0 +1,127 @@
+---
+layout: layouts/base.njk
+modo: sobre
+pagination:
+  data: conteudo.equipe.pessoas
+  size: 1
+  alias: pessoa
+  addAllPagesToCollections: true
+permalink: "/quem-somos/{{ pessoa.slug }}/"
+eleventyComputed:
+  og_imagem: "/assets/img/og/perfil-{{ pessoa.slug }}.jpg"
+  titulo: "{{ pessoa.titulo_seo or (pessoa.nome + ', ' + (pessoa.cargo or pessoa.funcao) + ' | Olorin') }}"
+  descricao: "{{ pessoa.descricao or pessoa.frase }}"
+  slug: "perfil-{{ pessoa.slug }}"
+  pessoasSchema: "{{ pessoa.slug }}"
+---
+{#- Perfil de cada pessoa do time, no estilo de perfil de rede social.
+    Dados em src/content/equipe.yml (só fatos); textos fixos em src/content/paginas/sobre.yml → perfil. -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set t = conteudo.paginas.sobre.perfil -%}
+{%- set primeiroNome = pessoa.nome.split(" ")[0] -%}
+{%- set trilha = [{ nome: "Home", url: "/" }, { nome: "Quem somos", url: "/quem-somos/" }, { nome: pessoa.nome, url: "/quem-somos/" + pessoa.slug + "/" }] -%}
+{%- set frentes = [] -%}
+{%- for sl in pessoa.servicos %}{% if conteudo.servicoPorSlug[sl] %}{% set frentes = frentes.concat([conteudo.servicoPorSlug[sl]]) %}{% endif %}{% endfor -%}
+{%- set trabalhos = [] -%}
+{%- for item in (conteudo.portfolioPublicado or []) %}
+	{%- set casa = false -%}
+	{%- for sl in (item.servicos or []) %}{% if sl in pessoa.servicos %}{% set casa = true %}{% endif %}{% endfor -%}
+	{%- if casa and trabalhos.length < 6 %}{% set trabalhos = trabalhos.concat([item]) %}{% endif -%}
+{%- endfor %}
+
+<section class="o-perfil o-ctx-preto" data-secao="perfil">
+	<div class="o-perfil__capa o-ctx-violeta" aria-hidden="true">
+		<svg class="o-perfil__o o-perfil__o--1" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg>
+		<svg class="o-perfil__o o-perfil__o--2" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg>
+		<svg class="o-perfil__o o-perfil__o--3" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg>
+	</div>
+	<div class="o-wrap o-perfil__grade">
+		<figure class="o-perfil__foto o-janela">
+			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ pessoa.janela }}</span><span class="o-janela__ctrl"></span></div>
+			{{ imagem(imagens, pessoa.foto + "-quadrada", { prioridade: true, sizes: "(max-width: 640px) 136px, 200px" }) | safe }}
+		</figure>
+		<div class="o-perfil__cabeca">
+			{{ ui.migalhas(trilha) }}
+			<h1 class="o-perfil__nome">{{ pessoa.nome }}</h1>
+			<p class="o-perfil__cargo">{{ pessoa.cargo or pessoa.funcao }} <span>· Olorin Digital</span></p>
+			<ul class="o-perfil__frentes" aria-label="{{ t.coordena }}">
+			{%- for sv in frentes %}<li><a href="/servicos/{{ sv.slug }}/"><span class="o-icone o-icone--{{ sv.icone }}" aria-hidden="true"></span>{{ sv.nome }}</a></li>{% endfor %}
+			</ul>
+			<div class="o-perfil__acoes">
+				<a class="o-btn o-btn--verde" href="#orcamento" data-cta="perfil-{{ pessoa.slug }}">{{ t.conversa }}</a>
+				<a class="o-btn o-btn--contorno" href="{{ waLink('perfil-' + pessoa.slug, { tipo: 'equipe' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.whatsapp }}</a>
+				<button class="o-btn o-btn--contorno o-perfil__copiar" type="button" data-o-copiar data-copiado="{{ t.copiado }}" hidden>{{ t.copiar }}</button>
+			</div>
+		</div>
+		<dl class="o-perfil__numeros">
+		{%- for d in pessoa.destaques %}
+			<div><dt>{{ d.rotulo }}</dt><dd>{{ d.valor }}</dd></div>
+		{%- endfor %}
+			<div><dt>{{ t.frentes if frentes.length > 1 else t.frente }}</dt><dd>{{ frentes.length }}</dd></div>
+		</dl>
+	</div>
+</section>
+
+<section class="o-sec o-ctx-branco o-perfil-sobre" data-secao="perfil-sobre" aria-labelledby="perfil-sobre-titulo">
+	<div class="o-wrap o-perfil-sobre__grade">
+		<div>
+			<p class="o-etiqueta">{{ t.sobre }}</p>
+			<h2 class="o-titulo o-titulo--m" id="perfil-sobre-titulo">{{ primeiroNome }}.</h2>
+			<p class="o-perfil-sobre__bio">{{ pessoa.bio }}</p>
+			<p class="o-perfil-sobre__frase">“{{ pessoa.frase }}”</p>
+		</div>
+		<div>
+			<p class="o-etiqueta">{{ t.dia_a_dia }}</p>
+			<ul class="o-perfil-frentes">
+			{%- for sv in frentes %}
+				<li class="o-perfil-frente">
+					<span class="o-icone o-icone--{{ sv.icone }}" aria-hidden="true"></span>
+					<h3 class="o-perfil-frente__nome"><a href="/servicos/{{ sv.slug }}/">{{ sv.nome }}</a></h3>
+					<p>{{ sv.card.resumo }}</p>
+					<span class="o-perfil-frente__seta o-icone o-icone--seta" aria-hidden="true"></span>
+				</li>
+			{%- endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+
+{%- if trabalhos.length %}
+<section class="o-sec o-ctx-preto o-perfil-feed" data-secao="perfil-trabalhos" aria-labelledby="perfil-trabalhos-titulo">
+	<div class="o-wrap">
+		<div class="o-vitrine__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ t.trabalhos }}</p>
+				<h2 class="o-titulo o-titulo--m" id="perfil-trabalhos-titulo">Na prática.</h2>
+			</div>
+			<p class="o-apoio">{{ t.trabalhos_texto }}</p>
+		</div>
+		<ul class="o-trabalhos">
+		{%- for item in trabalhos %}
+			<li class="o-trabalho">
+				<figure>
+					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 48vw, (max-width: 1400px) 30vw, 430px", classePicture: "o-trabalho__imagem" }) | safe }}
+					<figcaption class="o-trabalho__legenda"><strong>{{ item.titulo }}</strong><span class="o-trabalho__tipo">{% for tipo in item.rotulo.split(" · ") %}<span>{{ tipo }}{% if not loop.last %} ·{% endif %}</span>{% if not loop.last %} {% endif %}{% endfor %}</span></figcaption>
+				</figure>
+			</li>
+		{%- endfor %}
+		</ul>
+		<p class="o-vitrine__acoes"><a class="o-btn o-btn--contorno" href="/portfolio/">{{ t.trabalhos_link }}</a></p>
+	</div>
+</section>
+{%- endif %}
+
+<section class="o-sec o-sec--compacta o-ctx-branco o-perfil-time" data-secao="perfil-time" aria-labelledby="perfil-time-titulo">
+	<div class="o-wrap">
+		<h2 class="o-titulo o-titulo--m" id="perfil-time-titulo">{{ t.time }}</h2>
+		<div class="o-quem-faz o-perfil-time__grade">
+		{%- for outra in conteudo.equipe.pessoas %}
+			{%- if outra.slug != pessoa.slug %}{{ ui.cardPessoa(outra, "h3", true, "/quem-somos/" + outra.slug + "/") }}{% endif %}
+		{%- endfor %}
+		</div>
+	</div>
+</section>
+
+{%- set origemWaForm = "perfil-" + pessoa.slug + "-form" -%}
+{%- set origemWaFinal = "perfil-" + pessoa.slug + "-final" -%}
+{% include "secoes/orcamento.njk" %}

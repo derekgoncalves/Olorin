@@ -10,6 +10,11 @@
 			<p class="o-apoio">{{ t.texto }}</p>
 			<a class="o-btn o-btn--contorno" href="{{ waLink('faq', { tipo: 'duvida' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.botao }}</a>
 		</div>
-		{{ ui.faqLista(P.faq or conteudo.faq.perguntas) }}
+		<div>
+		{%- set perguntas = P.faq or conteudo.faq.perguntas -%}
+		{%- if t.ids %}{% set perguntas = conteudo.faq.perguntas | filtrarIds(t.ids) %}{% endif %}
+		{{ ui.faqLista(perguntas) }}
+		{%- if t.link_mais %}<p class="o-faq__mais"><a class="o-link-seta" href="{{ t.link_mais.url }}">{{ t.link_mais.texto }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></p>{% endif %}
+		</div>
 	</div>
 </section>

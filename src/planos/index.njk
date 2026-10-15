@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+modo: hub
+slug: planos
+pagina_dados: planos
+og_imagem: /assets/img/og/planos.jpg
+migalhas:
+  - { nome: Home, url: / }
+  - { nome: Planos, url: /planos/ }
+eleventyComputed:
+  titulo: "{{ conteudo.paginas.planos.seo.titulo }}"
+  descricao: "{{ conteudo.paginas.planos.seo.descricao }}"
+---
+{#- Página Planos e preços — textos em src/content/paginas/planos.yml; valores em src/content/planos.yml; dúvidas em src/content/faq.yml. -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set h = conteudo.paginas.planos -%}
+<section class="o-pagina-topo o-servico-topo o-ctx-preto" data-secao="planos-hero">
+	<div class="o-fundo o-fundo--colunas" aria-hidden="true" data-o-fundo><div class="o-fundo__luz"></div><b></b><b></b><b></b><b></b><b></b></div>
+	<div class="o-wrap o-pagina-topo__grade">
+		<div class="o-pagina-topo__texto">
+			{{ ui.migalhas(migalhas) }}
+			<p class="o-etiqueta">{{ h.etiqueta }}</p>
+			<h1 class="o-pagina-topo__titulo">{{ h.titulo }}</h1>
+			<p class="o-pagina-topo__sub">{{ h.sub }}</p>
+			<div class="o-hero__acoes">
+				<a class="o-btn o-btn--verde o-btn--grande" id="cta-calculadora-planos" href="#calculadora">{{ h.calculadora_botao or "Fazer a conta" }}</a>
+				<a class="o-link-wa" href="{{ waLink('planos-hero') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ conteudo.home.hero.link_whatsapp }}</a>
+			</div>
+		</div>
+		<div class="o-janela o-cena o-cena--hub" aria-hidden="true" data-o-cena>
+			<div class="o-janela__barra"><span class="o-janela__titulo">{{ h.janela }}</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-cena__palco">
+				<ul class="o-cena-hub o-cena-hub--metodo o-cena-hub--precos">
+				{%- for plano in conteudo.planos.planos | sort(false, false, "valor") %}
+					<li class="o-cena-hub__app"><span class="o-cena-hub__valor">{{ plano.valor | reais }}</span><span class="o-cena-hub__nome">{{ plano.nome }}</span></li>
+				{%- endfor %}
+				</ul>
+			</div>
+			<ul class="o-cena__linhas">
+			{%- for linha in h.janela_linhas %}<li>{{ linha }}</li>{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+{% include "secoes/planos.njk" %}
+{% include "secoes/duvidas.njk" %}
+{%- set origemWaForm = "planos-form" -%}
+{%- set origemWaFinal = "planos-final" -%}
+{% include "secoes/orcamento.njk" %}

@@ -100,6 +100,18 @@
 .o-barra.is-longe {
 	transform: translateY(110%);
 }
+/* 320 a 359 px: "Raio-X grátis" com a seta cabe na metade da barra sem encostar na borda */
+@media (max-width: 359px) {
+	.o-barra a {
+		gap: 6px;
+		padding-inline: 6px;
+		font-size: 12px;
+		letter-spacing: 0.01em;
+	}
+	.o-barra .o-icone {
+		--tam: 16px;
+	}
+}
 
 .o-cursor {
 	position: fixed;
