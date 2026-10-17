@@ -113,3 +113,7 @@
 .o-link-wa:hover {
 	color: var(--cor-destaque);
 }
+
+/* Botão do Raio-X (macro ui.botaoRaioX): ícone de visor na frente do texto. */
+.o-btn--raio { gap: 0.6em; }
+.o-btn--raio .o-icone { --tam: 1.15em; }

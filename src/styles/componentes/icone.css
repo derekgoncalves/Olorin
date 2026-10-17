@@ -20,6 +20,7 @@
 .o-icone--seta { --icone: var(--icone-seta); }
 .o-icone--relogio { --icone: var(--icone-relogio); }
 .o-icone--mais { --icone: var(--icone-mais); }
+.o-icone--raio { --icone: var(--icone-raio); }
 .o-icone--o { --icone: var(--icone-o); aspect-ratio: 134 / 126; height: auto; }
 .o-icone--pixel { --icone: var(--icone-pixel); }
 .o-icone--estrela { --icone: var(--icone-estrela); }
