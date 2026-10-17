@@ -26,7 +26,7 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			'@id': empresaId,
 			name: cfg.NOME,
 			slogan: cfg.LEMA,
-			description: 'Agência de marketing digital em Curitiba que cuida de anúncio, redes sociais, identidade visual, site e impresso de empresas e organizações de todos os tamanhos, com o mesmo cuidado, preço aberto e relatório que qualquer pessoa entende.',
+			description: 'Agência de marketing digital: anúncios, redes, marca, site, impressos e dados de empresas e organizações de todos os tamanhos, num time só e com relatório que qualquer pessoa entende.',
 			url: `${base}/`,
 			logo: `${base}/assets/img/brand/icon-512.png`,
 			image: `${base}/assets/img/og/home.jpg`,
@@ -34,7 +34,6 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			email: cfg.EMAIL,
 			address: { '@type': 'PostalAddress', addressLocality: cfg.CIDADE, addressRegion: cfg.UF, addressCountry: 'BR' },
 			areaServed: [
-				{ '@type': 'City', name: 'Curitiba' },
 				{ '@type': 'Country', name: 'Brasil' },
 			],
 			knowsAbout: ['Tráfego pago', 'Meta Ads', 'Google Ads', 'Gestão de redes sociais', 'Identidade visual', 'Material impresso', 'Criação de sites', 'Google Tag Manager', 'Google Analytics 4'],
@@ -79,7 +78,6 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			description: textoPuro(servico.resposta_curta || servico.seo.description),
 			provider: { '@id': empresaId },
 			areaServed: [
-				{ '@type': 'City', name: 'Curitiba' },
 				{ '@type': 'Country', name: 'Brasil' },
 			],
 			url: `${base}/servicos/${servico.slug}/`,

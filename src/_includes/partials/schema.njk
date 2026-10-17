@@ -1,5 +1,4 @@
-{#- JSON-LD da página: empresa, site, página + trilha, serviço, FAQ e pessoas quando houver.
-    Blog: BlogPosting em cada artigo (artigoSchema) e Blog + CollectionPage em /blog/ (blogSchema: true). -#}
+{#- JSON-LD da página: empresa, site, página + trilha, serviço, FAQ e pessoas quando houver. -#}
 	<script type="application/ld+json">{{ montarSchema({
 		cfg: site.config,
 		content: conteudo,
@@ -10,7 +9,5 @@
 		servico: servicoSchema,
 		faq: faqSchema,
 		pessoas: pessoasSchema,
-		artigo: artigoSchema,
-		blog: collections.artigos if blogSchema else undefined,
 		imagemOg: (og_imagem or "/assets/img/og/home.jpg") | urlAbsoluta
 	}) | jsonSeguro | safe }}</script>

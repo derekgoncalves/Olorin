@@ -126,9 +126,7 @@ for (const largura of [360, 1440]) {
 
 console.log('\n2. Acessibilidade (axe-core)');
 const axe = readFileSync(path.resolve('node_modules/axe-core/axe.min.js'), 'utf8');
-// Blog: a página geral e um artigo (o primeiro do sitemap), para valer mesmo quando os artigos mudarem.
-const artigoBlog = paginas.find((u) => /^\/blog\/[^/]+\/$/.test(u));
-for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/quem-somos/', '/blog/', ...(artigoBlog ? [artigoBlog] : []), '/promo/', '/obrigado/', '/politica-de-privacidade/']) {
+for (const pg of ['/', '/educacao/', '/servicos/', '/servicos/trafego-pago/', '/quem-somos/', '/sobre/', '/portfolio/', '/promo/', '/obrigado/', '/politica-de-privacidade/']) {
 	for (const largura of [390, 1280]) {
 		const ctx = await navegador.newContext({ viewport: { width: largura, height: 900 }, reducedMotion: 'reduce' });
 		const p = await ctx.newPage();
@@ -169,7 +167,7 @@ if (!temPhp) {
 	const p = await ctx.newPage();
 	try {
 		await p.goto(`${php.url}/?utm_source=teste&utm_medium=cpc&utm_campaign=npm-test`, { waitUntil: 'load' });
-		const form = p.locator('#orcamento [data-o-form]');
+		const form = p.locator('#raio-x [data-o-form]');
 		await form.scrollIntoViewIfNeeded();
 		await form.locator('[data-o-avancar]').click();
 		const erroNome = await form.locator('[data-erro-de="nome"]').isVisible();

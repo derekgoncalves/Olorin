@@ -75,11 +75,15 @@ AddDefaultCharset utf-8
 	# Restos da versão WordPress, se alguém tiver o link salvo
 	RewriteRule ^(wp-admin|wp-login\.php|wp-content|wp-includes|feed)(/.*)?$ / [L,R=301]
 	# Atalhos que as pessoas costumam digitar
-	RewriteRule ^(orcamento|contato)/?$ /#orcamento [NE,L,R=301]
+	RewriteRule ^(orcamento|contato)/?$ /#raio-x [NE,L,R=301]
 	RewriteRule ^(diagnostico|raio-x)/?$ /#raio-x [NE,L,R=301]
 	RewriteRule ^privacidade/?$ /politica-de-privacidade/ [L,R=301]
-	# Página Sobre virou Quem somos (13/10/2026)
-	RewriteRule ^(sobre|equipe|time)/?$ /quem-somos/ [L,R=301]
+	# Equipe tem página própria; "Como trabalhamos" virou "Sobre" (17/10/2026)
+	RewriteRule ^(equipe|time)/?$ /quem-somos/ [L,R=301]
+	RewriteRule ^como-trabalhamos/?$ /sobre/ [L,R=301]
+	# Planos e blog saíram do site (17/10/2026): quem tiver o link cai no Raio-X da home
+	RewriteRule ^planos/?$ /#raio-x [NE,L,R=301]
+	RewriteRule ^blog(/.*)?$ / [L,R=301]
 </IfModule>
 
 # ------------------------------------------------------------

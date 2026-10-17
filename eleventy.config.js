@@ -5,7 +5,6 @@
  *   npm run build   → dist/ de produção (CSS crítico inline, nomes com hash, verificações)
  *
  * Conteúdo editável: src/content/*.yml (textos e ordem dos blocos da home).
- * Artigos do blog: src/blog/artigos/*.md (um arquivo por artigo; guia em docs/BLOG.md).
  */
 import { rm } from 'node:fs/promises';
 import yaml from 'js-yaml';
@@ -14,7 +13,6 @@ import { processarImagens } from './scripts/imagens.mjs';
 import { posProcessar } from './scripts/pos-processar.mjs';
 import { registrarFiltros } from './scripts/filtros.mjs';
 import { montarSchema } from './scripts/schema.mjs';
-import { registrarBlog } from './scripts/blog.mjs';
 
 const PROD = process.env.ELEVENTY_ENV === 'production';
 // Pasta de saída (padrão dist/). OLORIN_SAIDA permite gerar um build de teste em outra pasta.
@@ -63,8 +61,6 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ 'src/servidor/favicon.ico': 'favicon.ico' });
 
 	registrarFiltros(eleventyConfig, { prod: PROD });
-	// Blog: artigos em Markdown (src/blog/artigos/), coleções, datas e imagens do texto. Ver docs/BLOG.md.
-	registrarBlog(eleventyConfig);
 	eleventyConfig.addNunjucksGlobal('montarSchema', montarSchema);
 
 	eleventyConfig.setServerOptions({ port: 8081, showAllHosts: false });

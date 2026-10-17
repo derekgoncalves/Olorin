@@ -1,21 +1,16 @@
 # Menu principal. "submenu: servicos" lista automaticamente os 6 serviços (src/content/servicos/).
 # Todos os itens levam a páginas de verdade (nada de âncora no meio da home).
-# Ordem (13/10/2026): o que a pessoa procura primeiro (serviço e preço), depois prova e confiança.
-# Blog entrou em 14/10/2026, entre Quem somos e Educação. O item fica marcado em qualquer página
-# que comece pelo endereço dele (ex.: /blog/ e /blog/<artigo>/).
+# 17/10/2026: Planos e Blog saíram do site; "Como trabalhamos" virou "Sobre" (/sobre/, com método e dúvidas).
+# O item fica marcado em qualquer página que comece pelo endereço dele.
 principal:
   - rotulo: Serviços
     url: /servicos/
     submenu: servicos
-  - rotulo: Planos
-    url: /planos/
   - rotulo: Portfólio
     url: /portfolio/
-  - rotulo: Como trabalhamos
-    url: /como-trabalhamos/
+  - rotulo: Sobre
+    url: /sobre/
   - rotulo: Quem somos
     url: /quem-somos/
-  - rotulo: Blog
-    url: /blog/
   - rotulo: Educação
     url: /educacao/

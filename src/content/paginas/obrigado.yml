@@ -11,10 +11,10 @@ agendar: Prefere marcar um horário?
 enquanto_titulo: Enquanto isso
 enquanto:
   - rotulo: Veja como funciona o Método Olorin
-    url: /como-trabalhamos/
+    url: /sobre/
   - rotulo: Veja um exemplo do nosso relatório
-    url: /como-trabalhamos/#relatorio
-  - rotulo: Compare os planos e preços
-    url: /planos/
+    url: /sobre/#relatorio
+  - rotulo: Veja o portfólio
+    url: /portfolio/
   - rotulo: Conheça o time
     url: /quem-somos/

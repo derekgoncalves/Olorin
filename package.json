@@ -15,7 +15,6 @@
     "deploy:dry": "node scripts/deploy.mjs --dry",
     "deploy": "npm run build && npm run test && node scripts/deploy.mjs",
     "og": "node scripts/gerar-og.mjs",
-    "capas": "node scripts/gerar-capas-blog.mjs",
     "pendencias": "node scripts/pendencias.mjs",
     "legibilidade": "node scripts/legibilidade.mjs",
     "capturas": "node scripts/capturas.mjs"
