@@ -1,36 +1,38 @@
 # ============================================================
-# /educacao/ — LP "Olorin Educação" (versão final, 14/10/2026)
+# /educacao/ — LP "Olorin Educação" (rodada de 17/10/2026)
 # ------------------------------------------------------------
 # Página própria para escolas e cursos, com visual próprio
 # (src/styles/componentes/educacao.css, tudo dentro de .o-tema-educacao).
 # A marcação e a ordem das seções ficam em src/educacao/index.njk.
-# Preços e equipe vêm dos mesmos arquivos do site (planos.yml e equipe.yml),
-# os cases vêm de cases.yml e o formulário é o mesmo do site (formulario.yml).
+# Sem preços e sem planos: toda chamada leva ao formulário do Raio-X, no fim da página (#raio-x).
+# A equipe vem de equipe.yml, os cases de cases.yml, as logos de clientes.yml e o formulário
+# é o mesmo do site (formulario.yml).
 # "# PENDENTE:" marca o que o dono ainda precisa confirmar (npm run pendencias).
 # ============================================================
 
 seo:
   titulo: Marketing para instituições de ensino | Olorin Educação
-  descricao: "Captação de alunos para universidades, escolas, cursos, idiomas, pré-vestibular e pós. Anúncio, Instagram e atendimento, com o custo por matrícula."
+  descricao: "Captação de alunos para universidades, escolas, cursos, idiomas, pré-vestibular e pós. Anúncio, Instagram e atendimento. Peça o Raio-X grátis."
 
 marca:
   nome: Olorin Educação
   sub: educação
   lema: Do clique à matrícula.
-  apoio: Do curso livre à pós-graduação, resultado que dá pra ver.
+  apoio: Do curso livre à pós-graduação.
   parte_de: A Olorin Educação é a área de instituições de ensino da Olorin Digital.
 
 # Mensagens prontas dos links de WhatsApp desta página.
 whatsapp:
   padrao: Oi! Vim pela página Olorin Educação e quero o Raio-X da minha instituição.
   equipe: Oi! Vim pela página Olorin Educação e quero falar com a equipe.
-  duvida: Oi! Vim pela página Olorin Educação e tenho uma dúvida.
-  # Assunto do link "Chame no WhatsApp" embaixo dos formulários ("...quero falar sobre ...").
+  # Assunto do link "Chame no WhatsApp" embaixo do formulário ("...quero falar sobre ...").
   assunto_form: o Raio-X da minha instituição
 
 # Formulário: o mesmo do site (formulario.yml). Só nesta página, estes textos valem por cima dos
 # de formulario.yml (ver src/educacao/index.11tydata.js). Use só textos aqui, sem listas.
 formulario:
+  barra_topo: ficha_raio_x.olo
+  barra_fim: ficha_raio_x.olo
   placeholders:
     site: "@suainstituicao ou seusite.com.br"
     mensagem: "Ex.: somos uma faculdade e queremos mais matrículas para o próximo semestre."
@@ -39,35 +41,27 @@ cabecalho:
   menu:
     - { rotulo: Para quem, url: "#para-quem" }
     - { rotulo: Calendário, url: "#calendario" }
-    - { rotulo: Método, url: "#metodo" }
     - { rotulo: Cases, url: "#cases" }
-    - { rotulo: Preços, url: "#planos" }
+    - { rotulo: Equipe, url: "#equipe" }
   menu_extra:
     - { rotulo: Raio-X grátis, url: "#raio-x" }
-    - { rotulo: Dúvidas, url: "#duvidas" }
   voltar: Site da Olorin
   voltar_longo: Voltar para o site da Olorin Digital
   botao: Raio-X grátis
-  whatsapp: Falar no WhatsApp
+  remoto: Atendimento 100% remoto
 
 hero:
   etiqueta: Olorin Educação · captação de alunos
   titulo: Turma cheia não é
   titulo_destaque: sorte.
-  texto: Anúncio, Instagram e atendimento no mesmo plano. Todo mês, um boletim com o custo de cada matrícula.
-  atalho:
-    rotulo: Seu WhatsApp com DDD
-    placeholder: (41) 99999-9999
-    botao: Quero o Raio-X grátis
-    ajuda: Leva 1 minuto. Depois, 30 min por vídeo e um PDF em até 48 h.
-  link_whatsapp: ou fale agora no WhatsApp
+  texto: Anúncio, Instagram e atendimento com a mesma equipe. Todo mês, um boletim com o custo de cada matrícula.
+  botao: Quero o Raio-X grátis
   prova:
-    - Preço aberto
     - Sem multa depois de 3 meses
     - Custo por matrícula todo mês
   # Exemplo ilustrativo (não é cliente): mostra o Raio-X como um boletim, com nota por canal.
   boletim:
-    janela: boletim.exe
+    janela: boletim.olo
     titulo: Boletim da captação
     escola: Instituição Exemplo
     periodo: Raio-X gratuito
@@ -105,8 +99,8 @@ chamada:
   etiqueta: Para quem é
   titulo: Feita para quem vende matrícula.
   texto: Universidade, escola, curso ou pós-graduação. Se a receita depende de turma cheia, a Olorin Educação toca a sua captação.
-  nota: Curitiba e todo o Brasil, com atendimento remoto.
-  janela: chamada.exe
+  nota: Atendimento 100% remoto, com reunião por vídeo e boletim online.
+  janela: chamada.olo
   turma: Lista de chamada
   presente: presente
   itens:
@@ -121,45 +115,24 @@ chamada:
   ausente: ausente
   ausente_texto: Quem só quer post bonito, sem medir matrícula.
 
-lousa:
-  etiqueta: Correção da prova
-  titulo: Onde a matrícula escapa.
-  texto: Os erros que mais aparecem quando a turma não fecha. Quase nunca o problema é o curso.
-  correcao: "Correção:"
-  itens:
-    - erro: O interessado manda mensagem e espera horas pela resposta.
-      certo: Resposta em minutos.
-    - erro: O Instagram tem curtida, mas ninguém pede matrícula.
-      certo: Anúncio com oferta clara.
-    - erro: Ninguém sabe quanto custou cada aluno novo.
-      certo: Custo por matrícula todo mês.
-    - erro: A campanha começa com a turma quase fechada.
-      certo: Calendário com antecedência.
-    - erro: O site não diz preço, turma, horário nem como se matricular.
-      certo: Página de matrícula completa.
-    - erro: Cada peça parece de uma instituição diferente.
-      certo: Uma marca só, do anúncio ao folder.
-  cta_texto: Reconheceu a sua instituição?
-  cta: Comece pelo Raio-X
-
 calendario:
   etiqueta: Calendário de captação
   # PENDENTE: revisar título e texto a cada temporada (de março a agosto, algo como "Comece cedo.")
   titulo: Ainda dá tempo.
   texto: Em escola, a família costuma decidir entre outubro e janeiro, com pico em novembro. Começando agora, a campanha chega pronta ao pico.
-  janela: calendario_captacao.exe
   aqui: Você está aqui
   pico: pico
   vagas: 10
   turma_legenda: A turma enchendo ao longo da temporada (ilustração).
   fora: Fora da temporada? Melhor. Dá para preparar a próxima com calma.
   nota: Curso livre, idiomas, pré-vestibular e pós têm calendário próprio, às vezes com mais de uma entrada por ano. No Raio-X, montamos o do seu curso.
+  botao: Quero o Raio-X grátis
   meses:
     - mes: 10
       nome: Outubro
       curto: out
       fase: Preparar
-      texto: Raio-X, plano, criativos e campanha no ar.
+      texto: Raio-X, planejamento, criativos e campanha no ar.
       turma: 2
     - mes: 11
       nome: Novembro
@@ -187,59 +160,6 @@ calendario:
       texto: Volta às aulas. Boletim da temporada e lições para a próxima.
       turma: 10
 
-raio_x:
-  etiqueta: Raio-X gratuito
-  titulo: Seu atendimento, cronometrado.
-  texto: Mandamos mensagem como um interessado e medimos quanto a resposta demora. Depois olhamos anúncio, Instagram e site e mostramos onde a matrícula escapa.
-  passos:
-    - Você preenche a ficha. Leva 1 minuto.
-    - Testamos o seu atendimento, como um interessado.
-    - Conversamos 30 minutos por vídeo.
-    - Em até 48 horas, você recebe um PDF de 1 página.
-  itens:
-    - Grátis e sem compromisso
-    - Tempo de resposta medido no PDF
-    - Proposta com preço aberto
-  dado:
-    antes: Quem responde em até 1 hora tem quase
-    numero: 7 vezes
-    depois: mais chance de uma conversa de verdade do que quem demora só mais 1 hora.
-    fonte: Harvard Business Review, 2011
-    fonte_url: https://hbr.org/2011/03/the-short-life-of-online-sales-leads
-
-metodo:
-  etiqueta: Método
-  titulo: Do interesse à matrícula.
-  texto: "Cada etapa tem número e alguém responsável. No fim do funil, o que importa: quanto custou cada aluno novo."
-  etapas:
-    - nome: Raio-X
-      texto: Testamos o atendimento e olhamos anúncio, Instagram e site.
-    - nome: Plano
-      texto: Calendário, oferta e verba, curso a curso.
-    - nome: Campanha
-      texto: Meta, Google, criativos e página de matrícula no ar, no ritmo da temporada.
-    - nome: Boletim
-      texto: Todo mês, contatos, visitas, matrículas e o custo de cada uma. E o que muda na próxima rodada.
-  # Exemplo ilustrativo (dados fictícios), igual ao do relatório de exemplo do site.
-  funil:
-    janela: boletim_mensal.exe
-    titulo: Funil de um mês
-    verba: R$ 3.000 de verba
-    etapas:
-      - rotulo: Pedidos de informação
-        valor: 240
-      - rotulo: Conversas no WhatsApp
-        valor: 150
-      - rotulo: Visitas e aulas experimentais
-        valor: 72
-      - rotulo: Matrículas
-        valor: 36
-    resultado_rotulo: Custo por matrícula
-    resultado: R$ 83
-    glossario: "Custo por matrícula: a verba de anúncio do mês dividida pelos alunos novos que vieram dela."
-    aviso: Exemplo ilustrativo, com dados fictícios.
-  cta: Pedir o Raio-X
-
 cases:
   etiqueta: Clientes
   titulo: Quem já atendemos.
@@ -258,75 +178,22 @@ equipe:
   titulo: Fale com quem coordena.
   texto: Um time inteiro na sua captação, com uma pessoa respondendo por cada frente.
   frases:
-    natalia-arruda: Mais de seis anos em mídia paga, com contas de educação no currículo. Dirige a estratégia e os anúncios na Meta e no Google.
+    natalia-arruda: Gestora de tráfego parceira Meta e Google, com mais de seis anos em mídia paga e contas de educação no currículo. Dirige a estratégia e os anúncios.
     vinicius-mafra: Mais de 10 anos de direção de arte. Dá cara de marca a quem costuma ter comunicação burocrática.
     derek-goncalves: Seu primeiro contato e quem coordena a sua captação no dia a dia.
   botao: Falar com a equipe no WhatsApp
   link_sobre: Conheça quem somos
 
-planos:
-  etiqueta: Preços
-  titulo: Mensalidade sem surpresa.
-  texto: Os mesmos preços abertos da Olorin. A verba de anúncio vai direto para a Meta e o Google, na sua conta.
-  # Linha curta de cada plano nesta página (preço, itens e regras continuam em planos.yml).
-  para:
-    pontual: Folder de matrícula, identidade ou peça avulsa
-    avulso: Um serviço por mês, no ritmo da instituição
-    gestao-mensal: Anúncio e conteúdo juntos, com quantidade definida
-    marketing-360: Toda a comunicação da instituição sob o mesmo comando
-  carne: carnê olorin
-  projetos: Site ou página de matrícula?
-
-duvidas:
-  etiqueta: Dúvidas
-  titulo: Pode perguntar.
-  texto: Não achou a sua dúvida aqui? Chama no WhatsApp.
-  botao: Perguntar no WhatsApp
-
-# Perguntas desta página (também vão para o JSON-LD da página).
-faq:
-  - id: faq-edu-quem
-    pergunta: Que tipo de instituição vocês atendem?
-    resposta: Quem vende matrícula. Universidades e faculdades, escolas particulares, cursos livres e profissionalizantes, escolas de idiomas, pré-vestibular, pós-graduação e educação executiva. Do curso de uma sala só à rede com várias unidades.
-  - id: faq-edu-pequena
-    pergunta: Funciona para instituição ou curso pequeno?
-    resposta: Sim. Para começar, um serviço avulso (a partir de R$ 1.500 por mês) ou a Gestão mensal (R$ 3.000 por mês) costuma bastar. No Raio-X, dizemos qual faz sentido para você.
-  - id: faq-edu-quando
-    pergunta: Quando devo começar a captação para o ano que vem?
-    resposta: O quanto antes. Em escola, a família costuma decidir entre outubro e janeiro, com pico em novembro. Começar cedo dá tempo de testar anúncio e baixar o custo por matrícula antes do pico. Em outubro, ainda dá tempo.
-  - id: faq-raio-x-edu
-    pergunta: O que é o Raio-X gratuito?
-    resposta: Um teste de atendimento e uma análise da sua captação. Mandamos mensagem como um interessado e medimos o tempo de resposta. Depois olhamos anúncio, Instagram, site e Perfil da Empresa no Google. Numa conversa de 30 minutos por vídeo, mostramos o que vimos. Em até 48 horas, você recebe um PDF de 1 página com o que mais trava a matrícula e por onde começar. Sem compromisso.
-  - id: faq-edu-medir
-    pergunta: Como vocês medem matrícula, se ela fecha na secretaria?
-    resposta: Combinamos com a sua equipe um jeito simples de registrar de onde veio cada aluno. Pode ser uma etiqueta no WhatsApp ou uma pergunta na ficha de matrícula. Assim o boletim do mês mostra contatos, visitas e matrículas por canal, e quanto custou cada uma.
-  - id: faq-edu-atendimento
-    pergunta: Preciso de alguém para atender os interessados?
-    resposta: Sim, a matrícula fecha com a sua equipe. Nós trazemos o interessado, organizamos as mensagens da sua instituição prontas para cada etapa e medimos o tempo de resposta. Se travar no atendimento, o boletim mostra.
-  - id: faq-edu-prazo
-    pergunta: Em quanto tempo aparece matrícula?
-    resposta: Os primeiros contatos costumam chegar nos primeiros dias de campanha. A matrícula depende do ciclo do seu curso. Em curso livre, pode sair na mesma semana; em escola, a família visita e compara antes. Por isso começamos cedo e medimos cada etapa.
-  - id: faq-verba-edu
-    pergunta: Qual a verba mínima para anunciar?
-    resposta: Recomendamos a partir de R$ 1.500 por mês, investidos direto na Meta e no Google, na sua conta. Na temporada de matrícula, vale concentrar mais. Com a Gestão mensal (R$ 3.000), o custo total começa em R$ 4.500 por mês.
-  - id: faq-edu-fidelidade
-    pergunta: Preciso ficar o ano inteiro?
-    resposta: Não. No serviço avulso, na Gestão mensal e no Marketing 360, o contrato mínimo é de 3 meses. Depois, fica mês a mês, com aviso de 30 dias e sem multa.
-  - id: faq-edu-fora
-    pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. O atendimento é 100% remoto, com reunião por vídeo e relatório online.
-
-orcamento:
-  etiqueta: Raio-X sem compromisso
-  titulo: Vamos encher a próxima turma.
-  lista:
-    - 30 minutos por vídeo com quem coordena
-    - PDF em até 48 horas, com o tempo de resposta medido
-    - Proposta com preço aberto, sem compromisso
-    - Resposta em até 1 dia útil
-  janela: whatsapp.exe
-  wa_etiqueta: Prefere resolver agora?
-  wa_texto: Chama no WhatsApp
+# Seção final, igual à do site: só o título, os passos com o "O" da Olorin e o formulário (#raio-x).
+# A arte ao lado (livro e lápis no raio-x) é desenhada em código no index.njk.
+raio_x:
+  titulo: Raio X da Olorin
+  passos:
+    - Você conta sobre a instituição
+    - A gente testa o atendimento e analisa tudo
+    - Você recebe o plano da captação
+  arte_janela: raio_x.olo
+  arte_rotulo: "RX · livro_e_lapis"
 
 rodape:
   nesta_pagina: Nesta página
@@ -335,7 +202,5 @@ rodape:
   links_olorin:
     - { rotulo: Site da Olorin, url: / }
     - { rotulo: Serviços, url: /servicos/ }
-    - { rotulo: Planos e preços, url: /planos/ }
-    - { rotulo: Como trabalhamos, url: /como-trabalhamos/ }
+    - { rotulo: Sobre, url: /sobre/ }
     - { rotulo: Quem somos, url: /quem-somos/ }
-  remoto: atendimento 100% remoto

@@ -12,7 +12,7 @@
 				<svg class="o-edu-marca__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
 				<span class="o-edu-marca__sub" aria-hidden="true">{{ E.marca.sub }}</span>
 			</a>
-			<p class="o-edu-rodape__lema">{{ cfg.LEMA }}</p>
+			<p class="o-edu-rodape__lema">{{ E.marca.lema }}</p>
 			<p class="o-edu-rodape__apoio">{{ E.marca.apoio }}</p>
 			<p class="o-edu-rodape__parte">{{ E.marca.parte_de }}</p>
 			{{ ui.redes("o-edu-rodape__redes", "rodape-educacao") }}
@@ -38,14 +38,14 @@
 			<ul>
 				<li><a href="{{ waLink('educacao-rodape', { mensagem: E.whatsapp.padrao }) }}" target="_blank" rel="noopener" id="cta-whatsapp-rodape">WhatsApp {{ cfg.TELEFONE_EXIBICAO }}</a></li>
 				<li><a href="mailto:{{ cfg.EMAIL }}">{{ cfg.EMAIL }}</a></li>
-				<li>{{ cfg.CIDADE }}, {{ cfg.UF }} · {{ r.remoto }}</li>
+				<li>{{ E.cabecalho.remoto }}</li>
 			</ul>
 		</div>
 	</div>
 	<div class="o-edu-rodape__gigante" aria-hidden="true"><span>{{ E.marca.sub }}</span></div>
 	<div class="o-rodape__base">
 		<div class="o-wrap o-rodape__base-dentro">
-			<p>{{ cfg.NOME }} © 2026 · {{ cfg.CIDADE }}, {{ cfg.UF }} · CNPJ e razão social: informados <a href="mailto:{{ cfg.EMAIL }}?subject=CNPJ%20e%20raz%C3%A3o%20social">por e-mail</a></p>
+			<p>{{ cfg.NOME }} © 2026 · CNPJ e razão social: informados <a href="mailto:{{ cfg.EMAIL }}?subject=CNPJ%20e%20raz%C3%A3o%20social">por e-mail</a></p>
 			<p>
 				<a href="/politica-de-privacidade/">Política de Privacidade</a>
 				{#- Escondido sem IDs de medição; o main.js mostra quando há algum. -#}

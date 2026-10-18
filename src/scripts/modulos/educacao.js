@@ -1,17 +1,18 @@
 /**
  * LP Olorin Educação (/educacao/). Só roda com body.o-tema-educacao; tudo é melhoria progressiva.
  * - Calendário: põe o "Você está aqui" no mês de quem visita (sem JS, vale o mês do build).
- * - Entradas na rolagem (chamada, lousa, calendário, funil e fichas): só no que está abaixo da dobra.
+ * - Entradas na rolagem (chamada, título de giz, calendário e fichas): só no que está abaixo da dobra.
  * - Depois da entrada do banner, o boletim passa a "respirar" (html.o-edu-entrou).
  * - Desktop (mouse, sem "reduzir movimento"): o quadriculado acende perto do ponteiro, o lápis pinta
- *   os quadradinhos vazios do fundo e a lousa ganha rastro de apagador. Nada disso roda pausado.
+ *   os quadradinhos vazios do fundo e a lousa do calendário ganha rastro de apagador. Nada disso roda
+ *   pausado. Os flashes do raio-x (fim da página) são só CSS.
  * Visual em src/styles/componentes/educacao.css.
  */
 import { $, $$, doc, raiz, movimentoReduzido, ponteiroFino, temIO } from '../util.js';
 
 const pausado = () => raiz.classList.contains('o-pausado');
 /* O lápis só pinta o papel vazio: nunca por baixo de texto, botão, campo ou janela. */
-const OCUPADO = 'a, button, input, label, select, textarea, summary, p, li, h1, h2, h3, figure, form, .o-janela, .o-form, .o-edu-final__lado';
+const OCUPADO = 'a, button, input, label, select, textarea, summary, p, li, h1, h2, h3, figure, form, .o-janela, .o-form';
 const LIMITE_LAPIS = 40;
 const LIMITE_APAGADOR = 18;
 
