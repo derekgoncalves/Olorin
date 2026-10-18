@@ -14,15 +14,16 @@ eleventyComputed:
   og_imagem: "/assets/img/og/servico-{{ servico.slug }}.jpg"
 ---
 {#- Página de serviço — conteúdo em src/content/servicos/<slug>.yml (a mesma fonte da landing /promo/<slug>/).
-    Ordem: banner com a cena do serviço, prova, o que é, sinais de alerta, entregas, portfólio do serviço,
-    como funciona, quem cuida, preço e para quem é, combina com, dúvidas e o formulário. -#}
+    Ordem (17/10/2026): banner com a cena do serviço e o botão do Raio-X, barra de logos de clientes, o que é,
+    "Este é o seu caso?", entregas, ferramentas e redes (tráfego e dados), trabalhos, combina com, Quem somos
+    e o formulário do Raio-X. Sem preço, método e dúvidas (dono). -#}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set s = servico -%}
 {%- set trilha = [{ nome: "Home", url: "/" }, { nome: "Serviços", url: "/servicos/" }, { nome: s.nome, url: "/servicos/" + s.slug + "/" }] -%}
 {%- set casesServico = (conteudo.casesTodos or []) | filtrarPor("servicos", s.slug) -%}
 {%- set trabalhos = (conteudo.portfolioPublicado or []) | filtrarPor("servicos", s.slug) -%}
-{%- set numeros = conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else [] -%}
 {%- set cena = s.cena or s.icone -%}
+{%- set fe = s.ferramentas -%}
 
 {#- 1 · Banner com a cena viva do serviço -#}
 <section class="o-pagina-topo o-servico-topo o-ctx-preto" data-secao="servico-hero">
@@ -33,16 +34,10 @@ eleventyComputed:
 			<p class="o-etiqueta">{{ s.hero.eyebrow }}</p>
 			<h1 class="o-pagina-topo__titulo">{{ s.hero.h1 }}</h1>
 			<p class="o-pagina-topo__sub">{{ s.hero.sub }}</p>
-			<p class="o-servico-topo__preco"><span>{{ s.hero.preco_rotulo }}</span> <strong>{{ s.hero.preco }}</strong></p>
-			<form class="o-atalho" action="#orcamento" method="get" data-o-atalho="form-fim" novalidate>
-				<label class="o-atalho__rotulo" for="atalho-whatsapp">{{ conteudo.home.hero.atalho.rotulo }}</label>
-				<div class="o-atalho__linha">
-					<input class="o-atalho__campo" id="atalho-whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="{{ conteudo.home.hero.atalho.placeholder }}" aria-describedby="atalho-ajuda">
-					<button class="o-btn o-btn--verde o-atalho__botao" id="cta-diagnostico-servico" type="submit">{{ conteudo.home.hero.atalho.botao }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></button>
-				</div>
-				<p class="o-atalho__ajuda" id="atalho-ajuda"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ conteudo.home.hero.atalho.ajuda }}</p>
-			</form>
-			<p class="o-hero__wa"><a class="o-link-wa" href="{{ waLink('servico-' + s.slug + '-hero', { tipo: 'servico', x: s.nome }) }}" target="_blank" rel="noopener" data-servico="{{ s.slug }}"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ conteudo.home.hero.link_whatsapp }}</a></p>
+			<div class="o-hero__acoes">{{ ui.botaoRaioX("cta-raio-x-servico-" + s.slug + "-banner", classe="o-btn--grande") }}</div>
+			{%- if s.hero.selos %}
+			<ul class="o-prova">{% for item in s.hero.selos %}<li>{{ item }}</li>{% endfor %}</ul>
+			{%- endif %}
 		</div>
 		<div class="o-janela o-cena o-cena--{{ cena }}" aria-hidden="true" data-o-cena>
 			<div class="o-janela__barra"><span class="o-janela__titulo">{{ s.janela }}</span><span class="o-janela__ctrl"></span></div>
@@ -50,7 +45,22 @@ eleventyComputed:
 			{%- if cena == "trafego" %}
 				<div class="o-cena-trafego"><p class="o-cena__rotulo">retorno</p><div class="o-cena-trafego__barras"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="o-cena__seta"></span></div>
 			{%- elif cena == "redes" %}
-				<div class="o-cena-redes"><div class="o-cena-redes__feed"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="o-cena-redes__curtida"></span></div>
+				{#- Celular com stories, feed rolando, curtida e avisos saindo da tela. -#}
+				<div class="o-cena-redes">
+					<div class="o-cel">
+						<div class="o-cel__topo"><svg class="o-cel__marca" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><i></i><b></b></div>
+						<ul class="o-cel__stories"><li></li><li></li><li></li><li></li><li></li></ul>
+						<div class="o-cel__feed">
+							<div class="o-cel__trilho">
+							{%- for n in [1, 2, 3, 1] %}
+								<div class="o-cel__post o-cel__post--{{ n }}"><p class="o-cel__autor"><i></i><b></b></p><div class="o-cel__foto"><svg viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg></div><p class="o-cel__acoes"><span class="o-cel__curtir"></span><i></i><i></i><b></b></p><p class="o-cel__legenda"><i></i><i></i></p></div>
+							{%- endfor %}
+							</div>
+							<span class="o-cel__estouro"></span>
+						</div>
+					</div>
+					<ul class="o-cena-redes__avisos"><li class="o-cena-redes__aviso--curtida">curtiu</li><li class="o-cena-redes__aviso--seguidor">novo seguidor</li><li class="o-cena-redes__aviso--comentario">comentou</li></ul>
+				</div>
 			{%- elif cena == "marca" %}
 				<div class="o-cena-marca"><svg class="o-cena-marca__o" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><span class="o-cena-marca__cores"><i></i><i></i><i></i><i></i></span><span class="o-cena-marca__regua"></span></div>
 			{%- elif cena == "impresso" %}
@@ -73,29 +83,18 @@ eleventyComputed:
 	<div class="o-wrap">
 		<ul class="o-indice__lista">
 			<li><a href="#o-que-e">O que é</a></li>
+			{%- if s.dores and s.dores.itens.length %}<li><a href="#seu-caso">É o seu caso?</a></li>{% endif %}
 			<li><a href="#entregas">O que pode entrar</a></li>
+			{%- if fe %}<li><a href="#ferramentas">{{ fe.indice or "Ferramentas" }}</a></li>{% endif %}
 			{%- if casesServico.length or trabalhos.length %}<li><a href="#trabalhos">Trabalhos</a></li>{% endif %}
-			<li><a href="#como-funciona">Como funciona</a></li>
-			<li><a href="#quem-cuida">Quem coordena</a></li>
-			<li><a href="#preco">Preço</a></li>
-			<li><a href="#perguntas">Dúvidas</a></li>
-			<li><a href="#orcamento">Raio-X grátis</a></li>
+			<li><a href="#equipe">Quem somos</a></li>
+			<li><a href="#raio-x">Raio-X grátis</a></li>
 		</ul>
 	</div>
 </nav>
 
-{#- 2 · Prova (números informados pelo dono) -#}
-{%- if numeros.length %}
-<section class="o-sec o-sec--compacta o-servico-prova o-ctx-verde" data-secao="prova" aria-label="O time em números">
-	<div class="o-wrap">
-		<dl class="o-numeros o-numeros--faixa">
-		{%- for n in numeros %}
-			<div class="o-numero"><dt class="o-numero__rotulo">{{ n.rotulo }}</dt><dd class="o-numero__valor" data-o-contador>{{ n.valor }}</dd></div>
-		{%- endfor %}
-		</dl>
-	</div>
-</section>
-{%- endif %}
+{#- 2 · Barra de logos de clientes (no lugar dos números) -#}
+{% include "secoes/faixa-clientes.njk" %}
 
 {#- 3 · O que é -#}
 <section class="o-sec o-servico-oque o-ctx-branco" id="o-que-e" data-secao="o-que-e" aria-labelledby="oque-titulo">
@@ -103,7 +102,6 @@ eleventyComputed:
 		<div class="o-servico-oque__cabeca">
 			<p class="o-etiqueta">{{ s.o_que_e.etiqueta or ("O que é " + (s.nome | lower)) }}</p>
 			<h2 class="o-titulo o-titulo--g" id="oque-titulo">{{ s.o_que_e.titulo }}</h2>
-			<a class="o-servico-oque__preco" href="#preco"><span>{{ s.hero.preco_rotulo }}</span> <strong>{{ s.hero.preco }}</strong> <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
 		</div>
 		<div class="o-servico-oque__texto">
 			{%- for p in s.o_que_e.texto %}<p>{{ p | emLinha | safe }}</p>{% endfor %}
@@ -116,35 +114,10 @@ eleventyComputed:
 	</div>
 </section>
 
-{#- 4 · Sinais de alerta -#}
-{%- if s.dores and s.dores.itens.length %}
-<section class="o-sec o-alertas o-ctx-preto" data-secao="dores" aria-labelledby="dores-titulo">
-	<div class="o-fundo o-fundo--linhas" aria-hidden="true"></div>
-	<div class="o-wrap">
-		<div class="o-alertas__cabeca">
-			<div>
-				<p class="o-etiqueta">{{ s.dores.etiqueta or "Sinais de alerta" }}</p>
-				<h2 class="o-titulo o-titulo--g" id="dores-titulo">{{ s.dores.titulo }}</h2>
-			</div>
-			{%- if s.dores.texto %}<p class="o-apoio">{{ s.dores.texto }}</p>{% endif %}
-		</div>
-		<ul class="o-alertas__lista">
-		{%- for d in s.dores.itens %}
-			<li class="o-alerta o-janela">
-				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">erro_0{{ loop.index }}.exe</span><span class="o-janela__ctrl"></span></div>
-				<div class="o-janela__corpo o-alerta__corpo">
-					<span class="o-alerta__icone" aria-hidden="true">!</span>
-					<div>
-						{%- if d.titulo %}<h3 class="o-alerta__titulo">{{ d.titulo }}</h3>{% endif %}
-						<p class="o-alerta__texto">{{ (d.texto or d) | emLinha | safe }}</p>
-					</div>
-				</div>
-			</li>
-		{%- endfor %}
-		</ul>
-	</div>
-</section>
-{%- endif %}
+{#- 4 · Este é o seu caso? (com o botão do Raio-X) -#}
+{%- set idCta = "cta-raio-x-servico-" + s.slug + "-caso" -%}
+{%- set destinoCta = "#raio-x" -%}
+{% include "partials/servico-dores.njk" %}
 
 {#- 5 · O que entra -#}
 <section class="o-sec o-ctx-branco o-servico-entregas" id="entregas" data-secao="entregas" aria-labelledby="entregas-titulo">
@@ -169,7 +142,46 @@ eleventyComputed:
 	</div>
 </section>
 
-{#- 6 · Trabalhos do serviço: cases e portfólio -#}
+{#- 6 · Ferramentas e redes que o time opera (tráfego e dados), com a credencial da Natalia (dela, não da agência) -#}
+{%- if fe %}
+{%- set cr = fe.credencial -%}
+{%- set pessoaCr = conteudo.pessoaPorSlug[cr.pessoa] if cr else null -%}
+<section class="o-sec o-ferramentas o-ctx-verde" id="ferramentas" data-secao="ferramentas" aria-labelledby="ferramentas-titulo">
+	<div class="o-wrap">
+		<div class="o-vitrine__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ fe.etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="ferramentas-titulo">{{ fe.titulo }}</h2>
+			</div>
+			{%- if fe.texto %}<p class="o-apoio">{{ fe.texto }}</p>{% endif %}
+		</div>
+		<ul class="o-ferramentas__grade o-ferramentas__grade--{{ fe.itens.length }}">
+		{%- for f in fe.itens %}
+			<li class="o-ferramenta"><i class="o-ferramenta__logo" style="--logo: url('/assets/img/marcas/{{ f.logo }}.svg')" aria-hidden="true"></i><span class="o-ferramenta__nome">{{ f.nome }}</span></li>
+		{%- endfor %}
+		</ul>
+		{%- if cr %}
+		<div class="o-credencial o-ctx-preto">
+			{%- if pessoaCr %}
+			<span class="o-credencial__foto" aria-hidden="true">{{ imagem(imagens, pessoaCr.foto + "-quadrada", { sizes: "96px" }) | safe }}</span>
+			{%- endif %}
+			<div class="o-credencial__texto">
+				<p class="o-etiqueta">{{ cr.etiqueta }}</p>
+				<p class="o-credencial__titulo">{{ cr.titulo }}</p>
+				<p class="o-credencial__nome">{% if pessoaCr %}<a href="/quem-somos/{{ pessoaCr.slug }}/">{{ cr.nome }}</a>{% else %}{{ cr.nome }}{% endif %}<span>{{ cr.funcao }}</span></p>
+			</div>
+			<ul class="o-credencial__selos">
+			{%- for l in cr.logos %}
+				<li><i class="o-ferramenta__logo" style="--logo: url('/assets/img/marcas/{{ l.logo }}.svg')" aria-hidden="true"></i><span>Parceira {{ l.nome }}</span></li>
+			{%- endfor %}
+			</ul>
+		</div>
+		{%- endif %}
+	</div>
+</section>
+{%- endif %}
+
+{#- 7 · Trabalhos do serviço: cases e portfólio -#}
 {%- if casesServico.length or trabalhos.length %}
 <section class="o-sec o-ctx-preto o-servico-trabalhos" id="trabalhos" data-secao="trabalhos" aria-labelledby="trabalhos-titulo">
 	<div class="o-wrap">
@@ -214,114 +226,9 @@ eleventyComputed:
 </section>
 {%- endif %}
 
-{#- 7 · Como funciona (Método Olorin aplicado ao serviço) -#}
-<section class="o-sec o-metodo o-ctx-violeta" id="como-funciona" data-secao="como-funciona" aria-labelledby="como-titulo">
-	<div class="o-wrap o-metodo__grade">
-		<div class="o-metodo__cabeca">
-			<p class="o-etiqueta">Método Olorin</p>
-			<h2 class="o-titulo o-titulo--g" id="como-titulo">{{ s.como_funciona.titulo }}</h2>
-			<p class="o-metodo__progresso" aria-hidden="true" data-o-metodo-progresso><span class="o-medidor">{% for e in s.como_funciona.etapas %}<i></i>{% endfor %}</span><span data-o-metodo-rotulo></span></p>
-		</div>
-		<ol class="o-etapas" data-o-etapas>
-		{%- for e in s.como_funciona.etapas %}
-			<li class="o-etapa"><span class="o-etapa__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-etapa__nome">{{ e.nome }}</h3><p class="o-etapa__texto">{{ e.texto | emLinha | safe }}</p></li>
-		{%- endfor %}
-		</ol>
-	</div>
-	{%- if (s.como_funciona.prazos and s.como_funciona.prazos.length) or (s.precisamos and s.precisamos.itens.length) %}
-	<div class="o-wrap o-servico-ritmo">
-		{%- if s.como_funciona.prazos and s.como_funciona.prazos.length %}
-		<div class="o-janela o-servico-ritmo__caixa">
-			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ s.como_funciona.prazos_janela or "primeiros_90_dias.txt" }}</span><span class="o-janela__ctrl"></span></div>
-			<div class="o-janela__corpo">
-				<h3 class="o-servico-ritmo__titulo">{{ s.como_funciona.prazos_titulo or "Os primeiros 90 dias" }}</h3>
-				<ol class="o-servico-ritmo__lista">{% for p in s.como_funciona.prazos %}<li>{{ p | emLinha | safe }}</li>{% endfor %}</ol>
-			</div>
-		</div>
-		{%- endif %}
-		{%- if s.precisamos and s.precisamos.itens.length %}
-		<div class="o-servico-ritmo__precisamos">
-			<h3 class="o-servico-ritmo__titulo">{{ s.precisamos.titulo }}</h3>
-			<ul class="o-lista-pixel">{% for i in s.precisamos.itens %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
-		</div>
-		{%- endif %}
-	</div>
-	{%- endif %}
-</section>
-
-{#- 8 · Quem coordena -#}
-<section class="o-sec o-sec--compacta o-ctx-preto o-servico-quem" id="quem-cuida" data-secao="quem-cuida" aria-labelledby="quem-titulo">
-	<div class="o-wrap o-servico-quem__grade">
-		<div>
-			<p class="o-etiqueta">Quem coordena</p>
-			<h2 class="o-titulo o-titulo--m" id="quem-titulo">{{ s.quem_cuida_titulo or "Quem coordena." }}</h2>
-			<p class="o-apoio">{{ s.quem_faz_nota or "Cada frente tem alguém que coordena e responde por ela. Você fala direto com quem coordena." }}</p>
-			<a class="o-link-seta" href="/quem-somos/">Conheça o time da Olorin <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
-		</div>
-		<div class="o-quem-faz">
-		{%- for slugPessoa in s.quem_faz %}
-			{%- set pessoa = conteudo.pessoaPorSlug[slugPessoa] %}
-			{%- if pessoa %}{{ ui.cardPessoa(pessoa, "h3", true, "/quem-somos/" + pessoa.slug + "/") }}{% endif %}
-		{%- endfor %}
-		</div>
-	</div>
-</section>
-
-{#- 9 · Preço e para quem é -#}
-<section class="o-sec o-ctx-branco o-servico-preco" id="preco" data-secao="preco" aria-labelledby="preco-titulo">
-	<div class="o-wrap">
-		<div class="o-vitrine__cabeca">
-			<div>
-				<p class="o-etiqueta">Quanto custa</p>
-				<h2 class="o-titulo o-titulo--g" id="preco-titulo">{{ s.preco.titulo }}</h2>
-			</div>
-			<p class="o-apoio">Você sabe quanto vai pagar antes de falar com a gente.</p>
-		</div>
-		<div class="o-preco">
-			<div class="o-preco__caixa o-janela">
-				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">preco.txt</span><span class="o-janela__ctrl"></span></div>
-				<div class="o-janela__corpo">
-					{%- if s.preco.formato %}<p class="o-preco__formato">{{ s.preco.formato }}</p>{% endif %}
-					{%- if s.preco.rotulo %}<p class="o-preco__rotulo">{{ s.preco.rotulo }}</p>{% endif %}
-					<p class="o-preco__valor">{{ s.preco.valor }}</p>
-					{%- if s.preco.detalhe %}<p class="o-preco__detalhe">{{ s.preco.detalhe | emLinha | safe }}</p>{% endif %}
-					{%- if s.preco.total and site.config.SHOW_TOTAL_COST %}<p class="o-preco__total">{{ s.preco.total }}</p>{% endif %}
-					{%- if s.preco.contrato %}<p class="o-preco__detalhe o-preco__contrato">{{ s.preco.contrato }}</p>{% endif %}
-					<a class="o-btn o-btn--verde" href="#orcamento" data-cta="servico-{{ s.slug }}-preco">{{ conteudo.home.hero.botao if site.config.OFERTA_DIAGNOSTICO else "Pedir orçamento" }}</a>
-				</div>
-			</div>
-			<div class="o-preco__listas">
-				{%- if s.preco.inclui and s.preco.inclui.length %}
-				<div>
-					<h3 class="o-preco__subtitulo">O que pode entrar</h3>
-					<ul class="o-lista-pixel">{% for i in s.preco.inclui %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
-				</div>
-				{%- endif %}
-				{%- if s.preco.nao_inclui and s.preco.nao_inclui.length %}
-				<div>
-					<h3 class="o-preco__subtitulo">O que fica de fora</h3>
-					<ul class="o-lista-pixel o-lista-pixel--nao">{% for i in s.preco.nao_inclui %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
-				</div>
-				{%- endif %}
-				{%- if s.para_quem %}
-				<div>
-					<h3 class="o-preco__subtitulo">É para quem</h3>
-					<ul class="o-lista-pixel">{% for i in s.para_quem.e %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
-				</div>
-				<div>
-					<h3 class="o-preco__subtitulo">Não é para quem</h3>
-					<ul class="o-lista-pixel o-lista-pixel--nao">{% for i in s.para_quem.nao_e %}<li>{{ i | emLinha | safe }}</li>{% endfor %}</ul>
-				</div>
-				{%- endif %}
-				<p class="o-preco__planos"><a class="o-link-seta" href="/planos/#calculadora">Ver os planos e fazer a conta na calculadora <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></p>
-			</div>
-		</div>
-	</div>
-</section>
-
-{#- 10 · Combina com -#}
+{#- 8 · Combina com (fundo branco, entre os trabalhos e o Quem somos, que são pretos) -#}
 {%- if s.combina_com and s.combina_com.length %}
-<section class="o-sec o-sec--compacta o-ctx-preto" data-secao="combina-com" aria-labelledby="combina-titulo">
+<section class="o-sec o-sec--compacta o-ctx-branco o-combina-sec" data-secao="combina-com" aria-labelledby="combina-titulo">
 	<div class="o-wrap">
 		<p class="o-etiqueta">Junto fica melhor</p>
 		<h2 class="o-titulo o-titulo--m" id="combina-titulo">Combina com.</h2>
@@ -341,19 +248,10 @@ eleventyComputed:
 </section>
 {%- endif %}
 
-{#- 11 · Dúvidas do serviço -#}
-<section class="o-sec o-faq o-ctx-branco" id="perguntas" data-secao="faq-servico" aria-labelledby="perguntas-titulo">
-	<div class="o-wrap o-faq__grade">
-		<div class="o-faq__cabeca">
-			<p class="o-etiqueta">Dúvidas sobre {{ s.nome | lower }}</p>
-			<h2 class="o-titulo o-titulo--m" id="perguntas-titulo">Perguntas diretas.</h2>
-			<a class="o-btn o-btn--contorno" href="{{ waLink('servico-' + s.slug + '-faq', { tipo: 'servico', x: s.nome }) }}" target="_blank" rel="noopener" data-servico="{{ s.slug }}"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>Perguntar no WhatsApp</a>
-		</div>
-		{{ ui.faqLista(s.faq) }}
-	</div>
-</section>
+{#- 9 · Quem somos (o time todo; substitui o antigo "Quem coordena") -#}
+{% include "secoes/equipe.njk" %}
 
-{#- 12 · Formulário completo (serviço já marcado) -#}
+{#- 10 · Formulário do Raio-X (serviço já marcado) -#}
 {%- set servicoForm = s.slug -%}
 {%- set nomeServicoForm = s.nome -%}
 {%- set origemWaForm = "servico-" + s.slug + "-form-fim" -%}

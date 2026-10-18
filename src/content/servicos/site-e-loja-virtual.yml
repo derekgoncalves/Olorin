@@ -1,7 +1,8 @@
 # ============================================================
-# SERVIÇO: Sites — fonte ÚNICA da página /servicos/site-e-loja-virtual/ e da landing /promo/site-e-loja-virtual/.
-# Textos com as confirmações do dono (14/10/2026): texto base do cliente, prazos em semanas (dono pediu a versão
-# anterior), acompanhamento quinzenal e ajustes semanais; ecommerce inclui sistemas web personalizados. Preços iguais a src/content/planos.yml.
+# SERVIÇO: Sites. Fonte ÚNICA da página /servicos/site-e-loja-virtual/ e da landing /promo/site-e-loja-virtual/.
+# Confirmado pelo dono (14/10/2026): texto base do cliente, acompanhamento quinzenal e ajustes semanais;
+# ecommerce inclui sistemas web personalizados.
+# 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
 # ============================================================
 slug: site-e-loja-virtual
 ordem: 5
@@ -10,12 +11,12 @@ chip: Sites   # um nome por serviço: igual no menu, no card, no formulário e n
 icone: site
 janela: site.html
 cena: site
-atualizado: "2026-10-14"
+atualizado: "2026-10-17"
 quem_faz: [vinicius-mafra, derek-goncalves]
 
 seo:
-  title: Criação de Sites e Lojas Virtuais em Curitiba | Olorin
-  description: Site institucional, ecommerce e sistemas web personalizados, rápidos no celular. Sites a partir de R$ 3.000 e ecommerce a partir de R$ 10.000.
+  title: Criação de Sites e Lojas Virtuais | Olorin Digital
+  description: Site institucional, ecommerce e sistemas web personalizados, rápidos no celular e com medição desde o primeiro dia. Peça o Raio-X gratuito.
 
 card:
   titulo: Sites
@@ -23,34 +24,36 @@ card:
   resumo_curto: Site institucional, ecommerce e sistemas web.
 
 hero:
-  eyebrow: Criação de sites e lojas virtuais em Curitiba e no Brasil
+  eyebrow: Criação de sites e lojas virtuais
   h1: Site que trabalha.
   sub: Site institucional, ecommerce, sistema web personalizado e página de captação com a cara da sua marca, rápidos no celular e feitos para transformar visita em contato ou venda.
-  preco_rotulo: Sites a partir de
-  preco: R$ 3.000
+  selos:
+    - Projeto fechado, sem mensalidade obrigatória
+    - Domínio e arquivos no seu nome
   janela_linhas:
     - Versão do celular · aprovada
     - Velocidade · conferida
     - Medição de visitas · configurada
 
-# Resumo usado na landing /promo/ e no JSON-LD (não aparece com rótulo na página do serviço).
+# Resumo usado na landing /promo/, no llms.txt e no JSON-LD (não aparece com rótulo na página do serviço).
 resposta_curta: >-
   A Olorin cria site institucional, ecommerce, sistemas web personalizados e página de captação: rápidos,
-  bonitos no celular e feitos para transformar visita em contato ou venda. Sites a partir de R$ 3.000 e
-  ecommerce e sistemas web a partir de R$ 10.000, em projeto fechado, com escopo, prazo e preço combinados antes de começar.
+  bonitos no celular e feitos para transformar visita em contato ou venda. Cada projeto é fechado, com escopo
+  e prazo combinados antes de começar, e já sai com a medição de visitas e contatos configurada.
 
 o_que_e:
   titulo: Visita que vira contato.
   texto:
     - "O site é para onde o anúncio, o post e a indicação levam a pessoa. Se ele demora, confunde ou não tem a sua cara, o interesse acaba ali, e o dinheiro do anúncio vai junto."
     - A Olorin cria sites institucionais, lojas virtuais, sistemas web personalizados e páginas de captação com a identidade da sua marca, pensados primeiro para o celular, fáceis de ler, com o botão de contato sempre à mão e a medição configurada desde o primeiro dia.
-    - "Escopo, prazo e preço são combinados no briefing, antes de começar, do site de uma página à loja com catálogo inteiro."
+    - "Escopo e prazo são combinados no briefing, antes de começar, do site de uma página à loja com catálogo inteiro."
   destaques:
     - Rápido no celular
     - A mesma cara da marca
     - Medição desde o primeiro dia
 
 dores:
+  etiqueta: Este é o seu caso?
   titulo: Site que espanta?
   texto: Se um destes aparece aí, o seu site está perdendo cliente.
   itens:
@@ -65,11 +68,11 @@ entregas:
   itens:
     - titulo: Site institucional
       texto: Páginas que apresentam a empresa e os serviços e levam a pessoa até o contato.
-      frequencia: a partir de R$ 3.000
+      frequencia: projeto fechado
       icone: site
     - titulo: Ecommerce e sistemas web personalizados
       texto: "Loja com catálogo, carrinho, pagamento e frete, ou um sistema web sob medida para o seu processo."
-      frequencia: a partir de R$ 10.000
+      frequencia: sob medida
       icone: estrela
     - titulo: Página de captação
       texto: Uma página só para a oferta ou a campanha, feita para receber quem clica no anúncio.
@@ -92,88 +95,12 @@ portfolio:
   titulo: Na prática.
   texto: Marcas com site feito pelo nosso time.
 
-como_funciona:
-  titulo: Do briefing ao ar.
-  etapas:
-    - { nome: Briefing, texto: "Conversamos sobre objetivo, público e conteúdo, e fechamos escopo, prazo e preço." }
-    - { nome: Desenho, texto: "Você vê o site no celular e no computador, pede ajustes e aprova antes da construção." }
-    - { nome: Construção, texto: "Páginas montadas com os seus textos, medição configurada e testes de velocidade, com reunião a cada quinze dias." }
-    - { nome: Publicação, texto: "Site no ar, conferido de ponta a ponta, e a primeira leitura das visitas." }
-  prazos_titulo: Prazo de cada projeto
-  prazos_janela: prazos.txt
-  prazos:
-    - "Página de captação (landing page): de 1 a 2 semanas, do briefing ao ar."
-    - "Site institucional: de 3 a 6 semanas, conforme o número de páginas."
-    - "Loja virtual: de 6 a 10 semanas, conforme o catálogo e as integrações."
-
-precisamos:
-  titulo: Para começar, precisamos de
-  itens:
-    - Acesso ao domínio e à hospedagem (se não tiver, a gente ajuda a contratar).
-    - "Os textos base, as fotos e a lista de produtos ou serviços. A Olorin ajusta os textos para a web."
-    - Aprovação do desenho antes da construção.
-
-para_quem:
-  e:
-    - Quem anuncia e precisa de um site rápido e claro para receber quem clica.
-    - Quem quer vender pela internet ou precisa de um sistema web sob medida.
-    - Quem vai lançar uma oferta e precisa de uma página só para ela.
-  nao_e:
-    - Quem procura um site por menos de R$ 3.000 ou um ecommerce por menos de R$ 10.000.
-    - Quem quer um site só para dizer que tem um, sem objetivo de contato ou de venda.
-
-preco:
-  titulo: Preço aberto.
-  formato: Projeto de site
-  rotulo: A partir de
-  valor: R$ 3.000
-  detalhe: "Site institucional e página de captação a partir de R$ 3.000; ecommerce e sistemas web personalizados a partir de R$ 10.000. Projeto fechado: escopo, prazo e preço combinados no briefing, antes de começar. O texto base é seu; domínio, hospedagem e plataforma da loja ficam à parte. No Marketing 360, o site entra no mesmo pacote do anúncio e das redes."
-  contrato: Projeto fechado, sem mensalidade obrigatória.
-  inclui:
-    - Desenho no celular e no computador
-    - Construção e publicação
-    - Velocidade e acessibilidade conferidas
-    - Medição de visitas e contatos
-  nao_inclui:
-    - Textos do zero (você manda o texto base e a gente ajusta)
-    - Domínio e hospedagem (ficam no seu nome)
-    - Mensalidade da plataforma da loja e taxas de pagamento
-    - Manutenção depois da entrega (oferecida e combinada à parte)
-  schema:
-    valor: "3000"
-    minimo: true
-    descricao: Criação de site institucional a partir de R$ 3.000 e de ecommerce ou sistema web personalizado a partir de R$ 10.000, em projeto fechado.
-
 combina_com:
   - slug: trafego-pago
     porque: O site recebe quem clica. Com tráfego pago, quem clica tem cara de cliente.
   - slug: rastreamento-e-relatorio
     porque: Com a medição certa, você sabe quanto cada página trouxe de contato e de venda.
 
-faq:
-  - id: site-quanto-custa
-    pergunta: Quanto custa um site?
-    resposta: "Site institucional ou página de captação a partir de R$ 3.000; ecommerce e sistemas web personalizados a partir de R$ 10.000. O preço final sai no briefing, com escopo e prazo fechados antes de começar."
-  - id: site-prazo
-    pergunta: Quanto tempo leva?
-    resposta: "Uma página de captação leva de 1 a 2 semanas; um site institucional, de 3 a 6; uma loja virtual, de 6 a 10. Há acompanhamento a cada quinze dias e rodadas de ajuste semanais. O prazo do seu projeto sai no briefing."
-  - id: site-textos
-    pergunta: Quem escreve os textos do site?
-    resposta: "O texto base é seu, porque ninguém conhece o seu negócio melhor. A Olorin organiza, ajusta para a web e pode refinar depois do site no ar."
-  - id: site-velocidade
-    pergunta: O site vai ser rápido no celular?
-    resposta: "Sim. Velocidade e acessibilidade são o padrão: imagens leves, texto legível, navegação por teclado e conferência antes de publicar."
-  - id: site-anuncio
-    pergunta: Vocês fazem o anúncio para o site?
-    resposta: "Sim. O [tráfego pago](/servicos/trafego-pago/) é coordenado pelo mesmo time, então o anúncio e o site falam a mesma língua."
-  - id: site-dono
-    pergunta: De quem é o site?
-    resposta: Seu. Domínio, hospedagem e arquivos ficam no seu nome. Se um dia o trabalho acabar, tudo continua com você.
-  - id: site-fora-curitiba
-    pergunta: Vocês atendem fora de Curitiba?
-    resposta: "Sim. A Olorin atende todo o Brasil a distância: WhatsApp, reunião por vídeo e aprovação por e-mail."
-
 campanha:
   titulo: Chega de site que espanta cliente.
-  subtitulo: Raio-X gratuito do seu site, com 30 minutos por vídeo e um PDF com o que mais trava o contato. Sites a partir de R$ 3.000. Sem compromisso.
-  faq: [site-quanto-custa, site-prazo, site-velocidade, site-fora-curitiba]
+  subtitulo: Raio-X gratuito do seu site, com 30 minutos por vídeo e um PDF com o que mais trava o contato. Sem compromisso.

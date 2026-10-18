@@ -1,8 +1,8 @@
 # ============================================================
 # SERVIÇO: Identidade visual. Fonte ÚNICA de /servicos/identidade-visual/ e /promo/identidade-visual/.
 # Texto proposto vai ao ar; "# PENDENTE:" marca o que o dono ainda precisa confirmar.
-# Confirmado pelo dono (14/10/2026): a partir de R$ 800, valor final conforme o escopo (sem detalhar faixas);
-# primeira versão em cerca de 7 dias úteis, em média, e rodadas de ajuste semanais.
+# Confirmado pelo dono (14/10/2026): primeira versão em cerca de 7 dias úteis, em média, e rodadas de ajuste semanais.
+# 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
 # ============================================================
 slug: identidade-visual
 ordem: 3
@@ -11,12 +11,12 @@ chip: Identidade visual
 icone: marca
 janela: marca.ai
 cena: marca
-atualizado: "2026-10-14"
+atualizado: "2026-10-17"
 quem_faz: [vinicius-mafra]
 
 seo:
-  title: Identidade Visual e Logotipo em Curitiba | Olorin
-  description: Logotipo, paleta, tipografia e manual de marca para a sua empresa ter uma cara só, do feed ao cartão. A partir de R$ 800, conforme o escopo.
+  title: Identidade Visual e Logotipo | Olorin Digital
+  description: Logotipo, paleta, tipografia e manual de marca para a sua empresa ter uma cara só, do feed ao cartão. Peça o Raio-X gratuito da sua marca.
 
 card:
   titulo: Identidade visual
@@ -24,11 +24,12 @@ card:
   resumo_curto: Logotipo, paleta e manual de marca.
 
 hero:
-  eyebrow: Identidade visual e logotipo em Curitiba
+  eyebrow: Identidade visual e logotipo
   h1: Uma marca, uma cara.
   sub: Logotipo, cores, letras e regras de uso para a sua marca ser reconhecida em qualquer lugar, do avatar do Instagram à fachada.
-  preco_rotulo: Projeto a partir de
-  preco: R$ 800
+  selos:
+    - Sem contrato mensal
+    - Ajustes toda semana até a aprovação
   janela_linhas:
     - Logotipo · aprovado
     - Paleta e tipografia · definidas
@@ -36,9 +37,8 @@ hero:
 
 resposta_curta: >-
   Identidade visual é o conjunto que faz a sua marca ser reconhecida: logotipo, cores, tipografia e as regras
-  de uso. Na Olorin, o projeto sai a partir de R$ 800, e o valor final depende do escopo, fechado na proposta.
-  Para quem precisa de design todo mês, o design avulso sai a partir de R$ 1.500/mês, com implantação de
-  R$ 1.000 e contrato mínimo de 3 meses.
+  de uso. Na Olorin, o projeto começa por uma imersão no seu negócio, tem rodadas de ajuste toda semana e
+  termina com o manual e os arquivos finais em todos os formatos. O escopo e o prazo são fechados na proposta.
 
 o_que_e:
   titulo: Reconhecida de longe.
@@ -52,6 +52,7 @@ o_que_e:
     - Manual de marca fácil de seguir
 
 dores:
+  etiqueta: Este é o seu caso?
   titulo: Marca com várias caras?
   texto: Se um destes aparece aí, a sua marca está perdendo força.
   itens:
@@ -90,58 +91,8 @@ entregas:
       icone: site
 
 portfolio:
-  titulo: Resultado que dá pra ver.
+  titulo: Na prática.
   texto: Identidade, tipografia e direção de arte feitas pelo time da Olorin.
-
-como_funciona:
-  titulo: Da conversa ao manual.
-  etapas:
-    - { nome: Raio-X, texto: "Olhamos a marca que existe hoje, onde ela aparece e o que o público precisa sentir." }
-    - { nome: Direção, texto: Painel de referências e caminho criativo aprovados antes de desenhar. }
-    - { nome: Execução, texto: "Logotipo, paleta, tipografia e aplicações, com rodadas de ajuste toda semana." }
-    - { nome: Leitura, texto: "Manual e arquivos finais entregues, com a marca aplicada no dia a dia." }
-  prazos_titulo: Prazo do projeto
-  prazos:
-    - "Primeira versão em cerca de 7 dias úteis, em média, depois da imersão."
-    - "Rodadas de ajuste toda semana, até a aprovação."
-    - "Arquivos finais na entrega. O prazo exato sai na proposta."
-
-precisamos:
-  titulo: Para começar, precisamos de
-  itens:
-    - Uma conversa de briefing sobre o negócio e o público.
-    - A marca atual e materiais antigos, se existirem.
-    - Exemplos de marcas que você admira (e das que não gosta).
-
-para_quem:
-  e:
-    - Quem está abrindo um negócio e quer começar com cara de marca.
-    - Quem cresceu e sente que a marca ficou pequena para a empresa.
-    - Quem vai investir em anúncio, site ou fachada e quer tudo com a mesma cara.
-  nao_e:
-    - Quem precisa só de um ajuste rápido num arquivo que já existe (aí é uma peça avulsa).
-    - Quem quer copiar a marca de outra empresa.
-
-preco:
-  titulo: Preço aberto.
-  formato: Identidade visual
-  rotulo: Projeto a partir de
-  valor: R$ 800
-  detalhe: "Entrega pontual, com escopo e prazo fechados na proposta. O valor final depende do que entra no projeto. Para design todo mês, o design avulso sai a partir de R$ 1.500/mês, com implantação de R$ 1.000 e contrato mínimo de 3 meses."
-  contrato: Sem contrato mensal. Metade na aprovação da proposta e metade na entrega.
-  inclui:
-    - Imersão e painel de referências
-    - Logotipo e variações
-    - Arquivos finais em todos os formatos
-    - Paleta, tipografia e manual, conforme o escopo
-  nao_inclui:
-    - Impressão de material (a gráfica cobra à parte)
-    - Registro da marca no INPI
-    - Fotos e ilustrações sob encomenda
-  schema:
-    valor: "800"
-    minimo: true
-    descricao: Projeto de identidade visual a partir de R$ 800, com logotipo e arquivos finais. O valor final depende do escopo combinado na proposta.
 
 combina_com:
   - slug: material-impresso
@@ -149,21 +100,6 @@ combina_com:
   - slug: redes-sociais
     porque: O feed é onde a marca aparece todo dia. Com identidade clara, cada post sai mais rápido.
 
-faq:
-  - id: identidade-prazo
-    pergunta: Quanto tempo leva uma identidade visual?
-    resposta: A primeira versão sai em cerca de 7 dias úteis, em média. Depois, as rodadas de ajuste são semanais até a aprovação. O prazo exato do seu projeto sai na proposta.
-  - id: identidade-ajustes
-    pergunta: E se eu não gostar da primeira versão?
-    resposta: O projeto prevê rodadas de ajuste toda semana. E a direção criativa é aprovada antes de desenhar, para ninguém se surpreender no fim.
-  - id: identidade-arquivos
-    pergunta: Os arquivos ficam comigo?
-    resposta: "Sim. Você recebe todos os arquivos finais, em vetor, PNG e SVG, e pode usar com qualquer fornecedor."
-  - id: identidade-redesign
-    pergunta: Vocês renovam uma marca que já existe?
-    resposta: Sim. Muitas vezes vale manter o que o público já reconhece e modernizar o resto. No Raio-X, a gente mostra o que fica e o que muda.
-
 campanha:
   titulo: Sua marca tem cara de improviso?
   subtitulo: Raio-X gratuito da sua marca, com 30 minutos por vídeo e um PDF com o que trava a sua imagem. Sem compromisso.
-  faq: [identidade-prazo, identidade-ajustes, identidade-arquivos, identidade-redesign]

@@ -1,26 +1,18 @@
-# Landing de campanha geral (/promo/) — PROMPT seção 11.2. Não indexada.
+# Landings de campanha (/promo/ e /promo/<slug>/), não indexadas.
+# 17/10/2026 (dono): sem preços, método e dúvidas; a chamada é o Raio-X gratuito (o formulário fica no topo).
 seo:
   titulo: Raio-X gratuito de marketing | Olorin Digital
-  descricao: "Raio-X gratuito da sua marca: 30 minutos por vídeo e, em até 48 horas, um PDF com o que mais trava o seu resultado. Sem compromisso."
+  descricao: "Raio-X gratuito da sua marca: 30 minutos por vídeo e, em até 48 horas, um PDF com o que mais trava o seu marketing. Sem compromisso."
 etiqueta: Raio-X gratuito
 titulo: Onde a sua marca trava?
 sub: A gente olha anúncio, redes, site e material da marca e mostra, sem rodeio, por onde vale começar. De graça e sem compromisso.
 titulo_sem_diagnostico: Peça seu orçamento.
-sub_sem_diagnostico: Anúncios, redes, marca, site, impressos e dados num time só. Preço aberto e resposta em até 1 dia útil.
-prova_titulo: O time em números
-passos:
-  titulo: Como funciona
-  itens:
-    - titulo: Você conta sobre a marca
-      texto: Preencha o formulário em 2 etapas, com o que você faz e quanto investe hoje. Respondemos em até 1 dia útil.
-    - titulo: Conversamos por 30 minutos
-      texto: Por vídeo, olhamos com você o anúncio, as redes, o site e o material da marca.
-    - titulo: Você recebe o Raio-X
-      texto: Em até 48 horas, um PDF de 1 página com os 3 pontos que mais travam o seu resultado e as 3 ações para começar. Se fizer sentido seguir, a proposta vem com preço aberto.
-preco:
-  titulo: Quanto custa.
-faq_titulo: Dúvidas rápidas
-faq: [faq-tempo-resultado, faq-verba-minima, faq-fidelidade, faq-fora-curitiba]
+sub_sem_diagnostico: Anúncios, redes, marca, site, impressos e dados num time só. Resposta em até 1 dia útil.
+# Itens do banner, com o "O" da Olorin como marcador.
+itens:
+  - 30 minutos por vídeo com quem coordena
+  - Um PDF em até 48 horas com o que mais trava e por onde começar
+  - Gratuito e sem compromisso
 cta_final:
   titulo: Quer saber onde a sua marca trava?
-  botao: Quero meu Raio-X
+  botao: Quero meu Raio-X grátis

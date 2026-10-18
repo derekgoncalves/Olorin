@@ -1,22 +1,22 @@
 # ============================================================
-# SERVIÇO: Dados — fonte ÚNICA da página /servicos/rastreamento-e-relatorio/ e da landing /promo/rastreamento-e-relatorio/.
-# Textos com as confirmações do dono (14/10/2026): Dados sozinho a partir de R$ 1.500/mês, sem taxa de
-# implantação; dados de venda do relatório combinados no início; ferramenta do painel não é citada.
-# Preços iguais a src/content/planos.yml.
+# SERVIÇO: Dados. Fonte ÚNICA da página /servicos/rastreamento-e-relatorio/ e da landing /promo/rastreamento-e-relatorio/.
+# Confirmado pelo dono (14/10/2026): dados de venda do relatório combinados no início; ferramenta do painel não é citada.
+# 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
+# "ferramentas" mostra o que o time configura; a credencial Meta e Google é da Natalia, não da agência.
 # ============================================================
 slug: rastreamento-e-relatorio
 ordem: 6
 nome: Dados
 chip: Dados   # um nome por serviço: igual no menu, no card, no formulário e no enviar.php
 icone: dados
-janela: painel.exe
+janela: painel.olo
 cena: dados
-atualizado: "2026-10-14"
+atualizado: "2026-10-17"
 quem_faz: [natalia-arruda]
 
 seo:
   title: Rastreamento e Relatório de Marketing (GTM e GA4) | Olorin
-  description: Tag Manager, GA4, pixel e conversões para saber quanto entrou e qual foi o retorno. A partir de R$ 1.500/mês, ou incluso na Gestão mensal.
+  description: Tag Manager, GA4, pixel e conversões configurados para saber quanto entrou e qual foi o retorno. Peça o Raio-X gratuito do seu rastreamento.
 
 card:
   titulo: Dados
@@ -24,35 +24,36 @@ card:
   resumo_curto: Medição do site e dos anúncios, com painel.
 
 hero:
-  eyebrow: Rastreamento com Google Tag Manager e GA4 em Curitiba e no Brasil
+  eyebrow: Rastreamento com Google Tag Manager e GA4
   h1: Dados que decidem.
-  sub: Tag Manager, Google Analytics, pixel e conversões configurados direito, e um painel que mostra quanto entrou, quanto saiu e qual foi o retorno. Resultado que dá para medir.
-  preco_rotulo: Sozinho, a partir de
-  preco: R$ 1.500/mês
+  sub: Tag Manager, Google Analytics, pixel e conversões configurados direito, e um painel que mostra quanto entrou, quanto saiu e qual foi o retorno.
+  selos:
+    - Sem multa depois de 3 meses
+    - Relatório todo mês
   janela_linhas:
     - Tag Manager · publicado
     - Conversões · conferidas
     - Painel · atualizado
 
-# Resumo usado na landing /promo/ e no JSON-LD (não aparece com rótulo na página do serviço).
+# Resumo usado na landing /promo/, no llms.txt e no JSON-LD (não aparece com rótulo na página do serviço).
 resposta_curta: >-
   Rastreamento é configurar o Google Tag Manager, o Google Analytics, o pixel da Meta e as conversões para cada
-  venda, matrícula ou contato chegar ao relatório com a sua origem. Sozinho, a partir de R$ 1.500/mês, sem taxa de
-  implantação; na Gestão
-  mensal e no Marketing 360, a configuração já vem na implantação e o relatório vem todo mês.
+  venda, matrícula ou contato chegar ao relatório com a sua origem. A Olorin configura, confere cada evento,
+  monta um painel simples e faz, todo mês, a leitura do que os números pedem.
 
 o_que_e:
   titulo: Número que fecha.
   texto:
     - "Sem rastreamento, o anúncio otimiza no escuro e o relatório mostra o que é fácil de contar, não o que importa. Com ele, cada venda, matrícula ou contato chega com a sua origem: qual anúncio, qual página, qual campanha."
     - A Olorin configura o Google Tag Manager, o Google Analytics 4, o pixel da Meta e as conversões do Google Ads, confere se cada evento chega certo e monta um painel simples, que você abre quando quiser.
-    - "Todo mês, a leitura vira decisão: onde investir mais, o que cortar e o que testar. Resultado que dá pra ver."
+    - "Todo mês, a leitura vira decisão: onde investir mais, o que cortar e o que testar."
   destaques:
     - Conversões conferidas
     - Painel que qualquer pessoa entende
     - Leitura que vira decisão
 
 dores:
+  etiqueta: Este é o seu caso?
   titulo: Número que não fecha?
   texto: Se um destes aparece aí, as suas decisões estão sendo tomadas no escuro.
   itens:
@@ -67,15 +68,15 @@ entregas:
   itens:
     - titulo: Google Tag Manager
       texto: Contêiner organizado, com cada etiqueta nomeada e documentada.
-      frequencia: na implantação
+      frequencia: no início
       icone: site
     - titulo: Google Analytics 4
       texto: "Eventos e conversões que contam venda, matrícula e contato, não só visita."
-      frequencia: na implantação
+      frequencia: no início
       icone: dados
     - titulo: Pixel e conversões
       texto: Pixel da Meta e conversões do Google Ads conferidos, para o anúncio otimizar certo.
-      frequencia: na implantação
+      frequencia: no início
       icone: trafego
     - titulo: Origem de cada contato
       texto: Links etiquetados (UTM) e formulários que guardam de onde a pessoa veio.
@@ -86,63 +87,32 @@ entregas:
       frequencia: acesso a qualquer hora
       icone: estrela
     - titulo: Leitura mensal
-      texto: Os números do mês em linguagem simples e o que muda na próxima rodada. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio).
+      texto: Os números do mês em linguagem simples e o que muda na próxima rodada.
       frequencia: todo mês
       icone: relogio
+
+# Bloco de logos: o que o time configura e lê (arquivos em /assets/img/marcas/<logo>.svg). Sem nome de ferramenta de painel.
+ferramentas:
+  etiqueta: O que a gente configura
+  titulo: Cada número no lugar.
+  texto: As ferramentas que contam o que acontece no site e nos anúncios, configuradas e conferidas uma a uma.
+  itens:
+    - { nome: Google Analytics 4, logo: googleanalytics }
+    - { nome: Google Tag Manager, logo: googletagmanager }
+    - { nome: Search Console, logo: googlesearchconsole }
+    - { nome: Gerenciador de Eventos da Meta, logo: meta }
+    - { nome: Conversões do Google Ads, logo: googleads }
+  credencial:
+    pessoa: natalia-arruda
+    etiqueta: Credencial da especialista
+    titulo: Dados lidos por especialista parceira Meta e Google.
+    nome: Natalia Arruda
+    funcao: Gestora de tráfego parceira Meta e Google
+    logos: [{ nome: Meta, logo: meta }, { nome: Google, logo: google }]
 
 portfolio:
   titulo: Na prática.
   texto: Trabalhos em que a medição mostrou onde estava o resultado.
-
-como_funciona:
-  titulo: Do Raio-X ao painel.
-  etapas:
-    - { nome: Raio-X, texto: "Conferimos o que já existe: etiquetas, pixel, conversões e o caminho até o contato." }
-    - { nome: Plano, texto: "Definimos o que contar (venda, matrícula, contato) e onde cada número vai aparecer." }
-    - { nome: Configuração, texto: "Tag Manager, Analytics, pixel e conversões configurados e testados um a um." }
-    - { nome: Leitura, texto: Painel no ar e leitura mensal do que os números dizem. }
-  prazos:
-    - "Até 30 dias: rastreamento configurado e testado, e o painel no ar."
-    - "Até 60 dias: o primeiro mês completo de dados e o ajuste do que não fechou."
-    - "Até 90 dias: comparação entre meses e as decisões de verba e de página que ela pede."
-
-precisamos:
-  titulo: Para começar, precisamos de
-  itens:
-    - Acesso ao site, ao Google Tag Manager e ao Google Analytics (se não tiver, a gente cria).
-    - Acesso de gestão às contas de anúncio da Meta e do Google.
-    - Os dados de venda combinados com você no início, para o relatório fechar a conta.
-
-para_quem:
-  e:
-    - Quem anuncia e não sabe quanto cada campanha vendeu.
-    - Quem tem site, loja ou página de captação e quer saber de onde vem cada contato.
-    - Quem precisa de números confiáveis para decidir verba e prioridade.
-  nao_e:
-    - Quem quer só um relatório bonito, sem mudar nada a partir dele.
-    - Quem ainda não tem site nem anúncio. Aí o Raio-X gratuito mostra por onde começar.
-
-preco:
-  titulo: Preço aberto.
-  formato: Rastreamento e relatório
-  rotulo: Sozinho, a partir de
-  valor: R$ 1.500/mês
-  detalhe: "Sozinho, sem taxa de implantação, para quem já tem site e anúncio e quer medir certo. Na Gestão mensal (R$ 3.000/mês) e no Marketing 360 (a partir de R$ 5.000/mês), a configuração entra na implantação e o relatório vem todo mês."
-  contrato: Contrato mínimo de 3 meses. Depois, mês a mês com aviso de 30 dias, sem multa.
-  inclui:
-    - Tag Manager, Analytics, pixel e conversões
-    - Conferência de cada evento
-    - Painel de acompanhamento
-    - Leitura mensal com o que muda
-  nao_inclui:
-    - Gestão das campanhas (no [tráfego pago](/servicos/trafego-pago/))
-    - Ferramenta paga de painel, se você quiser uma
-    - Mudanças grandes no site (à parte)
-  schema:
-    valor: "1500"
-    minimo: true
-    unidade: MON
-    descricao: Rastreamento (Google Tag Manager, GA4, pixel e conversões) e relatório mensal a partir de R$ 1.500 por mês.
 
 combina_com:
   - slug: trafego-pago
@@ -150,27 +120,6 @@ combina_com:
   - slug: site-e-loja-virtual
     porque: Um site feito com a medição desde o primeiro dia já nasce contando contato e venda.
 
-faq:
-  - id: rastreamento-o-que-e
-    pergunta: O que é rastreamento?
-    resposta: "É configurar as ferramentas que contam o que acontece no site e nos anúncios (Google Tag Manager, Google Analytics, pixel da Meta e conversões), para cada venda, matrícula ou contato chegar ao relatório com a sua origem."
-  - id: rastreamento-quanto-custa
-    pergunta: Quanto custa?
-    resposta: "Sozinho, a partir de R$ 1.500/mês, sem taxa de implantação e com contrato mínimo de 3 meses. Na Gestão mensal e no Marketing 360, a configuração já vem na implantação e o relatório vem todo mês."
-  - id: rastreamento-gestao-mensal
-    pergunta: Já vem na Gestão mensal?
-    resposta: "Sim. Na Gestão mensal e no Marketing 360, o rastreamento é configurado na implantação, e o relatório mensal faz parte do plano."
-  - id: rastreamento-ja-tenho
-    pergunta: Já tenho Google Analytics. Preciso disso?
-    resposta: Talvez não do zero. No Raio-X conferimos o que já está instalado e se os números fecham. Muitas vezes o ajuste é pequeno.
-  - id: rastreamento-relatorio
-    pergunta: Como é o relatório?
-    resposta: "Uma página com quanto foi investido, quanto voltou e o que muda na próxima rodada, em linguagem simples. Veja um [exemplo ilustrativo](/como-trabalhamos/#relatorio)."
-  - id: rastreamento-fora-curitiba
-    pergunta: Vocês atendem fora de Curitiba?
-    resposta: "Sim. A Olorin atende todo o Brasil a distância: WhatsApp, reunião por vídeo e aprovação por e-mail."
-
 campanha:
   titulo: Pare de decidir no escuro.
   subtitulo: Raio-X gratuito do seu rastreamento, com 30 minutos por vídeo e um PDF com o que está contando errado. Sem compromisso.
-  faq: [rastreamento-o-que-e, rastreamento-quanto-custa, rastreamento-ja-tenho, rastreamento-fora-curitiba]

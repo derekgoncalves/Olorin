@@ -10,7 +10,9 @@ eleventyComputed:
   titulo: "{{ conteudo.paginas.servicos.seo.titulo }}"
   descricao: "{{ conteudo.paginas.servicos.seo.descricao }}"
 ---
-{#- Hub de serviços — textos em src/content/paginas/servicos.yml; cards em src/content/servicos/. -#}
+{#- Hub de serviços — textos em src/content/paginas/servicos.yml; cards em src/content/servicos/.
+    Ordem (17/10/2026): banner com o botão do Raio-X, barra de logos, cards, "Este é o seu caso?", combinações
+    (sem plano nem preço), Quem somos e o formulário do Raio-X. -#}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set h = conteudo.paginas.servicos -%}
 <section class="o-pagina-topo o-servico-topo o-servico-topo--hub o-ctx-preto" data-secao="hub-hero">
@@ -21,15 +23,7 @@ eleventyComputed:
 			<p class="o-etiqueta">{{ h.etiqueta }}</p>
 			<h1 class="o-pagina-topo__titulo">{{ h.titulo }}</h1>
 			<p class="o-pagina-topo__sub">{{ h.texto }}</p>
-			<form class="o-atalho" action="#orcamento" method="get" data-o-atalho="form-fim" novalidate>
-				<label class="o-atalho__rotulo" for="atalho-whatsapp">{{ conteudo.home.hero.atalho.rotulo }}</label>
-				<div class="o-atalho__linha">
-					<input class="o-atalho__campo" id="atalho-whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="{{ conteudo.home.hero.atalho.placeholder }}" aria-describedby="atalho-ajuda">
-					<button class="o-btn o-btn--verde o-atalho__botao" id="cta-diagnostico-hub" type="submit">{{ conteudo.home.hero.atalho.botao }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></button>
-				</div>
-				<p class="o-atalho__ajuda" id="atalho-ajuda"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ conteudo.home.hero.atalho.ajuda }}</p>
-			</form>
-			<p class="o-hero__wa"><a class="o-link-wa" href="{{ waLink('servicos-hero') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ conteudo.home.hero.link_whatsapp }}</a></p>
+			<div class="o-hero__acoes">{{ ui.botaoRaioX("cta-raio-x-servicos-banner", classe="o-btn--grande") }}</div>
 		</div>
 		<div class="o-janela o-cena o-cena--hub" aria-hidden="true" data-o-cena>
 			<div class="o-janela__barra"><span class="o-janela__titulo">{{ h.janela }}</span><span class="o-janela__ctrl"></span></div>
@@ -41,12 +35,14 @@ eleventyComputed:
 				</ul>
 			</div>
 			<ul class="o-cena__linhas">
-				<li>Um time · seis frentes</li>
-				<li>Preço aberto · em todas</li>
+			{%- for linha in h.janela_linhas %}<li>{{ linha }}</li>{% endfor %}
 			</ul>
 		</div>
 	</div>
 </section>
+
+{#- Barra de logos de clientes, logo abaixo do banner -#}
+{% include "secoes/faixa-clientes.njk" %}
 
 <section class="o-sec o-servicos o-servicos--hub o-ctx-branco" id="servicos" data-secao="servicos" aria-labelledby="servicos-titulo">
 	<div class="o-wrap">
@@ -87,7 +83,7 @@ eleventyComputed:
 			</li>
 		{%- endfor %}
 		</ul>
-		<p class="o-escolher__nao-sei">{{ h.escolher.nao_sei }} <a class="o-link-seta" href="#orcamento">Pedir o Raio-X <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></p>
+		<div class="o-escolher__nao-sei"><p>{{ h.escolher.nao_sei }}</p>{{ ui.botaoRaioX("cta-raio-x-servicos-escolher") }}</div>
 	</div>
 </section>
 
@@ -105,17 +101,19 @@ eleventyComputed:
 			<li class="o-combinacao o-janela">
 				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
 				<div class="o-janela__corpo o-combinacao__corpo">
-					<p class="o-combinacao__plano">{{ c.plano }}</p>
+					<p class="o-combinacao__icones" aria-hidden="true">{% for slug in c.servicos %}{% set sv = conteudo.servicoPorSlug[slug] %}{% if sv %}<span class="o-icone o-icone--{{ sv.icone }}"></span>{% endif %}{% endfor %}</p>
 					<h3 class="o-combinacao__nome">{{ c.nome }}</h3>
-					<p class="o-combinacao__preco">{% if c.de %}<span>{{ c.de }}</span> {% endif %}<strong>{{ c.valor }}</strong></p>
 					<p class="o-combinacao__texto">{{ c.texto }}</p>
-					<a class="o-btn o-btn--contorno o-combinacao__botao" href="#orcamento" data-o-plano="{{ c.plano | lower | replace(' ', '-') }}" data-servicos="{{ c.servicos | join(' ') }}">{{ h.combinacoes.botao }}<span class="o-sr"> ({{ c.plano }})</span></a>
+					{#- data-o-plano vazio: o clique só pré-marca as frentes no formulário do Raio-X (src/scripts/modulos/interacoes.js). -#}
+					<a class="o-btn o-btn--contorno o-combinacao__botao" href="#raio-x" data-o-plano="" data-servicos="{{ c.servicos | join(' ') }}" data-cta="hub-combinacao-{{ loop.index }}">{{ h.combinacoes.botao }}<span class="o-sr"> ({{ c.nome }})</span></a>
 				</div>
 			</li>
 		{%- endfor %}
 		</ul>
-		<p class="o-combinacoes__mais"><span class="o-planos__nota">{{ conteudo.planos.nota }}</span> <a class="o-link-seta" href="{{ h.combinacoes.link.url }}" data-cta="hub-planos">{{ h.combinacoes.link.texto }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></p>
 	</div>
 </section>
+
+{#- Quem somos, antes do formulário do Raio-X -#}
+{% include "secoes/equipe.njk" %}
 
 {% include "secoes/orcamento.njk" %}

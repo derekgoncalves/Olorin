@@ -1,4 +1,5 @@
-// Dados calculados das páginas de serviço: trilha (BreadcrumbList), Service e FAQPage no JSON-LD.
+// Dados calculados das páginas de serviço: trilha (BreadcrumbList) e Service no JSON-LD.
+// Sem FAQPage desde 17/10/2026: as dúvidas saíram das páginas de serviço (ficam só na página Sobre).
 export default {
 	eleventyComputed: {
 		migalhas: (data) =>
@@ -10,6 +11,5 @@ export default {
 					]
 				: undefined,
 		servicoSchema: (data) => data.servico,
-		faqSchema: (data) => (data.servico ? data.servico.faq : undefined),
 	},
 };

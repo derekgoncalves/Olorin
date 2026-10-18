@@ -1,22 +1,21 @@
 # ============================================================
 # SERVIÇO: Redes sociais. Fonte ÚNICA de /servicos/redes-sociais/ e /promo/redes-sociais/.
 # Texto proposto vai ao ar; "# PENDENTE:" marca o que o dono ainda precisa confirmar.
-# Confirmado pelo dono (14/10/2026): avulso a partir de 8 criativos por mês (feed com versão para stories), com implantação de R$ 1.000
-# e contrato mínimo de 3 meses; Gestão mensal com 8 posts no feed e 4 criativos de anúncio por mês.
+# 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
 # ============================================================
 slug: redes-sociais
 ordem: 2
 nome: Redes sociais
 chip: Redes sociais
 icone: redes
-janela: feed.exe
+janela: feed.olo
 cena: redes
-atualizado: "2026-10-14"
+atualizado: "2026-10-17"
 quem_faz: [vinicius-mafra, derek-goncalves]
 
 seo:
-  title: Gestão de Redes Sociais em Curitiba | Olorin Digital
-  description: Calendário, posts, Reels e legendas com a cara da sua marca, feitos pelo mesmo time do anúncio. A partir de R$ 1.500/mês.
+  title: Gestão de Redes Sociais | Olorin Digital
+  description: Calendário, posts, Reels e legendas com a cara da sua marca, feitos pelo mesmo time do anúncio. Peça o Raio-X gratuito do seu perfil.
 
 card:
   titulo: Redes sociais
@@ -24,11 +23,12 @@ card:
   resumo_curto: Posts, Reels e legendas com a cara da marca.
 
 hero:
-  eyebrow: Gestão de redes sociais em Curitiba e no Brasil
+  eyebrow: Gestão de redes sociais
   h1: Feed com cara de marca.
   sub: Posts, Reels e legendas feitos pelo mesmo time que cria os seus anúncios. Quem clica no anúncio e abre o seu perfil encontra a mesma marca.
-  preco_rotulo: A partir de
-  preco: R$ 1.500/mês
+  selos:
+    - Sem multa depois de 3 meses
+    - Relatório todo mês
   janela_linhas:
     - Calendário do mês · aprovado
     - Post, Reels e legenda · no ar
@@ -36,9 +36,8 @@ hero:
 
 resposta_curta: >-
   Gestão de redes sociais é planejar, criar e publicar posts, Reels e legendas com a mesma cara do seu
-  anúncio e do seu site. Sozinha, sai a partir de R$ 1.500/mês, com a partir de 8 criativos por mês;
-  com o tráfego pago junto, na Gestão mensal, R$ 3.000/mês, com 8 posts no feed e 4 criativos de anúncio por
-  mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses.
+  anúncio e do seu site. A Olorin monta o calendário do mês com você, cria as artes e as legendas, publica no
+  dia certo e mostra, todo mês, o que funcionou e o que muda.
 
 o_que_e:
   titulo: Perfil que confirma a promessa.
@@ -52,25 +51,26 @@ o_que_e:
     - O mesmo time do anúncio
 
 dores:
+  etiqueta: Este é o seu caso?
   titulo: Perfil parado?
   texto: Se um destes aparece aí, o seu feed está trabalhando contra você.
   itens:
-    - { titulo: Posta quando sobra tempo, texto: O perfil passa semanas parado e volta do nada com três posts no mesmo dia. }
+    - { titulo: Posta quando sobra tempo, texto: O perfil passa semanas parado e volta do nada com vários posts no mesmo dia. }
     - { titulo: Cada post de um jeito, texto: "Cada arte sai com uma cor, uma letra e um jeito de falar." }
     - { titulo: Feed contra o anúncio, texto: "O anúncio leva a pessoa ao perfil, e o feed parece de outra empresa." }
     - { titulo: Ninguém conversa, texto: "Um fornecedor faz a arte, outro a legenda, outro o anúncio, e cada um puxa para um lado." }
 
 entregas:
   titulo: O que pode entrar.
-  texto: Do plano do mês ao relatório, com a sua aprovação em cada etapa.
+  texto: Do calendário do mês ao relatório, com a sua aprovação em cada etapa.
   itens:
     - titulo: Calendário editorial
-      texto: O plano do que vai ao ar no mês, com tema, formato e data de cada publicação.
+      texto: O roteiro do que vai ao ar no mês, com tema, formato e data de cada publicação.
       frequencia: todo mês
       icone: relogio
     - titulo: Criativos para o feed
-      texto: Posts, carrosséis e vídeos curtos feitos pelo time de design da Olorin, com a cara da sua marca. O formato de cada um é combinado com você.
-      frequencia: a partir de 8 por mês
+      texto: Posts, carrosséis e vídeos curtos feitos pelo time de design da Olorin, com a cara da sua marca. A quantidade e o formato são combinados com você.
+      frequencia: todo mês
       icone: marca
     - titulo: Versão para stories
       texto: Cada post do feed ganha a versão no formato dos stories, para a marca aparecer nos dois lugares.
@@ -93,77 +93,12 @@ portfolio:
   titulo: Feed de verdade.
   texto: Conteúdo, campanha e direção de arte para redes sociais.
 
-como_funciona:
-  titulo: Do plano ao post.
-  etapas:
-    - { nome: Raio-X, texto: "Olhamos o seu perfil, os concorrentes e o que o anúncio promete." }
-    - { nome: Direção, texto: "Definimos o tom, os temas e o calendário do mês. Você aprova antes de produzir." }
-    - { nome: Execução, texto: "Artes e legendas prontas, aprovadas e publicadas no dia certo." }
-    - { nome: Leitura, texto: "Todo mês, o que funcionou e o que muda no próximo calendário." }
-  prazos:
-    - "Até 30 dias: tom de voz definido, primeiro calendário aprovado e o perfil em dia."
-    - "Até 60 dias: formatos ajustados pelo que mais engajou e trouxe contato."
-    - "Até 90 dias: feed com cara de marca e um ritmo que o público reconhece."
-
-precisamos:
-  titulo: Para começar, precisamos de
-  itens:
-    - Acesso às contas do Instagram e do Facebook (ou do LinkedIn, se for o caso).
-    - Logo, fotos e materiais da marca que já existem.
-    - Uma pessoa do seu lado para aprovar o calendário e as artes.
-
-para_quem:
-  e:
-    - Quem anuncia e quer um perfil que confirme o que o anúncio promete.
-    - Quem não tem tempo para postar e prefere deixar plano, arte e legenda com um time.
-    - Quem quer anúncio e conteúdo com o mesmo time, em vez de um fornecedor para cada coisa.
-  nao_e:
-    - Quem quer só número de seguidor, sem objetivo por trás.
-    - Quem quer viralizar do dia para a noite.
-
-preco:
-  titulo: Preço aberto.
-  formato: Gestão de redes sociais
-  rotulo: A partir de
-  valor: R$ 1.500/mês
-  detalhe: "Sozinha, a partir de 8 criativos por mês. Com o tráfego pago junto, na Gestão mensal: R$ 3.000/mês, com 8 posts no feed e 4 criativos de anúncio por mês. Nos dois formatos, implantação única de R$ 1.000 e contrato mínimo de 3 meses."
-  contrato: Depois de 3 meses, segue mês a mês com aviso de 30 dias, sem multa.
-  inclui:
-    - Calendário editorial do mês
-    - Criativos, versão para stories e legendas
-    - Publicação e agendamento
-    - Leitura mensal do que funcionou
-  nao_inclui:
-    - Verba para impulsionar posts (vai direto para a plataforma)
-    - Ensaio fotográfico e gravação de vídeo
-    - Gestão de anúncios (no [Tráfego pago](/servicos/trafego-pago/) ou na Gestão mensal)
-  schema:
-    valor: "1500"
-    minimo: true
-    unidade: MON
-    descricao: Gestão de redes sociais a partir de R$ 1.500 por mês, com calendário, a partir de 8 criativos por mês e legendas. Implantação de R$ 1.000 e contrato mínimo de 3 meses.
-
 combina_com:
   - slug: trafego-pago
-    porque: O feed ganha gente nova e o anúncio ganha um perfil que confirma a promessa. Na Gestão mensal, os dois andam juntos.
+    porque: O feed ganha gente nova e o anúncio ganha um perfil que confirma a promessa. Com o mesmo time, os dois andam juntos.
   - slug: identidade-visual
     porque: Com uma identidade clara, cada post sai mais rápido e com a mesma cara.
-
-faq:
-  - id: redes-quantos-posts
-    pergunta: Quantos posts entram por mês?
-    resposta: "No serviço avulso, a partir de R$ 1.500/mês, são a partir de 8 criativos por mês, e o formato de cada um é combinado na proposta. Na Gestão mensal, por R$ 3.000/mês, 8 posts no feed e 4 criativos de anúncio por mês. Nos dois, implantação única de R$ 1.000 e contrato mínimo de 3 meses."
-  - id: redes-aprovacao
-    pergunta: Eu aprovo antes de publicar?
-    resposta: Sempre. O calendário do mês e cada arte passam pela sua aprovação antes de irem ao ar.
-  - id: redes-fotos
-    pergunta: Vocês fazem fotos e vídeos?
-    resposta: As artes, as legendas e a edição são feitas pelo time. Ensaio fotográfico e gravação ficam à parte e podem ser orçados junto.
-  - id: redes-quais-redes
-    pergunta: Em quais redes vocês trabalham?
-    resposta: Instagram e Facebook na maioria dos casos, e LinkedIn para marcas que vendem para outras empresas. No Raio-X, a gente indica onde vale estar.
 
 campanha:
   titulo: Seu feed está espantando cliente?
   subtitulo: Raio-X gratuito do seu perfil, com 30 minutos por vídeo e um PDF com o que trava o seu conteúdo. Sem compromisso.
-  faq: [redes-quantos-posts, redes-aprovacao, redes-fotos, redes-quais-redes]
