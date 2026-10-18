@@ -2,8 +2,10 @@
      Textos em src/content/home.yml → orcamento (iguais em todas as páginas). Todos os botões do Raio-X
      levam a #raio-x; a âncora #orcamento continua valendo para links antigos (e para o enviar.php).
      Variáveis opcionais antes do include: modo_form, servicoForm, nomeServicoForm, origemWaForm.
-     A chapa de raio-x (imagem real tratada, ver src/assets/manifest-home.json) acende com flashes, uma
-     linha de varredura passa e a logo da Olorin brilha na tela do celular; tudo em CSS (orcamento.css). -#}
+     A mão do raio-x (imagem real com canal alfa, ver src/assets/manifest-home.json) faz parte do fundo
+     violeta: o braço entra pela borda esquerda da tela. A logo da Olorin fica na tela do celular, girada
+     como ele; a mão acende com flashes, a logo liga e brilha e uma linha de varredura passa na tela;
+     tudo em CSS (orcamento.css). -#}
 {%- from "components/formulario.njk" import formulario with context -%}
 {%- set t = conteudo.home.orcamento -%}
 <section class="o-sec o-orcamento o-ctx-violeta" id="raio-x" data-secao="orcamento" aria-labelledby="raio-x-titulo">
@@ -13,14 +15,10 @@
 		<h2 class="o-titulo o-titulo--gg o-orcamento__titulo" id="raio-x-titulo">{{ t.titulo }}</h2>
 		<div class="o-orcamento__grade">
 			<div class="o-orcamento__lado">
-				<figure class="o-janela o-rx" aria-hidden="true">
-					<div class="o-janela__barra"><span class="o-janela__titulo">{{ t.janela }}</span><span class="o-janela__ctrl"></span></div>
-					<div class="o-rx__chapa o-visor">
-						{{ imagem(imagens, "raio-x-mao", { alt: "", sizes: "(max-width: 767px) 42vw, 420px", classe: "o-rx__img" }) | safe }}
-						<span class="o-rx__tela"><svg class="o-rx__o" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><svg class="o-rx__logo" viewBox="0 0 731 125.6" focusable="false"><use href="#s-logo"></use></svg></span>
-						<span class="o-rx__varredura"></span>
-					</div>
-				</figure>
+				<div class="o-rx" aria-hidden="true">
+					{{ imagem(imagens, "raio-x-mao-fundo", { alt: "", sizes: "(max-width: 960px) 104vw, 47vw", classe: "o-rx__img" }) | safe }}
+					<span class="o-rx__tela"><svg class="o-rx__o" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><svg class="o-rx__logo" viewBox="0 0 731 125.6" focusable="false"><use href="#s-logo"></use></svg></span>
+				</div>
 				<ol class="o-orcamento__passos">
 				{%- for p in t.passos %}
 					<li><span class="o-icone o-icone--o" aria-hidden="true"></span>{{ p }}</li>

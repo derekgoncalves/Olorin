@@ -1,5 +1,5 @@
-/* Seção final RAIO X DA OLORIN (secoes/orcamento.njk, violeta): título grande, a chapa de raio-x, os 3
-   passos com o "O" da marca e o formulário. No celular a chapa fica pequena, ao lado dos passos. */
+/* Seção final RAIO X DA OLORIN (secoes/orcamento.njk, violeta): título grande, a mão do raio-x no
+   fundo, os 3 passos com o "O" da marca e o formulário. */
 .o-orcamento {
 	overflow: hidden;
 	background-image:
@@ -24,6 +24,7 @@
 }
 .o-orcamento__lado {
 	display: grid;
+	grid-template-columns: minmax(0, 1fr);
 	gap: clamp(24px, 3vw, 36px);
 }
 .o-orcamento__passos {
@@ -46,85 +47,75 @@
 	--tam: clamp(24px, 2.2vw, 32px);
 }
 
-/* Chapa de raio-x (raio-x real tratado na paleta): a logo acende na tela do celular. */
+/* Mão do raio-x no fundo violeta (imagem com canal alfa: o preto do filme já é transparente e as bordas
+   esmaecem). Fica entre o título e os passos, sem caixa; a margem esquerda negativa leva a borda da
+   imagem até a borda da tela, de onde o braço entra. Topo e base da imagem são vazios: margens negativas. */
 .o-rx {
-	--janela-borda: var(--preto);
-	--janela-barra: var(--preto);
-	--janela-tinta: var(--branco);
-	--janela-corpo: var(--preto);
-	--janela-sombra: rgba(20, 4, 60, 0.5);
-	max-width: 440px;
-	margin: 0;
-}
-.o-rx__chapa {
-	--visor-cor: rgba(226, 214, 255, 0.75);
-	--visor-t: 18px;
+	--rx-l: min(46.5vw, 760px);
 	position: relative;
-	overflow: hidden;
-	aspect-ratio: 1;
+	width: var(--rx-l);
+	aspect-ratio: 435 / 306;
+	margin: calc(var(--rx-l) * -0.07) 0 calc(var(--rx-l) * -0.05) calc(-1 * max(var(--margem), (100vw - var(--largura-max)) / 2));
+	pointer-events: none;
 }
-.o-rx__chapa picture,
+.o-rx picture,
 .o-rx__img {
 	display: block;
 	width: 100%;
 	height: 100%;
 }
-/* cantos do visor (.o-visor, em hero.css) por cima da chapa */
-.o-rx__chapa::before {
-	inset: 12px;
-	z-index: 3;
-}
-/* linhas de monitor antigo */
-.o-rx__chapa::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	z-index: 2;
-	pointer-events: none;
-	background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.24) 0 1px, transparent 1px 3px);
-}
-/* Tela do celular (posição medida na imagem de 423 px): vidro escuro, o "O" e a logo em verde. */
+/* Tela do celular, medida na imagem (bordas do aparelho ajustadas por retas): centro em 64,84% x 56,01%,
+   19,77% x 43,14% da imagem, girada 4,1° (horário) como o celular. Tudo em % da imagem, que tem
+   proporção fixa: a tela acompanha o celular em qualquer largura. Vidro escuro, o "O" e a logo em verde. */
 .o-rx__tela {
 	position: absolute;
-	left: 55.4%;
-	top: 26.8%;
-	z-index: 1;
+	left: 54.95%;
+	top: 34.44%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 9%;
-	width: 24.6%;
-	height: 37%;
-	border-radius: 8% / 5%;
-	background: radial-gradient(circle at 50% 46%, rgba(236, 255, 54, 0.2), rgba(0, 0, 0, 0.84) 68%);
-	box-shadow: 0 0 22px rgba(236, 255, 54, 0.22);
+	width: 19.77%;
+	height: 43.14%;
+	overflow: hidden;
+	border-radius: 10% / 6.5%;
+	background: radial-gradient(circle at 50% 44%, rgba(236, 255, 54, 0.2), rgba(10, 3, 30, 0.92) 70%);
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3), 0 0 18px rgba(236, 255, 54, 0.16);
 	color: var(--verde);
+	transform: rotate(4.1deg);
+}
+/* linhas de monitor antigo e a linha de varredura, só na tela */
+.o-rx__tela::before,
+.o-rx__tela::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+.o-rx__tela::before {
+	background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.26) 0 1px, transparent 1px 3px);
+}
+.o-rx__tela::after {
+	background: linear-gradient(180deg, transparent 0 76%, rgba(236, 255, 54, 0.08) 92%, rgba(246, 255, 200, 0.55) 99%, transparent 100%);
+	opacity: 0;
+	transform: translateY(-100%);
 }
 .o-rx__o {
-	width: 60%;
+	width: 56%;
 	height: auto;
-	filter: drop-shadow(0 0 6px rgba(236, 255, 54, 0.75));
+	filter: drop-shadow(0 0 5px rgba(236, 255, 54, 0.7));
 }
 .o-rx__logo {
 	width: 76%;
 	height: auto;
-}
-.o-rx__varredura {
-	position: absolute;
-	inset: 0;
-	z-index: 2;
-	pointer-events: none;
-	background: linear-gradient(180deg, transparent 0 80%, rgba(217, 200, 255, 0.1) 94%, rgba(240, 234, 255, 0.65) 99.5%, transparent 100%);
-	opacity: 0;
-	transform: translateY(-100%);
+	margin-top: 16%;
 }
 
-/* Movimento: a chapa acende com 2 flashes (menos de 3 por segundo), a logo liga na tela e brilha, e a
-   linha de varredura desce. Começa quando a janela entra na tela (.is-in, movimento.js); sem esse JS,
-   começa ao carregar. Parado (preferência do sistema ou botão de pausa): a chapa fica acesa, sem linha. */
+/* Movimento: a mão acende com 2 flashes (menos de 3 por segundo), a logo liga na tela e brilha, e a
+   linha de varredura desce na tela. Começa quando o título da seção entra na tela (.is-in, movimento.js;
+   título acima da dobra: ao carregar). Sem JS, parado (preferência do sistema) ou com o botão de pausa:
+   a mão fica acesa, com a logo na tela e sem linha. */
 @media (prefers-reduced-motion: no-preference) {
-	html:not(.o-pausado) .o-rx:is(.is-in, :not(.o-mov-jan)) {
+	html.js:not(.o-pausado) .o-orcamento:has(.o-orcamento__titulo:is(.is-in, :not(.o-mov-titulo))) {
 		& .o-rx__img {
 			animation: o-rx-luz 9s linear 0.5s infinite both;
 		}
@@ -134,20 +125,20 @@
 		& .o-rx__o {
 			animation: o-rx-brilho 1.6s ease-in-out infinite alternate;
 		}
-		& .o-rx__varredura {
+		& .o-rx__tela::after {
 			opacity: 1;
 			animation: o-varredura 3s cubic-bezier(0.45, 0, 0.55, 1) 1.8s infinite backwards;
 		}
 	}
 }
 @keyframes o-rx-luz {
-	0% { opacity: 0.06; filter: brightness(0.6); }
-	4% { opacity: 1; filter: brightness(2.2) contrast(1.2); }
-	7% { opacity: 0.22; filter: brightness(0.8); }
-	11% { opacity: 1; filter: brightness(1.7); }
+	0% { opacity: 0.12; filter: brightness(0.7); }
+	4% { opacity: 1; filter: brightness(1.6); }
+	7% { opacity: 0.3; filter: brightness(0.85); }
+	11% { opacity: 1; filter: brightness(1.35); }
 	15%,
 	93% { opacity: 1; filter: none; }
-	100% { opacity: 0.06; filter: brightness(0.6); }
+	100% { opacity: 0.12; filter: brightness(0.7); }
 }
 @keyframes o-rx-tela {
 	0%,
@@ -159,27 +150,16 @@
 	100% { opacity: 0; }
 }
 @keyframes o-rx-brilho {
-	to { filter: drop-shadow(0 0 14px rgba(236, 255, 54, 1)); }
+	to { filter: drop-shadow(0 0 12px rgba(236, 255, 54, 1)); }
 }
 
+/* Uma coluna: a mão ocupa a largura da tela entre o título e os passos. */
 @media (max-width: 960px) {
 	.o-orcamento__lado {
-		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
-		align-items: center;
 		gap: 18px;
 	}
 	.o-rx {
-		box-shadow: 5px 5px 0 var(--janela-sombra);
-	}
-	.o-rx .o-janela__barra {
-		--barra-x: 8px;
-		--ctrl-l: 26px;
-	}
-	.o-rx__chapa {
-		--visor-t: 12px;
-	}
-	.o-rx__chapa::before {
-		inset: 6px;
+		--rx-l: min(104vw, 620px);
 	}
 	.o-orcamento__passos li {
 		gap: 10px;
