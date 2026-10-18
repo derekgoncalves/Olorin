@@ -1,19 +1,23 @@
 # Página /quem-somos/ e perfis /quem-somos/<pessoa>/ — só fatos (equipe.yml e claims.json).
+# (O nome do arquivo é antigo: a página /sobre/, com método e dúvidas, usa paginas/sobre-metodo.yml.)
+# O formulário do fim (RAIO X DA OLORIN) é igual em todas as páginas (home.yml → orcamento).
 seo:
-  titulo: Quem somos | Olorin Digital, agência em Curitiba
-  descricao: Conheça quem coordena anúncios, redes, marca, site, impressos e dados na Olorin. De Curitiba para todo o Brasil, para organizações de todo tipo e tamanho.
+  titulo: Quem somos | Olorin Digital, agência de marketing digital
+  descricao: Conheça quem coordena anúncios, redes, marca, site, impressos e dados na Olorin Digital, para organizações de todo tipo e tamanho.
 etiqueta: Quem somos
 titulo: Um time inteiro, do clique ao cliente.
-sub: A Olorin Digital é uma agência de marketing digital de Curitiba. Faz anúncios, redes, marca, site, impressos e dados para organizações de todo tipo e tamanho, do Brasil inteiro.
+sub: A Olorin Digital é uma agência de marketing digital. Faz anúncios, redes, marca, site, impressos e dados para organizações de todo tipo e tamanho.
+whatsapp: Falar com a equipe no WhatsApp
 dica_pilha: Passe o mouse ou toque para ver cada perfil.
 historia:
   etiqueta: Por que a Olorin existe
   titulo: Tudo no mesmo time.
   paragrafos:
     - "A Olorin nasceu para juntar o que quase sempre vive separado: estratégia, anúncio, conteúdo, arte, site e impresso. Quando cada parte fica com um fornecedor diferente, a marca fala várias línguas e ninguém sabe dizer quanto cada real trouxe de volta."
-    - Aqui, cada frente tem alguém que coordena e responde por ela, e todas conversam entre si. O preço é aberto, o relatório é fácil de entender e não prometemos o que o número não sustenta.
-    - "Seja um negócio de bairro, uma escola com várias unidades ou uma indústria, o jeito de trabalhar é o mesmo. Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 2 milhões em verba de anúncio."
-  apoio: Da menor à maior organização, resultado que dá pra ver.
+    - Aqui, cada frente tem alguém que coordena e responde por ela, e todas conversam entre si. O relatório é fácil de entender e não prometemos o que o número não sustenta.
+    # Números do time informados pelo dono (claims.json; verba gerida: "+ de R$ 5M" na lista de 17/10/2026)
+    - "Seja um negócio de bairro, uma escola com várias unidades ou uma indústria, o jeito de trabalhar é o mesmo. Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 5 milhões em verba de anúncio."
+  apoio: Da menor à maior organização, do clique ao cliente.
   educacao:
     texto: "Instituições de ensino têm uma frente só delas: a Olorin Educação, para encher turma no calendário certo."
     link: { texto: Conhecer a Olorin Educação, url: /educacao/ }
@@ -25,18 +29,18 @@ jeito:
   etiqueta: O nosso jeito
   titulo: Combinado não sai caro.
   itens:
-    - { titulo: Preço aberto, texto: Você sabe quanto vai pagar antes de falar com a gente. Está tudo na página de planos. }
+    - { titulo: Raio-X antes de tudo, texto: "Antes de qualquer proposta, a gente olha o que você já tem: anúncio, redes, site e material da marca. De graça e sem compromisso." }
     - { titulo: Fale com quem coordena, texto: Cada frente tem uma pessoa que responde por ela. Nada de recado perdido no caminho. }
     - { titulo: Número que se entende, texto: "Relatório em linguagem simples: quanto entrou, quanto saiu e o que muda." }
     - { titulo: Sem promessa vazia, texto: Não garantimos o que o número não sustenta. Mostramos o que dá para medir. }
 remoto:
-  etiqueta: Onde estamos
-  titulo: De Curitiba para o Brasil.
+  etiqueta: Como atendemos
+  titulo: Longe só no mapa.
   itens:
-    - A maioria dos clientes é de fora de Curitiba. O processo foi feito para funcionar a distância.
+    - O processo foi feito para funcionar a distância, esteja a sua marca onde estiver.
     - Conversa pelo WhatsApp, reunião por vídeo, aprovação por e-mail e arquivos entregues pela internet.
     - O Derek é o seu primeiro contato e coordena a sua conta no dia a dia.
-    - Na Gestão mensal, Natália e Vinicius entram na primeira reunião. No Marketing 360, estão em todas as reuniões semanais.
+    - Natalia e Vinícius entram já na primeira reunião, cada um com a frente que coordena.
 contato:
   titulo: Quer conversar com a gente?
   botao: Falar com a equipe no WhatsApp
@@ -51,7 +55,6 @@ perfil:
   trabalhos_texto: Peças e projetos das frentes que coordena.
   trabalhos_link: Ver o portfólio completo
   time: Também no time
-  conversa: Falar com quem coordena
   whatsapp: WhatsApp
   copiar: Copiar link
   copiado: Link copiado

@@ -1,6 +1,8 @@
 # Página /portfolio/: só existe quando houver trabalho em src/content/portfolio.yml.
 # Os trabalhos são do time da Olorin, inclusive projetos que cada um fez para estas marcas
 # antes da agência (como as artes do Behance do Vinícius).
+# Banner com o botão do Raio-X; logo abaixo, a barra de logos (src/content/clientes.yml).
+# O formulário do fim (RAIO X DA OLORIN) é igual em todas as páginas (home.yml → orcamento).
 etiqueta: Portfólio
 titulo: Feito pelo nosso time.
 sub: Projetos do time da Olorin, inclusive o que cada um de nós já fez para estas marcas.
@@ -12,18 +14,6 @@ cases:
 
 portfolio:
   etiqueta: Trabalhos
-  titulo: Dá pra ver a diferença.
+  titulo: Marcas atendidas.
   filtro_todos: Tudo
   botao: Ver mais no Instagram
-
-orcamento:
-  etiqueta: Raio-X Olorin gratuito
-  titulo_1: Quer algo assim
-  titulo_2: para a sua marca?
-  lista:
-    - 30 minutos por vídeo com quem coordena
-    - PDF em até 48 horas com 3 pontos e 3 ações
-    - Proposta com preço aberto, sem compromisso
-  janela: whatsapp.exe
-  wa_etiqueta: Prefere resolver agora?
-  wa_texto: Chama no WhatsApp

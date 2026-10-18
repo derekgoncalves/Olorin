@@ -13,7 +13,7 @@ itens:
     cliente: iZETA
     logo: izeta-cor.svg
     segmento: Educação em saúde
-    janela: cliente_izeta.exe
+    janela: cliente_izeta.olo
     servicos_texto: Sites · Tráfego pago · Redes sociais
     servicos: [site-e-loja-virtual, trafego-pago, redes-sociais]
     edu:
@@ -23,12 +23,12 @@ itens:
           valor: Educação em saúde
       site: https://izeta.com.br/
       site_texto: izeta.com.br
-      logo_largura: 122
+      logo_largura: 121
   - slug: anacleto
     cliente: José Anacleto Abduch
     logo: anacleto-cor.svg
     segmento: Direito Público
-    janela: cliente_anacleto.exe
+    janela: cliente_anacleto.olo
     servicos_texto: Sites · Tráfego pago · Redes sociais
     servicos: [site-e-loja-virtual, trafego-pago, redes-sociais]
     edu:
@@ -38,4 +38,4 @@ itens:
           valor: Direito Público
       site: https://joseanacletoabduch.com.br/
       site_texto: joseanacletoabduch.com.br
-      logo_largura: 301
+      logo_largura: 300
