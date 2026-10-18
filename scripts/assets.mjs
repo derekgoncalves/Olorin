@@ -71,6 +71,7 @@ const FORA_DA_EDUCACAO = [
 	'componentes/acordeao.css', 'componentes/breadcrumb.css', 'componentes/calculadora.css', 'componentes/card-pessoa.css',
 	'componentes/card-servico.css', 'componentes/checklist.css', 'componentes/estilo.css', 'componentes/metodo.css',
 	'componentes/prova.css', 'componentes/resultados.css', 'componentes/sobre.css', 'componentes/portfolio.css',
+	'componentes/orcamento.css',
 ];
 
 /* Fontes pagas da marca. Métricas verticais iguais às das substitutas (medidas no manual)
