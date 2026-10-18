@@ -16,9 +16,9 @@ rotulos:
   mensagem: Quer contar mais alguma coisa?
   mensagem_opcional: (opcional)
 placeholders:
-  nome: Como podemos te chamar
+  nome: Como te chamamos
   whatsapp: (41) 99999-9999
-  site: "@suamarca ou suamarca.com.br"
+  site: "@suamarca ou site"
   mensagem: "Ex.: tenho uma loja virtual e quero vender mais pelo Instagram."
 servicos_extra: Ainda não sei, quero conversar
 investimento_placeholder: Selecione uma faixa

@@ -144,6 +144,30 @@ html:not(.js) .o-faixa__pausar {
 	color: var(--cor-fundo);
 	box-shadow: 0 0 0 10px var(--cor-fundo);
 }
+/* Sem movimento (prefers-reduced-motion): os logos quebram em linhas e ficam todos à vista. */
+@media (prefers-reduced-motion: reduce) {
+	.o-faixa--logos {
+		height: auto;
+		-webkit-mask-image: none;
+		mask-image: none;
+	}
+	.o-faixa--logos .o-faixa__trilho {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: clamp(18px, 2.4vw, 30px) clamp(28px, 4vw, 56px);
+		width: auto;
+		max-width: var(--largura-max);
+		margin-inline: auto;
+		padding-inline: var(--margem);
+		white-space: normal;
+	}
+	.o-faixa--logos .o-faixa__trilho li {
+		padding-right: 0;
+	}
+	.o-faixa.o-faixa--logos .o-faixa__pausar {
+		display: none;
+	}
+}
 /* Credencial da Natalia (Meta e Google), em letra pequena embaixo dos logos. */
 .o-clientes__credencial {
 	display: flex;

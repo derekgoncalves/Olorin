@@ -31,7 +31,7 @@ pessoas:
     bio: Diretor de arte e designer há mais de 10 anos. Já esteve à frente de projetos de influenciadores digitais a produções culturais. Na Olorin, dirige a criação, a identidade visual e a direção de arte.
     descricao: "Vinícius Mafra dirige criação e design na Olorin Digital: mais de 10 anos em direção de arte e identidade visual, de influenciadores a produções culturais."  # meta description do perfil (até 155 caracteres)
     foto: equipe-vinicius
-    janela: vinicius.jpg
+    janela: vinícius.jpg
     emojis: ["🎨", "✏️", "🎬"]
     destaques:
       - { valor: "10+", rotulo: anos em design e direção de arte }

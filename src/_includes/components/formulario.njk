@@ -92,6 +92,5 @@
 		</fieldset>
 		<p class="o-form__status" role="status" aria-live="polite" data-o-status></p>
 	</form>
-	<p class="o-form__alternativa">{{ f.alternativa_wa }} <a href="{{ waLink(o.origemWa or ('form-' + o.posicao), { tipo: 'servico', x: o.nomeServico } if o.nomeServico else {}) }}" target="_blank" rel="noopener">{{ f.alternativa_wa_link }}</a></p>
 </div>
 {% endmacro %}

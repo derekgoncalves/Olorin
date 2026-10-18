@@ -130,6 +130,15 @@ const pecas = [
 		rodape: 'olorin.com.br/sobre',
 	},
 	{
+		arquivo: 'educacao.jpg',
+		tema: 'violeta',
+		janela: 'boletim.olo',
+		etiqueta: 'Olorin Educação · captação de alunos',
+		titulo: 'Do clique',
+		destaque: 'à matrícula.',
+		rodape: 'olorin.com.br/educacao',
+	},
+	{
 		arquivo: 'portfolio.jpg',
 		tema: 'preto',
 		janela: 'portfolio.olo',

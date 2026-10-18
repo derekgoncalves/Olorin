@@ -1,16 +1,24 @@
-{#- Botão flutuante de WhatsApp (só em telas ≥ 1024 px) e barra fixa do celular. -#}
-{%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre"] -%}
+{#- Atalhos fixos. Regra do dono (17/10/2026): o gancho é o Raio-X; o WhatsApp só aparece onde encaixa
+    bem, no Quem somos e nos perfis (modo "sobre"): botão flutuante (telas ≥ 1024 px) e metade da barra do celular. -#}
+{%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre", "educacao"] -%}
+{%- set comWhats = modo == "sobre" -%}
+{%- if comWhats or (cabecalho != "minimo" and modo != "obrigado") %}
 <aside class="o-flutuantes" aria-label="Atalhos de contato">
+	{%- if comWhats %}
 	<a class="o-wa-flutuante" id="cta-whatsapp-flutuante" href="{{ waLink('flutuante') }}" target="_blank" rel="noopener" data-o-flutuante>
 		<span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-wa-flutuante__texto">Falar no WhatsApp</span>
 	</a>
-	{%- if cabecalho != "minimo" %}
-	<nav class="o-barra" aria-label="Contato rápido" data-o-barra>
-		<a id="cta-whatsapp-barra-mobile" href="{{ waLink('barra-mobile') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>WhatsApp</a>
-		<a id="cta-form-barra-mobile" href="{{ '#raio-x' if modo == 'home' else ('#orcamento' if temFormulario else '/#raio-x') }}"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ 'Raio-X grátis' if site.config.OFERTA_DIAGNOSTICO else 'Orçamento' }}</a>
+	{%- endif %}
+	{%- if cabecalho != "minimo" and modo != "obrigado" %}
+	<nav class="o-barra{% if not comWhats %} o-barra--uma{% endif %}" aria-label="Atalho para o Raio-X" data-o-barra>
+		{%- if comWhats %}
+		<a class="o-barra__wa" id="cta-whatsapp-barra-mobile" href="{{ waLink('barra-mobile') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>WhatsApp</a>
+		{%- endif %}
+		<a class="o-barra__raio" id="cta-form-barra-mobile" href="{{ '#raio-x' if temFormulario else '/#raio-x' }}"><span class="o-icone o-icone--raio" aria-hidden="true"></span>{{ 'Raio-X grátis' if site.config.OFERTA_DIAGNOSTICO else 'Orçamento' }}</a>
 	</nav>
 	{%- endif %}
 </aside>
+{%- endif %}
 {%- if site.config.CURSOR_ESTRELA %}
 <div class="o-cursor" aria-hidden="true" data-o-cursor></div>
 {%- endif %}

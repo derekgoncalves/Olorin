@@ -27,8 +27,8 @@ perguntas:
     opcoes:
       - { texto: "R$ 1.500", pontos: 0 }
       - { texto: "R$ 3.000", pontos: 1 }
-      - { texto: "R$ 5.000", pontos: 2 }
-      - { texto: "R$ 10.000 ou mais", pontos: 4 }
+      - { texto: "R$ 5.000", pontos: 3 }
+      - { texto: "R$ 10.000 ou mais", pontos: 5 }
   - id: objetivo
     rotulo: O que você quer mais
     opcoes:

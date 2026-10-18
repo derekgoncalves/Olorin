@@ -43,8 +43,7 @@ cabecalho:
     - { rotulo: Calendário, url: "#calendario" }
     - { rotulo: Cases, url: "#cases" }
     - { rotulo: Equipe, url: "#equipe" }
-  menu_extra:
-    - { rotulo: Raio-X grátis, url: "#raio-x" }
+  menu_extra: []
   voltar: Site da Olorin
   voltar_longo: Voltar para o site da Olorin Digital
   botao: Raio-X grátis
@@ -202,5 +201,6 @@ rodape:
   links_olorin:
     - { rotulo: Site da Olorin, url: / }
     - { rotulo: Serviços, url: /servicos/ }
+    - { rotulo: Portfólio, url: /portfolio/ }
     - { rotulo: Sobre, url: /sobre/ }
     - { rotulo: Quem somos, url: /quem-somos/ }

@@ -29,11 +29,11 @@ itens:
   - { nome: BRAVO Film Festival, logo: bravo.svg, largura: 66, altura: 56 }
   # PENDENTE: logo oficial do Governo do Estado do RS em vetor (hoje vetorizado de uma imagem pequena; sem o "Novas Façanhas")
   - { nome: Governo do Estado do Rio Grande do Sul, logo: governo-rs.svg, largura: 61, altura: 34 }
-  - { nome: Bença, logo: benca.svg, largura: 107, altura: 27 }
+  # Fora da faixa em 17/10/2026, junto com o portfólio (Bença suspensa; as outras três saíram). Voltam se o Vini confirmar.
+  # - { nome: Bença, logo: benca.svg, largura: 107, altura: 27 }
   - { nome: Dr. José Anacleto Abduch Advocacia, logo: anacleto.svg, largura: 175, altura: 28 }
-  - { nome: Viva Sem Veneno, logo: viva-sem-veneno.svg, largura: 50, altura: 56 }
-  # PENDENTE: logo oficial da TORO AUDIO em vetor (hoje redesenhado a partir da arte do Behance do Vini)
-  - { nome: TORO AUDIO, logo: toro-audio.svg, largura: 90, altura: 42 }
-  - { nome: Ambulatório da M.O.D.A, logo: ambulatorio-moda.svg, largura: 122, altura: 34 }
+  # - { nome: Viva Sem Veneno, logo: viva-sem-veneno.svg, largura: 50, altura: 56 }
+  # - { nome: TORO AUDIO, logo: toro-audio.svg, largura: 90, altura: 42 }
+  # - { nome: Ambulatório da M.O.D.A, logo: ambulatorio-moda.svg, largura: 122, altura: 34 }
   - { nome: Centro Sul Shop, logo: centro-sul-shop.svg, largura: 100, altura: 58 }
   - { nome: Cartas para o Futuro, logo: cartas-para-o-futuro.svg, largura: 86, altura: 42 }

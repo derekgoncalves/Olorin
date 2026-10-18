@@ -90,3 +90,15 @@
 	--barra-x: 8px;
 	font-size: 12px;
 }
+
+/* Celular: a foto é estreita; sem os botões decorativos e com letra menor, o nome do arquivo cabe inteiro. */
+@media (max-width: 640px) {
+	.o-pessoa__foto .o-janela__barra {
+		--ctrl-l: 0px;
+		font-size: 10px;
+		letter-spacing: 0.04em;
+	}
+	.o-pessoa__foto .o-janela__ctrl {
+		display: none;
+	}
+}

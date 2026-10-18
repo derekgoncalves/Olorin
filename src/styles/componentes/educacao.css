@@ -1463,8 +1463,8 @@
 	line-height: 1.5;
 }
 .o-edu-ficha__site {
-	margin: 18px 0 0;
-	padding-right: 170px;
+	margin: 18px 0 64px;
+	padding-right: 0;
 	font-size: 15px;
 }
 .o-edu-carimbo--ficha {
@@ -1825,7 +1825,7 @@
 	letter-spacing: 0;
 	text-transform: none;
 }
-.o-tema-educacao .o-barra a:first-child {
+.o-tema-educacao .o-barra__raio {
 	background: var(--branco);
 	color: var(--violeta);
 }
@@ -1833,7 +1833,7 @@
 	border-top-color: var(--branco);
 	background: var(--preto);
 }
-.o-tema-educacao .o-barra.is-alt a:first-child {
+.o-tema-educacao .o-barra.is-alt .o-barra__raio {
 	background: var(--branco);
 	color: var(--preto);
 }

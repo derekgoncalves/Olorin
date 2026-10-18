@@ -80,11 +80,15 @@
 	text-transform: uppercase;
 	text-decoration: none;
 }
-.o-barra a:first-child {
+/* O Raio-X é a chamada de destaque (verde); o WhatsApp, quando aparece, fica ao lado em branco. */
+.o-barra--uma {
+	grid-template-columns: 1fr;
+}
+.o-barra__raio {
 	background: var(--verde);
 	color: var(--preto);
 }
-.o-barra a:last-child {
+.o-barra__wa {
 	color: var(--branco);
 }
 .o-barra .o-icone {
@@ -93,7 +97,7 @@
 .o-barra.is-alt {
 	border-top-color: var(--branco);
 }
-.o-barra.is-alt a:first-child {
+.o-barra.is-alt .o-barra__raio {
 	background: var(--branco);
 	color: var(--preto);
 }

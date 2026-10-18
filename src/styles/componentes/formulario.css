@@ -99,7 +99,7 @@ html.js .o-form[data-etapa="2"] .o-form__etapa[data-etapa="2"] {
 	padding: 0;
 	border: 0;
 }
-.o-campo > label,
+.o-campo > label:not(.o-consentimento),
 .o-campo__rotulo {
 	display: block;
 	margin-bottom: 8px;

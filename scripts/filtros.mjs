@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 const config = JSON.parse(readFileSync('src/_data/site/config.json', 'utf8'));
 
 const MENSAGENS = {
-	padrao: 'Oi! Vim pelo site da Olorin e quero um orçamento.',
+	padrao: 'Oi! Vim pelo site da Olorin e quero saber do Raio-X da minha marca.',
 	diagnostico: 'Oi! Vim pelo site da Olorin e quero o Raio-X gratuito.',
 	servico: 'Oi! Vim pelo site da Olorin e quero falar sobre {x}.',
 	plano: 'Oi! Vim pelo site da Olorin e quero saber mais sobre o plano {x}.',

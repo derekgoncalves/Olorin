@@ -65,8 +65,8 @@ export function iniciarFlutuantes() {
 			aplicar();
 		}).observe(sentinela);
 
-		// Sobre seção violeta ou verde, o botão fica preto (verde nunca encosta no violeta).
-		const coloridas = $$('.o-ctx-violeta, .o-ctx-verde, .o-faixa');
+		// Sobre seção violeta, verde ou branca, o botão fica preto (verde nunca encosta no violeta nem fica no branco).
+		const coloridas = $$('.o-ctx-violeta, .o-ctx-verde, .o-ctx-branco, .o-faixa');
 		const sob = new Set();
 		const io = new IntersectionObserver((entradas) => {
 			entradas.forEach((en) => (en.isIntersecting ? sob.add(en.target) : sob.delete(en.target)));
