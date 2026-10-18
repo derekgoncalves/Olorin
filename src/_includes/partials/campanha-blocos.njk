@@ -1,8 +1,11 @@
 {#- Blocos comuns às landings de campanha (/promo/ e /promo/<slug>/), abaixo do banner com o formulário.
     17/10/2026: barra de logos de clientes e, na landing do serviço, "Este é o seu caso?" com o botão do Raio-X;
-    na landing geral, a chamada final. Sem preço, método e dúvidas. Espera: servicoCampanha (slug ou vazio). -#}
+    na landing geral, a chamada final. Sem preço, método e dúvidas. Espera: servicoCampanha (slug ou vazio).
+    18/10/2026: a barra de logos é o pé do banner preto de cima (mesmo fundo, emendada nele). -#}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set pc = conteudo.paginas.promo -%}
+{%- set faixa_pe = true -%}
+{%- set faixa_ctx = "preto" -%}
 {% include "secoes/faixa-clientes.njk" %}
 {%- set s = conteudo.servicoPorSlug[servicoCampanha] if servicoCampanha else null -%}
 {%- if s and s.dores and s.dores.itens.length %}

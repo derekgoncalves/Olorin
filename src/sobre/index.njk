@@ -41,8 +41,10 @@ eleventyComputed:
 			</ul>
 		</div>
 	</div>
+	{#- Barra de logos de clientes no pé do banner, no mesmo fundo (secoes/faixa-clientes.njk) -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
 </section>
-{% include "secoes/faixa-clientes.njk" %}
 {% include "secoes/metodo.njk" %}
 {% include "secoes/relatorio.njk" %}
 {% include "secoes/duvidas.njk" %}

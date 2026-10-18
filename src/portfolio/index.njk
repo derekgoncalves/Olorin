@@ -29,8 +29,10 @@ migalhas:
 			<div class="o-hero__acoes">{{ ui.botaoRaioX("cta-raio-x-portfolio-hero", classe="o-btn--grande") }}</div>
 		</div>
 	</div>
+	{#- Barra de logos de clientes no pé do banner, no mesmo fundo (secoes/faixa-clientes.njk) -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
 </section>
-{% include "secoes/faixa-clientes.njk" %}
 {%- set casesPortfolio = conteudo.casesTodos or [] -%}
 {%- if casesPortfolio.length %}
 <section class="o-sec o-ctx-preto o-servico-trabalhos o-portfolio-cases" data-secao="portfolio-cases" aria-labelledby="cases-titulo">

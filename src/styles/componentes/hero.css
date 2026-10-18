@@ -1,13 +1,14 @@
 /* Banner da home (17/10/2026): etiqueta, "Do clique / ao cliente." grande, o botão do Raio-X num visor
    e 2 provas. À direita (só a partir de 768 px) o celular com a logo, um cursor que clica, o aviso de
-   cliente novo e a janela relatorio.olo. No celular o banner fica curto e a faixa de logos vem logo abaixo. */
+   cliente novo e a janela relatorio.olo. No pé do banner, no mesmo fundo, a faixa de logos (18/10/2026):
+   banner e faixa ocupam a primeira tela (o conteúdo fica no meio do espaço que sobra acima da faixa).
+   No celular o banner fica curto e a faixa vem logo depois das provas. */
 .o-hero {
 	display: flex;
-	align-items: center;
-	/* a faixa de logos aparece no pé da primeira tela */
-	min-height: calc(100vh - clamp(112px, 10vw, 150px));
-	min-height: calc(100svh - clamp(112px, 10vw, 150px));
-	padding-top: calc(var(--altura-topo) + clamp(40px, 7vh, 88px));
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100svh;
+	padding-top: calc(var(--altura-topo) + clamp(24px, 6vh, 88px));
 	padding-bottom: clamp(56px, 8vh, 96px);
 	overflow: hidden;
 }
@@ -16,6 +17,7 @@
 	grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.62fr);
 	align-items: center;
 	gap: clamp(40px, 5vw, 96px);
+	margin-block: auto;
 }
 /* A coluna de texto é o contêiner do tamanho do título (cqi). Fica aqui, numa regra simples, para
    entrar no CSS crítico da página: sem ela, a 1ª pintura mediria pela tela e o título "pularia". */
@@ -127,7 +129,8 @@
 .o-hero__visual {
 	position: relative;
 	justify-self: center;
-	width: min(100%, 320px);
+	/* em tela baixa o celular encolhe, para a faixa de logos caber na primeira tela */
+	width: min(100%, clamp(220px, (100svh - 290px) * 0.6, 320px));
 }
 /* Símbolo da marca girando no canto */
 .o-hero__visual::after {

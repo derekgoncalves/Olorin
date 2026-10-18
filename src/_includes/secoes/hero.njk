@@ -1,6 +1,7 @@
 {#- ===== SEÇÃO: Banner (hero) — textos em src/content/home.yml → hero =====
      Enxuto (dono, 17/10/2026): etiqueta, título, UM botão do Raio-X (id cta-diagnostico-hero, usado na
-     medição) e 2 provas. No celular a montagem do celular some e a faixa de logos, logo abaixo, toma o lugar. -#}
+     medição) e 2 provas. A faixa de logos é o pé do banner, no mesmo fundo preto (dono, 18/10/2026).
+     No celular a montagem do celular some e a faixa vem logo depois das provas. -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set h = P.hero -%}
@@ -35,4 +36,7 @@
 			</div>
 		</div>
 	</div>
+	{#- Faixa de logos de clientes no pé do banner (secoes/faixa-clientes.njk) -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
 </section>

@@ -97,13 +97,30 @@ html:not(.js) .o-faixa__pausar {
 	display: none;
 }
 
-/* Faixa de logos de clientes (secoes/faixa-clientes.njk, em todas as páginas): reta, com peso. Cada logo
-   tem a sua altura (--logo-a, em px, de clientes.yml), ajustada para o peso visual ficar igual; a escala
-   cresce com a tela. Logos em preto; em fundo escuro (faixa_ctx preto ou violeta) viram brancos. */
+/* Faixa de logos de clientes (secoes/faixa-clientes.njk): reta, com peso. Cada logo tem a sua altura
+   (--logo-a, em px, de clientes.yml), ajustada para o peso visual ficar igual; a escala cresce com a tela.
+   Logos em preto; em fundo escuro (preto ou violeta) viram brancos. */
 .o-clientes {
-	padding-block: clamp(20px, 2.6vw, 36px) clamp(18px, 2.2vw, 30px);
 	overflow: hidden;
+}
+/* Seção própria, no meio da página (LP Educação): fundo branco e bordas. */
+.o-clientes.o-sec {
+	padding-block: clamp(20px, 2.6vw, 36px) clamp(18px, 2.2vw, 30px);
 	border-block: var(--borda) solid var(--cor-texto);
+}
+/* Pé do banner preto (dono, 18/10/2026): no mesmo fundo do banner, sem faixa nem borda separando. Dentro
+   do banner (home e páginas internas) ou logo depois dele (/promo/); o banner perde o respiro de baixo e a
+   faixa fecha o banner (nas páginas internas, com o fio verde do topo embaixo dela). */
+.o-clientes--pe {
+	position: relative;
+	padding-block: clamp(24px, 3.4vw, 48px) clamp(6px, 1vw, 14px);
+}
+:is(.o-hero, .o-pagina-topo, .o-perfil):has(> .o-clientes--pe),
+.o-promo-topo:has(+ .o-clientes--pe) {
+	padding-bottom: 0;
+}
+.o-promo-topo + .o-clientes--pe {
+	border-bottom: var(--borda) solid var(--verde);
 }
 .o-faixa--logos {
 	--inclinacao: 0deg;
@@ -115,6 +132,9 @@ html:not(.js) .o-faixa__pausar {
 	/* esmaece só nas margens da página, para o botão de pausa (na borda do conteúdo) ficar inteiro */
 	-webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
 	mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
+}
+.o-clientes--pe .o-faixa--logos {
+	height: clamp(68px, 6.4vw, 96px);
 }
 .o-faixa--logos .o-faixa__trilho li {
 	padding-right: clamp(44px, 5.6vw, 88px);
@@ -133,23 +153,38 @@ html:not(.js) .o-faixa__pausar {
 .o-faixa--logos li:hover img {
 	transform: scale(1.08);
 }
-:is(.o-ctx-preto, .o-ctx-violeta) :is(.o-faixa--logos img, .o-clientes__selos img) {
+:is(.o-ctx-preto, .o-ctx-violeta) .o-faixa--logos img {
 	filter: invert(1);
 }
-/* Pausa alinhada à borda direita do conteúdo. */
+/* Pausa alinhada à borda direita do conteúdo: cheia no fundo claro; no escuro, contorno e ícone na cor
+   de destaque (verde no preto), cheia ao passar o mouse. */
 .o-faixa.o-faixa--logos .o-faixa__pausar {
 	right: max(var(--margem), (100% - var(--largura-max)) / 2);
 	border-color: var(--cor-texto);
 	background: var(--cor-texto);
 	color: var(--cor-fundo);
 	box-shadow: 0 0 0 10px var(--cor-fundo);
+	transition: background-color var(--dur-rapida), color var(--dur-rapida);
+}
+:is(.o-ctx-preto, .o-ctx-violeta) .o-faixa.o-faixa--logos .o-faixa__pausar {
+	border-color: var(--cor-destaque);
+	background: var(--cor-fundo);
+	color: var(--cor-destaque);
+}
+:is(.o-ctx-preto, .o-ctx-violeta) .o-faixa.o-faixa--logos .o-faixa__pausar:hover {
+	background: var(--cor-destaque);
+	color: var(--cor-sobre-destaque);
 }
 /* Sem movimento (prefers-reduced-motion): os logos quebram em linhas e ficam todos à vista. */
 @media (prefers-reduced-motion: reduce) {
-	.o-faixa--logos {
+	.o-faixa--logos,
+	.o-clientes--pe .o-faixa--logos {
 		height: auto;
 		-webkit-mask-image: none;
 		mask-image: none;
+	}
+	.o-clientes--pe {
+		padding-bottom: clamp(24px, 3vw, 40px);
 	}
 	.o-faixa--logos .o-faixa__trilho {
 		flex-wrap: wrap;
@@ -167,31 +202,4 @@ html:not(.js) .o-faixa__pausar {
 	.o-faixa.o-faixa--logos .o-faixa__pausar {
 		display: none;
 	}
-}
-/* Credencial da Natalia (Meta e Google), em letra pequena embaixo dos logos. */
-.o-clientes__credencial {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	gap: 8px 14px;
-	margin-top: clamp(10px, 1.4vw, 18px) !important;
-	margin-bottom: 0 !important;
-	font-size: 13px;
-	line-height: 1.45;
-	text-align: center;
-	color: var(--cor-apoio);
-}
-.o-clientes__credencial a {
-	color: var(--cor-texto);
-	font-weight: 700;
-}
-.o-clientes__selos {
-	display: inline-flex;
-	gap: 10px;
-}
-.o-clientes__selos img {
-	display: block;
-	width: 22px;
-	height: 22px;
 }

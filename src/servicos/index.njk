@@ -11,7 +11,7 @@ eleventyComputed:
   descricao: "{{ conteudo.paginas.servicos.seo.descricao }}"
 ---
 {#- Hub de serviços — textos em src/content/paginas/servicos.yml; cards em src/content/servicos/.
-    Ordem (17/10/2026): banner com o botão do Raio-X, barra de logos, cards, "Este é o seu caso?", combinações
+    Ordem (17/10/2026): banner com o botão do Raio-X e a barra de logos no pé dele, cards, "Este é o seu caso?", combinações
     (sem plano nem preço), Quem somos e o formulário do Raio-X. -#}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set h = conteudo.paginas.servicos -%}
@@ -39,10 +39,10 @@ eleventyComputed:
 			</ul>
 		</div>
 	</div>
+	{#- Barra de logos de clientes no pé do banner, no mesmo fundo (secoes/faixa-clientes.njk) -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
 </section>
-
-{#- Barra de logos de clientes, logo abaixo do banner -#}
-{% include "secoes/faixa-clientes.njk" %}
 
 <section class="o-sec o-servicos o-servicos--hub o-ctx-branco" id="servicos" data-secao="servicos" aria-labelledby="servicos-titulo">
 	<div class="o-wrap">

@@ -14,7 +14,8 @@ eleventyComputed:
   og_imagem: "/assets/img/og/servico-{{ servico.slug }}.jpg"
 ---
 {#- Página de serviço — conteúdo em src/content/servicos/<slug>.yml (a mesma fonte da landing /promo/<slug>/).
-    Ordem (17/10/2026): banner com a cena do serviço e o botão do Raio-X, barra de logos de clientes, o que é,
+    Ordem (17/10/2026): banner com a cena do serviço e o botão do Raio-X e, no pé dele, a barra de logos de
+    clientes (18/10/2026), índice da página, o que é,
     "Este é o seu caso?", entregas, ferramentas e redes (tráfego e dados), trabalhos, combina com, Quem somos
     e o formulário do Raio-X. Sem preço, método e dúvidas (dono). -#}
 {%- import "components/ui.njk" as ui with context -%}
@@ -76,6 +77,9 @@ eleventyComputed:
 			</ul>
 		</div>
 	</div>
+	{#- Barra de logos de clientes no pé do banner, no mesmo fundo (secoes/faixa-clientes.njk) -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
 </section>
 
 {#- Índice de seções fixo -#}
@@ -92,9 +96,6 @@ eleventyComputed:
 		</ul>
 	</div>
 </nav>
-
-{#- 2 · Barra de logos de clientes (no lugar dos números) -#}
-{% include "secoes/faixa-clientes.njk" %}
 
 {#- 3 · O que é -#}
 <section class="o-sec o-servico-oque o-ctx-branco" id="o-que-e" data-secao="o-que-e" aria-labelledby="oque-titulo">

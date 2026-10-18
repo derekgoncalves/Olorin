@@ -43,8 +43,10 @@ eleventyComputed:
 			<p class="o-quem-pilha__dica" aria-hidden="true"><span class="o-icone o-icone--pixel"></span>{{ p.dica_pilha }}</p>
 		</div>
 	</div>
+	{#- Barra de logos de clientes no pé do banner, no mesmo fundo (secoes/faixa-clientes.njk) -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
 </section>
-{% include "secoes/faixa-clientes.njk" %}
 
 <section class="o-sec o-ctx-branco o-quem-historia" data-secao="historia" aria-labelledby="historia-titulo">
 	<div class="o-wrap o-quem-historia__grade">

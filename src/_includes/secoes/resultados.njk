@@ -1,5 +1,7 @@
-{#- ===== SEÇÃO: Resultados (home) — números (claims.json), cases (cases.yml) e portfólio (portfolio.yml).
-     Textos em home.yml → resultados. A faixa de logos agora é a seção própria faixa-clientes.njk. ===== -#}
+{#- ===== SEÇÃO: Resultados (home) — números (claims.json), credencial Meta e Google da Natalia, cases (cases.yml)
+     e portfólio (portfolio.yml). Textos em home.yml → resultados. A faixa de logos fica no pé do banner (hero.njk).
+     A credencial (dono, 18/10/2026) fica na linha dos números, no lugar dos antigos "2x" e "100+": logos grandes
+     da Meta e do Google e a frase dizendo que é da Natalia (nunca selo de agência parceira). ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- set r = P.resultados -%}
 {%- set numeros = [] if r.ocultar_numeros else (conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else []) -%}
@@ -17,15 +19,28 @@
 			</div>
 			{%- if r.texto %}<p class="o-apoio">{{ r.texto }}</p>{% endif %}
 		</div>
-		{%- if numeros.length %}
-		<dl class="o-numeros o-numeros--{{ numeros.length }}">
-		{%- for n in numeros %}
-			<div class="o-numero">
-				<dt class="o-numero__rotulo">{{ n.rotulo }}</dt>
-				<dd class="o-numero__valor" data-o-contador>{{ n.valor }}</dd>
+		{%- if numeros.length or r.credencial_nome %}
+		<div class="o-resultados__provas">
+			{%- if numeros.length %}
+			<dl class="o-numeros o-numeros--{{ numeros.length }}">
+			{%- for n in numeros %}
+				<div class="o-numero">
+					<dt class="o-numero__rotulo">{{ n.rotulo }}</dt>
+					<dd class="o-numero__valor" data-o-contador>{{ n.valor }}</dd>
+				</div>
+			{%- endfor %}
+			</dl>
+			{%- endif %}
+			{%- if r.credencial_nome %}
+			<div class="o-parceira">
+				<p class="o-parceira__marcas" aria-hidden="true">
+					<span class="o-parceira__marca"><img src="/assets/img/marcas/meta.svg" alt="" width="24" height="24" loading="lazy" decoding="async">Meta</span>
+					<span class="o-parceira__marca"><img src="/assets/img/marcas/google.svg" alt="" width="24" height="24" loading="lazy" decoding="async">Google</span>
+				</p>
+				<p class="o-parceira__texto">{{ r.credencial_antes }}<a href="{{ r.credencial_link }}">{{ r.credencial_nome }}</a>{{ r.credencial_depois }}</p>
 			</div>
-		{%- endfor %}
-		</dl>
+			{%- endif %}
+		</div>
 		{%- endif %}
 	</div>
 </section>

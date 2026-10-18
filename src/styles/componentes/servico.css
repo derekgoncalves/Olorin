@@ -1016,10 +1016,6 @@
 	margin-top: 8px;
 }
 
-/* Barra de logos logo abaixo do banner: um fio separa do bloco branco seguinte */
-.o-clientes + :is(.o-servico-oque, .o-servicos--hub) {
-	border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
 .o-alertas__acao {
 	margin: clamp(28px, 3vw, 40px) 0 0;
 }

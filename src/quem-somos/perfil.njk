@@ -66,9 +66,10 @@ eleventyComputed:
 			<div><dt>{{ t.frentes if frentes.length > 1 else t.frente }}</dt><dd>{{ frentes.length }}</dd></div>
 		</dl>
 	</div>
+	{#- Barra de logos de clientes no pé do banner, no mesmo fundo (secoes/faixa-clientes.njk) -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
 </section>
-
-{% include "secoes/faixa-clientes.njk" %}
 
 <section class="o-sec o-ctx-branco o-perfil-sobre" data-secao="perfil-sobre" aria-labelledby="perfil-sobre-titulo">
 	<div class="o-wrap o-perfil-sobre__grade">

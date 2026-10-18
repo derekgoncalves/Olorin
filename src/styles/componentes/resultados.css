@@ -38,6 +38,104 @@
 	font-size: 12px;
 	color: var(--cor-apoio);
 }
+/* Home: os 2 números e a credencial Meta e Google da Natalia na mesma linha, com o mesmo peso (dono,
+   18/10/2026: as logos ficam onde ficavam o "2x" e o "100+"). Os tamanhos seguem a largura da linha
+   (cqi), para tudo caber lado a lado no computador; no tablet a credencial desce, no celular tudo empilha. */
+.o-resultados__provas {
+	--prova-num: clamp(30px, 4.8cqi, 92px);
+	container-type: inline-size;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 40px clamp(28px, 4vw, 64px);
+	margin-top: clamp(24px, 3vw, 40px);
+	padding-top: 32px;
+	border-top: var(--borda) solid var(--cor-linha);
+}
+.o-resultados__provas .o-numeros {
+	display: flex;
+	gap: 32px clamp(28px, 5vw, 88px);
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.o-resultados__provas .o-numero {
+	container-type: normal;
+}
+.o-resultados__provas .o-numero .o-numero__valor {
+	font-size: var(--prova-num);
+}
+.o-parceira {
+	min-width: 0;
+}
+.o-parceira__marcas {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.2em 0.6em;
+	/* mesma altura da linha dos números, para as legendas ficarem alinhadas */
+	min-height: calc(var(--prova-num) * 0.95);
+	margin: 0 0 14px;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(24px, 3.9cqi, 74px);
+	line-height: 0.95;
+	letter-spacing: -0.02em;
+}
+.o-parceira__marca {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.2em;
+	white-space: nowrap;
+}
+.o-parceira__marca img {
+	flex: none;
+	width: auto;
+	height: 0.92em;
+}
+.o-parceira__marca:first-child img {
+	height: 1.3em;
+	margin-block: -0.2em;
+}
+.o-parceira__texto {
+	max-width: 32ch;
+	margin: 0;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	line-height: 1.6;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+.o-parceira__texto a {
+	color: inherit;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+}
+@media (max-width: 960px) {
+	.o-resultados__provas {
+		justify-content: flex-start;
+	}
+	.o-resultados__provas {
+		--prova-num: 8cqi;
+	}
+	.o-parceira__marcas {
+		font-size: 6.6cqi;
+	}
+}
+@media (max-width: 560px) {
+	.o-resultados__provas .o-numeros,
+	.o-parceira__marcas {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.o-resultados__provas {
+		--prova-num: 12cqi;
+	}
+	.o-parceira__marcas {
+		font-size: 10cqi;
+	}
+}
 .o-cases {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));

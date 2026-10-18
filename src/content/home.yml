@@ -1,17 +1,17 @@
 # ============================================================
 # HOME — textos e ORDEM dos blocos
 # ------------------------------------------------------------
-# Ordem fixada pelo dono (17/10/2026): 1 banner, 2 faixa de logos (logo abaixo do banner),
-# 3 resultados (números e portfólio), 4 serviços, 5 calculadora, 6 quem somos,
-# 7 RAIO X DA OLORIN (o formulário do fim, igual em todas as páginas).
+# Ordem fixada pelo dono (17/10/2026): 1 banner (com a faixa de logos no pé, no mesmo fundo preto:
+# dono, 18/10/2026; ela vem de dentro do hero.njk, por isso não está na lista), 2 resultados (números,
+# credencial Meta e Google da Natalia e portfólio), 3 serviços, 4 calculadora, 5 quem somos,
+# 6 RAIO X DA OLORIN (o formulário do fim, igual em todas as páginas).
 # Saíram da home em 17/10/2026: o Raio-X do meio, o checklist, o método, o blog e as dúvidas.
 # Toda chamada da home é o botão do Raio-X, que leva ao formulário do fim (#raio-x).
 # Regra da marca: violeta e verde nunca encostam. Cores dos blocos, em ordem:
-# preto, branco, verde+branco, preto, branco, preto, violeta.
+# preto (banner e logos), verde+branco, preto, branco, preto, violeta.
 # ============================================================
 secoes:
   - hero
-  - faixa-clientes
   - resultados
   - servicos
   - calculadora
@@ -36,18 +36,20 @@ hero:
   janela_rotulo: Resultado do mês
   aviso_clique: Novo cliente
 
-# Faixa de logos (secoes/faixa-clientes.njk, em todas as páginas). Os logos vêm de clientes.yml.
-# A credencial é da Natalia (gestora de tráfego parceira Meta e Google), nunca selo da agência.
-faixa_clientes:
-  credencial_antes: Tráfego com a
-  credencial_nome: Natalia
-  credencial_link: /quem-somos/natalia-arruda/
-  credencial_depois: ", gestora parceira Meta e Google"
+# A faixa de logos (secoes/faixa-clientes.njk, no pé do banner de cada página) não tem texto aqui:
+# os logos vêm de clientes.yml.
 
 resultados:
   etiqueta: Resultados
   titulo: Provas, não promessas.
   texto: O que o nosso time já fez.
+  # Credencial no banner verde, ao lado dos números (no lugar dos antigos "2x" e "100+"; dono, 18/10/2026):
+  # logos grandes da Meta e do Google e a frase embaixo. A credencial é da Natalia (gestora de tráfego
+  # parceira Meta e Google), nunca selo de "agência parceira". Fica: antes + nome (com link) + depois.
+  credencial_antes: ""
+  credencial_nome: Natalia
+  credencial_link: /quem-somos/natalia-arruda/
+  credencial_depois: ", nossa gestora de tráfego, é parceira Meta e Google"
   cases_etiqueta: Cases
   cases_titulo: De perto.
   case_link: Ver o serviço

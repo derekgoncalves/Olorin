@@ -6,6 +6,11 @@
 	isolation: isolate;
 	overflow: hidden;
 }
+/* Verde e violeta nunca encostam: sem o fio verde quando a seção seguinte é violeta (Sobre: o topo, com a
+   faixa de logos no pé, e logo depois o método). */
+.o-pagina-topo:has(+ .o-ctx-violeta) {
+	border-bottom: 0;
+}
 .o-pagina-topo__grade {
 	display: grid;
 	grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
