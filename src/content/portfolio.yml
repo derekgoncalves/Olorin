@@ -36,19 +36,20 @@ filtros:
   - { id: trafego-pago, rotulo: Tráfego pago, curto: Tráfego }
   - { id: rastreamento-e-relatorio, rotulo: Dados }
 itens:
+  # Ordem (dono, 18/10): os 6 primeiros aparecem na home; John Deere, Centro Sul Shop e Anacleto ficam entre eles para o filtro Tráfego pago da home.
   # PENDENTE: as artes do Behance são recortes do PDF (print do navegador); trocar pelos arquivos originais
   - { titulo: BRAVO Film Festival, rotulo: Identidade visual · Redes sociais, imagem: portfolio-bravo-film-festival, servicos: [identidade-visual, redes-sociais] }
+  - { titulo: John Deere, rotulo: Tráfego pago, imagem: portfolio-john-deere, servicos: [trafego-pago] }
+  - { titulo: Governo do Estado do RS, rotulo: Identidade visual · Impressos, imagem: portfolio-governo-rs, servicos: [identidade-visual, material-impresso] }
+  - { titulo: Anacleto Abduch, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-anacleto-abduch, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
+  - { titulo: Cartas para o Futuro, rotulo: Identidade visual · Impressos, imagem: portfolio-cartas-para-o-futuro, servicos: [identidade-visual, material-impresso] }
+  - { titulo: Centro Sul Shop, rotulo: Tráfego pago, imagem: portfolio-centro-sul-shop, servicos: [trafego-pago] }
   # PENDENTE: o serviço feito para a National Geographic (hoje o card diz só "Marca atendida", sem filtro)
   - { titulo: National Geographic, rotulo: Marca atendida, imagem: portfolio-national-geographic, servicos: [] }
-  - { titulo: Governo do Estado do RS, rotulo: Identidade visual · Impressos, imagem: portfolio-governo-rs, servicos: [identidade-visual, material-impresso] }
-  - { titulo: Cartas para o Futuro, rotulo: Identidade visual · Impressos, imagem: portfolio-cartas-para-o-futuro, servicos: [identidade-visual, material-impresso] }
   - { titulo: iZETA, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-izeta, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
   # Projeto da própria Olorin: página 16 do manual da marca (_brand/paginas/)
   - { titulo: Olorin Digital, rotulo: Identidade visual, imagem: portfolio-olorin, servicos: [identidade-visual] }
-  - { titulo: Anacleto Abduch, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-anacleto-abduch, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
   # PENDENTE: arte ou logo da Harmonia do Pet (hoje card provisório só com o nome) e o serviço feito
   - { titulo: Harmonia do Pet, rotulo: Marca atendida, imagem: portfolio-harmonia-do-pet, servicos: [] }
-  - { titulo: Centro Sul Shop, rotulo: Tráfego pago, imagem: portfolio-centro-sul-shop, servicos: [trafego-pago] }
-  - { titulo: John Deere, rotulo: Tráfego pago, imagem: portfolio-john-deere, servicos: [trafego-pago] }
   # suspenso em 17/10 (dono): Bença fica fora do site; para voltar, tire o "# " da linha abaixo
   # - { titulo: Bença, rotulo: Identidade visual · Impressos, imagem: portfolio-benca, servicos: [identidade-visual, material-impresso] }

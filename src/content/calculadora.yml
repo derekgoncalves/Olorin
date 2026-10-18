@@ -45,7 +45,7 @@ recibo_topo: olorin digital
 recibo_numero: raio-x nº 0001
 resultado_rotulo: Expectativa de investimento
 resultado_sufixo: /mês
-botao: Quero meu Raio-X grátis
+botao: Quero meu orçamento grátis
 aviso: É uma expectativa, não um orçamento. A verba de anúncio vai direto para a Meta e o Google, na sua conta.
 tabela_titulo: Expectativa de investimento por mês, gestão e verba juntas
 # Texto que vai para a mensagem do formulário do fim quando a pessoa usa a calculadora e clica no botão.
