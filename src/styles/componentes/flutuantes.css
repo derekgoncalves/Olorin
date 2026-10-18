@@ -94,6 +94,9 @@
 .o-barra .o-icone {
 	--tam: 18px;
 }
+.o-barra .o-icone--raio {
+	--tam: 1.6em;
+}
 .o-barra.is-alt {
 	border-top-color: var(--branco);
 }
@@ -114,6 +117,9 @@
 	}
 	.o-barra .o-icone {
 		--tam: 16px;
+	}
+	.o-barra .o-icone--raio {
+		--tam: 1.6em;
 	}
 }
 
