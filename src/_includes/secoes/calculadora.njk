@@ -1,0 +1,16 @@
+{#- ===== SEÇÃO: Calculadora (home, no lugar dos planos) — src/content/calculadora.yml =====
+     Expectativa de investimento por mês, sem planos nem preços fechados; o botão leva ao Raio-X. -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set c = conteudo.calculadora -%}
+<section class="o-sec o-calc-sec o-ctx-branco" id="investimento" data-secao="calculadora" aria-labelledby="calculadora-titulo">
+	<div class="o-wrap">
+		<div class="o-planos__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ c.etiqueta }}</p>
+				<h2 class="o-titulo o-titulo--g" id="calculadora-titulo">{{ c.titulo }}</h2>
+			</div>
+			<p class="o-apoio">{{ c.texto }}</p>
+		</div>
+		{{ ui.calculadora() }}
+	</div>
+</section>

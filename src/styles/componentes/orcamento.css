@@ -1,66 +1,189 @@
-/* Seções de formulário: etapa 1 (abaixo do banner) e CTA final (violeta). */
-.o-form-topo {
-	border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-.o-form-topo__grade {
-	display: grid;
-	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-	align-items: start;
-	gap: clamp(32px, 5vw, 88px);
-}
-.o-form-topo__texto .o-lista-pixel {
-	margin-top: 24px;
-}
-html[data-form-variant="a"] .o-form-topo {
-	display: none;
-}
-
+/* Seção final RAIO X DA OLORIN (secoes/orcamento.njk, violeta): título grande, a chapa de raio-x, os 3
+   passos com o "O" da marca e o formulário. No celular a chapa fica pequena, ao lado dos passos. */
 .o-orcamento {
 	overflow: hidden;
 	background-image:
 		radial-gradient(100% 80% at 0% 0%, var(--gradiente-indigo), transparent 60%),
 		radial-gradient(80% 60% at 100% 100%, var(--gradiente-lavanda), transparent 60%);
 }
-.o-orcamento .o-titulo--gg {
-	margin-bottom: clamp(32px, 5vw, 64px);
+/* Âncora antiga (#orcamento) no topo da seção, para links e o retorno do enviar.php. */
+.o-orcamento__ancora {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.o-orcamento .o-orcamento__titulo {
+	margin-bottom: clamp(28px, 4.4vw, 60px);
+	color: var(--branco);
 }
 .o-orcamento__grade {
 	display: grid;
-	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
 	align-items: start;
-	gap: clamp(36px, 6vw, 104px);
+	gap: clamp(32px, 5vw, 88px);
 }
-.o-orcamento__lista li {
-	font-size: clamp(15px, 1.2vw, 17px);
+.o-orcamento__lado {
+	display: grid;
+	gap: clamp(24px, 3vw, 36px);
 }
-.o-orcamento__wa {
-	--janela-barra: var(--branco);
-	--janela-tinta: var(--violeta);
-	--janela-borda: var(--branco);
-	--janela-corpo: transparent;
-	margin-top: 32px;
+.o-orcamento__passos {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid var(--cor-linha);
 }
-.o-orcamento__wa .o-etiqueta {
-	margin-bottom: 8px;
-}
-.o-orcamento__wa p {
-	margin-bottom: 6px;
-}
-.o-orcamento__telefone a {
-	display: inline-flex;
+.o-orcamento__passos li {
+	display: flex;
 	align-items: center;
-	gap: 12px;
-	min-height: 44px;
-	font-family: var(--fonte-titulo);
-	font-weight: 900;
-	font-size: clamp(19px, 2vw, 28px);
-	letter-spacing: -0.01em;
-	text-decoration: none;
+	gap: 16px;
+	padding: 14px 0;
+	border-bottom: 1px solid var(--cor-linha);
+	font-weight: 700;
+	font-size: clamp(15px, 1.3vw, 18px);
+	line-height: 1.3;
 }
-.o-orcamento__telefone .o-icone {
-	--tam: 24px;
+.o-orcamento__passos .o-icone {
+	--tam: clamp(24px, 2.2vw, 32px);
 }
-.o-orcamento__telefone a:hover {
-	text-decoration: underline;
-	text-decoration-thickness: 3px;
+
+/* Chapa de raio-x (raio-x real tratado na paleta): a logo acende na tela do celular. */
+.o-rx {
+	--janela-borda: var(--preto);
+	--janela-barra: var(--preto);
+	--janela-tinta: var(--branco);
+	--janela-corpo: var(--preto);
+	--janela-sombra: rgba(20, 4, 60, 0.5);
+	max-width: 440px;
+	margin: 0;
+}
+.o-rx__chapa {
+	--visor-cor: rgba(226, 214, 255, 0.75);
+	--visor-t: 18px;
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 1;
+}
+.o-rx__chapa picture,
+.o-rx__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+/* cantos do visor (.o-visor, em hero.css) por cima da chapa */
+.o-rx__chapa::before {
+	inset: 12px;
+	z-index: 3;
+}
+/* linhas de monitor antigo */
+.o-rx__chapa::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	pointer-events: none;
+	background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.24) 0 1px, transparent 1px 3px);
+}
+/* Tela do celular (posição medida na imagem de 423 px): vidro escuro, o "O" e a logo em verde. */
+.o-rx__tela {
+	position: absolute;
+	left: 55.4%;
+	top: 26.8%;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 9%;
+	width: 24.6%;
+	height: 37%;
+	border-radius: 8% / 5%;
+	background: radial-gradient(circle at 50% 46%, rgba(236, 255, 54, 0.2), rgba(0, 0, 0, 0.84) 68%);
+	box-shadow: 0 0 22px rgba(236, 255, 54, 0.22);
+	color: var(--verde);
+}
+.o-rx__o {
+	width: 60%;
+	height: auto;
+	filter: drop-shadow(0 0 6px rgba(236, 255, 54, 0.75));
+}
+.o-rx__logo {
+	width: 76%;
+	height: auto;
+}
+.o-rx__varredura {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	pointer-events: none;
+	background: linear-gradient(180deg, transparent 0 80%, rgba(217, 200, 255, 0.1) 94%, rgba(240, 234, 255, 0.65) 99.5%, transparent 100%);
+	opacity: 0;
+	transform: translateY(-100%);
+}
+
+/* Movimento: a chapa acende com 2 flashes (menos de 3 por segundo), a logo liga na tela e brilha, e a
+   linha de varredura desce. Começa quando a janela entra na tela (.is-in, movimento.js); sem esse JS,
+   começa ao carregar. Parado (preferência do sistema ou botão de pausa): a chapa fica acesa, sem linha. */
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.o-pausado) .o-rx:is(.is-in, :not(.o-mov-jan)) {
+		& .o-rx__img {
+			animation: o-rx-luz 9s linear 0.5s infinite both;
+		}
+		& .o-rx__tela {
+			animation: o-rx-tela 9s steps(1) 0.5s infinite both;
+		}
+		& .o-rx__o {
+			animation: o-rx-brilho 1.6s ease-in-out infinite alternate;
+		}
+		& .o-rx__varredura {
+			opacity: 1;
+			animation: o-varredura 3s cubic-bezier(0.45, 0, 0.55, 1) 1.8s infinite backwards;
+		}
+	}
+}
+@keyframes o-rx-luz {
+	0% { opacity: 0.06; filter: brightness(0.6); }
+	4% { opacity: 1; filter: brightness(2.2) contrast(1.2); }
+	7% { opacity: 0.22; filter: brightness(0.8); }
+	11% { opacity: 1; filter: brightness(1.7); }
+	15%,
+	93% { opacity: 1; filter: none; }
+	100% { opacity: 0.06; filter: brightness(0.6); }
+}
+@keyframes o-rx-tela {
+	0%,
+	17% { opacity: 0; }
+	18%,
+	20% { opacity: 1; }
+	19% { opacity: 0.3; }
+	93%,
+	100% { opacity: 0; }
+}
+@keyframes o-rx-brilho {
+	to { filter: drop-shadow(0 0 14px rgba(236, 255, 54, 1)); }
+}
+
+@media (max-width: 960px) {
+	.o-orcamento__lado {
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+		align-items: center;
+		gap: 18px;
+	}
+	.o-rx {
+		box-shadow: 5px 5px 0 var(--janela-sombra);
+	}
+	.o-rx .o-janela__barra {
+		--barra-x: 8px;
+		--ctrl-l: 26px;
+	}
+	.o-rx__chapa {
+		--visor-t: 12px;
+	}
+	.o-rx__chapa::before {
+		inset: 6px;
+	}
+	.o-orcamento__passos li {
+		gap: 10px;
+		padding: 10px 0;
+		font-size: 14px;
+	}
 }

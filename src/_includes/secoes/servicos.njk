@@ -1,26 +1,21 @@
-{#- ===== SEÇÃO: Serviços (cada card leva à página do serviço) — src/content/home.yml → servicos + src/content/servicos/ ===== -#}
+{#- ===== SEÇÃO: Serviços (cada card leva à página do serviço) — src/content/home.yml → servicos + src/content/servicos/ =====
+     Na home (dono, 17/10/2026): só um rótulo curto (h2) e os cards com ícone, nome e link; a descrição de
+     cada serviço fica na página dele. A última linha da grade leva ao Raio-X. -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set t = P.servicos -%}
 <section class="o-sec o-servicos o-ctx-preto" id="servicos" data-secao="servicos" aria-labelledby="servicos-titulo">
 	<div class="o-wrap">
-		<div class="o-servicos__cabeca">
-			<div>
-				<p class="o-etiqueta">{{ t.etiqueta }}</p>
-				<h2 class="o-titulo o-titulo--g" id="servicos-titulo">{{ t.titulo }}</h2>
-			</div>
-			<p class="o-apoio">{{ t.texto }}</p>
-		</div>
-		<div class="o-cards-servico" data-o-holofote>
+		<h2 class="o-etiqueta o-servicos__rotulo" id="servicos-titulo">{{ t.titulo }}</h2>
+		<div class="o-cards-servico o-cards-servico--curtos" data-o-holofote>
 		{%- for s in conteudo.servicos %}
-			{{ ui.cardServico(s, "h3") }}
+			{{ ui.cardServico(s, "h3", 0, false) }}
 		{%- endfor %}
 		</div>
-		{#- Fecho da grade, no mesmo fundo preto: "Não sabe por onde começar?" + WhatsApp. -#}
 		{%- if t.faixa_texto %}
 		<div class="o-servicos__fim">
 			<p class="o-servicos__fim-texto">{{ t.faixa_texto }}</p>
-			<a class="o-btn o-btn--verde o-servicos__fim-botao" href="{{ waLink('servicos-faixa') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.faixa_botao }}</a>
+			{{ ui.botaoRaioX("cta-raio-x-home-servicos", conteudo.home.hero.botao, "o-servicos__fim-botao") }}
 		</div>
 		{%- endif %}
 	</div>

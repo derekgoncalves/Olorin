@@ -1,5 +1,5 @@
-/* Blocos da home: cabeçalhos de seção, atalho do banner, resultados, vitrine (cases e portfólio),
-   Raio-X, método em faixa, projetos de site e cartões da equipe com link para o perfil. */
+/* Blocos da home: cabeçalhos de seção, atalho do telefone (páginas de serviço), resultados, vitrine
+   (cases e portfólio), serviços, método em faixa, projetos de site e cartões da equipe com link para o perfil. */
 
 /* Cabeçalho de seção em duas colunas: título à esquerda, apoio à direita (alinhados pela base). */
 .o-servicos__cabeca,
@@ -121,15 +121,55 @@
 .o-resultados .o-numeros {
 	margin-bottom: 0;
 }
-.o-resultados__logos {
-	margin-top: clamp(48px, 6vw, 80px);
+/* Só 2 números (dono, 17/10/2026): duas colunas largas, números maiores. */
+.o-numeros--2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.o-resultados__logos-titulo {
-	margin-bottom: 16px !important;
-	font-size: 12px;
+.o-numeros--2 .o-numero__valor {
+	font-size: clamp(30px, 11.5cqi, 112px);
 }
-.o-resultados .o-faixa--logos img {
-	opacity: 0.85;
+@media (max-width: 560px) {
+	.o-numeros.o-numeros--2 {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* ---------- Serviços na home: só o rótulo e os cards curtos (ícone, nome e link) ---------- */
+.o-sec .o-servicos__rotulo {
+	margin-bottom: clamp(22px, 3vw, 36px);
+	font-size: clamp(13px, 1.2vw, 16px);
+}
+.o-card-servico--curto {
+	grid-row: span 3;
+}
+.o-card-servico--curto .o-card-servico__titulo {
+	font-size: clamp(20px, 1.9vw, 28px);
+}
+/* Celular: cada serviço vira uma linha (ícone, nome e seta) */
+@media (max-width: 767px) {
+	.o-card-servico.o-card-servico--curto {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 18px 18px 18px 16px;
+	}
+	.o-card-servico--curto .o-card-servico__topo {
+		margin: 0 !important;
+	}
+	.o-card-servico--curto .o-card-servico__icone {
+		--tam: 30px;
+	}
+	.o-card-servico--curto .o-card-servico__titulo {
+		flex: 1;
+		font-size: 17px;
+	}
+	.o-card-servico--curto .o-card-servico__mais {
+		padding: 0;
+		font-size: 0;
+	}
+	.o-card-servico--curto .o-card-servico__mais .o-icone {
+		--tam: 16px;
+	}
 }
 
 /* ---------- Vitrine (branco): cases e portfólio ---------- */
@@ -226,52 +266,16 @@
 .o-vitrine__cabeca--portfolio {
 	margin-top: clamp(80px, 10vw, 144px);
 }
+/* Sem cases, o portfólio abre a seção: sem o espaço extra em cima. */
+.o-vitrine__cabeca--portfolio:first-child {
+	margin-top: 0;
+}
 .o-vitrine__acoes {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 12px 16px;
 	margin: clamp(28px, 4vw, 48px) 0 0 !important;
-}
-
-/* ---------- Raio-X (violeta) ---------- */
-.o-raio-x__grade {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-	align-items: center;
-	gap: clamp(40px, 6vw, 104px);
-}
-.o-raio-x__texto .o-titulo {
-	margin-bottom: 18px;
-}
-.o-raio-x__passos {
-	display: grid;
-	gap: 0;
-	margin: clamp(24px, 3vw, 36px) 0 0;
-	padding: 0;
-	list-style: none;
-	border-top: 1px solid var(--cor-linha);
-}
-.o-raio-x__passos li {
-	display: flex;
-	align-items: center;
-	gap: 18px;
-	padding: 14px 0;
-	border-bottom: 1px solid var(--cor-linha);
-	font-weight: 700;
-}
-.o-raio-x__num {
-	flex: none;
-	font-family: var(--fonte-pixel);
-	font-size: 12px;
-	letter-spacing: 0.1em;
-	color: var(--cor-apoio);
-}
-.o-raio-x__lista {
-	margin-top: 22px;
-}
-.o-raio-x .o-form {
-	box-shadow: 10px 10px 0 var(--preto);
 }
 
 /* ---------- Método em faixa (home) ---------- */
@@ -510,7 +514,6 @@
 	.o-alertas__cabeca,
 	.o-metodo__topo,
 	.o-vitrine__cabeca,
-	.o-raio-x__grade,
 	.o-projetos {
 		grid-template-columns: minmax(0, 1fr);
 	}

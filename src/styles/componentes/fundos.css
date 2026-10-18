@@ -1,6 +1,5 @@
 /* Fundos animados e interações de desktop (JS: src/scripts/modulos/fundos.js).
-   Cada banner tem a sua variação: pixels que acendem sob o mouse (banner da home), varredura de
-   raio-x (bloco Raio-X), barras vivas (resultados), linhas de monitor (sinais de alerta),
+   Cada banner tem a sua variação: pixels que acendem sob o mouse (banner da home), barras vivas (resultados), linhas de monitor (sinais de alerta),
    pixel que corre na trilha (método, com o "O" girando) e quadradinhos que sobem (formulário final).
    Tudo que se move fica dentro de prefers-reduced-motion: no-preference e para com html.o-pausado. */
 :root {
@@ -18,7 +17,6 @@
 	contain: strict;
 }
 .o-hero,
-.o-raio-x,
 .o-resultados,
 .o-alertas,
 .o-orcamento {
@@ -104,28 +102,6 @@ html.o-pausado .o-fundo .o-fundo__luz {
 	}
 }
 
-/* 2. Raio-X (violeta): papel milimetrado e uma varredura que desce */
-.o-raio-x__scan {
-	position: absolute;
-	inset: 0;
-	z-index: -1;
-	overflow: hidden;
-	pointer-events: none;
-	background-image:
-		linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-	background-size: 56px 56px;
-	-webkit-mask: radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 85%);
-	mask: radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 85%);
-}
-.o-raio-x__scan::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(180deg, transparent 0 78%, rgba(255, 255, 255, 0.1) 94%, rgba(255, 255, 255, 0.55) 99.6%, transparent 100%);
-	transform: translateY(-100%);
-}
-
 /* 3. Resultados (verde): barras de gráfico vivas ao fundo */
 .o-resultados__barras {
 	position: absolute;
@@ -205,9 +181,6 @@ html.o-pausado .o-cards-servico.is-holofote::before {
 	}
 	.o-fundo > i:nth-of-type(even) {
 		animation-duration: 12s;
-	}
-	.o-raio-x__scan::before {
-		animation: o-varredura 5.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 	}
 	.o-resultados__barras i {
 		animation: o-barra-viva 4.8s steps(6) infinite alternate;
