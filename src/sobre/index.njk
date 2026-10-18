@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+modo: hub
+slug: sobre
+pagina_dados: sobre-metodo
+og_imagem: /assets/img/og/como-trabalhamos.jpg
+migalhas:
+  - { nome: Home, url: / }
+  - { nome: Sobre, url: /sobre/ }
+eleventyComputed:
+  titulo: "{{ conteudo.paginas['sobre-metodo'].seo.titulo }}"
+  descricao: "{{ conteudo.paginas['sobre-metodo'].seo.descricao }}"
+---
+{#- Página Sobre (antiga Como trabalhamos): a ÚNICA do site com o método e a FAQ completa.
+    Textos e etapas do método em src/content/paginas/sobre-metodo.yml; perguntas em src/content/faq.yml.
+    (O Quem somos é outra página: /quem-somos/, textos em paginas/sobre.yml.) -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set h = conteudo.paginas['sobre-metodo'] -%}
+<section class="o-pagina-topo o-servico-topo o-ctx-preto" data-secao="sobre-hero">
+	<div class="o-fundo o-fundo--colunas" aria-hidden="true" data-o-fundo><div class="o-fundo__luz"></div><b></b><b></b><b></b><b></b><b></b></div>
+	<div class="o-wrap o-pagina-topo__grade">
+		<div class="o-pagina-topo__texto">
+			{{ ui.migalhas(migalhas) }}
+			<p class="o-etiqueta">{{ h.etiqueta }}</p>
+			<h1 class="o-pagina-topo__titulo">{{ h.titulo }}</h1>
+			<p class="o-pagina-topo__sub">{{ h.sub }}</p>
+			<div class="o-hero__acoes">{{ ui.botaoRaioX("cta-raio-x-sobre-hero", classe="o-btn--grande") }}</div>
+		</div>
+		<div class="o-janela o-cena o-cena--hub" aria-hidden="true" data-o-cena>
+			<div class="o-janela__barra"><span class="o-janela__titulo">{{ h.janela }}</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-cena__palco">
+				<ol class="o-cena-hub o-cena-hub--metodo">
+				{%- set iconesMetodo = ["dados", "seta", "estrela", "relogio"] %}
+				{%- for e in h.metodo.etapas %}
+					<li class="o-cena-hub__app"><span class="o-icone o-icone--{{ iconesMetodo[loop.index0] or 'pixel' }}"></span><span class="o-cena-hub__nome">0{{ loop.index }} {{ e.nome }}</span></li>
+				{%- endfor %}
+				</ol>
+			</div>
+			<ul class="o-cena__linhas">
+			{%- for linha in h.janela_linhas %}<li>{{ linha }}</li>{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+{% include "secoes/faixa-clientes.njk" %}
+{% include "secoes/metodo.njk" %}
+{% include "secoes/relatorio.njk" %}
+{% include "secoes/duvidas.njk" %}
+{%- set origemWaForm = "sobre-metodo-form" -%}
+{%- set origemWaFinal = "sobre-metodo-final" -%}
+{% include "secoes/orcamento.njk" %}

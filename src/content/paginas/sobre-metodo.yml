@@ -1,0 +1,76 @@
+# Página /sobre/ (antiga /como-trabalhamos/): a ÚNICA do site com o método e a FAQ completa (dono, 17/10/2026).
+# Ordem: banner, barra de logos, método, relatório de exemplo, dúvidas (src/content/faq.yml) e o
+# formulário do fim (RAIO X DA OLORIN, igual em todas as páginas: home.yml → orcamento).
+# Não confundir com paginas/sobre.yml, que é o texto do Quem somos (/quem-somos/).
+seo:
+  titulo: Sobre a Olorin | Método e dúvidas frequentes
+  descricao: As 4 etapas do Método Olorin, o relatório mensal que mostra faturamento, não só alcance, e as respostas para as dúvidas mais comuns.
+
+etiqueta: Sobre a Olorin
+titulo: Sobre.
+sub: Como a Olorin trabalha, do primeiro contato ao relatório de todo mês, e as respostas para as dúvidas mais comuns. Sem caixa-preta, para qualquer frente e qualquer tamanho de marca.
+janela: metodo.olo
+janela_linhas:
+  - Raio-X · gratuito
+  - Relatório · todo mês
+
+metodo:
+  etiqueta: Método Olorin
+  titulo: Quatro etapas. Zero achismo.
+  texto: O mesmo caminho para qualquer frente que você contratar, de um anúncio a uma marca inteira.
+  cta_texto: Quer saber em qual etapa a sua marca está travada?
+  etapas:
+    - nome: Raio-X
+      texto: Olhamos tudo o que já existe, da conta de anúncio às redes, ao site e ao material da marca. Antes de criar qualquer coisa, descobrimos o que está travando.
+    - nome: Direção
+      texto: Estratégia e identidade alinhadas, com o que falar, para quem, em qual canal e com qual cara. Uma marca só, em todos os pontos de contato.
+    - nome: Execução
+      texto: Campanha no ar, conteúdo publicado, arquivo fechado para a gráfica e site no ar. Tudo saindo pela mesma porta, no mesmo ritmo.
+    - nome: Leitura
+      texto: Relatório que qualquer pessoa entende, com quanto entrou, quanto saiu, qual foi o retorno e o que vem na próxima rodada.
+
+duvidas:
+  etiqueta: Dúvidas
+  titulo: Perguntas diretas.
+  texto: Ficou alguma dúvida que não está aqui? A gente responde no Raio-X, de graça.
+
+relatorio:
+  etiqueta: Como é o nosso relatório
+  titulo: Faturamento, não só alcance.
+  texto: Todo mês você recebe um painel como este, com o que foi investido, o que voltou e o que muda na próxima rodada. Sem sigla solta e sem gráfico bonito que não diz nada.
+  aviso: Exemplo ilustrativo, com dados fictícios
+  janela: painel.olo
+  mes: Mês de exemplo
+  indicadores:
+    - rotulo: Investimento em anúncio
+      valor: R$ 3.000
+      variacao: mesmo valor do mês anterior
+      tendencia: neutra
+    - rotulo: Faturamento atribuído
+      valor: R$ 7.800
+      variacao: +12% sobre o mês anterior
+      tendencia: alta
+    - rotulo: Custo por venda
+      valor: R$ 75,00
+      variacao: −8% sobre o mês anterior
+      tendencia: alta
+    - rotulo: Retorno sobre o investimento
+      valor: 2,6x
+      variacao: era 2,3x no mês anterior
+      tendencia: alta
+  grafico_titulo: Faturamento atribuído por semana
+  grafico:
+    - rotulo: Semana 1
+      valor: 1500
+    - rotulo: Semana 2
+      valor: 1800
+    - rotulo: Semana 3
+      valor: 2100
+    - rotulo: Semana 4
+      valor: 2400
+  proxima_titulo: O que faremos na próxima rodada
+  proxima:
+    - Aumentar a verba da campanha de remarketing, que teve o menor custo por venda.
+    - Trocar os dois anúncios com pior taxa de clique por versões novas.
+    - Revisar a página de destino, que perde gente no celular.
+  glossario: "Retorno sobre o investimento (ROAS): quanto voltou em faturamento para cada R$ 1 investido em anúncio."

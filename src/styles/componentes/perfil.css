@@ -20,7 +20,7 @@
 }
 /* Pilha de fotos espalhadas: duas atrás (lado a lado, quase sem se cobrir) e uma na frente, embaixo.
    Os rostos das duas de trás ficam na metade de cima da foto, então a da frente só cobre a parte
-   de baixo delas; a da frente é a 1ª pessoa de equipe.yml (Natália, rosto mais baixo na foto).
+   de baixo delas; a da frente é a 1ª pessoa de equipe.yml (Natalia, rosto mais baixo na foto).
    Os 3 rostos aparecem inteiros em qualquer largura (testado em 390, 768, 1024 e 1440 px). */
 .o-quem-pilha__lista {
 	position: relative;
@@ -322,6 +322,42 @@
 .o-perfil__cargo span {
 	color: var(--cor-apoio);
 }
+/* 3 emojis da pessoa: adesivo branco no canto da foto */
+.o-perfil__emojis {
+	position: absolute;
+	right: -18px;
+	bottom: -16px;
+	display: flex;
+	gap: 6px;
+	padding: 6px 10px;
+	background: var(--branco);
+	box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+	font-size: 22px;
+	line-height: 1;
+	rotate: -4deg;
+}
+/* Credencial pessoal (Natalia: gestora de tráfego parceira Meta e Google) */
+.o-perfil__credencial {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	margin: -4px 0 18px;
+	padding: 8px 12px;
+	border: 1px solid var(--cor-linha);
+	font-size: 13px;
+	line-height: 1.35;
+}
+.o-perfil__credencial-marcas {
+	display: flex;
+	flex: none;
+	gap: 8px;
+}
+.o-perfil__credencial img {
+	display: block;
+	width: 20px;
+	height: 20px;
+	filter: invert(1);
+}
 .o-perfil__frentes {
 	display: flex;
 	flex-wrap: wrap;
@@ -537,6 +573,10 @@
 	.o-perfil__foto {
 		width: 136px;
 	}
+	.o-perfil__emojis {
+		right: -22px;
+		font-size: 18px;
+	}
 	.o-perfil__numeros {
 		flex-wrap: wrap;
 		gap: 20px 28px;
@@ -564,23 +604,5 @@
 	}
 	@keyframes o-perfil-gira {
 		to { rotate: 360deg; }
-	}
-}
-
-/* Variante de "o nosso jeito" com passos numerados (Raio-X em /como-trabalhamos/) */
-.o-jeito--passos {
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.o-jeito__icone--num {
-	font-family: var(--fonte-pixel);
-	font-size: 13px;
-	letter-spacing: 0.04em;
-}
-.o-metodo-raio-x__acao {
-	margin: clamp(8px, 1vw, 16px) 0 0;
-}
-@media (max-width: 960px) {
-	.o-jeito--passos {
-		grid-template-columns: minmax(0, 1fr);
 	}
 }

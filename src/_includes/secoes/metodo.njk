@@ -1,50 +1,26 @@
-{#- ===== SEÇÃO: Método Olorin — src/content/home.yml → metodo =====
-     banner: true (home) = faixa curta com as 4 etapas e o link para /como-trabalhamos/. -#}
+{#- ===== SEÇÃO: Método Olorin — só na página /sobre/ (src/content/paginas/sobre-metodo.yml → metodo) ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
+{%- import "components/ui.njk" as ui with context -%}
 {%- set m = P.metodo -%}
-{%- set etapas = m.etapas or conteudo.home.metodo.etapas -%}
-{%- if m.banner %}
-<section class="o-sec o-metodo o-metodo--banner o-ctx-violeta" id="metodo" data-secao="metodo" aria-labelledby="metodo-titulo">
-	<div class="o-wrap">
-		<div class="o-metodo__topo">
-			<div>
-				<p class="o-etiqueta">{{ m.etiqueta }}</p>
-				<h2 class="o-titulo o-titulo--g" id="metodo-titulo">{{ m.titulo }}</h2>
-			</div>
-			<p class="o-apoio">{{ m.texto }}</p>
-		</div>
-		<ol class="o-trilha">
-		{%- for e in etapas %}
-			<li class="o-trilha__etapa"><span class="o-trilha__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-trilha__nome">{{ e.nome }}</h3><p class="o-trilha__texto">{{ e.resumo or e.texto }}</p></li>
-		{%- endfor %}
-		</ol>
-		<div class="o-metodo__acoes">
-			{%- if m.link_mais %}<a class="o-btn o-btn--branco" href="{{ m.link_mais.url }}" data-cta="metodo-como-trabalhamos">{{ m.link_mais.texto }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>{% endif %}
-			<a class="o-link-seta" href="{{ m.cta_destino or '#orcamento' }}" data-cta="metodo-diagnostico">{{ m.cta }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
-		</div>
-	</div>
-</section>
-{%- else %}
+{%- set etapas = m.etapas -%}
 <section class="o-sec o-metodo o-ctx-violeta" id="metodo" data-secao="metodo" aria-labelledby="metodo-titulo">
 	<div class="o-wrap o-metodo__grade">
 		<div class="o-metodo__cabeca">
 			<p class="o-etiqueta">{{ m.etiqueta }}</p>
 			<h2 class="o-titulo o-titulo--g" id="metodo-titulo">{{ m.titulo }}</h2>
 			<p class="o-apoio">{{ m.texto }}</p>
-			{%- if m.link_mais %}<p class="o-metodo__mais"><a class="o-link-seta" href="{{ m.link_mais.url }}">{{ m.link_mais.texto }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></p>{% endif %}
 			<p class="o-metodo__progresso" aria-hidden="true" data-o-metodo-progresso><span class="o-medidor">{% for e in etapas %}<i></i>{% endfor %}</span><span data-o-metodo-rotulo></span></p>
 		</div>
 		<ol class="o-etapas" data-o-etapas>
 		{%- for e in etapas %}
-			<li class="o-etapa"><span class="o-etapa__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-etapa__nome">{{ e.nome }}</h3><p class="o-etapa__texto">{{ (e.resumo or e.texto) if m.curto else e.texto }}</p></li>
+			<li class="o-etapa"><span class="o-etapa__num" aria-hidden="true">0{{ loop.index }}</span><h3 class="o-etapa__nome">{{ e.nome }}</h3><p class="o-etapa__texto">{{ e.texto }}</p></li>
 		{%- endfor %}
 		</ol>
 	</div>
-	{%- if m.cta %}
+	{%- if m.cta_texto %}
 	<div class="o-wrap o-metodo__cta">
 		<p>{{ m.cta_texto }}</p>
-		<a class="o-btn o-btn--branco" href="{{ m.cta_destino or '#orcamento' }}" data-cta="metodo-diagnostico">{{ m.cta }}</a>
+		{{ ui.botaoRaioX("cta-raio-x-sobre-metodo", classe="o-btn--branco") }}
 	</div>
 	{%- endif %}
 </section>
-{%- endif %}

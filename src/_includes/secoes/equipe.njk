@@ -1,7 +1,7 @@
 {#- ===== SEÇÃO: Quem toca (equipe) — src/content/home.yml → equipe + src/content/equipe.yml ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- import "components/ui.njk" as ui with context -%}
-{%- set t = P.equipe -%}
+{%- set t = P.equipe or conteudo.home.equipe -%}
 <section class="o-sec o-equipe o-ctx-preto" id="equipe" data-secao="equipe" aria-labelledby="equipe-titulo">
 	<div class="o-wrap">
 		<div class="o-equipe__cabeca">

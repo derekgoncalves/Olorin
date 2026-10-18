@@ -59,13 +59,13 @@
     "equipe-natalia": {
       "arquivo_original": "src/assets/img-src/equipe/natalia-arruda.png",
       "categoria": "equipe",
-      "pessoa_ou_cliente": "Natália Arruda",
+      "pessoa_ou_cliente": "Natalia Arruda",
       "servico_tags": [
         "trafego-pago"
       ],
-      "alt": "Natália Arruda, de cabelo cacheado, sorrindo para a câmera",
+      "alt": "Natalia Arruda, de cabelo cacheado, sorrindo para a câmera",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos na mensagem (Natália, Vinicius, Derek) — conferir. Original pequeno (417×533): pedir uma foto maior.",
+      "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos na mensagem (Natalia, Vinícius, Derek) — conferir. Original pequeno (417×533): pedir uma foto maior.",
       "recorte": [
         0,
         6,
@@ -85,11 +85,11 @@
     "equipe-natalia-quadrada": {
       "arquivo_original": "src/assets/img-src/equipe/natalia-arruda.png",
       "categoria": "equipe",
-      "pessoa_ou_cliente": "Natália Arruda",
+      "pessoa_ou_cliente": "Natalia Arruda",
       "servico_tags": [
         "trafego-pago"
       ],
-      "alt": "Natália Arruda",
+      "alt": "Natalia Arruda",
       "autorizacao_de_uso": "confirmada",
       "observacoes": "Recorte 1:1 com foco no rosto.",
       "recorte": [
@@ -110,14 +110,14 @@
     "equipe-vinicius": {
       "arquivo_original": "src/assets/img-src/equipe/vinicius-mafra.webp",
       "categoria": "equipe",
-      "pessoa_ou_cliente": "Vinicius Mafra",
+      "pessoa_ou_cliente": "Vinícius Mafra",
       "servico_tags": [
         "identidade-visual",
         "redes-sociais",
         "material-impresso",
         "site-e-loja-virtual"
       ],
-      "alt": "Vinicius Mafra, de cabelo raspado, barba e jaqueta preta, olhando para o lado",
+      "alt": "Vinícius Mafra, de cabelo raspado, barba e jaqueta preta, olhando para o lado",
       "autorizacao_de_uso": "confirmada",
       "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos — conferir.",
       "recorte": [
@@ -140,9 +140,9 @@
     "equipe-vinicius-quadrada": {
       "arquivo_original": "src/assets/img-src/equipe/vinicius-mafra.webp",
       "categoria": "equipe",
-      "pessoa_ou_cliente": "Vinicius Mafra",
+      "pessoa_ou_cliente": "Vinícius Mafra",
       "servico_tags": [],
-      "alt": "Vinicius Mafra",
+      "alt": "Vinícius Mafra",
       "autorizacao_de_uso": "confirmada",
       "observacoes": "Recorte 1:1 com foco no rosto.",
       "recorte": [
@@ -233,27 +233,6 @@
         "webp"
       ]
     },
-    "portfolio-ambulatorio-da-moda": {
-      "arquivo_original": "src/assets/img-src/portfolio/ambulatorio-da-moda.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Ambulatório da M.O.D.A",
-      "servico_tags": [
-        "redes-sociais"
-      ],
-      "alt": "Post do Ambulatório da M.O.D.A que anuncia a segunda temporada, com fitas de \"confirmada\" cruzando a foto",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-027). Trocar pelo arquivo original quando chegar.",
-      "larguras": [
-        320,
-        480,
-        640,
-        860
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
     "portfolio-benca": {
       "arquivo_original": "src/assets/img-src/portfolio/benca.webp",
       "categoria": "portfolio",
@@ -265,28 +244,6 @@
       "alt": "Cartaz do curta-metragem Bença em um painel iluminado na parede",
       "autorizacao_de_uso": "confirmada",
       "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-135). Trocar pelo arquivo original quando chegar.",
-      "larguras": [
-        320,
-        480,
-        640,
-        860
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-viva-sem-veneno": {
-      "arquivo_original": "src/assets/img-src/portfolio/viva-sem-veneno.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Viva Sem Veneno",
-      "servico_tags": [
-        "redes-sociais",
-        "identidade-visual"
-      ],
-      "alt": "Logo do movimento Viva Sem Veneno em branco e laranja sobre foto de galões de agrotóxico",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-006, topo, com desfoque leve de 0,8 px no arquivo para a textura pesar menos). Trocar pelo arquivo original quando chegar.",
       "larguras": [
         320,
         480,
@@ -342,27 +299,6 @@
         "webp"
       ]
     },
-    "portfolio-toro-audio": {
-      "arquivo_original": "src/assets/img-src/portfolio/toro-audio.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "TORO AUDIO",
-      "servico_tags": [
-        "redes-sociais"
-      ],
-      "alt": "Post da TORO AUDIO sobre 20 documentários de música, com o selo verde \"Assista online\"",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-004). Trocar pelo arquivo original quando chegar.",
-      "larguras": [
-        320,
-        480,
-        640,
-        860
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
     "portfolio-izeta": {
       "arquivo_original": "src/assets/img-src/portfolio/izeta.webp",
       "categoria": "portfolio",
@@ -374,7 +310,7 @@
       ],
       "alt": "Logo da iZETA Educação",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Card de logo 4:5 composto em SVG e rasterizado com sharp: logo real enviado pelo dono (izeta.png) sobre #EAF1F2.",
+      "observacoes": "Card de logo 4:5 (17/10/2026): izeta-cor.svg, vetorizado do PNG transparente enviado pelo dono, sobre #EAF1F2; rasterizado com sharp.",
       "larguras": [
         320,
         480,
@@ -397,7 +333,7 @@
       ],
       "alt": "Logo do escritório Dr. José Anacleto Abduch Advocacia",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Card de logo 4:5 composto em SVG e rasterizado com sharp: logo real enviado pelo dono (anacleto.png) sobre creme #F1ECE2.",
+      "observacoes": "Card de logo 4:5 (17/10/2026): anacleto-cor.svg, vetorizado do PNG transparente enviado pelo dono, sobre creme #F1ECE2; rasterizado com sharp.",
       "larguras": [
         320,
         480,
@@ -430,21 +366,80 @@
         "webp"
       ]
     },
-    "portfolio-central-sul-moveis": {
-      "arquivo_original": "src/assets/img-src/portfolio/central-sul-moveis.webp",
+    "portfolio-centro-sul-shop": {
+      "arquivo_original": "src/assets/img-src/portfolio/centro-sul-shop.webp",
       "categoria": "portfolio",
-      "pessoa_ou_cliente": "Central Sul Móveis",
+      "pessoa_ou_cliente": "Centro Sul Shop",
       "servico_tags": [
         "trafego-pago"
       ],
-      "alt": "Nome da Central Sul Móveis em letras claras sobre fundo marrom",
+      "alt": "Logo da Centro Sul Shop: carrinho de compras sobre uma etiqueta amarela",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Card de logo 4:5 composto em SVG e rasterizado com sharp: letreiro tipográfico provisório (Inter) sobre marrom #33281F. Falta o logo real da Central Sul Móveis.",
+      "observacoes": "Card de logo 4:5 (17/10/2026): centro-sul-shop-cor.svg, vetorizado do logo enviado pelo dono (JPG, fundo tirado), sobre #FFF4DC.",
       "larguras": [
         320,
         480,
         640,
         860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-national-geographic": {
+      "arquivo_original": "src/assets/img-src/portfolio/national-geographic.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "National Geographic",
+      "servico_tags": [],
+      "alt": "Logo da National Geographic: retângulo amarelo e o nome em branco sobre fundo preto",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Card de logo 4:5 (17/10/2026): vetorizado do logo enviado pelo dono (natgeo.png), versão para fundo escuro.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-harmonia-do-pet": {
+      "arquivo_original": "src/assets/img-src/portfolio/harmonia-do-pet.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Harmonia do Pet",
+      "servico_tags": [],
+      "alt": "Nome da Harmonia do Pet em letras claras sobre fundo verde-escuro",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "PENDENTE: card provisório só com o nome (Inter ExtraBold sobre #26302B). Trocar pela arte ou pelo logo da Harmonia do Pet.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-olorin": {
+      "arquivo_original": "src/assets/img-src/portfolio/olorin.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Olorin Digital",
+      "servico_tags": [
+        "identidade-visual"
+      ],
+      "alt": "Mãos digitando num notebook com o adesivo da marca Olorin",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Página 16 do manual da marca da Olorin (_brand/paginas/pagina-16.webp), recorte 4:5 de 720 x 900.",
+      "larguras": [
+        320,
+        480,
+        640,
+        720
       ],
       "formatos": [
         "avif",

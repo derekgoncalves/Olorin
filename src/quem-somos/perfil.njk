@@ -39,16 +39,22 @@ eleventyComputed:
 		<figure class="o-perfil__foto o-janela">
 			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ pessoa.janela }}</span><span class="o-janela__ctrl"></span></div>
 			{{ imagem(imagens, pessoa.foto + "-quadrada", { prioridade: true, sizes: "(max-width: 640px) 136px, 200px" }) | safe }}
+			{%- if pessoa.emojis and pessoa.emojis.length %}
+			<span class="o-perfil__emojis" aria-hidden="true">{% for e in pessoa.emojis %}<span>{{ e }}</span>{% endfor %}</span>
+			{%- endif %}
 		</figure>
 		<div class="o-perfil__cabeca">
 			{{ ui.migalhas(trilha) }}
 			<h1 class="o-perfil__nome">{{ pessoa.nome }}</h1>
 			<p class="o-perfil__cargo">{{ pessoa.cargo or pessoa.funcao }} <span>· Olorin Digital</span></p>
+			{%- if pessoa.credencial %}
+			<p class="o-perfil__credencial"><span class="o-perfil__credencial-marcas">{% for m in pessoa.credencial.marcas %}<img src="/assets/img/marcas/{{ m }}.svg" alt="" width="20" height="20" decoding="async">{% endfor %}</span>{{ pessoa.credencial.texto }}</p>
+			{%- endif %}
 			<ul class="o-perfil__frentes" aria-label="{{ t.coordena }}">
 			{%- for sv in frentes %}<li><a href="/servicos/{{ sv.slug }}/"><span class="o-icone o-icone--{{ sv.icone }}" aria-hidden="true"></span>{{ sv.nome }}</a></li>{% endfor %}
 			</ul>
 			<div class="o-perfil__acoes">
-				<a class="o-btn o-btn--verde" href="#orcamento" data-cta="perfil-{{ pessoa.slug }}">{{ t.conversa }}</a>
+				{{ ui.botaoRaioX("cta-raio-x-perfil-" + pessoa.slug) }}
 				<a class="o-btn o-btn--contorno" href="{{ waLink('perfil-' + pessoa.slug, { tipo: 'equipe' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.whatsapp }}</a>
 				<button class="o-btn o-btn--contorno o-perfil__copiar" type="button" data-o-copiar data-copiado="{{ t.copiado }}" hidden>{{ t.copiar }}</button>
 			</div>
@@ -61,6 +67,8 @@ eleventyComputed:
 		</dl>
 	</div>
 </section>
+
+{% include "secoes/faixa-clientes.njk" %}
 
 <section class="o-sec o-ctx-branco o-perfil-sobre" data-secao="perfil-sobre" aria-labelledby="perfil-sobre-titulo">
 	<div class="o-wrap o-perfil-sobre__grade">
