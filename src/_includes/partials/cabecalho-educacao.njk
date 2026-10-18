@@ -1,10 +1,10 @@
 {#- Cabeçalho da LP Olorin Educação: marca "Olorin educação", menu de âncoras da página,
-    link de volta para o site da Olorin, WhatsApp e Raio-X. Textos: paginas/educacao.yml → cabecalho. -#}
+    link de volta para o site da Olorin e o botão do Raio-X (leva ao formulário do fim, #raio-x).
+    Textos: paginas/educacao.yml → cabecalho. -#}
 {%- set cfg = site.config -%}
 {%- set E = conteudo.paginas.educacao -%}
 {%- set c = E.cabecalho -%}
 {%- import "components/ui.njk" as ui with context -%}
-{%- set waTopo = waLink('educacao-topo', { mensagem: E.whatsapp.padrao }) -%}
 <header class="o-topo o-edu-topo o-ctx-violeta" data-o-topo>
 	<div class="o-topo__dentro">
 		<a class="o-edu-marca" href="#inicio" aria-label="{{ E.marca.nome }}, início da página">
@@ -20,8 +20,7 @@
 		</nav>
 		<div class="o-topo__ctas">
 			<a class="o-edu-topo__voltar" href="/"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ c.voltar }}</a>
-			<a class="o-btn o-btn--contorno o-btn--pequeno o-topo__wa" id="cta-whatsapp-topo" href="{{ waTopo }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-topo__wa-texto">{{ c.whatsapp }}</span></a>
-			<a class="o-btn o-btn--branco o-btn--pequeno" id="cta-orcamento-topo" href="#raio-x">{{ c.botao }}</a>
+			<a class="o-btn o-btn--branco o-btn--pequeno o-btn--raio" id="cta-raio-x-educacao-topo" href="#raio-x" data-cta="cta-raio-x-educacao-topo"><span class="o-icone o-icone--raio" aria-hidden="true"></span>{{ c.botao }}</a>
 		</div>
 		<button class="o-hamburguer" type="button" aria-expanded="false" aria-controls="menu-celular" data-o-hamburguer>
 			<span class="o-sr">Abrir menu</span><i></i><i></i><i></i>
@@ -44,10 +43,9 @@
 		</ul>
 	</nav>
 	<div class="o-menu__ctas">
-		<a class="o-btn o-btn--branco" href="#raio-x" data-cta="menu-diagnostico">{{ c.botao }}</a>
-		<a class="o-btn o-btn--contorno" href="{{ waLink('educacao-menu', { mensagem: E.whatsapp.padrao }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ c.whatsapp }}</a>
+		<a class="o-btn o-btn--branco o-btn--raio" id="cta-raio-x-educacao-menu" href="#raio-x" data-cta="cta-raio-x-educacao-menu"><span class="o-icone o-icone--raio" aria-hidden="true"></span>{{ c.botao }}</a>
 	</div>
 	<a class="o-edu-menu__voltar" href="/"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ c.voltar_longo }}</a>
 	{{ ui.redes("o-menu__redes", "menu-educacao") }}
-	<p class="o-menu__rodape">{{ cfg.CIDADE }}, {{ cfg.UF }} · atendimento em todo o Brasil</p>
+	<p class="o-menu__rodape">{{ c.remoto }}</p>
 </div>
