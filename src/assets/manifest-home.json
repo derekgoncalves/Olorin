@@ -1,19 +1,20 @@
 {
   "_leia": "Imagens da home e da seção final RAIO X DA OLORIN (Agente A, 17/10/2026). Mesmo formato de manifest.json.",
   "imagens": {
-    "raio-x-mao": {
-      "arquivo_original": "src/assets/img-src/raio-x-mao.webp",
+    "raio-x-mao-fundo": {
+      "arquivo_original": "src/assets/img-src/raio-x-mao-fundo.webp",
       "categoria": "marca",
       "pessoa_ou_cliente": "",
       "servico_tags": [],
       "alt": "Raio-x de uma mão segurando um celular, com a logo da Olorin acesa na tela",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Raio-x real enviado pelo dono em 17/10/2026 (images.jpg, 447 x 447). Recortado em 423 x 423 e tratado na paleta (preto, violeta e lavanda) com sharp. A logo na tela é sobreposta em CSS (secoes/orcamento.njk).",
+      "observacoes": "Raio-x real enviado pelo dono em 17/10/2026 (images.jpg, 447 x 447). 18/10: recortado em 435 x 306 (x 12, y 50, sem a faixa clara da borda do filme), ampliado 2x (lanczos) e tratado com sharp para o fundo violeta da seção: a luminância vira opacidade (canal alfa, o preto some), tinta de lavanda a branco, bordas de cima, de baixo e da direita esmaecidas; o braço sai pela borda esquerda. A logo na tela é sobreposta em CSS, girada como o celular (secoes/orcamento.njk e orcamento.css).",
       "larguras": [
-        300,
-        423
+        420,
+        640,
+        870
       ],
-      "largura_padrao": 423,
+      "largura_padrao": 640,
       "formatos": [
         "avif",
         "webp"
