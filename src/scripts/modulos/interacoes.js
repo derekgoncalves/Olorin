@@ -1,5 +1,5 @@
 /* Componentes interativos: checklist, método, portfólio, FAQ, calculadora, planos, faixas e contadores. */
-import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz, linkWhatsApp, abaixoDaDobra } from '../util.js';
+import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz, abaixoDaDobra } from '../util.js';
 import { track } from './rastreamento.js';
 
 /* Checklist de dores: botões com aria-pressed; a partir de 2 marcados aparece a resposta. */
@@ -82,7 +82,9 @@ export function iniciarFaq() {
 	if (alvo && alvo.tagName === 'DETAILS') alvo.open = true;
 }
 
-/* Calculadora de custo total (recibo): gestão + verba, com o objetivo, e o link de WhatsApp com a conta pronta. */
+/* Calculadora da home (expectativa de investimento por mês): soma os pontos das respostas e mostra a
+   faixa (data-faixas, de calculadora.yml). O botão do Raio-X marca os serviços da resposta no formulário
+   do fim e anota a conta na mensagem (só se a pessoa ainda não escreveu nada). */
 export function iniciarCalculadora() {
 	const calc = $('[data-o-calc]');
 	if (!calc) return;
@@ -90,49 +92,63 @@ export function iniciarCalculadora() {
 	const recibo = $('[data-o-calc-recibo]', calc);
 	const tabela = $('[data-o-calc-tabela]', calc);
 	if (!form || !recibo) return;
-	const nome = $('[data-o-calc-nome]', recibo);
-	const gestao = $('[data-o-calc-gestao]', recibo);
-	const verbaEl = $('[data-o-calc-verba]', recibo);
+	let faixas = [];
+	try {
+		faixas = JSON.parse(calc.getAttribute('data-faixas') || '[]');
+	} catch (e) {
+		return;
+	}
+	if (!faixas.length) return;
 	const total = $('[data-o-calc-total]', recibo);
-	const prefixo = $('[data-o-calc-prefixo]', recibo);
-	const wa = $('[data-o-calc-wa]', recibo);
-	const rotuloGestao = nome ? nome.textContent.split(' · ')[0] : 'Gestão Olorin';
+	const botao = $('[data-o-calc-botao]', recibo);
 	form.hidden = false;
 	recibo.hidden = false;
 	if (tabela) tabela.classList.add('o-sr');
 	const reais = (n) => 'R$ ' + Number(n).toLocaleString('pt-BR');
+	const marcadas = () => $$('input:checked', form);
 	let usou = false;
+	let valor = 0;
 	function calcular(registrar) {
-		const plano = $('input[name="calc-plano"]:checked', form);
-		const verba = $('input[name="calc-verba"]:checked', form);
-		const objetivo = $('input[name="calc-objetivo"]:checked', form);
-		if (!plano || !verba) return;
-		const g = Number(plano.value);
-		const v = Number(verba.value);
-		const aPartir = plano.getAttribute('data-a-partir') === 'sim';
-		const nomePlano = plano.getAttribute('data-nome');
-		if (nome) nome.textContent = rotuloGestao + ' · ' + nomePlano;
-		if (gestao) gestao.textContent = reais(g);
-		if (verbaEl) verbaEl.textContent = reais(v);
-		if (total) total.textContent = reais(g + v);
-		if (prefixo) prefixo.hidden = !aPartir;
-		if (wa) {
-			const de = aPartir ? 'a partir de ' : '';
-			const msg =
-				'Olá! Fiz a conta no site da Olorin: ' + nomePlano + ' (' + de + reais(g) + '/mês) + verba de anúncio de ' + reais(v) + '/mês = ' + de + reais(g + v) + '/mês.' +
-				(objetivo ? ' Quero mais ' + objetivo.value.toLowerCase() + '.' : '') + ' Podemos conversar?';
-			wa.href = linkWhatsApp(msg, 'calculadora');
-		}
+		const escolhas = marcadas();
+		const soma = escolhas.reduce((s, i) => s + (Number(i.getAttribute('data-pontos')) || 0), 0);
+		const faixa = faixas.find((f) => soma <= f.pontos_ate) || faixas[faixas.length - 1];
+		valor = faixa.valor;
+		escolhas.forEach((i) => {
+			const linha = $('[data-o-calc-linha="' + i.name.replace('calc-', '') + '"]', recibo);
+			if (linha) linha.textContent = i.value;
+		});
+		if (total) total.textContent = reais(valor);
 		if (registrar) {
 			recibo.classList.remove('is-impresso');
 			void recibo.offsetWidth;
 			recibo.classList.add('is-impresso');
-			track('calculator_use', { plano: plano.getAttribute('data-plano'), verba_faixa: String(v), objetivo: objetivo ? objetivo.value : '', primeira_vez: !usou });
+			track('calculator_use', { verba_faixa: String(valor), escolhas: escolhas.map((i) => i.value).join(' | '), primeira_vez: !usou });
 			usou = true;
 		}
 	}
 	form.addEventListener('change', () => calcular(true));
 	calcular(false);
+	if (botao) {
+		botao.addEventListener('click', () => {
+			const destino = $('#form-fim') || $('[data-o-form]');
+			if (!destino) return;
+			const servicos = marcadas()
+				.map((i) => i.getAttribute('data-servicos') || '')
+				.join(' ')
+				.split(' ')
+				.filter(Boolean);
+			if (servicos.length) {
+				$$('input[name="servicos[]"]', destino).forEach((c) => {
+					if (servicos.indexOf(c.getAttribute('data-servico')) > -1) c.checked = true;
+				});
+				destino.dispatchEvent(new CustomEvent('o-servicos'));
+			}
+			const msg = $('textarea[name="mensagem"]', destino);
+			if (msg && !msg.value.trim()) {
+				msg.value = (botao.getAttribute('data-mensagem') || '') + ' ' + marcadas().map((i) => i.value).join(', ') + '. Expectativa: ' + reais(valor) + '/mês.';
+			}
+		});
+	}
 }
 
 /* "Quero esse": preenche o plano no formulário e pré-seleciona os serviços. */
@@ -217,7 +233,7 @@ export function iniciarPausa() {
 	}));
 }
 
-/* Contadores dos números (R$2M+, 50+, 2x...): animam ao aparecer; leitores de tela leem o valor final. */
+/* Contadores dos números ("+ de R$ 5M", "50+"): só a parte numérica anima, o texto em volta fica; leitores de tela leem o valor final. */
 export function iniciarContadores() {
 	const nos = $$('[data-o-contador]');
 	if (!nos.length || movimentoReduzido || !temIO) return;

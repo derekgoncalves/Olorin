@@ -94,7 +94,7 @@
 	gap: 16px;
 }
 
-/* Fecho da grade de serviços: "Não sabe por onde começar?" + WhatsApp, no mesmo fundo preto,
+/* Fecho da grade de serviços: "Não sabe por onde começar?" + botão do Raio-X, no mesmo fundo preto,
    como uma última linha da grade (mesmas bordas finas). */
 .o-servicos__fim {
 	position: relative;

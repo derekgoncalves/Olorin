@@ -1,9 +1,8 @@
-{#- ===== SEÇÃO: Resultados (bloco 2 da home) — números (claims.json), logos (clientes.yml),
-     cases (cases.yml) e portfólio (portfolio.yml). Textos em home.yml → resultados. ===== -#}
+{#- ===== SEÇÃO: Resultados (home) — números (claims.json), cases (cases.yml) e portfólio (portfolio.yml).
+     Textos em home.yml → resultados. A faixa de logos agora é a seção própria faixa-clientes.njk. ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- set r = P.resultados -%}
 {%- set numeros = [] if r.ocultar_numeros else (conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else []) -%}
-{%- set logos = [] if r.ocultar_clientes else ((conteudo.clientes and conteudo.clientes.itens) or []) -%}
 {%- set cases = [] if r.ocultar_cases else (conteudo.casesTodos or []) -%}
 {%- set trabalhos = [] if r.ocultar_portfolio else (conteudo.portfolioPublicado or []) -%}
 {%- if r.limite %}{% set trabalhos = trabalhos.slice(0, r.limite) %}{% endif %}
@@ -19,30 +18,16 @@
 			{%- if r.texto %}<p class="o-apoio">{{ r.texto }}</p>{% endif %}
 		</div>
 		{%- if numeros.length %}
-		<dl class="o-numeros">
+		<dl class="o-numeros o-numeros--{{ numeros.length }}">
 		{%- for n in numeros %}
 			<div class="o-numero">
 				<dt class="o-numero__rotulo">{{ n.rotulo }}</dt>
 				<dd class="o-numero__valor" data-o-contador>{{ n.valor }}</dd>
-				{%- if n.periodo or n.criterio %}<dd class="o-numero__base">base: {{ [n.criterio, n.periodo] | semVazios | join(", ") }}</dd>{% endif %}
 			</div>
 		{%- endfor %}
 		</dl>
 		{%- endif %}
 	</div>
-	{%- if logos.length %}
-	<div class="o-resultados__logos">
-		<h3 class="o-etiqueta o-resultados__logos-titulo o-wrap">{{ r.clientes_titulo or conteudo.clientes.etiqueta }}</h3>
-		<div class="o-faixa o-faixa--logos" data-o-faixa>
-			<ul class="o-faixa__trilho">
-			{%- for c in logos %}
-				<li><img src="/assets/img/clientes/{{ c.logo }}" alt="{{ c.nome }}" loading="lazy" decoding="async" width="{{ c.largura or 120 }}" height="{{ c.altura or 40 }}" style="--logo-a: {{ c.altura or 40 }}"></li>
-			{%- endfor %}
-			</ul>
-			<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>
-		</div>
-	</div>
-	{%- endif %}
 </section>
 {%- if cases.length or trabalhos.length or depoimentos.length %}
 <section class="o-sec o-vitrine o-ctx-branco" id="cases" data-secao="cases" aria-labelledby="{{ 'cases-titulo' if cases.length else 'portfolio-titulo' }}">

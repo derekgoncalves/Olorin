@@ -97,23 +97,77 @@ html:not(.js) .o-faixa__pausar {
 	display: none;
 }
 
-/* Faixa de logos de clientes (clientes.yml): cada logo tem a sua altura (--logo-a, em px no
-   computador), ajustada para o peso visual ficar igual; no celular tudo encolhe até 70%.
-   O seletor duplo vence as regras antigas de prova.css (carregado depois). */
-.o-faixa--logos {
-	--logo-escala: clamp(0.7px, 0.5px + 0.035vw, 1px);
+/* Faixa de logos de clientes (secoes/faixa-clientes.njk, em todas as páginas): reta, com peso. Cada logo
+   tem a sua altura (--logo-a, em px, de clientes.yml), ajustada para o peso visual ficar igual; a escala
+   cresce com a tela. Logos em preto; em fundo escuro (faixa_ctx preto ou violeta) viram brancos. */
+.o-clientes {
+	padding-block: clamp(20px, 2.6vw, 36px) clamp(18px, 2.2vw, 30px);
+	overflow: hidden;
+	border-block: var(--borda) solid var(--cor-texto);
 }
-.o-faixa.o-faixa--logos {
+.o-faixa--logos {
+	--inclinacao: 0deg;
+	--logo-escala: clamp(0.9px, 0.62px + 0.05vw, 1.3px);
+	width: 100%;
+	height: clamp(72px, 7.4vw, 112px);
+	margin: 0;
+	background: transparent;
 	/* esmaece só nas margens da página, para o botão de pausa (na borda do conteúdo) ficar inteiro */
 	-webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
 	mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
 }
-.o-faixa.o-faixa--logos img {
+.o-faixa--logos .o-faixa__trilho li {
+	padding-right: clamp(44px, 5.6vw, 88px);
+}
+.o-faixa--logos .o-faixa__trilho li::after {
+	display: none;
+}
+.o-faixa--logos img {
+	display: block;
 	width: auto;
 	height: calc(var(--logo-a, 40) * var(--logo-escala));
 	max-width: none;
+	object-fit: contain;
+	transition: transform 0.3s ease;
 }
-/* Pausa alinhada à borda direita do conteúdo (a mesma do título à esquerda). */
+.o-faixa--logos li:hover img {
+	transform: scale(1.08);
+}
+:is(.o-ctx-preto, .o-ctx-violeta) :is(.o-faixa--logos img, .o-clientes__selos img) {
+	filter: invert(1);
+}
+/* Pausa alinhada à borda direita do conteúdo. */
 .o-faixa.o-faixa--logos .o-faixa__pausar {
 	right: max(var(--margem), (100% - var(--largura-max)) / 2);
+	border-color: var(--cor-texto);
+	background: var(--cor-texto);
+	color: var(--cor-fundo);
+	box-shadow: 0 0 0 10px var(--cor-fundo);
+}
+/* Credencial da Natalia (Meta e Google), em letra pequena embaixo dos logos. */
+.o-clientes__credencial {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px 14px;
+	margin-top: clamp(10px, 1.4vw, 18px) !important;
+	margin-bottom: 0 !important;
+	font-size: 13px;
+	line-height: 1.45;
+	text-align: center;
+	color: var(--cor-apoio);
+}
+.o-clientes__credencial a {
+	color: var(--cor-texto);
+	font-weight: 700;
+}
+.o-clientes__selos {
+	display: inline-flex;
+	gap: 10px;
+}
+.o-clientes__selos img {
+	display: block;
+	width: 22px;
+	height: 22px;
 }

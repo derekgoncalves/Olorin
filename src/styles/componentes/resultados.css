@@ -157,9 +157,3 @@
 	line-height: 1.2;
 	text-transform: none;
 }
-
-/* Título da faixa de logos (home → Resultados): alinhado à borda do conteúdo, como o resto do
-   bloco (.o-etiqueta zerava a margem lateral do .o-wrap e o título colava na esquerda da tela). */
-.o-resultados .o-resultados__logos-titulo {
-	margin-inline: auto;
-}

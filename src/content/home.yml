@@ -1,79 +1,67 @@
 # ============================================================
 # HOME — textos e ORDEM dos blocos
 # ------------------------------------------------------------
-# Ordem fixada pelo dono (13/10/2026, revista em 14/10/2026): 1 banner, 2 resultados
-# (números, faixa de logos e portfólio; os cases saíram da home), 3 serviços, 4 Raio-X
-# (mini formulário), 5 planos (com a calculadora), 6 método (banner), 7 quem toca,
-# 8 blog (os 3 artigos mais recentes), 9 dúvidas, 10 formulário. O checklist saiu para a
-# home ficar mais curta (14/10/2026).
-# Só checklist, método e dúvidas podem sair (comente a linha com #).
+# Ordem fixada pelo dono (17/10/2026): 1 banner, 2 faixa de logos (logo abaixo do banner),
+# 3 resultados (números e portfólio), 4 serviços, 5 calculadora, 6 quem somos,
+# 7 RAIO X DA OLORIN (o formulário do fim, igual em todas as páginas).
+# Saíram da home em 17/10/2026: o Raio-X do meio, o checklist, o método, o blog e as dúvidas.
+# Toda chamada da home é o botão do Raio-X, que leva ao formulário do fim (#raio-x).
 # Regra da marca: violeta e verde nunca encostam. Cores dos blocos, em ordem:
-# preto, verde+branco, preto, violeta, branco, violeta, preto, violeta, branco, violeta.
+# preto, branco, verde+branco, preto, branco, preto, violeta.
 # ============================================================
 secoes:
   - hero
+  - faixa-clientes
   - resultados
   - servicos
-  - raio-x
-  - planos
-  # - checklist
-  - metodo
+  - calculadora
   - equipe
-  - blog      # os 3 artigos mais recentes do blog (textos no bloco "blog:" abaixo)
-  - duvidas
   - orcamento
 
 seo:
-  titulo: Olorin Digital | Agência de marketing em Curitiba
-  descricao: Do clique ao cliente, resultado que dá pra ver. Anúncios, redes, marca, site, impressos e dados num time só, com preço aberto e Raio-X gratuito.
+  titulo: Olorin Digital | Agência de marketing digital
+  descricao: "Do clique ao cliente. Anúncios, redes, marca, site, impressos e dados num time só, como se você fosse o único cliente. Peça o seu Raio-X gratuito."
 
 hero:
-  linha_superior: Agência de marketing digital · Curitiba para todo o Brasil
-  titulo_1: "Do clique ao cliente:"
-  titulo_2: resultado que
-  titulo_destaque: dá pra ver.
-  paragrafo: Anúncios, redes, marca, site, impressos e dados feitos por um time inteiro, como se você fosse o único cliente. Da menor à maior organização, com cada resultado medido.
+  linha_superior: Agência de marketing digital
+  # Título: "Do clique" na 1ª linha e "ao cliente." na 2ª, com "cliente." em verde.
+  titulo_1: Do clique
+  titulo_2: ao
+  titulo_destaque: cliente.
+  botao: Quero meu Raio-X grátis
+  prova:
+    - Sem multa depois de 3 meses
+    - Relatório todo mês
+  janela: relatorio.olo
+  janela_rotulo: Resultado do mês
+  aviso_clique: Novo cliente
+  # Usados por outras páginas (não aparecem na home): texto do botão sem a oferta do Raio-X,
+  # link de WhatsApp e o atalho de telefone das páginas de serviço, até elas trocarem pelo botão do Raio-X.
+  botao_sem_diagnostico: Pedir orçamento
+  link_whatsapp: ou fale agora no WhatsApp
   atalho:
     rotulo: Seu WhatsApp com DDD
     placeholder: (41) 99999-9999
     botao: Quero meu Raio-X grátis
     ajuda: Leva 1 minuto. Depois, 30 min por vídeo e um PDF em até 48 h.
-  botao: Quero meu Raio-X grátis
-  botao_sem_diagnostico: Pedir orçamento
-  botao_destino: "#raio-x"
-  link_whatsapp: ou fale agora no WhatsApp
-  prova:
-    - "Preço aberto: a partir de R$ 800"
-    - Sem multa depois de 3 meses
-    - Relatório todo mês
-  janela: relatorio.exe
-  janela_rotulo: Resultado do mês
 
-# Usado nas páginas de serviço e na home (bloco 4). O mesmo formulário da etapa 1.
-formulario_topo:
-  etiqueta: Raio-X Olorin · gratuito
-  titulo: Onde a sua marca trava?
-  texto: Conte quem você é. A gente olha anúncio, redes, site e material da marca e mostra, sem rodeio, por onde vale começar.
-  detalhe: "Como funciona: uma conversa de 30 minutos por vídeo e, em até 48 horas, um PDF de 1 página com os 3 pontos que mais travam o seu resultado e as 3 ações para começar."
-  itens:
-    - 30 minutos por vídeo
-    - PDF com 3 pontos e 3 ações em até 48 horas
-    - Sem compromisso, com preço aberto na proposta
-  passos:
-    - { num: "01", texto: Você conta quem é }
-    - { num: "02", texto: A gente analisa tudo }
-    - { num: "03", texto: Você recebe o plano }
+# Faixa de logos (secoes/faixa-clientes.njk, em todas as páginas). Os logos vêm de clientes.yml.
+# A credencial é da Natalia (gestora de tráfego parceira Meta e Google), nunca selo da agência.
+faixa_clientes:
+  credencial_antes: Tráfego com a
+  credencial_nome: Natalia
+  credencial_link: /quem-somos/natalia-arruda/
+  credencial_depois: ", gestora parceira Meta e Google"
 
 resultados:
   etiqueta: Resultados
-  titulo: Prova, não promessa.
-  texto: O que o nosso time já fez, para quem e com que cara.
-  clientes_titulo: Quem confia na Olorin
+  titulo: Provas, não promessas.
+  texto: O que o nosso time já fez.
   cases_etiqueta: Cases
   cases_titulo: De perto.
   case_link: Ver o serviço
   portfolio_etiqueta: Portfólio
-  portfolio_titulo: Resultado que dá pra ver.
+  portfolio_titulo: Marcas atendidas.
   portfolio_texto: Identidade, redes, impressos, sites e campanhas feitos pelo nosso time.
   filtro_todos: Tudo
   limite: 6
@@ -82,37 +70,42 @@ resultados:
     url: /portfolio/
   botao_instagram: Ver mais no Instagram
 
+# Na home os cards mostram só ícone, nome e link (a descrição fica na página de cada serviço).
 servicos:
-  etiqueta: O que a Olorin faz
-  titulo: A marca inteira. Num lugar só.
-  texto: Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time. Contrate uma frente só ou junte todas. Quando rodam juntas, uma puxa a outra.
+  titulo: O que a Olorin faz
   ver_detalhes: Ver o serviço
   faixa_texto: Não sabe por onde começar?
-  faixa_botao: Perguntar no WhatsApp
 
-planos:
-  etiqueta: Planos
-  titulo: Preço aberto. Sem letra miúda.
-  texto: Você sabe quanto vai pagar antes de falar com a gente. Da entrega pontual à marca inteira.
-  calculadora: true
-  link_mais:
-    texto: Comparar os planos em detalhe
-    url: /planos/
+# A calculadora tem textos próprios em src/content/calculadora.yml.
 
-checklist:
-  etiqueta: Sinais de alerta
-  titulo: Não é falta de esforço.
-  texto: Se pelo menos dois destes aparecem aí, a sua marca precisa de ajuste, não de mais trabalho.
+equipe:
+  etiqueta: Quem toca
+  titulo: Fale com quem coordena.
+  texto: Cada frente tem alguém que coordena e responde por ela. Você fala com quem coordena, sem intermediário.
+  botao: Falar com a equipe no WhatsApp
+  link_sobre: Conheça quem somos
+  ver_perfil: Ver perfil
+
+# Seção final RAIO X DA OLORIN (secoes/orcamento.njk): a mesma em todas as páginas, menos a Educação.
+orcamento:
+  titulo: RAIO X DA OLORIN
+  passos:
+    - Você conta quem é
+    - A gente analisa tudo
+    - Você recebe o plano
+  janela: chapa.olo
+
+# ------------------------------------------------------------
+# Usados por outras páginas (não aparecem na home)
+# ------------------------------------------------------------
+# Lista da landing de campanha (/promo/).
+formulario_topo:
   itens:
-    - { janela: erro_01.exe, titulo: Ninguém conversa, texto: "Um fornecedor faz o anúncio, outro o post, outro a arte. Cada um puxa para um lado." }
-    - { janela: erro_02.exe, titulo: Dinheiro no escuro, texto: Você investe todo mês e não sabe quanto custou cada resultado. }
-    - { janela: erro_03.exe, titulo: Relatório de curtida, texto: "O relatório mostra alcance e curtida, nunca venda, matrícula ou inscrição." }
-    - { janela: erro_04.exe, titulo: Marca com várias caras, texto: "Anúncio, feed, site e cartão parecem de empresas diferentes." }
-  resposta_titulo: Tem conserto. E não é trabalhar mais.
-  resposta: Com um time só tocando tudo, a marca fala uma língua e cada real investido aparece no relatório.
-  cta: Pedir meu Raio-X
-  cta_destino: "#raio-x"
+    - 30 minutos por vídeo
+    - PDF com 3 pontos e 3 ações em até 48 horas
+    - Sem compromisso
 
+# Etapas do método: a página Sobre (antiga Como trabalhamos) e Quem somos leem daqui.
 metodo:
   curto: true
   banner: true
@@ -122,7 +115,7 @@ metodo:
   link_mais:
     texto: Ver como trabalhamos
     url: /como-trabalhamos/
-  # "texto" aparece na página Como trabalhamos; "resumo" aparece na home.
+  # "texto" aparece na página Como trabalhamos; "resumo" aparece na versão curta.
   etapas:
     - nome: Raio-X
       resumo: Olhamos tudo o que já existe antes de criar qualquer coisa.
@@ -139,47 +132,3 @@ metodo:
   cta_texto: Quer saber em qual etapa a sua marca está travada?
   cta: Pedir meu Raio-X
   cta_destino: "#raio-x"
-
-equipe:
-  etiqueta: Quem toca
-  titulo: Fale com quem coordena.
-  texto: Cada frente tem alguém que coordena e responde por ela. Você fala com quem coordena, sem intermediário.
-  botao: Falar com a equipe no WhatsApp
-  link_sobre: Conheça quem somos
-  ver_perfil: Ver perfil
-
-# Bloco do blog: os 3 artigos mais recentes de src/blog/artigos/ (sem artigo publicado, o bloco some).
-blog:
-  etiqueta: Blog da Olorin
-  titulo: Para ler e aplicar.
-  texto: Anúncios, redes e captação explicados passo a passo, sem jargão.
-  botao: Ver todos os artigos
-
-duvidas:
-  etiqueta: Dúvidas
-  titulo: Perguntas diretas.
-  texto: Ficou alguma dúvida que não está aqui?
-  botao: Perguntar no WhatsApp
-  # Só estas 4 aparecem na home. Todas as perguntas ficam na página /planos/.
-  ids:
-    - faq-raio-x
-    - faq-uma-frente
-    - faq-verba-minima
-    - faq-fidelidade
-  link_mais:
-    texto: Ver todas as dúvidas
-    url: /planos/#duvidas
-
-orcamento:
-  etiqueta: Raio-X Olorin gratuito
-  titulo_1: Vamos cuidar
-  titulo_2: da sua marca?
-  lista:
-    - 30 minutos por vídeo com quem coordena
-    - PDF em até 48 horas com 3 pontos e 3 ações
-    - Proposta com preço aberto, sem compromisso
-    - Resposta em até 1 dia útil
-  janela: whatsapp.exe
-  wa_etiqueta: Prefere resolver agora?
-  wa_texto: Chama no WhatsApp
-  redes_titulo: Acompanhe o trabalho da Olorin

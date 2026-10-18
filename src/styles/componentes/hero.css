@@ -1,11 +1,14 @@
-/* Banner da home. */
+/* Banner da home (17/10/2026): etiqueta, "Do clique / ao cliente." grande, o botão do Raio-X num visor
+   e 2 provas. À direita (só a partir de 768 px) o celular com a logo, um cursor que clica, o aviso de
+   cliente novo e a janela relatorio.olo. No celular o banner fica curto e a faixa de logos vem logo abaixo. */
 .o-hero {
 	display: flex;
 	align-items: center;
-	min-height: 100vh;
-	min-height: 100svh;
+	/* a faixa de logos aparece no pé da primeira tela */
+	min-height: calc(100vh - clamp(112px, 10vw, 150px));
+	min-height: calc(100svh - clamp(112px, 10vw, 150px));
 	padding-top: calc(var(--altura-topo) + clamp(40px, 7vh, 88px));
-	padding-bottom: clamp(72px, 10vh, 120px);
+	padding-bottom: clamp(56px, 8vh, 96px);
 	overflow: hidden;
 }
 .o-hero__grade {
@@ -15,23 +18,20 @@
 	gap: clamp(40px, 5vw, 96px);
 }
 /* A coluna de texto é o contêiner do tamanho do título (cqi). Fica aqui, numa regra simples, para
-   entrar no CSS crítico da página (a regra geral de tipografia.css usa :where e fica de fora):
-   sem ela, a 1ª pintura mediria pela tela e o título "pularia" quando o CSS completo chegasse. */
+   entrar no CSS crítico da página: sem ela, a 1ª pintura mediria pela tela e o título "pularia". */
 .o-hero__texto {
 	container-type: inline-size;
 }
 .o-hero__linha {
 	margin-bottom: clamp(20px, 3vh, 28px);
 }
-/* Título em blocos: no desktop são 3 linhas, a chamada "Do clique ao cliente:" a 0,7em ocupa a mesma
-   largura que "resultado que" (a fonte é expandida: ~10,9em nas duas), e "dá pra ver." fecha em verde.
-   No celular a chamada quebra em 2 linhas do mesmo tamanho (4 linhas no total).
-   O tamanho segue a coluna (9cqi: "resultado que" sempre cabe numa linha, sem vazar). */
+/* Título em 2 linhas do mesmo tamanho: "Do clique" e "ao cliente." (com "cliente." em verde e o cursor).
+   "ao cliente." + cursor ocupa ~9,7em na fonte expandida; 10cqi faz a linha caber na coluna. */
 .o-hero__titulo {
-	margin: 0 0 clamp(20px, 3vh, 32px);
+	margin: 0 0 clamp(28px, 4.5vh, 44px);
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(24px, 9cqi, 88px);
+	font-size: clamp(28px, 10cqi, 116px);
 	line-height: 0.92;
 	letter-spacing: -0.015em;
 	text-transform: uppercase;
@@ -39,12 +39,6 @@
 .o-hero__t1,
 .o-hero__t2 {
 	display: block;
-	text-wrap: balance;
-}
-.o-hero__t1 {
-	margin-bottom: 0.1em;
-	font-size: 0.7em;
-	line-height: 1;
 }
 .o-hero__destaque {
 	color: var(--verde);
@@ -60,26 +54,58 @@
 	vertical-align: -0.02em;
 	animation: o-piscar 1.05s steps(1) infinite;
 }
-.o-hero__paragrafo {
-	max-width: 52ch;
-	font-size: clamp(16px, 1.2vw, 18px);
-	line-height: 1.7;
-	color: var(--cor-apoio);
+
+/* Visor: 4 cantos como os do ícone do Raio-X (.o-visor, também na chapa da seção final). No banner ele
+   envolve o botão do Raio-X, que ganha um brilho que varre. */
+.o-visor {
+	--visor-cor: var(--verde);
+	--visor-t: 16px;
+	position: relative;
 }
-.o-hero__acoes {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: 14px 24px;
-	margin: clamp(24px, 4vh, 36px) 0 18px;
+.o-visor::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	--l: linear-gradient(var(--visor-cor), var(--visor-cor));
+	background:
+		var(--l) 0 0 / var(--visor-t) 2px, var(--l) 0 0 / 2px var(--visor-t),
+		var(--l) 100% 0 / var(--visor-t) 2px, var(--l) 100% 0 / 2px var(--visor-t),
+		var(--l) 0 100% / var(--visor-t) 2px, var(--l) 0 100% / 2px var(--visor-t),
+		var(--l) 100% 100% / var(--visor-t) 2px, var(--l) 100% 100% / 2px var(--visor-t);
+	background-repeat: no-repeat;
 }
+.o-hero__cta {
+	display: inline-flex;
+	max-width: 100%;
+	padding: 10px;
+}
+.o-hero__raio {
+	position: relative;
+	overflow: hidden;
+	min-height: 64px;
+	padding-inline: 30px;
+	font-size: 15px;
+}
+.o-hero__raio .o-icone {
+	--tam: 1.5em;
+}
+.o-hero__raio::after {
+	content: "";
+	position: absolute;
+	inset: -2px auto -2px 0;
+	width: 38%;
+	background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.85) 50%, transparent);
+	transform: translateX(-120%) skewX(-18deg);
+	pointer-events: none;
+}
+
 .o-prova {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px 18px;
-	margin: 22px 0 0;
-	padding: 18px 0 0;
-	border-top: 1px solid var(--cor-linha);
+	gap: 8px 22px;
+	margin: 26px 0 0;
+	padding: 0;
 	list-style: none;
 	font-size: 13px;
 	color: var(--cor-apoio);
@@ -140,6 +166,7 @@
 	border-radius: var(--raio-celular);
 	overflow: hidden;
 	background: var(--preto);
+	box-shadow: 14px 14px 0 rgba(236, 255, 54, 0.18);
 }
 .o-celular picture,
 .o-celular__img {
@@ -165,7 +192,56 @@
 	bottom: 22px;
 }
 
-/* Janelinha "relatorio.exe" sobre o celular */
+/* "Do clique": cursor pixel que clica no símbolo do meio... */
+.o-hero__cursor {
+	position: absolute;
+	left: 54%;
+	top: 53%;
+	z-index: 5;
+	display: grid;
+	color: var(--branco);
+	filter: drop-shadow(2px 2px 0 var(--preto));
+}
+.o-hero__cursor .o-icone {
+	--tam: 34px;
+}
+.o-hero__cursor::before {
+	content: "";
+	position: absolute;
+	left: -14px;
+	top: -14px;
+	width: 28px;
+	height: 28px;
+	border: 2px solid var(--verde);
+	opacity: 0;
+}
+/* ..."ao cliente": o aviso que chega no alto do celular */
+.o-hero__aviso {
+	position: absolute;
+	top: 16%;
+	right: -26px;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 !important;
+	padding: 10px 14px;
+	border: 2px solid var(--verde);
+	background: var(--preto);
+	box-shadow: 6px 6px 0 var(--verde);
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: var(--branco);
+}
+.o-hero__aviso .o-icone {
+	--tam: 14px;
+	color: var(--verde);
+}
+
+/* Janelinha "relatorio.olo" sobre o celular */
 .o-hero__janela {
 	--janela-barra: var(--verde);
 	--janela-tinta: var(--preto);
@@ -224,11 +300,83 @@
 	box-shadow: -22px 22px 0 rgba(236, 255, 54, 0.55);
 }
 
-/* Celular: a chamada do título no mesmo tamanho, em 2 linhas ("Do clique / ao cliente:"). */
+/* Movimento do banner: o brilho varre o botão do Raio-X, os cantos do visor respiram, o cursor clica
+   no símbolo e o aviso de cliente novo chega logo depois (ciclo de 6 s). Parado: tudo no estado final. */
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.o-pausado) {
+		& .o-hero__raio::after {
+			animation: o-brilho 3.6s var(--curva) 1.4s infinite;
+		}
+		& .o-hero__cta::before {
+			animation: o-visor 3.6s ease-in-out 1.4s infinite;
+		}
+		& .o-hero__cursor {
+			animation: o-cursor 6s var(--curva) 1s infinite;
+		}
+		& .o-hero__cursor::before {
+			animation: o-clique 6s ease-out 1s infinite;
+		}
+		& .o-hero__aviso {
+			animation: o-aviso 6s var(--mov-volta, ease-out) 1s infinite;
+		}
+	}
+}
+@keyframes o-brilho {
+	0% { transform: translateX(-120%) skewX(-18deg); }
+	45%,
+	100% { transform: translateX(320%) skewX(-18deg); }
+}
+@keyframes o-visor {
+	50% { inset: -5px; }
+}
+@keyframes o-cursor {
+	0% { translate: 90px 110px; opacity: 0; }
+	8% { opacity: 1; }
+	30%,
+	88% { translate: 0 0; scale: 1; opacity: 1; }
+	34% { scale: 0.86; }
+	100% { translate: 0 0; opacity: 0; }
+}
+@keyframes o-clique {
+	0%,
+	32% { opacity: 0; transform: scale(0.3); }
+	34% { opacity: 1; }
+	48%,
+	100% { opacity: 0; transform: scale(1.8); }
+}
+@keyframes o-aviso {
+	0%,
+	36% { opacity: 0; transform: translateY(14px) scale(0.92); }
+	44%,
+	88% { opacity: 1; transform: none; }
+	96%,
+	100% { opacity: 0; transform: translateY(-8px); }
+}
+
+/* Celular: banner curto (etiqueta, título, botão e provas); a montagem do celular sai e a faixa de
+   logos, logo abaixo, entra no lugar dela. */
 @media (max-width: 767px) {
-	.o-hero__t1 {
-		margin-bottom: 0;
-		font-size: 1em;
-		line-height: inherit;
+	.o-sec.o-hero {
+		min-height: 0;
+		padding-top: calc(var(--altura-topo) + 36px);
+		padding-bottom: 40px;
+	}
+	.o-hero .o-hero__visual {
+		display: none;
+	}
+	.o-hero__cta {
+		display: flex;
+	}
+	.o-hero__raio {
+		flex: 1;
+		gap: 8px;
+		padding-inline: 10px;
+		font-size: 13px;
+		letter-spacing: 0.01em;
+	}
+}
+@media (max-width: 359px) {
+	.o-hero__raio {
+		font-size: 12px;
 	}
 }

@@ -1,7 +1,7 @@
 # Textos e opções do formulário de orçamento (o mesmo componente em todas as páginas).
 # ATENÇÃO: os nomes das opções de "servicos" precisam ser idênticos aos da lista do enviar.php.
-barra_topo: raio-x.exe
-barra_fim: orcamento.exe
+barra_topo: raio-x.olo
+barra_fim: ficha.olo
 etapa1_legenda: Seus contatos
 etapa2_legenda: O que você precisa
 rotulos:

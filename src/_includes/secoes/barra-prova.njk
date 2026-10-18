@@ -11,7 +11,6 @@
 			<div class="o-numero">
 				<dt class="o-numero__rotulo">{{ n.rotulo }}</dt>
 				<dd class="o-numero__valor" data-o-contador>{{ n.valor }}</dd>
-				{%- if n.periodo or n.criterio %}<dd class="o-numero__base">base: {{ [n.criterio, n.periodo] | semVazios | join(", ") }}</dd>{% endif %}
 			</div>
 		{%- endfor %}
 		</dl>

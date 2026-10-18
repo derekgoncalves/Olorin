@@ -1,0 +1,23 @@
+{
+  "_leia": "Imagens da home e da seção final RAIO X DA OLORIN (Agente A, 17/10/2026). Mesmo formato de manifest.json.",
+  "imagens": {
+    "raio-x-mao": {
+      "arquivo_original": "src/assets/img-src/raio-x-mao.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "Raio-x de uma mão segurando um celular, com a logo da Olorin acesa na tela",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Raio-x real enviado pelo dono em 17/10/2026 (images.jpg, 447 x 447). Recortado em 423 x 423 e tratado na paleta (preto, violeta e lavanda) com sharp. A logo na tela é sobreposta em CSS (secoes/orcamento.njk).",
+      "larguras": [
+        300,
+        423
+      ],
+      "largura_padrao": 423,
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    }
+  }
+}
