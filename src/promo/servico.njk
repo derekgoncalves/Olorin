@@ -13,7 +13,8 @@ eleventyComputed:
   canonical: "/servicos/{{ servico.slug }}/"
   og_imagem: "/assets/img/og/servico-{{ servico.slug }}.jpg"
 ---
-{#- /promo/<slug>/ — serviço em modo campanha (mesma fonte da página do serviço; canonical para ela). -#}
+{#- /promo/<slug>/ — serviço em modo campanha (mesma fonte da página do serviço; canonical para ela).
+    Banner com o formulário do Raio-X, barra de logos e "Este é o seu caso?" (partials/campanha-blocos.njk). -#}
 {%- from "components/formulario.njk" import formulario with context -%}
 {%- set s = servico -%}
 <section class="o-promo-topo o-ctx-preto" data-secao="promo-hero">
@@ -27,8 +28,5 @@ eleventyComputed:
 		{{ formulario({ id: "formulario", posicao: "promo", modo: "promo", servico: s.slug, nomeServico: s.nome, origemWa: "promo-" + s.slug + "-form" }) }}
 	</div>
 </section>
-{%- set faqCampanha = [] -%}
-{%- for id in s.campanha.faq %}{% set item = s.faq | encontrar("id", id) %}{% if item %}{% set faqCampanha = (faqCampanha.concat([item])) %}{% endif %}{% endfor -%}
-{%- set precoCampanha = s.preco -%}
 {%- set servicoCampanha = s.slug -%}
 {% include "partials/campanha-blocos.njk" %}

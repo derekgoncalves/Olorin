@@ -1,8 +1,8 @@
 # ============================================================
 # SERVIÇO: Impressos. Fonte ÚNICA de /servicos/material-impresso/ e /promo/material-impresso/.
 # Texto proposto vai ao ar; "# PENDENTE:" marca o que o dono ainda precisa confirmar.
-# Confirmado pelo dono (14/10/2026): a partir de R$ 800 (nunca menos), valor final conforme as peças, sem
-# detalhar pacotes; primeira versão em cerca de 7 dias úteis, em média, e rodadas de ajuste semanais.
+# Confirmado pelo dono (14/10/2026): primeira versão em cerca de 7 dias úteis, em média, e rodadas de ajuste semanais.
+# 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
 # ============================================================
 slug: material-impresso
 ordem: 4
@@ -11,12 +11,12 @@ chip: Impressos
 icone: impresso
 janela: grafica.pdf
 cena: impresso
-atualizado: "2026-10-14"
+atualizado: "2026-10-17"
 quem_faz: [vinicius-mafra]
 
 seo:
-  title: Design de Material Impresso em Curitiba | Olorin
-  description: Cartão, folder, catálogo, banner, fachada e embalagem com arquivo fechado para a gráfica e prova acompanhada. A partir de R$ 800, conforme as peças.
+  title: Design de Material Impresso | Olorin Digital
+  description: Cartão, folder, catálogo, banner, fachada e embalagem com arquivo fechado para a gráfica e prova acompanhada. Peça o Raio-X gratuito.
 
 card:
   titulo: Impressos
@@ -24,11 +24,12 @@ card:
   resumo_curto: Cartão, folder, banner e embalagem.
 
 hero:
-  eyebrow: Design de material impresso em Curitiba
+  eyebrow: Design de material impresso
   h1: Bonito na mão.
   sub: Cartão, folder, catálogo, banner, fachada e embalagem com a cara da sua marca e o arquivo certo para a gráfica, sem surpresa na entrega.
-  preco_rotulo: Projeto a partir de
-  preco: R$ 800
+  selos:
+    - Sem contrato mensal
+    - Prova conferida antes de imprimir
   janela_linhas:
     - Arte · aprovada
     - Arquivo · fechado para a gráfica
@@ -36,8 +37,8 @@ hero:
 
 resposta_curta: >-
   Design de material impresso é criar cartão, folder, catálogo, banner, fachada e embalagem com a cara da
-  sua marca e entregar o arquivo fechado para a gráfica. Na Olorin, o projeto sai a partir de R$ 800, e o
-  valor final depende das peças, combinado na proposta. A impressão é paga direto à gráfica.
+  sua marca e entregar o arquivo fechado para a gráfica. A Olorin cria a arte, fecha o arquivo do jeito que a
+  gráfica pede e acompanha a prova. A impressão é paga direto à gráfica.
 
 o_que_e:
   titulo: Do arquivo à gráfica.
@@ -51,6 +52,7 @@ o_que_e:
     - A mesma cara do digital
 
 dores:
+  etiqueta: Este é o seu caso?
   titulo: Surpresa na gráfica?
   texto: Se um destes aparece aí, o seu impresso está custando mais do que devia.
   itens:
@@ -92,76 +94,12 @@ portfolio:
   titulo: Feito para pegar.
   texto: Cartazes, sinalização e peças de evento feitos pelo nosso time.
 
-como_funciona:
-  titulo: Da tela ao papel.
-  etapas:
-    - { nome: Raio-X, texto: "Entendemos onde a peça vai ser usada, por quem e com qual objetivo." }
-    - { nome: Direção, texto: "Formato, papel e acabamento definidos com você e com a gráfica." }
-    - { nome: Execução, texto: "Arte criada, com rodadas de ajuste toda semana, e arquivo fechado para impressão." }
-    - { nome: Leitura, texto: "Prova conferida e material entregue do jeito combinado." }
-  prazos_titulo: Prazo de cada peça
-  prazos:
-    - "Primeira versão em cerca de 7 dias úteis, em média."
-    - "Rodadas de ajuste toda semana, até a aprovação e o arquivo fechado."
-    - "A impressão segue o prazo da gráfica. O prazo exato sai na proposta."
-
-precisamos:
-  titulo: Para começar, precisamos de
-  itens:
-    - A identidade visual da marca (logo, cores e fontes).
-    - Os textos, fotos e informações que vão na peça.
-    - O formato e a gráfica, se você já tiver uma preferida.
-
-para_quem:
-  e:
-    - Quem tem ponto físico, estande ou evento e quer material à altura da marca.
-    - Quem vende na mão e precisa de catálogo, folder ou cardápio.
-    - Quem quer impresso e digital com a mesma cara.
-  nao_e:
-    - Quem precisa só imprimir um arquivo pronto (aí é direto com a gráfica).
-    - Quem procura impressão em grande tiragem sem arte nova.
-
-preco:
-  titulo: Preço aberto.
-  formato: Design de impressos
-  rotulo: A partir de
-  valor: R$ 800
-  detalhe: "Entrega pontual, com escopo e prazo fechados na proposta. O valor final depende das peças e do tamanho de cada uma. A impressão é paga direto à gráfica, e a Olorin pode indicar e acompanhar."
-  contrato: Sem contrato mensal. Metade na aprovação da proposta e metade na entrega.
-  inclui:
-    - Criação da arte com a cara da marca
-    - Arquivo fechado para a gráfica
-    - Acompanhamento da prova
-  nao_inclui:
-    - O custo da impressão (pago direto à gráfica)
-    - Criação de identidade visual (no serviço de [Identidade visual](/servicos/identidade-visual/))
-    - Fotos e ilustrações sob encomenda
-  schema:
-    valor: "800"
-    minimo: true
-    descricao: Design de material impresso a partir de R$ 800, com arquivo fechado para a gráfica. O valor final depende das peças; a impressão é paga à parte.
-
 combina_com:
   - slug: identidade-visual
     porque: Com a identidade definida, cada impresso sai mais rápido e igual aos outros.
   - slug: site-e-loja-virtual
     porque: O impresso leva ao site pelo QR code. Os dois com a mesma cara fecham a venda.
 
-faq:
-  - id: impresso-grafica
-    pergunta: Vocês imprimem também?
-    resposta: A Olorin cria a arte, fecha o arquivo e acompanha a prova. A impressão é feita por uma gráfica parceira ou pela sua, e é paga direto a ela.
-  - id: impresso-prazo
-    pergunta: Quanto tempo leva?
-    resposta: A primeira versão sai em cerca de 7 dias úteis, em média, com rodadas de ajuste toda semana até a aprovação. O prazo exato sai na proposta, e o da impressão depende da gráfica.
-  - id: impresso-arquivo
-    pergunta: Os arquivos ficam comigo?
-    resposta: "Sim. Você recebe o arquivo aberto e o arquivo fechado para a gráfica, e pode reimprimir quando quiser."
-  - id: impresso-urgente
-    pergunta: Vocês fazem com urgência?
-    resposta: Quando o prazo cabe na agenda, sim. Conte a data no Raio-X ou no WhatsApp que a gente diz na hora se dá.
-
 campanha:
   titulo: Impresso com cara de marca.
   subtitulo: Raio-X gratuito do seu material, com 30 minutos por vídeo e um PDF com o que melhorar antes da próxima tiragem. Sem compromisso.
-  faq: [impresso-grafica, impresso-prazo, impresso-arquivo, impresso-urgente]

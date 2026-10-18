@@ -1,0 +1,34 @@
+{#- "Este é o seu caso?": as dores do serviço em janelas de erro (.olo), com o botão do Raio-X no fim.
+    Usado na página do serviço e na landing /promo/<slug>/. Espera: s (serviço), idCta (id do botão) e destinoCta (âncora). -#}
+{%- import "components/ui.njk" as ui with context -%}
+{%- if s.dores and s.dores.itens.length %}
+<section class="o-sec o-alertas o-ctx-preto" id="seu-caso" data-secao="dores" aria-labelledby="dores-titulo">
+	<div class="o-fundo o-fundo--linhas" aria-hidden="true"></div>
+	<div class="o-wrap">
+		<div class="o-alertas__cabeca">
+			<div>
+				<p class="o-etiqueta">{{ s.dores.etiqueta or "Este é o seu caso?" }}</p>
+				<h2 class="o-titulo o-titulo--g" id="dores-titulo">{{ s.dores.titulo }}</h2>
+			</div>
+			{%- if s.dores.texto %}<p class="o-apoio">{{ s.dores.texto }}</p>{% endif %}
+		</div>
+		<ul class="o-alertas__lista">
+		{%- for d in s.dores.itens %}
+			<li class="o-alerta o-janela">
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">erro_0{{ loop.index }}.olo</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-janela__corpo o-alerta__corpo">
+					<span class="o-alerta__icone" aria-hidden="true">!</span>
+					<div>
+						{%- if d.titulo %}<h3 class="o-alerta__titulo">{{ d.titulo }}</h3>{% endif %}
+						<p class="o-alerta__texto">{{ (d.texto or d) | emLinha | safe }}</p>
+					</div>
+				</div>
+			</li>
+		{%- endfor %}
+		</ul>
+		{%- if idCta %}
+		<p class="o-alertas__acao">{{ ui.botaoRaioX(idCta, "Quero meu Raio-X grátis", "o-btn--grande", destinoCta or "#raio-x") }}</p>
+		{%- endif %}
+	</div>
+</section>
+{%- endif %}
