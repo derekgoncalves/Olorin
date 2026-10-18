@@ -35,15 +35,6 @@ hero:
   janela: relatorio.olo
   janela_rotulo: Resultado do mês
   aviso_clique: Novo cliente
-  # Usados por outras páginas (não aparecem na home): texto do botão sem a oferta do Raio-X,
-  # link de WhatsApp e o atalho de telefone das páginas de serviço, até elas trocarem pelo botão do Raio-X.
-  botao_sem_diagnostico: Pedir orçamento
-  link_whatsapp: ou fale agora no WhatsApp
-  atalho:
-    rotulo: Seu WhatsApp com DDD
-    placeholder: (41) 99999-9999
-    botao: Quero meu Raio-X grátis
-    ajuda: Leva 1 minuto. Depois, 30 min por vídeo e um PDF em até 48 h.
 
 # Faixa de logos (secoes/faixa-clientes.njk, em todas as páginas). Os logos vêm de clientes.yml.
 # A credencial é da Natalia (gestora de tráfego parceira Meta e Google), nunca selo da agência.
@@ -94,41 +85,3 @@ orcamento:
     - A gente analisa tudo
     - Você recebe o plano
   janela: chapa.olo
-
-# ------------------------------------------------------------
-# Usados por outras páginas (não aparecem na home)
-# ------------------------------------------------------------
-# Lista da landing de campanha (/promo/).
-formulario_topo:
-  itens:
-    - 30 minutos por vídeo
-    - PDF com 3 pontos e 3 ações em até 48 horas
-    - Sem compromisso
-
-# Etapas do método: a página Sobre (antiga Como trabalhamos) e Quem somos leem daqui.
-metodo:
-  curto: true
-  banner: true
-  etiqueta: Método Olorin
-  titulo: Quatro etapas. Zero achismo.
-  texto: "Sem caixa-preta: você sabe o que está sendo feito, por quê e quanto voltou."
-  link_mais:
-    texto: Ver como trabalhamos
-    url: /como-trabalhamos/
-  # "texto" aparece na página Como trabalhamos; "resumo" aparece na versão curta.
-  etapas:
-    - nome: Raio-X
-      resumo: Olhamos tudo o que já existe antes de criar qualquer coisa.
-      texto: Olhamos tudo o que já existe, da conta de anúncio às redes, ao site e ao material da marca. Antes de criar qualquer coisa, descobrimos o que está travando.
-    - nome: Direção
-      resumo: O que falar, para quem, em qual canal e com qual cara.
-      texto: Estratégia e identidade alinhadas, com o que falar, para quem, em qual canal e com qual cara. Uma marca só, em todos os pontos de contato.
-    - nome: Execução
-      resumo: Campanha, conteúdo, site e impresso no mesmo ritmo.
-      texto: Campanha no ar, conteúdo publicado, arquivo fechado para a gráfica e site no ar. Tudo saindo pela mesma porta, no mesmo ritmo.
-    - nome: Leitura
-      resumo: Quanto entrou, quanto saiu e o que muda na próxima rodada.
-      texto: Relatório que qualquer pessoa entende, com quanto entrou, quanto saiu, qual foi o retorno e o que vem na próxima rodada.
-  cta_texto: Quer saber em qual etapa a sua marca está travada?
-  cta: Pedir meu Raio-X
-  cta_destino: "#raio-x"

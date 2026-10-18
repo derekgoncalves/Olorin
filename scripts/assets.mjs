@@ -38,7 +38,6 @@ export const ORDEM_CSS = [
 	'componentes/portfolio.css',
 	'componentes/card-pessoa.css',
 	'componentes/relatorio.css',
-	'componentes/card-plano.css',
 	'componentes/calculadora.css',
 	'componentes/acordeao.css',
 	'componentes/formulario.css',
@@ -68,7 +67,11 @@ export const ORDEM_CSS = [
    (as fontes da LP também ficam fora do @font-face embutido delas). */
 const SO_EDUCACAO = ['componentes/educacao.css'];
 /* E o contrário: arquivos que a LP Olorin Educação não usa (ficam fora do CSS dela, que é mais justo). */
-const FORA_DA_EDUCACAO = [];
+const FORA_DA_EDUCACAO = [
+	'componentes/acordeao.css', 'componentes/breadcrumb.css', 'componentes/calculadora.css', 'componentes/card-pessoa.css',
+	'componentes/card-servico.css', 'componentes/checklist.css', 'componentes/estilo.css', 'componentes/metodo.css',
+	'componentes/prova.css', 'componentes/resultados.css', 'componentes/sobre.css', 'componentes/portfolio.css',
+];
 
 /* Fontes pagas da marca. Métricas verticais iguais às das substitutas (medidas no manual)
    para que títulos, botões e etiquetas fiquem na mesma altura. */

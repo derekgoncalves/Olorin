@@ -61,13 +61,6 @@ slug: estilo
 		</div>
 
 		<div class="o-estilo-bloco">
-			<h2>Card de plano</h2>
-			<div class="o-planos__grade">
-			{%- for p in conteudo.planos.planos %}{{ ui.cardPlano(p) }}{% endfor %}
-			</div>
-		</div>
-
-		<div class="o-estilo-bloco">
 			<h2>Perguntas</h2>
 			{{ ui.faqLista(conteudo.faq.perguntas | batch(3) | first) }}
 		</div>

@@ -43,33 +43,6 @@
 </article>
 {% endmacro %}
 
-{#- Card de plano com preço, itens, selos e "Quero esse". -#}
-{% macro cardPlano(plano, destinoForm="#orcamento") %}
-{#- Sempre as mesmas 9 linhas (subgrid): os cartões ficam alinhados mesmo quando um texto quebra. -#}
-{%- set p = conteudo.planos -%}
-<article class="o-plano{% if plano.destaque %} o-plano--destaque{% endif %}" data-plano="{{ plano.id }}">
-	{%- if plano.tag %}<p class="o-plano__tag">{{ plano.tag }}</p>{% endif %}
-	<h3 class="o-plano__nome">{{ plano.nome }}</h3>
-	<p class="o-plano__para">{{ plano.para }}</p>
-	<p class="o-plano__de{% if not plano.de %} o-plano__de--fechado{% endif %}">{{ plano.de or p.preco_fechado }}</p>
-	<p class="o-plano__preco"><span class="o-plano__valor">{{ plano.valor | reais }}</span> <span class="o-plano__periodo">{{ plano.periodo }}</span></p>
-	<ul class="o-lista-pixel o-plano__itens">
-	{%- for item in plano.itens %}
-		<li>{{ item }}</li>
-	{%- endfor %}
-	</ul>
-	{%- if plano.selos and plano.selos.length %}
-	<ul class="o-plano__selos" aria-label="Garantias do plano">
-	{%- for selo in plano.selos %}<li>{{ selo }}</li>{% endfor %}
-	</ul>
-	{%- else %}
-	<span class="o-plano__vazio"></span>
-	{%- endif %}
-	<p class="o-plano__total">{{ plano.implantacao }}{% if site.config.SHOW_TOTAL_COST and plano.custo_total %}{% if plano.implantacao %}<br>{% endif %}{{ plano.custo_total }}{% endif %}</p>
-	<a class="o-btn o-plano__botao{% if plano.destaque %} o-btn--preto{% else %} o-btn--contorno{% endif %}" href="{{ destinoForm }}" data-o-plano="{{ plano.id }}" data-servicos="{{ plano.servicos_preselecao | join(' ') }}" data-cta="planos-{{ plano.id }}">{{ p.botao }}<span class="o-sr">: {{ plano.nome }}</span></a>
-</article>
-{% endmacro %}
-
 {#- Acordeão de perguntas (<details>), mesma fonte do JSON-LD. -#}
 {% macro faqLista(perguntas, classe="") %}
 <div class="o-faq__lista {{ classe }}">

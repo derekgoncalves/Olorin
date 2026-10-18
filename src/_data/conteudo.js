@@ -4,7 +4,7 @@
  *   conteudo.home         ← src/content/home.yml (textos e ORDEM das seções da home)
  *   conteudo.servicos     ← src/content/servicos/*.yml (lista ordenada pelo campo "ordem")
  *   conteudo.paginas.sobre ← src/content/paginas/sobre.yml (idem para as demais páginas)
- *   conteudo.faq, conteudo.equipe, conteudo.planos, conteudo.cases, conteudo.portfolio,
+ *   conteudo.faq, conteudo.equipe, conteudo.calculadora, conteudo.cases, conteudo.portfolio,
  *   conteudo.depoimentos, conteudo.claims
  *
  * Nada fica escondido (dono, 13/10/2026): todo texto vai ao ar. O que ainda falta confirmar

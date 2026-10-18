@@ -69,8 +69,7 @@ const home = ler('src/content/home.yml');
 const hub = ler('src/content/paginas/servicos.yml');
 const promo = ler('src/content/paginas/promo.yml');
 const sobre = ler('src/content/paginas/sobre.yml');
-const planos = ler('src/content/paginas/planos.yml');
-const metodo = ler('src/content/paginas/como-trabalhamos.yml');
+const metodo = ler('src/content/paginas/sobre-metodo.yml');
 const portfolio = ler('src/content/paginas/portfolio.yml');
 const equipe = ler('src/content/equipe.yml');
 const manifesto = JSON.parse(readFileSync('src/assets/manifest.json', 'utf8')).imagens;
@@ -92,8 +91,8 @@ const pecas = [
 	{
 		arquivo: 'home.jpg',
 		tema: 'preto',
-		janela: 'olorin.exe',
-		etiqueta: `Agência de marketing · ${cfg.CIDADE}`,
+		janela: 'olorin.olo',
+		etiqueta: 'Agência de marketing digital',
 		titulo: `${home.hero.titulo_1} ${home.hero.titulo_2}`,
 		destaque: home.hero.titulo_destaque,
 		rodape: 'olorin.com.br',
@@ -101,7 +100,7 @@ const pecas = [
 	{
 		arquivo: 'servicos.jpg',
 		tema: 'preto',
-		janela: hub.janela || 'servicos.exe',
+		janela: hub.janela || 'servicos.olo',
 		etiqueta: servicos.map((s) => s.chip || s.nome).join(' · '),
 		titulo: semMarcador(hub.titulo) || 'Serviços de marketing digital',
 		rodape: 'olorin.com.br/servicos',
@@ -109,7 +108,7 @@ const pecas = [
 	{
 		arquivo: 'sobre.jpg',
 		tema: 'preto',
-		janela: 'equipe.exe',
+		janela: 'equipe.olo',
 		etiqueta: sobre.etiqueta || 'Quem somos',
 		titulo: semMarcador(sobre.titulo) || 'Um time inteiro cuidando da sua marca.',
 		rodape: 'olorin.com.br/quem-somos',
@@ -117,31 +116,23 @@ const pecas = [
 	{
 		arquivo: 'promo.jpg',
 		tema: 'verde',
-		janela: 'raio_x.exe',
+		janela: 'raio_x.olo',
 		etiqueta: promo.etiqueta || 'Raio-X gratuito',
 		titulo: semMarcador(promo.titulo) || 'Onde a sua marca trava?',
 		rodape: 'olorin.com.br',
 	},
 	{
-		arquivo: 'planos.jpg',
-		tema: 'verde',
-		janela: planos.janela || 'precos.txt',
-		etiqueta: planos.etiqueta || 'Planos e preços',
-		titulo: semMarcador(planos.titulo) || 'Preço na mesa.',
-		rodape: 'olorin.com.br/planos',
-	},
-	{
-		arquivo: 'como-trabalhamos.jpg',
+		arquivo: 'metodo.jpg',
 		tema: 'violeta',
-		janela: metodo.janela || 'metodo.exe',
-		etiqueta: metodo.etiqueta || 'Como trabalhamos',
+		janela: metodo.janela || 'metodo.olo',
+		etiqueta: metodo.etiqueta || 'Sobre',
 		titulo: semMarcador(metodo.titulo) || 'Sem caixa-preta.',
-		rodape: 'olorin.com.br/como-trabalhamos',
+		rodape: 'olorin.com.br/sobre',
 	},
 	{
 		arquivo: 'portfolio.jpg',
 		tema: 'preto',
-		janela: 'portfolio.exe',
+		janela: 'portfolio.olo',
 		etiqueta: portfolio.etiqueta || 'Portfólio',
 		titulo: semMarcador(portfolio.titulo) || 'Feito pela Olorin.',
 		rodape: 'olorin.com.br/portfolio',
@@ -160,7 +151,7 @@ const pecas = [
 	...servicos.map((s) => ({
 		arquivo: `servico-${s.slug}.jpg`,
 		tema: 'violeta',
-		janela: s.janela || `${s.slug}.exe`,
+		janela: s.janela || `${s.slug}.olo`,
 		etiqueta: s.nome,
 		titulo: semMarcador(s.hero && s.hero.h1) || s.nome,
 		rodape: `olorin.com.br/servicos/${s.slug}`,
