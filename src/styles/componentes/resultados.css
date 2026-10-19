@@ -83,22 +83,18 @@
 	line-height: 0.95;
 	letter-spacing: -0.02em;
 }
-/* Logos originais da Meta e do Google (dono, 19/10/2026), em placas brancas: em cor não leem sobre o verde. */
+/* Logos originais da Meta e do Google, sem fundo (arquivos do dono, 19/10/2026). */
 .o-parceira__marca {
 	display: inline-flex;
 	align-items: center;
-	padding: 0.2em 0.32em;
-	border: var(--borda) solid var(--preto);
-	background: var(--branco);
 }
 .o-parceira__marca img {
 	flex: none;
 	width: auto;
-	height: 0.56em;
+	height: 0.8em;
 }
 .o-parceira__marca:last-child img {
-	height: 0.66em;
-	margin-bottom: -0.1em;
+	margin-bottom: -0.16em;
 }
 .o-parceira__texto {
 	max-width: 32ch;

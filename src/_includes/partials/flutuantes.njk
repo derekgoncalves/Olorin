@@ -1,7 +1,7 @@
-{#- Atalhos fixos. Regra do dono (17/10/2026): o gancho é o Raio-X; o WhatsApp só aparece onde encaixa
-    bem, no Quem somos e nos perfis (modo "sobre"): botão flutuante (telas ≥ 1024 px) e metade da barra do celular. -#}
+{#- Atalhos fixos: botão flutuante de WhatsApp (telas ≥ 1024 px) e barra do celular com WhatsApp e Raio-X.
+    Dono, 19/10/2026: o WhatsApp volta em todas as páginas (em 17/10 tinha ficado só no Quem somos). -#}
 {%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre", "educacao"] -%}
-{%- set comWhats = modo == "sobre" -%}
+{%- set comWhats = true -%}
 {%- if comWhats or (cabecalho != "minimo" and modo != "obrigado") %}
 <aside class="o-flutuantes" aria-label="Atalhos de contato">
 	{%- if comWhats %}
@@ -10,7 +10,7 @@
 	</a>
 	{%- endif %}
 	{%- if cabecalho != "minimo" and modo != "obrigado" %}
-	<nav class="o-barra{% if not comWhats %} o-barra--uma{% endif %}" aria-label="Atalho para o Raio-X" data-o-barra>
+	<nav class="o-barra{% if not comWhats %} o-barra--uma{% endif %}" aria-label="Contato rápido" data-o-barra>
 		{%- if comWhats %}
 		<a class="o-barra__wa" id="cta-whatsapp-barra-mobile" href="{{ waLink('barra-mobile') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>WhatsApp</a>
 		{%- endif %}
