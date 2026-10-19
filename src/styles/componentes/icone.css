@@ -20,8 +20,8 @@
 .o-icone--seta { --icone: var(--icone-seta); }
 .o-icone--relogio { --icone: var(--icone-relogio); }
 .o-icone--mais { --icone: var(--icone-mais); }
-/* Mini chapa de raio-x: de pé (18×22), a altura é o --tam e a largura sai da proporção. */
-.o-icone--raio { --icone: var(--icone-raio); aspect-ratio: 18 / 22; width: auto; }
+/* Lupa do Raio-X (dono, 19/10/2026: no lugar da chapa com osso). */
+.o-icone--raio { --icone: var(--icone-raio); }
 .o-icone--o { --icone: var(--icone-o); aspect-ratio: 134 / 126; height: auto; }
 .o-icone--pixel { --icone: var(--icone-pixel); }
 .o-icone--estrela { --icone: var(--icone-estrela); }

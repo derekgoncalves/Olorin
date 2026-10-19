@@ -153,7 +153,7 @@ html:not(.js) .o-faixa__pausar {
 .o-faixa--logos li:hover img {
 	transform: scale(1.08);
 }
-:is(.o-ctx-preto, .o-ctx-violeta) .o-faixa--logos img {
+:is(.o-ctx-preto, .o-ctx-violeta) .o-faixa--logos img:not(.o-logo-cor) {
 	filter: invert(1);
 }
 /* Pausa alinhada à borda direita do conteúdo: cheia no fundo claro; no escuro, contorno e ícone na cor

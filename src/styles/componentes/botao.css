@@ -114,10 +114,10 @@
 	color: var(--cor-destaque);
 }
 
-/* Botão do Raio-X (macro ui.botaoRaioX): mini chapa de raio-x na frente do texto.
-   Quando o texto não cabe numa linha ao lado da chapa (celular), o flex-wrap leva a chapa para cima,
+/* Botão do Raio-X (macro ui.botaoRaioX): lupa na frente do texto.
+   Quando o texto não cabe numa linha ao lado da lupa (celular), o flex-wrap leva a lupa para cima,
    centralizada sobre o texto, em vez de deixá-la sozinha na borda do botão.
-   A margem negativa deixa a chapa passar da altura da linha sem esticar o botão. */
+   A margem negativa deixa a lupa passar da altura da linha sem esticar o botão. */
 .o-btn--raio {
 	flex-wrap: wrap;
 	align-content: center;
@@ -125,6 +125,6 @@
 	text-wrap: balance;
 }
 .o-btn--raio .o-icone {
-	--tam: 1.6em;
-	margin-block: -0.25em;
+	--tam: 1.4em;
+	margin-block: -0.2em;
 }

@@ -90,7 +90,7 @@
 	font-size: 15px;
 }
 .o-hero__raio .o-icone {
-	--tam: 1.5em;
+	--tam: 1.4em;
 }
 .o-hero__raio::after {
 	content: "";
