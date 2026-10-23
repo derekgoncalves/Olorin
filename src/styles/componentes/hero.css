@@ -1,48 +1,104 @@
-/* Banner da home (17/10/2026): etiqueta, "Do clique / ao cliente." grande, o botão do Raio-X num visor
-   e 2 provas. À direita (só a partir de 768 px) o celular com a logo, um cursor que clica, o aviso de
-   cliente novo e a janela relatorio.olo. No pé do banner, no mesmo fundo, a faixa de logos (18/10/2026):
-   banner e faixa ocupam a primeira tela (o conteúdo fica no meio do espaço que sobra acima da faixa).
-   No celular o banner fica curto e a faixa vem logo depois das provas. */
+/* Banner da home (23/10/2026, prévia aprovada pelo dono: "ta perfeito"): tela de início de jogo num fundo
+   preto só, com o brilho índigo no meio e a grade de pixels verdes bem sutil. De cima para baixo: o "O" da
+   Olorin girando como moeda, a etiqueta, o lema (h1, "outro nível." em verde, o bloquinho piscando e o selo
+   "Level up"), o minijogo 8-bit (canvas, src/scripts/modulos/jogo.js), o botão START do Raio-X, a linha de
+   apoio, os 3 itens com check e, no pé, a faixa de logos (secoes/faixa-clientes.njk).
+   Computador: título, moeda e jogo seguem a altura da janela, para o botão aparecer na primeira tela.
+   Celular: o banner ocupa a primeira tela inteira e termina nas logos, acima da barra fixa (o jogo cresce
+   ou encolhe para caber). Movimento só em prefers-reduced-motion: no-preference e parado com o-pausado. */
 .o-hero {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 	min-height: 100svh;
-	padding-top: calc(var(--altura-topo) + clamp(24px, 6vh, 88px));
-	padding-bottom: clamp(56px, 8vh, 96px);
+	padding-top: calc(var(--altura-topo) + clamp(10px, 3.2svh, 44px));
+	padding-bottom: 0;
 	overflow: hidden;
+	background: radial-gradient(70% 60% at 50% 38%, #170544 0%, #0a0220 45%, var(--preto) 80%) var(--preto);
 }
-.o-hero__grade {
-	display: grid;
-	grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.62fr);
-	align-items: center;
-	gap: clamp(40px, 5vw, 96px);
-	margin-block: auto;
+/* Grade de pixels verdes (no lugar do grão do base.css) e linhas de monitor, as duas atrás do conteúdo. */
+.o-hero::before {
+	background: var(--pixel-verde) 14px 14px / 28px 28px;
+	opacity: 0.14;
+	mix-blend-mode: normal;
+	-webkit-mask: radial-gradient(60% 70% at 50% 40%, #000, transparent 80%);
+	mask: radial-gradient(60% 70% at 50% 40%, #000, transparent 80%);
 }
-/* A coluna de texto é o contêiner do tamanho do título (cqi). Fica aqui, numa regra simples, para
-   entrar no CSS crítico da página: sem ela, a 1ª pintura mediria pela tela e o título "pularia". */
+.o-hero::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.16) 0 1px, transparent 1px 4px);
+}
+.o-hero__palco {
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+/* A coluna é o contêiner do tamanho do título (cqi). Fica numa regra simples, para entrar no CSS crítico
+   da página: sem ela, a 1ª pintura mediria pela tela e o título "pularia". */
 .o-hero__texto {
 	container-type: inline-size;
 }
-.o-hero__linha {
-	margin-bottom: clamp(20px, 3vh, 28px);
+.o-hero__texto {
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: clamp(12px, 2.4svh, 32px);
+	text-align: center;
 }
-/* Título em 2 linhas do mesmo tamanho: "Do clique" e "ao cliente." (com "cliente." em verde e o cursor).
-   "ao cliente." + cursor ocupa ~9,7em na fonte expandida; 10cqi faz a linha caber na coluna. */
+
+/* 1. O "O" da Olorin, violeta com brilho violeta, girando como moeda. */
+.o-hero__moeda {
+	flex: none;
+	width: clamp(46px, min(9vw, 11svh), 112px);
+	aspect-ratio: 134 / 126;
+	margin-bottom: clamp(12px, 2.6svh, 30px);
+	perspective: 600px;
+	color: var(--violeta);
+	filter: drop-shadow(0 0 22px rgba(126, 59, 237, 0.85));
+}
+.o-hero__moeda svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+}
+
+/* 2. Etiqueta: lavanda, sem o ícone das outras etiquetas (a moeda já está em cima). */
+.o-sec .o-hero__linha {
+	justify-content: center;
+	margin: 0 0 clamp(10px, 1.8svh, 16px);
+	font-size: 13px;
+	letter-spacing: 0.14em;
+	color: var(--lavanda);
+}
+.o-hero__linha::before {
+	display: none;
+}
+
+/* 3. Lema em 2 linhas: "Sua marca em" e "outro nível." (verde, com o bloquinho). Na fonte expandida a
+   mais larga ("Sua marca em") tem ~10,2em: 9,6cqi faz ela caber na coluna; no computador o teto vem da
+   altura da janela (11,5svh), para o botão aparecer na primeira tela. */
 .o-hero__titulo {
-	margin: 0 0 clamp(28px, 4.5vh, 44px);
+	margin: 0;
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(28px, 10cqi, 116px);
+	font-size: clamp(24px, min(9.6cqi, 11.5svh), 104px);
 	line-height: 0.92;
 	letter-spacing: -0.015em;
 	text-transform: uppercase;
 }
-.o-hero__t1,
-.o-hero__t2 {
+.o-hero__l1 {
 	display: block;
 }
 .o-hero__destaque {
+	position: relative;
+	display: inline-block;
 	color: var(--verde);
 	white-space: nowrap;
 }
@@ -51,57 +107,107 @@
 	display: inline-block;
 	width: 0.36em;
 	height: 0.7em;
-	margin-left: 0.1em;
+	margin-left: 0.08em;
 	background: var(--verde);
 	vertical-align: -0.02em;
-	animation: o-piscar 1.05s steps(1) infinite;
+}
+/* Selo "▲ Level up" (verde, texto preto) embaixo do fim de "outro nível.": decoração, fora do nome do h1. */
+.o-hero__destaque::before {
+	content: attr(data-selo);
+	content: attr(data-selo) / "";
+	position: absolute;
+	right: 0.5em;
+	top: calc(100% + 8px);
+	padding: 5px 7px;
+	background: var(--verde);
+	color: var(--preto);
+	font: 400 clamp(11px, 1.1vw, 14px) / 1 var(--fonte-pixel);
+	letter-spacing: 0.08em;
+	white-space: nowrap;
 }
 
-/* Visor: 4 cantos como os do ícone do Raio-X (.o-visor, também na chapa da seção final). No banner ele
-   envolve o botão do Raio-X, que ganha um brilho que varre. */
-.o-visor {
-	--visor-cor: var(--verde);
-	--visor-t: 16px;
-	position: relative;
+/* 4. Minijogo: canvas pequeno (192 x 72) escalado em pixel. Sem JS fica escondido (sem deixar buraco). */
+.o-hero__jogo {
+	flex: none;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: clamp(110px, 62svh - 252px, 216px);
+	max-height: calc(min(100cqi, 576px) * 0.375);
+	margin: clamp(40px, 5svh, 56px) 0 clamp(20px, 3svh, 34px);
 }
-.o-visor::before {
-	content: "";
+html:not(.js) .o-hero__jogo {
+	display: none;
+}
+.o-hero__tela {
+	position: relative;
+	height: 100%;
+	aspect-ratio: 192 / 72;
+}
+.o-hero__tela canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+/* "+1 nível": aparece quando o bonequinho clica no alvo (jogo.js põe .is-on). */
+.o-hero__aviso {
 	position: absolute;
-	inset: 0;
-	pointer-events: none;
-	--l: linear-gradient(var(--visor-cor), var(--visor-cor));
-	background:
-		var(--l) 0 0 / var(--visor-t) 2px, var(--l) 0 0 / 2px var(--visor-t),
-		var(--l) 100% 0 / var(--visor-t) 2px, var(--l) 100% 0 / 2px var(--visor-t),
-		var(--l) 0 100% / var(--visor-t) 2px, var(--l) 0 100% / 2px var(--visor-t),
-		var(--l) 100% 100% / var(--visor-t) 2px, var(--l) 100% 100% / 2px var(--visor-t);
-	background-repeat: no-repeat;
+	right: 2%;
+	top: -4px;
+	padding: 5px 8px;
+	background: var(--verde);
+	color: var(--preto);
+	font: 400 clamp(11px, 1.2vw, 14px) / 1 var(--fonte-pixel);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	opacity: 0;
+	transform: translateY(8px);
+	transition: opacity 0.2s, transform 0.3s;
 }
-.o-hero__cta {
-	display: inline-flex;
-	max-width: 100%;
-	padding: 10px;
+.o-hero__aviso.is-on {
+	opacity: 1;
+	transform: none;
 }
-.o-hero__raio {
-	position: relative;
-	overflow: hidden;
+
+/* 5. Botão START do Raio-X. A sombra deslocada é branca (a violeta da prévia encostaria no verde). */
+.o-hero .o-hero__start {
+	--btn-sombra: var(--branco);
+	flex-wrap: nowrap;
+	gap: 12px;
 	min-height: 64px;
-	padding-inline: 30px;
-	font-size: 15px;
+	padding: 16px 32px;
+	border-width: 3px;
+	font-weight: 900;
+	font-size: clamp(18px, 1.8vw, 24px);
+	line-height: 1;
+	letter-spacing: 0.06em;
+	white-space: nowrap;
+	box-shadow: 6px 6px 0 var(--branco);
+	transition: transform 0.12s, box-shadow 0.12s;
 }
-.o-hero__raio .o-icone {
-	--tam: 1.4em;
+.o-hero .o-hero__start:hover,
+.o-hero .o-hero__start:focus-visible {
+	transform: translate(-2px, -2px);
+	box-shadow: 8px 8px 0 var(--branco);
 }
-.o-hero__raio::after {
-	content: "";
-	position: absolute;
-	inset: -2px auto -2px 0;
-	width: 38%;
-	background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.85) 50%, transparent);
-	transform: translateX(-120%) skewX(-18deg);
-	pointer-events: none;
+.o-hero .o-hero__start:active {
+	transform: translate(6px, 6px);
+	box-shadow: 0 0 0 var(--branco);
 }
 
+/* 6. Linha de apoio */
+.o-hero__apoio {
+	max-width: 46ch;
+	margin: clamp(18px, 2.6svh, 24px) 0 0 !important;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--cor-apoio);
+}
+
+/* 7. Itens com check (.o-prova também é usada nas páginas de serviço). */
 .o-prova {
 	display: flex;
 	flex-wrap: wrap;
@@ -119,267 +225,102 @@
 }
 .o-prova li::before {
 	content: "";
+	flex: none;
 	width: 12px;
 	height: 12px;
 	background: var(--verde);
 	-webkit-mask: var(--icone-check) center / contain no-repeat;
 	mask: var(--icone-check) center / contain no-repeat;
 }
-
-.o-hero__visual {
-	position: relative;
-	justify-self: center;
-	/* em tela baixa o celular encolhe, para a faixa de logos caber na primeira tela */
-	width: min(100%, clamp(220px, (100svh - 290px) * 0.6, 320px));
-}
-/* Símbolo da marca girando no canto */
-.o-hero__visual::after {
-	content: "";
-	position: absolute;
-	top: -34px;
-	right: -42px;
-	z-index: 3;
-	width: 86px;
-	aspect-ratio: 134 / 126;
-	background: var(--verde);
-	-webkit-mask: var(--icone-o) center / contain no-repeat;
-	mask: var(--icone-o) center / contain no-repeat;
-	animation: o-girar 16s linear infinite;
-}
-/* Símbolo central sobre a foto */
-.o-hero__visual::before {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	z-index: 2;
-	width: 64px;
-	aspect-ratio: 134 / 126;
-	translate: -50% -50%;
-	background: var(--verde);
-	-webkit-mask: var(--icone-o) center / contain no-repeat;
-	mask: var(--icone-o) center / contain no-repeat;
-	pointer-events: none;
-}
-.o-celular {
-	position: relative;
-	margin: 0;
-	aspect-ratio: 3 / 5;
-	border: 3px solid var(--verde);
-	border-radius: var(--raio-celular);
-	overflow: hidden;
-	background: var(--preto);
-	box-shadow: 14px 14px 0 rgba(236, 255, 54, 0.18);
-}
-.o-celular picture,
-.o-celular__img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-/* Logo nos cantos da tela do celular (SVG decorativo, não texto) */
-.o-celular__logo {
-	position: absolute;
-	z-index: 2;
-	width: 64px;
-	height: auto;
-	color: var(--verde);
-}
-.o-celular__logo--topo {
-	top: 22px;
-	left: 22px;
-}
-.o-celular__logo--base {
-	right: 22px;
-	bottom: 22px;
+.o-hero__prova {
+	justify-content: center;
+	margin-top: clamp(14px, 2.2svh, 22px);
+	text-align: left;
 }
 
-/* "Do clique": cursor pixel que clica no símbolo do meio... */
-.o-hero__cursor {
-	position: absolute;
-	left: 54%;
-	top: 53%;
-	z-index: 5;
-	display: grid;
-	color: var(--branco);
-	filter: drop-shadow(2px 2px 0 var(--preto));
-}
-.o-hero__cursor .o-icone {
-	--tam: 34px;
-}
-.o-hero__cursor::before {
-	content: "";
-	position: absolute;
-	left: -14px;
-	top: -14px;
-	width: 28px;
-	height: 28px;
-	border: 2px solid var(--verde);
-	opacity: 0;
-}
-/* ..."ao cliente": o aviso que chega no alto do celular */
-.o-hero__aviso {
-	position: absolute;
-	top: 16%;
-	right: -26px;
-	z-index: 5;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	margin: 0 !important;
-	padding: 10px 14px;
-	border: 2px solid var(--verde);
-	background: var(--preto);
-	box-shadow: 6px 6px 0 var(--verde);
-	font-family: var(--fonte-pixel);
-	font-size: 12px;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	white-space: nowrap;
-	color: var(--branco);
-}
-.o-hero__aviso .o-icone {
-	--tam: 14px;
-	color: var(--verde);
+/* 8. Faixa de logos no pé, no mesmo fundo (o letreiro vem de marquee.css). */
+.o-hero > .o-clientes--pe {
+	flex: none;
+	padding-block: clamp(12px, 2.4svh, 32px) clamp(6px, 1vw, 14px);
 }
 
-/* Janelinha "relatorio.olo" sobre o celular */
-.o-hero__janela {
-	--janela-barra: var(--verde);
-	--janela-tinta: var(--preto);
-	--janela-borda: var(--verde);
-	--janela-corpo: var(--preto);
-	--janela-sombra: rgba(236, 255, 54, 0.25);
-	position: absolute;
-	left: -64px;
-	bottom: 56px;
-	z-index: 4;
-	width: max-content;
-	min-width: 214px;
-	max-width: 300px;
-}
-.o-hero__barras {
-	display: flex;
-	align-items: flex-end;
-	gap: 9%;
-	height: 58px;
-	margin: 16px 16px 0;
-}
-.o-hero__barras i {
-	flex: 1;
-	background: var(--verde);
-	transform-origin: bottom;
-	animation: o-barras 2.4s var(--curva) both;
-}
-.o-hero__barras i:nth-child(1) { height: 30%; }
-.o-hero__barras i:nth-child(2) { height: 48%; }
-.o-hero__barras i:nth-child(3) { height: 70%; }
-.o-hero__barras i:nth-child(4) { height: 100%; }
-.o-hero__janela-rotulo {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	margin: 10px 16px 14px;
-	font-family: var(--fonte-pixel);
-	font-size: 12px;
-	letter-spacing: 0.14em;
-	text-transform: uppercase;
-	color: var(--verde);
-}
-.o-hero__janela-rotulo .o-icone {
-	--tam: 11px;
-	rotate: -45deg;
-}
-/* Quadradinhos pixel */
-.o-hero__janela::after {
-	content: "";
-	position: absolute;
-	left: -24px;
-	bottom: -24px;
-	width: 22px;
-	height: 22px;
-	background: var(--verde);
-	box-shadow: -22px 22px 0 rgba(236, 255, 54, 0.55);
-}
-
-/* Movimento do banner: o brilho varre o botão do Raio-X, os cantos do visor respiram, o cursor clica
-   no símbolo e o aviso de cliente novo chega logo depois (ciclo de 6 s). Parado: tudo no estado final. */
+/* Movimento: moeda girando, selo que sobe e desce e o bloquinho que pisca (algumas vezes e para).
+   Pausado ou com "reduzir movimento": tudo parado de frente. */
 @media (prefers-reduced-motion: no-preference) {
 	html:not(.o-pausado) {
-		& .o-hero__raio::after {
-			animation: o-brilho 3.6s var(--curva) 1.4s infinite;
+		& .o-hero__moeda svg {
+			animation: o-moeda 3.2s linear infinite;
 		}
-		& .o-hero__cta::before {
-			animation: o-visor 3.6s ease-in-out 1.4s infinite;
+		& .o-hero__destaque::before {
+			animation: o-subir 2.4s ease-in-out infinite;
 		}
-		& .o-hero__cursor {
-			animation: o-cursor 6s var(--curva) 1s infinite;
-		}
-		& .o-hero__cursor::before {
-			animation: o-clique 6s ease-out 1s infinite;
-		}
-		& .o-hero__aviso {
-			animation: o-aviso 6s var(--mov-volta, ease-out) 1s infinite;
+		& .o-hero__destaque::after {
+			animation: o-piscar 1.05s steps(1) 8;
 		}
 	}
 }
-@keyframes o-brilho {
-	0% { transform: translateX(-120%) skewX(-18deg); }
-	45%,
-	100% { transform: translateX(320%) skewX(-18deg); }
+@keyframes o-moeda {
+	to { transform: rotateY(360deg); }
 }
-@keyframes o-visor {
-	50% { inset: -5px; }
-}
-@keyframes o-cursor {
-	0% { translate: 90px 110px; opacity: 0; }
-	8% { opacity: 1; }
-	30%,
-	88% { translate: 0 0; scale: 1; opacity: 1; }
-	34% { scale: 0.86; }
-	100% { translate: 0 0; opacity: 0; }
-}
-@keyframes o-clique {
-	0%,
-	32% { opacity: 0; transform: scale(0.3); }
-	34% { opacity: 1; }
-	48%,
-	100% { opacity: 0; transform: scale(1.8); }
-}
-@keyframes o-aviso {
-	0%,
-	36% { opacity: 0; transform: translateY(14px) scale(0.92); }
-	44%,
-	88% { opacity: 1; transform: none; }
-	96%,
-	100% { opacity: 0; transform: translateY(-8px); }
+@keyframes o-subir {
+	50% { transform: translateY(-5px); }
 }
 
-/* Celular: banner curto (etiqueta, título, botão e provas); a montagem do celular sai e a faixa de
-   logos, logo abaixo, entra no lugar dela. */
+/* Celular: o banner é a primeira tela inteira (cabeçalho fixo por cima) e termina nas logos, que ficam
+   acima da barra fixa (WhatsApp + Raio-X). O jogo ocupa o espaço que sobra (entre 84 px de altura e a
+   largura da coluna); em tela muito baixa (320 x 568) o banner passa da tela, sem a seção seguinte. */
 @media (max-width: 767px) {
-	.o-sec.o-hero {
-		min-height: 0;
-		padding-top: calc(var(--altura-topo) + 36px);
-		padding-bottom: 40px;
+	.o-hero {
+		padding-top: calc(var(--altura-topo) + clamp(6px, 2svh, 24px));
 	}
-	.o-hero .o-hero__visual {
-		display: none;
+	.o-hero > .o-clientes--pe {
+		padding-block: clamp(10px, 1.6svh, 18px) calc(58px + env(safe-area-inset-bottom) + 6px);
 	}
-	.o-hero__cta {
-		display: flex;
+	.o-hero__moeda {
+		width: clamp(42px, 7svh, 64px);
+		margin-bottom: clamp(8px, 1.8svh, 16px);
 	}
-	.o-hero__raio {
-		flex: 1;
-		gap: 8px;
-		padding-inline: 10px;
+	.o-sec .o-hero__linha {
+		margin-bottom: clamp(8px, 1.4svh, 14px);
+		font-size: 12px;
+		letter-spacing: 0.12em;
+	}
+	.o-hero__titulo {
+		line-height: 0.95;
+	}
+	.o-hero__destaque::before {
+		top: calc(100% + 6px);
+		padding: 4px 6px;
+	}
+	.o-hero__jogo {
+		flex: 1 1 0;
+		height: auto;
+		min-height: 84px;
+		max-height: calc(min(100cqi, 420px) * 0.375);
+		margin: clamp(34px, 4.6svh, 44px) 0 clamp(12px, 2svh, 20px);
+	}
+	.o-hero .o-hero__start {
+		min-height: 60px;
+		padding: 14px 24px;
+		font-size: 17px;
+	}
+	.o-hero__apoio {
+		margin-top: clamp(14px, 2svh, 20px) !important;
 		font-size: 13px;
-		letter-spacing: 0.01em;
+		line-height: 1.5;
+	}
+	/* Em coluna: os 3 checks alinhados à esquerda, o bloco centralizado. */
+	.o-hero__prova {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 6px;
+		margin-top: clamp(10px, 1.8svh, 18px);
 	}
 }
 @media (max-width: 359px) {
-	.o-hero__raio {
-		font-size: 12px;
+	.o-hero .o-hero__start {
+		gap: 10px;
+		padding-inline: 18px;
+		font-size: 15px;
 	}
 }
