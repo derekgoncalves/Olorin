@@ -8,6 +8,7 @@ eleventyComputed:
 ---
 {#- /promo/ — landing geral de campanha. ?s=<slug> troca título e subtítulo pelo serviço do anúncio. -#}
 {%- from "components/formulario.njk" import formulario with context -%}
+{%- import "components/ui.njk" as ui with context -%}
 {%- set pc = conteudo.paginas.promo -%}
 {%- set diag = site.config.OFERTA_DIAGNOSTICO -%}
 <section class="o-promo-topo o-ctx-preto" data-secao="promo-hero">
@@ -16,7 +17,7 @@ eleventyComputed:
 			<p class="o-etiqueta" data-o-promo-etiqueta>{{ pc.etiqueta if diag else "Orçamento" }}</p>
 			<h1 class="o-pagina-topo__titulo" data-o-promo-titulo>{{ pc.titulo if diag else pc.titulo_sem_diagnostico }}</h1>
 			<p class="o-pagina-topo__sub" data-o-promo-sub>{{ pc.sub if diag else pc.sub_sem_diagnostico }}</p>
-			<ul class="o-promo-topo__itens">{% for item in pc.itens %}<li><span class="o-icone o-icone--o" aria-hidden="true"></span>{{ item }}</li>{% endfor %}</ul>
+			{{ ui.selos("o-selos--grande") }}
 		</div>
 		{{ formulario({ id: "formulario", posicao: "promo", modo: "promo", origemWa: "promo-form" }) }}
 	</div>

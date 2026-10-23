@@ -36,9 +36,7 @@ eleventyComputed:
 			<h1 class="o-pagina-topo__titulo">{{ s.hero.h1 }}</h1>
 			<p class="o-pagina-topo__sub">{{ s.hero.sub }}</p>
 			<div class="o-hero__acoes">{{ ui.botaoRaioX("cta-raio-x-servico-" + s.slug + "-banner", classe="o-btn--grande") }}</div>
-			{%- if s.hero.selos %}
-			<ul class="o-prova">{% for item in s.hero.selos %}<li>{{ item }}</li>{% endfor %}</ul>
-			{%- endif %}
+			{{ ui.selos() }}
 		</div>
 		<div class="o-janela o-cena o-cena--{{ cena }}" aria-hidden="true" data-o-cena>
 			<div class="o-janela__barra"><span class="o-janela__titulo">{{ s.janela }}</span><span class="o-janela__ctrl"></span></div>

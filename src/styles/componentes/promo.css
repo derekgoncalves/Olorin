@@ -34,24 +34,6 @@
 	white-space: nowrap;
 }
 /* Itens do banner com o "O" da Olorin como marcador */
-.o-promo-topo__itens {
-	display: grid;
-	gap: 12px;
-	margin: 26px 0 0;
-	padding: 0;
-	list-style: none;
-	font-size: 16px;
-}
-.o-promo-topo__itens li {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-}
-.o-promo-topo__itens .o-icone {
-	--tam: 22px;
-	flex: none;
-	color: var(--verde);
-}
 .o-resposta__texto--promo {
 	margin-top: 18px;
 	border-left-color: var(--verde);

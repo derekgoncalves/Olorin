@@ -127,6 +127,16 @@
 </ul>
 {% endmacro %}
 
+{#- Os 3 itens com check ao lado do botão principal do banner (src/content/selos.yml; dono, 23/10/2026).
+    classe "o-selos--grande": letra maior (landings /promo/, sem botão ao lado). -#}
+{% macro selos(classe="") %}
+<ul class="o-selos {{ classe }}" aria-label="Como a Olorin trabalha">
+{%- for item in conteudo.selos.itens %}
+	<li>{{ item }}</li>
+{%- endfor %}
+</ul>
+{% endmacro %}
+
 {#- Botão do Raio-X: a chamada padrão do site. Leva ao formulário "RAIO X DA OLORIN" no fim da página (#raio-x). -#}
 {% macro botaoRaioX(id, texto="Quero meu Raio-X grátis", classe="", destino="#raio-x") %}
 <a class="o-btn o-btn--verde o-btn--raio {{ classe }}" id="{{ id }}" href="{{ destino }}" data-cta="{{ id }}"><span class="o-icone o-icone--raio" aria-hidden="true"></span>{{ texto }}</a>
