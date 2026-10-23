@@ -1,13 +1,19 @@
 # Textos e opções do formulário de orçamento (o mesmo componente em todas as páginas).
-# ATENÇÃO: os nomes das opções de "servicos" precisam ser idênticos aos da lista do enviar.php.
+# ATENÇÃO: o enviar.php aceita só as opções desta lista (porte, "Você é" e desafios) e as dos chips de serviço
+# (src/content/servicos/*.yml). Mudou aqui? Rode o build e publique o enviar.php junto com as páginas.
+#
+# Etapa 1: nome, WhatsApp e e-mail. Etapa 2: empresa, cargo, porte, site ou @ (opcional), opções (chips),
+# verba de anúncio, mensagem e consentimento. O que muda por público fica em "segmentos" (abaixo):
+#   site            → todas as páginas do site
+#   educacao        → LP Olorin Educação (macro chamado com modo: "educacao")
+#   influenciadores → LP de influenciadores (macro chamado com modo: "influenciadores")
 barra_topo: raio-x.olo
 barra_fim: ficha.olo
 etapa1_legenda: Seus contatos
-etapa2_legenda: O que você precisa
 rotulos:
   nome: Seu nome
   whatsapp: WhatsApp com DDD
-  site: Site ou @ do Instagram
+  email: E-mail
   site_opcional: (opcional)
   servicos: O que você precisa agora?
   servicos_dica: Pode marcar mais de um.
@@ -18,8 +24,7 @@ rotulos:
 placeholders:
   nome: Como te chamamos
   whatsapp: (41) 99999-9999
-  site: "@suamarca ou site"
-  mensagem: "Ex.: tenho uma loja virtual e quero vender mais pelo Instagram."
+  email: voce@email.com.br
 servicos_extra: Ainda não sei, quero conversar
 investimento_placeholder: Selecione uma faixa
 investimento:
@@ -29,6 +34,7 @@ investimento:
   - De R$ 5 a 15 mil por mês
   - Acima de R$ 15 mil por mês
 sem_verba: Sem problema. No Raio-X, mostramos por onde vale começar mesmo sem verba de anúncio.
+selecione: Selecione
 consentimento: Concordo em ser contatado pela Olorin sobre este pedido, conforme a
 consentimento_link: Política de Privacidade
 botao_continuar: Continuar
@@ -43,8 +49,108 @@ erros:
   nome: Conta pra gente o seu nome.
   whatsapp: Confira o WhatsApp com DDD, por exemplo (41) 99999-9999.
   ddd: Esse DDD não existe. Confira o número.
+  email: Confira o e-mail, por exemplo voce@email.com.br.
   consentimento: Precisamos do seu ok para entrar em contato.
   geral: Não conseguimos enviar agora.
   conexao: Parece que a conexão caiu.
   wa_alternativa: Mande pelo WhatsApp, com o que você já preencheu
 erro_sem_js: Não conseguimos registrar o seu pedido. Confira os campos ou chame no WhatsApp.
+
+# ------------------------------------------------------------
+# O que muda por público. "cargo" com "opcoes" vira lista de escolha; sem "opcoes", campo de texto.
+# "desafios" troca os chips de serviço por chips de desafio (campo desafios[]).
+# ------------------------------------------------------------
+segmentos:
+  site:
+    nome: Site
+    etapa2_legenda: Sobre a sua empresa
+    empresa:
+      rotulo: Empresa ou organização
+      placeholder: Nome da empresa
+      erro: Conta pra gente o nome da empresa.
+    cargo:
+      rotulo: Seu cargo
+      exemplo: "Ex.: sócio, diretora, gerente de marketing"
+      erro: Conta pra gente o seu cargo.
+    porte:
+      rotulo: Tamanho da equipe
+      erro: Escolha o tamanho da equipe.
+      opcoes:
+        - Só eu
+        - 2 a 10 pessoas
+        - 11 a 50 pessoas
+        - 51 a 200 pessoas
+        - Mais de 200 pessoas
+    site:
+      rotulo: Site ou @ do Instagram
+      placeholder: "@suamarca ou site"
+    mensagem_placeholder: "Ex.: tenho uma loja virtual e quero vender mais pelo Instagram."
+  educacao:
+    nome: Educação
+    etapa2_legenda: Sobre a sua instituição
+    empresa:
+      rotulo: Instituição
+      placeholder: Nome da escola ou faculdade
+      erro: Conta pra gente o nome da instituição.
+    cargo:
+      rotulo: Seu cargo
+      exemplo: "Ex.: diretora, mantenedor, coordenador de marketing"
+      erro: Conta pra gente o seu cargo.
+    porte:
+      rotulo: Alunos hoje
+      erro: Escolha quantos alunos a instituição tem hoje.
+      opcoes:
+        - Até 200
+        - 201 a 1.000
+        - 1.001 a 5.000
+        - Mais de 5.000
+    site:
+      rotulo: Site ou @ da instituição
+      placeholder: "@suaescola ou site"
+    desafios:
+      rotulo: Qual é o maior desafio hoje?
+      dica: Pode marcar mais de um.
+      opcoes:
+        - Poucos contatos
+        - Contatos que não viram matrícula
+        - Não sei o custo de cada matrícula
+        - Abrir turma ou unidade nova
+        - Ainda não sei, quero conversar
+    mensagem_placeholder: "Ex.: queremos encher a turma de 2027 do ensino médio."
+  influenciadores:
+    nome: Influenciadores
+    etapa2_legenda: Sobre o seu perfil
+    empresa:
+      rotulo: Seu perfil ou marca
+      placeholder: "@seuperfil"
+      erro: Conta pra gente o seu perfil ou a sua marca.
+    cargo:
+      rotulo: Você é
+      erro: Escolha o que você é.
+      opcoes:
+        - Criador ou criadora de conteúdo
+        - Agente ou empresário de criadores
+        - Marca ou empresa
+        - Outro
+    porte:
+      rotulo: Seguidores no maior perfil
+      erro: Escolha uma faixa de seguidores.
+      opcoes:
+        - Até 10 mil
+        - 10 mil a 100 mil
+        - 100 mil a 500 mil
+        - 500 mil a 1 milhão
+        - Mais de 1 milhão
+    site:
+      rotulo: Outra rede, canal ou site
+      placeholder: TikTok, YouTube ou site
+    desafios:
+      rotulo: Qual é o maior desafio hoje?
+      dica: Pode marcar mais de um.
+      opcoes:
+        - Crescer o perfil
+        - Fechar mais publis e parcerias
+        - Vender meu produto, curso ou mentoria
+        - Conteúdo e identidade visual
+        - Ainda não sei, quero conversar
+    mensagem_placeholder: "Ex.: quero crescer no TikTok e fechar mais publis."

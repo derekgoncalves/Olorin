@@ -351,3 +351,21 @@ html.js .o-form[data-etapa="2"] .o-form__etapa[data-etapa="2"] {
 .o-form__alternativa a {
 	font-weight: 700;
 }
+/* Exemplo do campo (ex.: cargo): entre o rótulo e o campo, para não cortar no celular como um placeholder. */
+.o-campo__exemplo {
+	margin: -4px 0 8px;
+	font-size: 13px;
+	line-height: 1.45;
+	color: var(--cor-apoio);
+}
+/* Celular: os serviços (curtos) ficam em 2 colunas, com "Selecionar tudo" e "Ainda não sei" na linha inteira
+   (etapa 2 bem mais curta); os desafios das LPs (frases longas) continuam em 1 coluna. */
+@media (min-width: 360px) and (max-width: 767px) {
+	.o-form .o-chips--servicos {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.o-form .o-chips--servicos .o-chip--todos,
+	.o-form .o-chips--servicos .o-chip:has([data-o-exclusivo]) {
+		grid-column: 1 / -1;
+	}
+}
