@@ -1,0 +1,17 @@
+# ============================================================
+# /influenciadores/ — LP Olorin para influenciadores (rodada de 23/10/2026)
+# ------------------------------------------------------------
+# PROVISÓRIO: a página completa entra na etapa 2 da rodada final.
+# ============================================================
+seo:
+  titulo: Marketing para influenciadores | Olorin Digital
+  descricao: "Estratégia, conteúdo, design e anúncios para criadores de conteúdo e influenciadores. Peça o seu Raio-X gratuito do perfil."
+
+marca:
+  nome: Olorin para influenciadores
+  lema: Seu perfil em outro nível.
+
+# Mensagens prontas dos links de WhatsApp desta página (ref: influencer-<posição>).
+whatsapp:
+  padrao: Oi! Vim pela página de influenciadores da Olorin e quero o Raio-X do meu perfil.
+  assunto_form: o Raio-X do meu perfil

@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+modo: influenciadores
+slug: influenciadores
+segmento: influencer
+tema: influenciadores
+cabecalho: influenciadores
+permalink: /influenciadores/
+og_imagem: /assets/img/og/home.jpg
+eleventyComputed:
+  titulo: "{{ conteudo.paginas.influenciadores.seo.titulo }}"
+  descricao: "{{ conteudo.paginas.influenciadores.seo.descricao }}"
+---
+{#- PROVISÓRIO (23/10/2026): a LP de influenciadores entra na etapa 2 da rodada final. -#}
+{%- set I = conteudo.paginas.influenciadores -%}
+<section class="o-sec o-ctx-preto" id="inicio" data-secao="hero">
+	<div class="o-wrap">
+		<h1 class="o-titulo o-titulo--g">{{ I.marca.lema }}</h1>
+	</div>
+</section>
+{% include "secoes/orcamento.njk" %}
