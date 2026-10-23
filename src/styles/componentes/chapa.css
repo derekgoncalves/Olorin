@@ -160,6 +160,14 @@
 .o-chapa__assinatura span {
 	margin-top: 0.22em;
 }
+/* sombra escura atrás da assinatura: as peças do raio-x não passam por cima das letras */
+.o-chapa__assinatura::before {
+	content: "";
+	position: absolute;
+	inset: -30% -14%;
+	z-index: -1;
+	background: radial-gradient(closest-side, rgba(4, 7, 13, 0.9) 55%, rgba(4, 7, 13, 0.55) 75%, transparent);
+}
 .o-chapa__flash {
 	inset: 0;
 	border-radius: inherit;
