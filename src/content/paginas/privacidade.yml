@@ -16,8 +16,8 @@ secoes:
     paragrafos:
       - A controladora dos dados é a **Olorin Digital**, agência de marketing digital com atendimento 100% remoto.
       - "Contato: [digital@olorin.com.br](mailto:digital@olorin.com.br) ou WhatsApp (41) 99646-0861."
-      # PENDENTE: se quiser mostrar o CNPJ no site, trocar a frase abaixo por "Razão social: ... · CNPJ: ..." (o Decreto 7.962/2013 pede nome empresarial e CNPJ visíveis em site que faz oferta a consumidor)
-      - A razão social e o CNPJ da Olorin Digital são informados a quem pedir pelo e-mail acima.
+      # CNPJ informado pelo dono em 23/10/2026. A razão social entra aqui quando o dono confirmar.
+      - "CNPJ da Olorin Digital: 57.027.011/0001-82."
   - id: encarregado
     titulo: 2. Encarregado de dados (DPO)
     paragrafos:

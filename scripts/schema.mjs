@@ -32,6 +32,7 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			image: `${base}/assets/img/og/home.jpg`,
 			telephone: `+${cfg.WHATSAPP}`,
 			email: cfg.EMAIL,
+			taxID: cfg.CNPJ || undefined,
 			address: { '@type': 'PostalAddress', addressCountry: 'BR' },
 			areaServed: [
 				{ '@type': 'Country', name: 'Brasil' },

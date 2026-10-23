@@ -22,7 +22,7 @@
 # 17/10/2026: iZETA e Anacleto refeitos dos PNGs transparentes do dono; National Geographic e
 # Centro Sul Shop (logo enviado pelo dono, no lugar do letreiro provisório da Central Sul Móveis) novos.
 # ============================================================
-etiqueta: Marcas atendidas
+etiqueta: Marcas que o nosso time já atendeu
 itens:
   - { nome: National Geographic, logo: national-geographic.svg, largura: 128, altura: 38 }
   - { nome: John Deere, logo: john-deere.svg, largura: 136, altura: 28 }
@@ -38,4 +38,5 @@ itens:
   # - { nome: TORO AUDIO, logo: toro-audio.svg, largura: 90, altura: 42 }
   # - { nome: Ambulatório da M.O.D.A, logo: ambulatorio-moda.svg, largura: 122, altura: 34 }
   - { nome: Centro Sul Shop, logo: centro-sul-shop.svg, largura: 100, altura: 58 }
-  - { nome: Cartas para o Futuro, logo: cartas-para-o-futuro.svg, largura: 86, altura: 42 }
+  # Fora da faixa em 23/10/2026 (dono). Para voltar, tire o "# " da linha abaixo.
+  # - { nome: Cartas para o Futuro, logo: cartas-para-o-futuro.svg, largura: 86, altura: 42 }

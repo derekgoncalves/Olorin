@@ -69,8 +69,8 @@ for (const a of textos) {
 	if (/olorindigital/i.test(semRedes)) erro(r, 'domínio errado "olorindigital"');
 	const digital = semRedes.match(/[\w@./-]*olorin\.digital[\w./-]*/gi) || [];
 	for (const ocorrencia of digital) {
-		if (!/^(@olorin\.digital_|((https?:)?\/\/)?(www\.)?instagram\.com\/olorin\.digital_\/?)$/i.test(ocorrencia)) {
-			erro(r, `"olorin.digital" fora do Instagram: ${ocorrencia}`);
+		if (!/^(@olorin\.digital_?|((https?:)?\/\/)?(www\.)?(instagram\.com|linkedin\.com\/company)\/olorin\.digital_?\/?)$/i.test(ocorrencia)) {
+			erro(r, `"olorin.digital" fora do Instagram e do LinkedIn: ${ocorrencia}`);
 		}
 	}
 	if (/5541900000000|90000-0000|99999-9999(?!<\/)/.test(t) && !/placeholder|exemplo|Ex\./i.test(t)) {
