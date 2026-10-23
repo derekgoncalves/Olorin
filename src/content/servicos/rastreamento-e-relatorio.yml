@@ -2,7 +2,8 @@
 # SERVIÇO: Dados. Fonte ÚNICA da página /servicos/rastreamento-e-relatorio/ e da landing /promo/rastreamento-e-relatorio/.
 # Confirmado pelo dono (14/10/2026): dados de venda do relatório combinados no início; ferramenta do painel não é citada.
 # 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
-# "ferramentas" mostra o que o time configura; a credencial Meta e Google é da Natalia, não da agência.
+# "ferramentas" mostra o que o time configura e a credencial "Agência parceira Meta e Google"
+# (dono, 23/10/2026: a parceria é da agência; a Natalia é a gestora de tráfego).
 # ============================================================
 slug: rastreamento-e-relatorio
 ordem: 6
@@ -102,12 +103,12 @@ ferramentas:
     - { nome: Search Console, logo: googlesearchconsole }
     - { nome: Gerenciador de Eventos da Meta, logo: meta }
     - { nome: Conversões do Google Ads, logo: googleads }
+  # Credencial da agência: titulo, nome e a linha embaixo (aceita [texto](link)); logos = selos ao lado.
   credencial:
-    pessoa: natalia-arruda
-    etiqueta: Credencial da especialista
-    titulo: Dados lidos por especialista parceira Meta e Google.
-    nome: Natalia Arruda
-    funcao: Gestora de tráfego parceira Meta e Google
+    etiqueta: Credencial
+    titulo: Agência parceira Meta e Google.
+    nome: Olorin Digital
+    funcao: "Medição e relatórios coordenados pela [Natalia Arruda](/quem-somos/natalia-arruda/), gestora de tráfego"
     logos: [{ nome: Meta, logo: meta }, { nome: Google, logo: google }]
 
 portfolio:

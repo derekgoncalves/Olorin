@@ -3,7 +3,8 @@
 # Texto proposto vai ao ar; o que o dono ainda precisa confirmar leva "# PENDENTE:" na linha de cima
 # (npm run pendencias lista tudo).
 # 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
-# "ferramentas" mostra as redes que o time opera; a credencial Meta e Google é da Natalia, não da agência.
+# "ferramentas" mostra as redes que o time opera e a credencial "Agência parceira Meta e Google"
+# (dono, 23/10/2026: a parceria é da agência; a Natalia é a gestora de tráfego).
 # ============================================================
 slug: trafego-pago
 ordem: 1
@@ -109,12 +110,12 @@ ferramentas:
     - { nome: Threads, logo: threads }
     - { nome: TikTok, logo: tiktok }
     - { nome: Pinterest, logo: pinterest }
+  # Credencial da agência: titulo, nome e a linha embaixo (aceita [texto](link)); logos = selos ao lado.
   credencial:
-    pessoa: natalia-arruda
-    etiqueta: Credencial da especialista
-    titulo: Tráfego gerido por especialista parceira Meta e Google.
-    nome: Natalia Arruda
-    funcao: Gestora de tráfego parceira Meta e Google
+    etiqueta: Credencial
+    titulo: Agência parceira Meta e Google.
+    nome: Olorin Digital
+    funcao: "Campanhas coordenadas pela [Natalia Arruda](/quem-somos/natalia-arruda/), gestora de tráfego"
     logos: [{ nome: Meta, logo: meta }, { nome: Google, logo: google }]
 
 portfolio:

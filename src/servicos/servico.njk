@@ -143,10 +143,11 @@ eleventyComputed:
 	</div>
 </section>
 
-{#- 6 · Ferramentas e redes que o time opera (tráfego e dados), com a credencial da Natalia (dela, não da agência) -#}
+{#- 6 · Ferramentas e redes que o time opera (tráfego e dados), com a credencial "Agência parceira Meta e Google"
+    (dono, 23/10/2026: a parceria é da agência). Com "pessoa", a foto dela entra no lugar do "O" da Olorin. -#}
 {%- if fe %}
 {%- set cr = fe.credencial -%}
-{%- set pessoaCr = conteudo.pessoaPorSlug[cr.pessoa] if cr else null -%}
+{%- set pessoaCr = conteudo.pessoaPorSlug[cr.pessoa] if (cr and cr.pessoa) else null -%}
 <section class="o-sec o-ferramentas o-ctx-verde" id="ferramentas" data-secao="ferramentas" aria-labelledby="ferramentas-titulo">
 	<div class="o-wrap">
 		<div class="o-vitrine__cabeca">
@@ -165,11 +166,13 @@ eleventyComputed:
 		<div class="o-credencial o-ctx-preto">
 			{%- if pessoaCr %}
 			<span class="o-credencial__foto" aria-hidden="true">{{ imagem(imagens, pessoaCr.foto + "-quadrada", { sizes: "96px" }) | safe }}</span>
+			{%- else %}
+			<span class="o-credencial__foto o-credencial__foto--marca" aria-hidden="true"><svg viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg></span>
 			{%- endif %}
 			<div class="o-credencial__texto">
 				<p class="o-etiqueta">{{ cr.etiqueta }}</p>
 				<p class="o-credencial__titulo">{{ cr.titulo }}</p>
-				<p class="o-credencial__nome">{% if pessoaCr %}<a href="/quem-somos/{{ pessoaCr.slug }}/">{{ cr.nome }}</a>{% else %}{{ cr.nome }}{% endif %}<span>{{ cr.funcao }}</span></p>
+				<p class="o-credencial__nome">{% if pessoaCr %}<a href="/quem-somos/{{ pessoaCr.slug }}/">{{ cr.nome }}</a>{% else %}<strong>{{ cr.nome }}</strong>{% endif %}{% if cr.funcao %}<span>{{ cr.funcao | emLinha | safe }}</span>{% endif %}</p>
 			</div>
 			<ul class="o-credencial__selos">
 			{%- for l in cr.logos %}

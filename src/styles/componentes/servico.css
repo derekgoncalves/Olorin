@@ -1084,6 +1084,20 @@
 	height: 100%;
 	object-fit: cover;
 }
+/* Credencial da agência: o "O" da Olorin no lugar da foto */
+.o-credencial__foto--marca {
+	display: grid;
+	place-items: center;
+	background: var(--preto);
+}
+.o-credencial__foto--marca svg {
+	width: 58%;
+	height: auto;
+	color: var(--verde);
+}
+.o-credencial__nome strong {
+	color: var(--branco);
+}
 .o-credencial .o-etiqueta {
 	margin-bottom: 10px;
 }

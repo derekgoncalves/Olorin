@@ -1,7 +1,8 @@
-{#- ===== SEÇÃO: Resultados (home) — números (claims.json), credencial Meta e Google da Natalia, cases (cases.yml)
+{#- ===== SEÇÃO: Resultados (home) — números (claims.json), "Agência parceira Meta e Google", cases (cases.yml)
      e portfólio (portfolio.yml). Textos em home.yml → resultados. A faixa de logos fica no pé do banner (hero.njk).
-     A credencial (dono, 18/10/2026) fica na linha dos números, no lugar dos antigos "2x" e "100+": logos grandes
-     da Meta e do Google e a frase dizendo que é da Natalia (nunca selo de agência parceira). ===== -#}
+     A credencial (dono, 18/10/2026) fica na linha dos números: logos grandes da Meta e do Google e, embaixo,
+     "Agência parceira Meta e Google" (dono, 23/10/2026: é a agência). Número com "nota" em claims.json
+     (o +2x de retorno*) leva a frase pequena embaixo da linha. ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- set r = P.resultados -%}
 {%- set numeros = [] if r.ocultar_numeros else (conteudo.claims.itens | filtrarPor("verificado", true) if site.config.SHOW_STATS else []) -%}
@@ -19,7 +20,9 @@
 			</div>
 			{%- if r.texto %}<p class="o-apoio">{{ r.texto }}</p>{% endif %}
 		</div>
-		{%- if numeros.length or r.credencial_nome %}
+		{%- set notas = [] %}
+		{%- for n in numeros %}{% if n.nota %}{% set notas = notas.concat([n.nota]) %}{% endif %}{% endfor %}
+		{%- if numeros.length or r.credencial %}
 		<div class="o-resultados__provas">
 			{%- if numeros.length %}
 			<dl class="o-numeros o-numeros--{{ numeros.length }}">
@@ -31,16 +34,17 @@
 			{%- endfor %}
 			</dl>
 			{%- endif %}
-			{%- if r.credencial_nome %}
+			{%- if r.credencial %}
 			<div class="o-parceira">
 				<p class="o-parceira__marcas" aria-hidden="true">
 					<span class="o-parceira__marca"><img src="/assets/img/marcas/meta-original.webp" alt="" width="693" height="160" loading="lazy" decoding="async"></span>
 					<span class="o-parceira__marca"><img src="/assets/img/marcas/google-original.webp" alt="" width="528" height="160" loading="lazy" decoding="async"></span>
 				</p>
-				<p class="o-parceira__texto">{{ r.credencial_antes }}<a href="{{ r.credencial_link }}">{{ r.credencial_nome }}</a>{{ r.credencial_depois }}</p>
+				<p class="o-parceira__texto">{{ r.credencial }}</p>
 			</div>
 			{%- endif %}
 		</div>
+		{%- for nota in notas %}<p class="o-resultados__nota">{{ nota }}</p>{% endfor %}
 		{%- endif %}
 	</div>
 </section>
