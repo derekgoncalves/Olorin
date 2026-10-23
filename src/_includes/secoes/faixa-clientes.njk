@@ -7,14 +7,16 @@
          {% set faixa_pe = true %}{% set faixa_ctx = "preto" %} antes do include (emenda no banner de cima).
      - Sem nada: seção própria, de fundo branco e com bordas (LP Educação, no meio da página). Outro fundo:
          {% set faixa_ctx = "preto" %} (preto, branco, verde ou violeta).
-     A credencial Meta e Google da Natalia saiu daqui (18/10/2026): fica no banner verde da home (resultados.njk). -#}
+     A credencial Meta e Google saiu daqui (18/10/2026): fica no banner verde da home (resultados.njk).
+     Em cima dos logos, a etiqueta pequena em pixel (clientes.yml → etiqueta). -#}
 {%- set cl = conteudo.clientes or {} -%}
 {%- set logos = cl.itens or [] -%}
 {%- set fctx = faixa_ctx if faixa_ctx in ["preto", "branco", "verde", "violeta"] else ("" if faixa_pe else "branco") -%}
 {%- set escuro = faixa_pe or fctx in ["preto", "violeta"] -%}
 {%- if logos.length %}
 <section class="o-clientes{% if faixa_pe %} o-clientes--pe{% else %} o-sec{% endif %}{% if fctx %} o-ctx-{{ fctx }}{% endif %}" data-secao="clientes" aria-labelledby="clientes-titulo">
-	<h2 class="o-sr" id="clientes-titulo">{{ cl.etiqueta or "Marcas atendidas" }}</h2>
+	{#- Etiqueta visível (dono, 23/10/2026): "Marcas que o nosso time já atendeu" (clientes.yml → etiqueta). -#}
+	<h2 class="o-clientes__etiqueta" id="clientes-titulo">{{ cl.etiqueta or "Marcas atendidas" }}</h2>
 	<div class="o-faixa o-faixa--logos" data-o-faixa>
 		<ul class="o-faixa__trilho">
 		{%- for c in logos %}
