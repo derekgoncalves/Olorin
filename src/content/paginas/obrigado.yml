@@ -1,4 +1,9 @@
-# Página /obrigado/ (confirmação do lead) — PROMPT seção 10.6. Não indexada.
+# Páginas de obrigado (confirmação do lead), PROMPT seção 10.6. Não indexadas e fora do sitemap.
+# Aqui disparam generate_lead (GA4), Lead (Meta) e a conversão do Google Ads, uma vez por envio.
+#   /obrigado/                  → quem enviou o formulário do site (bloco de cima)
+#   /obrigado-educacao/         → LP Olorin Educação (bloco "educacao")
+#   /obrigado-influenciadores/  → LP de influenciadores (bloco "influenciadores")
+# Sem promessa de resultado. "whatsapp" é a mensagem pronta do botão (a ref entra sozinha).
 seo:
   titulo: Recebido | Olorin Digital
   descricao: Recebemos o seu pedido. Vamos te chamar no WhatsApp em até 1 dia útil.
@@ -18,3 +23,46 @@ enquanto:
     url: /portfolio/
   - rotulo: Conheça o time
     url: /quem-somos/
+
+educacao:
+  seo:
+    titulo: Recebido | Olorin Educação
+    descricao: Recebemos o pedido de Raio-X da sua instituição. Vamos te chamar no WhatsApp em até 1 dia útil.
+  barra: raio-x_pedido.olo
+  etiqueta: Raio-X pedido
+  titulo: Recebido.
+  texto: Vamos te chamar no WhatsApp para entender o momento da sua instituição e marcar a conversa do Raio-X.
+  prazo: Resposta em até 1 dia útil.
+  botao: Adiantar pelo WhatsApp
+  whatsapp: Oi! Acabei de pedir o Raio-X da minha instituição pela página Olorin Educação e quero adiantar a conversa.
+  agendar: Prefere marcar um horário?
+  enquanto_titulo: Enquanto isso
+  enquanto:
+    - rotulo: Volte para a página Olorin Educação
+      url: /educacao/
+    - rotulo: Veja o portfólio
+      url: /portfolio/
+    - rotulo: Conheça o time
+      url: /quem-somos/
+
+influenciadores:
+  seo:
+    titulo: Recebido | Olorin para influenciadores
+    descricao: Recebemos o pedido de Raio-X do seu perfil. Vamos te chamar no WhatsApp em até 1 dia útil.
+  barra: raio-x_do_perfil.olo
+  etiqueta: Raio-X pedido
+  titulo: Recebido.
+  texto: Vamos te chamar no WhatsApp para olhar o seu perfil com você e marcar a conversa do Raio-X.
+  prazo: Resposta em até 1 dia útil.
+  botao: Adiantar pelo WhatsApp
+  whatsapp: Oi! Acabei de pedir o Raio-X do meu perfil pela página de influenciadores da Olorin e quero adiantar a conversa.
+  agendar: Prefere marcar um horário?
+  enquanto_titulo: Enquanto isso
+  instagram: Siga a Olorin no Instagram
+  enquanto:
+    - rotulo: Volte para a página de influenciadores
+      url: /influenciadores/
+    - rotulo: Veja o portfólio
+      url: /portfolio/
+    - rotulo: Conheça o time
+      url: /quem-somos/

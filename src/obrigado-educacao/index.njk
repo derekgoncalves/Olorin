@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+modo: obrigado
+slug: obrigado-educacao
+segmento: educacao
+tema: educacao
+cabecalho: minimo
+indexavel: false
+permalink: /obrigado-educacao/
+eleventyExcludeFromCollections: true
+og_imagem: /assets/img/og/educacao.jpg
+eleventyComputed:
+  titulo: "{{ conteudo.paginas.obrigado.educacao.seo.titulo }}"
+  descricao: "{{ conteudo.paginas.obrigado.educacao.seo.descricao }}"
+---
+{#- /obrigado-educacao/ — quem enviou o formulário da LP Olorin Educação (o enviar.php manda para cá).
+    Aqui disparam generate_lead (com segmento "educacao") e as conversões, uma vez por envio (medicao.js).
+    Cabeçalho mínimo: o da LP tem âncoras da própria LP. Textos: src/content/paginas/obrigado.yml → educacao. -#}
+{%- set o = conteudo.paginas.obrigado.educacao -%}
+<section class="o-sec o-obrigado o-obrigado--educacao o-ctx-violeta" data-secao="obrigado" data-o-obrigado>
+	<div class="o-wrap o-obrigado__grade">
+		<div class="o-janela o-obrigado__janela">
+			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ o.barra }}</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-janela__corpo">
+				<span class="o-icone o-icone--o o-obrigado__icone" aria-hidden="true"></span>
+				<p class="o-etiqueta">{{ o.etiqueta }}</p>
+				<h1 class="o-obrigado__titulo">{{ o.titulo }}</h1>
+				<p class="o-obrigado__texto">{{ o.texto }}</p>
+				<p class="o-nota"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ o.prazo }}</p>
+				<div class="o-obrigado__acoes">
+					<a class="o-btn o-btn--branco o-btn--grande" id="cta-whatsapp-obrigado" href="{{ waLink('obrigado-educacao', { mensagem: o.whatsapp }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ o.botao }}</a>
+					{%- if site.config.SCHEDULING_URL %}
+					<span class="o-obrigado__agendar" data-o-agendar><a class="o-btn o-btn--contorno" id="cta-agendar-obrigado" href="{{ site.config.SCHEDULING_URL }}" target="_blank" rel="noopener">{{ o.agendar }}</a></span>
+					{%- else %}
+					<span class="o-obrigado__agendar" data-o-agendar hidden><a class="o-btn o-btn--contorno" id="cta-agendar-obrigado">{{ o.agendar }}</a></span>
+					{%- endif %}
+				</div>
+			</div>
+		</div>
+		<div class="o-obrigado__enquanto">
+			<h2 class="o-titulo o-titulo--m">{{ o.enquanto_titulo }}</h2>
+			<ul class="o-lista-pixel">
+			{%- for l in o.enquanto %}<li><a href="{{ l.url }}">{{ l.rotulo }}</a></li>{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
