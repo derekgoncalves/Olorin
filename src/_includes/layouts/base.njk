@@ -7,8 +7,9 @@
 	  indexavel               → false gera "noindex, follow"
 	  canonical               → caminho canônico (padrão: a própria URL)
 	  og_imagem               → caminho da imagem de compartilhamento (1200×630)
-	  cabecalho               → "completo" (padrão), "minimo" (landings de campanha) ou "educacao" (LP Olorin Educação)
-	  tema                    → classe extra no <body> (o-tema-<tema>), ex.: "educacao"
+	  cabecalho               → "completo" (padrão), "minimo" (landings de campanha), "educacao" (LP Olorin Educação)
+	                            ou "influenciadores" (LP de influenciadores)
+	  tema                    → classe extra no <body> (o-tema-<tema>), ex.: "educacao" ou "influenciadores"
 	  fontes_extra            → [{ href, tipo }] fontes a mais pré-carregadas só nesta página
 	  migalhas                → [{ nome, url }] para a trilha e o BreadcrumbList
 -#}
@@ -65,10 +66,17 @@
 			h.setAttribute("data-form-variant", v);
 		})(document, window);
 	</script>
-	{#- A LP Olorin Educação tem o próprio arquivo de CSS (ver SO_EDUCACAO em scripts/assets.mjs). -#}
-	{%- set cssEducacao = tema == "educacao" %}
-	<style>{{ (assets.fontFaceEducacao if cssEducacao else assets.fontFace) | safe }}</style>
-	<link rel="stylesheet" href="{{ assets.cssEducacao if cssEducacao else assets.css }}">
+	{#- As LPs (Olorin Educação e influenciadores) têm o próprio arquivo de CSS (ver PACOTES em scripts/assets.mjs). -#}
+	{%- if tema == "educacao" %}
+	<style>{{ assets.fontFaceEducacao | safe }}</style>
+	<link rel="stylesheet" href="{{ assets.cssEducacao }}">
+	{%- elif tema == "influenciadores" %}
+	<style>{{ assets.fontFaceInfluenciadores | safe }}</style>
+	<link rel="stylesheet" href="{{ assets.cssInfluenciadores }}">
+	{%- else %}
+	<style>{{ assets.fontFace | safe }}</style>
+	<link rel="stylesheet" href="{{ assets.css }}">
+	{%- endif %}
 	{%- include "partials/schema.njk" %}
 	<script>window.OLORIN_CONFIG = {{ {
 		whatsapp: cfg.WHATSAPP,
@@ -90,11 +98,11 @@
 <body class="o-modo-{{ modoPagina }}{% if tema %} o-tema-{{ tema }}{% endif %}{% if cabecalho != 'minimo' %} o-tem-barra{% endif %}" data-mode="{{ 'campanha' if modoPagina == 'promo' else modoPagina }}">
 {% include "partials/svg-simbolos.njk" %}
 <a class="o-pular" href="#conteudo">Pular para o conteúdo</a>
-{% if cabecalho == "minimo" %}{% include "partials/cabecalho-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/cabecalho-educacao.njk" %}{% else %}{% include "partials/cabecalho.njk" %}{% endif %}
+{% if cabecalho == "minimo" %}{% include "partials/cabecalho-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/cabecalho-educacao.njk" %}{% elif cabecalho == "influenciadores" %}{% include "partials/cabecalho-influenciadores.njk" %}{% else %}{% include "partials/cabecalho.njk" %}{% endif %}
 <main id="conteudo" class="o-main" tabindex="-1">
 {{ content | safe }}
 </main>
-{% if cabecalho == "minimo" %}{% include "partials/rodape-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/rodape-educacao.njk" %}{% else %}{% include "partials/rodape.njk" %}{% endif %}
+{% if cabecalho == "minimo" %}{% include "partials/rodape-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/rodape-educacao.njk" %}{% elif cabecalho == "influenciadores" %}{% include "partials/rodape-influenciadores.njk" %}{% else %}{% include "partials/rodape.njk" %}{% endif %}
 {% include "partials/flutuantes.njk" %}
 {#- O aviso de cookies vai escondido em todas as páginas: os IDs também podem chegar pelo olorin-ids.js,
     e o main.js só mostra o aviso quando existe algum. -#}

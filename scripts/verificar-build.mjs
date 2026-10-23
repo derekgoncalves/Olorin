@@ -190,6 +190,7 @@ const comprimido = (filtro) => arquivos.filter(filtro).reduce((s, a) => s + gzip
 const kb = (b) => `${(b / 1024).toFixed(1)} KiB`;
 const ehCss = (a) => /assets\/css\/olorin\.[^/]*\.css$/.test(a);
 const ehCssEducacao = (a) => /assets\/css\/olorin-educacao\.[^/]*\.css$/.test(a);
+const ehCssInfluenciadores = (a) => /assets\/css\/olorin-influenciadores\.[^/]*\.css$/.test(a);
 const ehJs = (a) => /assets\/js\/.*\.js$/.test(a);
 const css = pesar(ehCss);
 const js = pesar(ehJs);
@@ -201,8 +202,10 @@ const cssEduGz = comprimido(ehCssEducacao);
 if (cssGz > 35 * 1024) aviso('assets/css', `CSS com ${kb(cssGz)} comprimido (meta: até 35 KiB)`);
 // A LP Olorin Educação carrega o CSS completo (o do site + o visual próprio dela) num arquivo só dela.
 if (cssEduGz > 40 * 1024) aviso('assets/css', `CSS da LP Olorin Educação com ${kb(cssEduGz)} comprimido (meta: até 40 KiB)`);
+const cssInfGz = comprimido(ehCssInfluenciadores);
+if (cssInfGz > 40 * 1024) aviso('assets/css', `CSS da LP de influenciadores com ${kb(cssInfGz)} comprimido (meta: até 40 KiB)`);
 
-console.log(`\nVerificação do build: ${paginas} páginas · CSS ${kb(css)} (${kb(cssGz)} comprimido; LP Educação ${kb(cssEduGz)}) · JS ${kb(js)} (${kb(jsGz)} comprimido) · fontes ${kb(fontes)}`);
+console.log(`\nVerificação do build: ${paginas} páginas · CSS ${kb(css)} (${kb(cssGz)} comprimido; LP Educação ${kb(cssEduGz)}; LP influenciadores ${kb(cssInfGz)}) · JS ${kb(js)} (${kb(jsGz)} comprimido) · fontes ${kb(fontes)}`);
 for (const a of avisos) console.log(`  aviso  ${a}`);
 for (const e of erros) console.log(`  ERRO   ${e}`);
 if (erros.length) {
