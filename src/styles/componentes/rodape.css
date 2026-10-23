@@ -40,6 +40,12 @@
 	text-transform: uppercase;
 	color: var(--verde);
 }
+/* Segmentos e, embaixo, A Olorin, na mesma coluna */
+.o-rodape__col--dupla {
+	display: grid;
+	align-content: start;
+	gap: 30px;
+}
 .o-rodape ul {
 	display: grid;
 	gap: 6px;
