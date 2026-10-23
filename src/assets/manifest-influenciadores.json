@@ -1,0 +1,53 @@
+{
+  "_leia": "Imagens da LP Olorin para influenciadores (/influenciadores/, 23/10/2026). Mesmo formato de manifest.json. Fotos enviadas pelo dono em 23/10/2026 (up23/f1.jpg, f2.jpg, f3.jpg e f5.jpg); a f4 (moça com planta) ficou de fora: tons quentes do sofá amarelo fora da paleta e cabelo cacheado difícil de recortar sem defeito.",
+  "imagens": {
+    "influenciadores-hero": {
+      "arquivo_original": "src/assets/img-src/influenciadores-hero.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "Pessoa de costas, no escuro, diante de uma parede de celulares com fotos, vídeos e uma live",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "f1.jpg (898 x 1600), a foto roxa que o dono pediu para o banner inicial. Inteira, só convertida para WebP. É o LCP da página (prioridade).",
+      "larguras": [420, 640, 898],
+      "largura_padrao": 640,
+      "formatos": ["avif", "webp"]
+    },
+    "influenciadores-quadro": {
+      "arquivo_original": "src/assets/img-src/influenciadores-quadro.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "Moça fazendo um quadro com as mãos na frente do rosto, em luz verde e amarela",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "f2.jpg (a preferida do dono), recortada em 4:5 centrada no rosto (x 0, y 360, 2817 x 3521) e reduzida para 1200 px. Sem recorte de fundo: as mãos desfocadas na frente não recortam limpo (testados isnet-general-use e birefnet-portrait). Vai inteira no banner do visor de câmera.",
+      "larguras": [480, 800, 1200],
+      "largura_padrao": 800,
+      "formatos": ["avif", "webp"]
+    },
+    "influenciadores-fone": {
+      "arquivo_original": "src/assets/img-src/influenciadores-fone.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "Moça de fone vermelho, sorrindo, em luz verde neon",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "f3.jpg recortada com rembg (birefnet-portrait, 1400 px), alfa residual limpo e contorno branco de adesivo (alfa dilatado 30 px e preenchido de branco). Canal alfa.",
+      "larguras": [360, 600, 900],
+      "largura_padrao": 600,
+      "formatos": ["avif", "webp"]
+    },
+    "influenciadores-corda": {
+      "arquivo_original": "src/assets/img-src/influenciadores-corda.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "Moça de camiseta laranja, agachada, com uma corda de pular, gravando com o celular no tripé",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "f5.jpg recortada com rembg (birefnet-portrait, 1200 px), alfa residual limpo e contorno branco de adesivo (26 px). Canal alfa.",
+      "larguras": [300, 520, 760],
+      "largura_padrao": 520,
+      "formatos": ["avif", "webp"]
+    }
+  }
+}
