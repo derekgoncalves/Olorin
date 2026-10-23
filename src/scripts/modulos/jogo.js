@@ -34,8 +34,8 @@ const CABECA = [
 ];
 const CW = 13;
 const CH = 12;
-/* Corpo branco (contrasta com a cabeça verde e com o fundo preto): tronco e braços. */
-const CORPO = ['..WWW..', 'W.WWW.W', '.WWWWW.'];
+/* Corpo branco (contrasta com a cabeça verde e com o fundo preto): pescoço, braços e tronco. */
+const CORPO = ['...W...', '.WWWWW.', 'W.WWW.W', '..WWW..'];
 const PERNAS = [
 	['..W.W..', '.W...W.'],
 	['...W...', '..W.W..'],
@@ -129,10 +129,10 @@ export function iniciarJogo() {
 	}
 	function boneco(fx, fy, passo) {
 		const ox = Math.round(fx - 3);
-		const oy = Math.round(fy - 5);
+		const oy = Math.round(fy - 6);
 		sprite(CABECA, Math.round(fx - CW / 2), oy - CH);
 		sprite(CORPO, ox, oy);
-		sprite(PERNAS[passo], ox, oy + 3);
+		sprite(PERNAS[passo], ox, oy + 4);
 	}
 	function quadro(t) {
 		let acc = 0;
