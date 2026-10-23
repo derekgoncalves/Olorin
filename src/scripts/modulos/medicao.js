@@ -1,7 +1,7 @@
-/* Cliques em CTAs, WhatsApp e cards de serviço; profundidade de rolagem; seções vistas; lead na /obrigado/. */
+/* Cliques em CTAs, WhatsApp e cards de serviço; profundidade de rolagem; seções vistas; lead nas páginas de obrigado. */
 import { $, $$, doc, CONFIG, temIO, origemWhatsApp, lerArmazenamento, gravarArmazenamento } from '../util.js';
 import { track } from './rastreamento.js';
-import { converter } from './consentimento.js';
+import { converter, quandoDecidir } from './consentimento.js';
 
 export function iniciarCliques() {
 	doc.addEventListener('click', (e) => {
@@ -68,8 +68,8 @@ export function iniciarSecoes() {
 	$$('[data-secao]').forEach((s) => io.observe(s));
 }
 
-/* /obrigado/: link de agenda (do build ou do olorin-ids.js) e generate_lead uma única vez por envio
-   (token guardado na sessão). */
+/* Páginas de obrigado (/obrigado/, /obrigado-educacao/, /obrigado-influenciadores/): link de agenda (do build
+   ou do olorin-ids.js) e generate_lead uma única vez por envio (token guardado na sessão). */
 export function iniciarObrigado() {
 	if (!$('[data-o-obrigado]')) return;
 	const agenda = $('[data-o-agendar]');
@@ -83,17 +83,25 @@ export function iniciarObrigado() {
 	}
 	const pendente = lerArmazenamento('sessionStorage', 'olorin_lead_pendente');
 	const feitos = lerArmazenamento('sessionStorage', 'olorin_leads_registrados') || [];
-	if (!pendente || feitos.indexOf(pendente.token) > -1) return;
+	if (!pendente || !pendente.token || feitos.indexOf(pendente.token) > -1) return;
+	// Marca já: recarregar a página nunca repete a conversão.
+	feitos.push(pendente.token);
+	gravarArmazenamento('sessionStorage', 'olorin_leads_registrados', feitos.slice(-20));
+	gravarArmazenamento('sessionStorage', 'olorin_lead_pendente', null);
 	const lead = {
+		segmento: pendente.segmento || CONFIG.segmento || 'site',
 		plano: pendente.plano || '',
 		servicos: pendente.servicos || '',
+		desafios: pendente.desafios || '',
+		porte: pendente.porte || '',
 		verba_faixa: pendente.verba_faixa || '',
 		servico_pagina: pendente.servico_pagina || '',
 		posicao: pendente.posicao || '',
 	};
-	track('generate_lead', lead);
-	converter('lead', lead);
-	feitos.push(pendente.token);
-	gravarArmazenamento('sessionStorage', 'olorin_leads_registrados', feitos);
-	gravarArmazenamento('sessionStorage', 'olorin_lead_pendente', null);
+	// Sem resposta ao aviso de cookies, espera a escolha por até 8 s (ou a saída da página):
+	// com o aceite, a conversão já sai completa para o GA4, a Meta e o Google Ads.
+	quandoDecidir(() => {
+		track('generate_lead', lead);
+		converter('lead', lead);
+	}, 8000);
 }

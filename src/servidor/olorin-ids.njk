@@ -3,28 +3,37 @@ permalink: /olorin-ids.js
 eleventyExcludeFromCollections: true
 ---
 {#- Gera public_html/olorin-ids.js: IDs de medição e link de agendamento que o dono edita pelo
-    WebFTP com o site no ar, sem novo build. Os valores iniciais vêm de src/_data/site/config.json
-    (hoje vazios). O main.js lê window.OLORIN_IDS e usa só os campos preenchidos (modulos/ids.js).
-    Guia completo: docs/TRACKING.md, seção 2. -#}
+    WebFTP com o site no ar, sem novo build. Os valores iniciais vêm de src/_data/site/config.json.
+    O main.js lê window.OLORIN_IDS e usa só os campos preenchidos (modulos/ids.js).
+    Guias: docs/RASTREAMENTO.txt (curto, para o dono) e docs/TRACKING.md (completo). -#}
 {%- set cfg = site.config -%}
 /*
  * OLORIN DIGITAL: IDS DE MEDIÇÃO E LINK DE AGENDAMENTO
  * ====================================================
  * Pode ser editado com o site no ar (WebFTP da Locaweb, pasta public_html).
- * Troque só o que está ENTRE AS ASPAS. Campo vazio ("") = desligado.
- * Não apague vírgulas, aspas nem chaves. Depois de salvar, abra o site e aperte Ctrl+F5.
+ * Troque só o que está ENTRE AS ASPAS. Não apague vírgulas, aspas nem chaves.
+ * Campo vazio ("") = usa o valor que veio junto com o site (o do build).
+ * Depois de salvar, abra o site numa janela anônima e aperte Ctrl+F5.
  *
  * GTM_ID .................. Google Tag Manager. Exemplo: "GTM-XXXXXXX"
  * GA4_ID .................. Google Analytics 4. Exemplo: "G-XXXXXXXXXX"
  * META_PIXEL_ID ........... Pixel da Meta, só números. Exemplo: "123456789012345"
  * GADS_CONVERSION_ID ...... Google Ads, ID de conversão. Exemplo: "AW-123456789"
  * GADS_CONVERSION_LABEL ... Google Ads, rótulo da conversão. Exemplo: "AbCdEfGhIjKlMnOp"
- * SCHEDULING_URL .......... Link de agenda da página /obrigado/, com https://
+ * SCHEDULING_URL .......... Link de agenda das páginas de obrigado, com https://
  *                           Exemplo: "https://calendly.com/olorin/30min"
+ * GA4_E_PIXEL_PELO_GTM .... false (o normal) ou true, SEM aspas. Veja abaixo.
  *
- * Com GTM_ID preenchido, o site carrega só o GTM: GA4 e Pixel ficam configurados dentro dele.
- * Sem GTM, o site liga sozinho o GA4, o Pixel e a conversão do Google Ads preenchidos aqui.
- * O aviso de cookies aparece sozinho quando há algum ID preenchido.
+ * COMO FUNCIONA (GA4_E_PIXEL_PELO_GTM: false, o normal):
+ * - Em TODAS as páginas o site carrega sozinho o GA4 e o GTM, com os cookies desligados
+ *   até a pessoa escolher no aviso (o GA4 conta a visita sem cookie; depois do aceite, completo).
+ * - O Pixel da Meta só liga quando a pessoa aceita os cookies de Marketing.
+ * - O site manda sozinho: page_view e eventos para o GA4; PageView, ViewContent, Contact
+ *   e Lead para a Meta. No GTM, NÃO deixe tags de GA4 nem do Pixel ligadas (contaria tudo duas vezes).
+ * - O GTM fica para o resto (Google Ads e outras ferramentas). Sem GTM, o próprio site manda
+ *   a conversão do Google Ads com os dois campos GADS_ acima.
+ * GA4_E_PIXEL_PELO_GTM: true = o site carrega SÓ o GTM; aí GA4 e Pixel precisam estar dentro do GTM.
+ *
  * Ao publicar um site novo (zip), guarde uma cópia deste arquivo e envie a sua de volta depois.
  */
 window.OLORIN_IDS = {
@@ -33,5 +42,6 @@ window.OLORIN_IDS = {
 	META_PIXEL_ID: {{ (cfg.META_PIXEL_ID or "") | dump | safe }},
 	GADS_CONVERSION_ID: {{ (cfg.GADS_CONVERSION_ID or "") | dump | safe }},
 	GADS_CONVERSION_LABEL: {{ (cfg.GADS_CONVERSION_LABEL or "") | dump | safe }},
-	SCHEDULING_URL: {{ (cfg.SCHEDULING_URL or "") | dump | safe }}
+	SCHEDULING_URL: {{ (cfg.SCHEDULING_URL or "") | dump | safe }},
+	GA4_E_PIXEL_PELO_GTM: {{ "true" if cfg.GA4_E_PIXEL_PELO_GTM === true else "false" }}
 };

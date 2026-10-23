@@ -86,3 +86,16 @@
 	margin: 2px 0 0;
 	accent-color: var(--verde);
 }
+/* "Preferências de cookies" no rodapé das campanhas (rodapé mínimo): parece link, com a cor do rodapé. */
+.o-rodape [data-o-cookies-abrir]:not([class]) {
+	display: inline-block;
+	min-height: 32px;
+	padding: 6px 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	cursor: pointer;
+}

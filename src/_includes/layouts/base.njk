@@ -86,8 +86,10 @@
 		adsId: cfg.GADS_CONVERSION_ID,
 		adsLabel: cfg.GADS_CONVERSION_LABEL,
 		agendamento: cfg.SCHEDULING_URL,
+		ga4PeloGtm: cfg.GA4_E_PIXEL_PELO_GTM === true,
 		modo: modoPagina,
 		slug: slug or "",
+		segmento: segmento or "site",
 		cursor: cfg.CURSOR_ESTRELA
 	} | jsonSeguro | safe }};</script>
 	{#- IDs de medição e link de agenda editáveis com o site no ar (public_html/olorin-ids.js, ver

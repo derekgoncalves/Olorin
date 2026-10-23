@@ -13,6 +13,16 @@ const CAMPOS = [
 	['SCHEDULING_URL', 'agendamento', /^https:\/\/[^\s"'<>]+$/, 'https://calendly.com/...'],
 ];
 
+/* Sim ou não. true/false sem aspas é o esperado; "sim"/"não" e "true"/"false" entre aspas também valem. */
+const SIM_NAO = [['GA4_E_PIXEL_PELO_GTM', 'ga4PeloGtm']];
+function simNao(valor) {
+	if (typeof valor === 'boolean') return valor;
+	const t = String(valor).trim().toLowerCase();
+	if (t === 'true' || t === 'sim') return true;
+	if (t === 'false' || t === 'não' || t === 'nao') return false;
+	return null;
+}
+
 export function aplicarIds() {
 	const ids = window.OLORIN_IDS;
 	if (ids && typeof ids === 'object') {
@@ -25,7 +35,17 @@ export function aplicarIds() {
 				window.console.warn('[olorin-ids] ' + nome + ' ignorado: formato esperado ' + exemplo);
 			}
 		});
+		SIM_NAO.forEach(([nome, chave]) => {
+			if (ids[nome] == null || ids[nome] === '') return;
+			const valor = simNao(ids[nome]);
+			if (valor === null) {
+				if (window.console) window.console.warn('[olorin-ids] ' + nome + ' ignorado: use true ou false');
+			} else {
+				CONFIG[chave] = valor;
+			}
+		});
 	}
+	CONFIG.ga4PeloGtm = CONFIG.ga4PeloGtm === true;
 	// Google Ads: aceita com ou sem "AW-". adsId fica "AW-123", adsNumero fica "123" (para o GTM).
 	const numero = String(CONFIG.adsId || '').replace(/^AW-/i, '');
 	CONFIG.adsId = numero ? 'AW-' + numero : '';
