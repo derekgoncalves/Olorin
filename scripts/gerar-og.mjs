@@ -52,7 +52,7 @@ body { background: ${t.fundo}; color: ${t.texto}; font-family: Texto, monospace;
 .corpo { flex: 1; padding: 36px 40px 34px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
 .etiqueta { font: 22px Pixel, monospace; text-transform: uppercase; letter-spacing: .06em; color: ${t.destaque}; }
 h1 { font: 900 64px/1.02 Titulo, sans-serif; text-transform: uppercase; letter-spacing: -.01em; max-width: 1000px; }
-h1 em { font-style: normal; color: ${t.destaque}; ${tema === 'preto' ? '' : 'text-decoration: underline; text-decoration-thickness: 8px; text-underline-offset: 8px;'} }
+h1 em { font-style: normal; white-space: nowrap; color: ${t.destaque}; ${tema === 'preto' ? '' : 'text-decoration: underline; text-decoration-thickness: 8px; text-underline-offset: 8px;'} }
 .com-foto { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; padding-right: 40px; }
 .foto { align-self: center; width: 300px; height: 300px; border: 4px solid ${t.borda}; box-shadow: 10px 10px 0 ${t.barra}; background: ${t.barra} center / cover no-repeat; }
 .rodape { display: flex; justify-content: space-between; align-items: center; }
@@ -93,8 +93,9 @@ const pecas = [
 		tema: 'preto',
 		janela: 'olorin.olo',
 		etiqueta: 'Agência de marketing digital',
-		titulo: `${home.hero.titulo_1} ${home.hero.titulo_2}`,
-		destaque: home.hero.titulo_destaque,
+		// Lema do site no banner da home (home.yml → hero.titulo + hero.titulo_destaque).
+		titulo: semMarcador(home.hero.titulo) || 'Sua marca em',
+		destaque: semMarcador(home.hero.titulo_destaque) || 'outro nível.',
 		rodape: 'olorin.com.br',
 	},
 	{
@@ -110,7 +111,8 @@ const pecas = [
 		tema: 'preto',
 		janela: 'equipe.olo',
 		etiqueta: sobre.etiqueta || 'Quem somos',
-		titulo: semMarcador(sobre.titulo) || 'Um time inteiro cuidando da sua marca.',
+		titulo: semMarcador(sobre.titulo) || 'Um time inteiro. Sua marca em',
+		destaque: semMarcador(sobre.titulo_destaque) || 'outro nível.',
 		rodape: 'olorin.com.br/quem-somos',
 	},
 	{
@@ -134,9 +136,18 @@ const pecas = [
 		tema: 'violeta',
 		janela: 'boletim.olo',
 		etiqueta: 'Olorin Educação · captação de alunos',
-		titulo: 'Do clique',
-		destaque: 'à matrícula.',
+		titulo: 'Sua escola em',
+		destaque: 'outro nível.',
 		rodape: 'olorin.com.br/educacao',
+	},
+	{
+		arquivo: 'influenciadores.jpg',
+		tema: 'verde',
+		janela: 'perfil.olo',
+		etiqueta: 'Olorin · influenciadores',
+		titulo: 'Seu perfil em',
+		destaque: 'outro nível.',
+		rodape: 'olorin.com.br/influenciadores',
 	},
 	{
 		arquivo: 'portfolio.jpg',
