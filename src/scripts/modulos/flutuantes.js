@@ -67,13 +67,15 @@ export function iniciarFlutuantes() {
 
 		// Sobre seção violeta, verde ou branca, o botão fica preto (verde nunca encosta no violeta nem fica no branco).
 		// A faixa de logos (no pé da primeira tela da home) fica de fora: ali o Raio-X continua verde.
+		// Vale o que está na altura da borda de cima da barra do celular (60 a 50 px do pé da tela, também
+		// atrás do botão flutuante): uma seção que só aparece embaixo da barra não muda a cor.
 		const coloridas = $$('.o-ctx-violeta, .o-ctx-verde, .o-ctx-branco, .o-faixa:not(.o-faixa--logos)');
 		const sob = new Set();
 		const io = new IntersectionObserver((entradas) => {
 			entradas.forEach((en) => (en.isIntersecting ? sob.add(en.target) : sob.delete(en.target)));
 			sobreCor = sob.size > 0;
 			aplicar();
-		}, { rootMargin: '-' + Math.max(0, window.innerHeight - 100) + 'px 0px -20px 0px' });
+		}, { rootMargin: '-' + Math.max(0, window.innerHeight - 60) + 'px 0px -50px 0px' });
 		coloridas.forEach((s) => io.observe(s));
 	}
 	aplicar();

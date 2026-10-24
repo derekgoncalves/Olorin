@@ -257,7 +257,7 @@ Todos os eventos passam por uma função única, `track(evento, params)` (`rastr
 | `form_error` | Um evento por campo inválido na validação; um por campo recusado pelo servidor; um sem campo se o servidor recusar sem detalhar ou a conexão cair | `campo` (`nome`, `whatsapp`, `consentimento`, outro campo do servidor, ou vazio), `tipo` (`validacao` \| `servidor` \| `conexao`), `posicao` | `formulario.js` |
 | `generate_lead` | Na `/obrigado/`, se a sessão tem um envio pendente com token ainda não registrado. Uma vez por envio; recarregar não repete | `plano`, `servicos` (marcados, separados por vírgula), `verba_faixa` (texto da faixa escolhida, ex.: `De R$ 2 a 5 mil por mês`), `servico_pagina`, `posicao` | `formulario.js` grava; `medicao.js` envia |
 | `pricing_plan_click` | Clique em "Quero esse" (`a[data-o-plano]`) | `plano` (`pontual` \| `gestao-mensal` \| `360-completo`) | `interacoes.js` |
-| `calculator_use` | Cada mudança na calculadora (o cálculo inicial não conta) | `plano`, `verba_faixa` (valor em reais como texto: `1500`, `3000`, `5000`, `10000`), `primeira_vez` (`true` só na primeira mudança) | `interacoes.js` |
+| `calculator_use` | Cada mudança na calculadora da home (seção `#orcamento-calculadora`; o cálculo inicial não conta) | `escolhas` (as respostas juntas, separadas por ` \| `), `frente`, `verba` e `objetivo` (cada resposta em texto), `primeira_vez` (`true` só na primeira mudança). O botão da calculadora (`cta-whatsapp-calculadora`) abre o WhatsApp com as respostas e gera `whatsapp_click` (`origem: calculadora`) e `Contact` | `interacoes.js` |
 | `faq_open` | Pergunta aberta (`<details>` passa para aberto) | `pergunta_id` (o `id` da pergunta) | `interacoes.js` |
 | `scroll_depth` | 25, 50, 75 e 90% da página, uma vez cada | `percent` (número) | `medicao.js` |
 | `section_view` | Bloco com `data-secao` 40% visível, uma vez por página | `secao` (ex.: `hero`, `planos`, `orcamento`, `servico-hero`, `preco`, `faq-servico`, `promo-hero`, `obrigado`) | `medicao.js` |
@@ -279,7 +279,7 @@ Observações:
 | 4 | `whatsapp_click` com `servico` | Fora das páginas de serviço/campanha, `servico` recebe o slug da página (`home`, `sobre`, `obrigado`, `404`, `promo`) |
 | 5 | `form_error` com `campo`, `tipo` | Também envia `posicao` (a mais) |
 | 6 | `generate_lead` com `plano`, `servicos`, `verba_faixa`, `servico_pagina` | Também envia `posicao` (a mais) |
-| 7 | `calculator_use` com `plano`, `verba_faixa` | Também envia `primeira_vez`. E `verba_faixa` aqui é um número (`3000`), enquanto no `generate_lead` é o texto da faixa (`De R$ 2 a 5 mil por mês`). Mesmo nome, formatos diferentes |
+| 7 | `calculator_use` com `plano`, `verba_faixa` | Desde 23/10/2026 envia `escolhas`, `frente`, `verba`, `objetivo` e `primeira_vez` (a calculadora não tem mais planos e o botão leva ao WhatsApp, não ao formulário) |
 | 8 | (não pede) | `cta_label` some quando o texto do botão parece telefone. Ex.: o link do rodapé "WhatsApp (41) 99646-0861" (`cta-whatsapp-rodape`) chega **sem** `cta_label`, porque o filtro de dados pessoais confunde o telefone da empresa com dado pessoal |
 | 9 | (não pede) | `faq_open` também dispara quando a pergunta abre pelo endereço (`/#id-da-pergunta`), sem clique. A primeira pergunta de cada lista já vem aberta no HTML; confira no teste se isso gera um `faq_open` sem clique (seção 10, teste 9) |
 | 10 | (não pede) | Se o envio for tentado com a etapa 1 inválida, o código chama a validação **duas vezes** seguidas (`formulario.js`, no `submit`) e gera `form_error` em dobro para cada campo. Só acontece em caminhos raros (a etapa 1 normalmente é validada no "Continuar") |
@@ -383,7 +383,7 @@ Arquivo de exportação do GTM (`exportFormatVersion: 2`), gerado por script a p
 | Variável JavaScript | `Google Ads - ID de conversão` | `OLORIN_CONFIG.adsNumero` (os números do `GADS_CONVERSION_ID`, sem `AW-`) |
 | Variável JavaScript | `Google Ads - Rótulo de conversão` | `OLORIN_CONFIG.adsLabel` |
 | Variável JavaScript | `JS - modo da página` e `JS - slug da página` | `OLORIN_CONFIG.modo` e `OLORIN_CONFIG.slug` |
-| Camada de dados (v2) | `DLV - <nome>` (27) | `page_mode`, `page_slug`, `form_variant`, `utm_source`, `utm_medium`, `utm_campaign`, `cta_id`, `cta_label`, `cta_position`, `destino`, `origem`, `servico`, `posicao`, `campo`, `tipo`, `plano`, `servicos`, `verba_faixa`, `servico_pagina`, `primeira_vez`, `pergunta_id`, `percent`, `secao`, `analytics`, `marketing`, `segmento` e `porte` |
+| Camada de dados (v2) | `DLV - <nome>` (31) | `page_mode`, `page_slug`, `form_variant`, `utm_source`, `utm_medium`, `utm_campaign`, `cta_id`, `cta_label`, `cta_position`, `destino`, `origem`, `servico`, `posicao`, `campo`, `tipo`, `plano`, `servicos`, `verba_faixa`, `servico_pagina`, `primeira_vez`, `pergunta_id`, `percent`, `secao`, `analytics`, `marketing`, `segmento`, `porte` e, da calculadora, `escolhas`, `frente`, `verba` e `objetivo` |
 
 Nenhum ID fica escrito no contêiner. "Variável JavaScript" só lê uma variável global; não é "JavaScript personalizado" e não precisa de `'unsafe-eval'` na CSP. O site põe `page_mode`, `page_slug`, `segmento` e `form_variant` no `dataLayer` **antes** do `gtm.js`, então as variáveis `DLV - ...` já têm valor no carregamento do contêiner.
 
@@ -429,7 +429,7 @@ Para importar o do projeto:
 
 1. GTM > **Administrador** > **Importar contêiner** > `gtm-container.json`.
 2. Espaço de trabalho: **Existente**. Opção: **Mesclar** > **Renomear tags, acionadores e variáveis conflitantes**.
-3. Vão aparecer 20 tags (18 pausadas), 19 acionadores, 33 variáveis e 5 pastas.
+3. Vão aparecer 20 tags (18 pausadas), 19 acionadores, 37 variáveis e 5 pastas.
 4. **Visualizar** (seção 10). Só depois: **Enviar** > **Publicar**.
 
 > **Não cole o código de instalação que o GTM mostra** (`<script>` e `<noscript>`). O site já carrega o GTM sozinho, depois do `load`, com o Consent Mode configurado antes.
@@ -523,8 +523,10 @@ Dá para criar pelo nome antes do primeiro evento chegar.
 | `cta_id` | CTA | `percent` | Profundidade de rolagem |
 | `cta_position` | Posição do CTA | `campo` | Campo com erro |
 | `tipo` | Tipo de erro | `desafios` | Desafios marcados |
+| `frente` | Calculadora: frente | `objetivo` | Calculadora: objetivo |
+| `verba` | Calculadora: verba | | |
 
-São 20, dentro do limite de 50 do GA4 gratuito. `cta_label` e `destino` são opcionais.
+São 23, dentro do limite de 50 do GA4 gratuito. `cta_label` e `destino` são opcionais.
 
 **Funil sugerido** (Explorar > Exploração de funil): `form_view` → `form_start` → `form_step1_complete` → `generate_lead`, dividido por `segmento`, `posicao` e `form_variant`.
 
@@ -551,7 +553,7 @@ Prepare antes: Chrome atualizado, extensão **Tag Assistant Companion** (opciona
 | 4 | Clique em um botão de WhatsApp | `whatsapp_click` com `origem` igual ao `[ref: ...]` do link → `GA4 - whatsapp_click` e `Meta Pixel - Contact` |
 | 5 | Clique em "Quero esse" de um plano | `pricing_plan_click` (`plano`) e `cta_click` (`cta_id` = `planos-<plano>`) |
 | 6 | Role a página até o fim | `scroll_depth` 25/50/75/90 e vários `section_view` |
-| 7 | Mude a calculadora | `calculator_use` (`primeira_vez: true` só na primeira) |
+| 7 | Mude a calculadora | `calculator_use` com `escolhas`, `frente`, `verba` e `objetivo` (`primeira_vez: true` só na primeira). O botão de WhatsApp da calculadora (`cta-whatsapp-calculadora`) gera `whatsapp_click` com `origem: calculadora` |
 | 8 | Abra uma página de serviço | `Meta Pixel - ViewContent (serviço)` dispara no carregamento |
 | 9 | Abra uma pergunta do FAQ | `faq_open` com `pergunta_id`. Confira também se apareceu algum `faq_open` **sem** clique ao carregar (a primeira pergunta já vem aberta) |
 | 10 | Formulário: clique em Continuar vazio; depois preencha certo, avance e envie | `form_view` → `form_start` → `form_error` (`campo: nome`, `tipo: validacao`) → `form_step1_complete` → redireciona para `/obrigado/` → `generate_lead` → `GA4 - generate_lead`, `Meta Pixel - Lead`, `Google Ads - Conversão Lead do site` |
@@ -621,7 +623,7 @@ Desde 23/10/2026 o formulário pede também e-mail, empresa e cargo. Eles vão s
 | 7b | O aviso de cookies vai escondido em todas as páginas (cerca de 1 KB comprimido por página, entre HTML e CSS crítico) para funcionar com IDs colocados no servidor | Escolha consciente |
 | 8 | Origem `planos-{plano}` de WhatsApp | Não implementado (os planos levam ao formulário) |
 | 9 | `servico` no `whatsapp_click` vira o slug da página fora das páginas de serviço | Diferença |
-| 10 | `verba_faixa` com formatos diferentes no `calculator_use` (número) e no `generate_lead` (texto) | Inconsistência |
+| 10 | `verba_faixa` só no `generate_lead` (texto da faixa); a calculadora manda `verba` | Resolvido em 23/10/2026 |
 | 11 | `cta_label` some no link do rodapé com o telefone da empresa (o filtro o toma por dado pessoal) | Efeito colateral do filtro |
 | 12 | `form_error` em dobro se o envio for tentado com a etapa 1 inválida (validação chamada duas vezes no `submit`) | Erro pequeno, caminho raro |
 | 13 | `generate_lead` não dispara em envios sem JavaScript/`fetch` | Limitação (o lead chega por e-mail/CSV) |

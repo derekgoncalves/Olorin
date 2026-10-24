@@ -1386,12 +1386,12 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "parameter",
-                                        "value": "plano"
+                                        "value": "escolhas"
                                     },
                                     {
                                         "type": "TEMPLATE",
                                         "key": "parameterValue",
-                                        "value": "{{DLV - plano}}"
+                                        "value": "{{DLV - escolhas}}"
                                     }
                                 ]
                             },
@@ -1401,12 +1401,42 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "parameter",
-                                        "value": "verba_faixa"
+                                        "value": "frente"
                                     },
                                     {
                                         "type": "TEMPLATE",
                                         "key": "parameterValue",
-                                        "value": "{{DLV - verba_faixa}}"
+                                        "value": "{{DLV - frente}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "verba"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "{{DLV - verba}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "objetivo"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "{{DLV - objetivo}}"
                                     }
                                 ]
                             },
@@ -3293,7 +3323,7 @@
                 "fingerprint": "1760011200000",
                 "formatValue": {},
                 "parentFolderId": "1",
-                "notes": "generate_lead, pricing_plan_click, calculator_use"
+                "notes": "generate_lead, pricing_plan_click"
             },
             {
                 "accountId": "0000000000",
@@ -3349,7 +3379,7 @@
                 "fingerprint": "1760011200000",
                 "formatValue": {},
                 "parentFolderId": "1",
-                "notes": "generate_lead (texto da faixa) e calculator_use (valor em reais)"
+                "notes": "generate_lead (texto da faixa)"
             },
             {
                 "accountId": "0000000000",
@@ -3600,6 +3630,118 @@
                 "fingerprint": "1760011200000",
                 "formatValue": {},
                 "parentFolderId": "1"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "34",
+                "name": "DLV - escolhas",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "escolhas"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1",
+                "notes": "calculator_use"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "35",
+                "name": "DLV - frente",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "frente"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1",
+                "notes": "calculator_use"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "36",
+                "name": "DLV - verba",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "verba"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1",
+                "notes": "calculator_use"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "37",
+                "name": "DLV - objetivo",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "objetivo"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1",
+                "notes": "calculator_use"
             }
         ],
         "builtInVariable": [
