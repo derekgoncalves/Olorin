@@ -5,7 +5,7 @@
  * - Depois da entrada do banner, o boletim passa a "respirar" (html.o-edu-entrou).
  * - Desktop (mouse, sem "reduzir movimento"): o quadriculado acende perto do ponteiro, o lápis pinta
  *   os quadradinhos vazios do fundo e a lousa do calendário ganha rastro de apagador. Nada disso roda
- *   pausado. Os flashes do raio-x (fim da página) são só CSS.
+ *   pausado. A chapa do Raio-X (fim da página) é o componente do site (partials/chapa-raio-x.njk).
  * Visual em src/styles/componentes/educacao.css.
  */
 import { $, $$, doc, raiz, movimentoReduzido, ponteiroFino, temIO } from '../util.js';

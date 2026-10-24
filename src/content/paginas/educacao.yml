@@ -17,7 +17,7 @@ seo:
 marca:
   nome: Olorin Educação
   sub: educação
-  lema: Do clique à matrícula.
+  lema: Sua escola em outro nível.
   apoio: Do curso livre à pós-graduação.
   parte_de: A Olorin Educação é a área de instituições de ensino da Olorin Digital.
 
@@ -51,13 +51,18 @@ cabecalho:
 
 hero:
   etiqueta: Olorin Educação · captação de alunos
-  titulo: Turma cheia não é
-  titulo_destaque: sorte.
-  texto: Anúncio, Instagram e atendimento com a mesma equipe. Todo mês, um boletim com o custo de cada matrícula.
+  # O h1 é o lema da LP (marca.lema): "titulo" + "titulo_destaque" (com o risco de giz).
+  titulo: Sua escola em
+  titulo_destaque: outro nível.
+  # Linha de apoio: "apoio" sai em negrito, na frente do "texto".
+  apoio: Turma cheia não é sorte.
+  texto: Anúncio, Instagram e atendimento com a mesma equipe, e um boletim todo mês com o custo de cada matrícula.
   botao: Quero o Raio-X grátis
+  # Os 3 itens com check ao lado do botão (os mesmos de todas as páginas do site).
   prova:
-    - Sem multa depois de 3 meses
-    - Custo por matrícula todo mês
+    - Raio-X gratuito e sem compromisso
+    - Estratégia e performance
+    - Produção de alto nível
   # Exemplo ilustrativo (não é cliente): mostra o Raio-X como um boletim, com nota por canal.
   boletim:
     janela: boletim.olo
@@ -162,37 +167,30 @@ calendario:
 cases:
   etiqueta: Clientes
   titulo: Quem já atendemos.
-  texto: Uma edtech de educação em saúde e um especialista em Direito Público.
+  texto: Uma edtech de educação em saúde e a venda de cursos e obras de um especialista em Direito Público.
   ficha: Ficha nº
-  rotulos:
-    segmento: Segmento
-    cursos: Cursos
-    onde: Onde
-    servicos: Serviços
   carimbo: Atendido pela Olorin
   site: Ver o site
 
 equipe:
   etiqueta: Quem coordena
   titulo: Fale com quem coordena.
-  texto: Um time inteiro na sua captação, com uma pessoa respondendo por cada frente.
+  texto: Agência parceira Meta e Google. Um time inteiro na sua captação, com uma pessoa respondendo por cada frente.
   frases:
-    natalia-arruda: Gestora de tráfego parceira Meta e Google, com mais de seis anos em mídia paga e contas de educação no currículo. Dirige a estratégia e os anúncios.
+    natalia-arruda: Gestora de tráfego com mais de seis anos em mídia paga e contas de educação no currículo. Dirige a estratégia e os anúncios.
     vinicius-mafra: Mais de 10 anos de direção de arte. Dá cara de marca a quem costuma ter comunicação burocrática.
     derek-goncalves: Seu primeiro contato e quem coordena a sua captação no dia a dia.
   botao: Falar com a equipe no WhatsApp
   link_sobre: Conheça quem somos
 
-# Seção final, igual à do site: só o título, os passos com o "O" da Olorin e o formulário (#raio-x).
-# A arte ao lado (livro e lápis no raio-x) é desenhada em código no index.njk.
+# Seção final, igual à do site: o título, os passos com o "O" da Olorin, a chapa do Raio-X
+# (partials/chapa-raio-x.njk, variante "educacao") e o formulário (#raio-x).
 raio_x:
   titulo: Raio X da Olorin
   passos:
     - Você conta sobre a instituição
     - A gente testa o atendimento e analisa tudo
     - Você recebe o plano da captação
-  arte_janela: raio_x.olo
-  arte_rotulo: "RX · livro_e_lapis"
 
 rodape:
   nesta_pagina: Nesta página
@@ -200,7 +198,6 @@ rodape:
   contato: Contato
   links_olorin:
     - { rotulo: Site da Olorin, url: / }
-    - { rotulo: Serviços, url: /servicos/ }
     - { rotulo: Portfólio, url: /portfolio/ }
     - { rotulo: Sobre, url: /sobre/ }
     - { rotulo: Quem somos, url: /quem-somos/ }

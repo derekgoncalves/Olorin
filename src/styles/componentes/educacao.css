@@ -2,13 +2,13 @@
    LP OLORIN EDUCAÇÃO (/educacao/): tema próprio, sempre dentro de .o-tema-educacao.
    Mesma logo e mesmas cores da Olorin, com o violeta no comando: caderno quadriculado
    (a grade de pixels da marca), tinta de mimeógrafo, lousa de giz, carimbo, boletim,
-   o raio-x do livro e as janelas .olo do site.
+   a chapa do Raio-X (componente do site, chapa.css) e as janelas .olo do site.
    Fontes: Fraunces 900 (títulos), Atkinson Hyperlegible Next (texto), Courier Prime
    (detalhes), Caveat (o giz do calendário) e Silkscreen (barras das janelas, a do site).
    Cores: violeta e branco no comando; preto na lousa; verde só sobre preto (o giz).
    Movimento: só com prefers-reduced-motion: no-preference e sem html.o-pausado
    (entradas na rolagem, lápis, lanterna e apagador: src/scripts/modulos/educacao.js;
-   giz sendo escrito e flashes do raio-x: só CSS).
+   giz sendo escrito: só CSS; a chapa do Raio-X anima no próprio componente).
    ========================================================================== */
 
 /* ---------- Fontes da LP (livres, OFL; licenças em /assets/fonts/educacao/LICENCA.txt) ---------- */
@@ -181,7 +181,9 @@
 }
 .o-edu-h1 {
 	margin: 0 0 26px;
-	font-size: clamp(56px, 4.2vw + 44px, 112px);
+	/* O lema em 2 linhas ("Sua escola em" / "outro nível."): a 1ª linha mede 5,76 vezes o tamanho da
+	   letra, então o tamanho segue a largura da coluna do texto (no celular, ver Responsivo). */
+	font-size: min(7.6vw, 104px);
 	line-height: 0.94;
 	/* tinta de mimeógrafo: a segunda cópia sai um pouco fora do lugar */
 	text-shadow: 0.03em 0.035em 0 var(--edu-indigo);
@@ -203,6 +205,11 @@
 	font-weight: 700;
 	font-size: 13px;
 	letter-spacing: 0.14em;
+	text-wrap: balance;
+}
+/* Trecho que não quebra (ex.: "Raio-X gratuito", para o hífen não partir a palavra) */
+.o-edu-inteiro {
+	white-space: nowrap;
 }
 .o-edu-sublinhado {
 	position: relative;
@@ -620,19 +627,22 @@
 	gap: clamp(40px, 5vw, 88px);
 }
 .o-edu-hero__lead {
-	max-width: 34ch;
+	max-width: 36ch;
 	margin: 0 0 32px;
 	font-size: clamp(18px, 0.55vw + 15px, 22px);
 	line-height: 1.5;
 	color: var(--cor-apoio);
 }
+.o-edu-hero__lead strong {
+	color: var(--branco);
+}
 .o-edu-hero__cta {
 	margin: 0 0 30px;
 }
 .o-edu-prova {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px 24px;
+	display: grid;
+	justify-content: start;
+	gap: 10px;
 	margin: 0;
 	padding: 18px 0 0;
 	border-top: 2px dashed rgba(255, 255, 255, 0.42);
@@ -643,18 +653,19 @@
 	line-height: 1.35;
 }
 .o-edu-prova li {
-	display: inline-flex;
+	display: flex;
 	align-items: center;
-	gap: 9px;
+	gap: 10px;
 }
+/* O check do site (o mesmo "v" da home), em branco: o verde não encosta no violeta */
 .o-edu-prova li::before {
 	content: "";
 	flex: none;
-	width: 12px;
-	height: 11px;
+	width: 14px;
+	height: 14px;
 	background: currentColor;
-	-webkit-mask: var(--icone-pixel) center / contain no-repeat;
-	mask: var(--icone-pixel) center / contain no-repeat;
+	-webkit-mask: var(--icone-check) center / contain no-repeat;
+	mask: var(--icone-check) center / contain no-repeat;
 }
 
 /* Boletim do Raio-X (exemplo) */
@@ -1543,14 +1554,14 @@
 	margin: clamp(40px, 5vw, 64px) 0 0;
 }
 
-/* ---------- 8. RAIO X DA OLORIN: passos, livro e lápis no raio-x e o único formulário ---------- */
+/* ---------- 8. RAIO X DA OLORIN: passos, a chapa do Raio-X e o único formulário ---------- */
 .o-edu-raio {
 	overflow: hidden;
 }
 .o-edu-raio__grade {
 	display: grid;
 	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-	grid-template-areas: "titulo titulo" "passos form" "arte form";
+	grid-template-areas: "titulo titulo" "passos form" "chapa form";
 	grid-template-rows: auto auto 1fr;
 	align-items: start;
 	column-gap: clamp(40px, 5vw, 88px);
@@ -1594,145 +1605,19 @@
 .o-edu-raio__grade > .o-form {
 	grid-area: form;
 }
-/* Negatoscópio: filme preto com o brilho no meio e as marcas do visor nos cantos */
-.o-edu-rx {
-	--janela-borda: var(--preto);
-	--janela-barra: var(--preto);
-	--janela-tinta: var(--branco);
-	--janela-corpo: var(--preto);
-	--janela-sombra: var(--preto);
-	grid-area: arte;
-	width: min(100%, 520px);
-	margin: 0;
-	rotate: -1.2deg;
+/* A chapa do Raio-X (partials/chapa-raio-x.njk, variante "educacao"): retângulo em pé (3:4) com a largura
+   em --edu-chapa, passada ao componente como --chapa-l (ele calcula o resto e põe o prendedor por cima).
+   Computador: embaixo dos passos, alinhada à esquerda com eles; celular: centrada, antes dos passos. */
+.o-edu-raio__chapa {
+	--edu-chapa: clamp(260px, 25vw, 340px);
+	grid-area: chapa;
+	justify-self: start;
+	width: var(--edu-chapa);
+	max-width: 100%;
 }
-.o-edu-rx__filme {
-	position: relative;
-	aspect-ratio: 3 / 2;
-	overflow: hidden;
-	background: radial-gradient(70% 80% at 48% 48%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.02) 72%), var(--preto);
+.o-edu-raio__chapa > * {
+	--chapa-l: var(--edu-chapa);
 }
-.o-edu-rx__filme::before {
-	--c: rgba(255, 255, 255, 0.7);
-	content: "";
-	position: absolute;
-	inset: 12px;
-	z-index: 3;
-	background:
-		linear-gradient(var(--c) 0 0) 0 0 / 22px 2px,
-		linear-gradient(var(--c) 0 0) 0 0 / 2px 22px,
-		linear-gradient(var(--c) 0 0) 100% 0 / 22px 2px,
-		linear-gradient(var(--c) 0 0) 100% 0 / 2px 22px,
-		linear-gradient(var(--c) 0 0) 0 100% / 22px 2px,
-		linear-gradient(var(--c) 0 0) 0 100% / 2px 22px,
-		linear-gradient(var(--c) 0 0) 100% 100% / 22px 2px,
-		linear-gradient(var(--c) 0 0) 100% 100% / 2px 22px;
-	background-repeat: no-repeat;
-}
-.o-edu-rx__filme > * {
-	position: absolute;
-}
-.o-edu-rx__carne,
-.o-edu-rx__osso {
-	inset: 0;
-	width: 100%;
-	height: 100%;
-}
-.o-edu-rx__carne :is(rect, path) {
-	fill: rgba(255, 255, 255, 0.08);
-	stroke: rgba(255, 255, 255, 0.36);
-	stroke-width: 1.5;
-	stroke-linejoin: round;
-}
-.o-edu-rx__carne .o-edu-rx__lombada {
-	fill: rgba(255, 255, 255, 0.12);
-}
-.o-edu-rx__carne .o-edu-rx__linha {
-	fill: none;
-	stroke: rgba(255, 255, 255, 0.24);
-	stroke-width: 7;
-	stroke-linecap: round;
-}
-.o-edu-rx__carne .o-edu-rx__faceta {
-	fill: none;
-	stroke: rgba(255, 255, 255, 0.2);
-	stroke-width: 1;
-}
-/* Partes duras: brilham no filme */
-.o-edu-rx__osso {
-	filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
-}
-.o-edu-rx__osso :is(rect, path) {
-	fill: none;
-	stroke: rgba(255, 255, 255, 0.9);
-	stroke-width: 2.5;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-}
-.o-edu-rx__osso .o-edu-rx__costura {
-	stroke-dasharray: 7 6;
-}
-.o-edu-rx__osso .o-edu-rx__fino {
-	stroke-width: 1;
-	opacity: 0.75;
-}
-.o-edu-rx__osso .o-edu-rx__grafite {
-	stroke-width: 4;
-}
-.o-edu-rx__osso .o-edu-rx__metal {
-	fill: rgba(255, 255, 255, 0.88);
-	stroke-width: 1;
-}
-.o-edu-rx__osso .o-edu-rx__aneis {
-	stroke: var(--preto);
-	opacity: 0.6;
-}
-/* O "O" da Olorin escondido dentro do livro */
-.o-edu-rx__o {
-	left: 34.8%;
-	top: 35.8%;
-	width: 18%;
-	height: auto;
-	aspect-ratio: 134 / 126;
-	color: var(--branco);
-	rotate: -6deg;
-	filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.85));
-}
-.o-edu-rx__varre {
-	inset: 0 0 auto;
-	z-index: 2;
-	height: 30%;
-	background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.06) 60%, rgba(255, 255, 255, 0.32) 96%, transparent);
-	opacity: 0;
-}
-.o-edu-rx__flash {
-	inset: 0;
-	z-index: 4;
-	background: radial-gradient(closest-side, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
-	opacity: 0;
-}
-.o-edu-rx__rotulo {
-	left: 26px;
-	bottom: 22px;
-	z-index: 3;
-	font-family: var(--edu-detalhe);
-	font-weight: 700;
-	font-size: 11px;
-	line-height: 1;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.72);
-}
-.o-edu-rx__logo {
-	right: 26px;
-	top: 24px;
-	z-index: 3;
-	width: 76px;
-	height: auto;
-	aspect-ratio: 731 / 125.6;
-	color: rgba(255, 255, 255, 0.72);
-}
-
 /* ---------- Rodapé ---------- */
 .o-edu-rodape {
 	--cor-foco: var(--branco);
@@ -1898,25 +1783,6 @@
 		}
 		& .o-edu-aqui::before {
 			animation: o-edu-pulso 1.4s ease-in-out infinite;
-		}
-		/* Raio-X: dois flashes (como na chapa de verdade), o grafite e o metal aparecem, a faixa varre
-		   o filme e o "O" da Olorin acende dentro do livro. Dois flashes a cada 9 s, bem abaixo do
-		   limite de três por segundo. */
-		& .o-edu-rx__carne {
-			animation: o-edu-rx-carne 9s linear infinite;
-		}
-		& .o-edu-rx__osso {
-			will-change: opacity;
-			animation: o-edu-rx-osso 9s linear infinite;
-		}
-		& .o-edu-rx__o {
-			animation: o-edu-rx-o 9s var(--mov-saida) infinite;
-		}
-		& .o-edu-rx__flash {
-			animation: o-edu-rx-flash 9s linear infinite;
-		}
-		& .o-edu-rx__varre {
-			animation: o-edu-rx-varre 9s linear infinite;
 		}
 	}
 	/* Depois da entrada, o boletim respira (classe posta pelo JS) */
@@ -2108,100 +1974,6 @@
 		transform: translateY(0.35em);
 	}
 }
-@keyframes o-edu-rx-flash {
-	0%,
-	12% {
-		opacity: 0;
-	}
-	12.6% {
-		opacity: 0.5;
-	}
-	14.4% {
-		opacity: 0;
-	}
-	16.2% {
-		opacity: 0.36;
-	}
-	18%,
-	100% {
-		opacity: 0;
-	}
-}
-@keyframes o-edu-rx-osso {
-	0%,
-	12.4% {
-		opacity: 0;
-	}
-	12.8% {
-		opacity: 1;
-	}
-	15% {
-		opacity: 0.3;
-	}
-	16.6%,
-	84% {
-		opacity: 1;
-	}
-	94%,
-	100% {
-		opacity: 0;
-	}
-}
-@keyframes o-edu-rx-carne {
-	0%,
-	12% {
-		opacity: 0.45;
-	}
-	13% {
-		opacity: 1;
-	}
-	20%,
-	84% {
-		opacity: 0.9;
-	}
-	94%,
-	100% {
-		opacity: 0.45;
-	}
-}
-@keyframes o-edu-rx-o {
-	0%,
-	18% {
-		opacity: 0;
-		transform: scale(0.82);
-	}
-	26% {
-		opacity: 1;
-		transform: scale(1.05);
-	}
-	31%,
-	84% {
-		opacity: 1;
-		transform: scale(1);
-	}
-	94%,
-	100% {
-		opacity: 0;
-		transform: scale(1);
-	}
-}
-@keyframes o-edu-rx-varre {
-	0%,
-	20% {
-		opacity: 0;
-		transform: translateY(-100%);
-	}
-	24%,
-	64% {
-		opacity: 1;
-	}
-	70%,
-	100% {
-		opacity: 0;
-		transform: translateY(340%);
-	}
-}
-
 /* ==========================================================================
    Responsivo da LP (as regras gerais do site continuam em responsivo.css)
    ========================================================================== */
@@ -2218,6 +1990,10 @@
 		grid-template-columns: minmax(0, 1fr);
 		gap: 64px;
 	}
+	/* Uma coluna: "Sua escola em" ocupa a largura toda (100vw - 40 px de margens, até 80 px de letra) */
+	.o-edu-h1 {
+		font-size: min(16.8vw - 6.7px, 80px);
+	}
 	.o-edu-hero__visual {
 		justify-self: center;
 		width: min(100% - 24px, 540px);
@@ -2232,12 +2008,13 @@
 		grid-template-columns: minmax(0, 1fr);
 	}
 	.o-edu-raio__grade {
-		grid-template-areas: "titulo" "arte" "passos" "form";
+		grid-template-areas: "titulo" "chapa" "passos" "form";
 		grid-template-rows: auto;
 	}
-	.o-edu-rx {
-		width: min(100% - 8px, 480px);
-		margin-bottom: 40px;
+	.o-edu-raio__chapa {
+		justify-self: center;
+		--edu-chapa: clamp(200px, 56vw, 260px);
+		margin-bottom: 44px;
 	}
 	.o-edu-passos {
 		margin-bottom: 40px;
@@ -2378,16 +2155,6 @@
 	:is(.o-edu-hero__cta, .o-edu-giz__pe, .o-edu-acoes) .o-btn {
 		width: 100%;
 	}
-	.o-edu-rx__rotulo {
-		left: 20px;
-		bottom: 18px;
-		font-size: 10px;
-	}
-	.o-edu-rx__logo {
-		right: 20px;
-		top: 18px;
-		width: 58px;
-	}
 }
 @media (max-width: 420px) {
 	.o-edu-rodape__grade {
@@ -2399,10 +2166,6 @@
 	.o-edu-chamada__marca {
 		font-size: 11px;
 		padding-inline: 5px;
-	}
-	/* Filme pequeno: a etiqueta da chapa sairia em cima do lápis */
-	.o-edu-rx__rotulo {
-		display: none;
 	}
 }
 /* Celular pequeno (320–374 px): carimbo da chamada embaixo do nome ("profissionalizantes" não

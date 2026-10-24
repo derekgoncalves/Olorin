@@ -4,6 +4,8 @@
 # troque "destaque_no_site" para true e preencha resumo, destaque e detalhe de cada case.
 # A iZETA e o Dr. José Anacleto Abduch aparecem só de forma genérica: na Olorin Educação
 # (bloco "Quem já atendemos", campos do bloco "edu") e no portfólio. Sem resultado e sem detalhe.
+# Na Olorin Educação a ficha mostra só os campos do "edu" (sem a lista de serviços: a LP fala da
+# captação como um trabalho só). Dono, 23/10/2026: deixar claro que o Anacleto é venda de cursos e obras.
 # Regra: nenhum número inventado. Resultado só com número, período e como foi medido.
 # "pagina: true" cria também /cases/<slug>/ e exige: slug, segmento, situacao, o_que_fizemos
 # (lista), resultado, periodo, servicos (o build avisa se faltar).
@@ -21,6 +23,8 @@ itens:
       campos:
         - rotulo: Segmento
           valor: Educação em saúde
+        - rotulo: Formato
+          valor: Edtech
       site: https://izeta.com.br/
       site_texto: izeta.com.br
       logo_largura: 121
@@ -36,6 +40,8 @@ itens:
       campos:
         - rotulo: Segmento
           valor: Direito Público
+        - rotulo: O que vende
+          valor: Cursos e obras (livros) de Direito Público
       site: https://joseanacletoabduch.com.br/
       site_texto: joseanacletoabduch.com.br
       logo_largura: 300
