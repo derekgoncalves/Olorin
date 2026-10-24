@@ -27,6 +27,10 @@
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
 }
+/* Parte do título em destaque (verde no preto), como "outro nível." do lema */
+.o-pagina-topo__destaque {
+	color: var(--cor-destaque);
+}
 .o-pagina-topo__sub {
 	max-width: 58ch;
 	margin: 0 0 8px;

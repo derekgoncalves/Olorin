@@ -223,7 +223,7 @@ html:not(.js) .o-faixa__pausar {
 	.o-faixa--logos .o-faixa__trilho {
 		flex-wrap: wrap;
 		justify-content: center;
-		gap: clamp(18px, 2.4vw, 30px) clamp(28px, 4vw, 56px);
+		gap: clamp(18px, 2.4vw, 30px) clamp(28px, 2.4vw, 56px);
 		width: auto;
 		max-width: var(--largura-max);
 		margin-inline: auto;

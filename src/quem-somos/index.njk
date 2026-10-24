@@ -21,7 +21,7 @@ eleventyComputed:
 		<div class="o-pagina-topo__texto">
 			{{ ui.migalhas(migalhas) }}
 			<p class="o-etiqueta">{{ p.etiqueta }}</p>
-			<h1 class="o-pagina-topo__titulo">{{ p.titulo }}</h1>
+			<h1 class="o-pagina-topo__titulo">{{ p.titulo }}{% if p.titulo_destaque %} <span class="o-pagina-topo__destaque">{{ p.titulo_destaque }}</span>{% endif %}</h1>
 			<p class="o-pagina-topo__sub">{{ p.sub }}</p>
 			<div class="o-hero__acoes">
 				{{ ui.botaoRaioX("cta-raio-x-quem-somos-hero", classe="o-btn--grande") }}
@@ -59,7 +59,7 @@ eleventyComputed:
 		<div class="o-quem-historia__texto">
 			{%- for par in p.historia.paragrafos %}<p>{{ par }}</p>{% endfor %}
 			{%- if p.historia.educacao %}
-			<p class="o-quem-historia__edu"><span class="o-icone o-icone--o" aria-hidden="true"></span><span>{{ p.historia.educacao.texto }} <a class="o-link-seta" href="{{ p.historia.educacao.link.url }}">{{ p.historia.educacao.link.texto }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></span></p>
+			<p class="o-quem-historia__edu"><span class="o-icone o-icone--o" aria-hidden="true"></span><span>{{ p.historia.educacao.texto }}{% for l in p.historia.educacao.links %} <a class="o-link-seta" href="{{ l.url }}">{{ l.texto }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>{% endfor %}</span></p>
 			{%- endif %}
 		</div>
 	</div>

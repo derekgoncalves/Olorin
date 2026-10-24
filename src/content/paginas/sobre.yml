@@ -5,7 +5,9 @@ seo:
   titulo: Quem somos | Olorin Digital, agência de marketing digital
   descricao: Conheça quem coordena anúncios, redes, marca, site, impressos e dados na Olorin Digital, para organizações de todo tipo e tamanho.
 etiqueta: Quem somos
-titulo: Um time inteiro, do clique ao cliente.
+# Título do banner: "titulo" e, em verde, "titulo_destaque" (o lema: Sua marca em outro nível., dono, 23/10/2026).
+titulo: Um time inteiro. Sua marca em
+titulo_destaque: outro nível.
 sub: A Olorin Digital é uma agência de marketing digital. Faz anúncios, redes, marca, site, impressos e dados para organizações de todo tipo e tamanho.
 whatsapp: Falar com a equipe no WhatsApp
 dica_pilha: Passe o mouse ou toque para ver cada perfil.
@@ -17,10 +19,12 @@ historia:
     - Aqui, cada frente tem alguém que coordena e responde por ela, e todas conversam entre si. O relatório é fácil de entender e não prometemos o que o número não sustenta.
     # Números do time informados pelo dono (claims.json; verba gerida: "+ de R$ 5M" na lista de 17/10/2026)
     - "Seja um negócio de bairro, uma escola com várias unidades ou uma indústria, o jeito de trabalhar é o mesmo. Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 5 milhões em verba de anúncio."
-  apoio: Da menor à maior organização, do clique ao cliente.
+  apoio: Da menor à maior organização, o mesmo time e o mesmo método.
   educacao:
-    texto: "Instituições de ensino têm uma frente só delas: a Olorin Educação, para a captação de matrículas no calendário certo."
-    link: { texto: Conhecer a Olorin Educação, url: /educacao/ }
+    texto: "Escolas e criadores de conteúdo têm frentes só deles: a Olorin Educação, para a captação de matrículas no calendário certo, e a de influenciadores, para perfis que querem crescer e fechar mais parcerias."
+    links:
+      - { texto: Olorin Educação, url: /educacao/ }
+      - { texto: Influenciadores, url: /influenciadores/ }
 equipe:
   etiqueta: O time
   titulo: Quem coordena.

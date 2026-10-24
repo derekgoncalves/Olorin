@@ -16,7 +16,7 @@ quem_faz: [vinicius-mafra]
 
 seo:
   title: Design de Material Impresso | Olorin Digital
-  description: Cartão, folder, catálogo, banner, fachada e embalagem com arquivo fechado para a gráfica e prova acompanhada. Peça o Raio-X gratuito.
+  description: Cartão, folder, catálogo, banner, fachada e embalagem com arquivo fechado para a gráfica e prova conferida. Peça o Raio-X gratuito.
 
 card:
   titulo: Impressos
@@ -35,13 +35,13 @@ hero:
 resposta_curta: >-
   Design de material impresso é criar cartão, folder, catálogo, banner, fachada e embalagem com a cara da
   sua marca e entregar o arquivo fechado para a gráfica. A Olorin cria a arte, fecha o arquivo do jeito que a
-  gráfica pede e acompanha a prova. A impressão é paga direto à gráfica.
+  gráfica pede e confere a prova. A impressão é paga direto à gráfica.
 
 o_que_e:
   titulo: Do arquivo à gráfica.
   texto:
     - "Material impresso é o que o seu cliente leva para casa: o cartão, o folder, o cardápio, a sacola, a fachada que ele vê da rua. É a marca que dá para pegar na mão."
-    - A Olorin cria a peça com a mesma cara do seu anúncio e do seu feed, fecha o arquivo do jeito que a gráfica pede, com sangria, cor e resolução certas, e acompanha a prova para nada sair diferente do combinado.
+    - A Olorin cria a peça com a mesma cara do seu anúncio e do seu feed, fecha o arquivo do jeito que a gráfica pede, com sangria, cor e resolução certas, e confere a prova para nada sair diferente do combinado.
     - Você não precisa entender de gráfica. A gente conversa com ela por você.
   destaques:
     - Arquivo fechado sem retrabalho
@@ -82,7 +82,7 @@ entregas:
       texto: "Sangria, perfil de cor e resolução certos, no formato que a gráfica pede."
       frequencia: em toda peça
       icone: site
-    - titulo: Prova acompanhada
+    - titulo: Prova conferida
       texto: Conferimos a prova com a gráfica antes de rodar a tiragem.
       frequencia: em toda peça
       icone: relogio
