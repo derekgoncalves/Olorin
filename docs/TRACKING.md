@@ -147,6 +147,7 @@ COMO TROCAR OS IDS DE MEDIÇÃO E O LINK DE AGENDA (com o site no ar)
 - O HTML do aviso (`partials/cookies.njk`) vai em **todas** as páginas, escondido (`hidden`), porque os IDs podem chegar pelo `olorin-ids.js` sem novo build. O JavaScript só o mostra quando existe algum ID (`gtm`, `ga4`, `pixel` ou `adsId`, do build ou do arquivo) e **não há escolha salva**.
 - O botão **"Preferências de cookies"** do rodapé e o botão "Abrir preferências de cookies" da política (seção 7 da política) seguem a mesma regra: vêm escondidos (`data-o-cookies-link`) e aparecem quando há algum ID.
 - Sem JavaScript: o aviso não aparece e nenhuma ferramenta carrega (tudo depende de JS).
+- O texto do aviso diz "Sem a sua permissão, nenhum cookie de medição é gravado." (e não mais "Nada disso liga antes da sua escolha"), e a política de privacidade (seções 3, 4, 5, 6 e 7) descreve os sinais sem cookies do Consent Mode avançado.
 - Visual: caixa fixa no canto inferior (`position: fixed`), por isso não empurra o conteúdo (sem CLS). Em telas de até 767 px fica 68 px acima da barra fixa de WhatsApp/orçamento, para não cobrir o botão principal (`responsivo.css`).
 - É um `role="dialog"` não modal: a pessoa pode usar o site sem responder. `Esc` fecha o aviso **só se já houver uma escolha salva**.
 
@@ -540,7 +541,7 @@ Prepare antes: Chrome atualizado, extensão **Tag Assistant Companion** (opciona
 ### 10.1 Tag Assistant (modo de visualização do GTM)
 
 1. No GTM, clique em **Visualizar** e informe `https://olorin.com.br/?utm_source=teste&utm_medium=cpc&utm_campaign=tagassistant`.
-2. O site abre em outra janela com o aviso de cookies. **O Tag Assistant só conecta depois que você aceitar**, porque o GTM só carrega depois do consentimento (e quando o navegador fica ocioso, até ~2 s). Se não conectar, recarregue a página do site depois de aceitar.
+2. O site abre em outra janela com o aviso de cookies. O Tag Assistant conecta logo depois do carregamento da página, mesmo sem aceitar (o GTM carrega antes da escolha, com consentimento negado). Se não conectar, recarregue a página.
 
 | # | Faça | Confira no Tag Assistant |
 |---|---|---|
