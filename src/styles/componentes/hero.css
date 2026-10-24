@@ -298,16 +298,16 @@ html:not(.js) .o-hero__jogo {
 		top: calc(100% + 6px);
 		padding: 4px 6px;
 	}
-	/* Jogo grande no celular, mas com margem dos lados (dono, 24/10/2026): cenário curto (120 x 72, jogo.js)
-	   com até 85% da largura da tela. Ele usa o espaço que sobra e encolhe até 130 px de altura para os 3
-	   checks aparecerem na primeira tela; a faixa de logos desce quando precisa. */
+	/* Jogo grande no celular (dono, 24/10/2026: "quase na largura da tela, com margem média dos lados"):
+	   cenário curto (120 x 72, jogo.js) com a largura da tela menos 24 px de cada lado, sem encolher. O
+	   resto do banner fica mais justo em tela baixa para os 3 checks aparecerem na primeira tela. */
 	.o-hero__jogo {
-		flex: 1 1 0;
-		width: 100%;
-		height: auto;
-		min-height: 130px;
-		max-height: 51vw;
-		margin: 0 0 clamp(12px, 2svh, 20px);
+		flex: none;
+		width: calc(100vw - 48px);
+		height: calc((100vw - 48px) * 0.6);
+		min-height: 0;
+		max-height: none;
+		margin: 0 0 clamp(10px, 1.8svh, 20px);
 	}
 	.o-hero__tela {
 		aspect-ratio: 120 / 72;
@@ -335,3 +335,29 @@ html:not(.js) .o-hero__jogo {
 	}
 }
 
+
+/* Celular baixo (até 720 px de altura): moeda, espaços e botão mais justos, para o jogo grande e os 3
+   checks caberem na primeira tela (dono, 24/10/2026). */
+@media (max-width: 767px) and (max-height: 720px) {
+	.o-hero {
+		padding-top: calc(var(--altura-topo) + 4px);
+	}
+	.o-hero__moeda {
+		width: 32px;
+		margin-bottom: 6px;
+	}
+	.o-sec .o-hero__linha {
+		margin-bottom: 6px;
+	}
+	.o-hero__titulo {
+		margin-bottom: 30px;
+	}
+	.o-hero .o-hero__start {
+		min-height: 52px;
+		padding-block: 12px;
+	}
+	.o-hero__prova {
+		gap: 4px;
+		margin-top: 10px;
+	}
+}
