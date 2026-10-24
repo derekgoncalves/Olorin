@@ -1605,18 +1605,13 @@
 .o-edu-raio__grade > .o-form {
 	grid-area: form;
 }
-/* A chapa do Raio-X (partials/chapa-raio-x.njk, variante "educacao"): retângulo em pé (3:4) com a largura
-   em --edu-chapa, passada ao componente como --chapa-l (ele calcula o resto e põe o prendedor por cima).
+/* A chapa do Raio-X (partials/chapa-raio-x.njk, variante "educacao", classe o-edu-chapa): retângulo em pé
+   (3:4) com a largura em --chapa-l (o componente calcula o resto e põe o prendedor por cima).
    Computador: embaixo dos passos, alinhada à esquerda com eles; celular: centrada, antes dos passos. */
-.o-edu-raio__chapa {
-	--edu-chapa: clamp(260px, 25vw, 340px);
+.o-edu-chapa {
+	--chapa-l: clamp(260px, 25vw, 340px);
 	grid-area: chapa;
 	justify-self: start;
-	width: var(--edu-chapa);
-	max-width: 100%;
-}
-.o-edu-raio__chapa > * {
-	--chapa-l: var(--edu-chapa);
 }
 /* ---------- Rodapé ---------- */
 .o-edu-rodape {
@@ -2011,9 +2006,9 @@
 		grid-template-areas: "titulo" "chapa" "passos" "form";
 		grid-template-rows: auto;
 	}
-	.o-edu-raio__chapa {
+	.o-edu-chapa {
+		--chapa-l: clamp(200px, 56vw, 260px);
 		justify-self: center;
-		--edu-chapa: clamp(200px, 56vw, 260px);
 		margin-bottom: 44px;
 	}
 	.o-edu-passos {

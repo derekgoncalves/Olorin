@@ -22,7 +22,7 @@ fontes_extra:
 {%- set cfg = site.config -%}
 {%- from "components/formulario.njk" import formulario with context -%}
 {%- import "components/ui.njk" as ui with context -%}
-{#- CHAPA-IMPORT: {%- from "partials/chapa-raio-x.njk" import chapaRaioX with context -%} -#}
+{%- from "partials/chapa-raio-x.njk" import chapaRaioX with context -%}
 {#- Botão do Raio-X no violeta: a mesma marcação do ui.botaoRaioX (o-btn--raio e o ícone .o-icone--raio, a chapinha
 	preta com os ossinhos verdes), só que branco: o verde do botão do site não encosta no violeta. -#}
 {%- macro botaoRaio(id, texto) -%}
@@ -236,9 +236,7 @@ fontes_extra:
 			<li><svg class="o-edu-passos__o" viewBox="0 0 134 126" aria-hidden="true" focusable="false"><use href="#s-o"></use></svg><span>{{ p }}</span></li>
 		{%- endfor %}
 		</ol>
-		<div class="o-edu-raio__chapa">
-			{# CHAPA: {{ chapaRaioX({ variante: "educacao" }) }} #}
-		</div>
+		{{ chapaRaioX({ variante: "educacao", classe: "o-edu-chapa", sizes: "(max-width: 960px) 38vw, 200px" }) }}
 		{{ formulario({ id: "form-fim", posicao: "fim", modo: "educacao", origemWa: "educacao-form-raio-x", nomeServico: E.whatsapp.assunto_form }) }}
 	</div>
 </section>
