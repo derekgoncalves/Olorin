@@ -336,15 +336,11 @@ html:not(.js) .o-hero__jogo {
 }
 
 
-/* Celular baixo (até 720 px de altura): moeda, espaços e botão mais justos, para o jogo grande e os 3
-   checks caberem na primeira tela (dono, 24/10/2026). */
+/* Celular baixo (até 720 px de altura): espaços e botão mais justos (a moeda fica do tamanho normal e os
+   checks podem descer um pouco, dono, 24/10/2026). */
 @media (max-width: 767px) and (max-height: 720px) {
 	.o-hero {
 		padding-top: calc(var(--altura-topo) + 4px);
-	}
-	.o-hero__moeda {
-		width: 32px;
-		margin-bottom: 6px;
 	}
 	.o-sec .o-hero__linha {
 		margin-bottom: 6px;
