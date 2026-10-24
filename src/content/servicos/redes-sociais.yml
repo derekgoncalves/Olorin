@@ -10,6 +10,13 @@ chip: Redes sociais
 icone: redes
 janela: feed.olo
 cena: redes
+# Banner (dono, 23/10/2026): a montagem do celular que saiu da home (foto real, as 2 logos, o cursor que
+# clica no símbolo, o aviso e a janela com barras) fica no lugar da cena do feed.
+# Desenho: src/_includes/partials/montagem-celular.njk e src/styles/componentes/montagem.css.
+montagem:
+  janela: redes.olo
+  rotulo: Relatório do mês
+  aviso: Novo seguidor
 atualizado: "2026-10-17"
 quem_faz: [vinicius-mafra, derek-goncalves]
 
