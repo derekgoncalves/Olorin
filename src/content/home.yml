@@ -23,18 +23,30 @@ seo:
   descricao: "Sua marca em outro nível. Anúncios, redes, marca, site, impressos e dados num time só, com estratégia e relatório todo mês. Peça o seu Raio-X gratuito."
 
 hero:
+  # Banner da home como tela de início de jogo (dono, 23/10/2026: "ta perfeito"). Visual em
+  # src/_includes/secoes/hero.njk e src/styles/componentes/hero.css; minijogo em src/scripts/modulos/jogo.js.
+  # Etiqueta em pixel acima do título.
   linha_superior: Agência de marketing digital
-  # Título: "Do clique" na 1ª linha e "ao cliente." na 2ª, com "cliente." em verde.
-  titulo_1: Do clique
-  titulo_2: ao
-  titulo_destaque: cliente.
+  # Título (h1) em 2 linhas: "titulo" na 1ª e "titulo_destaque" (em verde, com o bloquinho piscando) na 2ª.
+  # É o lema do site (src/_data/site/config.json → LEMA).
+  titulo: Sua marca em
+  titulo_destaque: outro nível.
+  # Selo verde embaixo de "outro nível." (decoração: não entra no texto do título; o "▲" vem do hero.njk).
+  selo: Level up
+  # Minijogo: aviso que aparece quando o bonequinho clica no alvo (decoração).
+  jogo_aviso: +1 nível
+  # Botão grande do Raio-X, no estilo START (id cta-diagnostico-hero, usado na medição).
+  botao_start: Raio-X gratuito
+  # Linha de apoio embaixo do botão.
+  apoio: Um Raio-X grátis da sua marca, com o que está travando e o que destravar primeiro.
+  # Os 3 itens com check (os mesmos de todas as páginas) e o nome da lista para o leitor de tela.
+  checks_rotulo: Como a Olorin trabalha
+  checks:
+    - Raio-X gratuito e sem compromisso
+    - Estratégia e performance
+    - Produção de alto nível
+  # Não é do banner: texto do botão do Raio-X no fim da seção de serviços da home (secoes/servicos.njk).
   botao: Quero meu Raio-X grátis
-  prova:
-    - Sem multa depois de 3 meses
-    - Relatório todo mês
-  janela: relatorio.olo
-  janela_rotulo: Resultado do mês
-  aviso_clique: Novo cliente
 
 # A faixa de logos (secoes/faixa-clientes.njk, no pé do banner de cada página) não tem texto aqui:
 # os logos vêm de clientes.yml.
