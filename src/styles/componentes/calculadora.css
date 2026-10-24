@@ -1,9 +1,10 @@
-/* Calculadora de custo de entrada (sem JS: só a tabela). */
+/* Calculadora da home em forma de bilhete de orçamento (dono, 23/10/2026: sem nenhum valor). Perguntas à
+   esquerda; à direita, a impressora (bloco preto) com o bilhete de papel saindo da fenda e, embaixo, o
+   botão do WhatsApp (verde no preto: nunca verde sobre branco). A cada escolha o bilhete "imprime" de novo. */
 .o-calc {
-	--janela-borda: var(--preto);
-	margin-top: clamp(48px, 6vw, 80px);
 	border: var(--borda) solid var(--preto);
 	background: var(--branco);
+	color: var(--preto);
 	box-shadow: var(--sombra-janela) var(--violeta);
 }
 .o-calc > .o-janela__barra {
@@ -12,39 +13,28 @@
 }
 .o-calc__corpo {
 	display: grid;
-	grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-	gap: 20px clamp(24px, 4vw, 56px);
-	padding: clamp(20px, 3vw, 40px);
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	align-items: start;
+	gap: 28px clamp(28px, 4vw, 64px);
+	padding: clamp(20px, 3vw, 44px);
 }
-.o-calc__titulo {
-	margin: 0 0 10px !important;
-	font-family: var(--fonte-titulo);
-	font-weight: 900;
-	font-size: clamp(20px, 2.2vw, 30px);
-	line-height: 1.05;
-	text-transform: uppercase;
-}
-.o-calc__texto {
-	color: var(--cor-apoio);
-}
-.o-calc__corpo > .o-calc__titulo,
-.o-calc__corpo > .o-calc__texto,
-.o-calc__corpo > .o-calc__aviso {
-	grid-column: 1;
-}
-.o-calc__form,
-.o-calc__tabela {
-	grid-column: 2;
-	grid-row: 1 / span 3;
+/* Duas colunas: as perguntas começam na altura do papel do bilhete (sem vão em cima). */
+@media (min-width: 961px) {
+	.o-calc__form {
+		padding-top: 42px;
+	}
 }
 .o-calc__grupo {
 	min-width: 0;
-	margin: 0 0 16px;
+	margin: 0 0 22px;
 	padding: 0;
 	border: 0;
 }
+.o-calc__grupo:last-child {
+	margin-bottom: 0;
+}
 .o-calc__grupo legend {
-	margin-bottom: 8px;
+	margin-bottom: 10px;
 	font-family: var(--fonte-pixel);
 	font-size: 12px;
 	letter-spacing: 0.1em;
@@ -52,55 +42,184 @@
 }
 .o-calc__opcoes {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
 	gap: 8px;
 }
-.o-calc__resultado {
+/* Opção única (rádio): sem o desenho de caixinha */
+.o-chip--opcao span {
+	flex-wrap: wrap;
+	justify-content: space-between;
+	row-gap: 2px;
+	min-height: 46px;
+}
+.o-chip--opcao span::before {
+	display: none;
+}
+
+/* Impressora: bloco preto com a luz verde e a fenda de onde sai o papel */
+.o-calc__bilhete {
+	--calc-borda: clamp(14px, 1.6vw, 22px);
 	display: flex;
 	flex-direction: column;
-	gap: 6px;
-	padding: 18px;
+	padding: 0 var(--calc-borda) var(--calc-borda);
 	background: var(--preto);
 	color: var(--branco);
 }
-.o-calc__conta {
-	font-size: 14px;
-	color: rgba(255, 255, 255, 0.8);
+.o-calc__impressora {
+	position: relative;
+	z-index: 1;
+	height: 38px;
+	margin-inline: calc(-1 * var(--calc-borda));
+	background: var(--preto);
 }
-.o-calc__total {
-	font-size: 15px;
+.o-calc__luz {
+	position: absolute;
+	top: 11px;
+	right: 14px;
+	width: 8px;
+	height: 8px;
+	background: var(--verde);
+	box-shadow: 0 0 10px rgba(236, 255, 54, 0.7);
 }
-.o-calc__total strong {
-	font-family: var(--fonte-titulo);
-	font-weight: 900;
-	font-size: clamp(26px, 3vw, 40px);
-	color: var(--verde);
+.o-calc__fenda {
+	position: absolute;
+	left: calc(var(--calc-borda) - 4px);
+	right: calc(var(--calc-borda) - 4px);
+	bottom: 0;
+	height: 9px;
+	border-radius: 2px;
+	background: #2b2b2b;
+	box-shadow: inset 0 -4px 0 #0c0c0c;
 }
-.o-calc__aviso {
-	font-size: 13px;
-	color: var(--cor-apoio);
+
+/* Bilhete de papel: branco, letra de impressora, linhas tracejadas e o pé serrilhado */
+.o-calc__papel {
+	position: relative;
+	margin: -2px 6px 0;
+	padding: 24px clamp(16px, 1.6vw, 22px) 36px;
+	background: linear-gradient(rgba(0, 0, 0, 0.18), transparent 14px), var(--branco);
+	color: var(--preto);
+	/* Furos numa faixa de altura fixa (14 px) colada na base e o resto liso (ver o comentário antigo do
+	   recibo: com 100% da altura, a última linha de pixels escapava do recorte). */
+	-webkit-mask:
+		radial-gradient(circle 7px at 50% 100%, transparent 96%, #000) 50% 100% / 18px 14px repeat-x,
+		linear-gradient(#000, #000) 0 0 / 100% calc(100% - 13px) no-repeat;
+	mask:
+		radial-gradient(circle 7px at 50% 100%, transparent 96%, #000) 50% 100% / 18px 14px repeat-x,
+		linear-gradient(#000, #000) 0 0 / 100% calc(100% - 13px) no-repeat;
 }
-.o-calc__tabela {
-	width: 100%;
-	border-collapse: collapse;
-	font-size: 14px;
-}
-.o-calc__tabela caption {
-	margin-bottom: 8px;
+.o-calc__papel-topo {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px 12px;
+	margin: 0 !important;
 	font-family: var(--fonte-pixel);
 	font-size: 12px;
-	letter-spacing: 0.08em;
-	text-align: left;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
 }
-.o-calc__tabela th,
-.o-calc__tabela td {
-	padding: 10px 12px;
-	border: var(--borda) solid var(--preto);
-	text-align: left;
+.o-calc__logo {
+	display: block;
+	width: 96px;
+	height: auto;
+	color: var(--preto);
 }
-.o-calc__tabela thead th {
+.o-calc__numero {
+	white-space: nowrap;
+}
+.o-calc__para {
+	margin: 14px 0 0 !important;
+	padding-bottom: 12px;
+	border-bottom: 2px dashed rgba(0, 0, 0, 0.45);
+	font-size: 13px;
+	color: #4a4a4a;
+}
+.o-calc__linhas {
+	margin: 0;
+	counter-reset: bilhete;
+}
+.o-calc__linhas > div {
+	counter-increment: bilhete;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 4px 14px;
+	padding: 13px 0;
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.32);
+	font-size: 14px;
+}
+.o-calc__linhas dt {
+	color: #4a4a4a;
+}
+.o-calc__linhas dt::before {
+	content: counter(bilhete, decimal-leading-zero) "  ";
+	white-space: pre;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	color: var(--preto);
+}
+.o-calc__linhas dd {
+	margin: 0 0 0 auto;
+	font-weight: 700;
+	text-align: right;
+}
+/* Raio-X gratuito: a linha que vem de brinde, com o carimbo "Grátis" */
+.o-calc__extra dd {
+	padding: 3px 8px 2px;
 	background: var(--preto);
-	color: var(--branco);
+	color: var(--verde);
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
 	font-weight: 400;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+.o-calc__papel-rodape {
+	margin: 14px 0 0 !important;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #4a4a4a;
+}
+/* Código de barras em pixel, só decoração */
+.o-calc__codigo {
+	display: block;
+	height: 30px;
+	margin-top: 16px;
+	background: repeating-linear-gradient(90deg, var(--preto) 0 2px, transparent 2px 4px, var(--preto) 4px 5px, transparent 5px 7px, var(--preto) 7px 10px, transparent 10px 11px, var(--preto) 11px 12px, transparent 12px 15px);
+	opacity: 0.85;
+}
+.o-calc__botao {
+	width: 100%;
+	margin-top: 18px;
+	padding-inline: 14px;
+	font-size: 12px;
+	letter-spacing: 0.01em;
+}
+.o-calc__botao > span:last-child {
+	text-wrap: balance;
+}
+@media (max-width: 480px) {
+	.o-calc__bilhete {
+		--calc-borda: 10px;
+	}
+	.o-calc__papel {
+		margin-inline: 4px;
+		padding-inline: 14px;
+	}
+	.o-calc__linhas dt::before {
+		content: counter(bilhete, decimal-leading-zero) " ";
+	}
+}
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.o-pausado) .o-calc__papel.is-impresso {
+		animation: o-calc-imprime 0.55s steps(6) both;
+	}
+}
+@keyframes o-calc-imprime {
+	from {
+		translate: 0 -22px;
+	}
 }

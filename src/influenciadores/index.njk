@@ -1,0 +1,226 @@
+---
+layout: layouts/base.njk
+modo: influenciadores
+slug: influenciadores
+segmento: influencer
+tema: influenciadores
+cabecalho: influenciadores
+permalink: /influenciadores/
+og_imagem: /assets/img/og/influenciadores.jpg
+fontes_extra:
+  - { href: /assets/fonts/influenciadores/archivo-narrow-600.woff2, tipo: font/woff2 }
+---
+{#-
+	/influenciadores/ — LP "Olorin para influenciadores": pegada MTV anos 2000 + "brat" (dono, 23/10/2026),
+	com as cores, a logo e as fontes da Olorin: verde chapado com texto minúsculo, marcas de tela (REC,
+	canal), adesivos recortados com contorno branco, visor de câmera e guia de canais.
+	Sem preços: toda chamada é o botão do Raio-X e leva ao único formulário, no fim (#raio-x).
+	Textos: src/content/paginas/influenciadores.yml · fotos: src/assets/manifest-influenciadores.json
+	Visual: src/styles/componentes/influenciadores.css · interações: src/scripts/modulos/influenciadores.js
+	Cores dos blocos, em ordem (o verde nunca encosta no violeta): preto (banner com a foto roxa e logos),
+	verde, preto, faixa verde, preto (visor), branco, preto (equipe), violeta (Raio-X), preto (rodapé).
+-#}
+{%- set I = conteudo.paginas.influenciadores -%}
+{%- import "components/ui.njk" as ui with context -%}
+{#- Botão do Raio-X (o mesmo do ui.botaoRaioX: verde com o ícone da chapa), com "Raio-X" sem quebrar no hífen.
+    cor "preto" no fundo branco (o verde não vai no branco). -#}
+{%- macro botaoRaio(id, texto, classe="", cor="verde") -%}
+<a class="o-btn o-btn--{{ cor }} o-btn--raio {{ classe }}" id="{{ id }}" href="#raio-x" data-cta="{{ id }}"><span class="o-icone o-icone--raio" aria-hidden="true"></span><span>{{ texto | escape | replace("Raio-X", '<span class="o-inf-nw">Raio-X</span>') | safe }}</span></a>
+{%- endmacro -%}
+
+{#- ===== 1. Banner: a foto roxa (parede de celulares) como tela de TV, lema e o botão do Raio-X no preto ===== -#}
+{%- set h = I.hero -%}
+<section class="o-sec o-inf-hero o-ctx-preto" id="inicio" data-secao="hero" aria-labelledby="inf-titulo">
+	<div class="o-inf-hero__foto">
+		{{ imagem(imagens, "influenciadores-hero", { sizes: "(max-width: 899px) 100vw, 48vw", prioridade: true, classe: "o-inf-hero__img" }) | safe }}
+		<div class="o-inf-osd" aria-hidden="true">
+			<span class="o-inf-osd__rec"><i class="o-inf-ponto"></i>{{ h.osd.rec }}</span>
+			<span class="o-inf-osd__canal">{{ h.osd.canal }}</span>
+			<span class="o-inf-osd__fita">{{ h.osd.fita }}</span>
+		</div>
+	</div>
+	<div class="o-wrap o-inf-hero__grade">
+		<div class="o-inf-hero__texto">
+			<p class="o-inf-etiqueta"><i class="o-inf-ponto" aria-hidden="true"></i>{{ h.etiqueta }}</p>
+			<h1 class="o-inf-h1" id="inf-titulo"><span class="o-inf-h1__a">{{ h.titulo }}</span> <span class="o-inf-brat">{{ h.titulo_destaque }}</span></h1>
+			{%- if h.texto %}
+			<p class="o-inf-hero__lead">{{ h.texto }}</p>
+			{%- endif %}
+			<div class="o-inf-hero__cta">{{ botaoRaio("cta-raio-x-influencer-hero", h.botao, "o-btn--grande") }}</div>
+			<ul class="o-inf-checks" aria-label="Como a Olorin trabalha">
+			{%- for item in h.prova %}
+				<li>{{ item }}</li>
+			{%- endfor %}
+			</ul>
+		</div>
+	</div>
+	{#- Faixa de logos no pé do banner, no mesmo fundo preto (secoes/faixa-clientes.njk) -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
+</section>
+
+{#- ===== 2. Para quem é: verde chapado "brat", adesivo recortado e os nichos ===== -#}
+{%- set t = I.para_quem -%}
+<section class="o-sec o-inf-sec o-inf-quem o-ctx-verde" id="para-quem" data-secao="para-quem" aria-labelledby="inf-quem-titulo">
+	<p class="o-inf-gigante" aria-hidden="true" data-texto="{{ t.gigante }}"></p>
+	<div class="o-wrap o-inf-quem__grade">
+		<div class="o-inf-quem__texto">
+			<p class="o-inf-etiqueta">{{ t.etiqueta }}</p>
+			<h2 class="o-inf-h2" id="inf-quem-titulo">{{ t.titulo }}</h2>
+			<p class="o-inf-apoio">{{ t.texto }}</p>
+			<ul class="o-inf-perfis" role="list">
+			{%- for p in t.perfis %}
+				<li class="o-inf-perfil" style="--k: {{ loop.index0 }}">
+					<h3 class="o-inf-perfil__nome">{{ p.nome }}</h3>
+					<p class="o-inf-perfil__texto">{{ p.texto }}</p>
+				</li>
+			{%- endfor %}
+			</ul>
+			<p class="o-inf-fora"><span class="o-inf-fora__x" aria-hidden="true"></span>{{ t.fora }}</p>
+		</div>
+		<div class="o-inf-quem__colagem">
+			<figure class="o-inf-adesivo o-inf-adesivo--fone" data-o-inf-entra>
+				{{ imagem(imagens, "influenciadores-fone", { sizes: "(max-width: 899px) 84vw, 520px", classe: "o-inf-adesivo__img" }) | safe }}
+				<span class="o-inf-tag" aria-hidden="true">{{ t.adesivo_tag }}</span>
+			</figure>
+			<ul class="o-inf-nichos" aria-label="{{ t.nichos_rotulo }}">
+			{%- for n in t.nichos %}
+				<li style="--k: {{ loop.index0 }}">#{{ n }}</li>
+			{%- endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+
+{#- ===== 3. O que a gente faz: guia de canais (cada frente é um canal) ===== -#}
+{%- set t = I.canais -%}
+<section class="o-sec o-inf-sec o-inf-canais o-ctx-preto o-com-grao" id="canais" data-secao="canais" aria-labelledby="inf-canais-titulo">
+	<div class="o-wrap">
+		<div class="o-inf-cabeca">
+			<div>
+				<p class="o-inf-etiqueta"><i class="o-inf-ponto" aria-hidden="true"></i>{{ t.etiqueta }}</p>
+				<h2 class="o-inf-h2" id="inf-canais-titulo">{{ t.titulo }}</h2>
+			</div>
+			<p class="o-inf-apoio">{{ t.texto }}</p>
+		</div>
+		<ol class="o-inf-guia" role="list">
+		{%- for c in t.itens %}
+			<li class="o-inf-canal" style="--k: {{ loop.index0 }}">
+				<p class="o-inf-canal__num" aria-hidden="true"><small>{{ t.rotulo_canal }}</small>{{ c.canal }}</p>
+				<div class="o-inf-canal__corpo">
+					<h3 class="o-inf-canal__nome">{{ c.nome }}</h3>
+					<p class="o-inf-canal__texto">{{ c.texto }}</p>
+				</div>
+				<p class="o-inf-canal__tag" aria-hidden="true">{{ c.tag }}</p>
+			</li>
+		{%- endfor %}
+		</ol>
+	</div>
+</section>
+
+{#- ===== 4. Faixa correndo (verde, texto minúsculo) ===== -#}
+<div class="o-faixa o-faixa--verde o-inf-faixa" data-o-faixa>
+	<ul class="o-faixa__trilho">
+	{%- for item in I.faixa %}
+		<li>{{ item }}</li>
+	{%- endfor %}
+	</ul>
+	<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>
+</div>
+
+{#- ===== 5. Enquadramento: a foto do "quadro" das mãos no visor de uma câmera gravando ===== -#}
+{%- set t = I.enquadramento -%}
+<section class="o-sec o-inf-quadro o-ctx-preto" id="enquadramento" data-secao="enquadramento" aria-labelledby="inf-quadro-titulo">
+	<div class="o-inf-quadro__grade">
+		<figure class="o-inf-visor">
+			{{ imagem(imagens, "influenciadores-quadro", { sizes: "(max-width: 899px) 100vw, 50vw", classe: "o-inf-visor__img" }) | safe }}
+			<div class="o-inf-visor__osd" aria-hidden="true">
+				<span class="o-inf-visor__rec"><i class="o-inf-ponto"></i>{{ t.visor.rec }}</span>
+				<span class="o-inf-visor__tempo">{{ t.visor.tempo }}</span>
+				<span class="o-inf-visor__info">{{ t.visor.info }}<i class="o-inf-visor__bateria"></i></span>
+				<i class="o-inf-visor__canto"></i><i class="o-inf-visor__canto"></i><i class="o-inf-visor__canto"></i><i class="o-inf-visor__canto"></i>
+				<i class="o-inf-visor__foco"></i>
+			</div>
+		</figure>
+		<div class="o-inf-quadro__texto">
+			<p class="o-inf-etiqueta">{{ t.etiqueta }}</p>
+			<h2 class="o-inf-h2" id="inf-quadro-titulo">{{ t.titulo }} <span class="o-inf-brat">{{ t.titulo_destaque }}</span></h2>
+			<p class="o-inf-apoio">{{ t.texto }}</p>
+			{{ botaoRaio("cta-raio-x-influencer-enquadramento", t.botao) }}
+		</div>
+	</div>
+</section>
+
+{#- ===== 6. Como funciona: o Raio-X do perfil contado como o roteiro de um reels (24/10/2026, dono: "um banner
+     super autêntico", no espírito do calendário da Educação). Folha impressa presa com fita, marca-texto verde
+     no gancho, post-it e o adesivo da corda. Textos em influenciadores.yml → como_funciona. ===== -#}
+{%- set t = I.como_funciona -%}
+<section class="o-sec o-inf-sec o-inf-roteiro o-ctx-preto" id="como-funciona" data-secao="como-funciona" aria-labelledby="inf-passos-titulo">
+	<div class="o-wrap o-inf-roteiro__grade">
+		<div class="o-inf-roteiro__texto">
+			<p class="o-inf-etiqueta">{{ t.etiqueta }}</p>
+			<h2 class="o-inf-h2" id="inf-passos-titulo">{{ t.titulo }}</h2>
+			<p class="o-inf-apoio">{{ t.texto }}</p>
+			<div class="o-inf-roteiro__cta">{{ botaoRaio("cta-raio-x-influencer-como-funciona", t.botao) }}</div>
+		</div>
+		<div class="o-inf-roteiro__mesa" data-o-inf-entra>
+			<div class="o-inf-folha">
+				<span class="o-inf-folha__fita" aria-hidden="true"></span>
+				<div class="o-inf-folha__cab" aria-hidden="true"><strong>{{ t.roteiro.titulo }}</strong><span>{{ t.roteiro.formato }}</span><span>{{ t.roteiro.take }}</span></div>
+				<ol class="o-inf-cenas" role="list">
+				{%- for p in t.passos %}
+					<li class="o-inf-cena">
+						<span class="o-inf-cena__tempo" aria-hidden="true">{{ p.tempo }}</span>
+						<div class="o-inf-cena__corpo">
+							<p class="o-inf-cena__rotulo">Cena {{ loop.index }} · {{ p.cena }}</p>
+							<h3 class="o-inf-cena__fala">{% if loop.first %}<mark>{{ p.titulo }}</mark>{% else %}{{ p.titulo }}{% endif %}</h3>
+							<p class="o-inf-cena__nota">{{ p.texto }}</p>
+						</div>
+					</li>
+				{%- endfor %}
+				</ol>
+				<span class="o-inf-folha__postit" aria-hidden="true">{{ t.postit }}</span>
+			</div>
+			<figure class="o-inf-adesivo o-inf-adesivo--corda o-inf-roteiro__adesivo">
+				{{ imagem(imagens, "influenciadores-corda", { sizes: "(max-width: 899px) 40vw, 260px", classe: "o-inf-adesivo__img" }) | safe }}
+				<span class="o-inf-tag" aria-hidden="true">{{ t.adesivo_tag }}</span>
+			</figure>
+		</div>
+	</div>
+</section>
+
+{#- ===== 7. Quem faz: a equipe (equipe.yml), em fotos de adesivo ===== -#}
+{%- set t = I.equipe -%}
+<section class="o-sec o-inf-sec o-inf-equipe o-ctx-preto" id="equipe" data-secao="equipe" aria-labelledby="inf-equipe-titulo">
+	<div class="o-wrap">
+		<div class="o-inf-cabeca">
+			<div>
+				<p class="o-inf-etiqueta"><i class="o-inf-ponto" aria-hidden="true"></i>{{ t.etiqueta }}</p>
+				<h2 class="o-inf-h2" id="inf-equipe-titulo">{{ t.titulo }}</h2>
+			</div>
+			<p class="o-inf-apoio">{{ t.texto }}</p>
+		</div>
+		<ul class="o-inf-pessoas" role="list">
+		{%- for p in conteudo.equipe.pessoas %}
+			<li class="o-inf-pessoa" style="--k: {{ loop.index0 }}">
+				<figure class="o-inf-pessoa__foto">{{ imagem(imagens, p.foto + "-quadrada", { sizes: "(max-width: 640px) 120px, 160px" }) | safe }}</figure>
+				<div>
+					<h3 class="o-inf-pessoa__nome"><a href="/quem-somos/#{{ p.slug }}">{{ p.nome }}</a></h3>
+					<p class="o-inf-pessoa__cargo">{{ p.cargo or p.funcao }}</p>
+					<p class="o-inf-pessoa__frase">{{ t.frases[p.slug] or p.frase }}</p>
+				</div>
+			</li>
+		{%- endfor %}
+		</ul>
+		<p class="o-inf-acoes">
+			<a class="o-btn o-btn--verde" id="cta-whatsapp-equipe" href="{{ waLink('influencer-equipe', { mensagem: I.whatsapp.equipe }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.botao }}</a>
+			<a class="o-link-seta" href="/quem-somos/">{{ t.link_sobre }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+		</p>
+	</div>
+</section>
+
+{#- ===== 8. RAIO X DA OLORIN: o mesmo fim do site (secoes/orcamento.njk), com o formulário no modo
+	"influenciadores" (modo da página) e a referência de WhatsApp desta LP. ===== -#}
+{%- set nomeServicoForm = I.whatsapp.assunto_form %}
+{%- set origemWaForm = "influencer-form-raio-x" %}
+{% include "secoes/orcamento.njk" %}

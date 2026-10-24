@@ -1,0 +1,58 @@
+{#- Rodapé da LP Olorin para influenciadores (23/10/2026): marca, lema, redes, âncoras da página, links do
+    site da Olorin, contato (WhatsApp com ref influencer-rodape, e-mail), CNPJ e política de privacidade.
+    Textos: paginas/influenciadores.yml → marca, cabecalho, whatsapp e rodape. -#}
+{%- set cfg = site.config -%}
+{%- set I = conteudo.paginas.influenciadores -%}
+{%- set r = I.rodape -%}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
+<footer class="o-rodape o-inf-rodape">
+	<div class="o-wrap o-inf-rodape__grade">
+		<div class="o-inf-rodape__marca">
+			<a class="o-inf-marca" href="#inicio" aria-label="{{ I.marca.nome }}, voltar ao início da página">
+				<svg class="o-inf-marca__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
+				<span class="o-inf-marca__sub" aria-hidden="true">{{ I.marca.sub }}</span>
+			</a>
+			<p class="o-inf-rodape__lema">{{ I.marca.lema_1 }} <span class="o-inf-rodape__destaque">{{ I.marca.lema_destaque }}</span></p>
+			<p class="o-inf-rodape__apoio">{{ I.marca.parte_de }}</p>
+			{{ ui.redes("o-inf-rodape__redes", "rodape-influencer") }}
+		</div>
+		<nav class="o-inf-rodape__col" aria-label="{{ r.nesta_pagina }} (rodapé)">
+			<p class="o-rodape__titulo">{{ r.nesta_pagina }}</p>
+			<ul>
+			{%- for item in I.cabecalho.menu %}
+				<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
+			{%- endfor %}
+				<li><a href="#raio-x">{{ I.cabecalho.botao }}</a></li>
+			</ul>
+		</nav>
+		<nav class="o-inf-rodape__col" aria-label="{{ r.olorin }}">
+			<p class="o-rodape__titulo">{{ r.olorin }}</p>
+			<ul>
+			{%- for item in r.links_olorin %}
+				<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
+			{%- endfor %}
+			</ul>
+		</nav>
+		<div class="o-inf-rodape__col">
+			<p class="o-rodape__titulo">{{ r.contato }}</p>
+			<ul>
+				<li><a href="{{ waLink('influencer-rodape', { mensagem: I.whatsapp.padrao }) }}" target="_blank" rel="noopener" id="cta-whatsapp-rodape">WhatsApp {{ cfg.TELEFONE_EXIBICAO }}</a></li>
+				<li><a href="mailto:{{ cfg.EMAIL }}">{{ cfg.EMAIL }}</a></li>
+				<li>{{ I.cabecalho.remoto }}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="o-inf-rodape__gigante" aria-hidden="true"><span>{{ I.marca.sub }}</span></div>
+	<div class="o-rodape__base">
+		<div class="o-wrap o-rodape__base-dentro">
+			<p>{{ cfg.NOME }} © 2026 · CNPJ {{ cfg.CNPJ }}</p>
+			<p>
+				<a href="/politica-de-privacidade/">Política de Privacidade</a>
+				{#- Escondido sem IDs de medição; o main.js mostra quando há algum. -#}
+				<span data-o-cookies-link{% if not temRastreamento %} hidden{% endif %}> · <button type="button" data-o-cookies-abrir>Preferências de cookies</button></span>
+				· <button class="o-pausar" type="button" aria-pressed="false" data-o-pausar><span data-o-pausar-texto>Pausar animações</span></button>
+			</p>
+		</div>
+	</div>
+</footer>

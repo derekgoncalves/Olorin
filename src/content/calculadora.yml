@@ -1,0 +1,58 @@
+# ============================================================
+# CALCULADORA DA HOME, EM FORMA DE BILHETE DE ORÇAMENTO (secoes/calculadora.njk + ui.calculadora)
+# ------------------------------------------------------------
+# Dono, 23/10/2026: sem "expectativa de investimento" e sem NENHUM valor. A pessoa responde 3 perguntas
+# e o bilhete (recibo impresso) lista o que ela quer; o botão abre o WhatsApp com a lista pronta
+# e " [ref: calculadora]" no fim (o clique é medido como whatsapp_click, origem calculadora).
+# A verba de anúncio é a do próprio cliente (pergunta, não preço).
+# Sem JavaScript: as opções aparecem, o bilhete mostra as opções marcadas de saída e o botão abre o
+# WhatsApp com a mensagem genérica (mensagem_sem_js).
+#
+# Campos das perguntas: rotulo (pergunta), curto (nome da linha no bilhete), mensagem (nome da linha
+# na mensagem do WhatsApp), opcoes (texto e, se quiser, marcada: true para vir escolhida).
+# A ordem das opções é a da tela.
+# ============================================================
+etiqueta: Calculadora
+titulo: Monte o seu orçamento.
+texto: Responda e receba um orçamento, além de um Raio-X gratuito e personalizado da sua marca.
+janela: orcamento.olo
+perguntas:
+  - id: frente
+    rotulo: O que a Olorin vai tocar
+    curto: Frente
+    mensagem: O que a Olorin vai tocar
+    opcoes:
+      - { texto: Uma frente só }
+      - { texto: Anúncios e redes, marcada: true }
+      - { texto: A marca inteira }
+  - id: verba
+    rotulo: Verba de anúncio por mês
+    curto: Verba de anúncio
+    mensagem: Verba de anúncio por mês
+    opcoes:
+      - { texto: Ainda não invisto }
+      - { texto: "R$ 3.000" }
+      - { texto: "R$ 5.000" }
+      - { texto: "R$ 10.000 ou mais" }
+  - id: objetivo
+    rotulo: O que você quer mais
+    curto: Objetivo
+    mensagem: Objetivo
+    opcoes:
+      - { texto: Vendas }
+      - { texto: Matrículas }
+      - { texto: Contatos }
+      - { texto: Visitas }
+# Bilhete (o recibo impresso ao lado das perguntas)
+bilhete:
+  topo: Orçamento
+  numero: nº 0001
+  para: "Para: a sua marca"
+  extra_rotulo: Raio-X da marca
+  extra_valor: Grátis
+  rodape: Orçamento sob medida, junto com o seu Raio-X.
+botao: Enviar esse orçamento por WhatsApp
+# Mensagem do WhatsApp (o site acrescenta as respostas, uma por linha, e " [ref: calculadora]")
+mensagem: "Olá! Montei um orçamento no site da Olorin:"
+mensagem_fim: Quero também o Raio-X gratuito da minha marca.
+mensagem_sem_js: "Olá! Quero montar um orçamento com a Olorin e receber o Raio-X gratuito da minha marca."

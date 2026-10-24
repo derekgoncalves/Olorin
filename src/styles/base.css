@@ -86,6 +86,21 @@ li {
 	border: 0;
 }
 
+/* Logo escrita OLORIN no lugar da palavra "Olorin" no fim de um título (filtro logoNoTitulo; dono, 24/10/2026:
+   "RAIO X DA" + a logo). Na mesma largura da palavra na fonte de títulos (5,04em na Archivo Expanded; a LP
+   Educação ajusta para a Fraunces em educacao.css), apoiada na linha de base, na cor do título. */
+.o-titulo-logo {
+	display: inline-block;
+	width: 5.04em;
+	line-height: 0;
+	vertical-align: baseline;
+}
+.o-titulo-logo svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
 /* "Pular para o conteúdo" */
 .o-pular {
 	position: fixed;
@@ -108,6 +123,25 @@ li {
 	display: block;
 	outline: none;
 	overflow-x: clip;
+}
+
+/* Desempenho no celular: as seções depois do banner só calculam estilo e layout quando chegam
+   perto da tela (a altura fica estimada até lá). Antes de rolar até uma âncora, ao recarregar
+   e ao voltar no histórico, tudo é desenhado de uma vez (html.o-cv-tudo, ver ancoras.js). */
+.o-main > section:not(:first-child),
+.o-rodape {
+	content-visibility: auto;
+	contain-intrinsic-size: auto 900px;
+}
+.o-cv-tudo .o-main > section,
+.o-cv-tudo .o-rodape {
+	content-visibility: visible;
+}
+@media print {
+	.o-main > section,
+	.o-rodape {
+		content-visibility: visible;
+	}
 }
 
 .o-wrap {

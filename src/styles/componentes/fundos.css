@@ -1,0 +1,233 @@
+/* Fundos animados e interações de desktop (JS: src/scripts/modulos/fundos.js).
+   Cada banner tem a sua variação: pixels que acendem sob o mouse (banner da home), barras vivas (resultados), linhas de monitor (sinais de alerta),
+   pixel que corre na trilha (método, com o "O" girando) e quadradinhos que sobem (formulário final).
+   Tudo que se move fica dentro de prefers-reduced-motion: no-preference e para com html.o-pausado. */
+:root {
+	--pixel-verde: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect width='4' height='4' fill='%23ecff36'/%3E%3C/svg%3E");
+	--pixel-verde-g: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect width='6' height='6' fill='%23ecff36'/%3E%3C/svg%3E");
+	--pixel-branco: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect width='4' height='4' fill='%23fff'/%3E%3C/svg%3E");
+	--pixel-branco-g: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect width='6' height='6' fill='%23fff'/%3E%3C/svg%3E");
+}
+.o-fundo {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	overflow: hidden;
+	pointer-events: none;
+	contain: strict;
+}
+.o-hero,
+.o-resultados,
+.o-alertas,
+.o-orcamento {
+	overflow: hidden;
+}
+
+/* 1. Banner da home: grade de pixels (estática), que acende de leve sob o mouse */
+.o-fundo--pixels::before,
+.o-fundo--subida::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--pixel-verde) 14px 14px / 28px 28px;
+	opacity: 0.16;
+	-webkit-mask: radial-gradient(ellipse 75% 85% at 74% 42%, #000, transparent 78%);
+	mask: radial-gradient(ellipse 75% 85% at 74% 42%, #000, transparent 78%);
+}
+.o-fundo__luz {
+	/* Luz sutil (desktop): os pontos da grade crescem um pouco (4 para 6 px) num círculo pequeno
+	   e esmaecem devagar. Sobre texto (título, parágrafo, formulário) quase some: .is-texto (JS). */
+	position: absolute;
+	inset: 0;
+	background: var(--pixel-verde-g) 13px 13px / 28px 28px;
+	opacity: 0;
+	transition: opacity 0.4s var(--curva);
+	-webkit-mask: radial-gradient(150px circle at var(--mx, 70%) var(--my, 40%), #000, rgba(0, 0, 0, 0.4) 35%, rgba(0, 0, 0, 0.1) 70%, transparent);
+	mask: radial-gradient(150px circle at var(--mx, 70%) var(--my, 40%), #000, rgba(0, 0, 0, 0.4) 35%, rgba(0, 0, 0, 0.1) 70%, transparent);
+}
+.o-fundo.is-ativo.is-perto .o-fundo__luz {
+	opacity: 0.5;
+}
+.o-fundo.is-ativo.is-perto.is-texto .o-fundo__luz {
+	opacity: 0.12;
+}
+html.o-pausado .o-fundo .o-fundo__luz {
+	opacity: 0 !important;
+}
+/* Quadradinhos soltos */
+.o-fundo > i {
+	position: absolute;
+	width: var(--t, 12px);
+	aspect-ratio: 1;
+	background: var(--cor-destaque);
+	opacity: 0;
+}
+.o-fundo > i:nth-of-type(1) { left: 6%; top: 78%; --t: 10px; --atraso: -1s; }
+.o-fundo > i:nth-of-type(2) { left: 46%; top: 88%; --t: 14px; --atraso: -6s; }
+.o-fundo > i:nth-of-type(3) { left: 58%; top: 16%; --t: 8px; --atraso: -3s; }
+.o-fundo > i:nth-of-type(4) { left: 92%; top: 70%; --t: 18px; --atraso: -8s; }
+.o-fundo > i:nth-of-type(5) { left: 84%; top: 12%; --t: 10px; --atraso: -4.5s; }
+.o-fundo > i:nth-of-type(6) { left: 30%; top: 62%; --t: 8px; --atraso: -2s; }
+.o-fundo > i:nth-of-type(7) { left: 70%; top: 92%; --t: 12px; --atraso: -7s; }
+.o-fundo > i:nth-of-type(8) { left: 16%; top: 30%; --t: 14px; --atraso: -5s; }
+
+/* Respingo de pixels no clique (desktop) */
+.o-respingo {
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+.o-respingo i {
+	position: absolute;
+	left: -4px;
+	top: -4px;
+	width: 8px;
+	height: 8px;
+	background: var(--cor-destaque);
+	animation: o-respingo 0.8s var(--mov-saida, ease-out) forwards;
+}
+.o-respingo i:nth-child(3n) {
+	width: 6px;
+	height: 6px;
+	background: var(--cor-texto);
+}
+@keyframes o-respingo {
+	from {
+		transform: rotate(var(--a)) translateX(0) scale(1);
+		opacity: 1;
+	}
+	to {
+		transform: rotate(var(--a)) translateX(var(--d)) scale(0.2);
+		opacity: 0;
+	}
+}
+
+/* 3. Resultados (verde): barras de gráfico vivas ao fundo */
+.o-resultados__barras {
+	position: absolute;
+	right: var(--margem);
+	bottom: 0;
+	z-index: -1;
+	display: flex;
+	align-items: flex-end;
+	gap: clamp(8px, 1.2vw, 16px);
+	width: min(44vw, 560px);
+	height: 72%;
+	pointer-events: none;
+	opacity: 0.07;
+}
+.o-resultados__barras i {
+	flex: 1;
+	height: 100%;
+	background: var(--preto);
+	transform-origin: bottom;
+	transform: scaleY(var(--h, 0.5));
+}
+.o-resultados__barras i:nth-child(1) { --h: 0.22; --h2: 0.34; }
+.o-resultados__barras i:nth-child(2) { --h: 0.36; --h2: 0.28; }
+.o-resultados__barras i:nth-child(3) { --h: 0.3; --h2: 0.5; }
+.o-resultados__barras i:nth-child(4) { --h: 0.52; --h2: 0.44; }
+.o-resultados__barras i:nth-child(5) { --h: 0.62; --h2: 0.74; }
+.o-resultados__barras i:nth-child(6) { --h: 0.8; --h2: 0.68; }
+.o-resultados__barras i:nth-child(7) { --h: 1; --h2: 0.9; }
+
+/* 4. Sinais de alerta (preto): linhas de monitor antigo e uma faixa que passa */
+.o-fundo--linhas {
+	background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 4px);
+}
+.o-fundo--linhas::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 30%;
+	background: linear-gradient(180deg, transparent, rgba(236, 255, 54, 0.05), transparent);
+	transform: translateY(-100%);
+}
+
+/* 5. Formulário final (violeta): grade branca e quadradinhos que sobem */
+.o-fundo--subida::before {
+	background-image: var(--pixel-branco);
+	opacity: 0.12;
+	-webkit-mask: radial-gradient(ellipse 70% 80% at 20% 70%, #000, transparent 75%);
+	mask: radial-gradient(ellipse 70% 80% at 20% 70%, #000, transparent 75%);
+}
+.o-ctx-violeta .o-fundo__luz {
+	background-image: var(--pixel-branco-g);
+}
+
+/* Holofote que segue o mouse na grade de serviços */
+.o-cards-servico.is-holofote::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), rgba(236, 255, 54, 0.13), transparent 70%);
+	opacity: 0;
+	transition: opacity 0.35s var(--curva);
+	pointer-events: none;
+}
+.o-cards-servico.is-holofote.is-perto::before {
+	opacity: 1;
+}
+html.o-pausado .o-cards-servico.is-holofote::before {
+	opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.o-fundo > i {
+		animation: o-pixel-sobe 9s steps(18) var(--atraso, 0s) infinite;
+	}
+	.o-fundo > i:nth-of-type(even) {
+		animation-duration: 12s;
+	}
+	.o-resultados__barras i {
+		animation: o-barra-viva 4.8s steps(6) infinite alternate;
+	}
+	.o-resultados__barras i:nth-child(odd) {
+		animation-duration: 6.2s;
+	}
+	.o-fundo--linhas::after {
+		animation: o-varredura 9s linear infinite;
+	}
+}
+@keyframes o-pixel-sobe {
+	0% {
+		opacity: 0;
+		transform: translateY(0);
+	}
+	15%,
+	70% {
+		opacity: 0.85;
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-140px);
+	}
+}
+@keyframes o-varredura {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(100%);
+	}
+}
+@keyframes o-barra-viva {
+	from {
+		transform: scaleY(var(--h));
+	}
+	to {
+		transform: scaleY(var(--h2));
+	}
+}
+@media (max-width: 767px) {
+	.o-resultados__barras {
+		width: 70vw;
+		height: 46%;
+	}
+	.o-fundo > i:nth-of-type(n + 5) {
+		display: none;
+	}
+}

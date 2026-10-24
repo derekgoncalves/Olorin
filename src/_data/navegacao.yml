@@ -1,19 +1,24 @@
 # Menu principal. "submenu: servicos" lista automaticamente os 6 serviços (src/content/servicos/).
-# "so_com_cases: true" só aparece quando houver case aprovado (src/content/cases.yml).
+# Todos os itens levam a páginas de verdade (nada de âncora no meio da home).
+# 17/10/2026: Planos e Blog saíram do site; "Como trabalhamos" virou "Sobre" (/sobre/, com método e dúvidas).
+# O item fica marcado em qualquer página que comece pelo endereço dele.
+# 23/10/2026 (dono): "Educação" virou "Segmentos", com Educação e Influenciadores. Item sem "url" é só
+# o botão que abre a lista (no computador, lista suspensa como a de Serviços; no celular, acordeão).
+# Em cada item da lista: rotulo, url, resumo (a linha pequena embaixo, no computador) e icone
+# (nome de um ícone pixel: estrela, capelo, redes, trafego...).
 principal:
   - rotulo: Serviços
     url: /servicos/
     submenu: servicos
-  - rotulo: Educação
-    url: /educacao/
-  - rotulo: Método
-    url: /#metodo
-  - rotulo: Cases
-    url: /cases/
-    so_com_cases: true
-  - rotulo: Planos
-    url: /#planos
+  - rotulo: Portfólio
+    url: /portfolio/
   - rotulo: Sobre
     url: /sobre/
-  - rotulo: Dúvidas
-    url: /#duvidas
+  - rotulo: Quem somos
+    url: /quem-somos/
+  - rotulo: Segmentos
+    submenu: segmentos
+    leitor: Abrir a lista de segmentos
+    itens:
+      - { rotulo: Educação, url: /educacao/, resumo: "Escolas, faculdades e cursos", icone: capelo }
+      - { rotulo: Influenciadores, url: /influenciadores/, resumo: "Criadores de conteúdo e perfis", icone: estrela }

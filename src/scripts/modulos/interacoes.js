@@ -1,5 +1,5 @@
 /* Componentes interativos: checklist, método, portfólio, FAQ, calculadora, planos, faixas e contadores. */
-import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz } from '../util.js';
+import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz, abaixoDaDobra, linkWhatsApp } from '../util.js';
 import { track } from './rastreamento.js';
 
 /* Checklist de dores: botões com aria-pressed; a partir de 2 marcados aparece a resposta. */
@@ -82,34 +82,51 @@ export function iniciarFaq() {
 	if (alvo && alvo.tagName === 'DETAILS') alvo.open = true;
 }
 
-/* Calculadora de custo de entrada. */
+/* Calculadora da home, em forma de bilhete de orçamento (sem nenhum valor): cada escolha vai para a
+   linha dela no bilhete e para a mensagem do botão do WhatsApp (uma resposta por linha e
+   " [ref: calculadora]" no fim). Sem JS, o botão já leva a uma mensagem genérica. */
 export function iniciarCalculadora() {
 	const calc = $('[data-o-calc]');
 	if (!calc) return;
 	const form = $('[data-o-calc-form]', calc);
-	const tabela = $('[data-o-calc-tabela]', calc);
-	const conta = $('[data-o-calc-conta]', calc);
-	const total = $('[data-o-calc-total]', calc);
-	if (!form) return;
-	form.hidden = false;
-	if (tabela) tabela.classList.add('o-sr');
-	const reais = (n) => 'R$ ' + Number(n).toLocaleString('pt-BR');
+	const papel = $('[data-o-calc-papel]', calc);
+	const botao = $('[data-o-calc-botao]', calc);
+	if (!form || !papel) return;
+	const inicio = calc.getAttribute('data-mensagem') || '';
+	const fim = calc.getAttribute('data-mensagem-fim') || '';
 	let usou = false;
-	function calcular(registrar) {
-		const plano = $('input[name="calc-plano"]:checked', form);
-		const verba = $('input[name="calc-verba"]:checked', form);
-		if (!plano || !verba) return;
-		const g = Number(plano.value);
-		const v = Number(verba.value);
-		if (conta) conta.textContent = 'Gestão ' + reais(g) + ' + verba ' + reais(v);
-		if (total) total.textContent = reais(g + v);
+	function escolhas() {
+		return $$('fieldset', form)
+			.map((grupo) => {
+				const marcada = $('input:checked', grupo);
+				return marcada ? { id: marcada.name.replace('calc-', ''), rotulo: grupo.getAttribute('data-rotulo') || '', valor: marcada.value } : null;
+			})
+			.filter(Boolean);
+	}
+	function atualizar(registrar) {
+		const lista = escolhas();
+		lista.forEach((e) => {
+			const linha = $('[data-o-calc-linha="' + e.id + '"]', papel);
+			if (linha) linha.textContent = e.valor;
+		});
+		if (botao) {
+			const linhas = lista.map((e) => '- ' + e.rotulo + ': ' + e.valor);
+			botao.href = linkWhatsApp([inicio].concat(linhas, fim ? [fim] : []).join('\n'), 'calculadora');
+		}
 		if (registrar) {
-			track('calculator_use', { plano: plano.getAttribute('data-plano'), verba_faixa: String(v), primeira_vez: !usou });
+			papel.classList.remove('is-impresso');
+			void papel.offsetWidth;
+			papel.classList.add('is-impresso');
+			const dados = { escolhas: lista.map((e) => e.valor).join(' | '), primeira_vez: !usou };
+			lista.forEach((e) => {
+				dados[e.id] = e.valor;
+			});
+			track('calculator_use', dados);
 			usou = true;
 		}
 	}
-	form.addEventListener('change', () => calcular(true));
-	calcular(false);
+	form.addEventListener('change', () => atualizar(true));
+	atualizar(false);
 }
 
 /* "Quero esse": preenche o plano no formulário e pré-seleciona os serviços. */
@@ -127,35 +144,51 @@ export function iniciarPlanos() {
 			$$('input[name="servicos[]"]', destino).forEach((c) => {
 				c.checked = servicos.indexOf(c.getAttribute('data-servico')) > -1;
 			});
+			destino.dispatchEvent(new CustomEvent('o-servicos'));
 		}
 		track('pricing_plan_click', { plano });
 	});
 }
 
-/* Faixas animadas: duplica os itens para o letreiro não ter buraco (lê medidas uma vez, depois escreve). */
+/* Faixas animadas: duplica os itens para o letreiro não ter buraco. Cada faixa é medida quando
+   chega perto da tela (lê medidas uma vez, depois escreve). */
 export function iniciarFaixas() {
 	const faixas = $$('[data-o-faixa]');
 	if (!faixas.length || movimentoReduzido) return;
-	window.requestAnimationFrame(() => {
-		const medidas = faixas.map((f) => {
-			const trilho = $('.o-faixa__trilho', f);
-			return { f, trilho, largura: trilho.scrollWidth, tela: f.clientWidth };
-		});
-		medidas.forEach(({ f, trilho, largura, tela }) => {
-			if (!largura) return;
-			const originais = $$('li', trilho);
-			const conjuntos = Math.max(1, Math.ceil(tela / largura));
-			const fragmento = doc.createDocumentFragment();
-			for (let i = 1; i < conjuntos * 2; i++) {
-				originais.forEach((li) => {
-					const c = li.cloneNode(true);
-					c.setAttribute('aria-hidden', 'true');
-					fragmento.appendChild(c);
-				});
-			}
-			trilho.appendChild(fragmento);
-			f.style.setProperty('--letreiro-tempo', Math.max(18, Math.round((largura * conjuntos) / 55)) + 's');
-		});
+	if (!temIO) {
+		window.requestAnimationFrame(() => completarFaixas(faixas));
+		return;
+	}
+	const io = new IntersectionObserver(
+		(entradas) => {
+			const perto = entradas.filter((en) => en.isIntersecting).map((en) => en.target);
+			perto.forEach((f) => io.unobserve(f));
+			if (perto.length) completarFaixas(perto);
+		},
+		{ rootMargin: '300px 0px' },
+	);
+	faixas.forEach((f) => io.observe(f));
+}
+
+function completarFaixas(faixas) {
+	const medidas = faixas.map((f) => {
+		const trilho = $('.o-faixa__trilho', f);
+		return { f, trilho, largura: trilho.scrollWidth, tela: f.clientWidth };
+	});
+	medidas.forEach(({ f, trilho, largura, tela }) => {
+		if (!largura) return;
+		const originais = $$('li', trilho);
+		const conjuntos = Math.max(1, Math.ceil(tela / largura));
+		const fragmento = doc.createDocumentFragment();
+		for (let i = 1; i < conjuntos * 2; i++) {
+			originais.forEach((li) => {
+				const c = li.cloneNode(true);
+				c.setAttribute('aria-hidden', 'true');
+				fragmento.appendChild(c);
+			});
+		}
+		trilho.appendChild(fragmento);
+		f.style.setProperty('--letreiro-tempo', Math.max(18, Math.round((largura * conjuntos) / 55)) + 's');
 	});
 }
 
@@ -178,7 +211,7 @@ export function iniciarPausa() {
 	}));
 }
 
-/* Contadores dos números (R$2M+, 50+, 2x...): animam ao aparecer; leitores de tela leem o valor final. */
+/* Contadores dos números ("+ de R$ 5M", "50+"): só a parte numérica anima, o texto em volta fica; leitores de tela leem o valor final. */
 export function iniciarContadores() {
 	const nos = $$('[data-o-contador]');
 	if (!nos.length || movimentoReduzido || !temIO) return;
@@ -222,8 +255,7 @@ export function iniciarRevelar() {
 	if (movimentoReduzido || !temIO) return;
 	const seletor = '.o-sec:not(.o-hero) .o-titulo, .o-check, .o-card-servico, .o-etapa, .o-numero, .o-case, .o-plano, .o-faq__item, .o-pessoa, .o-entrega, .o-dor, .o-passo, .o-painel, .o-calc';
 	window.requestAnimationFrame(() => {
-		const altura = window.innerHeight;
-		const itens = $$(seletor).filter((el) => el.getBoundingClientRect().top > altura);
+		const itens = abaixoDaDobra($$(seletor));
 		const grupos = new Map();
 		itens.forEach((el) => {
 			const pai = el.parentElement;

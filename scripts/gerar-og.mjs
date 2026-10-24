@@ -11,6 +11,7 @@ import { readFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
 import { chromium } from 'playwright-core';
+import sharp from 'sharp';
 
 const SAIDA = 'src/assets/og';
 const cfg = JSON.parse(readFileSync('src/_data/site/config.json', 'utf8'));
@@ -34,7 +35,7 @@ const TEMAS = {
 	verde: { fundo: '#ecff36', texto: '#000', destaque: '#000', janela: '#ecff36', borda: '#000', barra: '#000', barraTexto: '#ecff36' },
 };
 
-function html({ janela, etiqueta, titulo, destaque, rodape, tema }) {
+function html({ janela, etiqueta, titulo, destaque, rodape, tema, foto }) {
 	const t = TEMAS[tema];
 	return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
 @font-face { font-family: Titulo; src: url("${fonte('archivo-expanded-900.woff2')}") format("woff2"); }
@@ -51,13 +52,15 @@ body { background: ${t.fundo}; color: ${t.texto}; font-family: Texto, monospace;
 .corpo { flex: 1; padding: 36px 40px 34px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
 .etiqueta { font: 22px Pixel, monospace; text-transform: uppercase; letter-spacing: .06em; color: ${t.destaque}; }
 h1 { font: 900 64px/1.02 Titulo, sans-serif; text-transform: uppercase; letter-spacing: -.01em; max-width: 1000px; }
-h1 em { font-style: normal; color: ${t.destaque}; ${tema === 'preto' ? '' : 'text-decoration: underline; text-decoration-thickness: 8px; text-underline-offset: 8px;'} }
+h1 em { font-style: normal; white-space: nowrap; color: ${t.destaque}; ${tema === 'preto' ? '' : 'text-decoration: underline; text-decoration-thickness: 8px; text-underline-offset: 8px;'} }
+.com-foto { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; padding-right: 40px; }
+.foto { align-self: center; width: 300px; height: 300px; border: 4px solid ${t.borda}; box-shadow: 10px 10px 0 ${t.barra}; background: ${t.barra} center / cover no-repeat; }
 .rodape { display: flex; justify-content: space-between; align-items: center; }
 .rodape svg { height: 38px; width: auto; color: ${t.texto}; }
 .rodape p { font: 700 24px Texto, monospace; }
 </style></head><body>
 <div class="janela"><div class="barra"><span>${esc(janela)}</span><span class="ctrl"><i></i><i></i></span></div>
-<div class="corpo">${etiqueta ? `<p class="etiqueta">${esc(etiqueta)}</p>` : ''}<h1>${esc(titulo)}${destaque ? ` <em>${esc(destaque)}</em>` : ''}</h1></div></div>
+<div class="${foto ? 'com-foto' : ''}" style="flex: 1; display: ${foto ? 'grid' : 'flex'};"><div class="corpo">${etiqueta ? `<p class="etiqueta">${esc(etiqueta)}</p>` : ''}<h1>${esc(titulo)}${destaque ? ` <em>${esc(destaque)}</em>` : ''}</h1></div>${foto ? `<div class="foto" style="background-image: url('${foto}')"></div>` : ''}</div></div>
 <div class="rodape">${logo}<p>${esc(rodape)}</p></div>
 </body></html>`;
 }
@@ -66,48 +69,109 @@ const home = ler('src/content/home.yml');
 const hub = ler('src/content/paginas/servicos.yml');
 const promo = ler('src/content/paginas/promo.yml');
 const sobre = ler('src/content/paginas/sobre.yml');
+const metodo = ler('src/content/paginas/sobre-metodo.yml');
+const portfolio = ler('src/content/paginas/portfolio.yml');
+const equipe = ler('src/content/equipe.yml');
+const manifesto = JSON.parse(readFileSync('src/assets/manifest.json', 'utf8')).imagens;
 const servicos = readdirSync('src/content/servicos')
 	.filter((n) => n.endsWith('.yml'))
-	.map((n) => ler(path.join('src/content/servicos', n)));
+	.map((n) => ler(path.join('src/content/servicos', n)))
+	.sort((a, b) => (a.ordem || 0) - (b.ordem || 0));
+
+/* Foto quadrada da pessoa (o mesmo recorte do site), embutida como data URI. */
+async function fotoDe(id) {
+	const m = manifesto[id];
+	if (!m) return '';
+	const [left, top, width, height] = m.recorte;
+	const buf = await sharp(m.arquivo_original).extract({ left, top, width, height }).resize(600, 600).jpeg({ quality: 88 }).toBuffer();
+	return `data:image/jpeg;base64,${buf.toString('base64')}`;
+}
 
 const pecas = [
 	{
 		arquivo: 'home.jpg',
 		tema: 'preto',
-		janela: 'olorin.exe',
-		etiqueta: `Agência de marketing · ${cfg.CIDADE}`,
-		titulo: `${home.hero.titulo_1} ${home.hero.titulo_2}`,
-		destaque: home.hero.titulo_destaque,
+		janela: 'olorin.olo',
+		etiqueta: 'Agência de marketing digital',
+		// Lema do site no banner da home (home.yml → hero.titulo + hero.titulo_destaque).
+		titulo: semMarcador(home.hero.titulo) || 'Sua marca em',
+		destaque: semMarcador(home.hero.titulo_destaque) || 'outro nível.',
 		rodape: 'olorin.com.br',
 	},
 	{
 		arquivo: 'servicos.jpg',
 		tema: 'preto',
-		janela: 'servicos.exe',
-		etiqueta: 'Anúncio · conteúdo · site · impresso',
+		janela: hub.janela || 'servicos.olo',
+		etiqueta: servicos.map((s) => s.chip || s.nome).join(' · '),
 		titulo: semMarcador(hub.titulo) || 'Serviços de marketing digital',
 		rodape: 'olorin.com.br/servicos',
 	},
 	{
 		arquivo: 'sobre.jpg',
 		tema: 'preto',
-		janela: 'equipe.exe',
-		etiqueta: 'Sobre a Olorin',
-		titulo: semMarcador(sobre.titulo) || 'O mesmo time do anúncio ao impresso.',
-		rodape: 'olorin.com.br/sobre',
+		janela: 'equipe.olo',
+		etiqueta: sobre.etiqueta || 'Quem somos',
+		titulo: semMarcador(sobre.titulo) || 'Um time inteiro. Sua marca em',
+		destaque: semMarcador(sobre.titulo_destaque) || 'outro nível.',
+		rodape: 'olorin.com.br/quem-somos',
 	},
 	{
 		arquivo: 'promo.jpg',
 		tema: 'verde',
-		janela: 'diagnostico.exe',
-		etiqueta: 'Diagnóstico gratuito',
-		titulo: semMarcador(promo.titulo) || 'Descubra onde o seu marketing está travado.',
+		janela: 'raio_x.olo',
+		etiqueta: promo.etiqueta || 'Raio-X gratuito',
+		titulo: semMarcador(promo.titulo) || 'Onde a sua marca trava?',
 		rodape: 'olorin.com.br',
 	},
+	{
+		arquivo: 'metodo.jpg',
+		tema: 'violeta',
+		janela: metodo.janela || 'metodo.olo',
+		etiqueta: metodo.etiqueta || 'Sobre',
+		titulo: semMarcador(metodo.titulo) || 'Sem caixa-preta.',
+		rodape: 'olorin.com.br/sobre',
+	},
+	{
+		arquivo: 'educacao.jpg',
+		tema: 'violeta',
+		janela: 'boletim.olo',
+		etiqueta: 'Olorin Educação · captação de alunos',
+		titulo: 'Sua escola em',
+		destaque: 'outro nível.',
+		rodape: 'olorin.com.br/educacao',
+	},
+	{
+		arquivo: 'influenciadores.jpg',
+		tema: 'verde',
+		janela: 'perfil.olo',
+		etiqueta: 'Olorin · influenciadores',
+		titulo: 'Seu perfil em',
+		destaque: 'outro nível.',
+		rodape: 'olorin.com.br/influenciadores',
+	},
+	{
+		arquivo: 'portfolio.jpg',
+		tema: 'preto',
+		janela: 'portfolio.olo',
+		etiqueta: portfolio.etiqueta || 'Portfólio',
+		titulo: semMarcador(portfolio.titulo) || 'Feito pela Olorin.',
+		rodape: 'olorin.com.br/portfolio',
+	},
+	...(await Promise.all(
+		(equipe.pessoas || []).map(async (p) => ({
+			arquivo: `perfil-${p.slug}.jpg`,
+			tema: 'violeta',
+			janela: p.janela || `${p.slug}.jpg`,
+			etiqueta: p.cargo || p.funcao,
+			titulo: p.nome,
+			rodape: `olorin.com.br/quem-somos/${p.slug}`,
+			foto: await fotoDe(`${p.foto}-quadrada`),
+		})),
+	)),
 	...servicos.map((s) => ({
 		arquivo: `servico-${s.slug}.jpg`,
 		tema: 'violeta',
-		janela: s.janela || `${s.slug}.exe`,
+		janela: s.janela || `${s.slug}.olo`,
 		etiqueta: s.nome,
 		titulo: semMarcador(s.hero && s.hero.h1) || s.nome,
 		rodape: `olorin.com.br/servicos/${s.slug}`,

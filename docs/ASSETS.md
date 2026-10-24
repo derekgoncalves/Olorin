@@ -15,20 +15,24 @@
 | `equipe-vinicius-quadrada` | `equipe/vinicius-mafra.webp` | equipe | 160, 320 | 2–6 KiB | cor | confirmada |
 | `equipe-derek` | `equipe/derek-goncalves.webp` | equipe | 320, 480, 660 | 8–31 KiB | cor | confirmada |
 | `equipe-derek-quadrada` | `equipe/derek-goncalves.webp` | equipe | 160, 320 | 2–6 KiB | cor | confirmada |
-| `portfolio-marca-identidade` | `portfolio/marca-identidade.webp` | portfolio | 300, 600 | 8–19 KiB | cor | confirmada |
-| `portfolio-campanha-trafego` | `portfolio/campanha-trafego.webp` | portfolio | 300, 600 | 8–25 KiB | cor | confirmada |
-| `portfolio-impresso-catalogo` | `portfolio/impresso-catalogo.webp` | portfolio | 300, 600 | 6–16 KiB | cor | confirmada |
-| `portfolio-site-institucional` | `portfolio/site-institucional.webp` | portfolio | 300, 600 | 3–8 KiB | cor | confirmada |
-| `portfolio-redes-conteudo` | `portfolio/redes-conteudo.webp` | portfolio | 320, 640 | 5–38 KiB | cor | confirmada |
-| `portfolio-campanha-google-ads` | `portfolio/campanha-google-ads.webp` | portfolio | 300, 600 | 4–10 KiB | cor | confirmada |
-| `portfolio-marca-producao` | `portfolio/marca-producao.webp` | portfolio | 300, 600 | 4–9 KiB | cor | confirmada |
-| `portfolio-impresso-loja` | `portfolio/impresso-loja.webp` | portfolio | 300, 600 | 8–17 KiB | cor | confirmada |
+| `portfolio-bravo-film-festival` | `portfolio/bravo-film-festival.webp` | portfolio | 320, 480, 640, 860 | 12–37 KiB | cor | Behance (recorte do PDF) |
+| `portfolio-ambulatorio-da-moda` | `portfolio/ambulatorio-da-moda.webp` | portfolio | 320, 480, 640, 860 | 10–39 KiB | cor | Behance (recorte do PDF) |
+| `portfolio-benca` | `portfolio/benca.webp` | portfolio | 320, 480, 640, 860 | 9–48 KiB | cor | Behance (recorte do PDF) |
+| `portfolio-viva-sem-veneno` | `portfolio/viva-sem-veneno.webp` | portfolio | 320, 480, 640, 860 | 17–44 KiB | cor | Behance (recorte do PDF) |
+| `portfolio-izeta` | `portfolio/izeta.webp` | portfolio | 320, 480, 640, 860 | 2–6 KiB | cor | card com o logo |
+| `portfolio-cartas-para-o-futuro` | `portfolio/cartas-para-o-futuro.webp` | portfolio | 320, 480, 640, 860 | 16–37 KiB | cor | Behance (recorte do PDF) |
+| `portfolio-anacleto-abduch` | `portfolio/anacleto-abduch.webp` | portfolio | 320, 480, 640, 860 | 2–7 KiB | cor | card com o logo |
+| `portfolio-toro-audio` | `portfolio/toro-audio.webp` | portfolio | 320, 480, 640, 860 | 7–21 KiB | cor | Behance (recorte do PDF) |
+| `portfolio-governo-rs` | `portfolio/governo-rs.webp` | portfolio | 320, 480, 640, 860 | 7–21 KiB | cor | Behance (recorte do PDF) |
+| `portfolio-john-deere` | `portfolio/john-deere.webp` | portfolio | 320, 480, 640, 860 | 5–13 KiB | cor | card com o logo |
+| `portfolio-central-sul-moveis` | `portfolio/central-sul-moveis.webp` | portfolio | 320, 480, 640, 860 | 2–6 KiB | cor | card com o logo |
 
 As fotos da equipe também têm versão quadrada (`<id>-quadrada`, 160 e 320 px) para as páginas de serviço.
 
 **Origem:**
 - **Fotos da equipe:** enviadas pelo dono em 08/10/2026. A identidade de cada pessoa foi deduzida pela ordem das fotos e precisa ser conferida. A da Natália tem só 417 × 533 px, então uma maior é melhor.
-- **Banner, bastidores, 404 e portfólio:** vieram do site anterior. As 8 do portfólio são **ilustrativas** e devem ser trocadas por trabalhos reais. Confirme a licença de uso das demais (`docs/CONTENT-TODO.md`).
+- **Banner, bastidores e 404:** vieram do site anterior. Confirme a licença de uso (`docs/CONTENT-TODO.md`).
+- **Portfólio (14/10/2026):** 11 trabalhos reais em 4:5. Sete são recortes dos PDFs do Behance do Vinicius (trocar pelos originais quando chegarem); iZETA, Anacleto, John Deere e Central Sul Móveis são cards com o logo do cliente.
 
 ## Como trocar uma imagem
 

@@ -1,6 +1,6 @@
 {
     "exportFormatVersion": 2,
-    "exportTime": "2026-10-09 12:00:00",
+    "exportTime": "2026-10-23 12:00:00",
     "containerVersion": {
         "path": "accounts/0000000000/containers/000000000/versions/0",
         "accountId": "0000000000",
@@ -110,7 +110,8 @@
                     }
                 },
                 "parentFolderId": "3",
-                "notes": "Configuração do GA4 (envia page_view). Só dispara com Análise liberada."
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro. Configuração do GA4 (envia page_view). Só dispara com Análise liberada.",
+                "paused": true
             },
             {
                 "accountId": "0000000000",
@@ -272,7 +273,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -404,7 +407,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -521,7 +526,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -638,7 +645,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -755,7 +764,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -872,7 +883,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -1019,7 +1032,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -1156,6 +1171,36 @@
                                         "value": "{{DLV - form_variant}}"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "segmento"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "{{DLV - segmento}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "porte"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "{{DLV - porte}}"
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -1196,7 +1241,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -1313,7 +1360,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -1337,12 +1386,12 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "parameter",
-                                        "value": "plano"
+                                        "value": "escolhas"
                                     },
                                     {
                                         "type": "TEMPLATE",
                                         "key": "parameterValue",
-                                        "value": "{{DLV - plano}}"
+                                        "value": "{{DLV - escolhas}}"
                                     }
                                 ]
                             },
@@ -1352,12 +1401,42 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "parameter",
-                                        "value": "verba_faixa"
+                                        "value": "frente"
                                     },
                                     {
                                         "type": "TEMPLATE",
                                         "key": "parameterValue",
-                                        "value": "{{DLV - verba_faixa}}"
+                                        "value": "{{DLV - frente}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "verba"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "{{DLV - verba}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "objetivo"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "{{DLV - objetivo}}"
                                     }
                                 ]
                             },
@@ -1460,7 +1539,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -1577,7 +1658,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -1694,7 +1777,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -1811,7 +1896,9 @@
                         "tagName": "GA4 - Google tag",
                         "stopOnSetupFailure": false
                     }
-                ]
+                ],
+                "paused": true,
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro."
             },
             {
                 "accountId": "0000000000",
@@ -1853,7 +1940,8 @@
                     }
                 },
                 "parentFolderId": "4",
-                "notes": "Carrega o Pixel e registra PageView. Só com Marketing liberado."
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro. Carrega o Pixel e registra PageView. Só com Marketing liberado.",
+                "paused": true
             },
             {
                 "accountId": "0000000000",
@@ -1900,7 +1988,8 @@
                         "stopOnSetupFailure": true
                     }
                 ],
-                "notes": "Na /obrigado/, uma vez por envio (generate_lead)."
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro. Nas páginas de obrigado (/obrigado/, /obrigado-educacao/, /obrigado-influenciadores/), uma vez por envio (generate_lead).",
+                "paused": true
             },
             {
                 "accountId": "0000000000",
@@ -1947,7 +2036,8 @@
                         "stopOnSetupFailure": true
                     }
                 ],
-                "notes": "Clique em qualquer link wa.me (whatsapp_click)."
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro. Clique em qualquer link wa.me (whatsapp_click).",
+                "paused": true
             },
             {
                 "accountId": "0000000000",
@@ -1995,7 +2085,8 @@
                         "stopOnSetupFailure": true
                     }
                 ],
-                "notes": "Páginas /servicos/<slug>/ (OLORIN_CONFIG.modo = servico)."
+                "notes": "PAUSADA de propósito: o site já envia GA4 e Pixel da Meta direto (olorin-ids.js com GA4_E_PIXEL_PELO_GTM: false). Despause só se mudar o olorin-ids.js para GA4_E_PIXEL_PELO_GTM: true, senão tudo conta em dobro. Páginas /servicos/<slug>/ (OLORIN_CONFIG.modo = servico).",
+                "paused": true
             },
             {
                 "accountId": "0000000000",
@@ -2042,13 +2133,14 @@
                     }
                 },
                 "parentFolderId": "5",
-                "notes": "Guarda o gclid em cookie próprio. Só com Marketing liberado."
+                "notes": "ATIVA. Guarda o gclid em cookie próprio. Só com Marketing liberado. Quem cuida do Google Ads é o GTM (o site não manda Ads direto quando há GTM_ID).",
+                "paused": false
             },
             {
                 "accountId": "0000000000",
                 "containerId": "000000000",
                 "tagId": "20",
-                "name": "Google Ads - Conversão Lead do site",
+                "name": "Google Ads - Conversão Lead (páginas de obrigado)",
                 "type": "awct",
                 "parameter": [
                     {
@@ -2124,7 +2216,8 @@
                         "stopOnSetupFailure": false
                     }
                 ],
-                "notes": "Na /obrigado/, uma vez por envio (generate_lead)."
+                "notes": "ATIVA. Dispara no generate_lead, uma vez por envio, nas páginas /obrigado/, /obrigado-educacao/ e /obrigado-influenciadores/. ID e rótulo vêm do olorin-ids.js (GADS_CONVERSION_ID e GADS_CONVERSION_LABEL). O site não manda essa conversão direto quando há GTM_ID, então não duplica.",
+                "paused": false
             }
         ],
         "trigger": [
@@ -2681,48 +2774,48 @@
                 "containerId": "000000000",
                 "variableId": "1",
                 "name": "GA4 - ID",
-                "type": "c",
+                "type": "j",
                 "parameter": [
                     {
                         "type": "TEMPLATE",
-                        "key": "value",
-                        "value": "G-XXXXXXXXXX"
+                        "key": "name",
+                        "value": "OLORIN_CONFIG.ga4"
                     }
                 ],
                 "fingerprint": "1760011200000",
                 "formatValue": {},
                 "parentFolderId": "3",
-                "notes": "Troque G-XXXXXXXXXX pelo ID da métrica do GA4 (Administrador > Fluxos de dados > Web)."
+                "notes": "Lê o GA4_ID do olorin-ids.js (ou do build). Só é usada no modo GA4_E_PIXEL_PELO_GTM: true."
             },
             {
                 "accountId": "0000000000",
                 "containerId": "000000000",
                 "variableId": "2",
                 "name": "Meta Pixel - ID",
-                "type": "c",
+                "type": "j",
                 "parameter": [
                     {
                         "type": "TEMPLATE",
-                        "key": "value",
-                        "value": "XXXXXXXXXXXXXXX"
+                        "key": "name",
+                        "value": "OLORIN_CONFIG.pixel"
                     }
                 ],
                 "fingerprint": "1760011200000",
                 "formatValue": {},
                 "parentFolderId": "4",
-                "notes": "Troque pelo número do Pixel/Conjunto de dados (Gerenciador de Eventos da Meta). Só números."
+                "notes": "Lê o META_PIXEL_ID do olorin-ids.js (ou do build). Só é usada no modo GA4_E_PIXEL_PELO_GTM: true."
             },
             {
                 "accountId": "0000000000",
                 "containerId": "000000000",
                 "variableId": "3",
                 "name": "Google Ads - ID de conversão",
-                "type": "c",
+                "type": "j",
                 "parameter": [
                     {
                         "type": "TEMPLATE",
-                        "key": "value",
-                        "value": "XXXXXXXXXX"
+                        "key": "name",
+                        "value": "OLORIN_CONFIG.adsNumero"
                     }
                 ],
                 "fingerprint": "1760011200000",
@@ -2735,12 +2828,12 @@
                 "containerId": "000000000",
                 "variableId": "4",
                 "name": "Google Ads - Rótulo de conversão",
-                "type": "c",
+                "type": "j",
                 "parameter": [
                     {
                         "type": "TEMPLATE",
-                        "key": "value",
-                        "value": "XXXXXXXXXXXXXXXXXXXX"
+                        "key": "name",
+                        "value": "OLORIN_CONFIG.adsLabel"
                     }
                 ],
                 "fingerprint": "1760011200000",
@@ -3230,7 +3323,7 @@
                 "fingerprint": "1760011200000",
                 "formatValue": {},
                 "parentFolderId": "1",
-                "notes": "generate_lead, pricing_plan_click, calculator_use"
+                "notes": "generate_lead, pricing_plan_click"
             },
             {
                 "accountId": "0000000000",
@@ -3286,7 +3379,7 @@
                 "fingerprint": "1760011200000",
                 "formatValue": {},
                 "parentFolderId": "1",
-                "notes": "generate_lead (texto da faixa) e calculator_use (valor em reais)"
+                "notes": "generate_lead (texto da faixa)"
             },
             {
                 "accountId": "0000000000",
@@ -3483,6 +3576,172 @@
                 "formatValue": {},
                 "parentFolderId": "1",
                 "notes": "consent_update (true | false)"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "32",
+                "name": "DLV - segmento",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "segmento"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "33",
+                "name": "DLV - porte",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "porte"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "34",
+                "name": "DLV - escolhas",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "escolhas"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1",
+                "notes": "calculator_use"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "35",
+                "name": "DLV - frente",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "frente"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1",
+                "notes": "calculator_use"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "36",
+                "name": "DLV - verba",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "verba"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1",
+                "notes": "calculator_use"
+            },
+            {
+                "accountId": "0000000000",
+                "containerId": "000000000",
+                "variableId": "37",
+                "name": "DLV - objetivo",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "objetivo"
+                    }
+                ],
+                "fingerprint": "1760011200000",
+                "formatValue": {},
+                "parentFolderId": "1",
+                "notes": "calculator_use"
             }
         ],
         "builtInVariable": [

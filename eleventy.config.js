@@ -52,6 +52,9 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({ 'src/assets/fonts': 'assets/fonts' }, { filter: ['**/*', '!**/.gitkeep'] });
 	eleventyConfig.addPassthroughCopy({ 'src/assets/brand': 'assets/img/brand' });
 	eleventyConfig.addPassthroughCopy({ 'src/assets/og': 'assets/img/og' });
+	eleventyConfig.addPassthroughCopy({ 'src/assets/clientes': 'assets/img/clientes' }, { filter: ['**/*', '!**/.gitkeep'] });
+	// Logos de ferramentas e redes (simple-icons, CC0), em preto: no fundo escuro use filter: invert(1).
+	eleventyConfig.addPassthroughCopy({ 'src/assets/marcas': 'assets/img/marcas' });
 	eleventyConfig.addPassthroughCopy({ 'src/php/config.example.php': 'config.example.php' });
 	eleventyConfig.addPassthroughCopy({ 'src/servidor/.htaccess': '.htaccess' });
 	eleventyConfig.addPassthroughCopy({ 'src/servidor/leads.htaccess': 'leads/.htaccess' });
@@ -65,7 +68,7 @@ export default async function (eleventyConfig) {
 
 	return {
 		dir: { input: 'src', output: SAIDA, includes: '_includes', data: '_data' },
-		templateFormats: ['njk', '11ty.js'],
+		templateFormats: ['njk', '11ty.js', 'md'],
 		htmlTemplateEngine: 'njk',
 		markdownTemplateEngine: false,
 	};

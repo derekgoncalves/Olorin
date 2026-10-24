@@ -45,6 +45,13 @@
 	line-height: 1.05;
 	text-transform: uppercase;
 }
+/* O nome cabe na coluna do texto mesmo quando o cartão fica estreito (celular pequeno). */
+.o-pessoa:not(.o-pessoa--compacta) .o-pessoa__texto {
+	container-type: inline-size;
+}
+.o-pessoa:not(.o-pessoa--compacta) .o-pessoa__nome {
+	font-size: clamp(15px, min(1.6vw, 11.5cqi), 24px);
+}
 .o-pessoa__funcao {
 	margin: 0 0 10px !important;
 	font-family: var(--fonte-pixel);
@@ -82,4 +89,16 @@
 	--ctrl-l: 26px;
 	--barra-x: 8px;
 	font-size: 12px;
+}
+
+/* Celular: a foto é estreita; sem os botões decorativos e com letra menor, o nome do arquivo cabe inteiro. */
+@media (max-width: 640px) {
+	.o-pessoa__foto .o-janela__barra {
+		--ctrl-l: 0px;
+		font-size: 10px;
+		letter-spacing: 0.04em;
+	}
+	.o-pessoa__foto .o-janela__ctrl {
+		display: none;
+	}
 }

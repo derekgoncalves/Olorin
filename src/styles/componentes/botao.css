@@ -113,3 +113,29 @@
 .o-link-wa:hover {
 	color: var(--cor-destaque);
 }
+
+/* Botão do Raio-X (macro ui.botaoRaioX): mini chapa (preta com ossos verdes) na frente do texto, sempre
+   na mesma linha (dono, 24/10/2026: "o botão tem uma linha"). A margem negativa deixa a chapa passar da
+   altura da linha sem esticar o botão. */
+.o-btn--raio {
+	flex-wrap: nowrap;
+	gap: 0.55em;
+}
+.o-btn--raio .o-icone {
+	--tam: 1.4em;
+	margin-block: -0.2em;
+}
+
+/* Todo botão numa linha só (dono, 24/10/2026). Os textos são curtos para caber do 320 px em diante; em
+   tela bem estreita a letra e o respiro lateral diminuem um pouco. */
+.o-btn {
+	max-width: 100%;
+	white-space: nowrap;
+}
+@media (max-width: 374px) {
+	.o-btn {
+		padding-inline: 12px;
+		font-size: 12px;
+		letter-spacing: 0.01em;
+	}
+}

@@ -1,32 +1,52 @@
-# Hub de serviços (/servicos/) — PROMPT seção 9.3.
+# Hub de serviços (/servicos/). 17/10/2026 (dono): sem preços, planos, método e dúvidas; a chamada é o Raio-X gratuito.
 seo:
-  titulo: Serviços de marketing digital em Curitiba | Olorin
-  descricao: Tráfego pago, redes sociais, identidade visual, material impresso, site e rastreamento feitos pelo mesmo time. Preços abertos.
-etiqueta: Serviços
-titulo: Serviços de marketing digital
-texto: Anúncio, conteúdo, site e impresso feitos pelo mesmo time de 3 especialistas. Você pode contratar uma frente só — mas quando elas rodam juntas, uma empurra a outra.
+  titulo: Serviços de Marketing Digital | Olorin Digital
+  descricao: "Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time. Peça o Raio-X gratuito e veja por onde começar."
+etiqueta: Serviços de marketing digital
+titulo: Entregas que trabalham juntas.
+texto: Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time. Contrate uma frente só ou junte todas. Quando rodam juntas, uma puxa a outra.
+janela: servicos.olo
+janela_linhas:
+  - Um time · seis frentes
+  - Raio-X · gratuito
+cards:
+  etiqueta: O que fazemos
+  titulo: Escolha a frente.
+  texto: Cada serviço tem página própria, com o que pode entrar, os trabalhos do time e quem coordena.
 escolher:
-  titulo: Como escolher por onde começar
+  etiqueta: Por onde começar
+  titulo: Este é o seu caso?
   situacoes:
     - situacao: Você já anuncia, mas não sabe quanto cada venda custou.
       servico: trafego-pago
-      porque: Começamos pelas campanhas e pelo relatório, para o retorno aparecer.
-    - situacao: Sua marca parece diferente em cada lugar — no feed, no cartão, no site.
+      porque: Arrumamos as campanhas e o rastreamento. O relatório passa a mostrar quanto custou cada venda.
+    - situacao: "Sua marca parece diferente em cada lugar: no feed, no cartão e no site."
       servico: identidade-visual
-      porque: Primeiro a marca com cara de marca. Depois, tudo sai com a mesma cara.
+      porque: Primeiro, uma identidade clara. Depois, anúncio, post, site e impresso saem com a mesma cara.
     - situacao: O anúncio leva gente para um site lento ou confuso.
       servico: site-e-loja-virtual
-      porque: Um site rápido e claro no celular faz o mesmo investimento render mais.
-  nao_sei: Não sabe por onde começar? É para isso que serve o Raio-X gratuito.
+      porque: Um site rápido e claro no celular aproveita melhor cada visita que o anúncio traz.
+  nao_sei: Ainda em dúvida? O Raio-X gratuito mostra por onde começar.
+# Combinações de serviços que mais recomendamos (sem plano nem preço). "servicos" pré-marca as frentes no formulário.
 combinacoes:
-  titulo: Combinações mais comuns
+  etiqueta: Combinações
+  titulo: Junto rende mais.
+  texto: As frentes que mais recomendamos juntas. No Raio-X, a gente mostra qual combinação faz sentido para você.
   itens:
-    - nome: Tráfego pago + redes sociais
-      plano: Gestão mensal
-      texto: Anúncio e conteúdo todo mês, com criação de peças inclusa e relatório fechado. A partir de R$ 2.500/mês + verba.
-    - nome: A marca inteira
-      plano: 360 completo
-      texto: Estratégia, anúncio, redes, criação, material impresso e site sob o mesmo comando. A partir de R$ 5.000/mês + verba.
-    - nome: Uma entrega fechada
-      plano: Pontual
-      texto: Identidade visual, site, impresso ou auditoria da conta de anúncio, com prazo e escopo definidos. A partir de R$ 800/projeto.
+    - janela: anuncio_e_feed.olo
+      nome: Tráfego pago + redes sociais
+      texto: O anúncio traz gente nova e o feed confirma o que ele promete. Mesmo time, mesma cara, ajuste toda semana e relatório todo mês.
+      servicos: [trafego-pago, redes-sociais]
+    - janela: marca_inteira.olo
+      nome: A marca inteira
+      texto: Anúncios, redes, marca, site, impressos e dados juntos, com reunião semanal e planejamento todo mês.
+      servicos: [trafego-pago, redes-sociais, identidade-visual, material-impresso, site-e-loja-virtual, rastreamento-e-relatorio]
+    - janela: marca_e_papel.olo
+      nome: Identidade + impressos
+      texto: Uma identidade clara e cada peça impressa com a mesma cara, do cartão à fachada, com o arquivo certo para a gráfica.
+      servicos: [identidade-visual, material-impresso]
+    - janela: site_e_dados.olo
+      nome: Site + dados
+      texto: Um site rápido no celular, com a medição configurada desde o primeiro dia, para saber de onde veio cada contato e cada venda.
+      servicos: [site-e-loja-virtual, rastreamento-e-relatorio]
+  botao: Quero essa combinação

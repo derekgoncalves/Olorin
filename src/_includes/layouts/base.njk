@@ -7,14 +7,16 @@
 	  indexavel               → false gera "noindex, follow"
 	  canonical               → caminho canônico (padrão: a própria URL)
 	  og_imagem               → caminho da imagem de compartilhamento (1200×630)
-	  cabecalho               → "completo" (padrão) ou "minimo" (landings de campanha)
+	  cabecalho               → "completo" (padrão), "minimo" (landings de campanha), "educacao" (LP Olorin Educação)
+	                            ou "influenciadores" (LP de influenciadores)
+	  tema                    → classe extra no <body> (o-tema-<tema>), ex.: "educacao" ou "influenciadores"
+	  fontes_extra            → [{ href, tipo }] fontes a mais pré-carregadas só nesta página
 	  migalhas                → [{ nome, url }] para a trilha e o BreadcrumbList
 -#}
 {%- set cfg = site.config -%}
 {%- set modoPagina = modo or "simples" -%}
 {%- set urlCanonica = (canonical or page.url) | urlAbsoluta -%}
 {%- set imagemOg = (og_imagem or "/assets/img/og/home.jpg") | urlAbsoluta -%}
-{%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -48,19 +50,33 @@
 	{%- for fonte in assets.fontes %}
 	<link rel="preload" href="{{ fonte.href }}" as="font" type="{{ fonte.tipo }}" crossorigin>
 	{%- endfor %}
+	{%- for fonte in fontes_extra or [] %}
+	<link rel="preload" href="{{ fonte.href }}" as="font" type="{{ fonte.tipo }}" crossorigin>
+	{%- endfor %}
 	<script>
-		{#- Antes da primeira pintura: marca "js" e decide a variante do formulário (A/B) sem pulo de layout. -#}
+		{#- Antes da primeira pintura: marca "js", desenha a página inteira quando a rolagem vai para longe
+		    (âncora no endereço, recarregar ou voltar; ver ancoras.js) e decide a variante do formulário (A/B). -#}
 		(function (d, w) {
 			var h = d.documentElement, modo = "{{ cfg.FORM_TOP_VARIANT }}", v = null, q = /[?&]v=(a|b)(&|$)/.exec(w.location.search);
 			h.classList.add("js");
+			try { var nv = w.performance.getEntriesByType("navigation")[0]; if (w.location.hash.length > 1 || (nv && nv.type !== "navigate")) { h.classList.add("o-cv-tudo"); } } catch (e) {}
 			try { v = w.sessionStorage.getItem("olorin_variante"); } catch (e) {}
 			if (q) { v = q[1]; } else if (modo !== "ab") { v = modo; } else if (v !== "a" && v !== "b") { v = Math.random() < 0.5 ? "a" : "b"; }
 			try { w.sessionStorage.setItem("olorin_variante", v); } catch (e) {}
 			h.setAttribute("data-form-variant", v);
 		})(document, window);
 	</script>
+	{#- As LPs (Olorin Educação e influenciadores) têm o próprio arquivo de CSS (ver PACOTES em scripts/assets.mjs). -#}
+	{%- if tema == "educacao" %}
+	<style>{{ assets.fontFaceEducacao | safe }}</style>
+	<link rel="stylesheet" href="{{ assets.cssEducacao }}">
+	{%- elif tema == "influenciadores" %}
+	<style>{{ assets.fontFaceInfluenciadores | safe }}</style>
+	<link rel="stylesheet" href="{{ assets.cssInfluenciadores }}">
+	{%- else %}
 	<style>{{ assets.fontFace | safe }}</style>
 	<link rel="stylesheet" href="{{ assets.css }}">
+	{%- endif %}
 	{%- include "partials/schema.njk" %}
 	<script>window.OLORIN_CONFIG = {{ {
 		whatsapp: cfg.WHATSAPP,
@@ -70,21 +86,28 @@
 		adsId: cfg.GADS_CONVERSION_ID,
 		adsLabel: cfg.GADS_CONVERSION_LABEL,
 		agendamento: cfg.SCHEDULING_URL,
+		ga4PeloGtm: cfg.GA4_E_PIXEL_PELO_GTM === true,
 		modo: modoPagina,
 		slug: slug or "",
+		segmento: segmento or "site",
 		cursor: cfg.CURSOR_ESTRELA
 	} | jsonSeguro | safe }};</script>
+	{#- IDs de medição e link de agenda editáveis com o site no ar (public_html/olorin-ids.js, ver
+	    src/servidor/olorin-ids.njk). Com defer, roda antes do pacote principal, na ordem do HTML. -#}
+	<script src="/olorin-ids.js" defer></script>
 	<script src="{{ assets.js }}" defer></script>
 </head>
-<body class="o-modo-{{ modoPagina }}{% if cabecalho != 'minimo' %} o-tem-barra{% endif %}" data-mode="{{ 'campanha' if modoPagina == 'promo' else modoPagina }}">
+<body class="o-modo-{{ modoPagina }}{% if tema %} o-tema-{{ tema }}{% endif %}{% if cabecalho != 'minimo' %} o-tem-barra{% endif %}" data-mode="{{ 'campanha' if modoPagina == 'promo' else modoPagina }}">
 {% include "partials/svg-simbolos.njk" %}
 <a class="o-pular" href="#conteudo">Pular para o conteúdo</a>
-{% if cabecalho == "minimo" %}{% include "partials/cabecalho-minimo.njk" %}{% else %}{% include "partials/cabecalho.njk" %}{% endif %}
+{% if cabecalho == "minimo" %}{% include "partials/cabecalho-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/cabecalho-educacao.njk" %}{% elif cabecalho == "influenciadores" %}{% include "partials/cabecalho-influenciadores.njk" %}{% else %}{% include "partials/cabecalho.njk" %}{% endif %}
 <main id="conteudo" class="o-main" tabindex="-1">
 {{ content | safe }}
 </main>
-{% if cabecalho == "minimo" %}{% include "partials/rodape-minimo.njk" %}{% else %}{% include "partials/rodape.njk" %}{% endif %}
+{% if cabecalho == "minimo" %}{% include "partials/rodape-minimo.njk" %}{% elif cabecalho == "educacao" %}{% include "partials/rodape-educacao.njk" %}{% elif cabecalho == "influenciadores" %}{% include "partials/rodape-influenciadores.njk" %}{% else %}{% include "partials/rodape.njk" %}{% endif %}
 {% include "partials/flutuantes.njk" %}
-{% if temRastreamento %}{% include "partials/cookies.njk" %}{% endif %}
+{#- O aviso de cookies vai escondido em todas as páginas: os IDs também podem chegar pelo olorin-ids.js,
+    e o main.js só mostra o aviso quando existe algum. -#}
+{% include "partials/cookies.njk" %}
 </body>
 </html>

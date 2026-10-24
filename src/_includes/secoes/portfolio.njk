@@ -1,28 +1,37 @@
-{#- ===== SEÇÃO: Portfólio com filtros — src/content/portfolio.yml ===== -#}
+{#- ===== SEÇÃO: Portfólio com filtros por serviço, de src/content/portfolio.yml (só trabalhos reais) ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- set t = P.portfolio -%}
 {%- set p = conteudo.portfolio -%}
+{%- set trabalhos = conteudo.portfolioPublicado or [] -%}
+{%- if t.limite %}{% set trabalhos = trabalhos.slice(0, t.limite) %}{% endif %}
+{%- if trabalhos.length %}
 <section class="o-sec o-portfolio o-ctx-branco" id="portfolio" data-secao="portfolio" aria-labelledby="portfolio-titulo">
 	<div class="o-wrap">
 		<p class="o-etiqueta">{{ t.etiqueta }}</p>
 		<h2 class="o-titulo o-titulo--g" id="portfolio-titulo">{{ t.titulo }}</h2>
+		{%- if t.texto %}<p class="o-apoio">{{ t.texto }}</p>{% endif %}
 		<div class="o-filtros" role="group" aria-label="Filtrar trabalhos" data-o-filtros hidden>
 			<button class="o-filtro" type="button" aria-pressed="true" data-filtro="*">{{ t.filtro_todos }}</button>
 			{%- for f in p.filtros %}
-			<button class="o-filtro" type="button" aria-pressed="false" data-filtro="{{ f.id }}">{{ f.rotulo }}</button>
+			{%- if (trabalhos | filtrarPor("servicos", f.id)).length %}
+			<button class="o-filtro" type="button" aria-pressed="false" data-filtro="{{ f.id }}">{% if f.curto %}<span class="o-filtro__longo">{{ f.rotulo }}</span><span class="o-filtro__curto">{{ f.curto }}</span>{% else %}{{ f.rotulo }}{% endif %}</button>
+			{%- endif %}
 			{%- endfor %}
 		</div>
 		<ul class="o-trabalhos" data-o-trabalhos>
-		{%- for item in p.itens %}
-			<li class="o-trabalho" data-categorias="{{ item.categorias | join(' ') }}">
+		{%- for item in trabalhos %}
+			<li class="o-trabalho" data-categorias="{{ item.servicos | join(' ') }}">
 				<figure>
-					<span class="o-trabalho__barra" aria-hidden="true">projeto_{{ "0" + loop.index if loop.index < 10 else loop.index }}.jpg</span>
-					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 767px) 46vw, (max-width: 1100px) 30vw, 300px" }) | safe }}
-					<figcaption class="o-trabalho__legenda"><strong>{{ item.titulo }}</strong><span>{{ item.rotulo }}</span></figcaption>
+					{{ imagem(imagens, item.imagem, { sizes: "(max-width: 719px) 48vw, (max-width: 1400px) 30vw, 430px", classePicture: "o-trabalho__imagem" }) | safe }}
+					<figcaption class="o-trabalho__legenda"><strong>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.titulo }}</a>{% else %}{{ item.titulo }}{% endif %}</strong><span class="o-trabalho__tipo">{% for tipo in item.rotulo.split(" · ") %}<span>{{ tipo }}{% if not loop.last %} ·{% endif %}</span>{% if not loop.last %} {% endif %}{% endfor %}</span></figcaption>
 				</figure>
 			</li>
 		{%- endfor %}
 		</ul>
-		<p class="o-centro"><a class="o-btn o-btn--contorno" href="{{ site.config.INSTAGRAM_URL }}" target="_blank" rel="noopener">{{ t.botao }}</a></p>
+		<p class="o-vitrine__acoes">
+			{%- if t.link_mais and (conteudo.portfolioPublicado.length > trabalhos.length) %}<a class="o-btn o-btn--preto" href="{{ t.link_mais.url }}">{{ t.link_mais.texto }}</a> {% endif -%}
+			<a class="o-btn o-btn--contorno" href="{{ site.config.INSTAGRAM_URL }}" target="_blank" rel="noopener"><span class="o-icone o-icone--instagram" aria-hidden="true"></span>{{ t.botao }}</a>
+		</p>
 	</div>
 </section>
+{%- endif %}

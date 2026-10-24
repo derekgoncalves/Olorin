@@ -1,0 +1,44 @@
+COMO PUBLICAR O SITE OLORIN v5 (WebFTP da Locaweb)
+====================================================
+Data: 13/10/2026 · Pacote: olorin-site-v5.zip
+
+O QUE MUDOU
+-----------
+- Home reorganizada: banner, números, checklist, serviços, método curto,
+  equipe, planos, 6 dúvidas e o formulário do Raio-X no fim.
+- Páginas novas: /planos/ (planos, calculadora e todas as dúvidas)
+  e /como-trabalhamos/ (método completo, Raio-X e relatório de exemplo).
+- Menu: Serviços, Como trabalhamos, Planos, Educação e Sobre.
+- Redes sociais (Instagram, Facebook, LinkedIn e X) no rodapé,
+  no menu do celular e no bloco final da home.
+- Planos: Gestão a partir de R$ 2.500, 360 a partir de R$ 5.000,
+  loja virtual (e-commerce) a partir de R$ 10.000.
+- Textos das páginas de serviço, Sobre e dúvidas revisados.
+- Animações de entrada, de rolagem e transição entre páginas.
+
+NÃO APAGUE NEM SUBSTITUA
+------------------------
+- config.php (ou olorin-config.php): é onde está a senha do e-mail.
+- A pasta leads/ e as planilhas dentro dela.
+
+PUBLICAR
+--------
+Caminho A: o WebFTP descompacta zip
+  1. Entre na pasta public_html.
+  2. Envie o olorin-site-v5.zip sem descompactar.
+  3. Selecione o zip e escolha Descompactar / Extrair ali mesmo.
+     Se perguntar sobre arquivos existentes, escolha SUBSTITUIR.
+  4. Apague o olorin-site-v5.zip do servidor.
+
+Caminho B: o WebFTP não descompacta
+  1. No computador, descompacte o olorin-site-v5.zip.
+  2. Envie tudo para dentro de public_html, substituindo os antigos.
+  3. As pastas planos/ e como-trabalhamos/ são novas: crie cada uma
+     dentro de public_html e envie o index.html delas para dentro.
+
+TESTAR
+------
+1. Abra olorin.com.br no celular e no computador (Ctrl+F5 se parecer igual).
+2. Abra olorin.com.br/planos/ e olorin.com.br/como-trabalhamos/.
+3. Envie o formulário do fim da home com o seu número e confira se o
+   e-mail chegou em digital@olorin.com.br.

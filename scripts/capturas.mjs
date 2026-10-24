@@ -55,6 +55,8 @@ async function capturar(navegador, base, paginas, prefixo, problemas) {
 		for (const pg of paginas) {
 			erros = [];
 			await p.goto(base + pg, { waitUntil: 'networkidle' });
+			// Desenha a página inteira (as seções abaixo da dobra usam content-visibility; ver base.css).
+			await p.evaluate(() => document.documentElement.classList.add('o-cv-tudo'));
 			// Rola até o fim para carregar imagens "lazy" e disparar as animações de entrada.
 			await p.evaluate(async () => {
 				for (let y = 0; y < document.body.scrollHeight; y += 700) {

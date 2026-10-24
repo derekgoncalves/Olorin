@@ -38,23 +38,64 @@ export const ORDEM_CSS = [
 	'componentes/portfolio.css',
 	'componentes/card-pessoa.css',
 	'componentes/relatorio.css',
-	'componentes/card-plano.css',
 	'componentes/calculadora.css',
 	'componentes/acordeao.css',
 	'componentes/formulario.css',
 	'componentes/orcamento.css',
+	'componentes/chapa.css', // 23/10/2026: chapa do Raio-X (celular normal, flash e raio-x do celular), em todas as páginas e LPs
 	'componentes/rodape.css',
 	'componentes/flutuantes.css',
 	'componentes/cookies.css',
 	'componentes/pagina.css',
 	'componentes/servico.css',
+	'componentes/montagem.css', // 23/10/2026: montagem do celular (saiu do banner da home e foi para Redes sociais)
 	'componentes/sobre.css',
 	'componentes/promo.css',
 	'componentes/erro.css',
 	'componentes/estilo.css',
+	'componentes/sociais.css',
+	'componentes/prova.css',
+	// 13/10/2026 (versão final): cada área do site tem o seu arquivo.
+	'componentes/fundos.css', // fundos animados e interações de desktop (todas as páginas)
+	'componentes/home.css', // blocos novos da home (resultados, Raio-X, atalho do banner)
+	'componentes/perfil.css', // Quem somos e perfis da equipe
+	'componentes/educacao.css', // LP Olorin Educação (tema próprio: .o-tema-educacao)
+	'componentes/influenciadores.css', // 23/10/2026: LP Olorin para influenciadores (tema próprio: .o-tema-influenciadores)
 	'animacoes.css',
 	'responsivo.css',
 ];
+
+/* Arquivos que só a LP Olorin Educação usa. A LP carrega o olorin-educacao.<hash>.css, que é o CSS
+   completo na ordem acima; as outras páginas carregam o olorin.<hash>.css, sem estes arquivos
+   (as fontes da LP também ficam fora do @font-face embutido delas). */
+const SO_EDUCACAO = ['componentes/educacao.css'];
+/* 23/10/2026: a LP de influenciadores também tem o próprio arquivo (olorin-influenciadores.<hash>.css). */
+const SO_INFLUENCIADORES = ['componentes/influenciadores.css'];
+/* E o contrário: arquivos que a LP Olorin Educação não usa (ficam fora do CSS dela, que é mais justo). */
+const FORA_DA_EDUCACAO = [
+	'componentes/acordeao.css', 'componentes/breadcrumb.css', 'componentes/calculadora.css', 'componentes/card-pessoa.css',
+	'componentes/card-servico.css', 'componentes/checklist.css', 'componentes/estilo.css', 'componentes/metodo.css',
+	'componentes/prova.css', 'componentes/resultados.css', 'componentes/sobre.css', 'componentes/portfolio.css',
+	'componentes/orcamento.css', 'componentes/montagem.css', ...SO_INFLUENCIADORES,
+];
+/* Arquivos que a LP de influenciadores não usa. Ela usa o formulário do Raio-X igual ao da home
+   (orcamento.css e chapa.css), a faixa de logos (marquee.css) e as redes (sociais.css); banner, seções,
+   equipe e títulos são dela (influenciadores.css), por isso hero, home, página, serviço, resultados,
+   relatório e prova também ficam fora. */
+const FORA_DOS_INFLUENCIADORES = [
+	'componentes/acordeao.css', 'componentes/breadcrumb.css', 'componentes/calculadora.css', 'componentes/card-pessoa.css',
+	'componentes/card-servico.css', 'componentes/checklist.css', 'componentes/estilo.css', 'componentes/metodo.css',
+	'componentes/sobre.css', 'componentes/portfolio.css', 'componentes/perfil.css', 'componentes/montagem.css',
+	'componentes/promo.css', 'componentes/erro.css', 'componentes/hero.css', 'componentes/home.css',
+	'componentes/pagina.css', 'componentes/servico.css', 'componentes/resultados.css', 'componentes/relatorio.css',
+	'componentes/prova.css', ...SO_EDUCACAO,
+];
+/* Pacotes de CSS: o do site (todas as páginas menos as LPs) e o de cada LP. */
+const PACOTES = {
+	site: { prefixo: 'olorin.', fora: [...SO_EDUCACAO, ...SO_INFLUENCIADORES] },
+	educacao: { prefixo: 'olorin-educacao.', fora: FORA_DA_EDUCACAO },
+	influenciadores: { prefixo: 'olorin-influenciadores.', fora: FORA_DOS_INFLUENCIADORES },
+};
 
 /* Fontes pagas da marca. Métricas verticais iguais às das substitutas (medidas no manual)
    para que títulos, botões e etiquetas fiquem na mesma altura. */
@@ -106,9 +147,10 @@ export async function fontesLicenciadas() {
 	return ativas;
 }
 
-async function construirCss({ prod, saida }) {
+async function construirCss({ prod, saida, pacote = 'site' }) {
+	const { prefixo, fora } = PACOTES[pacote];
 	let css = '';
-	for (const arquivo of ORDEM_CSS) {
+	for (const arquivo of ORDEM_CSS.filter((a) => !fora.includes(a))) {
 		const caminho = path.join('src/styles', arquivo);
 		if (!existsSync(caminho)) {
 			throw new Error(`CSS não encontrado: ${caminho} (confira ORDEM_CSS em scripts/assets.mjs)`);
@@ -138,10 +180,10 @@ async function construirCss({ prod, saida }) {
 		targets: { chrome: 100 << 16, firefox: 100 << 16, safari: 15 << 16 },
 	});
 
-	const nome = `olorin.${hash(code)}.css`;
+	const nome = `${prefixo}${hash(code)}.css`;
 	const pasta = path.join(saida, 'assets/css');
 	await mkdir(pasta, { recursive: true });
-	await limparPasta(pasta, 'olorin.');
+	await limparPasta(pasta, prefixo);
 	await writeFile(path.join(pasta, nome), code);
 	return { href: `/assets/css/${nome}`, bytes: code.length, licenciadas, fontFace };
 }
@@ -167,7 +209,12 @@ async function construirJs({ prod, saida }) {
 }
 
 export async function construirAssets({ prod, saida }) {
-	const [css, js] = await Promise.all([construirCss({ prod, saida }), construirJs({ prod, saida })]);
+	const [css, cssEducacao, cssInfluenciadores, js] = await Promise.all([
+		construirCss({ prod, saida }),
+		construirCss({ prod, saida, pacote: 'educacao' }),
+		construirCss({ prod, saida, pacote: 'influenciadores' }),
+		construirJs({ prod, saida }),
+	]);
 	const fontes = [
 		// Pré-carregadas: só as usadas na primeira dobra.
 		css.licenciadas.find((f) => f.familia === 'Integral CF')
@@ -179,5 +226,12 @@ export async function construirAssets({ prod, saida }) {
 			? { href: css.licenciadas.find((f) => f.familia === 'Retro Computer').arquivo, tipo: css.licenciadas.find((f) => f.familia === 'Retro Computer').tipo }
 			: { href: '/assets/fonts/silkscreen-400.woff2', tipo: 'font/woff2' },
 	];
-	return { css: css.href, cssBytes: css.bytes, js: js.src, jsBytes: js.bytes, fontes, fontFace: css.fontFace, licenciadas: css.licenciadas.map((f) => f.familia) };
+	return {
+		css: css.href,
+		cssBytes: css.bytes,
+		cssEducacao: cssEducacao.href,
+		fontFaceEducacao: cssEducacao.fontFace,
+		cssInfluenciadores: cssInfluenciadores.href,
+		fontFaceInfluenciadores: cssInfluenciadores.fontFace,
+		js: js.src, jsBytes: js.bytes, fontes, fontFace: css.fontFace, licenciadas: css.licenciadas.map((f) => f.familia) };
 }

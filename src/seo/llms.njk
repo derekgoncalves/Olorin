@@ -5,27 +5,18 @@ eleventyExcludeFromCollections: true
 {%- set cfg = site.config -%}
 # {{ cfg.NOME }}
 
-> {{ cfg.LEMA }}. Agência de marketing digital em {{ cfg.CIDADE }} ({{ cfg.UF }}) que atende todo o Brasil: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, material impresso, site e loja virtual, rastreamento e relatório — feitos pelo mesmo time, com preço aberto e relatório em linguagem simples.
+> {{ cfg.LEMA if cfg.LEMA.endsWith(".") else cfg.LEMA + "." }} Agência de marketing digital com atendimento 100% remoto. Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, impressos, sites, ecommerce e sistemas web personalizados, rastreamento e relatórios. Atende organizações de todo tipo e tamanho, com relatório em linguagem simples. Agência parceira Meta e Google. O site não lista preços: o orçamento sai sob medida, junto com o Raio-X gratuito e personalizado da marca. Escolas e criadores de conteúdo têm frentes próprias: a Olorin Educação e a de influenciadores.
 
 - Site: {{ cfg.URL }}/
 - WhatsApp: {{ cfg.TELEFONE_EXIBICAO }} (https://wa.me/{{ cfg.WHATSAPP }})
 - E-mail: {{ cfg.EMAIL }}
 - Instagram: {{ cfg.INSTAGRAM_HANDLE }} ({{ cfg.INSTAGRAM_URL }})
-- Atendimento: 100% remoto, a partir de {{ cfg.CIDADE }}
+- Atendimento: 100% remoto
 
 ## Serviços
 {% for s in conteudo.servicos %}
-- [{{ s.nome }}]({{ ("/servicos/" + s.slug + "/") | urlAbsoluta }}): {{ s.resposta_curta | textoPuro }}{% if s.preco and s.preco.valor %} Preço: {{ s.preco.valor }}.{% endif %}
+- [{{ s.nome }}]({{ ("/servicos/" + s.slug + "/") | urlAbsoluta }}): {{ s.resposta_curta | textoPuro }}
 {%- endfor %}
-
-## Planos
-{% for p in conteudo.planos.planos %}
-- {{ p.nome }}: {{ p.valor | reais }} {{ p.periodo }}.{% if p.itens %} Inclui: {{ p.itens | join("; ") }}.{% endif %}
-{%- endfor %}
-{%- if conteudo.planos.nota %}
-
-{{ conteudo.planos.nota | textoPuro }}
-{%- endif %}
 
 ## Perguntas frequentes
 {% for f in conteudo.faq.perguntas %}
@@ -34,5 +25,12 @@ eleventyExcludeFromCollections: true
 
 ## Páginas
 - [Serviços]({{ "/servicos/" | urlAbsoluta }})
-- [Sobre a Olorin e a equipe]({{ "/sobre/" | urlAbsoluta }})
+- [Sobre: Método Olorin e perguntas frequentes]({{ "/sobre/" | urlAbsoluta }})
+- [Portfólio]({{ "/portfolio/" | urlAbsoluta }})
+- [Olorin Educação: marketing para instituições de ensino]({{ "/educacao/" | urlAbsoluta }})
+- [Influenciadores: marketing para criadores de conteúdo e perfis]({{ "/influenciadores/" | urlAbsoluta }})
+- [Quem somos: a Olorin e a equipe]({{ "/quem-somos/" | urlAbsoluta }})
+{%- for p in conteudo.equipe.pessoas %}
+- [{{ p.nome }}, {{ p.cargo or p.funcao }}]({{ ("/quem-somos/" + p.slug + "/") | urlAbsoluta }})
+{%- endfor %}
 - [Política de Privacidade]({{ "/politica-de-privacidade/" | urlAbsoluta }})

@@ -1,4 +1,4 @@
-{#- ===== SEÇÃO: Dúvidas (FAQ) — src/content/faq.yml (o mesmo texto vai para o JSON-LD) ===== -#}
+{#- ===== SEÇÃO: Dúvidas (FAQ completa) — só na página /sobre/; perguntas em src/content/faq.yml (o mesmo texto vai para o JSON-LD) ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set t = P.duvidas -%}
@@ -8,8 +8,12 @@
 			<p class="o-etiqueta">{{ t.etiqueta }}</p>
 			<h2 class="o-titulo o-titulo--g" id="duvidas-titulo">{{ t.titulo }}</h2>
 			<p class="o-apoio">{{ t.texto }}</p>
-			<a class="o-btn o-btn--contorno" href="{{ waLink('faq', { tipo: 'duvida' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.botao }}</a>
+			{{ ui.botaoRaioX("cta-raio-x-sobre-duvidas", classe="o-btn--preto") }}
 		</div>
-		{{ ui.faqLista(P.faq or conteudo.faq.perguntas) }}
+		<div>
+		{%- set perguntas = conteudo.faq.perguntas -%}
+		{%- if t.ids %}{% set perguntas = conteudo.faq.perguntas | filtrarIds(t.ids) %}{% endif %}
+		{{ ui.faqLista(perguntas) }}
+		</div>
 	</div>
 </section>

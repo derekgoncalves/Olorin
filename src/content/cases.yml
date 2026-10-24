@@ -1,42 +1,47 @@
 # Cases (PROMPT seção 12.2).
-# exibir: true   → aparece na seção Resultados da home. Os 3 exemplos abaixo ficaram ocultos em 10/10/2026 (plano de negócio: só prova real no site).
-# aprovado: true → além disso, ganha página própria em /cases/<slug>/, entra no menu ("Cases"),
-#                  aparece nas páginas dos serviços listados e no sitemap.
-#                  Só marque com o cliente de acordo e com TODOS estes campos preenchidos
-#                  (o build para com um aviso se faltar algum):
-#   cliente: Nome do cliente (ou deixe vazio e use só o segmento)
-#   situacao: Como estava antes (1 a 3 frases)
-#   o_que_fizemos: [lista do que foi feito]
-#   periodo: "90 dias (jan a mar/2026)"
-#   verba: "R$ 9 mil em anúncio no período"     (opcional)
-#   medicao: "Faturamento do painel da loja"     (opcional: como o resultado foi medido)
-#   imagem: id de uma imagem do src/assets/manifest.json   (opcional)
-#   depoimento: { texto: "...", nome: "...", cargo: "..." } (opcional, só autorizado)
+# Dono, 14/10/2026: por enquanto a Olorin não mostra cases de destaque. A home e as páginas
+# de serviço ficam sem o bloco de cases até haver resultados fortes. Para ligar de novo,
+# troque "destaque_no_site" para true e preencha resumo, destaque e detalhe de cada case.
+# A iZETA e o Dr. José Anacleto Abduch aparecem só de forma genérica: na Olorin Educação
+# (bloco "Quem já atendemos", campos do bloco "edu") e no portfólio. Sem resultado e sem detalhe.
+# Na Olorin Educação a ficha mostra só os campos do "edu" (sem a lista de serviços: a LP fala da
+# captação como um trabalho só). Dono, 23/10/2026: deixar claro que o Anacleto é venda de cursos e obras.
+# Regra: nenhum número inventado. Resultado só com número, período e como foi medido.
+# "pagina: true" cria também /cases/<slug>/ e exige: slug, segmento, situacao, o_que_fizemos
+# (lista), resultado, periodo, servicos (o build avisa se faltar).
+destaque_no_site: false
 itens:
-  - slug: e-commerce-de-moda
-    exibir: false
-    aprovado: false
-    janela: case_01.exe
-    segmento: E-commerce de moda
-    servicos_texto: Tráfego pago + conteúdo + site
-    servicos: [trafego-pago, redes-sociais, site-e-loja-virtual]
-    resultado: R$ 380k
-    detalhe: faturado em 90 dias
-  - slug: clinica-estetica
-    exibir: false
-    aprovado: false
-    janela: case_02.exe
-    segmento: Clínica estética
-    servicos_texto: Meta Ads + identidade visual
-    servicos: [trafego-pago, identidade-visual]
-    resultado: 8x
-    detalhe: de retorno sobre investimento
-  - slug: industria-alimenticia
-    exibir: false
-    aprovado: false
-    janela: case_03.exe
-    segmento: Indústria alimentícia
-    servicos_texto: Impresso + redes sociais + campanha
-    servicos: [material-impresso, redes-sociais, trafego-pago]
-    resultado: 3 meses
-    detalhe: do zero ao mercado
+  - slug: izeta
+    cliente: iZETA
+    logo: izeta-cor.svg
+    segmento: Educação em saúde
+    janela: cliente_izeta.olo
+    servicos_texto: Sites · Tráfego pago · Redes sociais
+    servicos: [site-e-loja-virtual, trafego-pago, redes-sociais]
+    edu:
+      nome: iZETA Educação
+      campos:
+        - rotulo: Segmento
+          valor: Educação em saúde
+        - rotulo: Formato
+          valor: Edtech
+      site: https://izeta.com.br/
+      site_texto: izeta.com.br
+      logo_largura: 121
+  - slug: anacleto
+    cliente: José Anacleto Abduch
+    logo: anacleto-cor.svg
+    segmento: Direito Público
+    janela: cliente_anacleto.olo
+    servicos_texto: Sites · Tráfego pago · Redes sociais
+    servicos: [site-e-loja-virtual, trafego-pago, redes-sociais]
+    edu:
+      nome: Dr. José Anacleto Abduch
+      campos:
+        - rotulo: Segmento
+          valor: Direito Público
+        - rotulo: O que vende
+          valor: Cursos e obras (livros) de Direito Público
+      site: https://joseanacletoabduch.com.br/
+      site_texto: joseanacletoabduch.com.br
+      logo_largura: 300

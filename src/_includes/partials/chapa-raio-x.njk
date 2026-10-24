@@ -1,0 +1,55 @@
+{#-
+	CHAPA DO RAIO-X (23/10/2026): uma chapa de filme de raio-x com um celular. Estado A: o celular normal, de
+	frente, com a tela acesa (24/10/2026: celular realista com a página de verdade na tela). Um flash branco
+	(o disparo do raio-x) troca para o estado B: o raio-x real do mesmo celular, com o "O" da Olorin girando
+	como moeda, aceso, no círculo do carregador. Segura, outro flash, volta para A. Ciclo de 7 s em CSS
+	(componentes/chapa.css); o JS (modulos/chapa.js) só pausa fora da tela e começa do estado A quando a
+	chapa aparece. Movimento reduzido, botão de pausa (html.o-pausado) ou navegador sem animação: fica o
+	estado B parado, com a logo. É decoração: aria-hidden, sem texto importante dentro.
+
+	COMO USAR (o import precisa de "with context", por causa das imagens):
+	  {%- from "partials/chapa-raio-x.njk" import chapaRaioX with context -%}
+	  {{ chapaRaioX({ variante: "olorin", classe: "o-orcamento__chapa" }) }}
+	  {{ chapaRaioX({ variante: "educacao", classe: "o-edu-chapa" }) }}
+
+	Opções:
+	  variante  "olorin" (padrão): o "O" no círculo e a etiqueta "olorin · raio-x".
+	            "educacao": o "O" no círculo, a assinatura OLORIN + "educação" gravada mais abaixo nas costas
+	            do celular (na fonte de títulos da LP, --edu-titulo) e a etiqueta "olorin educação · raio-x";
+	            na tela do estado A, o perfil é da "sua escola".
+	  classe    classe extra no elemento (é nela que quem usa define o tamanho, ver abaixo).
+	  sizes     atributo sizes da imagem do raio-x. A imagem tem 59% da largura da chapa: passe essa conta
+	            para o tamanho que a chapa tem na página (padrão: "(max-width: 960px) 40vw, 200px").
+
+	Tamanho: a chapa é um retângulo em pé (3:4) com a largura em --chapa-l (padrão 300px). Defina
+	--chapa-l na sua classe, sempre em px/vw/clamp (as medidas internas são calculadas a partir dela), e
+	deixe o resto com o componente (ele já tem margin-top de 3,5% da largura para o prendedor, que sai por cima).
+	Exemplo: .o-edu-chapa { --chapa-l: clamp(220px, 24vw, 320px); }
+	O CSS (chapa.css) entra no CSS do site e das duas LPs e não depende de orcamento.css nem de educacao.css.
+	Cores: a chapa é preta azulada; o verde fica só dentro dela (no fundo violeta, o violeta encosta no preto).
+-#}
+{% macro chapaRaioX(opcoes = {}) %}
+{%- set edu = opcoes.variante == "educacao" -%}
+<div class="o-chapa o-chapa--{{ 'educacao' if edu else 'olorin' }}{{ (' ' + opcoes.classe) if opcoes.classe }}" aria-hidden="true" data-o-chapa>
+	<span class="o-chapa__prendedor"></span>
+	<span class="o-chapa__regua"></span>
+	<div class="o-chapa__aparelho">
+		{#- Estado A: o celular de frente, realista (24/10/2026, dono: "nada de cartoon"): foto montada do aparelho com
+		    a página de verdade na tela (a home; na variante educacao, a LP). Mesmo contorno do raio-x (489 x 996,
+		    cantos de 77). Imagens em src/assets/manifest-chapa.json (chapa-frente-olorin / chapa-frente-educacao). -#}
+		<span class="o-chapa__frente">{{ imagem(imagens, "chapa-frente-educacao" if edu else "chapa-frente-olorin", { alt: "", sizes: opcoes.sizes or "(max-width: 960px) 40vw, 200px", classe: "o-chapa__frente-img" }) | safe }}</span>
+		{#- Estado B: o raio-x do mesmo celular e a logo acesa no círculo do carregador. -#}
+		<div class="o-chapa__rx">
+			{{ imagem(imagens, "raio-x-celular", { alt: "", sizes: opcoes.sizes or "(max-width: 960px) 40vw, 200px", classe: "o-chapa__img" }) | safe }}
+			<span class="o-chapa__luz"></span>
+			<span class="o-chapa__moeda"><svg viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg></span>
+			{%- if edu %}
+			<span class="o-chapa__assinatura"><svg viewBox="0 0 731 125.6" focusable="false"><use href="#s-logo"></use></svg><span>educação</span></span>
+			{%- endif %}
+		</div>
+	</div>
+	<span class="o-chapa__etiqueta">{{ "olorin educação · raio-x" if edu else "olorin · raio-x" }}</span>
+	<span class="o-chapa__codigo"></span>
+	<span class="o-chapa__flash"></span>
+</div>
+{% endmacro %}

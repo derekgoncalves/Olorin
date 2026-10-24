@@ -1,0 +1,29 @@
+{#- ===== SEÇÃO: Faixa de logos de clientes (letreiro), logos em src/content/clientes.yml =====
+     Dono, 18/10/2026: a faixa é o pé do banner preto, no mesmo fundo dele (logos brancos), não outra faixa.
+     - Dentro do banner (home: hero.njk; páginas internas: logo antes do </section> do topo):
+         {% set faixa_pe = true %}{% include "secoes/faixa-clientes.njk" %}
+       Sem fundo próprio: usa o do banner, e o banner perde o respiro de baixo (a faixa fecha o banner).
+     - Logo depois de um banner preto, fora dele (landings /promo/, campanha-blocos.njk):
+         {% set faixa_pe = true %}{% set faixa_ctx = "preto" %} antes do include (emenda no banner de cima).
+     - Sem nada: seção própria, de fundo branco e com bordas (LP Educação, no meio da página). Outro fundo:
+         {% set faixa_ctx = "preto" %} (preto, branco, verde ou violeta).
+     A credencial Meta e Google saiu daqui (18/10/2026): fica no banner verde da home (resultados.njk).
+     Em cima dos logos, a etiqueta pequena em pixel (clientes.yml → etiqueta). -#}
+{%- set cl = conteudo.clientes or {} -%}
+{%- set logos = cl.itens or [] -%}
+{%- set fctx = faixa_ctx if faixa_ctx in ["preto", "branco", "verde", "violeta"] else ("" if faixa_pe else "branco") -%}
+{%- set escuro = faixa_pe or fctx in ["preto", "violeta"] -%}
+{%- if logos.length %}
+<section class="o-clientes{% if faixa_pe %} o-clientes--pe{% else %} o-sec{% endif %}{% if fctx %} o-ctx-{{ fctx }}{% endif %}" data-secao="clientes" aria-labelledby="clientes-titulo">
+	{#- Etiqueta visível (dono, 23/10/2026): "Marcas que o nosso time já atendeu" (clientes.yml → etiqueta). -#}
+	<h2 class="o-clientes__etiqueta" id="clientes-titulo">{{ cl.etiqueta or "Marcas atendidas" }}</h2>
+	<div class="o-faixa o-faixa--logos" data-o-faixa>
+		<ul class="o-faixa__trilho">
+		{%- for c in logos %}
+			<li><img src="/assets/img/clientes/{{ c.logo_escuro if (escuro and c.logo_escuro) else c.logo }}"{% if c.cor %} class="o-logo-cor"{% endif %} alt="{{ c.nome }}" loading="lazy" decoding="async" width="{{ c.largura or 120 }}" height="{{ c.altura or 40 }}" style="--logo-a: {{ c.altura or 40 }}"></li>
+		{%- endfor %}
+		</ul>
+		<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>
+	</div>
+</section>
+{%- endif %}

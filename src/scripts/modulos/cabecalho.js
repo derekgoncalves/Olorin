@@ -1,4 +1,4 @@
-/* Cabeçalho (fundo ao rolar, some ao descer), submenu de serviços, menu do celular e índice das páginas de serviço. */
+/* Cabeçalho (fundo ao rolar, some ao descer), listas de Serviços e Segmentos, menu do celular e índice das páginas de serviço. */
 import { $, $$, doc, raiz, temIO } from '../util.js';
 
 export function iniciarCabecalho() {
@@ -28,15 +28,23 @@ export function iniciarCabecalho() {
 	window.requestAnimationFrame(atualizar);
 }
 
+/* Listas suspensas do menu (Serviços e Segmentos): uma aberta por vez; Esc fecha e devolve o foco ao
+   botão; sair com o foco, clicar fora ou passar o mouse em outro item também fecha. */
 export function iniciarSubmenu() {
+	const listas = [];
 	$$('[data-o-sub]').forEach((item) => {
 		const botao = $('[data-o-sub-botao]', item);
 		if (!botao) return;
 		function abrir(aberto) {
+			if (aberto) listas.forEach((outra) => outra !== abrir && outra(false));
 			item.classList.toggle('is-open', aberto);
 			botao.setAttribute('aria-expanded', aberto ? 'true' : 'false');
 		}
+		listas.push(abrir);
 		botao.addEventListener('click', () => abrir(botao.getAttribute('aria-expanded') !== 'true'));
+		item.addEventListener('pointerenter', (e) => {
+			if (e.pointerType === 'mouse') listas.forEach((outra) => outra !== abrir && outra(false));
+		});
 		item.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape' && botao.getAttribute('aria-expanded') === 'true') {
 				abrir(false);
@@ -113,7 +121,8 @@ export function iniciarMenuCelular() {
 		}
 	});
 	window.addEventListener('resize', () => {
-		if (window.innerWidth > 1100 && menu.classList.contains('is-open')) fechar(false);
+		// Quando o botão do menu some (o menu do topo aparece: 1024 px no site, ver cabecalho.css), o do celular fecha.
+		if (menu.classList.contains('is-open') && botao.offsetParent === null) fechar(false);
 	});
 }
 

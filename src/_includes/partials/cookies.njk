@@ -1,20 +1,25 @@
-{#- Aviso de cookies (LGPD) — só existe quando há algum ID de rastreamento configurado.
+{#- Aviso de cookies (LGPD). Vai escondido em todas as páginas; o main.js só mostra quando há algum ID
+    de medição (do build ou do public_html/olorin-ids.js) e ainda não há escolha salva.
     Três ações com o mesmo peso visual; "Personalizar" abre as categorias. -#}
 <section class="o-cookies" role="dialog" aria-labelledby="cookies-titulo" aria-describedby="cookies-texto" data-o-cookies hidden>
-	<div class="o-cookies__barra" aria-hidden="true"><span>cookies.exe</span><span class="o-janela__ctrl"></span></div>
+	<div class="o-cookies__barra" aria-hidden="true"><span>cookies.olo</span><span class="o-janela__ctrl"></span></div>
 	<div class="o-cookies__corpo">
 		<h2 class="o-cookies__titulo" id="cookies-titulo">Cookies</h2>
-		<p id="cookies-texto">Usamos cookies para medir as visitas e melhorar nossos anúncios. Você escolhe o que aceita. <a href="/politica-de-privacidade/#cookies">Saiba mais</a>.</p>
+		<p id="cookies-texto">Usamos cookies para medir as visitas e o resultado dos nossos anúncios. Sem a sua permissão, nenhum cookie de medição é gravado. <a href="/politica-de-privacidade/#cookies">Saiba mais</a>.</p>
 		<form class="o-cookies__opcoes" data-o-cookies-opcoes hidden>
-			<label class="o-cookies__opcao"><input type="checkbox" checked disabled> <span><strong>Necessários</strong> — fazem o site funcionar. Sempre ligados.</span></label>
-			<label class="o-cookies__opcao"><input type="checkbox" name="analise" data-o-cookies-analise> <span><strong>Análise</strong> — contam visitas e cliques (Google Analytics).</span></label>
-			<label class="o-cookies__opcao"><input type="checkbox" name="marketing" data-o-cookies-marketing> <span><strong>Marketing</strong> — medem anúncios (Meta e Google Ads).</span></label>
+			<label class="o-cookies__opcao"><input type="checkbox" checked disabled> <span><strong>Necessários:</strong> fazem o site funcionar. Sempre ligados.</span></label>
+			<label class="o-cookies__opcao"><input type="checkbox" name="analise" data-o-cookies-analise> <span><strong>Análise:</strong> contam visitas e cliques (Google Analytics).</span></label>
+			<label class="o-cookies__opcao"><input type="checkbox" name="marketing" data-o-cookies-marketing> <span><strong>Marketing:</strong> medem anúncios (Meta e Google Ads).</span></label>
 			<button class="o-cookies__btn" type="button" data-o-cookies-salvar>Salvar escolha</button>
 		</form>
-		<div class="o-cookies__acoes" data-o-cookies-acoes>
-			<button class="o-cookies__btn" type="button" data-o-cookies-aceitar>Aceitar tudo</button>
-			<button class="o-cookies__btn" type="button" data-o-cookies-recusar>Recusar</button>
-			<button class="o-cookies__btn" type="button" data-o-cookies-personalizar>Personalizar</button>
+		{#- O hidden fica num invólucro: o .o-cookies__acoes tem display:grid, que venceria o hidden.
+		    "Persona&shy;lizar" quebra em duas linhas, como "Aceitar tudo", em vez de cortar o texto. -#}
+		<div data-o-cookies-acoes>
+			<div class="o-cookies__acoes">
+				<button class="o-cookies__btn" type="button" data-o-cookies-aceitar>Aceitar tudo</button>
+				<button class="o-cookies__btn" type="button" data-o-cookies-recusar>Recusar</button>
+				<button class="o-cookies__btn" type="button" data-o-cookies-personalizar>Persona&shy;lizar</button>
+			</div>
 		</div>
 	</div>
 </section>

@@ -59,13 +59,13 @@
     "equipe-natalia": {
       "arquivo_original": "src/assets/img-src/equipe/natalia-arruda.png",
       "categoria": "equipe",
-      "pessoa_ou_cliente": "Natália Arruda",
+      "pessoa_ou_cliente": "Natalia Arruda",
       "servico_tags": [
         "trafego-pago"
       ],
-      "alt": "Natália Arruda, de cabelo cacheado, sorrindo para a câmera",
+      "alt": "Natalia Arruda, de cabelo cacheado, sorrindo para a câmera",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos na mensagem (Natália, Vinicius, Derek) — conferir. Original pequeno (417×533): pedir uma foto maior.",
+      "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos na mensagem (Natalia, Vinícius, Derek) — conferir. Original pequeno (417×533): pedir uma foto maior.",
       "recorte": [
         0,
         6,
@@ -74,6 +74,7 @@
       ],
       "larguras": [
         320,
+        360,
         417
       ],
       "formatos": [
@@ -84,11 +85,11 @@
     "equipe-natalia-quadrada": {
       "arquivo_original": "src/assets/img-src/equipe/natalia-arruda.png",
       "categoria": "equipe",
-      "pessoa_ou_cliente": "Natália Arruda",
+      "pessoa_ou_cliente": "Natalia Arruda",
       "servico_tags": [
         "trafego-pago"
       ],
-      "alt": "Natália Arruda",
+      "alt": "Natalia Arruda",
       "autorizacao_de_uso": "confirmada",
       "observacoes": "Recorte 1:1 com foco no rosto.",
       "recorte": [
@@ -109,14 +110,14 @@
     "equipe-vinicius": {
       "arquivo_original": "src/assets/img-src/equipe/vinicius-mafra.webp",
       "categoria": "equipe",
-      "pessoa_ou_cliente": "Vinicius Mafra",
+      "pessoa_ou_cliente": "Vinícius Mafra",
       "servico_tags": [
         "identidade-visual",
         "redes-sociais",
         "material-impresso",
         "site-e-loja-virtual"
       ],
-      "alt": "Vinicius Mafra, de cabelo raspado, barba e jaqueta preta, olhando para o lado",
+      "alt": "Vinícius Mafra, de cabelo raspado, barba e jaqueta preta, olhando para o lado",
       "autorizacao_de_uso": "confirmada",
       "observacoes": "Enviada pelo dono em 08/10/2026. Identificação deduzida pela ordem das fotos — conferir.",
       "recorte": [
@@ -127,6 +128,7 @@
       ],
       "larguras": [
         320,
+        360,
         480,
         640
       ],
@@ -138,9 +140,9 @@
     "equipe-vinicius-quadrada": {
       "arquivo_original": "src/assets/img-src/equipe/vinicius-mafra.webp",
       "categoria": "equipe",
-      "pessoa_ou_cliente": "Vinicius Mafra",
+      "pessoa_ou_cliente": "Vinícius Mafra",
       "servico_tags": [],
-      "alt": "Vinicius Mafra",
+      "alt": "Vinícius Mafra",
       "autorizacao_de_uso": "confirmada",
       "observacoes": "Recorte 1:1 com foco no rosto.",
       "recorte": [
@@ -177,6 +179,7 @@
       ],
       "larguras": [
         320,
+        360,
         480,
         660
       ],
@@ -208,152 +211,235 @@
         "webp"
       ]
     },
-    "portfolio-marca-identidade": {
-      "arquivo_original": "src/assets/img-src/portfolio/marca-identidade.webp",
+    "portfolio-bravo-film-festival": {
+      "arquivo_original": "src/assets/img-src/portfolio/bravo-film-festival.webp",
       "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "pessoa_ou_cliente": "BRAVO Film Festival",
       "servico_tags": [
-        "identidade-visual"
-      ],
-      "alt": "Catálogo de cores aberto ao lado de um tablet com ilustrações coloridas",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória (não é trabalho da Olorin). Substituir por trabalhos reais.",
-      "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-campanha-trafego": {
-      "arquivo_original": "src/assets/img-src/portfolio/campanha-trafego.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
-        "trafego-pago"
-      ],
-      "alt": "Tablet com um estudo da letra A, caneta, fone de ouvido e um impresso laranja sobre a mesa",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
-      "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-impresso-catalogo": {
-      "arquivo_original": "src/assets/img-src/portfolio/impresso-catalogo.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
-        "material-impresso"
-      ],
-      "alt": "Celular mostrando um perfil com fotos organizadas em grade",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
-      "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-site-institucional": {
-      "arquivo_original": "src/assets/img-src/portfolio/site-institucional.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
-        "site-e-loja-virtual"
-      ],
-      "alt": "Estação de trabalho com dois monitores mostrando código, em um ambiente escuro",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
-      "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-redes-conteudo": {
-      "arquivo_original": "src/assets/img-src/portfolio/redes-conteudo.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
+        "identidade-visual",
         "redes-sociais"
       ],
-      "alt": "Mão erguendo um celular contra o céu azul",
+      "alt": "Arte do BRAVO Film Festival: o nome BRAVO em letras altas douradas, com a silhueta de uma pessoa saltando contra o céu",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-005). Trocar pelo arquivo original quando chegar.",
       "larguras": [
         320,
-        640
+        480,
+        640,
+        860
       ],
       "formatos": [
         "avif",
         "webp"
       ]
     },
-    "portfolio-campanha-google-ads": {
-      "arquivo_original": "src/assets/img-src/portfolio/campanha-google-ads.webp",
+    "portfolio-benca": {
+      "arquivo_original": "src/assets/img-src/portfolio/benca.webp",
       "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "pessoa_ou_cliente": "Bença (curta-metragem)",
+      "servico_tags": [
+        "identidade-visual",
+        "material-impresso"
+      ],
+      "alt": "Cartaz do curta-metragem Bença em um painel iluminado na parede",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-135). Trocar pelo arquivo original quando chegar.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-cartas-para-o-futuro": {
+      "arquivo_original": "src/assets/img-src/portfolio/cartas-para-o-futuro.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Cartas para o Futuro (série documental)",
+      "servico_tags": [
+        "identidade-visual",
+        "material-impresso"
+      ],
+      "alt": "Cartaz da série documental Cartas para o Futuro colado em um muro",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-010). Trocar pelo arquivo original quando chegar.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-governo-rs": {
+      "arquivo_original": "src/assets/img-src/portfolio/governo-rs.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Governo do Estado do Rio Grande do Sul",
+      "servico_tags": [
+        "identidade-visual",
+        "material-impresso"
+      ],
+      "alt": "Cartaz do workshop do Governo do Estado do RS segurado por uma pessoa",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Recorte 4:5 do PDF do Behance de Vinícius Mafra (print do navegador, imagem i-008). Trocar pelo arquivo original quando chegar.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-izeta": {
+      "arquivo_original": "src/assets/img-src/portfolio/izeta.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "iZETA Educação",
+      "servico_tags": [
+        "site-e-loja-virtual",
+        "trafego-pago",
+        "redes-sociais"
+      ],
+      "alt": "Logo da iZETA Educação",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Card de logo 4:5 (17/10/2026): izeta-cor.svg, vetorizado do PNG transparente enviado pelo dono, sobre #EAF1F2; rasterizado com sharp.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-anacleto-abduch": {
+      "arquivo_original": "src/assets/img-src/portfolio/anacleto-abduch.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Dr. José Anacleto Abduch Advocacia",
+      "servico_tags": [
+        "site-e-loja-virtual",
+        "trafego-pago",
+        "redes-sociais"
+      ],
+      "alt": "Logo do escritório Dr. José Anacleto Abduch Advocacia",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Card de logo 4:5 (17/10/2026): anacleto-cor.svg, vetorizado do PNG transparente enviado pelo dono, sobre creme #F1ECE2; rasterizado com sharp.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-john-deere": {
+      "arquivo_original": "src/assets/img-src/portfolio/john-deere.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "John Deere",
       "servico_tags": [
         "trafego-pago"
       ],
-      "alt": "Notebook aberto mostrando um painel com gráficos de resultados",
+      "alt": "Logo da John Deere: cervo amarelo sobre fundo verde",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
+      "observacoes": "Card de logo 4:5 composto em SVG e rasterizado com sharp: marca John Deere (simple-icons, CC0) em amarelo #FFDE00 sobre verde #367C2B, nome em Inter Black.",
       "larguras": [
-        300,
-        600
+        320,
+        480,
+        640,
+        860
       ],
       "formatos": [
         "avif",
         "webp"
       ]
     },
-    "portfolio-marca-producao": {
-      "arquivo_original": "src/assets/img-src/portfolio/marca-producao.webp",
+    "portfolio-centro-sul-shop": {
+      "arquivo_original": "src/assets/img-src/portfolio/centro-sul-shop.webp",
       "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
+      "pessoa_ou_cliente": "Centro Sul Shop",
+      "servico_tags": [
+        "trafego-pago"
+      ],
+      "alt": "Logo da Centro Sul Shop: carrinho de compras sobre uma etiqueta amarela",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Card de logo 4:5 (17/10/2026): centro-sul-shop-cor.svg, vetorizado do logo enviado pelo dono (JPG, fundo tirado), sobre #FFF4DC.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-national-geographic": {
+      "arquivo_original": "src/assets/img-src/portfolio/national-geographic.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "National Geographic",
+      "servico_tags": [],
+      "alt": "Logo da National Geographic: retângulo amarelo e o nome em branco sobre fundo preto",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Card de logo 4:5 (17/10/2026): vetorizado do logo enviado pelo dono (natgeo.png), versão para fundo escuro.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-harmonia-do-pet": {
+      "arquivo_original": "src/assets/img-src/portfolio/harmonia-do-pet.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Harmonia do Pet",
+      "servico_tags": [],
+      "alt": "Logo da Harmonia do Pet, Medicina Veterinária Integrativa, sobre fundo branco",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Card de logo 4:5 (24/10/2026): logo original enviado pelo dono (PNG), centrado sobre branco.",
+      "larguras": [
+        320,
+        480,
+        640,
+        860
+      ],
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "portfolio-olorin": {
+      "arquivo_original": "src/assets/img-src/portfolio/olorin.webp",
+      "categoria": "portfolio",
+      "pessoa_ou_cliente": "Olorin Digital",
       "servico_tags": [
         "identidade-visual"
       ],
-      "alt": "Pessoa trabalhando com ferramentas em uma bancada iluminada",
+      "alt": "Mãos digitando num notebook com o adesivo da marca Olorin",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
+      "observacoes": "Página 16 do manual da marca da Olorin (_brand/paginas/pagina-16.webp), recorte 4:5 de 720 x 900.",
       "larguras": [
-        300,
-        600
-      ],
-      "formatos": [
-        "avif",
-        "webp"
-      ]
-    },
-    "portfolio-impresso-loja": {
-      "arquivo_original": "src/assets/img-src/portfolio/impresso-loja.webp",
-      "categoria": "portfolio",
-      "pessoa_ou_cliente": "Exemplo ilustrativo",
-      "servico_tags": [
-        "material-impresso"
-      ],
-      "alt": "Roupas infantis estampadas penduradas em uma arara",
-      "autorizacao_de_uso": "confirmada",
-      "observacoes": "Imagem ilustrativa provisória.",
-      "larguras": [
-        300,
-        600
+        320,
+        480,
+        640,
+        720
       ],
       "formatos": [
         "avif",
