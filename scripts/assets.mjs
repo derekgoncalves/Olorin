@@ -79,12 +79,16 @@ const FORA_DA_EDUCACAO = [
 	'componentes/orcamento.css', 'componentes/montagem.css', ...SO_INFLUENCIADORES,
 ];
 /* Arquivos que a LP de influenciadores não usa. Ela usa o formulário do Raio-X igual ao da home
-   (orcamento.css e chapa.css) e a faixa de logos. */
+   (orcamento.css e chapa.css), a faixa de logos (marquee.css) e as redes (sociais.css); banner, seções,
+   equipe e títulos são dela (influenciadores.css), por isso hero, home, página, serviço, resultados,
+   relatório e prova também ficam fora. */
 const FORA_DOS_INFLUENCIADORES = [
 	'componentes/acordeao.css', 'componentes/breadcrumb.css', 'componentes/calculadora.css', 'componentes/card-pessoa.css',
 	'componentes/card-servico.css', 'componentes/checklist.css', 'componentes/estilo.css', 'componentes/metodo.css',
 	'componentes/sobre.css', 'componentes/portfolio.css', 'componentes/perfil.css', 'componentes/montagem.css',
-	'componentes/promo.css', 'componentes/erro.css', ...SO_EDUCACAO,
+	'componentes/promo.css', 'componentes/erro.css', 'componentes/hero.css', 'componentes/home.css',
+	'componentes/pagina.css', 'componentes/servico.css', 'componentes/resultados.css', 'componentes/relatorio.css',
+	'componentes/prova.css', ...SO_EDUCACAO,
 ];
 /* Pacotes de CSS: o do site (todas as páginas menos as LPs) e o de cada LP. */
 const PACOTES = {
