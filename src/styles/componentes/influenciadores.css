@@ -824,108 +824,173 @@ body .o-topo.o-inf-topo {
 	}
 }
 
-/* ---------- 6. Como funciona (branco) ---------- */
-.o-inf-passos__grade {
+/* ---------- 6. Como funciona: o roteiro de um reels numa folha impressa (24/10/2026) ---------- */
+.o-inf-roteiro__grade {
 	display: grid;
-	gap: clamp(48px, 6vw, 80px);
+	gap: clamp(44px, 6vw, 80px);
+	align-items: center;
 }
-.o-inf-passos__texto {
-	container-type: inline-size;
+.o-inf-roteiro__cta {
+	margin-top: clamp(24px, 3vw, 36px);
 }
-.o-inf-etapas {
+.o-inf-roteiro__mesa {
+	position: relative;
+	justify-self: center;
+	width: min(100%, 540px);
+	padding: 16px 0 clamp(70px, 9vw, 96px);
+}
+/* folha pautada, presa com fita, um pouco torta (margem lavanda: o verde do marca-texto fica longe dela) */
+.o-inf-folha {
+	position: relative;
+	padding: clamp(22px, 3.2vw, 36px) clamp(18px, 2.8vw, 32px) clamp(28px, 3.4vw, 40px) clamp(48px, 6vw, 68px);
+	background: #fbfaf5;
+	background-image: repeating-linear-gradient(180deg, transparent 0 33px, #dfe2ea 33px 34px);
+	color: #111;
+	font-family: var(--fonte-texto);
+	rotate: -2deg;
+	box-shadow: 0 22px 44px rgba(0, 0, 0, 0.55), 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+.o-inf-folha::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: clamp(34px, 4.4vw, 50px);
+	width: 2px;
+	background: var(--lavanda);
+}
+.o-inf-folha__fita {
+	position: absolute;
+	top: -15px;
+	left: 50%;
+	width: 128px;
+	height: 32px;
+	translate: -50% 0;
+	rotate: 4deg;
+	background: rgba(232, 230, 220, 0.78);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.o-inf-folha__cab {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 14px;
+	margin-bottom: clamp(16px, 2vw, 22px);
+	padding-bottom: 10px;
+	border-bottom: 2px solid #111;
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #444;
+}
+.o-inf-folha__cab strong {
+	margin-right: auto;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(22px, 2.4vw, 30px);
+	letter-spacing: 0;
+	color: #111;
+}
+.o-inf-cenas {
 	display: grid;
-	gap: 18px;
-	margin: clamp(20px, 3vw, 32px) 0 clamp(28px, 3.4vw, 40px);
+	gap: clamp(16px, 2vw, 22px);
+	margin: 0;
 	padding: 0;
 	list-style: none;
 }
-.o-inf-etapa {
-	display: grid;
-	grid-template-columns: 56px minmax(0, 1fr);
-	gap: 2px 18px;
+.o-inf-cena {
+	position: relative;
 }
-.o-inf-etapa__num {
-	grid-row: span 2;
-	display: grid;
-	place-items: center;
-	width: 56px;
-	height: 56px;
-	background: var(--preto);
-	color: var(--branco);
-	font-family: var(--inf-brat);
-	font-weight: 600;
-	font-size: 36px;
+/* o tempo fica na margem, à esquerda da linha lavanda; o do gancho, circulado de caneta */
+.o-inf-cena__tempo {
+	position: absolute;
+	right: calc(100% + clamp(14px, 2vw, 22px));
+	top: 0;
+	font-size: 12px;
 	line-height: 1;
-	box-shadow: 4px 4px 0 var(--violeta);
-	rotate: calc((var(--k) - 1) * 3deg);
+	color: #555;
 }
-.o-inf-etapa__titulo {
-	align-self: end;
-	margin-top: 4px !important;
+.o-inf-cena:first-child .o-inf-cena__tempo {
+	padding: 6px 5px;
+	margin-top: -6px;
+	border: 2px solid #111;
+	border-radius: 50%;
+	color: #111;
+	rotate: -8deg;
+}
+.o-inf-cena__rotulo {
+	margin: 0 !important;
+	font-size: 11px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: #666;
+}
+.o-inf-cena__fala {
+	margin: 4px 0 0 !important;
 	font-family: var(--fonte-titulo);
 	font-weight: 800;
-	font-size: clamp(15px, 1.4vw, 18px);
-	line-height: 1.2;
+	font-size: clamp(16px, 1.7vw, 20px);
+	line-height: 1.25;
 	text-transform: uppercase;
+	color: #111;
 }
-.o-inf-etapa__texto {
+.o-inf-cena__fala mark {
+	padding: 0 0.12em;
+	background: linear-gradient(180deg, transparent 14%, var(--verde) 14% 90%, transparent 90%);
+	color: inherit;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+.o-inf-cena__nota {
 	margin: 4px 0 0 !important;
-	font-size: 14px;
-	line-height: 1.55;
-	color: var(--cor-apoio);
-}
-/* Tela preta "ao vivo" com o adesivo saindo por cima */
-.o-inf-tela {
-	position: relative;
-	justify-self: center;
-	width: min(100%, 440px);
-	margin-top: clamp(60px, 9vw, 120px);
-	aspect-ratio: 4 / 4.4;
-	border: var(--borda) solid var(--preto);
-	background: var(--preto) var(--inf-linhas);
-	box-shadow: 10px 10px 0 var(--violeta);
-}
-.o-inf-tela::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: var(--grao) 0 0 / 200px;
-	opacity: 0.16;
-	pointer-events: none;
-}
-.o-inf-tela__ao-vivo {
-	position: absolute;
-	top: 16px;
-	left: 16px;
-	z-index: 3;
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	font-family: var(--fonte-pixel);
 	font-size: 13px;
-	letter-spacing: 0.12em;
-	color: var(--branco);
+	line-height: 1.5;
+	color: #333;
 }
-.o-inf-adesivo--corda {
+.o-inf-folha__postit {
 	position: absolute;
-	left: 50%;
-	bottom: -2px;
-	width: 62%;
-	translate: -50% 0;
-	rotate: 3deg;
+	right: clamp(-18px, -1.4vw, -8px);
+	bottom: clamp(-56px, -5vw, -40px);
+	width: clamp(118px, 13vw, 150px);
+	padding: 14px 12px 18px;
+	background: var(--verde);
+	color: var(--preto);
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(18px, 1.8vw, 22px);
+	line-height: 1.05;
+	rotate: 6deg;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
-.o-inf-adesivo--corda .o-inf-tag {
-	left: -30%;
-	top: 36%;
+/* o adesivo nunca cobre o texto da folha: no celular fica embaixo dela, ao lado do post-it; no computador, do lado */
+.o-inf-roteiro__mesa:has(.o-inf-roteiro__adesivo) {
+	padding-bottom: 252px;
+}
+.o-inf-roteiro__adesivo {
+	position: absolute;
+	left: -6px;
+	bottom: 0;
+	z-index: 2;
+	width: 120px;
 	rotate: -7deg;
 }
+.o-inf-roteiro__adesivo .o-inf-tag {
+	left: 48%;
+	top: -6%;
+	rotate: -6deg;
+}
 @media (min-width: 900px) {
-	.o-inf-passos__grade {
-		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-		align-items: center;
+	.o-inf-roteiro__grade {
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 	}
-	.o-inf-tela {
-		margin-top: 140px;
+}
+@media (min-width: 1200px) {
+	.o-inf-roteiro__mesa:has(.o-inf-roteiro__adesivo) {
+		padding-bottom: 96px;
+	}
+	.o-inf-roteiro__adesivo {
+		left: -164px;
+		width: 170px;
 	}
 }
 
@@ -1071,7 +1136,7 @@ body .o-topo.o-inf-topo {
 	}
 	/* Adesivos e cartões entram "colando" ao rolar (só onde o navegador tem animação por rolagem) */
 	@supports (animation-timeline: view()) {
-		:is(.o-inf-adesivo--fone, .o-inf-tela, .o-inf-perfil, .o-inf-pessoa__foto) {
+		:is(.o-inf-adesivo--fone, .o-inf-roteiro__mesa, .o-inf-perfil, .o-inf-pessoa__foto) {
 			animation: o-inf-cola linear both;
 			animation-timeline: view();
 			animation-range: entry 0% entry 70%;

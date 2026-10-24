@@ -298,12 +298,16 @@ html:not(.js) .o-hero__jogo {
 		top: calc(100% + 6px);
 		padding: 4px 6px;
 	}
+	/* Jogo maior no celular (dono, 24/10/2026: "aumenta mas sem exagerar"): ocupa 108% da largura da tela e
+	   corta só a ponta dos lados (o bonequinho entra pela borda); a faixa de logos pode descer um pouco. */
 	.o-hero__jogo {
 		flex: 1 1 0;
+		width: 108vw;
 		height: auto;
-		min-height: 84px;
-		max-height: calc(min(100cqi, 420px) * 0.375);
-		margin: 0 0 clamp(12px, 2svh, 20px);
+		min-height: 112px;
+		max-height: calc(108vw * 0.375);
+		margin: 0 calc(50% - 54vw) clamp(12px, 2svh, 20px);
+		overflow: hidden;
 	}
 	/* "Quero um Raio-X gratuito" numa linha só, do 320 ao 767: a letra segue a largura da coluna. */
 	.o-hero .o-hero__start {

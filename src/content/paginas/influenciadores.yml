@@ -85,14 +85,14 @@ para_quem:
   titulo: Feita para quem cria.
   # Palavra gigante, desfocada, no fundo verde (decoração).
   gigante: pra quem cria
-  texto: Do perfil que está ganhando tração ao criador que já vive de publi. Se o seu trabalho é o seu perfil, a Olorin entra com estratégia, produção e anúncio.
+  texto: Se o seu trabalho é o seu perfil, a Olorin entra com estratégia, produção e anúncio.
   perfis:
     - nome: Criadores e influenciadores
-      texto: Quem já posta com frequência e quer crescer com método, não no chute.
+      texto: Crescer com método, não no chute.
     - nome: Perfis que querem virar marca
-      texto: Especialistas e artistas que querem lançar produto, curso ou mentoria.
+      texto: Lançar produto, curso ou mentoria.
     - nome: Agentes e empresários
-      texto: Quem gerencia criadores e precisa de mídia kit, relatório e campanha.
+      texto: Mídia kit, relatório e campanha.
   fora: Não é para quem quer comprar seguidor.
   nichos_rotulo: Nichos que a gente atende
   nichos:
@@ -118,23 +118,23 @@ canais:
   itens:
     - canal: "01"
       nome: Estratégia e calendário
-      texto: Posicionamento, linha editorial e um calendário de conteúdo que cabe na sua rotina.
+      texto: Posicionamento, linha editorial e calendário.
       tag: planejamento
     - canal: "02"
       nome: Identidade visual e mídia kit
-      texto: Cara própria no feed, nos destaques e no mídia kit que você manda para as marcas.
+      texto: Feed, destaques e mídia kit.
       tag: visual
     - canal: "03"
       nome: Produção e edição
-      texto: Roteiro, edição e design de reels, carrosséis e stories.
+      texto: Reels, carrosséis e stories.
       tag: conteúdo
     - canal: "04"
       nome: Anúncios
-      texto: Campanhas na Meta e no Google para crescer, vender o seu produto, curso ou mentoria e atrair marcas.
+      texto: Meta e Google para crescer, vender e atrair marcas.
       tag: mídia paga
     - canal: "05"
       nome: Relatório todo mês
-      texto: O que funcionou, o que não funcionou e o próximo passo, sem enrolação.
+      texto: O que funcionou e o próximo passo.
       tag: dados
 
 # Banner com a foto do "quadro" das mãos, no visor de uma câmera gravando.
@@ -142,7 +142,7 @@ enquadramento:
   etiqueta: Estratégia antes do post
   titulo: Primeiro o enquadramento.
   titulo_destaque: depois o play.
-  texto: Para quem você fala, como você aparece e o que cada conteúdo precisa fazer. Com isso definido, cada post tem um motivo para existir.
+  texto: Para quem você fala, como aparece e o que cada post precisa fazer.
   botao: Quero o Raio-X do meu perfil
   visor:
     rec: REC
@@ -150,19 +150,31 @@ enquadramento:
     info: "4K · 60"
 
 como_funciona:
+  # 24/10/2026 (dono: "um banner super autêntico"): o Raio-X do perfil contado como o roteiro de um reels,
+  # numa folha impressa presa com fita, com marca-texto, post-it e o adesivo da corda.
   etiqueta: Como funciona
   titulo: O Raio-X do seu perfil.
-  texto: Gratuito e sem compromisso, em 3 passos.
+  texto: Em 3 cenas, sem compromisso.
+  roteiro:
+    titulo: Roteiro
+    formato: Reels · 0:30
+    take: Take 1
   passos:
-    - titulo: A gente olha o seu perfil
-      texto: Perfil, conteúdo, frequência, formatos e o que já roda de anúncio.
-    - titulo: Mostra o que trava
-      texto: E o que destravar primeiro, em ordem de prioridade.
-    - titulo: Você recebe o plano
-      texto: Sem compromisso. Se fizer sentido, a gente toca junto.
+    - tempo: "0:00"
+      cena: Gancho
+      titulo: A gente olha o seu perfil.
+      texto: Conteúdo, frequência, formatos e anúncios.
+    - tempo: "0:03"
+      cena: Virada
+      titulo: Mostra o que trava.
+      texto: E o que destravar primeiro.
+    - tempo: "0:20"
+      cena: Chamada
+      titulo: Você recebe o plano.
+      texto: Se fizer sentido, a gente toca junto.
+  postit: Grátis e sem compromisso!
   botao: Quero o Raio-X do meu perfil
   adesivo_tag: "#gravando"
-  tela: AO VIVO
 
 equipe:
   etiqueta: Quem faz

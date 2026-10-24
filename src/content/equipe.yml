@@ -4,7 +4,7 @@
 # As frentes de cada pessoa saem do quem_faz de cada serviço (src/content/servicos/*.yml).
 # "destaques" são os números do perfil, tirados só da bio; o perfil acrescenta sozinho "frentes que coordena".
 # Links de LinkedIn e Instagram de cada pessoa: por enquanto não (dono, 14/10/2026). Campo opcional redes: [{ nome, url }].
-# "emojis": 3 por pessoa, no topo do perfil (dono, 17/10/2026: Natalia com cérebro e salto alto; os outros escolhidos por nós).
+# "emojis": 3 por pessoa, no topo do perfil (dono, 17/10/2026: Natalia com cérebro e salto alto; 24/10/2026: Vinícius com o carinha de óculos, Derek com o megafone).
 # "credencial": linha com logos no perfil (marcas = arquivos de /assets/img/marcas/). 23/10/2026 (dono): a parceria
 # Meta e Google é da agência ("Agência parceira Meta e Google", na home e nas páginas de serviço); no perfil fica só
 # o que a pessoa faz, sem dizer que a parceria é dela.
@@ -34,7 +34,7 @@ pessoas:
     descricao: "Vinícius Mafra dirige criação e design na Olorin Digital: mais de 10 anos em direção de arte e identidade visual, de influenciadores a produções culturais."  # meta description do perfil (até 155 caracteres)
     foto: equipe-vinicius
     janela: vinícius.jpg
-    emojis: ["🎨", "✏️", "🎬"]
+    emojis: ["🎨", "🤓", "🎬"]
     destaques:
       - { valor: "10+", rotulo: anos em design e direção de arte }
   - slug: derek-goncalves
@@ -46,7 +46,7 @@ pessoas:
     descricao: "Derek Gonçalves dirige operações e relacionamento na Olorin Digital: mais de 8 anos em comunicação política e institucional."  # meta description do perfil (até 155 caracteres)
     foto: equipe-derek
     janela: derek.jpg
-    emojis: ["🤝", "📋", "💬"]
+    emojis: ["🤝", "📣", "💬"]
     destaques:
       - { valor: "8+", rotulo: anos em comunicação política e institucional }
       - { valor: "1º", rotulo: contato da sua conta }

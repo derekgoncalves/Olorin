@@ -151,29 +151,38 @@ fontes_extra:
 	</div>
 </section>
 
-{#- ===== 6. Como funciona o Raio-X do perfil: 3 passos e o adesivo da corda saindo da tela ===== -#}
+{#- ===== 6. Como funciona: o Raio-X do perfil contado como o roteiro de um reels (24/10/2026, dono: "um banner
+     super autêntico", no espírito do calendário da Educação). Folha impressa presa com fita, marca-texto verde
+     no gancho, post-it e o adesivo da corda. Textos em influenciadores.yml → como_funciona. ===== -#}
 {%- set t = I.como_funciona -%}
-<section class="o-sec o-inf-sec o-inf-passos o-ctx-branco" id="como-funciona" data-secao="como-funciona" aria-labelledby="inf-passos-titulo">
-	<div class="o-wrap o-inf-passos__grade">
-		<div class="o-inf-passos__texto">
+<section class="o-sec o-inf-sec o-inf-roteiro o-ctx-preto" id="como-funciona" data-secao="como-funciona" aria-labelledby="inf-passos-titulo">
+	<div class="o-wrap o-inf-roteiro__grade">
+		<div class="o-inf-roteiro__texto">
 			<p class="o-inf-etiqueta">{{ t.etiqueta }}</p>
 			<h2 class="o-inf-h2" id="inf-passos-titulo">{{ t.titulo }}</h2>
 			<p class="o-inf-apoio">{{ t.texto }}</p>
-			<ol class="o-inf-etapas" role="list">
-			{%- for p in t.passos %}
-				<li class="o-inf-etapa" style="--k: {{ loop.index0 }}">
-					<span class="o-inf-etapa__num" aria-hidden="true">{{ loop.index }}</span>
-					<h3 class="o-inf-etapa__titulo">{{ p.titulo }}</h3>
-					<p class="o-inf-etapa__texto">{{ p.texto }}</p>
-				</li>
-			{%- endfor %}
-			</ol>
-			{{ botaoRaio("cta-raio-x-influencer-como-funciona", t.botao, "", "preto") }}
+			<div class="o-inf-roteiro__cta">{{ botaoRaio("cta-raio-x-influencer-como-funciona", t.botao) }}</div>
 		</div>
-		<div class="o-inf-tela" data-o-inf-entra>
-			<span class="o-inf-tela__ao-vivo" aria-hidden="true"><i class="o-inf-ponto"></i>{{ t.tela }}</span>
-			<figure class="o-inf-adesivo o-inf-adesivo--corda">
-				{{ imagem(imagens, "influenciadores-corda", { sizes: "(max-width: 899px) 70vw, 420px", classe: "o-inf-adesivo__img" }) | safe }}
+		<div class="o-inf-roteiro__mesa" data-o-inf-entra>
+			<div class="o-inf-folha">
+				<span class="o-inf-folha__fita" aria-hidden="true"></span>
+				<div class="o-inf-folha__cab" aria-hidden="true"><strong>{{ t.roteiro.titulo }}</strong><span>{{ t.roteiro.formato }}</span><span>{{ t.roteiro.take }}</span></div>
+				<ol class="o-inf-cenas" role="list">
+				{%- for p in t.passos %}
+					<li class="o-inf-cena">
+						<span class="o-inf-cena__tempo" aria-hidden="true">{{ p.tempo }}</span>
+						<div class="o-inf-cena__corpo">
+							<p class="o-inf-cena__rotulo">Cena {{ loop.index }} · {{ p.cena }}</p>
+							<h3 class="o-inf-cena__fala">{% if loop.first %}<mark>{{ p.titulo }}</mark>{% else %}{{ p.titulo }}{% endif %}</h3>
+							<p class="o-inf-cena__nota">{{ p.texto }}</p>
+						</div>
+					</li>
+				{%- endfor %}
+				</ol>
+				<span class="o-inf-folha__postit" aria-hidden="true">{{ t.postit }}</span>
+			</div>
+			<figure class="o-inf-adesivo o-inf-adesivo--corda o-inf-roteiro__adesivo">
+				{{ imagem(imagens, "influenciadores-corda", { sizes: "(max-width: 899px) 40vw, 260px", classe: "o-inf-adesivo__img" }) | safe }}
 				<span class="o-inf-tag" aria-hidden="true">{{ t.adesivo_tag }}</span>
 			</figure>
 		</div>
