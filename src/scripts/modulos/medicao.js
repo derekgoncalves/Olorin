@@ -1,6 +1,7 @@
-/* Cliques em CTAs, WhatsApp e cards de serviço; profundidade de rolagem; seções vistas; lead na /obrigado/. */
+/* Cliques em CTAs, WhatsApp e cards de serviço; profundidade de rolagem; seções vistas; lead nas páginas de obrigado. */
 import { $, $$, doc, CONFIG, temIO, origemWhatsApp, lerArmazenamento, gravarArmazenamento } from '../util.js';
 import { track } from './rastreamento.js';
+import { converter, quandoDecidir } from './consentimento.js';
 
 export function iniciarCliques() {
 	doc.addEventListener('click', (e) => {
@@ -8,7 +9,9 @@ export function iniciarCliques() {
 		if (!link) return;
 		const href = link.getAttribute('href') || '';
 		if (/^https:\/\/wa\.me\//.test(href)) {
-			track('whatsapp_click', { origem: origemWhatsApp(href), servico: link.getAttribute('data-servico') || (CONFIG.slug || '').replace(/^(servico|promo)-/, '') });
+			const origem = origemWhatsApp(href);
+			track('whatsapp_click', { origem, servico: link.getAttribute('data-servico') || (CONFIG.slug || '').replace(/^(servico|promo)-/, '') });
+			converter('whatsapp', { origem });
 		}
 		const id = link.id && link.id.indexOf('cta-') === 0 ? link.id : link.getAttribute('data-cta');
 		if (id) {
@@ -65,20 +68,40 @@ export function iniciarSecoes() {
 	$$('[data-secao]').forEach((s) => io.observe(s));
 }
 
-/* /obrigado/: generate_lead uma única vez por envio (token guardado na sessão). */
+/* Páginas de obrigado (/obrigado/, /obrigado-educacao/, /obrigado-influenciadores/): link de agenda (do build
+   ou do olorin-ids.js) e generate_lead uma única vez por envio (token guardado na sessão). */
 export function iniciarObrigado() {
 	if (!$('[data-o-obrigado]')) return;
+	const agenda = $('[data-o-agendar]');
+	const url = CONFIG.agendamento || '';
+	if (agenda && /^https:\/\/[^\s"'<>]+$/.test(url)) {
+		const link = $('a', agenda);
+		link.href = url;
+		link.target = '_blank';
+		link.rel = 'noopener';
+		agenda.hidden = false;
+	}
 	const pendente = lerArmazenamento('sessionStorage', 'olorin_lead_pendente');
 	const feitos = lerArmazenamento('sessionStorage', 'olorin_leads_registrados') || [];
-	if (!pendente || feitos.indexOf(pendente.token) > -1) return;
-	track('generate_lead', {
+	if (!pendente || !pendente.token || feitos.indexOf(pendente.token) > -1) return;
+	// Marca já: recarregar a página nunca repete a conversão.
+	feitos.push(pendente.token);
+	gravarArmazenamento('sessionStorage', 'olorin_leads_registrados', feitos.slice(-20));
+	gravarArmazenamento('sessionStorage', 'olorin_lead_pendente', null);
+	const lead = {
+		segmento: pendente.segmento || CONFIG.segmento || 'site',
 		plano: pendente.plano || '',
 		servicos: pendente.servicos || '',
+		desafios: pendente.desafios || '',
+		porte: pendente.porte || '',
 		verba_faixa: pendente.verba_faixa || '',
 		servico_pagina: pendente.servico_pagina || '',
 		posicao: pendente.posicao || '',
-	});
-	feitos.push(pendente.token);
-	gravarArmazenamento('sessionStorage', 'olorin_leads_registrados', feitos);
-	gravarArmazenamento('sessionStorage', 'olorin_lead_pendente', null);
+	};
+	// Sem resposta ao aviso de cookies, espera a escolha por até 8 s (ou a saída da página):
+	// com o aceite, a conversão já sai completa para o GA4, a Meta e o Google Ads.
+	quandoDecidir(() => {
+		track('generate_lead', lead);
+		converter('lead', lead);
+	}, 8000);
 }

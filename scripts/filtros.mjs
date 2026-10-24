@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 const config = JSON.parse(readFileSync('src/_data/site/config.json', 'utf8'));
 
 const MENSAGENS = {
-	padrao: 'Oi! Vim pelo site da Olorin e quero um orçamento.',
+	padrao: 'Oi! Vim pelo site da Olorin e quero saber do Raio-X da minha marca.',
 	diagnostico: 'Oi! Vim pelo site da Olorin e quero o Raio-X gratuito.',
 	servico: 'Oi! Vim pelo site da Olorin e quero falar sobre {x}.',
 	plano: 'Oi! Vim pelo site da Olorin e quero saber mais sobre o plano {x}.',
@@ -120,11 +120,17 @@ export function registrarFiltros(eleventyConfig, { prod }) {
 	eleventyConfig.addFilter('reais', (n) => `R$\u00a0${Number(n).toLocaleString('pt-BR')}`);
 	eleventyConfig.addFilter('encontrar', (lista, campo, valor) => (lista || []).find((i) => i && i[campo] === valor));
 	eleventyConfig.addFilter('filtrarPor', (lista, campo, valor) => (lista || []).filter((i) => i && [].concat(i[campo] || []).includes(valor)));
+	eleventyConfig.addFilter('filtrarIds', (lista, ids) => (ids || []).map((id) => (lista || []).find((i) => i && i.id === id)).filter(Boolean));
 	eleventyConfig.addFilter('phpString', phpString);
 	eleventyConfig.addFilter('semVazios', (lista) => (lista || []).filter(Boolean));
+	// Título do Raio-X (dono, 24/10/2026): a palavra "Olorin" no fim vira a logo escrita OLORIN (#s-logo),
+	// na largura da palavra (.o-titulo-logo, em base.css). O nome continua no texto para leitor de tela e Google.
+	eleventyConfig.addFilter('logoNoTitulo', (texto) =>
+		escapar(texto).replace(/\bOlorin\.?\s*$/i, '<span class="o-titulo-logo"><span class="o-sr">Olorin</span><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></span>'),
+	);
 
-	// Marcadores [CONFIRMAR: ...]: destacados no modo de desenvolvimento.
-	// Em produção o carregador de conteúdo já removeu tudo o que tinha marcador.
+	// Espaço fixo depois de "R$". Marcadores [CONFIRMAR: ...] que sobrarem ficam destacados no
+	// modo de desenvolvimento (em produção o build falha, ver scripts/verificar-build.mjs).
 	eleventyConfig.addFilter('confirmar', (html) =>
 		prod ? String(html ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0') : String(html ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0').replace(/\[CONFIRMAR:?([^\]]*)\]/g, '<mark class="o-confirmar" title="Falta confirmar">[CONFIRMAR:$1]</mark>'),
 	);

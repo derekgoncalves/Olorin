@@ -1,163 +1,123 @@
 # ============================================================
-# SERVIÇO: Rastreamento e relatório — fonte ÚNICA da página /servicos/rastreamento-e-relatorio/
-# e da landing de campanha /promo/rastreamento-e-relatorio/ (PROMPT seções 9 e 11).
-# Só fatos do PROMPT.md. O que falta confirmar vai com [CONFIRMAR: ...]
-# (não aparece no site publicado; itens de lista com marcador somem inteiros).
+# SERVIÇO: Dados. Fonte ÚNICA da página /servicos/rastreamento-e-relatorio/ e da landing /promo/rastreamento-e-relatorio/.
+# Confirmado pelo dono (14/10/2026): dados de venda do relatório combinados no início; ferramenta do painel não é citada.
+# 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
+# "ferramentas" mostra o que o time configura e a credencial "Agência parceira Meta e Google"
+# (dono, 23/10/2026: a parceria é da agência; a Natalia é a gestora de tráfego).
 # ============================================================
 slug: rastreamento-e-relatorio
 ordem: 6
-nome: Rastreamento e relatório
-chip: Rastreamento e relatório   # igual à opção do formulário e à lista do enviar.php
+nome: Dados
+chip: Dados   # um nome por serviço: igual no menu, no card, no formulário e no enviar.php
 icone: dados
-janela: painel.exe
-atualizado: "2026-10-08"
-quem_faz: [derek-goncalves]
-quem_faz_nota: "[CONFIRMAR: quem configura GTM, GA4, pixel e conversões e quem monta o painel (Natália? Derek?)]"
+janela: painel.olo
+cena: dados
+atualizado: "2026-10-17"
+quem_faz: [natalia-arruda]
 
 seo:
   title: Rastreamento e Relatório de Marketing (GTM e GA4) | Olorin
-  description: Google Tag Manager, pixel, conversões e painel de acompanhamento para saber quanto entrou, quanto saiu e qual foi o retorno.
+  description: Tag Manager, GA4, pixel e conversões configurados para saber quanto entrou e qual foi o retorno. Peça o Raio-X gratuito do seu rastreamento.
 
 card:
-  titulo: Rastreamento e relatório
-  resumo: Google Tag Manager, pixel da Meta e painel para saber quanto cada anúncio vendeu. Se o dado não chega certo, nada depois disso funciona.
-  resumo_curto: Medição do site e dos anúncios, com painel de acompanhamento.
+  titulo: Dados
+  resumo: Google Tag Manager, pixel da Meta e painel para saber quanto cada anúncio vendeu.
+  resumo_curto: Medição do site e dos anúncios, com painel.
 
 hero:
-  eyebrow: Rastreamento com Google Tag Manager e Google Analytics em Curitiba e para todo o Brasil
-  h1: Se o dado não chega certo, nada depois disso funciona.
-  sub: Google Tag Manager, Google Analytics, pixel da Meta e conversões do Google Ads configurados para você saber quanto entrou, quanto saiu e o retorno.
+  eyebrow: Rastreamento com Google Tag Manager e GA4
+  h1: Dados que decidem.
+  sub: Tag Manager, Google Analytics, pixel e conversões configurados direito, e um painel que mostra quanto entrou, quanto saiu e qual foi o retorno.
   janela_linhas:
-    - GTM e GA4 · configurados
-    - Pixel e conversões · configurados
-    - Relatório · com faturamento
+    - Tag Manager · publicado
+    - Conversões · conferidas
+    - Painel · atualizado
 
+# Resumo usado na landing /promo/, no llms.txt e no JSON-LD (não aparece com rótulo na página do serviço).
 resposta_curta: >-
-  Rastreamento é fazer o seu site e os seus anúncios contarem o que acontece depois do clique:
-  quem visitou, quem mandou mensagem e quem comprou. Configuramos as ferramentas que registram isso:
-  Google Tag Manager, Google Analytics 4 (GA4), pixel da Meta e conversões do Google Ads. O pixel é o
-  código que conta à Meta (Instagram e Facebook) quem visitou e quem comprou; conversão é cada venda,
-  mensagem ou cadastro. Depois, juntamos tudo num painel que mostra quanto entrou, quanto saiu e qual foi
-  o retorno. É para quem anuncia ou vende pela internet e não sabe dizer quanto custou cada venda. O preço
-  vem aberto na proposta, sem letra miúda.
+  Rastreamento é configurar o Google Tag Manager, o Google Analytics, o pixel da Meta e as conversões para cada
+  venda, matrícula ou contato chegar ao relatório com a sua origem. A Olorin configura, confere cada evento,
+  monta um painel simples e faz, todo mês, a leitura do que os números pedem.
+
+o_que_e:
+  titulo: Número que fecha.
+  texto:
+    - "Sem rastreamento, o anúncio otimiza no escuro e o relatório mostra o que é fácil de contar, não o que importa. Com ele, cada venda, matrícula ou contato chega com a sua origem: qual anúncio, qual página, qual campanha."
+    - A Olorin configura o Google Tag Manager, o Google Analytics 4, o pixel da Meta e as conversões do Google Ads, confere se cada evento chega certo e monta um painel simples, que você abre quando quiser.
+    - "Todo mês, a leitura vira decisão: onde investir mais, o que cortar e o que testar."
+  destaques:
+    - Conversões conferidas
+    - Painel que qualquer pessoa entende
+    - Leitura que vira decisão
 
 dores:
-  titulo: Isso acontece com você?
+  etiqueta: Este é o seu caso?
+  titulo: Número que não fecha?
+  texto: Se um destes aparece aí, as suas decisões estão sendo tomadas no escuro.
   itens:
-    - Você investe em anúncio todo mês e não sabe dizer quanto custou cada venda.
-    - O relatório mostra alcance e impressões, mas nunca mostra faturamento.
-    - Ninguém sabe dizer se o pixel está instalado, nem o que ele está contando.
-    - Cada ferramenta mostra um número diferente, e você não sabe em qual acreditar.
-
-para_quem:
-  e:
-    - Quem anuncia na Meta (Instagram e Facebook) ou no Google e quer saber quanto cada campanha devolveu.
-    - Quem vende pelo site ou pela loja virtual e quer enxergar o caminho do anúncio até o pedido.
-    - Quem vai colocar um site novo no ar e quer que ele já nasça medindo o que importa.
-    - Quem recebe relatório cheio de sigla e quer um que qualquer pessoa entenda.
-  nao_e:
-    - Quem quer um relatório bonito só com alcance e curtidas. O nosso mostra faturamento.
-    - Quem espera que o rastreamento, sozinho, faça vender mais. Ele mostra o que funciona; a venda vem da campanha, do site e da oferta.
-    - "[CONFIRMAR: outros critérios de quem não é cliente ideal para rastreamento e relatório]"
+    - { titulo: Venda sem origem, texto: "Chegam vendas e contatos, mas ninguém sabe de qual anúncio ou página vieram." }
+    - { titulo: Números que brigam, texto: "O Google Analytics, a Meta e a planilha mostram números diferentes para a mesma coisa." }
+    - { titulo: Pixel quebrado, texto: O pixel ou a conversão parou de funcionar e ninguém percebeu. }
+    - { titulo: Relatório sem resposta, texto: O relatório tem muito gráfico e nenhuma resposta sobre o que fazer. }
 
 entregas:
-  titulo: O que entregamos
+  titulo: O que pode entrar.
+  texto: Da configuração ao painel, para cada resultado chegar com a sua origem.
   itens:
-    - titulo: Google Tag Manager (GTM)
-      texto: O GTM é uma central que guarda, num lugar só, os códigos de medição do seu site. Com ele, dá para ajustar o que é medido sem mexer no código do site a cada mudança.
+    - titulo: Google Tag Manager
+      texto: Contêiner organizado, com cada etiqueta nomeada e documentada.
+      frequencia: no início
       icone: site
-    - titulo: Google Analytics 4 (GA4)
-      texto: O GA4 é a ferramenta do Google que mostra quantas pessoas visitaram o seu site, de onde vieram e o que fizeram lá dentro. Deixamos o GA4 configurado para contar o que importa para você, como venda, mensagem e cadastro.
+    - titulo: Google Analytics 4
+      texto: "Eventos e conversões que contam venda, matrícula e contato, não só visita."
+      frequencia: no início
       icone: dados
-    - titulo: Pixel da Meta
-      texto: O pixel é um código instalado no site que conta à Meta (Instagram e Facebook) quem visitou e quem comprou. Assim, a campanha aprende com quem compra, e não só com quem clica.
-      icone: pixel
-    - titulo: Conversões do Google Ads
-      texto: Conversão é a ação que vale dinheiro para você — uma venda, uma mensagem, um cadastro. Configuramos o Google Ads para registrar cada uma e mostrar qual anúncio trouxe o resultado.
+    - titulo: Pixel e conversões
+      texto: Pixel da Meta e conversões do Google Ads conferidos, para o anúncio otimizar certo.
+      frequencia: no início
       icone: trafego
-    - titulo: Painel de acompanhamento
-      texto: Os números de anúncio e de site num lugar só — investimento, faturamento atribuído (o que as campanhas trouxeram em vendas), custo por venda e retorno.
-      icone: dados
-    - titulo: Relatório com faturamento, não só alcance
-      texto: "Em linguagem simples: quanto entrou, quanto saiu, qual foi o retorno e o que muda na próxima rodada. Siglas como ROAS (quanto voltou em faturamento para cada R$ 1 investido em anúncio) vêm explicadas. Veja um [exemplo ilustrativo](/#relatorio)."
-      frequencia: todo mês na Gestão mensal
+    - titulo: Origem de cada contato
+      texto: Links etiquetados (UTM) e formulários que guardam de onde a pessoa veio.
+      frequencia: em toda campanha
+      icone: seta
+    - titulo: Painel de resultados
+      texto: Investimento, resultado e retorno num painel simples, que você abre quando quiser.
+      frequencia: acesso a qualquer hora
+      icone: estrela
+    - titulo: Leitura mensal
+      texto: Os números do mês em linguagem simples e o que muda na próxima rodada.
+      frequencia: todo mês
       icone: relogio
-    - titulo: Conferência depois da configuração
-      texto: "[CONFIRMAR: se há conferência periódica do rastreamento depois de configurado, e com que frequência]"
-      icone: check
-    - titulo: Ferramenta do painel
-      texto: "[CONFIRMAR: em qual ferramenta o painel de acompanhamento é montado e como o cliente acessa]"
-      icone: mais
 
-como_funciona:
-  titulo: Como funciona
-  etapas:
-    - nome: Diagnóstico
-      texto: Olhamos o que já existe — site, contas de anúncio, GTM, GA4 e pixel. Descobrimos o que está medindo certo, o que está faltando e o que está repetido.
-    - nome: Direção
-      texto: Definimos o que vale medir no seu negócio (venda, mensagem ou cadastro) e quais números o relatório precisa mostrar para você decidir.
-    - nome: Execução
-      texto: Configuramos o GTM, o GA4, o pixel da Meta e as conversões do Google Ads, e montamos o painel de acompanhamento. Tudo para o dado chegar certo em cada ferramenta.
-    - nome: Leitura
-      texto: O relatório mostra quanto entrou, quanto saiu, qual foi o retorno e o que vem na próxima rodada. Na Gestão mensal, ele chega todo mês.
-  prazos:
-    - "[CONFIRMAR: o que acontece nos primeiros 30 dias (prazo para configurar o rastreamento)]"
-    - "[CONFIRMAR: o que acontece até os 60 dias]"
-    - "[CONFIRMAR: o que acontece até os 90 dias]"
-
-precisamos:
-  titulo: O que precisamos de você
+# Bloco de logos: o que o time configura e lê (arquivos em /assets/img/marcas/<logo>.svg). Sem nome de ferramenta de painel.
+ferramentas:
+  etiqueta: O que a gente configura
+  titulo: Cada número no lugar.
+  texto: As ferramentas que contam o que acontece no site e nos anúncios, configuradas e conferidas uma a uma.
   itens:
-    - Acesso ao site ou à loja virtual para instalar e conferir os códigos de medição.
-    - "Acesso às contas que já existem: Google Tag Manager, Google Analytics, Meta e Google Ads."
-    - "Dizer o que conta como resultado para o seu negócio: venda, mensagem ou cadastro."
-    - "[CONFIRMAR: dados de venda pedidos para o relatório (faturamento, vendas fora do site, margens)]"
+    - { nome: Google Analytics 4, logo: googleanalytics }
+    - { nome: Google Tag Manager, logo: googletagmanager }
+    - { nome: Search Console, logo: googlesearchconsole }
+    - { nome: Gerenciador de Eventos da Meta, logo: meta }
+    - { nome: Conversões do Google Ads, logo: googleads }
+  # Credencial da agência: titulo, nome e a linha embaixo (aceita [texto](link)); logos = selos ao lado.
+  credencial:
+    etiqueta: Credencial
+    titulo: Agência parceira Meta e Google.
+    nome: Olorin Digital
+    funcao: "Medição e relatórios coordenados pela [Natalia Arruda](/quem-somos/natalia-arruda/), gestora de tráfego"
+    logos: [{ nome: Meta, logo: meta }, { nome: Google, logo: google }]
 
-preco:
-  titulo: Quanto custa
-  formato: "[CONFIRMAR: formato de contratação (incluso na Gestão mensal ou projeto pontual)]"
-  valor: "[CONFIRMAR: valor]"
-  sem_valor: Conte no formulário o que você usa hoje (site, loja virtual, contas de anúncio). Respondemos em até 1 dia útil, com o preço aberto na proposta.
-  detalhe: Preço aberto, sem letra miúda. Quando houver anúncio, a verba é investida à parte, direto nas plataformas Meta e Google.
-  contrato: "[CONFIRMAR: projeto fechado ou mensal, e se há contrato mínimo]"
-  inclui:
-    - Configuração do Google Tag Manager e do GA4
-    - Pixel da Meta e conversões do Google Ads
-    - Painel de acompanhamento com investimento, faturamento atribuído, custo por venda e retorno
-    - Relatório em linguagem simples, com faturamento, e não só alcance
-    - "[CONFIRMAR: se a configuração do rastreamento já está inclusa na Gestão mensal e no 360 completo]"
-  nao_inclui:
-    - A verba de anúncio (paga direto à Meta e ao Google)
-    - A gestão das campanhas de anúncio (serviço de [Tráfego pago](/servicos/trafego-pago/))
-    - A criação do site ou da loja virtual (contratada à parte ou no plano 360 completo)
+portfolio:
+  titulo: Na prática.
+  texto: Trabalhos em que a medição mostrou onde estava o resultado.
 
 combina_com:
   - slug: trafego-pago
-    porque: Sem pixel e conversões configurados, as campanhas são ajustadas no escuro. Com o dado certo, o ajuste semanal das campanhas mira a venda, e não o clique.
+    porque: O rastreamento mostra o que vende; o tráfego pago põe mais verba nisso.
   - slug: site-e-loja-virtual
-    porque: O site e a loja virtual já saem com o rastreamento configurado. Feitos pelo mesmo time, eles nascem medindo o que importa.
-
-faq:
-  - id: rastreamento-o-que-e
-    pergunta: O que é rastreamento, na prática?
-    resposta: "São os códigos que registram o que a pessoa faz depois do clique no anúncio ou da visita ao site. Por exemplo: se mandou mensagem, se fez cadastro ou se comprou. Sem isso, a Meta e o Google só enxergam o clique, e o relatório não consegue mostrar faturamento."
-  - id: rastreamento-quanto-custa
-    pergunta: Quanto custa o rastreamento?
-    resposta: Conte no formulário o que você usa hoje (site, loja virtual, contas de anúncio). Respondemos em até 1 dia útil, com o preço aberto na proposta, sem letra miúda.
-  - id: rastreamento-gestao-mensal
-    pergunta: O rastreamento já está incluso na Gestão mensal?
-    resposta: "[CONFIRMAR: se a configuração do rastreamento está inclusa na Gestão mensal e no 360 completo, ou se é contratada à parte]"
-  - id: rastreamento-ja-tenho
-    pergunta: Já tenho pixel e Google Analytics instalados. Ainda preciso disso?
-    resposta: Instalado não quer dizer funcionando certo. No diagnóstico, olhamos o que já existe e mostramos o que está medindo certo, o que falta e o que está repetido. Assim, você decide com base no que encontramos.
-  - id: rastreamento-relatorio
-    pergunta: O que aparece no relatório?
-    resposta: Na Gestão mensal, o relatório chega todo mês e mostra quanto foi investido, quanto voltou em faturamento, quanto custou cada venda e qual foi o retorno, na comparação com o mês anterior. Também mostra o que vamos fazer na próxima rodada. Siglas como ROAS (quanto voltou em faturamento para cada R$ 1 investido em anúncio) vêm explicadas. Veja um [exemplo ilustrativo](/#relatorio).
-  - id: rastreamento-fora-curitiba
-    pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo e aprovações por e-mail.
+    porque: Um site feito com a medição desde o primeiro dia já nasce contando contato e venda.
 
 campanha:
-  titulo: Você sabe quanto custou cada venda?
-  subtitulo: Raio-X gratuito do rastreamento do seu site e das suas contas de anúncio. Sem compromisso.
-  faq: [rastreamento-o-que-e, rastreamento-quanto-custa, rastreamento-ja-tenho, rastreamento-fora-curitiba]
+  titulo: Pare de decidir no escuro.
+  subtitulo: Raio-X gratuito do seu rastreamento, com 30 minutos por vídeo e um PDF com o que está contando errado. Sem compromisso.

@@ -10,7 +10,8 @@ eleventyComputed:
   titulo: "{{ conteudo.paginas.privacidade.seo.titulo }}"
   descricao: "{{ conteudo.paginas.privacidade.seo.descricao }}"
 ---
-{#- Política de Privacidade — texto em src/content/paginas/privacidade.yml (rascunho para revisão jurídica). -#}
+{#- Política de Privacidade: texto em src/content/paginas/privacidade.yml.
+    Cada seção: paragrafos, lista, paragrafos_fim e botao_cookies (o botão só aparece com medição ligada). -#}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set p = conteudo.paginas.privacidade -%}
 <section class="o-pagina-topo o-ctx-preto" data-secao="privacidade-hero">
@@ -28,6 +29,10 @@ eleventyComputed:
 		{%- for par in sec.paragrafos %}{% if par %}<p>{{ par | emLinha | confirmar | safe }}</p>{% endif %}{% endfor %}
 		{%- if sec.lista and sec.lista.length %}
 		<ul>{% for item in sec.lista %}<li>{{ item | emLinha | confirmar | safe }}</li>{% endfor %}</ul>
+		{%- endif %}
+		{%- for par in sec.paragrafos_fim %}{% if par %}<p>{{ par | emLinha | confirmar | safe }}</p>{% endif %}{% endfor %}
+		{%- if sec.botao_cookies %}
+		<p data-o-cookies-link hidden><button class="o-btn o-btn--contorno o-btn--pequeno" type="button" data-o-cookies-abrir>Preferências de cookies</button></p>
 		{%- endif %}
 		{%- endfor %}
 	</div>

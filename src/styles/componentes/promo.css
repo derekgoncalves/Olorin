@@ -21,73 +21,23 @@
 	align-items: start;
 	gap: clamp(32px, 5vw, 80px);
 }
-.o-promo-topo__texto .o-lista-pixel {
-	margin-top: 22px;
+.o-promo-topo__texto {
+	container-type: inline-size;
 }
+/* Título do anúncio: o tamanho segue a coluna, para caber até palavra longa ("espantando"). */
+.o-promo-topo .o-pagina-topo__titulo {
+	font-size: clamp(28px, min(5vw, 9.5cqi), 68px);
+}
+/* Botão do Raio-X no cabeçalho mínimo: numa linha só, até em 320 px */
+.o-topo--minimo .o-topo__unico {
+	flex: none;
+	white-space: nowrap;
+}
+/* Itens do banner com o "O" da Olorin como marcador */
 .o-resposta__texto--promo {
 	margin-top: 18px;
 	border-left-color: var(--verde);
 	background: rgba(255, 255, 255, 0.06);
-	font-size: 15px;
-	color: var(--cor-apoio);
-}
-.o-passos {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: clamp(16px, 2.4vw, 32px);
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-.o-passo {
-	padding: 26px;
-	border: var(--borda) solid var(--preto);
-	box-shadow: var(--sombra-janela) var(--violeta);
-}
-.o-passo__num {
-	display: inline-grid;
-	place-items: center;
-	width: 44px;
-	height: 44px;
-	margin-bottom: 16px;
-	border: var(--borda) solid var(--preto);
-	font-family: var(--fonte-pixel);
-	font-size: 14px;
-}
-.o-passo__titulo {
-	margin: 0 0 8px !important;
-	font-family: var(--fonte-titulo);
-	font-weight: 900;
-	font-size: 18px;
-	line-height: 1.15;
-	text-transform: uppercase;
-}
-.o-passo p {
-	margin: 0;
-	color: var(--cor-apoio);
-}
-.o-planos-resumo {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 16px;
-	margin: 0 0 24px;
-	padding: 0;
-	list-style: none;
-}
-.o-planos-resumo li {
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
-	padding: 20px;
-	border: var(--borda) solid var(--verde);
-}
-.o-planos-resumo strong {
-	font-family: var(--fonte-titulo);
-	font-weight: 900;
-	font-size: 18px;
-	text-transform: uppercase;
-}
-.o-planos-resumo span {
 	font-size: 15px;
 	color: var(--cor-apoio);
 }
@@ -97,9 +47,6 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 16px 32px;
-}
-.o-promo-final .o-hero__acoes {
-	margin: 0;
 }
 
 /* Página /obrigado/ */
@@ -131,11 +78,14 @@
 	margin-bottom: 18px;
 	animation: o-girar 8s linear 1;
 }
+.o-obrigado__janela .o-janela__corpo {
+	container-type: inline-size;
+}
 .o-obrigado__titulo {
 	margin: 0 0 12px !important;
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(40px, 6vw, 88px);
+	font-size: clamp(30px, min(6vw, 13cqi), 88px);
 	line-height: 0.95;
 	text-transform: uppercase;
 }

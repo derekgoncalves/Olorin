@@ -96,3 +96,144 @@
 html:not(.js) .o-faixa__pausar {
 	display: none;
 }
+
+/* Faixa de logos de clientes (secoes/faixa-clientes.njk): reta, com peso. Cada logo tem a sua altura
+   (--logo-a, em px, de clientes.yml), ajustada para o peso visual ficar igual; a escala cresce com a tela.
+   Logos em preto; em fundo escuro (preto ou violeta) viram brancos. */
+.o-clientes {
+	overflow: hidden;
+}
+/* "Marcas que o nosso time já atendeu": pequena, em pixel, centralizada em cima dos logos (23/10/2026) */
+.o-clientes__etiqueta {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	width: min(100% - 2 * var(--margem), var(--largura-max));
+	margin: 0 auto clamp(6px, 1vw, 12px);
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.4;
+	letter-spacing: 0.16em;
+	text-align: center;
+	text-transform: uppercase;
+	color: var(--cor-apoio);
+}
+.o-clientes__etiqueta::before,
+.o-clientes__etiqueta::after {
+	content: "";
+	flex: 0 1 48px;
+	height: 1px;
+	background: currentColor;
+	opacity: 0.5;
+}
+@media (max-width: 480px) {
+	.o-clientes__etiqueta {
+		letter-spacing: 0.08em;
+	}
+	.o-clientes__etiqueta::before,
+	.o-clientes__etiqueta::after {
+		display: none;
+	}
+}
+/* Seção própria, no meio da página (LP Educação): fundo branco e bordas. */
+.o-clientes.o-sec {
+	padding-block: clamp(20px, 2.6vw, 36px) clamp(18px, 2.2vw, 30px);
+	border-block: var(--borda) solid var(--cor-texto);
+}
+/* Pé do banner preto (dono, 18/10/2026): no mesmo fundo do banner, sem faixa nem borda separando. Dentro
+   do banner (home e páginas internas) ou logo depois dele (/promo/); o banner perde o respiro de baixo e a
+   faixa fecha o banner (nas páginas internas, com o fio verde do topo embaixo dela). */
+.o-clientes--pe {
+	position: relative;
+	padding-block: clamp(24px, 3.4vw, 48px) clamp(6px, 1vw, 14px);
+}
+:is(.o-hero, .o-pagina-topo, .o-perfil):has(> .o-clientes--pe),
+.o-promo-topo:has(+ .o-clientes--pe) {
+	padding-bottom: 0;
+}
+.o-promo-topo + .o-clientes--pe {
+	border-bottom: var(--borda) solid var(--verde);
+}
+.o-faixa--logos {
+	--inclinacao: 0deg;
+	--logo-escala: clamp(0.9px, 0.62px + 0.05vw, 1.3px);
+	width: 100%;
+	height: clamp(72px, 7.4vw, 112px);
+	margin: 0;
+	background: transparent;
+	/* esmaece só nas margens da página, para o botão de pausa (na borda do conteúdo) ficar inteiro */
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
+	mask-image: linear-gradient(90deg, transparent, #000 var(--margem), #000 calc(100% - var(--margem)), transparent);
+}
+.o-clientes--pe .o-faixa--logos {
+	height: clamp(68px, 6.4vw, 96px);
+}
+.o-faixa--logos .o-faixa__trilho li {
+	padding-right: clamp(44px, 5.6vw, 88px);
+}
+.o-faixa--logos .o-faixa__trilho li::after {
+	display: none;
+}
+.o-faixa--logos img {
+	display: block;
+	width: auto;
+	height: calc(var(--logo-a, 40) * var(--logo-escala));
+	max-width: none;
+	object-fit: contain;
+	transition: transform 0.3s ease;
+}
+.o-faixa--logos li:hover img {
+	transform: scale(1.08);
+}
+:is(.o-ctx-preto, .o-ctx-violeta) .o-faixa--logos img:not(.o-logo-cor) {
+	filter: invert(1);
+}
+/* Pausa alinhada à borda direita do conteúdo: cheia no fundo claro; no escuro, contorno e ícone na cor
+   de destaque (verde no preto), cheia ao passar o mouse. */
+.o-faixa.o-faixa--logos .o-faixa__pausar {
+	right: max(var(--margem), (100% - var(--largura-max)) / 2);
+	border-color: var(--cor-texto);
+	background: var(--cor-texto);
+	color: var(--cor-fundo);
+	box-shadow: 0 0 0 10px var(--cor-fundo);
+	transition: background-color var(--dur-rapida), color var(--dur-rapida);
+}
+:is(.o-ctx-preto, .o-ctx-violeta) .o-faixa.o-faixa--logos .o-faixa__pausar {
+	border-color: var(--cor-destaque);
+	background: var(--cor-fundo);
+	color: var(--cor-destaque);
+}
+:is(.o-ctx-preto, .o-ctx-violeta) .o-faixa.o-faixa--logos .o-faixa__pausar:hover {
+	background: var(--cor-destaque);
+	color: var(--cor-sobre-destaque);
+}
+/* Sem movimento (prefers-reduced-motion): os logos quebram em linhas e ficam todos à vista. */
+@media (prefers-reduced-motion: reduce) {
+	.o-faixa--logos,
+	.o-clientes--pe .o-faixa--logos {
+		height: auto;
+		-webkit-mask-image: none;
+		mask-image: none;
+	}
+	.o-clientes--pe {
+		padding-bottom: clamp(24px, 3vw, 40px);
+	}
+	.o-faixa--logos .o-faixa__trilho {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: clamp(18px, 2.4vw, 30px) clamp(28px, 2.4vw, 56px);
+		width: auto;
+		max-width: calc(var(--largura-max) + 2 * var(--margem));
+		margin-inline: auto;
+		padding-inline: var(--margem);
+		white-space: normal;
+	}
+	.o-faixa--logos .o-faixa__trilho li {
+		padding-right: 0;
+	}
+	.o-faixa.o-faixa--logos .o-faixa__pausar {
+		display: none;
+	}
+}

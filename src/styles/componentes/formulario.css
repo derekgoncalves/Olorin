@@ -99,7 +99,7 @@ html.js .o-form[data-etapa="2"] .o-form__etapa[data-etapa="2"] {
 	padding: 0;
 	border: 0;
 }
-.o-campo > label,
+.o-campo > label:not(.o-consentimento),
 .o-campo__rotulo {
 	display: block;
 	margin-bottom: 8px;
@@ -350,4 +350,108 @@ html.js .o-form[data-etapa="2"] .o-form__etapa[data-etapa="2"] {
 }
 .o-form__alternativa a {
 	font-weight: 700;
+}
+/* Exemplo do campo (ex.: cargo): entre o rótulo e o campo, para não cortar no celular como um placeholder. */
+.o-campo__exemplo {
+	margin: -4px 0 8px;
+	font-size: 13px;
+	line-height: 1.45;
+	color: var(--cor-apoio);
+}
+/* Celular: os serviços (curtos) ficam em 2 colunas, com "Selecionar tudo" e "Ainda não sei" na linha inteira
+   (etapa 2 bem mais curta); os desafios das LPs (frases longas) continuam em 1 coluna. */
+@media (min-width: 360px) and (max-width: 767px) {
+	.o-form .o-chips--servicos {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.o-form .o-chips--servicos .o-chip--todos,
+	.o-form .o-chips--servicos .o-chip:has([data-o-exclusivo]) {
+		grid-column: 1 / -1;
+	}
+}
+
+/* ---------- Páginas de obrigado dos públicos (/obrigado-educacao/ e /obrigado-influenciadores/) ---------- */
+/* /obrigado-influenciadores/: o CSS da LP não leva o promo.css, então a grade vem aqui. Visual pop:
+   fundo verde, janela preta torta como adesivo, "RECEBIDO." em verde no preto. */
+.o-obrigado--pop {
+	min-height: 80vh;
+	padding-top: calc(var(--altura-topo) + clamp(40px, 6vw, 88px));
+}
+.o-obrigado--pop .o-obrigado__grade {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+	gap: clamp(32px, 5vw, 80px);
+	align-items: center;
+}
+.o-obrigado--pop .o-obrigado__janela {
+	--janela-borda: var(--preto);
+	--janela-barra: var(--preto);
+	--janela-tinta: var(--verde);
+	--janela-corpo: var(--preto);
+	--cor-texto: var(--branco);
+	--cor-apoio: rgba(255, 255, 255, 0.86);
+	--cor-destaque: var(--verde);
+	--cor-foco: var(--verde);
+	color: var(--branco);
+}
+.o-obrigado--pop .o-janela__barra {
+	border-bottom: 1px solid rgba(236, 255, 54, 0.4);
+}
+.o-obrigado--pop .o-janela__corpo {
+	padding: clamp(24px, 4vw, 56px);
+	container-type: inline-size;
+}
+.o-obrigado--pop .o-obrigado__icone {
+	--tam: 72px;
+	margin-bottom: 18px;
+	color: var(--verde);
+}
+.o-obrigado--pop .o-obrigado__titulo {
+	margin: 0 0 12px;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(30px, min(6.5vw, 12.5cqi), 96px);
+	line-height: 0.92;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-obrigado--pop .o-obrigado__texto {
+	max-width: 40ch;
+	font-size: clamp(17px, 1.5vw, 21px);
+}
+.o-obrigado--pop .o-obrigado__acoes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 28px;
+}
+.o-obrigado--pop .o-obrigado__enquanto .o-lista-pixel a {
+	font-size: 16px;
+}
+.o-obrigado__selo {
+	display: inline-block;
+	margin: 0 0 32px;
+	padding: 14px 18px;
+	background: var(--preto);
+	color: var(--branco);
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(20px, 2.4vw, 30px);
+	line-height: 1.05;
+	text-transform: uppercase;
+	rotate: 3deg;
+}
+.o-obrigado__selo strong {
+	display: block;
+	color: var(--verde);
+}
+@media (min-width: 961px) {
+	.o-obrigado--pop .o-obrigado__janela {
+		rotate: -1.5deg;
+	}
+}
+@media (max-width: 960px) {
+	.o-obrigado--pop .o-obrigado__grade {
+		grid-template-columns: minmax(0, 1fr);
+	}
 }

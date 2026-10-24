@@ -1,5 +1,5 @@
 # ============================================================
-# Olorin Digital — site estático v3 (Apache / Locaweb)
+# Olorin Digital: site estático (Apache / Locaweb)
 # Gerado junto com o build. Vai para a raiz do public_html.
 # ============================================================
 
@@ -75,9 +75,15 @@ AddDefaultCharset utf-8
 	# Restos da versão WordPress, se alguém tiver o link salvo
 	RewriteRule ^(wp-admin|wp-login\.php|wp-content|wp-includes|feed)(/.*)?$ / [L,R=301]
 	# Atalhos que as pessoas costumam digitar
-	RewriteRule ^(orcamento|contato)/?$ /#orcamento [NE,L,R=301]
-	RewriteRule ^diagnostico/?$ /#diagnostico [NE,L,R=301]
+	RewriteRule ^(orcamento|contato)/?$ /#raio-x [NE,L,R=301]
+	RewriteRule ^(diagnostico|raio-x)/?$ /#raio-x [NE,L,R=301]
 	RewriteRule ^privacidade/?$ /politica-de-privacidade/ [L,R=301]
+	# Equipe tem página própria; "Como trabalhamos" virou "Sobre" (17/10/2026)
+	RewriteRule ^(equipe|time)/?$ /quem-somos/ [L,R=301]
+	RewriteRule ^como-trabalhamos/?$ /sobre/ [L,R=301]
+	# Planos e blog saíram do site (17/10/2026): quem tiver o link cai no Raio-X da home
+	RewriteRule ^planos/?$ /#raio-x [NE,L,R=301]
+	RewriteRule ^blog(/.*)?$ / [L,R=301]
 </IfModule>
 
 # ------------------------------------------------------------
@@ -112,6 +118,10 @@ AddDefaultCharset utf-8
 	ExpiresByType image/svg+xml "access plus 30 days"
 	ExpiresByType image/x-icon "access plus 30 days"
 	ExpiresByType application/manifest+json "access plus 7 days"
+	# olorin-ids.js (IDs de medição editáveis pelo WebFTP): sem validade longa, para a troca valer na hora
+	<FilesMatch "^olorin-ids\.js$">
+		ExpiresActive Off
+	</FilesMatch>
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -140,13 +150,18 @@ AddDefaultCharset utf-8
 	<FilesMatch "\.html$">
 		Header set Cache-Control "no-cache"
 	</FilesMatch>
+	# IDs de medição e link de agenda editáveis com o site no ar: o navegador confere a cada visita
+	<FilesMatch "^olorin-ids\.js$">
+		Header set Cache-Control "no-cache"
+		Header unset Expires
+	</FilesMatch>
 
 	# HSTS: ative SÓ depois que o bloco de HTTPS acima estiver ligado e testado.
 	# Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
 
 	# Política de segurança de conteúdo em modo "só observar" (não bloqueia nada).
-	# Já libera Google Tag Manager, GA4, Google Ads e Meta Pixel. Para impor de verdade,
-	# troque "Content-Security-Policy-Report-Only" por "Content-Security-Policy"
-	# depois de uma semana sem avisos no console (ver docs/DEPLOY.md).
-	Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://connect.facebook.net; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.google.com https://www.google.com.br https://googleads.g.doubleclick.net https://www.facebook.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://www.facebook.com https://connect.facebook.net; frame-src https://www.googletagmanager.com https://td.doubleclick.net; style-src 'self' 'unsafe-inline'; font-src 'self'; form-action 'self' https://wa.me; base-uri 'self'; frame-ancestors 'self'; object-src 'none'"
+	# Já libera Google Tag Manager (e o modo de visualização), GA4, Google Ads e Meta Pixel, com os IDs
+	# vindos do build ou do olorin-ids.js. Para impor de verdade, troque "Content-Security-Policy-Report-Only"
+	# por "Content-Security-Policy" depois de uma semana sem avisos no console (ver docs/TRACKING.md, seção 8.6).
+	Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://tagmanager.google.com https://*.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://connect.facebook.net; img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://www.google.com https://www.google.com.br https://www.googleadservices.com https://ssl.gstatic.com https://www.gstatic.com https://www.facebook.com; connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.g.doubleclick.net https://www.google.com https://www.google.com.br https://www.googleadservices.com https://www.facebook.com https://connect.facebook.net; frame-src https://*.googletagmanager.com https://td.doubleclick.net https://bid.g.doubleclick.net https://www.facebook.com; style-src 'self' 'unsafe-inline' https://tagmanager.google.com https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; form-action 'self' https://wa.me; base-uri 'self'; frame-ancestors 'self'; object-src 'none'"
 </IfModule>

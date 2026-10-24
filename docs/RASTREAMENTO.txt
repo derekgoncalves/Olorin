@@ -1,0 +1,102 @@
+RASTREAMENTO DO SITE OLORIN: GUIA CURTO PARA O DONO
+Atualizado em 23/10/2026. Detalhes técnicos: docs/TRACKING.md.
+
+
+1. O QUE CARREGA EM TODAS AS PÁGINAS
+
+   Google Analytics 4 (G-ZNZFCSGHZQ) e Google Tag Manager (GTM-NDD92B4G):
+   carregam logo depois que a página abre, mesmo antes da pessoa responder ao
+   aviso de cookies. Até ela aceitar, o Google não grava cookie: recebe só
+   sinais anônimos (é o "Consent Mode" que o Google pede).
+
+   Pixel da Meta (1141955118186850): só carrega se a pessoa liberar
+   Marketing no aviso de cookies. Se ela recusar, não carrega.
+
+   O site manda sozinho:
+   - GA4: cada página vista, cliques de WhatsApp e botões, passos do
+     formulário e o pedido enviado (generate_lead), com o público
+     (site, educacao ou influencer).
+   - Meta: PageView em toda página, ViewContent nas páginas de serviço e nas
+     LPs, Contact no clique de WhatsApp e Lead no pedido enviado.
+   Nada disso leva nome, telefone, e-mail, empresa ou cargo.
+
+   O pedido enviado conta uma vez só, na página de obrigado do público:
+   /obrigado/ (site), /obrigado-educacao/ e /obrigado-influenciadores/.
+
+
+2. NO SEU GTM: O QUE PAUSAR OU APAGAR (para não contar em dobro)
+
+   Como o site já manda GA4 e Pixel, o GTM NÃO pode mandar de novo.
+   Entre em tagmanager.google.com, abra o contêiner GTM-NDD92B4G > Tags e
+   pause (botão direito > Pausar) ou exclua:
+   - toda tag "Tag do Google" ou "Evento do GA4" com G-ZNZFCSGHZQ;
+   - toda tag do Pixel da Meta (HTML com "fbq" ou o modelo da Meta).
+   Deixe ativas: Google Ads (vinculador e conversão) e ferramentas extras.
+   Depois clique em Enviar > Publicar.
+
+   Outro caminho: importar o arquivo gtm-container.json do projeto
+   (Administrador > Importar contêiner > Mesclar). Ele já vem com GA4 e
+   Pixel pausados e o Google Ads ativo.
+
+   Não cole no site o código de instalação que o GTM mostra. O site já
+   carrega o GTM sozinho.
+
+
+3. MARCAR A CONVERSÃO
+
+   GA4 (analytics.google.com): Administrador > Exibição de dados >
+   Eventos-chave >
+   Novo evento-chave > digite generate_lead > Salvar.
+   No mesmo painel, em Fluxos de dados > Site > Medição otimizada,
+   desligue "Interações com formulários".
+
+   Meta (Gerenciador de Eventos): nas campanhas de cadastro, escolha o
+   evento Lead como conversão. Deixe desligada a "Correspondência avançada
+   automática".
+
+   Google Ads (quando for anunciar): crie a conversão "Lead do site" e cole
+   o ID e o rótulo no arquivo public_html/olorin-ids.js (campos
+   GADS_CONVERSION_ID e GADS_CONVERSION_LABEL), pelo WebFTP.
+
+
+4. COMO CONFERIR
+
+   Tag Assistant (tagassistant.google.com): coloque o endereço do site.
+   Aparece o GA4 G-ZNZFCSGHZQ com page_view. Clique em Aceitar tudo,
+   envie um pedido de teste e veja generate_lead na página de obrigado.
+
+   Meta Pixel Helper (extensão do Chrome): antes de aceitar, nenhum pixel.
+   Depois de Aceitar tudo: PageView. Clique no WhatsApp: Contact.
+   Na página de obrigado: Lead (uma vez; recarregar não repete).
+
+   Se aparecer o mesmo evento duas vezes, alguma tag do GTM do item 2
+   ficou ligada.
+
+   Use dados falsos no teste e apague o lead de teste da planilha.
+
+
+5. LINKS COM UTM (para saber de onde veio cada pedido)
+
+   Em todo anúncio ou post, use o link com UTM. Exemplos:
+
+   Instagram (bio ou story):
+   https://olorin.com.br/?utm_source=instagram&utm_medium=social&utm_campaign=bio
+
+   Anúncio da Meta para a LP Educação:
+   https://olorin.com.br/educacao/?utm_source=meta&utm_medium=cpc&utm_campaign=educacao-2026
+
+   Anúncio da Meta para influenciadores:
+   https://olorin.com.br/influenciadores/?utm_source=meta&utm_medium=cpc&utm_campaign=influenciadores-2026
+
+   Google Ads: ligue a "codificação automática" na conta (cria o gclid).
+
+   Regras: só letras minúsculas, sem espaço e sem acento. Nunca coloque
+   e-mail ou telefone no link. A origem aparece no e-mail do pedido e na
+   planilha.
+
+
+6. SE UM DIA QUISER TUDO DENTRO DO GTM (modo antigo)
+
+   No public_html/olorin-ids.js, troque GA4_E_PIXEL_PELO_GTM: false por
+   GA4_E_PIXEL_PELO_GTM: true (sem aspas) e despause no GTM as tags de GA4
+   e do Pixel. Nunca deixe os dois jeitos ligados ao mesmo tempo.

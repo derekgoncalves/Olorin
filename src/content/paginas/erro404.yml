@@ -2,8 +2,8 @@
 seo:
   titulo: Página não encontrada | Olorin Digital
   descricao: Essa página não existe ou mudou de endereço. Veja os serviços da Olorin ou fale com a gente no WhatsApp.
-janela: erro_404.exe
-titulo: Página não encontrada
-texto: Essa página não existe ou mudou de endereço. Talvez você esteja procurando um destes serviços.
+janela: erro_404.olo
+titulo: Página não encontrada.
+texto: Essa página não existe ou mudou de endereço. Veja se o que você procura está nos serviços abaixo.
 inicio: Voltar para o início
-whatsapp: Chamar no WhatsApp
+raio_x: Pedir meu Raio-X grátis

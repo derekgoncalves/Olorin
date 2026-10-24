@@ -1,0 +1,62 @@
+{
+  "_leia": "Imagens da chapa do Raio-X (partials/chapa-raio-x.njk e componentes/chapa.css), 23/10/2026. Mesmo formato de manifest.json.",
+  "imagens": {
+    "raio-x-celular": {
+      "arquivo_original": "src/assets/img-src/raio-x-celular.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Raio-x real das costas de um celular, enviado pelo dono em 23/10/2026 (raio-x-celular.png, 630 x 556, cinza). Tratado com sharp: as caixas R e L das laterais foram pintadas de preto (tudo fora de x 150 a 490), o celular foi endireitado (-0,58 grau), ampliado 2x (lanczos), recortado justo com margem preta (554 x 1061) e passou por níveis, gama 1,25 e curva em S com uma rampa fria (preto, azul-petróleo, azul-acinzentado, branco azulado). Medidas na imagem final, em px: contorno do celular x 33,4 a 522,3 e y 33,1 a 1029,1 (488,9 x 996), raio dos cantos 77; anel do carregador com centro em 279 x 528,9, raio interno 146,7 e externo 163,7. O CSS (chapa.css) usa essas medidas em %. Decorativa: alt vazio.",
+      "larguras": [
+        280,
+        420,
+        554
+      ],
+      "largura_padrao": 420,
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "chapa-frente-olorin": {
+      "arquivo_original": "src/assets/img-src/chapa-frente-olorin.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Estado A da chapa (24/10/2026): celular realista de frente (moldura de titânio, vidro, ilha e barra de status) montado em HTML e capturado com Playwright, com a home do site de verdade na tela (captura em 390 pt). Mesmo contorno do raio-x: 489 x 996, cantos de 77 (978 x 1992 px, fundo transparente). Para refazer: scripts/gerar-chapa-celular.mjs. Decorativa: alt vazio.",
+      "larguras": [
+        280,
+        420,
+        640
+      ],
+      "largura_padrao": 420,
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "chapa-frente-educacao": {
+      "arquivo_original": "src/assets/img-src/chapa-frente-educacao.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Estado A da chapa (24/10/2026): celular realista de frente (moldura de titânio, vidro, ilha e barra de status) montado em HTML e capturado com Playwright, com a LP Olorin Educação de verdade na tela (captura em 390 pt). Mesmo contorno do raio-x: 489 x 996, cantos de 77 (978 x 1992 px, fundo transparente). Para refazer: scripts/gerar-chapa-celular.mjs. Decorativa: alt vazio.",
+      "larguras": [
+        280,
+        420,
+        640
+      ],
+      "largura_padrao": 420,
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    }
+  }
+}

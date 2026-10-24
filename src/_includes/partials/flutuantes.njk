@@ -1,16 +1,39 @@
-{#- Botão flutuante de WhatsApp (só em telas ≥ 1024 px) e barra fixa do celular. -#}
-{%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre"] -%}
+{#- Atalhos fixos: botão flutuante de WhatsApp (telas ≥ 1024 px) e barra do celular com WhatsApp e Raio-X.
+    Dono, 19/10/2026: o WhatsApp volta em todas as páginas (em 17/10 tinha ficado só no Quem somos).
+    23/10/2026: nas páginas com "segmento" no front matter (educacao | influencer: as LPs e as páginas de obrigado
+    delas), a ref e a mensagem são do segmento: "<segmento>-flutuante" e "<segmento>-barra-mobile", com a
+    mensagem de paginas/educacao.yml ou paginas/influenciadores.yml (whatsapp.padrao). Nas páginas de obrigado,
+    a ref começa com "obrigado-" e a mensagem é a de "adiantar a conversa". -#}
+{%- set temFormulario = modo in ["home", "servico", "promo", "hub", "sobre", "educacao", "influenciadores"] -%}
+{%- set comWhats = true -%}
+{%- set seg = segmento if segmento in ["educacao", "influencer"] else "" -%}
+{%- set paginaSeg = (conteudo.paginas.educacao if seg == "educacao" else conteudo.paginas.influenciadores) if seg else null -%}
+{%- if modo == "obrigado" -%}
+	{%- set obg = conteudo.paginas.obrigado -%}
+	{%- set obgSeg = (obg.educacao if seg == "educacao" else obg.influenciadores) if seg else null -%}
+	{%- set prefixoWa = "obrigado-" + ((seg + "-") if seg else "") -%}
+	{%- set contextoWa = { mensagem: obgSeg.whatsapp } if (obgSeg and obgSeg.whatsapp) else { tipo: "obrigado" } -%}
+{%- else -%}
+	{%- set prefixoWa = (seg + "-") if seg else "" -%}
+	{%- set contextoWa = { mensagem: paginaSeg.whatsapp.padrao } if (paginaSeg and paginaSeg.whatsapp and paginaSeg.whatsapp.padrao) else {} -%}
+{%- endif -%}
+{%- if comWhats or (cabecalho != "minimo" and modo != "obrigado") %}
 <aside class="o-flutuantes" aria-label="Atalhos de contato">
-	<a class="o-wa-flutuante" id="cta-whatsapp-flutuante" href="{{ waLink('flutuante') }}" target="_blank" rel="noopener" data-o-flutuante>
+	{%- if comWhats %}
+	<a class="o-wa-flutuante" id="cta-whatsapp-flutuante" href="{{ waLink(prefixoWa + 'flutuante', contextoWa) }}" target="_blank" rel="noopener" data-o-flutuante>
 		<span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-wa-flutuante__texto">Falar no WhatsApp</span>
 	</a>
-	{%- if cabecalho != "minimo" %}
-	<nav class="o-barra" aria-label="Contato rápido" data-o-barra>
-		<a id="cta-whatsapp-barra-mobile" href="{{ waLink('barra-mobile') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>WhatsApp</a>
-		<a id="cta-form-barra-mobile" href="{{ '#orcamento' if temFormulario else '/#orcamento' }}"><span class="o-icone o-icone--seta" aria-hidden="true"></span>Orçamento</a>
+	{%- endif %}
+	{%- if cabecalho != "minimo" and modo != "obrigado" %}
+	<nav class="o-barra{% if not comWhats %} o-barra--uma{% endif %}" aria-label="Contato rápido" data-o-barra>
+		{%- if comWhats %}
+		<a class="o-barra__wa" id="cta-whatsapp-barra-mobile" href="{{ waLink(prefixoWa + 'barra-mobile', contextoWa) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>WhatsApp</a>
+		{%- endif %}
+		<a class="o-barra__raio" id="cta-form-barra-mobile" href="{{ '#raio-x' if (temFormulario or seg) else '/#raio-x' }}"><span class="o-icone o-icone--raio" aria-hidden="true"></span>{{ 'Raio-X grátis' if site.config.OFERTA_DIAGNOSTICO else 'Orçamento' }}</a>
 	</nav>
 	{%- endif %}
 </aside>
+{%- endif %}
 {%- if site.config.CURSOR_ESTRELA %}
 <div class="o-cursor" aria-hidden="true" data-o-cursor></div>
 {%- endif %}

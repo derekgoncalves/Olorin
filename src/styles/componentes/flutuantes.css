@@ -80,25 +80,47 @@
 	text-transform: uppercase;
 	text-decoration: none;
 }
-.o-barra a:first-child {
+/* O Raio-X é a chamada de destaque (verde); o WhatsApp, quando aparece, fica ao lado em branco. */
+.o-barra--uma {
+	grid-template-columns: 1fr;
+}
+.o-barra__raio {
 	background: var(--verde);
 	color: var(--preto);
 }
-.o-barra a:last-child {
+.o-barra__wa {
 	color: var(--branco);
 }
 .o-barra .o-icone {
 	--tam: 18px;
 }
+.o-barra .o-icone--raio {
+	--tam: 1.4em;
+}
 .o-barra.is-alt {
 	border-top-color: var(--branco);
 }
-.o-barra.is-alt a:first-child {
+.o-barra.is-alt .o-barra__raio {
 	background: var(--branco);
 	color: var(--preto);
 }
 .o-barra.is-longe {
 	transform: translateY(110%);
+}
+/* 320 a 359 px: "Raio-X grátis" com a seta cabe na metade da barra sem encostar na borda */
+@media (max-width: 359px) {
+	.o-barra a {
+		gap: 6px;
+		padding-inline: 6px;
+		font-size: 12px;
+		letter-spacing: 0.01em;
+	}
+	.o-barra .o-icone {
+		--tam: 16px;
+	}
+	.o-barra .o-icone--raio {
+		--tam: 1.4em;
+	}
 }
 
 .o-cursor {

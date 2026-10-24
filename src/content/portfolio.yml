@@ -1,17 +1,57 @@
-# Portfólio da home. Imagens = ids do src/assets/manifest.json.
-# As 8 imagens atuais são ilustrativas (provisórias) — troque pelos trabalhos reais.
+# ============================================================
+# PORTFÓLIO: home (bloco Resultados), páginas de serviço e /portfolio/
+# ------------------------------------------------------------
+# Só trabalho real, com o nome do cliente (dono, 14/10/2026; lista revista em 17/10/2026):
+#   - artes do time: projetos do Vinícius Mafra no Behance (recortes 4:5 dos PDFs);
+#   - cards de logo para clientes de site, tráfego e redes (logo centrado sobre uma cor da marca).
+#
+# Ordem: a home mostra os primeiros itens (limite em home.yml → resultados.limite; no máximo
+# 2 cards de logo entre eles). A grade tem 3 colunas no computador e 2 no celular.
+# /portfolio/ mostra todos, nesta ordem (claros e escuros alternados).
+# Cada página de serviço mostra os itens que têm o slug dela em "servicos"; cada perfil da
+# equipe mostra até 6 itens das frentes da pessoa.
+#
+# Campos:
+#   titulo     nome do cliente ou do projeto
+#   rotulo     só o tipo geral de serviço, com " · " entre eles (Redes sociais · Tráfego pago)
+#   imagem     id da imagem em src/assets/manifest.json (todas na proporção 4:5)
+#   servicos   slugs dos serviços: identidade-visual, redes-sociais, material-impresso,
+#              site-e-loja-virtual, trafego-pago, rastreamento-e-relatorio
+#   link       opcional (site no ar, post no Instagram ou Behance)
+#
+# Para incluir um trabalho:
+#   1. salve a imagem em src/assets/img-src/portfolio/<nome>.webp, já recortada em 4:5
+#      (retrato, 1080 x 1350 px é o ideal; mínimo 640 x 800);
+#   2. crie a entrada "portfolio-<nome>" em src/assets/manifest.json (copie uma das existentes);
+#   3. acrescente uma linha em "itens" abaixo, na posição em que ele deve aparecer.
+# Para trocar uma imagem só pelo FTP (sem novo build): suba um arquivo com o MESMO
+# nome em /assets/img/ (as larguras e formatos estão em docs/PENDENCIAS.md).
+# ============================================================
+# Filtros: só aparecem os que têm trabalho. "curto" é o nome usado no celular (cabe em 2 linhas).
 filtros:
-  - { id: marca, rotulo: Marca }
-  - { id: campanha, rotulo: Campanha }
-  - { id: site, rotulo: Site }
-  - { id: impresso, rotulo: Impresso }
-  - { id: redes-sociais, rotulo: Redes sociais }
+  - { id: identidade-visual, rotulo: Identidade visual, curto: Identidade }
+  - { id: redes-sociais, rotulo: Redes sociais, curto: Redes }
+  - { id: material-impresso, rotulo: Impressos }
+  - { id: site-e-loja-virtual, rotulo: Sites }
+  - { id: trafego-pago, rotulo: Tráfego pago, curto: Tráfego }
+  - { id: rastreamento-e-relatorio, rotulo: Dados }
 itens:
-  - { titulo: Ateliê de moda, rotulo: Marca · Identidade visual, imagem: portfolio-marca-identidade, categorias: [marca] }
-  - { titulo: Loja de tecnologia, rotulo: Campanha · Tráfego pago, imagem: portfolio-redes-conteudo, categorias: [campanha] }
-  - { titulo: Escritório de advocacia, rotulo: Site · Institucional, imagem: portfolio-site-institucional, categorias: [site] }
-  - { titulo: Cafeteria, rotulo: Impresso · Catálogo, imagem: portfolio-campanha-trafego, categorias: [impresso] }
-  - { titulo: Estúdio de estética, rotulo: Redes sociais · Conteúdo, imagem: portfolio-impresso-catalogo, categorias: [redes-sociais] }
-  - { titulo: Marcenaria autoral, rotulo: Marca · Fotografia, imagem: portfolio-marca-producao, categorias: [marca] }
-  - { titulo: Clínica médica, rotulo: Campanha · Google Ads, imagem: portfolio-campanha-google-ads, categorias: [campanha] }
-  - { titulo: Loja infantil, rotulo: Impresso · Ponto de venda, imagem: portfolio-impresso-loja, categorias: [impresso] }
+  # Ordem (dono, 18/10): os 6 primeiros aparecem na home; John Deere, Centro Sul Shop e Anacleto ficam entre eles para o filtro Tráfego pago da home.
+  # PENDENTE: as artes do Behance são recortes do PDF (print do navegador); trocar pelos arquivos originais
+  - { titulo: BRAVO Film Festival, rotulo: Identidade visual · Redes sociais, imagem: portfolio-bravo-film-festival, servicos: [identidade-visual, redes-sociais] }
+  - { titulo: John Deere, rotulo: Tráfego pago, imagem: portfolio-john-deere, servicos: [trafego-pago] }
+  - { titulo: Governo do Estado do RS, rotulo: Identidade visual · Impressos, imagem: portfolio-governo-rs, servicos: [identidade-visual, material-impresso] }
+  - { titulo: José Anacleto Abduch, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-anacleto-abduch, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
+  # Fora do portfólio em 24/10/2026 (dono). Para voltar, tire o "# " da linha abaixo.
+  # - { titulo: Cartas para o Futuro, rotulo: Identidade visual · Impressos, imagem: portfolio-cartas-para-o-futuro, servicos: [identidade-visual, material-impresso] }
+  - { titulo: Centro Sul Shop, rotulo: Tráfego pago, imagem: portfolio-centro-sul-shop, servicos: [trafego-pago] }
+  # PENDENTE: o serviço feito para a National Geographic (hoje o card diz só "Marca atendida", sem filtro)
+  - { titulo: National Geographic, rotulo: Marca atendida, imagem: portfolio-national-geographic, servicos: [] }
+  # iZETA e Harmonia do Pet (dono, 24/10/2026): tudo menos impressos e identidade visual.
+  - { titulo: iZETA, rotulo: Sites · Tráfego pago · Redes sociais · Dados, imagem: portfolio-izeta, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais, rastreamento-e-relatorio] }
+  # Projeto da própria Olorin: fora em 24/10/2026 (dono). Para voltar, tire o "# " da linha abaixo.
+  # - { titulo: Olorin Digital, rotulo: Identidade visual, imagem: portfolio-olorin, servicos: [identidade-visual] }
+  # Card com o logo enviado pelo dono (24/10/2026).
+  - { titulo: Harmonia do Pet, rotulo: Sites · Tráfego pago · Redes sociais · Dados, imagem: portfolio-harmonia-do-pet, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais, rastreamento-e-relatorio] }
+  # suspenso em 17/10 (dono): Bença fica fora do site; para voltar, tire o "# " da linha abaixo
+  # - { titulo: Bença, rotulo: Identidade visual · Impressos, imagem: portfolio-benca, servicos: [identidade-visual, material-impresso] }

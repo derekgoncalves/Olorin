@@ -1,53 +1,60 @@
-# Perguntas frequentes da home (PROMPT seção 12.6). A mesma fonte gera o HTML e o JSON-LD.
-# "id" é fixo (serve para links como /#faq-verba-minima e para o evento faq_open).
-# Perguntas com [CONFIRMAR] não aparecem no site publicado até serem respondidas.
+# Perguntas frequentes (PROMPT seção 12.6). A mesma fonte gera o HTML e o JSON-LD.
+# Desde 17/10/2026 a FAQ completa aparece só na página /sobre/ (dono). Sem planos e sem preços (23/10/2026:
+# nenhum valor no site; a pergunta de preço responde que o orçamento sai sob medida, depois do Raio-X).
+# "id" é fixo (serve para links como /sobre/#faq-fidelidade e para o evento faq_open).
+# Regra: no máximo 3 frases curtas por resposta. Texto proposto e ainda não confirmado
+# fica marcado com "# PENDENTE:" na linha de cima (npm run pendencias).
 perguntas:
-  - id: faq-uma-frente
-    pergunta: Dá pra contratar só uma frente, tipo só o impresso ou só o tráfego?
-    resposta: Sim. Você pode entrar por uma frente específica e expandir depois. O ideal é que tudo rode junto, mas a gente não força. Cada contrato tem escopo e prazo definidos antes de começar.
   - id: faq-raio-x
     pergunta: O que é o Raio-X gratuito?
-    resposta: É uma conversa de 30 minutos por vídeo sobre a sua marca. Em até 48 horas você recebe um PDF de 1 página com os 3 problemas que mais travam a sua venda e as 3 ações para começar. Olhamos anúncio, Instagram, site, Perfil da Empresa no Google e o atendimento pelo WhatsApp. Não tem compromisso.
-  - id: faq-arranque
-    pergunta: Dá pra testar antes de assinar a gestão mensal?
-    resposta: Sim, com o Arranque 30 dias, a partir de R$ 1.800 uma única vez. Instalamos o rastreamento, colocamos 1 campanha no ar com 8 criativos e entregamos o relatório no dia 30. Se você seguir para a gestão mensal, o valor do Arranque é abatido da implantação.
-  - id: faq-implantacao
-    pergunta: O que é a taxa de implantação?
-    resposta: É o trabalho do primeiro mês, que é maior que o dos outros, cobrado uma única vez. Inclui acessos, rastreamento (GA4, pixel e conversões), configuração das contas e briefing. Custa R$ 1.000 na Gestão mensal e R$ 1.500 no 360 completo.
+    resposta: Uma conversa de 30 minutos por vídeo sobre o seu anúncio, as suas redes, o seu site e o material da sua marca. Em até 48 horas, você recebe um PDF de 1 página com os 3 pontos que mais travam a sua venda e as 3 ações para começar. Sem compromisso.
+  - id: faq-uma-frente
+    pergunta: Dá para contratar um serviço só?
+    resposta: Sim. Dá para contratar só redes sociais, só tráfego pago ou só um site, por exemplo, ou juntar várias frentes no mesmo time. Entregas pontuais, como um logotipo ou um impresso, também entram.
+  - id: faq-preco
+    pergunta: Quanto custa trabalhar com a Olorin?
+    resposta: O site não lista preço, porque cada orçamento sai sob medida, depois do Raio-X gratuito da sua marca. O Raio-X mostra as frentes que fazem sentido agora, e a proposta chega por escrito, sem compromisso. A verba de anúncio é à parte e vai direto para as plataformas.
+  - id: faq-segmento
+    pergunta: Vocês atendem o meu tipo de organização?
+    resposta: Atendemos empresas e organizações de todos os tipos e tamanhos, do pequeno negócio à indústria, da escola ao projeto cultural. Escolas e criadores de conteúdo têm páginas próprias, a [Olorin Educação](/educacao/) e a de [influenciadores](/influenciadores/).
+  - id: faq-comecar-pequeno
+    pergunta: Dá para começar pequeno?
+    resposta: Dá. Você pode começar por uma entrega pontual ou por um serviço só e crescer depois. O Raio-X gratuito mostra por onde vale começar.
   - id: faq-verba-minima
-    pergunta: Qual a verba mínima para começar a anunciar?
-    resposta: Para Meta Ads e Google Ads, recomendamos pelo menos R$ 1.500 por mês de verba de mídia. Abaixo disso, o algoritmo demora mais para aprender e o retorno fica mais imprevisível. Somando a gestão mensal (R$ 2.500), o custo total de entrada fica a partir de R$ 4.000 por mês.
+    pergunta: Quanto preciso investir em anúncio para começar?
+    resposta: Depende do objetivo, da região e da concorrência. Com pouca verba, as plataformas demoram mais para aprender, e no Raio-X a gente indica um valor que faça sentido para a sua marca. A verba vai direto para as plataformas, na sua conta.
   - id: faq-tempo-resultado
     pergunta: Em quanto tempo eu vejo resultado?
-    resposta: Depende do objetivo. Campanhas de resposta direta (venda, mensagem) costumam dar sinais claros em 2 a 4 semanas. Marca e conteúdo pedem 2 a 3 meses de consistência.
+    resposta: Depende do objetivo. Campanha de venda, de matrícula ou de mensagem costuma dar os primeiros sinais em 2 a 4 semanas. Marca e conteúdo pedem de 2 a 3 meses de constância.
   - id: faq-fidelidade
     pergunta: Vocês trabalham com contrato de fidelidade?
-    resposta: Na gestão mensal, o contrato mínimo é de 3 meses. Depois, fica mês a mês com aviso de 30 dias. Não cobramos multa rescisória.
+    resposta: Nos serviços mensais, o contrato mínimo é de 3 meses. Depois, segue mês a mês, e para encerrar basta avisar com 30 dias, sem multa. Entregas pontuais e projetos de site não têm contrato mensal.
+  - id: faq-arrependimento
+    pergunta: Posso desistir depois de contratar?
+    resposta: "Sim. Se você contratou a distância, pelo site, WhatsApp ou e-mail, pode desistir em até 7 dias da assinatura, com devolução do que pagou (art. 49 do Código de Defesa do Consumidor). Depois disso, vale o contrato: mínimo de 3 meses nos serviços mensais e, depois, aviso de 30 dias, sem multa."
   - id: faq-quem-cria
     pergunta: Quem cria as artes dos anúncios e dos posts?
-    resposta: O nosso próprio time de criação. Não terceirizamos para fornecedor externo. É por isso que o anúncio e o post saem com a mesma cara.
+    resposta: O time da Olorin, com direção de criação do Vinícius Mafra. Quando um projeto pede um especialista a mais, como fotografia, vídeo ou programação, a gente coordena tudo e responde pela entrega. Por isso o anúncio, o post e o impresso saem com a mesma cara.
   - id: faq-impressao
     pergunta: Vocês fazem a impressão ou só entregam o arquivo?
-    resposta: Entregamos o arquivo fechado, pronto para a gráfica. Se precisar, indicamos gráficas parceiras em Curitiba e acompanhamos a aprovação da prova.
-  - id: faq-fora-curitiba
-    pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. A maioria dos clientes é de outras cidades — o atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e entregáveis digitais.
-  - id: faq-segmento
-    pergunta: Vocês atendem o meu segmento?
-    resposta: A nossa especialidade é educação, ou seja, escolas e cursos que precisam encher turma. O time também já operou contas de comércio eletrônico, serviço, indústria e campanha política. Se o seu segmento é outro, conte no formulário que a gente responde se consegue ajudar.
+    resposta: Entregamos o arquivo fechado, pronto para a gráfica. Se precisar, indicamos gráficas parceiras e conferimos a prova com a gráfica antes de imprimir.
+  - id: faq-a-distancia
+    pergunta: Vocês atendem a distância?
+    resposta: "Sim. Tudo é feito a distância: WhatsApp, reuniões por vídeo e aprovações por e-mail. Onde a sua marca estiver, o jeito de trabalhar é o mesmo."
   - id: faq-relatorio
     pergunta: Como é o relatório?
-    resposta: Todo mês você recebe um relatório fechado que mostra quanto foi investido, quanto voltou em faturamento, quanto custou cada venda e qual foi o retorno — além do que vamos fazer na próxima rodada. Nada de relatório só com alcance e impressão.
+    resposta: "Todo mês você recebe um relatório com quanto investiu, quanto voltou, quanto custou cada resultado e o que muda na próxima rodada, em linguagem simples. Veja um [exemplo ilustrativo](/sobre/#relatorio)."
   - id: faq-dia-a-dia
-    pergunta: Quem cuida da minha conta no dia a dia?
-    resposta: O Derek Gonçalves é o seu primeiro contato e quem coordena a sua conta. A Natália cuida da mídia paga e o Vinicius, da direção de arte e do design.
+    pergunta: Quem é o meu contato no dia a dia?
+    resposta: O Derek Gonçalves, diretor de operações e relacionamento, é o seu primeiro contato, principalmente pelo WhatsApp. A Natalia Arruda dirige a estratégia, as mídias pagas, os dados e os relatórios, e o Vinícius Mafra dirige a criação e o design.
   - id: faq-troca-agencia
     pergunta: Já tenho agência. Como funciona a troca?
-    resposta: "[CONFIRMAR: como é a transição de outra agência — acessos às contas, histórico, prazo]"
+    # PENDENTE: confirmar como é a transição de outra agência (acessos, histórico, prazo)
+    resposta: A gente faz a transição com você. Pedimos os acessos às contas de anúncio, às redes e ao site, guardamos o histórico e fazemos o Raio-X antes de mexer em qualquer coisa, para nada sair do ar no meio do caminho.
   - id: faq-sem-verba
     pergunta: E se eu ainda não tiver verba para anúncio?
-    resposta: Sem problema. Começamos pelo Raio-X e te dizemos por onde vale começar. Dá para entrar pelo plano Pontual (a partir de R$ 800 por projeto), com uma entrega fechada como identidade visual, site ou impresso.
+    resposta: Sem problema. Dá para começar por uma entrega pontual, como logotipo, identidade visual ou um impresso, ou por um site. O Raio-X gratuito mostra o melhor primeiro passo.
   - id: faq-dono-contas
     pergunta: Quem é o dono das contas de anúncio, do site e dos arquivos?
-    resposta: "[CONFIRMAR: titularidade das contas de anúncio, do domínio/site e dos arquivos abertos]"
+    resposta: Você. As contas de anúncio, o domínio e o site ficam no nome da sua organização, e os arquivos finais são seus. A Olorin trabalha com acesso de parceiro, que você pode tirar quando quiser.
 whatsapp: Perguntar no WhatsApp

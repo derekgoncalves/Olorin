@@ -1,0 +1,199 @@
+# ============================================================
+# /influenciadores/ — LP "Olorin para influenciadores" (rodada de 23/10/2026)
+# ------------------------------------------------------------
+# Página própria para criadores de conteúdo e influenciadores, com visual próprio
+# (pegada MTV anos 2000 + "brat": verde chapado, texto minúsculo, adesivos com contorno
+# branco, visor de câmera, guia de canais). Estilo: src/styles/componentes/influenciadores.css,
+# tudo dentro de .o-tema-influenciadores. Marcação e ordem das seções: src/influenciadores/index.njk.
+# Sem preços e sem planos: toda chamada leva ao formulário do Raio-X, no fim da página (#raio-x).
+# Fotos: src/assets/manifest-influenciadores.json · equipe: equipe.yml · logos: clientes.yml.
+# Regra da marca: o verde nunca encosta no violeta (a foto do banner é roxa: o verde fica no preto).
+# ============================================================
+seo:
+  titulo: Marketing para influenciadores | Olorin Digital
+  descricao: "Seu perfil em outro nível. Estratégia, conteúdo, design e anúncios para criadores e influenciadores. Peça o Raio-X gratuito do seu perfil."
+
+marca:
+  nome: Olorin para influenciadores
+  # Ao lado da logo, no cabeçalho e no rodapé (minúsculo, como no resto da LP).
+  sub: influenciadores
+  lema: Seu perfil em outro nível.
+  lema_1: Seu perfil em
+  lema_destaque: outro nível.
+  apoio: Para quem cria, de qualquer nicho.
+  parte_de: A Olorin para influenciadores é a área de criadores de conteúdo da Olorin Digital.
+
+# Mensagens prontas dos links de WhatsApp desta página (ref: influencer-<posição>).
+whatsapp:
+  padrao: Oi! Vim pela página de influenciadores da Olorin e quero o Raio-X do meu perfil.
+  equipe: Oi! Vim pela página de influenciadores da Olorin e quero falar com a equipe.
+  # Assunto do link "Chame no WhatsApp" embaixo do formulário ("...quero falar sobre ...").
+  assunto_form: o Raio-X do meu perfil
+
+# Formulário: o mesmo do site (formulario.yml), no modo "influenciadores". Só nesta página, estes
+# textos valem por cima dos de formulario.yml (ver src/influenciadores/index.11tydata.js).
+formulario:
+  barra_topo: raio_x_do_perfil.olo
+  barra_fim: raio_x_do_perfil.olo
+  placeholders:
+    site: "@seuperfil ou link do canal"
+    mensagem: "Ex.: posto sobre fitness no Instagram e no TikTok e quero crescer e fechar mais parcerias."
+
+cabecalho:
+  menu:
+    - { rotulo: Para quem, url: "#para-quem" }
+    - { rotulo: O que a gente faz, url: "#canais" }
+    - { rotulo: Como funciona, url: "#como-funciona" }
+    - { rotulo: Equipe, url: "#equipe" }
+  voltar: Site da Olorin
+  voltar_longo: Voltar para o site da Olorin Digital
+  botao: Raio-X gratuito
+  whatsapp: Falar no WhatsApp
+  remoto: Atendimento 100% remoto
+
+hero:
+  etiqueta: Olorin para influenciadores
+  titulo: Seu perfil em
+  titulo_destaque: outro nível.
+  # Linha de apoio do banner: só no computador (24/10/2026, dono: no celular o banner fica só com o lema).
+  texto: Estratégia, conteúdo, design e anúncios para criadores que querem crescer, fechar parcerias e viver do próprio perfil.
+  # Curto, para caber numa linha no celular.
+  botao: Quero meu Raio-X
+  # Os 3 itens com check ao lado do botão (iguais em todas as páginas).
+  prova:
+    - Diagnóstico gratuito e sem compromisso
+    - Estratégia e performance
+    - Produção de alto nível
+  # Marcas de tela de TV/câmera sobre a foto (decoração, sem leitura de tela).
+  osd:
+    rec: REC
+    canal: CH 01
+    fita: "▶ PLAY"
+
+# Faixa correndo (verde, texto minúsculo), entre "O que a gente faz" e o banner do enquadramento.
+faixa:
+  - crescer o perfil
+  - fechar publi
+  - mídia kit
+  - calendário de conteúdo
+  - reels e carrossel
+  - anúncio na Meta e no Google
+  - relatório todo mês
+
+para_quem:
+  etiqueta: Para quem é
+  titulo: Feita para quem cria.
+  # Palavra gigante, desfocada, no fundo verde (decoração).
+  gigante: pra quem cria
+  texto: Se o seu trabalho é o seu perfil, a Olorin entra com estratégia, produção e anúncio.
+  perfis:
+    - nome: Criadores e influenciadores
+      texto: Crescer com método, não no chute.
+    - nome: Perfis que querem virar marca
+      texto: Lançar produto, curso ou mentoria.
+    - nome: Agentes e empresários
+      texto: Mídia kit, relatório e campanha.
+  fora: Não é para quem quer comprar seguidor.
+  nichos_rotulo: Nichos que a gente atende
+  nichos:
+    - moda
+    - beleza
+    - fitness
+    - games
+    - música
+    - humor
+    - educação
+    - gastronomia
+    - viagem
+    - lifestyle
+    - tecnologia
+    - maternidade
+  adesivo_tag: "#criadora"
+
+canais:
+  etiqueta: O que a gente faz
+  titulo: A programação do seu perfil.
+  texto: Tudo o que um perfil precisa para crescer, num time só.
+  rotulo_canal: CH
+  itens:
+    - canal: "01"
+      nome: Estratégia e calendário
+      texto: Posicionamento, linha editorial e calendário.
+      tag: planejamento
+    - canal: "02"
+      nome: Identidade visual e mídia kit
+      texto: Feed, destaques e mídia kit.
+      tag: visual
+    - canal: "03"
+      nome: Produção e edição
+      texto: Reels, carrosséis e stories.
+      tag: conteúdo
+    - canal: "04"
+      nome: Anúncios
+      texto: Meta e Google para crescer, vender e atrair marcas.
+      tag: mídia paga
+    - canal: "05"
+      nome: Relatório todo mês
+      texto: O que funcionou e o próximo passo.
+      tag: dados
+
+# Banner com a foto do "quadro" das mãos, no visor de uma câmera gravando.
+enquadramento:
+  etiqueta: Estratégia antes do post
+  titulo: Primeiro o enquadramento.
+  titulo_destaque: depois o play.
+  texto: Para quem você fala, como aparece e o que cada post precisa fazer.
+  botao: Raio-X do meu perfil
+  visor:
+    rec: REC
+    tempo: "00:00:15"
+    info: "4K · 60"
+
+como_funciona:
+  # 24/10/2026 (dono: "um banner super autêntico"): o Raio-X do perfil contado como o roteiro de um reels,
+  # numa folha impressa presa com fita, com marca-texto, post-it e o adesivo da corda.
+  etiqueta: Como funciona
+  titulo: O Raio-X do seu perfil.
+  texto: Em 3 cenas, sem compromisso.
+  roteiro:
+    titulo: Roteiro
+    formato: Reels · 0:30
+    take: Take 1
+  passos:
+    - tempo: "0:00"
+      cena: Gancho
+      titulo: A gente olha o seu perfil.
+      texto: Conteúdo, frequência, formatos e anúncios.
+    - tempo: "0:03"
+      cena: Virada
+      titulo: Mostra o que trava.
+      texto: E o que destravar primeiro.
+    - tempo: "0:20"
+      cena: Chamada
+      titulo: Você recebe o plano.
+      texto: Se fizer sentido, a gente toca junto.
+  postit: Grátis e sem compromisso!
+  botao: Raio-X do meu perfil
+  adesivo_tag: "#gravando"
+
+equipe:
+  etiqueta: Quem faz
+  titulo: O time por trás do play.
+  texto: Estratégia, criação e mídia paga, com uma pessoa respondendo por cada frente.
+  frases:
+    natalia-arruda: Dirige a estratégia e os anúncios na Meta e no Google. Mais de seis anos em mídia paga.
+    vinicius-mafra: Mais de 10 anos em direção de arte, de influenciadores digitais a produções culturais. Dirige a criação.
+    derek-goncalves: Seu primeiro contato e quem coordena o seu perfil no dia a dia.
+  botao: Falar no WhatsApp
+  link_sobre: Conheça quem somos
+
+rodape:
+  nesta_pagina: Nesta página
+  olorin: Olorin Digital
+  contato: Contato
+  links_olorin:
+    - { rotulo: Site da Olorin, url: / }
+    - { rotulo: Olorin Educação, url: /educacao/ }
+    - { rotulo: Serviços, url: /servicos/ }
+    - { rotulo: Portfólio, url: /portfolio/ }
+    - { rotulo: Quem somos, url: /quem-somos/ }

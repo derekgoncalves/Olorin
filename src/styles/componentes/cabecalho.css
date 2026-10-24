@@ -1,4 +1,4 @@
-/* Cabeçalho fixo + menu suspenso de serviços (desktop). */
+/* Cabeçalho fixo + listas suspensas de Serviços e Segmentos (desktop). */
 .o-topo {
 	position: fixed;
 	inset: 0 0 auto;
@@ -110,8 +110,47 @@ body:not(.o-modo-home) .o-topo {
 .o-nav__abrir[aria-expanded="true"] .o-icone {
 	rotate: -90deg;
 }
+/* Item sem página própria (Segmentos): o nome é o botão que abre a lista. */
+.o-nav__botao {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 44px;
+	border: 0;
+	background: none;
+	color: inherit;
+	font-family: inherit;
+	cursor: pointer;
+}
+.o-nav__botao::after {
+	right: 18px;
+}
+.o-nav__botao .o-icone {
+	--tam: 10px;
+	rotate: 90deg;
+	transition: rotate var(--dur) var(--curva);
+}
+.o-nav__botao[aria-expanded="true"],
+.o-nav__botao.is-atual {
+	color: var(--verde);
+}
+.o-nav__botao[aria-expanded="true"] .o-icone {
+	rotate: -90deg;
+}
+.o-nav__botao.is-atual::after,
+.o-nav__item--sub.is-open .o-nav__botao::after {
+	transform: scaleX(1);
+}
+@media (hover: hover) and (pointer: fine) {
+	.o-nav__item--sub:hover .o-nav__botao {
+		color: var(--verde);
+	}
+	.o-nav__item--sub:hover .o-nav__botao::after {
+		transform: scaleX(1);
+	}
+}
 
-/* Submenu de serviços */
+/* Listas suspensas (Serviços: 6 itens em 2 colunas; Segmentos: 2 itens em 1 coluna) */
 .o-sub {
 	position: absolute;
 	top: calc(100% + 18px);
@@ -155,6 +194,24 @@ html:not(.js) .o-nav__item--sub:focus-within .o-sub {
 	margin: 0;
 	padding: 8px;
 	list-style: none;
+}
+.o-sub--segmentos {
+	width: 330px;
+}
+.o-sub--segmentos .o-sub__lista {
+	grid-template-columns: minmax(0, 1fr);
+}
+.o-sub--segmentos .o-sub__link {
+	align-items: center;
+	padding-block: 14px;
+}
+.o-sub--segmentos .o-sub__link .o-icone {
+	--tam: 26px;
+	margin-top: 0;
+}
+/* Capelo de formatura em pixel (Educação, no menu). */
+.o-icone--capelo {
+	--icone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath d='M5 1h2v1h-2zM3 2h6v1h-6zM1 3h10v1h-10zM0 4h12v1h-12zM1 5h10v1h-10zM3 6h6v1h-6zM11 6h1v1h-1zM2 7h1v1h-1zM9 7h1v1h-1zM11 7h1v1h-1zM2 8h8v1h-8zM11 8h1v1h-1zM2 9h10v1h-10zM3 10h6v1h-6zM10 10h2v1h-2z'/%3E%3C/svg%3E");
 }
 .o-sub__link {
 	display: flex;
@@ -250,6 +307,45 @@ html:not(.js) .o-nav__item--sub:focus-within .o-sub {
 	display: block;
 	height: 2px;
 	background: var(--verde);
+}
+
+/* Botão do Raio-X do topo: o ícone da chapa na frente do texto, sem quebrar a linha. */
+.o-topo__raio {
+	white-space: nowrap;
+}
+
+/* Logo + 5 itens + WhatsApp + Raio-X numa linha só, sem quebrar, de 1024 a 1440 px (23/10/2026).
+   Só no cabeçalho do site (.o-topo--site; as LPs têm o delas); seletores mais fortes para valer por
+   cima de responsivo.css, que esconde o menu até 1100 px. */
+@media (max-width: 1366px) {
+	.o-topo--site .o-topo__dentro {
+		gap: 20px;
+	}
+	.o-topo--site .o-nav__lista {
+		gap: 16px;
+	}
+}
+@media (max-width: 1180px) {
+	.o-topo--site .o-topo__dentro {
+		gap: 14px;
+	}
+	.o-topo--site .o-nav__lista {
+		gap: 12px;
+	}
+	.o-topo--site .o-nav__link {
+		letter-spacing: 0.05em;
+	}
+}
+@media (min-width: 1024px) and (max-width: 1100px) {
+	.o-topo--site .o-nav {
+		display: block;
+	}
+	.o-topo--site .o-hamburguer {
+		display: none;
+	}
+	.o-topo--site .o-topo__ctas {
+		margin-left: 0;
+	}
 }
 
 /* Cabeçalho mínimo (landings de campanha) */

@@ -1,0 +1,25 @@
+{#- ===== Montagem do celular (23/10/2026) =====
+     Saiu do banner da home e foi para o banner de /servicos/redes-sociais/ (src/servicos/servico.njk).
+     Celular com a foto real "hero-celular" (src/assets/manifest.json), as 2 logos nos cantos da tela, o símbolo
+     no meio, o cursor que clica nele, o aviso que chega ("Novo seguidor") e a janela com as barras.
+     Textos: servicos/<slug>.yml → montagem { janela, rotulo, aviso }. Uso:
+       {% set montagem = s.montagem %}{% include "partials/montagem-celular.njk" %}
+     Decoração (aria-hidden): o texto do banner já diz o que importa. CSS: src/styles/componentes/montagem.css.
+     Movimento só com prefers-reduced-motion: no-preference e sem html.o-pausado; parado, tudo à vista. -#}
+{%- set m = montagem or {} -%}
+<div class="o-montagem" aria-hidden="true" data-o-cena>
+	<div class="o-montagem__palco">
+		<figure class="o-montagem__celular">
+			{{ imagem(imagens, "hero-celular", { alt: "", sizes: "(max-width: 767px) 64vw, 320px", classe: "o-montagem__foto" }) | safe }}
+			<svg class="o-montagem__logo o-montagem__logo--topo" viewBox="0 0 731 125.6" focusable="false"><use href="#s-logo"></use></svg>
+			<svg class="o-montagem__logo o-montagem__logo--base" viewBox="0 0 731 125.6" focusable="false"><use href="#s-logo"></use></svg>
+		</figure>
+		<span class="o-montagem__cursor"><span class="o-icone o-icone--trafego"></span></span>
+		<p class="o-montagem__aviso"><span class="o-icone o-icone--mais"></span>{{ m.aviso or "Novo seguidor" }}</p>
+		<div class="o-janela o-montagem__janela">
+			<div class="o-janela__barra"><span class="o-janela__titulo">{{ m.janela or "redes.olo" }}</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-montagem__barras"><i></i><i></i><i></i><i></i></div>
+			<p class="o-montagem__rotulo">{{ m.rotulo or "Relatório do mês" }} <span class="o-icone o-icone--seta"></span></p>
+		</div>
+	</div>
+</div>

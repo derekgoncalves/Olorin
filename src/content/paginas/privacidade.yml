@@ -1,54 +1,113 @@
-# Política de Privacidade — RASCUNHO para revisão jurídica do dono (PROMPT seção 13.3).
+# Política de Privacidade (LGPD, Lei nº 13.709/2018). Revisada em 14/10/2026 a pedido do dono,
+# sem advogado ("vai ser no risco"). Bases legais conferidas com o que o site faz de verdade:
+# formulário (src/php/enviar.njk), aviso de cookies (consentimento.js) e origem da visita (origem.js).
+# Ao mudar o site (nova ferramenta, CRM, outro formulário), atualize a lista e a data "atualizado".
+# Campos de cada seção: titulo, paragrafos, lista, paragrafos_fim, botao_cookies (true = botão
+# "Abrir preferências de cookies", que só aparece quando há medição ligada).
 seo:
   titulo: Política de Privacidade | Olorin Digital
   descricao: Como a Olorin Digital trata os dados de quem visita o site e pede orçamento, conforme a LGPD (Lei nº 13.709/2018).
 titulo: Política de Privacidade
-atualizado: "2026-10-08"
-introducao: Esta política explica como a Olorin Digital trata os dados pessoais de quem visita o site olorin.com.br e pede orçamento, de acordo com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).
+atualizado: "2026-10-23"
+introducao: Esta política explica, em linguagem simples, como a Olorin Digital trata os dados pessoais de quem visita o site olorin.com.br, pede orçamento ou fala com a gente pelo WhatsApp. Ela segue a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).
 secoes:
   - id: responsavel
     titulo: 1. Quem é responsável pelos seus dados
     paragrafos:
-      - A controladora dos dados é a Olorin Digital, agência de marketing digital com atendimento em Curitiba, PR. Para qualquer assunto sobre os seus dados, escreva para [digital@olorin.com.br](mailto:digital@olorin.com.br).
-      - "[CONFIRMAR: razão social, CNPJ e nome do encarregado pelo tratamento de dados (DPO)]"
-  - id: dados
-    titulo: 2. Quais dados coletamos
-    lista:
-      - "**Formulário de orçamento:** nome, WhatsApp, site ou perfil do Instagram (opcional), serviços de interesse, faixa de investimento em anúncio e a mensagem que você escrever."
-      - "**Origem da visita:** parâmetros de campanha (utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, gbraid, wbraid e fbclid), a página em que o formulário foi enviado e o site de onde você veio — para sabermos qual anúncio ou canal trouxe o contato."
-      - "**Cookies de análise e de marketing:** só são ativados se você permitir no aviso de cookies (veja a seção 4)."
-      - "**Dados técnicos:** o endereço IP é usado apenas por alguns minutos para bloquear envios automáticos (spam) e não é guardado junto ao seu pedido."
-  - id: finalidade
-    titulo: 3. Para que usamos e com qual base legal
-    lista:
-      - "Responder o seu pedido e preparar uma proposta comercial — base legal: procedimentos preliminares a um contrato, a seu pedido (art. 7º, V, da LGPD), e o seu consentimento (art. 7º, I)."
-      - "Medir o desempenho do site e dos nossos anúncios, quando você autoriza os cookies — base legal: consentimento (art. 7º, I)."
-      - Não enviamos listas de disparo e não vendemos os seus dados.
-  - id: cookies
-    titulo: 4. Cookies e ferramentas de medição
+      - A controladora dos dados é a **Olorin Digital**, agência de marketing digital com atendimento 100% remoto.
+      - "Contato: [digital@olorin.com.br](mailto:digital@olorin.com.br) ou WhatsApp (41) 99646-0861."
+      # CNPJ informado pelo dono em 23/10/2026. A razão social entra aqui quando o dono confirmar.
+      - "CNPJ da Olorin Digital: 57.027.011/0001-82."
+  - id: encarregado
+    titulo: 2. Encarregado de dados (DPO)
     paragrafos:
-      - Cookies necessários fazem o site funcionar e não dependem de autorização. Os demais só são ativados depois da sua escolha no aviso de cookies, que tem três opções com o mesmo peso — Aceitar tudo, Recusar e Personalizar (Análise e Marketing). Você pode mudar de ideia a qualquer momento pelo link "Preferências de cookies", no rodapé.
+      - "O encarregado pelo tratamento de dados pessoais é **Derek Gonçalves**. Fale com ele pelo e-mail [digital@olorin.com.br](mailto:digital@olorin.com.br), com o assunto \"Privacidade\"."
+  - id: dados
+    titulo: 3. Quais dados coletamos
     lista:
-      - "**Google Tag Manager:** organiza as ferramentas abaixo. Só carrega depois do seu consentimento."
-      - "**Google Analytics 4 (Análise):** conta visitas e cliques de forma agregada."
-      - "**Meta Pixel e Google Ads (Marketing):** medem o resultado dos nossos anúncios."
+      - "**Formulário de orçamento ou Raio-X:** nome, WhatsApp, e-mail, empresa ou instituição (ou o seu perfil), cargo, porte (como o tamanho da equipe, o número de alunos ou de seguidores), site ou perfil do Instagram (opcional), serviços ou desafios de interesse, verba de anúncio, a mensagem que você escrever e a data e a hora do seu aceite."
+      - "**Origem do contato:** a página em que você enviou o formulário, o site de onde veio e os códigos de campanha do endereço (como utm_source, gclid e fbclid). Assim sabemos qual anúncio ou canal trouxe o pedido."
+      - "**Proteção contra robôs:** quanto tempo o formulário ficou aberto e uma versão embaralhada (hash) do seu endereço IP, guardada por cerca de 10 minutos para barrar envios em série. Ela não fica junto do seu pedido."
+      - "**Conversas:** o que você mandar para a gente pelo WhatsApp, por e-mail ou em reunião por vídeo."
+      - "**Registros de acesso:** como em todo site, a hospedagem registra o IP, a data e a hora das visitas. O Marco Civil da Internet (Lei nº 12.965/2014) manda guardar esses registros por 6 meses."
+      - "**Medição de visitas e anúncios:** com cookies, só se você permitir no aviso de cookies; sem permissão, o Google recebe apenas sinais sem cookies e sem identificação (veja a seção 7)."
+    paragrafos_fim:
+      - Não pedimos CPF, endereço, dados bancários nem dados sensíveis, como saúde, religião ou opinião política. Por favor, não mande esse tipo de informação no campo de mensagem.
+  - id: finalidade
+    titulo: 4. Para que usamos e com qual base legal
+    lista:
+      - "**Responder o seu pedido, fazer o Raio-X e mandar a proposta.** Base legal: procedimentos preliminares a um contrato, a seu pedido (art. 7º, V, da LGPD). A caixa \"Concordo em ser contatado\" registra esse pedido."
+      - "**Cumprir o contrato, se você virar cliente.** Base legal: execução de contrato (art. 7º, V) e cumprimento de obrigação legal, como as fiscais (art. 7º, II)."
+      - "**Saber qual canal trouxe o contato e proteger o formulário contra spam.** Base legal: legítimo interesse (art. 7º, IX), com o mínimo de dados e sem nenhuma decisão automática sobre você."
+      - "**Medir visitas e o resultado dos nossos anúncios.** Base legal: o seu consentimento no aviso de cookies (art. 7º, I), que você pode retirar quando quiser. Antes da sua escolha, só vão sinais sem cookies e sem identificar você, para contar visitas de forma agregada: legítimo interesse (art. 7º, IX)."
+      - "**Guardar os registros de acesso e nos defender, se houver processo.** Base legal: obrigação legal (art. 7º, II) e exercício regular de direitos (art. 7º, VI)."
+    paragrafos_fim:
+      - Não vendemos os seus dados, não mandamos mensagem em massa e não usamos os seus dados para outra finalidade sem avisar antes.
   - id: compartilhamento
     titulo: 5. Com quem compartilhamos
+    lista:
+      - "**Locaweb:** hospeda o site, os pedidos do formulário e o nosso e-mail, em servidores no Brasil."
+      - "**WhatsApp (Meta):** quando você escolhe falar pelo WhatsApp, a conversa segue também as regras do próprio WhatsApp."
+      - "**Google e Meta (medição):** o Google recebe, desde a primeira página, só sinais sem cookies e sem identificador; com a sua permissão no aviso de cookies, Google e Meta recebem dados de navegação, como páginas vistas, cliques e um identificador do navegador. O site não envia o seu nome, telefone ou e-mail para essas ferramentas."
+      - "**Ferramenta de agenda:** se você usar o link para marcar um horário, ela recebe os dados que você preencher lá, conforme a política dela."
+      - "**Autoridades:** só quando a lei ou uma ordem judicial exigir."
+    paragrafos_fim:
+      - Se passarmos a usar outra ferramenta com os seus dados, como um sistema de gestão de clientes, ela entra nesta lista antes.
+  - id: internacional
+    titulo: 6. Dados fora do Brasil
     paragrafos:
-      - Os pedidos ficam armazenados no servidor de hospedagem do site (Locaweb, no Brasil) e na nossa caixa de e-mail. Se você permitir os cookies, Google e Meta recebem dados de navegação conforme as políticas de privacidade dessas empresas. Não há outros compartilhamentos, salvo por obrigação legal.
+      - Google e Meta podem tratar dados de navegação em servidores fora do Brasil, como nos Estados Unidos. Isso acontece com os sinais sem cookies do Google, com o seu consentimento para a medição ou quando você escolhe usar o WhatsApp, e essas empresas declaram adotar as garantias que a LGPD exige para esse envio (art. 33), como cláusulas contratuais padrão.
+  - id: cookies
+    titulo: 7. Cookies e medição
+    paragrafos:
+      - "Cookies e tecnologias parecidas, como o armazenamento do navegador, guardam pequenas informações no seu aparelho. O site usa três tipos:"
+    lista:
+      - "**Necessários:** guardam no seu navegador a sua escolha sobre cookies e, só enquanto a aba estiver aberta, a origem da visita (para ir junto com o seu pedido) e a versão do formulário que você viu. Não dependem de autorização."
+      - "**Análise (Google Analytics 4):** conta visitas, páginas e cliques de forma agregada. Cookies _ga e _ga_*, por até 2 anos."
+      - "**Marketing (Meta Pixel e Google Ads):** mostra quais anúncios trouxeram visitas e pedidos e permite mostrar anúncios a quem já visitou o site. Cookies como _fbp, _fbc, _gcl_au e _gcl_aw, por até 90 dias."
+    paragrafos_fim:
+      - "Nenhum cookie de Análise ou Marketing é gravado antes da sua escolha. O Google Analytics e o Google Tag Manager carregam no modo de consentimento do Google com tudo negado: até você aceitar, o Google recebe só sinais sem cookies e sem identificador, para contar visitas de forma agregada. O Meta Pixel só carrega se você aceitar Marketing. O aviso tem três botões com o mesmo destaque: Aceitar tudo, Recusar e Personalizar. Enquanto nenhuma ferramenta de medição estiver ligada no site, o aviso nem aparece."
+      - "Para mudar de ideia, use \"Preferências de cookies\", no rodapé ou no botão abaixo, ou apague os cookies nas configurações do navegador. Recusar não impede você de usar o site nem de pedir orçamento."
+    botao_cookies: true
   - id: retencao
-    titulo: 6. Por quanto tempo guardamos
-    paragrafos:
-      - Os pedidos de orçamento ficam guardados por até 24 meses após o último contato, ou até você pedir a exclusão. Depois disso, são apagados.
+    titulo: 8. Por quanto tempo guardamos
+    lista:
+      - "**Pedidos de orçamento e conversas:** até 24 meses depois do último contato. Se você virar cliente, pelo tempo do contrato e, depois dele, pelos prazos que a lei exige, como os fiscais."
+      - "**Registros de acesso ao site:** 6 meses."
+      - "**Hash do IP contra spam:** cerca de 10 minutos."
+      - "**Sua escolha sobre cookies:** fica no seu navegador até você apagar ou mudar."
+      - "**Dados de medição:** pelo prazo configurado no Google e na Meta, de até 14 meses no Google Analytics."
+    paragrafos_fim:
+      - Depois desses prazos, apagamos os dados ou deixamos anônimos. Você pode pedir a exclusão antes, menos do que a lei obriga a guardar.
   - id: direitos
-    titulo: 7. Seus direitos
+    titulo: 9. Seus direitos
     paragrafos:
-      - Você pode, a qualquer momento, confirmar se tratamos os seus dados, pedir acesso, correção, anonimização, portabilidade ou exclusão, e revogar o consentimento (art. 18 da LGPD). Basta escrever para [digital@olorin.com.br](mailto:digital@olorin.com.br). Respondemos o mais rápido possível, dentro dos prazos da lei.
+      - "Pela LGPD (art. 18), você pode pedir, a qualquer momento e sem custo:"
+    lista:
+      - confirmação de que tratamos os seus dados e acesso a eles;
+      - correção de dados incompletos, errados ou desatualizados;
+      - anonimização, bloqueio ou eliminação de dados desnecessários ou tratados fora da lei;
+      - portabilidade dos dados para outro fornecedor;
+      - eliminação dos dados tratados com o seu consentimento e informação sobre o que acontece se você não consentir;
+      - informação sobre com quem compartilhamos os seus dados;
+      - revogação do consentimento e oposição a um tratamento que você considere irregular.
+    paragrafos_fim:
+      - "**Como pedir:** escreva para [digital@olorin.com.br](mailto:digital@olorin.com.br), com o assunto \"Privacidade\", ou mande mensagem no WhatsApp (41) 99646-0861. Podemos pedir uma confirmação simples de que o pedido é seu. Respondemos em até 15 dias."
+      - Se não ficar satisfeito com a resposta, você pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD), no site [gov.br/anpd](https://www.gov.br/anpd/pt-br).
   - id: seguranca
-    titulo: 8. Segurança
+    titulo: 10. Segurança
     paragrafos:
-      - O site usa conexão criptografada (HTTPS), e o acesso aos pedidos é restrito à equipe da Olorin.
+      - O site usa conexão criptografada (HTTPS). Os pedidos ficam numa pasta do servidor fechada ao público, e só a equipe da Olorin acessa o e-mail e as planilhas, com senha. Nenhum sistema é totalmente seguro. Se houver um incidente que possa trazer risco a você, avisamos você e a ANPD, como manda a lei (art. 48).
+  - id: menores
+    titulo: 11. Crianças e adolescentes
+    paragrafos:
+      - O site é feito para empresas, instituições e adultos que contratam serviços de marketing. Não coletamos de propósito dados de menores de 18 anos. Se isso acontecer, apagamos assim que soubermos.
+  - id: contratacao
+    titulo: 12. Propostas e direito de arrependimento
+    paragrafos:
+      - O site não publica preços. O escopo, o prazo, o valor e as condições ficam na proposta e no contrato. A verba de anúncio não entra no valor dos serviços, porque você paga direto às plataformas.
+      - Se você contratar a distância (pelo site, WhatsApp, e-mail ou reunião por vídeo), pode desistir em até 7 dias da assinatura, com devolução do que tiver pago, como prevê o art. 49 do Código de Defesa do Consumidor, quando ele se aplica. Isso vale também para os formatos mensais, que têm contrato mínimo de 3 meses.
   - id: mudancas
-    titulo: 9. Mudanças nesta política
+    titulo: 13. Mudanças nesta política
     paragrafos:
-      - Podemos atualizar este texto. A data da última atualização fica sempre no topo da página.
+      - Podemos atualizar este texto quando o site ou a lei mudarem. A data da última atualização fica sempre no topo da página.

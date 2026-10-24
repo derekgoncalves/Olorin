@@ -1,0 +1,45 @@
+# ============================================================
+# BARRA DE LOGOS DE CLIENTES (site todo: secoes/faixa-clientes.njk)
+# ------------------------------------------------------------
+# Marcas atendidas pela Olorin e pelo time (tráfego da Nat, design do Vini).
+# Os arquivos ficam em src/assets/clientes/ (no servidor: /assets/img/clientes/).
+# Logos em uma cor só (preto, fundo transparente), em SVG. Onde o logo tem duas camadas que se
+# sobrepõem (etiqueta e carrinho da Centro Sul Shop), a de trás fica em preto a 40%.
+# Versões coloridas (cards do portfólio e Olorin Educação): <nome>-cor.svg.
+#
+# TROCAR UM LOGO SÓ PELO FTP (sem novo build): suba o arquivo novo para
+# /assets/img/clientes/ com o MESMO nome e a MESMA extensão (ex.: bravo.svg), em
+# preto com fundo transparente e sem margem em volta. O site mantém a altura
+# definida abaixo e a largura acompanha a proporção do arquivo novo.
+# Nome ou extensão diferente (ex.: .png) precisa de um novo build.
+#
+# Campos: nome = texto alternativo (o nome do cliente); logo = arquivo;
+# altura = altura do logo em px no computador (no celular encolhe sozinha), ajustada
+# a olho para todos terem o mesmo peso visual; largura = altura x proporção do
+# arquivo (só reserva o espaço enquanto a imagem carrega). cor: true = logo colorido original (não vira
+# branco no fundo escuro); logo_escuro = versão do original para fundo escuro (o texto escuro vira branco).
+# 24/10/2026 (dono): nada de cor na faixa. iZETA, Anacleto e Harmonia do Pet em preto com transparência
+# (tons claros do original viram cinza, como a Centro Sul), feitos dos originais (*-mono.webp, harmonia-do-pet.webp).
+# 19/10/2026 (dono): iZETA e Anacleto com os logos originais enviados por ele, em cor.
+# 17/10/2026: iZETA e Anacleto refeitos dos PNGs transparentes do dono; National Geographic e
+# Centro Sul Shop (logo enviado pelo dono, no lugar do letreiro provisório da Central Sul Móveis) novos.
+# ============================================================
+etiqueta: Marcas que o nosso time já atendeu
+itens:
+  - { nome: National Geographic, logo: national-geographic.svg, largura: 128, altura: 38 }
+  - { nome: John Deere, logo: john-deere.svg, largura: 136, altura: 28 }
+  - { nome: iZETA Educação, logo: izeta-mono.webp, largura: 96, altura: 38 }
+  # PENDENTE: logo oficial do BRAVO Film Festival em vetor (hoje vetorizado da arte do Behance do Vini)
+  - { nome: BRAVO Film Festival, logo: bravo.svg, largura: 66, altura: 56 }
+  # PENDENTE: logo oficial do Governo do Estado do RS em vetor (hoje vetorizado de uma imagem pequena; sem o "Novas Façanhas")
+  - { nome: Governo do Estado do Rio Grande do Sul, logo: governo-rs.svg, largura: 61, altura: 34 }
+  # Fora da faixa em 17/10/2026, junto com o portfólio (Bença suspensa; as outras três saíram). Voltam se o Vini confirmar.
+  # - { nome: Bença, logo: benca.svg, largura: 107, altura: 27 }
+  - { nome: Dr. José Anacleto Abduch Advocacia, logo: anacleto-mono.webp, largura: 174, altura: 28 }
+  # - { nome: Viva Sem Veneno, logo: viva-sem-veneno.svg, largura: 50, altura: 56 }
+  # - { nome: TORO AUDIO, logo: toro-audio.svg, largura: 90, altura: 42 }
+  # - { nome: Ambulatório da M.O.D.A, logo: ambulatorio-moda.svg, largura: 122, altura: 34 }
+  - { nome: Centro Sul Shop, logo: centro-sul-shop.svg, largura: 100, altura: 58 }
+  - { nome: Harmonia do Pet, logo: harmonia-do-pet.webp, largura: 158, altura: 38 }
+  # Fora da faixa em 23/10/2026 (dono). Para voltar, tire o "# " da linha abaixo.
+  # - { nome: Cartas para o Futuro, logo: cartas-para-o-futuro.svg, largura: 86, altura: 42 }

@@ -4,45 +4,23 @@
  *   conteudo.home         ← src/content/home.yml (textos e ORDEM das seções da home)
  *   conteudo.servicos     ← src/content/servicos/*.yml (lista ordenada pelo campo "ordem")
  *   conteudo.paginas.sobre ← src/content/paginas/sobre.yml (idem para as demais páginas)
- *   conteudo.faq, conteudo.equipe, conteudo.planos, conteudo.cases, conteudo.portfolio,
+ *   conteudo.faq, conteudo.equipe, conteudo.calculadora, conteudo.cases, conteudo.portfolio,
  *   conteudo.depoimentos, conteudo.claims
  *
- * Regra do [CONFIRMAR: ...]: no site publicado (npm run build), qualquer item de lista que
- * contenha um marcador é retirado, e qualquer texto solto com marcador fica vazio — assim
- * nada sem confirmação vai ao ar. No modo de desenvolvimento os marcadores aparecem destacados.
+ * Nada fica escondido (dono, 13/10/2026): todo texto vai ao ar. O que ainda falta confirmar
+ * fica marcado com um comentário "# PENDENTE: ..." no .yml, logo acima do texto proposto
+ * (lista completa: npm run pendencias). Marcador [CONFIRMAR] no meio do texto não é mais
+ * usado: o build falha se sobrar algum, para nenhum colchete aparecer para o visitante.
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
 
 const PASTA = 'src/content';
-const PROD = process.env.ELEVENTY_ENV === 'production';
-const MARCADOR = /\[CONFIRMAR/i;
 
 function ler(arquivo) {
 	const texto = readFileSync(arquivo, 'utf8');
 	return arquivo.endsWith('.json') ? JSON.parse(texto) : yaml.load(texto);
-}
-
-function temMarcador(valor) {
-	if (typeof valor === 'string') return MARCADOR.test(valor);
-	if (Array.isArray(valor)) return valor.some(temMarcador);
-	if (valor && typeof valor === 'object') return Object.values(valor).some(temMarcador);
-	return false;
-}
-
-/** Remove o que tem [CONFIRMAR] (só em produção). */
-function limpar(valor) {
-	if (typeof valor === 'string') return MARCADOR.test(valor) ? null : valor;
-	if (Array.isArray(valor)) return valor.filter((item) => !temMarcador(item)).map(limpar);
-	if (valor && typeof valor === 'object') {
-		const saida = {};
-		for (const [chave, v] of Object.entries(valor)) {
-			saida[chave] = limpar(v);
-		}
-		return saida;
-	}
-	return valor;
 }
 
 function carregarPasta(pasta) {
@@ -59,10 +37,7 @@ function carregarPasta(pasta) {
 }
 
 export default function () {
-	let conteudo = carregarPasta(PASTA);
-	if (PROD) {
-		conteudo = limpar(conteudo);
-	}
+	const conteudo = carregarPasta(PASTA);
 
 	// Serviços: lista ordenada + atalho por slug.
 	const servicos = Object.values(conteudo.servicos || {}).sort((a, b) => (a.ordem || 99) - (b.ordem || 99));
@@ -75,18 +50,31 @@ export default function () {
 		.map((s) => ({ valor: s.chip, slug: s.slug }))
 		.concat(conteudo.formulario && conteudo.formulario.servicos_extra ? [{ valor: conteudo.formulario.servicos_extra, slug: 'nao-sei' }] : []);
 
-	// Cases aprovados: geram /cases/ e /cases/<slug>/ (PROMPT 12.2). Sem nenhum aprovado, as páginas não existem.
+	// Cases: o bloco de destaque (home e páginas de serviço) só aparece com "destaque_no_site: true"
+	// em cases.yml (desligado pelo dono em 14/10/2026). A Olorin Educação mostra os clientes do bloco
+	// "edu" de forma genérica (casesEdu). Os que têm "pagina: true" ganham também /cases/<slug>/,
+	// e para isso precisam dos campos abaixo.
 	const OBRIGATORIOS = ['slug', 'segmento', 'situacao', 'o_que_fizemos', 'resultado', 'periodo', 'servicos'];
-	conteudo.casesAprovados = ((conteudo.cases && conteudo.cases.itens) || []).filter((c) => c && c.aprovado);
+	const casesItens = ((conteudo.cases && conteudo.cases.itens) || []).filter(Boolean);
+	conteudo.casesTodos = conteudo.cases && conteudo.cases.destaque_no_site ? casesItens : [];
+	conteudo.casesEdu = casesItens.filter((c) => c.edu);
+	conteudo.casesAprovados = conteudo.casesTodos.filter((c) => c.pagina);
 	for (const c of conteudo.casesAprovados) {
 		const faltando = OBRIGATORIOS.filter((campo) => !c[campo] || (Array.isArray(c[campo]) && !c[campo].length));
 		if (faltando.length) {
-			throw new Error(`Case "${c.slug || c.segmento}" está com aprovado: true, mas faltam os campos: ${faltando.join(', ')} (src/content/cases.yml).`);
+			throw new Error(`Case "${c.slug || c.segmento}" está com pagina: true, mas faltam os campos: ${faltando.join(', ')} (src/content/cases.yml).`);
 		}
 	}
 
+	// Portfólio: todos os trabalhos vão ao ar (só trabalhos reais, com o nome do cliente).
+	conteudo.portfolioPublicado = ((conteudo.portfolio && conteudo.portfolio.itens) || []).filter(Boolean);
+
 	// Equipe: atalho por slug.
 	conteudo.pessoaPorSlug = Object.fromEntries(((conteudo.equipe && conteudo.equipe.pessoas) || []).map((p) => [p.slug, p]));
+	// Frentes de cada pessoa: vêm do quem_faz de cada serviço (fonte única), em src/content/servicos/*.yml.
+	((conteudo.equipe && conteudo.equipe.pessoas) || []).forEach((p) => {
+		p.servicos = servicos.filter((s) => (s.quem_faz || []).includes(p.slug)).map((s) => s.slug);
+	});
 
 	// FAQ geral: atalho por id.
 	conteudo.faqPorId = Object.fromEntries(((conteudo.faq && conteudo.faq.perguntas) || []).map((p) => [p.id, p]));

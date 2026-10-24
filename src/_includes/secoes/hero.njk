@@ -1,37 +1,34 @@
-{#- ===== SEÇÃO: Banner (hero) — textos em src/content/home.yml → hero ===== -#}
+{#- ===== SEÇÃO: Banner (hero) da home, textos em src/content/home.yml → hero =====
+     Tela de início de jogo (dono, 23/10/2026: "ta perfeito"), num fundo preto só: o "O" da Olorin girando
+     como moeda, a etiqueta, o lema (h1), o minijogo 8-bit (canvas desenhado por src/scripts/modulos/jogo.js),
+     o botão START do Raio-X (id cta-diagnostico-hero, usado na medição), a linha de apoio, os 3 itens com
+     check e, no pé, a faixa de logos (secoes/faixa-clientes.njk). Visual em src/styles/componentes/hero.css.
+     O selo "Level up" é um ::before do destaque (texto em data-selo): decoração, fora do texto do h1. -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
+{%- import "components/ui.njk" as ui with context -%}
 {%- set h = P.hero -%}
-<section class="o-sec o-hero o-ctx-preto" id="inicio" data-secao="hero">
-	<div class="o-wrap o-hero__grade">
+<section class="o-sec o-hero o-ctx-preto" id="inicio" data-secao="hero" aria-labelledby="hero-titulo">
+	<div class="o-wrap o-hero__palco">
 		<div class="o-hero__texto">
+			<div class="o-hero__moeda" aria-hidden="true"><svg viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg></div>
 			<p class="o-etiqueta o-hero__linha">{{ h.linha_superior }}</p>
-			<h1 class="o-hero__titulo">{{ h.titulo_1 }}<br> {{ h.titulo_2 }} <span class="o-hero__destaque">{{ h.titulo_destaque }}</span></h1>
-			<p class="o-hero__paragrafo">{{ h.paragrafo }}</p>
-			<div class="o-hero__acoes">
-				<a class="o-btn o-btn--verde o-btn--grande" id="cta-diagnostico-hero" href="#diagnostico">{{ h.botao if site.config.OFERTA_DIAGNOSTICO else h.botao_sem_diagnostico }}</a>
-				<a class="o-link-wa" id="cta-whatsapp-hero" href="{{ waLink('hero') }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ h.link_whatsapp }}</a>
+			<h1 class="o-hero__titulo" id="hero-titulo"><span class="o-hero__l1">{{ h.titulo }}</span> <span class="o-hero__destaque" data-selo="▲ {{ h.selo }}">{{ h.titulo_destaque }}</span></h1>
+			{#- Minijogo (decoração): sem JS fica escondido, sem deixar buraco. -#}
+			<div class="o-hero__jogo" aria-hidden="true" data-o-jogo>
+				<div class="o-hero__tela"><canvas width="192" height="72"></canvas><span class="o-hero__aviso" data-o-jogo-aviso>{{ h.jogo_aviso }}</span></div>
 			</div>
-			<p class="o-nota"><span class="o-icone o-icone--relogio" aria-hidden="true"></span>{{ h.microtexto }}</p>
-			{%- if h.link_nicho %}
-			<p class="o-hero__nicho"><a class="o-link-seta" id="cta-nicho-hero" href="{{ h.link_nicho.url }}">{{ h.link_nicho.texto }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a></p>
+			{{ ui.botaoRaioX("cta-diagnostico-hero", h.botao_start, "o-hero__start") }}
+			{%- if h.apoio %}
+			<p class="o-hero__apoio">{{ h.apoio }}</p>
 			{%- endif %}
-			<ul class="o-prova" aria-label="Como trabalhamos">
-			{%- for item in h.prova %}
+			<ul class="o-prova o-hero__prova" aria-label="{{ h.checks_rotulo }}">
+			{%- for item in h.checks %}
 				<li>{{ item }}</li>
 			{%- endfor %}
 			</ul>
 		</div>
-		<div class="o-hero__visual">
-			<figure class="o-celular">
-				{{ imagem(imagens, "hero-celular", { prioridade: true, sizes: "(max-width: 640px) 168px, (max-width: 1100px) 30vw, 320px", classe: "o-celular__img" }) | safe }}
-				<svg class="o-celular__logo o-celular__logo--topo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
-				<svg class="o-celular__logo o-celular__logo--base" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
-			</figure>
-			<div class="o-janela o-hero__janela" aria-hidden="true">
-				<div class="o-janela__barra"><span class="o-janela__titulo">{{ h.janela }}</span><span class="o-janela__ctrl"></span></div>
-				<div class="o-hero__barras"><i></i><i></i><i></i><i></i></div>
-				<p class="o-hero__janela-rotulo">{{ h.janela_rotulo }} <span class="o-icone o-icone--seta"></span></p>
-			</div>
-		</div>
 	</div>
+	{#- Faixa de logos de clientes no pé do banner (secoes/faixa-clientes.njk), no mesmo fundo preto. -#}
+	{%- set faixa_pe = true %}
+	{% include "secoes/faixa-clientes.njk" %}
 </section>

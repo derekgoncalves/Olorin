@@ -1,17 +1,45 @@
 {#-
 	Formulário de orçamento em 2 etapas — componente único (PROMPT seção 10).
 	Uso: {% from "components/formulario.njk" import formulario with context %}
-	     {{ formulario({ id: "form-fim", posicao: "fim", servico: "trafego-pago" }) }}
+	     {{ formulario({ id: "form-fim", posicao: "fim", modo: "home", servico: "trafego-pago" }) }}
 	posicao: topo (abaixo do banner) | fim (CTA final) | promo (landing de campanha)
-	Sem JavaScript: as duas etapas aparecem juntas e o envio é tradicional (enviar.php redireciona).
+	modo:    vai para o enviar.php (modo_pagina) e escolhe os textos e opções de formulario.yml → segmentos:
+	         "educacao" (LP Olorin Educação), "influenciadores" (LP de influenciadores); o resto usa "site".
+	         Sem modo, vale o modo da página; o front matter "segmento" (educacao | influencer) também escolhe.
+	Opcionais: servico (slug: marca o chip), plano, nomeServico (assunto do link de WhatsApp embaixo),
+	           origemWa (ref desse link; padrão "<segmento>-form-<posicao>" nas LPs e "form-<posicao>" no site).
+	Etapa 1: nome, WhatsApp e e-mail. Etapa 2: empresa, cargo, porte, site ou @ (opcional), chips (serviços no
+	site, desafios nas LPs), verba de anúncio, mensagem e consentimento.
+	Sem JavaScript: as duas etapas aparecem juntas, o navegador confere os obrigatórios e o envio é tradicional
+	(enviar.php redireciona para a página de obrigado do segmento).
 -#}
 {% macro formulario(o) %}
 {%- set f = conteudo.formulario -%}
 {%- set cfg = site.config -%}
 {%- set id = o.id -%}
-{%- set diagnostico = cfg.OFERTA_DIAGNOSTICO and (o.posicao == "topo" or o.posicao == "promo") -%}
+{%- set modoForm = o.modo or modo or "home" -%}
+{%- if o.segmento == "educacao" or modoForm == "educacao" or (not o.modo and segmento == "educacao") -%}
+	{%- set chaveSeg = "educacao" -%}
+{%- elif o.segmento == "influenciadores" or modoForm == "influenciadores" or (not o.modo and segmento == "influencer") -%}
+	{%- set chaveSeg = "influenciadores" -%}
+{%- else -%}
+	{%- set chaveSeg = "site" -%}
+{%- endif -%}
+{%- set s = f.segmentos[chaveSeg] -%}
+{%- set prefixoWa = "educacao" if chaveSeg == "educacao" else ("influencer" if chaveSeg == "influenciadores" else "") -%}
+{%- set paginaSeg = conteudo.paginas[chaveSeg] if chaveSeg != "site" else null -%}
+{%- set diagnostico = cfg.OFERTA_DIAGNOSTICO and (o.posicao == "topo" or o.posicao == "promo" or o.posicao == "fim") -%}
+{%- set chips = s.desafios.opcoes if s.desafios else null -%}
 {%- set opcoesServico = conteudo.opcoesServico -%}
-<div class="o-form o-form--{{ o.posicao }}" id="{{ id }}" data-o-form data-posicao="{{ o.posicao }}" data-etapa="1" data-o-erros="{{ f.erros | dump | escape }}">
+{%- if o.nomeServico -%}
+	{%- set contextoWa = { tipo: "servico", x: o.nomeServico } -%}
+{%- elif paginaSeg and paginaSeg.whatsapp and paginaSeg.whatsapp.padrao -%}
+	{%- set contextoWa = { mensagem: paginaSeg.whatsapp.padrao } -%}
+{%- else -%}
+	{%- set contextoWa = {} -%}
+{%- endif -%}
+{%- set origemWa = o.origemWa or ((prefixoWa + "-form-" + o.posicao) if prefixoWa else ("form-" + o.posicao)) -%}
+<div class="o-form o-form--{{ o.posicao }} o-form--{{ chaveSeg }}" id="{{ id }}" data-o-form data-posicao="{{ o.posicao }}" data-segmento="{{ chaveSeg }}" data-etapa="1" data-o-erros="{{ f.erros | dump | escape }}">
 	<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ f.barra_topo if o.posicao == "topo" else f.barra_fim }}</span><span class="o-janela__ctrl"></span></div>
 	<form class="o-form__corpo" action="/enviar.php" method="post" accept-charset="UTF-8" data-o-form-el>
 		<p class="o-form__progresso" aria-hidden="true"><span class="o-medidor"><i class="is-on"></i><i></i></span><span data-o-etapa-rotulo>Etapa 1 de 2</span></p>
@@ -21,7 +49,7 @@
 			<legend class="o-form__legenda" tabindex="-1">{{ f.etapa1_legenda }}</legend>
 			<div class="o-campo">
 				<label for="{{ id }}-nome">{{ f.rotulos.nome }}</label>
-				<input id="{{ id }}-nome" name="nome" type="text" autocomplete="name" required minlength="2" maxlength="80" placeholder="{{ f.placeholders.nome }}" aria-describedby="{{ id }}-nome-erro">
+				<input id="{{ id }}-nome" name="nome" type="text" autocomplete="name" autocapitalize="words" required minlength="2" maxlength="80" placeholder="{{ f.placeholders.nome }}" aria-describedby="{{ id }}-nome-erro">
 				<p class="o-campo__erro" id="{{ id }}-nome-erro" data-erro-de="nome" hidden></p>
 			</div>
 			<div class="o-campo">
@@ -30,22 +58,73 @@
 				<p class="o-campo__erro" id="{{ id }}-whatsapp-erro" data-erro-de="whatsapp" hidden></p>
 			</div>
 			<div class="o-campo">
-				<label for="{{ id }}-site">{{ f.rotulos.site }} <span class="o-campo__opcional">{{ f.rotulos.site_opcional }}</span></label>
-				<input id="{{ id }}-site" name="site" type="text" inputmode="url" autocomplete="url" maxlength="120" placeholder="{{ f.placeholders.site }}">
+				<label for="{{ id }}-email">{{ f.rotulos.email }}</label>
+				<input id="{{ id }}-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required maxlength="120" placeholder="{{ f.placeholders.email }}" aria-describedby="{{ id }}-email-erro">
+				<p class="o-campo__erro" id="{{ id }}-email-erro" data-erro-de="email" hidden></p>
 			</div>
 			<button class="o-form__avancar" type="button" data-o-avancar>{{ f.botao_continuar }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></button>
 		</fieldset>
 
 		<fieldset class="o-form__etapa" data-etapa="2">
-			<legend class="o-form__legenda" tabindex="-1">{{ f.etapa2_legenda }}</legend>
+			<legend class="o-form__legenda" tabindex="-1">{{ s.etapa2_legenda }}</legend>
+			<div class="o-campo">
+				<label for="{{ id }}-empresa">{{ s.empresa.rotulo }}</label>
+				<input id="{{ id }}-empresa" name="empresa" type="text" autocomplete="organization"{% if chaveSeg == "influenciadores" %} autocapitalize="off" spellcheck="false"{% endif %} required minlength="2" maxlength="120" placeholder="{{ s.empresa.placeholder }}" aria-describedby="{{ id }}-empresa-erro">
+				<p class="o-campo__erro" id="{{ id }}-empresa-erro" data-erro-de="empresa" data-msg="{{ s.empresa.erro }}" hidden></p>
+			</div>
+			<div class="o-campo">
+				<label for="{{ id }}-cargo">{{ s.cargo.rotulo }}</label>
+				{%- if s.cargo.opcoes %}
+				<div class="o-select">
+					<select id="{{ id }}-cargo" name="cargo" required aria-describedby="{{ id }}-cargo-erro">
+						<option value="">{{ f.selecione }}</option>
+					{%- for op in s.cargo.opcoes %}
+						<option value="{{ op }}">{{ op }}</option>
+					{%- endfor %}
+					</select>
+				</div>
+				{%- else %}
+				<p class="o-campo__exemplo" id="{{ id }}-cargo-exemplo">{{ s.cargo.exemplo }}</p>
+				<input id="{{ id }}-cargo" name="cargo" type="text" autocomplete="organization-title" required minlength="2" maxlength="80" aria-describedby="{{ id }}-cargo-exemplo {{ id }}-cargo-erro">
+				{%- endif %}
+				<p class="o-campo__erro" id="{{ id }}-cargo-erro" data-erro-de="cargo" data-msg="{{ s.cargo.erro }}" hidden></p>
+			</div>
+			<div class="o-campo">
+				<label for="{{ id }}-porte">{{ s.porte.rotulo }}</label>
+				<div class="o-select">
+					<select id="{{ id }}-porte" name="porte" required aria-describedby="{{ id }}-porte-erro">
+						<option value="">{{ f.selecione }}</option>
+					{%- for op in s.porte.opcoes %}
+						<option value="{{ op }}">{{ op }}</option>
+					{%- endfor %}
+					</select>
+				</div>
+				<p class="o-campo__erro" id="{{ id }}-porte-erro" data-erro-de="porte" data-msg="{{ s.porte.erro }}" hidden></p>
+			</div>
+			<div class="o-campo">
+				<label for="{{ id }}-site">{{ s.site.rotulo }} <span class="o-campo__opcional">{{ f.rotulos.site_opcional }}</span></label>
+				<input id="{{ id }}-site" name="site" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" maxlength="120" placeholder="{{ f.placeholders.site or s.site.placeholder }}">
+			</div>
+			{%- if chips %}
 			<fieldset class="o-campo o-campo--grupo">
-				<legend class="o-campo__rotulo">{{ f.rotulos.servicos }} <span class="o-campo__opcional">{{ f.rotulos.servicos_dica }}</span></legend>
-				<div class="o-chips">
-				{%- for op in opcoesServico %}
-					<label class="o-chip"><input type="checkbox" name="servicos[]" value="{{ op.valor }}" data-servico="{{ op.slug }}"{% if o.servico == op.slug %} checked{% endif %}><span>{{ op.valor }}</span></label>
+				<legend class="o-campo__rotulo">{{ s.desafios.rotulo }} <span class="o-campo__opcional">{{ s.desafios.dica }}</span></legend>
+				<div class="o-chips" data-o-chips>
+				{%- for op in chips %}
+					<label class="o-chip"><input type="checkbox" name="desafios[]" value="{{ op }}"{% if op == f.servicos_extra %} data-o-exclusivo{% endif %}><span>{{ op }}</span></label>
 				{%- endfor %}
 				</div>
 			</fieldset>
+			{%- else %}
+			<fieldset class="o-campo o-campo--grupo">
+				<legend class="o-campo__rotulo">{{ f.rotulos.servicos }} <span class="o-campo__opcional">{{ f.rotulos.servicos_dica }}</span></legend>
+				<div class="o-chips o-chips--servicos" data-o-chips>
+					<label class="o-chip o-chip--todos" hidden data-o-todos-rotulo><input type="checkbox" data-o-todos><span>{{ f.rotulos.selecionar_tudo or "Selecionar tudo" }}</span></label>
+				{%- for op in opcoesServico %}
+					<label class="o-chip"><input type="checkbox" name="servicos[]" value="{{ op.valor }}" data-servico="{{ op.slug }}"{% if op.slug == "nao-sei" %} data-o-exclusivo{% endif %}{% if o.servico == op.slug %} checked{% endif %}><span>{{ op.valor }}</span></label>
+				{%- endfor %}
+				</div>
+			</fieldset>
+			{%- endif %}
 			<div class="o-campo o-campo--verba">
 				<label for="{{ id }}-investimento">{{ f.rotulos.investimento }}</label>
 				<div class="o-select">
@@ -60,7 +139,7 @@
 			</div>
 			<div class="o-campo">
 				<label for="{{ id }}-mensagem">{{ f.rotulos.mensagem }} <span class="o-campo__opcional">{{ f.rotulos.mensagem_opcional }}</span></label>
-				<textarea id="{{ id }}-mensagem" name="mensagem" rows="3" maxlength="1500" placeholder="{{ f.placeholders.mensagem }}"></textarea>
+				<textarea id="{{ id }}-mensagem" name="mensagem" rows="3" maxlength="1500" placeholder="{{ f.placeholders.mensagem or s.mensagem_placeholder }}"></textarea>
 			</div>
 			<div class="o-campo">
 				<label class="o-consentimento" for="{{ id }}-consentimento">
@@ -80,7 +159,7 @@
 			{%- for campo in ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid", "fbclid", "primeiro_toque", "pagina", "referencia"] %}
 			<input type="hidden" name="{{ campo }}" value="">
 			{%- endfor %}
-			<input type="hidden" name="modo_pagina" value="{{ o.modo or modo or 'home' }}">
+			<input type="hidden" name="modo_pagina" value="{{ modoForm }}">
 			<input type="hidden" name="servico_pagina" value="{{ o.servico or '' }}">
 			<input type="hidden" name="posicao_formulario" value="{{ o.posicao }}">
 			<input type="hidden" name="variante_formulario" value="">
@@ -91,6 +170,6 @@
 		</fieldset>
 		<p class="o-form__status" role="status" aria-live="polite" data-o-status></p>
 	</form>
-	<p class="o-form__alternativa">{{ f.alternativa_wa }} <a href="{{ waLink(o.origemWa or ('form-' + o.posicao), { tipo: 'servico', x: o.nomeServico } if o.nomeServico else {}) }}" target="_blank" rel="noopener">{{ f.alternativa_wa_link }}</a></p>
+	<p class="o-form__alternativa">{{ f.alternativa_wa }} <a href="{{ waLink(origemWa, contextoWa) }}" target="_blank" rel="noopener" data-cta="{{ origemWa }}">{{ f.alternativa_wa_link }}</a></p>
 </div>
 {% endmacro %}

@@ -1,26 +1,14 @@
-# Landing de campanha geral (/promo/) — PROMPT seção 11.2. Não indexada.
+# Landings de campanha (/promo/ e /promo/<slug>/), não indexadas.
+# 17/10/2026 (dono): sem preços, método e dúvidas; a chamada é o Raio-X gratuito (o formulário fica no topo).
 seo:
   titulo: Raio-X gratuito de marketing | Olorin Digital
-  descricao: Descubra onde o seu marketing está travado. Raio-X gratuito de anúncio, redes, site e material impresso, feito por quem executa.
+  descricao: "Raio-X gratuito da sua marca: 30 minutos por vídeo e, em até 48 horas, um PDF com o que mais trava o seu marketing. Sem compromisso."
 etiqueta: Raio-X gratuito
-titulo: Descubra onde o seu marketing está travado.
-sub: Raio-X gratuito de anúncio, redes, site e material impresso, feito por quem executa. Sem compromisso.
+titulo: Onde a sua marca trava?
+sub: A gente olha anúncio, redes, site e material da marca numa conversa de 30 minutos por vídeo e, em até 48 horas, manda um PDF com o que mais trava e por onde começar.
 titulo_sem_diagnostico: Peça seu orçamento.
-sub_sem_diagnostico: Anúncio, conteúdo, site e impresso feitos pelo mesmo time. Preço aberto e resposta em até 1 dia útil.
-prova_titulo: Quem já passou por aqui
-passos:
-  titulo: Como funciona
-  itens:
-    - titulo: Você conta sobre a marca
-      texto: Preencha o formulário rapidinho, com o que você faz e quanto investe hoje.
-    - titulo: Fazemos o Raio-X
-      texto: Olhamos anúncio, redes, site e material da marca para descobrir o que está travando.
-    - titulo: Você recebe a proposta
-      texto: Com preço aberto e o que faz sentido para o seu momento. Sem compromisso.
-preco:
-  titulo: Quanto custa trabalhar com a gente
-faq_titulo: Dúvidas rápidas
-faq: [faq-tempo-resultado, faq-verba-minima, faq-fidelidade, faq-fora-curitiba]
+sub_sem_diagnostico: Anúncios, redes, marca, site, impressos e dados num time só. Resposta em até 1 dia útil.
+# Os 3 itens com check do banner vêm de src/content/selos.yml (iguais em todas as páginas).
 cta_final:
-  titulo: Pronto para descobrir onde está travando?
-  botao: Quero meu Raio-X
+  titulo: Quer saber onde a sua marca trava?
+  botao: Quero meu Raio-X grátis

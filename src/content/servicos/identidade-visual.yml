@@ -1,147 +1,102 @@
 # ============================================================
-# SERVIÇO: Identidade visual e criação — fonte ÚNICA da página /servicos/identidade-visual/
-# e da landing de campanha /promo/identidade-visual/ (PROMPT seções 9 e 11).
-# Só fatos do PROMPT.md. O que falta confirmar vai com [CONFIRMAR: ...]
-# (não aparece no site publicado; itens de lista com marcador somem inteiros).
+# SERVIÇO: Identidade visual. Fonte ÚNICA de /servicos/identidade-visual/ e /promo/identidade-visual/.
+# Texto proposto vai ao ar; "# PENDENTE:" marca o que o dono ainda precisa confirmar.
+# Confirmado pelo dono (14/10/2026): primeira versão em cerca de 7 dias úteis, em média, e rodadas de ajuste semanais.
+# 17/10/2026 (dono): preços, planos, método e dúvidas saíram do site; a chamada é o Raio-X gratuito.
 # ============================================================
 slug: identidade-visual
 ordem: 3
-nome: Identidade visual e criação
-chip: Identidade visual e criação   # igual à opção do formulário e à lista do enviar.php
+nome: Identidade visual
+chip: Identidade visual
 icone: marca
 janela: marca.ai
-atualizado: "2026-10-08"
+cena: marca
+atualizado: "2026-10-17"
 quem_faz: [vinicius-mafra]
 
 seo:
-  title: Criação de Identidade Visual em Curitiba | Olorin Digital
-  description: Logotipo, manual de marca, papelaria e todo o material visual. Uma marca com cara de marca, não de improviso. Projetos a partir de R$ 800.
+  title: Identidade Visual e Logotipo | Olorin Digital
+  description: Logotipo, paleta, tipografia e manual de marca para a sua empresa ter uma cara só, do feed ao cartão. Peça o Raio-X gratuito da sua marca.
 
 card:
-  titulo: Identidade visual e criação
-  resumo: Logotipo, manual de marca, papelaria e material visual de apoio. A marca com cara de marca, não de improviso.
-  resumo_curto: Logotipo, manual de marca e papelaria.
+  titulo: Identidade visual
+  resumo: Logotipo, paleta, tipografia e manual de marca. A marca com cara de marca, não de improviso.
+  resumo_curto: Logotipo, paleta e manual de marca.
 
 hero:
-  eyebrow: Criação de identidade visual em Curitiba e para todo o Brasil
-  h1: A marca com cara de marca, não de improviso.
-  sub: Logotipo, manual de marca, papelaria e material de apoio, criados pelo mesmo time que também faz anúncios, conteúdo, sites e impressos.
+  eyebrow: Identidade visual e logotipo
+  h1: Uma marca, uma cara.
+  sub: Logotipo, cores, letras e regras de uso para a sua marca ser reconhecida em qualquer lugar, do avatar do Instagram à fachada.
   janela_linhas:
-    - Logotipo · versão final
-    - Manual de marca · cores e fontes
-    - Papelaria · pronta para a gráfica
+    - Logotipo · aprovado
+    - Paleta e tipografia · definidas
+    - Manual · entregue
 
 resposta_curta: >-
-  Identidade visual é o que dá cara à sua marca: logotipo, cores, fontes e o manual que explica
-  como usar tudo isso. É para quem está começando ou sente que a marca parece diferente
-  em cada lugar — no feed, no cartão, no site. Os projetos custam a partir de R$ 800. O escopo e o prazo
-  são definidos antes de começar, no briefing — a etapa em que combinamos o que entra no projeto.
+  Identidade visual é o conjunto que faz a sua marca ser reconhecida: logotipo, cores, tipografia e as regras
+  de uso. Na Olorin, o projeto começa por uma imersão no seu negócio, tem rodadas de ajuste toda semana e
+  termina com o manual e os arquivos finais em todos os formatos. O escopo e o prazo são fechados na proposta.
+
+o_que_e:
+  titulo: Reconhecida de longe.
+  texto:
+    - Identidade visual não é só o logo. É o conjunto de cores, letras, formas e regras que faz alguém reconhecer a sua marca antes mesmo de ler o nome.
+    - "A Olorin começa entendendo o seu negócio, o seu público e os seus concorrentes. Depois desenha o logotipo e as variações, escolhe a paleta e a tipografia e organiza tudo num manual simples, para qualquer fornecedor aplicar do jeito certo."
+    - "O resultado é uma marca que funciona pequena no avatar, grande na fachada e igual em todo lugar: no anúncio, no feed, no site e no cartão."
+  destaques:
+    - Logotipo com versões para cada uso
+    - Paleta e tipografia definidas
+    - Manual de marca fácil de seguir
 
 dores:
-  titulo: Isso acontece com você?
+  etiqueta: Este é o seu caso?
+  titulo: Marca com várias caras?
+  texto: Se um destes aparece aí, a sua marca está perdendo força.
   itens:
-    - Cada peça parece de uma empresa diferente — o anúncio, o feed, o cartão de visita e o site.
-    - O logotipo foi feito às pressas, e hoje ninguém sabe qual versão é a certa.
-    - Cada fornecedor usa uma cor e uma fonte diferentes, porque não existe um guia que diga quais são as da marca.
-    - O material impresso ficou parado no tempo enquanto o digital foi atualizado.
-
-para_quem:
-  e:
-    - Quem está abrindo um negócio e quer começar com uma marca de verdade, não com um improviso.
-    - Quem sente que a marca parece diferente em cada lugar — no feed, no cartão, no site.
-    - Quem vai investir em anúncio, site ou impresso e quer que tudo saia com a mesma cara.
-    - Quem prefere uma entrega fechada, com escopo e prazo definidos antes de começar.
-  nao_e:
-    - Quem precisa de um projeto por menos de R$ 800. Esse é o valor de entrada da identidade visual.
-    - Quem procura alguém para imprimir a papelaria. Nós entregamos o arquivo fechado, pronto para a gráfica.
-    - "[CONFIRMAR: outros critérios de quem não é cliente ideal]"
+    - { titulo: Cada lugar uma marca, texto: "O feed, o cartão e o site parecem de empresas diferentes." }
+    - { titulo: Logo que não cabe, texto: "O logo some no avatar do Instagram e fica estranho em fundo escuro." }
+    - { titulo: Sem regra, texto: "Cada fornecedor usa uma cor e uma letra, porque ninguém tem o manual." }
+    - { titulo: Cara de improviso, texto: A marca parece menor do que o negócio que você construiu. }
 
 entregas:
-  titulo: O que entregamos
+  titulo: O que pode entrar.
+  texto: O que pode entrar no projeto, com o escopo fechado na proposta e arquivos prontos para usar.
   itens:
-    - titulo: Logotipo
-      texto: O logotipo da sua marca, pensado para aparecer tanto no digital quanto no impresso.
+    - titulo: Imersão e referências
+      texto: Conversa sobre o negócio, o público e os concorrentes, e um painel de referências para alinhar o caminho.
+      frequencia: no início
+      icone: mais
+    - titulo: Logotipo e variações
+      texto: Versão principal, reduzida, símbolo e versões para fundo claro e escuro.
+      frequencia: ajustes toda semana
       icone: marca
+    - titulo: Paleta e tipografia
+      texto: Cores com os códigos certos para tela e impressão, e as letras da marca.
+      frequencia: definidas no projeto
+      icone: pixel
     - titulo: Manual de marca
-      texto: O guia de uso da marca, que mostra como aplicar o logotipo, as cores e as fontes. Serve de referência para qualquer peça que for criada depois.
-      icone: estrela
-    - titulo: Papelaria
-      texto: As peças do dia a dia com a nova marca, como o cartão de visita. Entregamos o arquivo fechado, pronto para a gráfica.
+      texto: Um guia simples com o que pode e o que não pode, para qualquer pessoa aplicar certo.
+      frequencia: na entrega
+      icone: check
+    - titulo: Aplicações
+      texto: A marca aplicada em avatar, capa, cartão e papelaria, para você ver funcionando.
+      frequencia: na entrega
       icone: impresso
-    - titulo: Material visual de apoio
-      texto: As demais peças com a nova marca, conforme a necessidade do seu negócio. O que entra em cada projeto é definido no briefing, antes de começar.
-      icone: redes
+    - titulo: Arquivos finais
+      texto: "Todos os formatos: vetor para gráfica, PNG para redes e SVG para o site."
+      frequencia: na entrega
+      icone: site
 
-como_funciona:
-  titulo: Como funciona
-  etapas:
-    - nome: Diagnóstico
-      texto: Olhamos tudo o que a sua marca já tem — logotipo, redes, site, anúncios e material impresso. Antes de desenhar qualquer coisa, entendemos o que está travando e o que vale manter.
-    - nome: Direção
-      texto: No briefing, combinamos o escopo, o prazo e a cara da marca — o que ela precisa transmitir, para quem e onde vai aparecer. Você sabe o que vai receber antes de começarmos.
-    - nome: Execução
-      texto: O Vinicius cria o logotipo, o manual de marca e as peças combinadas no briefing. As aprovações acontecem por e-mail, e a papelaria sai em arquivo fechado, pronto para a gráfica.
-    - nome: Leitura
-      texto: Você recebe a marca e o manual que explica como usá-la, sem segredo. Se seguir com a gente no plano Gestão mensal, o mesmo time aplica a marca nos anúncios e no conteúdo, com relatório todo mês. No plano 360 completo, também no impresso e no site.
-  prazos:
-    - "[CONFIRMAR: prazo típico de cada etapa de um projeto de identidade visual (diagnóstico, criação, ajustes e entrega)]"
-
-precisamos:
-  titulo: O que precisamos de você
-  itens:
-    - Um tempo para o briefing, em que definimos juntos o escopo e o prazo do projeto.
-    - O que a sua marca já tem hoje, se houver — logotipo atual, material impresso e os links das redes e do site, para o diagnóstico.
-    - Retorno nas aprovações, que acontecem por e-mail, para o projeto andar sem travar.
-    - "[CONFIRMAR: número de rodadas de ajuste incluídas e outros materiais pedidos no início]"
-
-preco:
-  titulo: Quanto custa
-  formato: Projeto pontual
-  valor: A partir de R$ 800/projeto
-  faixa: "[CONFIRMAR: faixa de preço por escopo (só logotipo; logotipo + manual de marca; identidade completa com papelaria)]"
-  detalhe: Uma entrega específica e fechada. O escopo e o prazo são definidos no briefing, antes de começar, e o preço vem detalhado na proposta.
-  contrato: Projeto fechado, sem mensalidade.
-  inclui:
-    - Logotipo, manual de marca, papelaria e material visual de apoio, conforme o escopo do briefing
-    - Criação feita pelo nosso próprio time, sem terceirizar
-    - Escopo e prazo definidos antes de começar
-    - "[CONFIRMAR: rodadas de ajuste incluídas e formatos dos arquivos entregues]"
-  nao_inclui:
-    - A impressão da papelaria e do material (entregamos o arquivo fechado, pronto para a gráfica)
-    - Gestão de anúncios e de redes sociais (nos planos Gestão mensal ou 360 completo)
-    - Site e loja virtual (contratados à parte ou no plano 360 completo)
-  schema:
-    valor: "800"
-    minimo: true
-    descricao: Projeto pontual de identidade visual, a partir de R$ 800.
+portfolio:
+  titulo: Na prática.
+  texto: Identidade, tipografia e direção de arte feitas pelo time da Olorin.
 
 combina_com:
   - slug: material-impresso
-    porque: Com a marca pronta, o cartão, o folder, o catálogo e a fachada saem com a mesma cara. Entregamos o arquivo fechado, pronto para a gráfica.
-  - slug: site-e-loja-virtual
-    porque: O site é um dos lugares onde a marca mais aparece. Feito pelo mesmo time, ele já nasce com o logotipo, as cores e as fontes do manual.
-
-faq:
-  - id: identidade-quanto-custa
-    pergunta: Quanto custa uma identidade visual?
-    resposta: Os projetos de identidade visual começam em R$ 800. O valor final depende do escopo, combinado no briefing, a etapa inicial em que definimos o que entra no projeto. O preço vem detalhado na proposta, antes de começar.
-  - id: identidade-prazo
-    pergunta: Quanto tempo leva para a marca ficar pronta?
-    resposta: Depende do tamanho do projeto. O prazo é definido junto com o escopo no briefing, a etapa inicial do projeto, antes de começarmos. Assim, você sabe quando vai receber a marca antes de fechar.
-  - id: identidade-quem-cria
-    pergunta: Quem cria a minha marca?
-    resposta: Quem cria é o Vinicius Mafra, diretor de arte e designer há mais de 10 anos. Ele já esteve à frente de diversos projetos, de influenciadores digitais a produções culturais. A criação é do nosso próprio time — não terceirizamos.
-  - id: identidade-mesma-cara
-    pergunta: A marca nova já sai aplicada no anúncio, no feed e no site?
-    resposta: Sim, se você contratar esses serviços com a gente. O mesmo time cria a marca, os posts, os anúncios, o site e o impresso, então tudo sai com a mesma cara. Também dá para contratar só a identidade visual e expandir depois.
-  - id: identidade-arquivos
-    pergunta: Quem fica com os arquivos da marca?
-    resposta: "[CONFIRMAR: titularidade e formatos dos arquivos entregues (arquivos abertos, vetor, PNG, PDF)]"
-  - id: identidade-fora-curitiba
-    pergunta: Vocês atendem fora de Curitiba?
-    resposta: Sim. A maioria dos clientes é de outras cidades. O atendimento é 100% remoto, com reuniões por vídeo, aprovações por e-mail e arquivos entregues em formato digital.
+    porque: Com a identidade pronta, cartão, folder e fachada saem com a mesma cara.
+  - slug: redes-sociais
+    porque: O feed é onde a marca aparece todo dia. Com identidade clara, cada post sai mais rápido.
 
 campanha:
-  titulo: Chega de marca feita no improviso.
-  subtitulo: Raio-X gratuito da sua marca. Projetos de identidade visual a partir de R$ 800. Sem compromisso.
-  faq: [identidade-quanto-custa, identidade-prazo, identidade-quem-cria, identidade-fora-curitiba]
+  titulo: Sua marca tem cara de improviso?
+  subtitulo: Raio-X gratuito da sua marca, com 30 minutos por vídeo e um PDF com o que trava a sua imagem. Sem compromisso.

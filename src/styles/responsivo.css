@@ -35,18 +35,12 @@
 		display: flex;
 		margin-left: 0;
 	}
-	.o-hero__grade {
-		grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr);
-	}
-	.o-hero__janela {
-		left: -40px;
-	}
 	.o-numeros {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		row-gap: 40px;
 	}
 	.o-rodape__grade {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 	.o-rodape__marca {
 		grid-column: 1 / -1;
@@ -78,12 +72,6 @@
 	.o-faq__cabeca {
 		position: static;
 	}
-	.o-servico-janela {
-		justify-self: start;
-	}
-	.o-sobre-foto {
-		max-width: 420px;
-	}
 	.o-cases,
 	.o-equipe__grade {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -97,7 +85,6 @@
 		margin-left: 0;
 	}
 	.o-plano--destaque {
-		order: -1;
 		translate: none;
 		margin-top: 12px;
 	}
@@ -111,7 +98,6 @@
 		grid-row: auto;
 	}
 	.o-escolher,
-	.o-combinacoes,
 	.o-passos,
 	.o-planos-resumo {
 		grid-template-columns: minmax(0, 1fr);
@@ -130,48 +116,6 @@
 	}
 	.o-tem-barra .o-barra {
 		display: grid;
-	}
-	.o-hero {
-		min-height: 0;
-		padding-bottom: 72px;
-	}
-	.o-hero__grade {
-		grid-template-columns: minmax(0, 1fr);
-		gap: 48px;
-	}
-	/* No celular a imagem do banner fica baixa (≈ 280 px) para não roubar a primeira dobra */
-	.o-hero__visual {
-		width: 168px;
-		margin-left: max(34%, 120px);
-	}
-	.o-hero__janela {
-		left: -112px;
-		bottom: 22px;
-		min-width: 172px;
-		max-width: min(240px, 62vw);
-	}
-	.o-hero__janela .o-janela__barra {
-		--barra-x: 8px;
-		--ctrl-l: 30px;
-		font-size: 12px;
-	}
-	.o-hero__barras {
-		height: 40px;
-		margin: 12px 12px 0;
-	}
-	.o-hero__visual::after {
-		width: 52px;
-		right: -22px;
-		top: -22px;
-	}
-	.o-hero__visual::before {
-		width: 44px;
-	}
-	.o-celular {
-		border-radius: 26px;
-	}
-	.o-celular__logo {
-		width: 44px;
 	}
 	.o-hero__acoes .o-btn {
 		flex: 1 1 100%;

@@ -2,12 +2,242 @@
 layout: layouts/base.njk
 modo: home
 modo_form: educacao
+segmento: educacao
 slug: educacao
-pagina_dados: educacao
+tema: educacao
+cabecalho: educacao
 permalink: /educacao/
-og_imagem: /assets/img/og/home.jpg
+og_imagem: /assets/img/og/educacao.jpg
+fontes_extra:
+  - { href: /assets/fonts/educacao/fraunces-900.woff2, tipo: font/woff2 }
 ---
-{#- /educacao/ — landing do nicho (mesmos blocos da home, textos em src/content/paginas/educacao.yml). -#}
-{%- for secao in conteudo.paginas.educacao.secoes %}
-{% include "secoes/" + secao + ".njk" %}
-{%- endfor %}
+{#-
+	/educacao/ — LP "Olorin Educação": marca própria dentro do site (mesma logo e cores, mais violeta),
+	com caderno quadriculado, tinta de mimeógrafo, lousa de giz, carimbo e janelas .olo.
+	Sem preços: toda chamada é o botão do Raio-X e leva ao único formulário, no fim (#raio-x).
+	Textos: src/content/paginas/educacao.yml · cases: cases.yml · equipe: equipe.yml · logos: clientes.yml
+	Visual: src/styles/componentes/educacao.css · interações: src/scripts/modulos/educacao.js
+-#}
+{%- set E = conteudo.paginas.educacao -%}
+{%- set cfg = site.config -%}
+{%- from "components/formulario.njk" import formulario with context -%}
+{%- import "components/ui.njk" as ui with context -%}
+{%- from "partials/chapa-raio-x.njk" import chapaRaioX with context -%}
+{#- Botão do Raio-X no violeta: a mesma marcação do ui.botaoRaioX (o-btn--raio e o ícone .o-icone--raio, a chapinha
+	preta com os ossinhos verdes), só que branco: o verde do botão do site não encosta no violeta. -#}
+{%- macro botaoRaio(id, texto) -%}
+<a class="o-btn o-btn--branco o-btn--raio" id="{{ id }}" href="#raio-x" data-cta="{{ id }}"><span class="o-icone o-icone--raio" aria-hidden="true"></span>{{ texto }}</a>
+{%- endmacro -%}
+{%- set svgRisco -%}<svg class="o-edu-risco" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M4 14C46 7 118 5 196 9"/><path pathLength="1" d="M28 20C80 15 136 13 180 16"/></svg>{%- endset -%}
+{%- set svgOval -%}<svg class="o-edu-oval" viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M66 7C26 3 5 16 6 31c1 17 36 24 68 21 32-3 44-15 39-29C108 9 82 3 46 9"/></svg>{%- endset -%}
+
+{#- ===== 1. Banner: violeta, caderno quadriculado, o lema no h1, botão do Raio-X e boletim de exemplo ===== -#}
+{%- set h = E.hero -%}
+<section class="o-sec o-edu-hero o-ctx-violeta o-com-grao" id="inicio" data-secao="hero" aria-labelledby="edu-titulo">
+	<div class="o-edu-fundo o-edu-fundo--hero" aria-hidden="true" data-o-edu-lapis><span class="o-edu-tinta"></span></div>
+	<div class="o-wrap o-edu-hero__grade">
+		<div class="o-edu-hero__texto">
+			<p class="o-etiqueta">{{ h.etiqueta }}</p>
+			<h1 class="o-edu-h1" id="edu-titulo">{{ h.titulo }} <span class="o-edu-sublinhado">{{ h.titulo_destaque }}{{ svgRisco | safe }}</span></h1>
+			<p class="o-edu-hero__lead"><strong>{{ h.apoio }}</strong> {{ h.texto }}</p>
+			<p class="o-edu-hero__cta">{{ botaoRaio("cta-raio-x-educacao-hero", h.botao) }}</p>
+			<ul class="o-edu-prova" role="list" aria-label="Como a Olorin Educação trabalha">
+			{%- for item in h.prova %}
+				<li>{{ item }}</li>
+			{%- endfor %}
+			</ul>
+		</div>
+		<div class="o-edu-hero__visual">
+			{%- set b = h.boletim %}
+			<figure class="o-janela o-edu-boletim o-ctx-branco">
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ b.janela }}</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-edu-boletim__corpo">
+					<p class="o-edu-boletim__topo"><strong>{{ b.titulo }}</strong><span>{{ b.escola }} · <span class="o-edu-inteiro">{{ b.periodo }}</span></span></p>
+					<table class="o-edu-boletim__tabela">
+						<caption class="o-sr">{{ b.titulo }}: notas de exemplo por canal</caption>
+						<thead><tr><th scope="col">{{ b.coluna_materia }}</th><th scope="col">{{ b.coluna_nota }}</th></tr></thead>
+						<tbody>
+						{%- for m in b.materias %}
+							<tr{% if m.alerta %} class="is-alerta"{% endif %} style="--k: {{ loop.index0 }}">
+								<th scope="row">{{ m.nome }}{% if m.obs %}<small>{{ m.obs }}</small>{% endif %}</th>
+								<td>{% if m.nota == "?" %}<span aria-hidden="true">?</span><span class="o-sr">sem nota</span>{% else %}<span class="o-edu-boletim__nota">{{ m.nota }}{% if loop.index0 == 3 %}{{ svgOval | safe }}{% endif %}</span>{% endif %}</td>
+							</tr>
+						{%- endfor %}
+						</tbody>
+					</table>
+					<p class="o-edu-carimbo o-edu-carimbo--boletim" aria-hidden="true">{{ b.carimbo }}</p>
+				</div>
+				<figcaption class="o-edu-aviso">{{ b.aviso }}</figcaption>
+			</figure>
+			<span class="o-edu-pixels" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+		</div>
+	</div>
+</section>
+
+{#- ===== 2. Régua (faixa animada) ===== -#}
+<div class="o-faixa o-edu-regua o-ctx-branco" data-o-faixa>
+	<ul class="o-faixa__trilho">
+	{%- for item in E.regua %}
+		<li>{{ item }}</li>
+	{%- endfor %}
+	</ul>
+	<button class="o-faixa__pausar" type="button" aria-pressed="false" data-o-pausar><span class="o-sr" data-o-pausar-texto>Pausar animações</span><span class="o-faixa__pausar-icone" aria-hidden="true"></span></button>
+</div>
+
+{#- ===== 3. Para quem é: lista de chamada ===== -#}
+{%- set t = E.chamada -%}
+<section class="o-sec o-edu-sec o-edu-papel o-ctx-branco" id="para-quem" data-secao="para-quem" aria-labelledby="edu-para-quem-titulo">
+	<div class="o-wrap o-edu-duas">
+		<div class="o-edu-cabeca">
+			<p class="o-etiqueta">{{ t.etiqueta }}</p>
+			<h2 class="o-edu-h2" id="edu-para-quem-titulo">{{ t.titulo }}</h2>
+			<p class="o-edu-apoio">{{ t.texto }}</p>
+			<p class="o-edu-local"><span class="o-icone o-icone--pixel" aria-hidden="true"></span>{{ t.nota }}</p>
+		</div>
+		<div class="o-janela o-edu-chamada" data-o-edu-entra>
+			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ t.janela }}</span><span class="o-janela__ctrl"></span></div>
+			<div class="o-edu-chamada__corpo">
+				<p class="o-edu-chamada__topo" aria-hidden="true"><span>nº</span><span>{{ t.turma }}</span></p>
+				<ol class="o-edu-chamada__lista" role="list">
+				{%- for item in t.itens %}
+					<li style="--k: {{ loop.index0 }}"><span class="o-edu-chamada__num" aria-hidden="true">{{ "0" + loop.index if loop.index < 10 else loop.index }}</span><span class="o-edu-chamada__nome">{{ item }}</span><span class="o-edu-chamada__marca" aria-hidden="true">{{ t.presente }}</span></li>
+				{%- endfor %}
+				</ol>
+				<p class="o-edu-chamada__ausente"><span class="o-edu-chamada__marca o-edu-chamada__marca--ausente">{{ t.ausente }}:</span> {{ t.ausente_texto }}</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+{#- ===== 4. Logos de clientes (a mesma faixa do site) ===== -#}
+{% include "secoes/faixa-clientes.njk" %}
+
+{#- ===== 5. Calendário de captação: quadro negro, letra de giz e o traço sendo escrito ===== -#}
+{%- set t = E.calendario -%}
+{%- set naTemporada = (t.meses | filtrarPor("mes", mesBuild)).length > 0 -%}
+<section class="o-sec o-edu-sec o-edu-lousa o-edu-giz o-ctx-preto" id="calendario" data-secao="calendario" aria-labelledby="edu-calendario-titulo">
+	<div class="o-edu-lousa__po" aria-hidden="true" data-o-edu-apagador></div>
+	<div class="o-wrap">
+		<div class="o-edu-cabeca o-edu-cabeca--linha">
+			<div>
+				<p class="o-etiqueta">{{ t.etiqueta }}</p>
+				<h2 class="o-edu-giz__titulo" id="edu-calendario-titulo" data-o-edu-entra><span class="o-edu-giz__escrita">{{ t.titulo }}</span>{{ svgRisco | safe }}</h2>
+			</div>
+			<p class="o-edu-apoio">{{ t.texto }}</p>
+		</div>
+		<div class="o-edu-calendario" data-o-edu-calendario data-o-edu-entra>
+			<ol class="o-edu-meses" role="list">
+			{%- for m in t.meses %}
+				<li class="o-edu-mes{% if m.pico %} o-edu-mes--pico{% endif %}" data-mes="{{ m.mes }}"{% if m.mes == mesBuild %} aria-current="date"{% endif %} style="--k: {{ loop.index0 }}">
+					<p class="o-edu-mes__nome"><span aria-hidden="true">{{ m.curto }}</span><span class="o-sr">{{ m.nome }}</span>{% if m.pico %}{{ svgOval | safe }}{% endif %}</p>
+					<p class="o-edu-mes__fase">{{ m.fase }}</p>
+					<p class="o-edu-mes__texto">{{ m.texto }}</p>
+					<p class="o-edu-mes__turma" aria-hidden="true">{% for i in range(0, t.vagas) %}<i{% if i < m.turma %} class="is-on"{% endif %}></i>{% endfor %}</p>
+					{%- if m.mes == mesBuild %}
+					<p class="o-edu-aqui" data-o-edu-aqui>{{ t.aqui }}</p>
+					{%- endif %}
+				</li>
+			{%- endfor %}
+			</ol>
+			{%- if not naTemporada %}
+			<p class="o-edu-aqui" data-o-edu-aqui hidden>{{ t.aqui }}</p>
+			{%- endif %}
+			<div class="o-edu-calendario__pe">
+				<p class="o-edu-calendario__legenda"><span class="o-edu-calendario__vaga" aria-hidden="true"></span>{{ t.turma_legenda }}</p>
+				<p class="o-edu-calendario__fora" data-o-edu-fora{% if naTemporada %} hidden{% endif %}>{{ t.fora }}</p>
+			</div>
+			{#- Bandeja do quadro: um giz branco, um verde e o apagador -#}
+			<div class="o-edu-bandeja" aria-hidden="true"><i class="o-edu-bandeja__giz"></i><i class="o-edu-bandeja__giz o-edu-bandeja__giz--verde"></i><i class="o-edu-bandeja__apagador"></i></div>
+		</div>
+		<div class="o-edu-giz__pe">
+			<p class="o-edu-nota">{{ t.nota }}</p>
+			{{ ui.botaoRaioX("cta-raio-x-educacao-calendario", t.botao) }}
+		</div>
+	</div>
+</section>
+
+{#- ===== 6. Quem já atendemos: fichas genéricas da iZETA e do Dr. José Anacleto Abduch (cases.yml → edu) ===== -#}
+{%- set t = E.cases -%}
+<section class="o-sec o-edu-sec o-edu-cases o-ctx-violeta o-com-grao" id="cases" data-secao="cases" aria-labelledby="edu-cases-titulo">
+	<div class="o-edu-fundo o-edu-fundo--cases" aria-hidden="true"></div>
+	<div class="o-wrap">
+		<div class="o-edu-cabeca o-edu-cabeca--linha">
+			<div>
+				<p class="o-etiqueta">{{ t.etiqueta }}</p>
+				<h2 class="o-edu-h2" id="edu-cases-titulo">{{ t.titulo }}</h2>
+			</div>
+			<p class="o-edu-apoio">{{ t.texto }}</p>
+		</div>
+		<div class="o-edu-fichas">
+		{%- for c in conteudo.casesEdu %}
+			<article class="o-janela o-edu-ficha o-ctx-branco" id="case-{{ c.slug }}" aria-labelledby="edu-case-{{ c.slug }}" data-o-edu-entra>
+				<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela | replace(".exe", ".olo") }}</span><span class="o-janela__ctrl"></span></div>
+				<div class="o-edu-ficha__corpo">
+					<div class="o-edu-ficha__topo">
+						<img class="o-edu-ficha__logo" src="/assets/img/clientes/{{ c.logo }}" alt="" width="{{ c.edu.logo_largura }}" height="48" loading="lazy" decoding="async">
+						<p class="o-edu-ficha__num" aria-hidden="true">{{ t.ficha }} {{ "0" + loop.index if loop.index < 10 else loop.index }}</p>
+					</div>
+					<h3 class="o-edu-ficha__nome" id="edu-case-{{ c.slug }}">{{ c.edu.nome }}</h3>
+					<dl class="o-edu-ficha__campos">
+					{%- for campo in c.edu.campos %}
+						<div><dt>{{ campo.rotulo }}</dt><dd>{{ campo.valor }}</dd></div>
+					{%- endfor %}
+					</dl>
+					{%- if c.edu.site %}
+					<p class="o-edu-ficha__site"><a class="o-edu-link" href="{{ c.edu.site }}" target="_blank" rel="noopener">{{ t.site }}: {{ c.edu.site_texto }}<span class="o-sr"> (abre em nova aba)</span></a></p>
+					{%- endif %}
+					<p class="o-edu-carimbo o-edu-carimbo--ficha" aria-hidden="true">{{ t.carimbo }}</p>
+				</div>
+			</article>
+		{%- endfor %}
+		</div>
+	</div>
+</section>
+
+{#- ===== 7. Quem coordena ===== -#}
+{%- set t = E.equipe -%}
+<section class="o-sec o-edu-sec o-edu-lousa o-edu-equipe o-ctx-preto" id="equipe" data-secao="equipe" aria-labelledby="edu-equipe-titulo">
+	<div class="o-wrap">
+		<div class="o-edu-cabeca o-edu-cabeca--linha">
+			<div>
+				<p class="o-etiqueta">{{ t.etiqueta }}</p>
+				<h2 class="o-edu-h2" id="edu-equipe-titulo">{{ t.titulo }}</h2>
+			</div>
+			<p class="o-edu-apoio">{{ t.texto }}</p>
+		</div>
+		<ul class="o-edu-pessoas" role="list">
+		{%- for p in conteudo.equipe.pessoas %}
+			<li class="o-edu-pessoa">
+				<figure class="o-janela o-edu-pessoa__foto">
+					{{ imagem(imagens, p.foto, { sizes: "(max-width: 767px) 36vw, (max-width: 1100px) 30vw, 380px" }) | safe }}
+				</figure>
+				<h3 class="o-edu-pessoa__nome"><a href="/quem-somos/#{{ p.slug }}">{{ p.nome }}</a></h3>
+				<p class="o-edu-pessoa__cargo">{{ p.cargo or p.funcao }}</p>
+				<p class="o-edu-pessoa__frase">{{ t.frases[p.slug] or p.frase }}</p>
+			</li>
+		{%- endfor %}
+		</ul>
+		<p class="o-edu-acoes">
+			<a class="o-btn o-btn--verde" id="cta-whatsapp-equipe" href="{{ waLink('educacao-equipe', { mensagem: E.whatsapp.equipe }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.botao }}</a>
+			<a class="o-link-seta" href="/quem-somos/">{{ t.link_sobre }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+		</p>
+	</div>
+</section>
+
+{#- ===== 8. RAIO X DA OLORIN: o mesmo fim do site: título, passos com o "O", a chapa do Raio-X (celular normal,
+	flash e o raio-x do celular com a logo da Olorin Educação; partials/chapa-raio-x.njk, variante "educacao")
+	e o único formulário. A chapa é decoração (aria-hidden, dentro do componente). ===== -#}
+{%- set t = E.raio_x -%}
+<section class="o-sec o-edu-sec o-edu-raio o-ctx-violeta o-com-grao" id="raio-x" data-secao="raio-x" aria-labelledby="edu-raio-titulo">
+	<div class="o-edu-fundo o-edu-fundo--raio" aria-hidden="true" data-o-edu-lapis></div>
+	<div class="o-wrap o-edu-raio__grade">
+		<h2 class="o-edu-raio__titulo" id="edu-raio-titulo">{{ t.titulo | logoNoTitulo | safe }}</h2>
+		<ol class="o-edu-passos" role="list">
+		{%- for p in t.passos %}
+			<li><svg class="o-edu-passos__o" viewBox="0 0 134 126" aria-hidden="true" focusable="false"><use href="#s-o"></use></svg><span>{{ p }}</span></li>
+		{%- endfor %}
+		</ol>
+		{{ chapaRaioX({ variante: "educacao", classe: "o-edu-chapa", sizes: "(max-width: 960px) 38vw, 200px" }) }}
+		{{ formulario({ id: "form-fim", posicao: "fim", modo: "educacao", origemWa: "educacao-form-raio-x", nomeServico: E.whatsapp.assunto_form }) }}
+	</div>
+</section>

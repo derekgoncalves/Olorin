@@ -6,6 +6,11 @@
 	isolation: isolate;
 	overflow: hidden;
 }
+/* Verde e violeta nunca encostam: sem o fio verde quando a seção seguinte é violeta (Sobre: o topo, com a
+   faixa de logos no pé, e logo depois o método). */
+.o-pagina-topo:has(+ .o-ctx-violeta) {
+	border-bottom: 0;
+}
 .o-pagina-topo__grade {
 	display: grid;
 	grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
@@ -21,6 +26,10 @@
 	line-height: 1.12;
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
+}
+/* Parte do título em destaque (verde no preto), como "outro nível." do lema */
+.o-pagina-topo__destaque {
+	color: var(--cor-destaque);
 }
 .o-pagina-topo__sub {
 	max-width: 58ch;
@@ -68,10 +77,6 @@
 }
 
 /* Resposta curta (para leitores apressados e buscas com IA) */
-.o-resposta {
-	max-width: 900px;
-	margin-inline: 0;
-}
 .o-resposta__texto {
 	margin: 0 0 14px;
 	padding: clamp(18px, 2.4vw, 28px);
@@ -145,4 +150,42 @@ body:has(.o-topo.is-hidden) .o-indice {
 		mask-image: linear-gradient(90deg, #000 85%, transparent);
 		padding-right: 40px;
 	}
+}
+
+/* Os 3 itens com check ao lado do botão principal do banner (ui.selos; dono, 23/10/2026). Próprios das
+   páginas internas e das landings (a home e as LPs têm o banner delas). */
+.o-selos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 22px;
+	margin: 26px 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 13px;
+	line-height: 1.4;
+	color: var(--cor-apoio);
+}
+.o-selos li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.o-selos li::before {
+	content: "";
+	flex: none;
+	width: 12px;
+	height: 12px;
+	background: var(--cor-destaque);
+	-webkit-mask: var(--icone-check) center / contain no-repeat;
+	mask: var(--icone-check) center / contain no-repeat;
+}
+.o-selos--grande {
+	display: grid;
+	gap: 12px;
+	font-size: 15px;
+	color: var(--cor-texto);
+}
+.o-selos--grande li::before {
+	width: 16px;
+	height: 16px;
 }

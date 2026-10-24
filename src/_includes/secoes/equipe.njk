@@ -1,7 +1,7 @@
 {#- ===== SEÇÃO: Quem toca (equipe) — src/content/home.yml → equipe + src/content/equipe.yml ===== -#}
 {%- set P = conteudo.paginas[pagina_dados] if pagina_dados else conteudo.home -%}
 {%- import "components/ui.njk" as ui with context -%}
-{%- set t = P.equipe -%}
+{%- set t = P.equipe or conteudo.home.equipe -%}
 <section class="o-sec o-equipe o-ctx-preto" id="equipe" data-secao="equipe" aria-labelledby="equipe-titulo">
 	<div class="o-wrap">
 		<div class="o-equipe__cabeca">
@@ -11,17 +11,17 @@
 			</div>
 			<div>
 				<p class="o-apoio">{{ t.texto }}</p>
-				{%- if t.apoio %}<p class="o-apoio">{{ t.apoio | confirmar | safe }}</p>{% endif %}
+				{%- if t.apoio %}<p class="o-apoio">{{ t.apoio }}</p>{% endif %}
 			</div>
 		</div>
 		<div class="o-equipe__grade">
 		{%- for p in conteudo.equipe.pessoas %}
-			{{ ui.cardPessoa(p) }}
+			{{ ui.cardPessoa(p, "h3", false, "/quem-somos/" + p.slug + "/", false) }}
 		{%- endfor %}
 		</div>
 		<div class="o-equipe__acoes">
 			<a class="o-btn o-btn--verde" href="{{ waLink('equipe', { tipo: 'equipe' }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ t.botao }}</a>
-			<a class="o-link-seta" href="/sobre/">{{ t.link_sobre }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
+			<a class="o-link-seta" href="/quem-somos/">{{ t.link_sobre }} <span class="o-icone o-icone--seta" aria-hidden="true"></span></a>
 		</div>
 	</div>
 </section>

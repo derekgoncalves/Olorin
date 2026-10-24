@@ -1,0 +1,310 @@
+/* Montagem do celular (23/10/2026): o celular com a foto real, as 2 logos, o símbolo no meio, o cursor que
+   clica nele, o aviso que chega e a janela com as barras. Saiu do banner da home e foi para o banner de
+   /servicos/redes-sociais/ (partials/montagem-celular.njk). Tudo é decoração (aria-hidden).
+   .o-montagem reserva, no padding, o espaço do que sai para fora do celular (janela à esquerda, aviso e
+   símbolo girando à direita), para nada ser cortado na borda da tela. Movimento só com
+   prefers-reduced-motion: no-preference; para com html.o-pausado e fora da tela (.is-fora, servico.js).
+   Parado: tudo no quadro final, à vista. */
+.o-montagem {
+	justify-self: end;
+	width: min(100%, 440px);
+	padding: 44px 48px 30px 70px;
+}
+.o-montagem__palco {
+	position: relative;
+}
+/* Símbolo da marca girando no canto do celular */
+.o-montagem__palco::after {
+	content: "";
+	position: absolute;
+	top: -34px;
+	right: -42px;
+	z-index: 3;
+	width: 86px;
+	aspect-ratio: 134 / 126;
+	background: var(--verde);
+	-webkit-mask: var(--icone-o) center / contain no-repeat;
+	mask: var(--icone-o) center / contain no-repeat;
+}
+/* Símbolo no meio da foto, onde o cursor clica */
+.o-montagem__palco::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 2;
+	width: 64px;
+	aspect-ratio: 134 / 126;
+	translate: -50% -50%;
+	background: var(--verde);
+	-webkit-mask: var(--icone-o) center / contain no-repeat;
+	mask: var(--icone-o) center / contain no-repeat;
+	pointer-events: none;
+}
+.o-montagem__celular {
+	position: relative;
+	margin: 0;
+	aspect-ratio: 3 / 5;
+	border: 3px solid var(--verde);
+	border-radius: var(--raio-celular, 40px);
+	overflow: hidden;
+	background: var(--preto);
+	box-shadow: 14px 14px 0 rgba(236, 255, 54, 0.18);
+}
+.o-montagem__celular picture,
+.o-montagem__foto {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+/* Logo nos cantos da tela (SVG decorativo) */
+.o-montagem__logo {
+	position: absolute;
+	z-index: 2;
+	width: 64px;
+	height: auto;
+	color: var(--verde);
+}
+.o-montagem__logo--topo {
+	top: 22px;
+	left: 22px;
+}
+.o-montagem__logo--base {
+	right: 22px;
+	bottom: 22px;
+}
+/* Cursor pixel que clica no símbolo do meio */
+.o-montagem__cursor {
+	position: absolute;
+	left: 54%;
+	top: 53%;
+	z-index: 5;
+	display: grid;
+	color: var(--branco);
+	filter: drop-shadow(2px 2px 0 var(--preto));
+}
+.o-montagem__cursor .o-icone {
+	--tam: 34px;
+}
+.o-montagem__cursor::before {
+	content: "";
+	position: absolute;
+	left: -14px;
+	top: -14px;
+	width: 28px;
+	height: 28px;
+	border: 2px solid var(--verde);
+	opacity: 0;
+}
+/* O aviso que chega no alto do celular */
+.o-montagem__aviso {
+	position: absolute;
+	top: 16%;
+	right: -30px;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 !important;
+	padding: 10px 14px;
+	border: 2px solid var(--verde);
+	background: var(--preto);
+	box-shadow: 6px 6px 0 var(--verde);
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: var(--branco);
+}
+.o-montagem__aviso .o-icone {
+	--tam: 12px;
+	color: var(--verde);
+}
+/* Janela com as barras, na frente do celular */
+.o-montagem__janela {
+	--janela-barra: var(--verde);
+	--janela-tinta: var(--preto);
+	--janela-borda: var(--verde);
+	--janela-corpo: var(--preto);
+	--janela-sombra: rgba(236, 255, 54, 0.25);
+	position: absolute;
+	left: -70px;
+	bottom: 56px;
+	z-index: 4;
+	width: max-content;
+	min-width: 214px;
+	max-width: 300px;
+}
+.o-montagem__barras {
+	display: flex;
+	align-items: flex-end;
+	gap: 9%;
+	height: 58px;
+	margin: 16px 16px 0;
+}
+.o-montagem__barras i {
+	flex: 1;
+	background: var(--verde);
+	transform-origin: bottom;
+}
+.o-montagem__barras i:nth-child(1) { height: 30%; }
+.o-montagem__barras i:nth-child(2) { height: 48%; }
+.o-montagem__barras i:nth-child(3) { height: 70%; }
+.o-montagem__barras i:nth-child(4) { height: 100%; }
+.o-montagem__rotulo {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 10px 16px 14px !important;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-montagem__rotulo .o-icone {
+	--tam: 11px;
+	rotate: -45deg;
+}
+/* Quadradinhos pixel no canto da janela */
+.o-montagem__janela::after {
+	content: "";
+	position: absolute;
+	left: -24px;
+	bottom: -24px;
+	width: 22px;
+	height: 22px;
+	background: var(--verde);
+	box-shadow: -22px 22px 0 rgba(236, 255, 54, 0.55);
+}
+
+/* Banner em uma coluna: a montagem fica centrada embaixo do texto */
+@media (max-width: 960px) {
+	.o-montagem {
+		justify-self: center;
+		width: min(100%, 420px);
+	}
+}
+/* Celular: menor, e tudo o que sai do celular fica dentro da tela */
+@media (max-width: 767px) {
+	.o-montagem {
+		width: min(100%, 330px);
+		padding: 34px 28px 22px 44px;
+	}
+	.o-montagem__palco::after {
+		top: -26px;
+		right: -24px;
+		width: 58px;
+	}
+	.o-montagem__palco::before {
+		width: 48px;
+	}
+	.o-montagem__celular {
+		border-radius: 32px;
+		box-shadow: 10px 10px 0 rgba(236, 255, 54, 0.18);
+	}
+	.o-montagem__logo {
+		width: 52px;
+	}
+	.o-montagem__logo--topo {
+		top: 18px;
+		left: 18px;
+	}
+	.o-montagem__logo--base {
+		right: 18px;
+		bottom: 18px;
+	}
+	.o-montagem__cursor .o-icone {
+		--tam: 28px;
+	}
+	.o-montagem__aviso {
+		right: -24px;
+		gap: 6px;
+		padding: 8px 10px;
+		box-shadow: 4px 4px 0 var(--verde);
+		font-size: 11px;
+		letter-spacing: 0.08em;
+	}
+	.o-montagem__janela {
+		left: -44px;
+		bottom: 40px;
+		min-width: 0;
+	}
+	.o-montagem__barras {
+		height: 40px;
+		margin: 12px 12px 0;
+	}
+	.o-montagem__rotulo {
+		margin: 8px 12px 10px !important;
+		font-size: 11px;
+		letter-spacing: 0.06em;
+		white-space: nowrap;
+	}
+	.o-montagem__janela::after {
+		display: none;
+	}
+}
+@media (max-width: 359px) {
+	.o-montagem {
+		padding: 30px 22px 20px 36px;
+	}
+	.o-montagem__janela {
+		left: -36px;
+	}
+	.o-montagem__rotulo {
+		font-size: 10px;
+		letter-spacing: 0.04em;
+	}
+}
+
+/* Movimento: o símbolo gira, as barras sobem, o cursor clica no símbolo e o aviso chega logo depois
+   (ciclo de 6 s, o mesmo da home antiga). */
+@media (prefers-reduced-motion: no-preference) {
+	html:not(.o-pausado) {
+		& .o-montagem__palco::after {
+			animation: o-girar 16s linear infinite;
+		}
+		& .o-montagem__barras i {
+			animation: o-barras 2.4s var(--curva) both;
+		}
+		& .o-montagem__cursor {
+			animation: o-montagem-cursor 6s var(--curva) 1s infinite;
+		}
+		& .o-montagem__cursor::before {
+			animation: o-montagem-clique 6s ease-out 1s infinite;
+		}
+		& .o-montagem__aviso {
+			animation: o-montagem-aviso 6s var(--mov-volta, ease-out) 1s infinite;
+		}
+	}
+	.o-montagem.is-fora *,
+	.o-montagem.is-fora *::before,
+	.o-montagem.is-fora *::after {
+		animation-play-state: paused !important;
+	}
+}
+@keyframes o-montagem-cursor {
+	0% { translate: 90px 110px; opacity: 0; }
+	8% { opacity: 1; }
+	30%,
+	88% { translate: 0 0; scale: 1; opacity: 1; }
+	34% { scale: 0.86; }
+	100% { translate: 0 0; opacity: 0; }
+}
+@keyframes o-montagem-clique {
+	0%,
+	32% { opacity: 0; transform: scale(0.3); }
+	34% { opacity: 1; }
+	48%,
+	100% { opacity: 0; transform: scale(1.8); }
+}
+@keyframes o-montagem-aviso {
+	0%,
+	36% { opacity: 0; transform: translateY(14px) scale(0.92); }
+	44%,
+	88% { opacity: 1; transform: none; }
+	96%,
+	100% { opacity: 0; transform: translateY(-8px); }
+}

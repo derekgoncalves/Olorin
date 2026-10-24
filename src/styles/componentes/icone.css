@@ -20,7 +20,19 @@
 .o-icone--seta { --icone: var(--icone-seta); }
 .o-icone--relogio { --icone: var(--icone-relogio); }
 .o-icone--mais { --icone: var(--icone-mais); }
+/* Mini chapa do Raio-X (dono, 23/10/2026): duas cores (filme preto, ossos verdes), então é imagem de
+   fundo e não máscara; de pé, 3:4 (a largura é 3/4 do --tam, a altura é o --tam). */
+.o-icone--raio {
+	width: calc(var(--tam) * 0.75);
+	background: var(--icone-raio) center / contain no-repeat;
+	-webkit-mask: none;
+	mask: none;
+}
 .o-icone--o { --icone: var(--icone-o); aspect-ratio: 134 / 126; height: auto; }
 .o-icone--pixel { --icone: var(--icone-pixel); }
 .o-icone--estrela { --icone: var(--icone-estrela); }
 .o-icone--whatsapp { --icone: var(--icone-whatsapp); }
+.o-icone--instagram { --icone: var(--icone-instagram); }
+.o-icone--facebook { --icone: var(--icone-facebook); }
+.o-icone--x { --icone: var(--icone-x); }
+.o-icone--linkedin { --icone: var(--icone-linkedin); }

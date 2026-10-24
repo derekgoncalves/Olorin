@@ -7,7 +7,7 @@
  *
  * Uso nos templates: {{ imagem("equipe-natalia", { sizes: "...", classe: "..." }) | safe }}
  */
-import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, copyFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
@@ -38,8 +38,26 @@ async function preparar(entrada, cfg) {
 	return { img, largura, altura };
 }
 
+// Além do manifest.json principal, qualquer src/assets/manifest-<area>.json entra junto
+// (cada área do site cuida do seu arquivo; ids repetidos travam o build).
+async function lerManifestos() {
+	const pasta = 'src/assets';
+	const arquivos = ['manifest.json'].concat(
+		(await readdir(pasta)).filter((n) => /^manifest-[\w-]+\.json$/.test(n)).sort(),
+	);
+	const imagens = {};
+	for (const nome of arquivos) {
+		const dados = JSON.parse(await readFile(path.join(pasta, nome), 'utf8'));
+		for (const [id, cfg] of Object.entries(dados.imagens || {})) {
+			if (imagens[id]) throw new Error(`Imagem "${id}" aparece em mais de um manifesto (src/assets/${nome}).`);
+			imagens[id] = cfg;
+		}
+	}
+	return { imagens };
+}
+
 export async function processarImagens({ saida }) {
-	const manifesto = JSON.parse(await readFile('src/assets/manifest.json', 'utf8'));
+	const manifesto = await lerManifestos();
 	const cache = '.cache/img';
 	await mkdir(cache, { recursive: true });
 	await mkdir(path.join(saida, 'assets/img'), { recursive: true });
