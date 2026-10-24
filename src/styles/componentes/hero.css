@@ -54,9 +54,9 @@
 /* 1. O "O" da Olorin, violeta com brilho violeta, girando como moeda. */
 .o-hero__moeda {
 	flex: none;
-	width: clamp(34px, min(9vw, 7svh), 104px);
+	width: clamp(46px, min(9vw, 11svh), 112px); /* tamanho original de 23/10 (dono, 24/10/2026) */
 	aspect-ratio: 134 / 126;
-	margin-bottom: clamp(8px, 1.8svh, 26px);
+	margin-bottom: clamp(12px, 2.6svh, 30px);
 	perspective: 600px;
 	color: var(--violeta);
 	filter: drop-shadow(0 0 22px rgba(126, 59, 237, 0.85));
@@ -128,15 +128,15 @@
 
 /* 4. Minijogo: canvas pequeno (192 x 72) escalado em pixel. Sem JS fica escondido (sem deixar buraco).
    Grande (dono, 24/10/2026: "videogame maior"): ocupa o espaço que sobra na coluna, com piso de 150 px a
-   30% da altura da janela; quando não cabe tudo, a faixa de logos desce para depois da primeira tela. */
+   29% da altura da janela; quando não cabe tudo, a faixa de logos desce para depois da primeira tela. */
 .o-hero__jogo {
 	flex: 1 1 0;
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	min-height: clamp(150px, 30svh, 280px);
+	min-height: clamp(150px, 29svh, 280px);
 	max-height: min(calc(min(100cqi, 1100px) * 0.375), 340px);
-	margin: 0 0 clamp(12px, 2.6svh, 34px);
+	margin: 0 0 clamp(10px, 2svh, 34px);
 }
 html:not(.js) .o-hero__jogo {
 	display: none;
