@@ -52,11 +52,6 @@
 	}
 }
 
-/* Cursor piscante do título: pisca algumas vezes e para (não fica infinito). */
-.o-hero__destaque::after {
-	animation-iteration-count: 8;
-}
-
 /* Entrada suave ao rolar (só com JS; o conteúdo nunca fica escondido sem JS). */
 html.js .o-reveal {
 	opacity: 0;
@@ -191,22 +186,6 @@ html.js .o-mov-p {
 	display: inline-block;
 }
 
-/* Marcador verde sob a palavra destacada do banner (estado final, também sem movimento). */
-html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__destaque {
-	position: relative;
-}
-html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__destaque::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	right: 0.46em; /* não passa por baixo do cursor */
-	bottom: 0.04em;
-	height: 0.1em;
-	background: var(--verde);
-	transform-origin: left;
-	pointer-events: none;
-}
-
 @media screen and (prefers-reduced-motion: no-preference) {
 	/* ---------- 1. Entrada do banner (home e páginas internas), só CSS: começa na primeira pintura ---------- */
 	/* Ordem e atrasos (só variáveis: sozinhas não mudam nada; ficam fora da condição para o CSS sair menor).
@@ -224,14 +203,6 @@ html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__dest
 		&:is(h1 ~ *) { --extra: 0.18s; }
 	}
 	.o-pagina-topo .o-janela { --mov-d: 0.25s; }
-	.o-hero__janela { --mov-d: 0.55s; }
-	.o-hero__barras i {
-		--mov-d: 0.8s;
-
-		&:nth-child(2) { --mov-d: 0.86s; }
-		&:nth-child(3) { --mov-d: 0.92s; }
-		&:nth-child(4) { --mov-d: 0.98s; }
-	}
 
 	html.js:not(.o-pausado, .o-mov-fim):not(:has(> head > link[rel="canonical"][href*="/educacao/"])) {
 		& :is(.o-hero__texto, .o-pagina-topo__texto, .o-promo-topo__texto, .o-pagina-topo > .o-wrap:not(.o-pagina-topo__grade)) > * {
@@ -242,21 +213,9 @@ html:not(:has(> head > link[rel="canonical"][href*="/educacao/"])) .o-hero__dest
 			/* Título: com JS vira palavra por palavra (.o-mov-dividido); se o JS não chegar a tempo, sobe inteiro. */
 			&.o-mov-dividido { animation: none; }
 		}
-		/* Marcador da palavra destacada: desenha depois do título. */
-		& .o-hero__destaque::before {
-			animation: o-mov-escala-x 0.6s var(--mov-saida) 0.95s backwards;
-		}
-		/* Celular (com os símbolos) sobe; a janelinha abre por cima e as barras crescem. */
-		& .o-hero__visual {
-			--mov-dist: 56px;
-			animation: o-mov-sobe 0.9s var(--mov-saida) 0.12s backwards;
-		}
 		& :is(.o-hero, .o-pagina-topo, .o-erro, .o-obrigado) .o-janela {
 			transform-origin: 50% 0;
 			animation: o-mov-janela 0.8s var(--mov-volta) var(--mov-d, 0.1s) backwards;
-		}
-		& .o-hero__barras i {
-			animation: o-barras 0.6s var(--mov-saida) var(--mov-d) backwards;
 		}
 	}
 

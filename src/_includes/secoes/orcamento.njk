@@ -1,12 +1,11 @@
-{#- ===== SEÇÃO FINAL: RAIO X DA OLORIN — o formulário do fim de todas as páginas (menos a Educação) =====
+{#- ===== SEÇÃO FINAL: RAIO X DA OLORIN: o formulário do fim de todas as páginas (menos a Educação) =====
      Textos em src/content/home.yml → orcamento (iguais em todas as páginas). Todos os botões do Raio-X
      levam a #raio-x; a âncora #orcamento continua valendo para links antigos (e para o enviar.php).
      Variáveis opcionais antes do include: modo_form, servicoForm, nomeServicoForm, origemWaForm.
-     A mão do raio-x (imagem real com canal alfa, ver src/assets/manifest-home.json) faz parte do fundo
-     violeta: o braço entra pela borda esquerda da tela. A logo da Olorin fica na tela do celular, girada
-     como ele; a mão acende com flashes, a logo liga e brilha e uma linha de varredura passa na tela;
-     tudo em CSS (orcamento.css). -#}
+     23/10/2026: a chapa do Raio-X (partials/chapa-raio-x.njk, variante "olorin") entrou no lugar da mão:
+     celular normal na chapa, flash e o raio-x do celular com o "O" da Olorin girando no círculo. -#}
 {%- from "components/formulario.njk" import formulario with context -%}
+{%- from "partials/chapa-raio-x.njk" import chapaRaioX with context -%}
 {%- set t = conteudo.home.orcamento -%}
 <section class="o-sec o-orcamento o-ctx-violeta" id="raio-x" data-secao="orcamento" aria-labelledby="raio-x-titulo">
 	<span class="o-orcamento__ancora" id="orcamento"></span>
@@ -15,10 +14,7 @@
 		<h2 class="o-titulo o-titulo--gg o-orcamento__titulo" id="raio-x-titulo">{{ t.titulo }}</h2>
 		<div class="o-orcamento__grade">
 			<div class="o-orcamento__lado">
-				<div class="o-rx" aria-hidden="true">
-					{{ imagem(imagens, "raio-x-mao-fundo", { alt: "", sizes: "(max-width: 960px) 104vw, 47vw", classe: "o-rx__img" }) | safe }}
-					<span class="o-rx__tela"><svg class="o-rx__o" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><svg class="o-rx__logo" viewBox="0 0 731 125.6" focusable="false"><use href="#s-logo"></use></svg></span>
-				</div>
+				{{ chapaRaioX({ variante: "olorin", classe: "o-orcamento__chapa", sizes: "(max-width: 960px) 38vw, min(15vw, 200px)" }) }}
 				<ol class="o-orcamento__passos">
 				{%- for p in t.passos %}
 					<li><span class="o-icone o-icone--o" aria-hidden="true"></span>{{ p }}</li>
