@@ -128,3 +128,16 @@
 	text-decoration: underline;
 	text-underline-offset: 3px;
 }
+
+/* Celular (360 a 420 px): Serviços e Segmentos/A Olorin lado a lado, para o rodapé não virar uma coluna
+   comprida; marca e contato ocupam a largura toda. Abaixo de 360 px fica tudo em uma coluna. */
+@media (min-width: 360px) and (max-width: 420px) {
+	.o-rodape .o-rodape__grade {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 36px 16px;
+	}
+	.o-rodape .o-rodape__marca,
+	.o-rodape .o-rodape__grade > .o-rodape__col:last-child {
+		grid-column: 1 / -1;
+	}
+}

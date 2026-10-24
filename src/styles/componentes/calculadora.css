@@ -14,9 +14,15 @@
 .o-calc__corpo {
 	display: grid;
 	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-	align-items: center;
+	align-items: start;
 	gap: 28px clamp(28px, 4vw, 64px);
 	padding: clamp(20px, 3vw, 44px);
+}
+/* Duas colunas: as perguntas começam na altura do papel do bilhete (sem vão em cima). */
+@media (min-width: 961px) {
+	.o-calc__form {
+		padding-top: 42px;
+	}
 }
 .o-calc__grupo {
 	min-width: 0;
