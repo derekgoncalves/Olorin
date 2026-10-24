@@ -1,5 +1,5 @@
-/* Seção final RAIO X DA OLORIN (secoes/orcamento.njk, violeta): título grande, a mão do raio-x no
-   fundo, os 3 passos com o "O" da marca e o formulário. */
+/* Seção final RAIO X DA OLORIN (secoes/orcamento.njk, violeta): título grande, a chapa do Raio-X
+   (componentes/chapa.css), os 3 passos com o "O" da marca e o formulário. */
 .o-orcamento {
 	overflow: hidden;
 	background-image:
@@ -47,119 +47,20 @@
 	--tam: clamp(24px, 2.2vw, 32px);
 }
 
-/* Mão do raio-x no fundo violeta (imagem com canal alfa: o preto do filme já é transparente e as bordas
-   esmaecem). Fica entre o título e os passos, sem caixa; a margem esquerda negativa leva a borda da
-   imagem até a borda da tela, de onde o braço entra. Topo e base da imagem são vazios: margens negativas. */
-.o-rx {
-	--rx-l: min(46.5vw, 760px);
-	position: relative;
-	width: var(--rx-l);
-	aspect-ratio: 435 / 306;
-	margin: calc(var(--rx-l) * -0.07) 0 calc(var(--rx-l) * -0.05) calc(-1 * max(var(--margem), (100vw - var(--largura-max)) / 2));
-	pointer-events: none;
-}
-.o-rx picture,
-.o-rx__img {
-	display: block;
-	width: 100%;
-	height: 100%;
-}
-/* Tela do celular, medida na imagem (bordas do aparelho ajustadas por retas): centro em 64,84% x 56,01%,
-   19,77% x 43,14% da imagem, girada 4,1° (horário) como o celular. Tudo em % da imagem, que tem
-   proporção fixa: a tela acompanha o celular em qualquer largura. Vidro escuro, o "O" e a logo em verde. */
-.o-rx__tela {
-	position: absolute;
-	left: 54.95%;
-	top: 34.44%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 19.77%;
-	height: 43.14%;
-	overflow: hidden;
-	border-radius: 10% / 6.5%;
-	background: radial-gradient(circle at 50% 44%, rgba(236, 255, 54, 0.2), rgba(10, 3, 30, 0.92) 70%);
-	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3), 0 0 18px rgba(236, 255, 54, 0.16);
-	color: var(--verde);
-	transform: rotate(4.1deg);
-}
-/* linhas de monitor antigo e a linha de varredura, só na tela */
-.o-rx__tela::before,
-.o-rx__tela::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-}
-.o-rx__tela::before {
-	background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.26) 0 1px, transparent 1px 3px);
-}
-.o-rx__tela::after {
-	background: linear-gradient(180deg, transparent 0 76%, rgba(236, 255, 54, 0.08) 92%, rgba(246, 255, 200, 0.55) 99%, transparent 100%);
-	opacity: 0;
-	transform: translateY(-100%);
-}
-.o-rx__o {
-	width: 56%;
-	height: auto;
-	filter: drop-shadow(0 0 5px rgba(236, 255, 54, 0.7));
-}
-.o-rx__logo {
-	width: 76%;
-	height: auto;
-	margin-top: 16%;
+/* Chapa do Raio-X (partials/chapa-raio-x.njk): no computador, acima dos passos, alinhada à esquerda
+   com eles; a chapa preta separa o verde de dentro do violeta da seção. */
+.o-orcamento__chapa {
+	--chapa-l: clamp(240px, 25vw, 350px);
 }
 
-/* Movimento: a mão acende com 2 flashes (menos de 3 por segundo), a logo liga na tela e brilha, e a
-   linha de varredura desce na tela. Começa quando o título da seção entra na tela (.is-in, movimento.js;
-   título acima da dobra: ao carregar). Sem JS, parado (preferência do sistema) ou com o botão de pausa:
-   a mão fica acesa, com a logo na tela e sem linha. */
-@media (prefers-reduced-motion: no-preference) {
-	html.js:not(.o-pausado) .o-orcamento:has(.o-orcamento__titulo:is(.is-in, :not(.o-mov-titulo))) {
-		& .o-rx__img {
-			animation: o-rx-luz 9s linear 0.5s infinite both;
-		}
-		& .o-rx__tela {
-			animation: o-rx-tela 9s steps(1) 0.5s infinite both;
-		}
-		& .o-rx__o {
-			animation: o-rx-brilho 1.6s ease-in-out infinite alternate;
-		}
-		& .o-rx__tela::after {
-			opacity: 1;
-			animation: o-varredura 3s cubic-bezier(0.45, 0, 0.55, 1) 1.8s infinite backwards;
-		}
-	}
-}
-@keyframes o-rx-luz {
-	0% { opacity: 0.12; filter: brightness(0.7); }
-	4% { opacity: 1; filter: brightness(1.6); }
-	7% { opacity: 0.3; filter: brightness(0.85); }
-	11% { opacity: 1; filter: brightness(1.35); }
-	15%,
-	93% { opacity: 1; filter: none; }
-	100% { opacity: 0.12; filter: brightness(0.7); }
-}
-@keyframes o-rx-tela {
-	0%,
-	17% { opacity: 0; }
-	18%,
-	20% { opacity: 1; }
-	19% { opacity: 0.3; }
-	93%,
-	100% { opacity: 0; }
-}
-@keyframes o-rx-brilho {
-	to { filter: drop-shadow(0 0 12px rgba(236, 255, 54, 1)); }
-}
-
-/* Uma coluna: a mão ocupa a largura da tela entre o título e os passos. */
+/* Uma coluna: a chapa centralizada entre o título e os passos. */
 @media (max-width: 960px) {
 	.o-orcamento__lado {
-		gap: 18px;
+		gap: 26px;
 	}
-	.o-rx {
-		--rx-l: min(104vw, 620px);
+	.o-orcamento__chapa {
+		--chapa-l: min(62vw, 268px);
+		justify-self: center;
 	}
 	.o-orcamento__passos li {
 		gap: 10px;
