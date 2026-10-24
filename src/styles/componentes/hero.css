@@ -3,10 +3,8 @@
    Olorin girando como moeda, a etiqueta, o lema (h1, "outro nível." em verde, o bloquinho piscando e o selo
    "Level up"), o minijogo 8-bit (canvas, src/scripts/modulos/jogo.js), o botão START do Raio-X, os 3 itens
    com check e, no pé, a faixa de logos (secoes/faixa-clientes.njk).
-   Computador e celular: tudo segue a altura da janela, para o banner inteiro (até a faixa de logos)
-   caber na primeira tela (dono, 24/10/2026), com respiro entre os checks e as logos.
-   Celular: o banner ocupa a primeira tela inteira e termina nas logos, acima da barra fixa (o jogo cresce
-   ou encolhe para caber). Movimento só em prefers-reduced-motion: no-preference e parado com o-pausado. */
+   Computador e celular: o jogo é grande e a faixa de logos pode ficar para depois da primeira tela (dono,
+   24/10/2026: "barra de logos pode descer"); botão e checks continuam na primeira tela. Movimento só em prefers-reduced-motion: no-preference e parado com o-pausado. */
 .o-hero {
 	display: flex;
 	flex-direction: column;
@@ -128,14 +126,16 @@
 	white-space: nowrap;
 }
 
-/* 4. Minijogo: canvas pequeno (192 x 72) escalado em pixel. Sem JS fica escondido (sem deixar buraco). */
+/* 4. Minijogo: canvas pequeno (192 x 72) escalado em pixel. Sem JS fica escondido (sem deixar buraco).
+   Grande (dono, 24/10/2026: "videogame maior"): ocupa o espaço que sobra na coluna, com piso de 150 px a
+   30% da altura da janela; quando não cabe tudo, a faixa de logos desce para depois da primeira tela. */
 .o-hero__jogo {
-	flex: none;
+	flex: 1 1 0;
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	height: clamp(56px, 26svh - 98px, 216px);
-	max-height: calc(min(100cqi, 576px) * 0.375);
+	min-height: clamp(150px, 30svh, 280px);
+	max-height: min(calc(min(100cqi, 1100px) * 0.375), 340px);
 	margin: 0 0 clamp(12px, 2.6svh, 34px);
 }
 html:not(.js) .o-hero__jogo {
@@ -298,16 +298,19 @@ html:not(.js) .o-hero__jogo {
 		top: calc(100% + 6px);
 		padding: 4px 6px;
 	}
-	/* Jogo maior no celular (dono, 24/10/2026: "aumenta mas sem exagerar"): ocupa 108% da largura da tela e
-	   corta só a ponta dos lados (o bonequinho entra pela borda); a faixa de logos pode descer um pouco. */
+	/* Jogo grande no celular (dono, 24/10/2026): cenário curto (120 x 72, jogo.js) na largura toda da tela;
+	   a faixa de logos desce para depois da primeira tela quando precisa. */
 	.o-hero__jogo {
-		flex: 1 1 0;
-		width: 108vw;
-		height: auto;
-		min-height: 112px;
-		max-height: calc(108vw * 0.375);
-		margin: 0 calc(50% - 54vw) clamp(12px, 2svh, 20px);
+		flex: none;
+		width: 100vw;
+		height: min(calc(100vw * 0.6), 36svh);
+		min-height: 0;
+		max-height: none;
+		margin: 0 calc(50% - 50vw) clamp(12px, 2svh, 20px);
 		overflow: hidden;
+	}
+	.o-hero__tela {
+		aspect-ratio: 120 / 72;
 	}
 	/* "Quero um Raio-X gratuito" numa linha só, do 320 ao 767: a letra segue a largura da coluna. */
 	.o-hero .o-hero__start {

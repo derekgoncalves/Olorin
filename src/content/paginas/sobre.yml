@@ -9,7 +9,7 @@ etiqueta: Quem somos
 titulo: Um time inteiro. Sua marca em
 titulo_destaque: outro nível.
 sub: A Olorin Digital é uma agência de marketing digital. Faz anúncios, redes, marca, site, impressos e dados para organizações de todo tipo e tamanho.
-whatsapp: Falar com a equipe no WhatsApp
+whatsapp: Falar no WhatsApp
 dica_pilha: Passe o mouse ou toque para ver cada perfil.
 historia:
   etiqueta: Por que a Olorin existe
@@ -47,7 +47,7 @@ remoto:
     - Natalia e Vinícius entram já na primeira reunião, cada um com a frente que coordena.
 contato:
   titulo: Quer conversar com a gente?
-  botao: Falar com a equipe no WhatsApp
+  botao: Falar no WhatsApp
 # Textos fixos das páginas de perfil (/quem-somos/<pessoa>/)
 perfil:
   coordena: Coordena

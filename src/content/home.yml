@@ -46,7 +46,7 @@ hero:
     - Estratégia e performance
     - Produção de alto nível
   # Não é do banner: texto do botão do Raio-X no fim da seção de serviços da home (secoes/servicos.njk).
-  botao: Quero meu Raio-X grátis
+  botao: Quero meu Raio-X
 
 # A faixa de logos (secoes/faixa-clientes.njk, no pé do banner de cada página) não tem texto aqui:
 # os logos vêm de clientes.yml.
@@ -83,7 +83,7 @@ equipe:
   etiqueta: Quem toca
   titulo: Fale com quem coordena.
   texto: Cada frente tem alguém que coordena e responde por ela. Você fala com quem coordena, sem intermediário.
-  botao: Falar com a equipe no WhatsApp
+  botao: Falar no WhatsApp
   link_sobre: Conheça quem somos
   ver_perfil: Ver perfil
 

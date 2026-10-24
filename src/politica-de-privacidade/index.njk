@@ -32,7 +32,7 @@ eleventyComputed:
 		{%- endif %}
 		{%- for par in sec.paragrafos_fim %}{% if par %}<p>{{ par | emLinha | confirmar | safe }}</p>{% endif %}{% endfor %}
 		{%- if sec.botao_cookies %}
-		<p data-o-cookies-link hidden><button class="o-btn o-btn--contorno o-btn--pequeno" type="button" data-o-cookies-abrir>Abrir preferências de cookies</button></p>
+		<p data-o-cookies-link hidden><button class="o-btn o-btn--contorno o-btn--pequeno" type="button" data-o-cookies-abrir>Preferências de cookies</button></p>
 		{%- endif %}
 		{%- endfor %}
 	</div>

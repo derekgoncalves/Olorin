@@ -11,7 +11,7 @@ etiqueta: Pedido recebido
 titulo: Recebido.
 texto: Vamos te chamar no WhatsApp para entender o que você precisa e marcar a conversa.
 prazo: Resposta em até 1 dia útil.
-botao: Adiantar pelo WhatsApp
+botao: Falar no WhatsApp
 agendar: Prefere marcar um horário?
 enquanto_titulo: Enquanto isso
 enquanto:
@@ -33,7 +33,7 @@ educacao:
   titulo: Recebido.
   texto: Vamos te chamar no WhatsApp para entender o momento da sua instituição e marcar a conversa do Raio-X.
   prazo: Resposta em até 1 dia útil.
-  botao: Adiantar pelo WhatsApp
+  botao: Falar no WhatsApp
   whatsapp: Oi! Acabei de pedir o Raio-X da minha instituição pela página Olorin Educação e quero adiantar a conversa.
   agendar: Prefere marcar um horário?
   enquanto_titulo: Enquanto isso
@@ -54,7 +54,7 @@ influenciadores:
   titulo: Recebido.
   texto: Vamos te chamar no WhatsApp para olhar o seu perfil com você e marcar a conversa do Raio-X.
   prazo: Resposta em até 1 dia útil.
-  botao: Adiantar pelo WhatsApp
+  botao: Falar no WhatsApp
   whatsapp: Oi! Acabei de pedir o Raio-X do meu perfil pela página de influenciadores da Olorin e quero adiantar a conversa.
   agendar: Prefere marcar um horário?
   enquanto_titulo: Enquanto isso
