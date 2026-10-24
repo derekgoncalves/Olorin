@@ -47,7 +47,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding-bottom: clamp(22px, 4.6svh, 52px);
+	padding-bottom: clamp(40px, 7svh, 72px); /* respiro antes da faixa de logos (dono, 24/10/2026) */
 	text-align: center;
 }
 
@@ -279,7 +279,7 @@ html:not(.js) .o-hero__jogo {
 		padding-block: 0 calc(58px + env(safe-area-inset-bottom) + 6px);
 	}
 	.o-hero__texto {
-		padding-bottom: clamp(18px, 3.2svh, 30px);
+		padding-bottom: clamp(36px, 5.5svh, 52px);
 	}
 	.o-hero__moeda {
 		width: clamp(42px, 7svh, 64px);
@@ -298,16 +298,16 @@ html:not(.js) .o-hero__jogo {
 		top: calc(100% + 6px);
 		padding: 4px 6px;
 	}
-	/* Jogo grande no celular (dono, 24/10/2026): cenário curto (120 x 72, jogo.js) na largura toda da tela;
-	   a faixa de logos desce para depois da primeira tela quando precisa. */
+	/* Jogo grande no celular, mas com margem dos lados (dono, 24/10/2026): cenário curto (120 x 72, jogo.js)
+	   com até 85% da largura da tela. Ele usa o espaço que sobra e encolhe até 130 px de altura para os 3
+	   checks aparecerem na primeira tela; a faixa de logos desce quando precisa. */
 	.o-hero__jogo {
-		flex: none;
-		width: 100vw;
-		height: min(calc(100vw * 0.6), 36svh);
-		min-height: 0;
-		max-height: none;
-		margin: 0 calc(50% - 50vw) clamp(12px, 2svh, 20px);
-		overflow: hidden;
+		flex: 1 1 0;
+		width: 100%;
+		height: auto;
+		min-height: 130px;
+		max-height: 51vw;
+		margin: 0 0 clamp(12px, 2svh, 20px);
 	}
 	.o-hero__tela {
 		aspect-ratio: 120 / 72;
