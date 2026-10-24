@@ -476,6 +476,10 @@ body .o-topo.o-inf-topo {
 	filter: blur(3px);
 	pointer-events: none;
 }
+/* A palavra vem do data-texto (decoração: fica fora da leitura e da conferência de contraste) */
+.o-inf-gigante::before {
+	content: attr(data-texto);
+}
 .o-inf-quem__grade {
 	display: grid;
 	gap: clamp(36px, 5vw, 72px);
