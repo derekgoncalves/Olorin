@@ -1,2 +1,52 @@
-{#- Cabeçalho da LP de influenciadores (23/10/2026). Provisório: o cabeçalho completo do site. -#}
-{% include "partials/cabecalho.njk" %}
+{#- Cabeçalho da LP Olorin para influenciadores (23/10/2026): marca "Olorin" + "influenciadores" (verde
+    chapado, minúsculo), menu de âncoras da página, link de volta para o site, WhatsApp (ref influencer-topo)
+    e o botão do Raio-X (leva ao formulário do fim, #raio-x). Menu do celular com os mesmos data-o-* do site.
+    Textos: paginas/influenciadores.yml → marca, cabecalho e whatsapp. -#}
+{%- set cfg = site.config -%}
+{%- set I = conteudo.paginas.influenciadores -%}
+{%- set c = I.cabecalho -%}
+{%- import "components/ui.njk" as ui with context -%}
+{%- set marca -%}
+<svg class="o-inf-marca__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg>
+<span class="o-inf-marca__sub" aria-hidden="true">{{ I.marca.sub }}</span>
+{%- endset -%}
+<header class="o-topo o-inf-topo" data-o-topo>
+	<div class="o-topo__dentro">
+		<a class="o-inf-marca" href="#inicio" aria-label="{{ I.marca.nome }}, início da página">{{ marca | safe }}</a>
+		<nav class="o-nav o-inf-nav" aria-label="Nesta página" data-o-indice>
+			<ul class="o-nav__lista">
+			{%- for item in c.menu %}
+				<li class="o-nav__item"><a class="o-nav__link" href="{{ item.url }}">{{ item.rotulo }}</a></li>
+			{%- endfor %}
+			</ul>
+		</nav>
+		<div class="o-topo__ctas">
+			<a class="o-inf-topo__voltar" href="/"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ c.voltar }}</a>
+			<a class="o-btn o-btn--contorno o-btn--pequeno o-topo__wa" id="cta-whatsapp-topo" href="{{ waLink('influencer-topo', { mensagem: I.whatsapp.padrao }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span class="o-topo__wa-texto"><span class="o-sr">Falar no </span>WhatsApp</span></a>
+			{{ ui.botaoRaioX("cta-raio-x-influencer-topo", c.botao, "o-btn--pequeno") }}
+		</div>
+		<button class="o-hamburguer" type="button" aria-expanded="false" aria-controls="menu-celular" data-o-hamburguer>
+			<span class="o-sr">Abrir menu</span><i></i><i></i><i></i>
+		</button>
+	</div>
+</header>
+<div class="o-menu o-inf-menu" id="menu-celular" role="dialog" aria-modal="true" aria-label="Menu" data-o-menu inert>
+	<div class="o-menu__topo">
+		<a class="o-inf-marca" href="#inicio" aria-label="{{ I.marca.nome }}, início da página">{{ marca | safe }}</a>
+		<button class="o-menu__fechar" type="button" data-o-menu-fechar><span class="o-sr">Fechar menu</span><span aria-hidden="true">✕</span></button>
+	</div>
+	<nav class="o-menu__nav" aria-label="Nesta página (celular)">
+		<ul class="o-menu__lista">
+		{%- for item in c.menu %}
+			<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
+		{%- endfor %}
+		</ul>
+	</nav>
+	<div class="o-menu__ctas">
+		{{ ui.botaoRaioX("cta-raio-x-influencer-menu", c.botao) }}
+		<a class="o-btn o-btn--contorno" id="cta-whatsapp-menu" href="{{ waLink('influencer-menu', { mensagem: I.whatsapp.padrao }) }}" target="_blank" rel="noopener"><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span>{{ c.whatsapp }}</a>
+	</div>
+	<a class="o-inf-menu__voltar" href="/"><span class="o-icone o-icone--seta" aria-hidden="true"></span>{{ c.voltar_longo }}</a>
+	{{ ui.redes("o-menu__redes", "menu-influencer") }}
+	<p class="o-menu__rodape">{{ c.remoto }}</p>
+</div>

@@ -1,2 +1,1119 @@
 /* LP Olorin para influenciadores (/influenciadores/, 23/10/2026). Tema próprio: .o-tema-influenciadores.
-   Vai só no olorin-influenciadores.<hash>.css (ver PACOTES em scripts/assets.mjs). */
+   Vai só no olorin-influenciadores.<hash>.css (ver PACOTES em scripts/assets.mjs).
+   Pegada MTV anos 2000 + "brat" (dono): verde chapado com texto minúsculo condensado e levemente
+   desfocado (o desfoque é só uma sombra: o texto real fica nítido), marcas de tela (REC, canal, fita),
+   adesivos recortados com contorno branco, visor de câmera e guia de canais. Cores, logo e fontes da Olorin
+   + Archivo Narrow 600 (OFL) para o "brat". Regra da marca: o verde nunca encosta no violeta (a foto do
+   banner é roxa: o texto e o botão verde ficam no preto). Movimento só com prefers-reduced-motion:
+   no-preference; html.o-pausado para tudo (animacoes.css); sem JS nada some. */
+
+@font-face {
+	font-family: "Archivo Narrow";
+	src: url("/assets/fonts/influenciadores/archivo-narrow-600.woff2") format("woff2");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Tema ---------- */
+.o-tema-influenciadores {
+	--inf-brat: "Archivo Narrow", "Arial Narrow", "Roboto Condensed", "sans-serif-condensed", "Helvetica Neue", Arial, sans-serif;
+	--inf-rec: #ff3b30;
+	--inf-desfoque: 0 0 0.05em rgba(0, 0, 0, 0.55);
+	--inf-linhas: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px);
+}
+.o-tema-influenciadores .o-pular {
+	color: var(--preto);
+}
+.o-tema-influenciadores .o-form {
+	scroll-margin-top: calc(var(--altura-topo) + 16px);
+}
+
+/* ---------- Peças comuns ---------- */
+/* Ponto vermelho de "gravando" (REC / AO VIVO) */
+.o-inf-ponto {
+	display: inline-block;
+	flex: none;
+	width: 0.62em;
+	height: 0.62em;
+	border-radius: 50%;
+	background: var(--inf-rec);
+	box-shadow: 0 0 0.5em rgba(255, 59, 48, 0.7);
+}
+.o-inf-etiqueta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6em;
+	margin: 0 0 18px !important;
+	font-family: var(--fonte-pixel);
+	font-size: 12px;
+	letter-spacing: 0.14em;
+	line-height: 1.3;
+	text-transform: uppercase;
+	color: var(--cor-destaque);
+}
+.o-ctx-verde .o-inf-etiqueta,
+.o-ctx-branco .o-inf-etiqueta {
+	color: var(--cor-texto);
+}
+/* "brat": bloco verde chapado, minúsculo, condensado, com o desfoque só na sombra. Sempre no preto. */
+.o-inf-brat {
+	display: inline-block;
+	padding: 0.02em 0.14em 0.08em;
+	background: var(--verde);
+	color: var(--preto);
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	line-height: 0.92;
+	letter-spacing: -0.03em;
+	text-transform: lowercase;
+	text-shadow: var(--inf-desfoque);
+	rotate: -1.5deg;
+}
+.o-inf-h2 {
+	max-width: 22ch;
+	margin: 0 0 clamp(16px, 2vw, 24px) !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(28px, min(4.4vw, 9cqi), 56px);
+	line-height: 1;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+	overflow-wrap: break-word;
+}
+.o-inf-h2 .o-inf-brat {
+	margin-top: 0.12em;
+	font-size: 1.5em;
+}
+.o-inf-apoio {
+	max-width: 52ch;
+	font-size: clamp(15px, 1.15vw, 17px);
+	line-height: 1.65;
+	color: var(--cor-apoio);
+}
+.o-inf-sec {
+	overflow: hidden;
+}
+.o-inf-cabeca {
+	display: grid;
+	gap: 8px 48px;
+	margin-bottom: clamp(28px, 4vw, 52px);
+	container-type: inline-size;
+}
+.o-inf-cabeca > div {
+	container-type: inline-size;
+}
+@media (min-width: 900px) {
+	.o-inf-cabeca {
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+		align-items: end;
+	}
+	.o-inf-cabeca .o-inf-apoio {
+		margin-bottom: 26px;
+	}
+}
+/* "Raio-X" não quebra no hífen */
+.o-inf-nw {
+	white-space: nowrap;
+}
+/* Etiqueta de adesivo (#música, #fitness): fita preta com texto branco */
+.o-inf-tag {
+	position: absolute;
+	z-index: 2;
+	padding: 6px 12px 7px;
+	background: var(--preto);
+	color: var(--branco);
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(18px, 2vw, 24px);
+	line-height: 1;
+	rotate: 6deg;
+	box-shadow: 4px 4px 0 var(--branco);
+}
+/* Adesivo recortado (contorno branco já na imagem) com sombra dura */
+.o-inf-adesivo {
+	position: relative;
+	margin: 0;
+}
+.o-inf-adesivo__img {
+	display: block;
+	width: 100%;
+	height: auto;
+	filter: drop-shadow(7px 8px 0 rgba(0, 0, 0, 0.92));
+}
+
+/* ---------- Cabeçalho ---------- */
+/* Sem o fio verde do site embaixo do topo: ele encostaria na foto roxa do banner e no violeta do Raio-X. */
+body .o-topo.o-inf-topo {
+	background: rgba(0, 0, 0, 0.94);
+	border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+.o-inf-marca {
+	display: inline-flex;
+	flex: none;
+	align-items: center;
+	gap: 9px;
+	color: var(--verde);
+	line-height: 1;
+	text-decoration: none;
+}
+.o-inf-marca__logo {
+	display: block;
+	width: clamp(92px, 7.6vw, 116px);
+	height: auto;
+}
+.o-inf-marca__sub {
+	padding: 1px 6px 3px;
+	background: var(--verde);
+	color: var(--preto);
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(16px, 1.3vw, 19px);
+	letter-spacing: -0.02em;
+	text-shadow: var(--inf-desfoque);
+	rotate: -3deg;
+}
+.o-inf-nav .o-nav__link {
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: 17px;
+	letter-spacing: 0;
+	text-transform: lowercase;
+}
+.o-inf-topo__voltar,
+.o-inf-menu__voltar {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	min-height: 44px;
+	font-size: 13px;
+	text-decoration: none;
+	white-space: nowrap;
+	color: rgba(255, 255, 255, 0.86);
+}
+.o-inf-topo__voltar:hover,
+.o-inf-menu__voltar:hover {
+	color: var(--verde);
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+.o-inf-topo__voltar .o-icone,
+.o-inf-menu__voltar .o-icone {
+	--tam: 11px;
+	rotate: 180deg;
+}
+@media (max-width: 1240px) {
+	.o-inf-topo__voltar {
+		display: none;
+	}
+}
+/* Menu do celular: preto, itens em minúsculo condensado, "ch 01" na frente */
+.o-inf-menu .o-menu__lista > li > a {
+	padding: 12px 0;
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(34px, 10vw, 52px);
+	letter-spacing: -0.02em;
+	text-transform: lowercase;
+}
+.o-inf-menu .o-menu__lista > li > a::before {
+	content: "ch " counter(menu, decimal-leading-zero);
+	flex: none;
+	min-width: 4.6em;
+}
+.o-inf-menu .o-menu__ctas .o-btn--contorno {
+	--btn-texto: var(--branco);
+	--btn-borda: var(--branco);
+}
+.o-inf-menu__voltar {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+/* ---------- 1. Banner ---------- */
+.o-inf-hero {
+	display: flex;
+	flex-direction: column;
+	min-height: 100svh;
+	padding-block: var(--altura-topo) 0;
+	overflow: hidden;
+}
+.o-inf-hero__foto {
+	position: relative;
+	z-index: 0;
+	overflow: hidden;
+	background: #12062d;
+}
+.o-inf-hero__foto picture {
+	position: absolute;
+	inset: 0;
+}
+.o-inf-hero__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 24%;
+}
+/* Linhas de tela e chiado por cima da foto; o degradê preto leva a foto para o fundo do banner */
+.o-inf-hero__foto::before,
+.o-inf-hero__foto::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+.o-inf-hero__foto::before {
+	z-index: 1;
+	background: var(--inf-linhas), var(--grao) 0 0 / 200px;
+	opacity: 0.55;
+	mix-blend-mode: multiply;
+}
+.o-inf-hero__foto::after {
+	z-index: 2;
+	background: linear-gradient(180deg, transparent 52%, var(--preto) 97%);
+}
+/* Marcas de tela: REC, canal e fita (brancas: nada de verde em cima da foto roxa) */
+.o-inf-osd {
+	position: absolute;
+	inset: 16px var(--margem) auto;
+	z-index: 3;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 6px 16px;
+	font-family: var(--fonte-pixel);
+	font-size: 13px;
+	line-height: 1;
+	letter-spacing: 0.1em;
+	color: var(--branco);
+	text-shadow: 0 0 8px rgba(255, 255, 255, 0.55), 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+.o-inf-osd > span {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+.o-inf-osd__fita {
+	display: none !important;
+}
+.o-inf-hero__grade {
+	position: relative;
+	z-index: 2;
+	container-type: inline-size;
+}
+.o-inf-hero__texto {
+	container-type: inline-size;
+}
+.o-inf-hero__texto .o-inf-etiqueta {
+	color: var(--branco);
+}
+.o-inf-h1 {
+	margin: 0 0 clamp(16px, 2.2vw, 26px);
+	font-weight: 400;
+	line-height: 1;
+}
+.o-inf-h1__a {
+	display: block;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(22px, min(7cqi, 4vw), 54px);
+	line-height: 1;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+.o-inf-h1 .o-inf-brat {
+	margin: 0.12em 0 0 -0.04em;
+	font-size: clamp(56px, 16.6cqi, 156px);
+	white-space: nowrap;
+}
+.o-inf-hero__lead {
+	max-width: 44ch;
+	margin-bottom: clamp(20px, 2.6vw, 30px) !important;
+	font-size: clamp(15px, 1.2vw, 17px);
+	line-height: 1.6;
+	color: var(--cor-apoio);
+}
+.o-inf-hero__cta .o-btn {
+	box-shadow: 6px 6px 0 var(--branco);
+}
+.o-inf-hero__cta .o-btn:hover,
+.o-inf-hero__cta .o-btn:focus-visible {
+	box-shadow: 9px 9px 0 var(--branco);
+}
+/* Os 3 itens com check */
+.o-inf-checks {
+	display: grid;
+	gap: 8px;
+	margin: clamp(20px, 2.4vw, 28px) 0 0;
+	padding: 0;
+	list-style: none;
+	font-size: 14px;
+	line-height: 1.35;
+	color: var(--cor-apoio);
+}
+.o-inf-checks li {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.o-inf-checks li::before {
+	content: "";
+	flex: none;
+	width: 14px;
+	height: 14px;
+	background: var(--verde);
+	-webkit-mask: var(--icone-check) center / contain no-repeat;
+	mask: var(--icone-check) center / contain no-repeat;
+}
+/* A faixa de logos fecha o banner, num preto chapado por cima do fim da foto (com um degradê em cima) */
+.o-inf-hero > .o-clientes--pe {
+	position: relative;
+	z-index: 1;
+	background: var(--preto);
+	overflow: visible;
+}
+.o-inf-hero > .o-clientes--pe::before {
+	content: "";
+	position: absolute;
+	inset: auto 0 100%;
+	height: clamp(48px, 9vw, 140px);
+	background: linear-gradient(180deg, transparent, var(--preto));
+	pointer-events: none;
+}
+
+@media (max-width: 899px) {
+	.o-inf-hero__foto {
+		flex: 1 1 auto;
+		min-height: clamp(150px, 26svh, 460px);
+		margin-bottom: -48px;
+	}
+	.o-inf-hero__grade {
+		padding-top: 4px;
+	}
+}
+@media (max-width: 767px) {
+	/* A barra fixa do celular (56 px) não cobre a faixa de logos: o banner acaba logo acima dela. */
+	.o-inf-hero {
+		min-height: calc(100svh - 56px - env(safe-area-inset-bottom));
+	}
+	.o-inf-hero > .o-clientes--pe {
+		padding-top: 18px;
+	}
+}
+@media (max-width: 380px) {
+	.o-inf-hero__lead {
+		font-size: 14px;
+	}
+	.o-inf-checks {
+		gap: 6px;
+		font-size: 13px;
+	}
+}
+@media (min-width: 900px) {
+	.o-inf-hero {
+		min-height: min(100svh, 940px);
+	}
+	.o-inf-hero__foto {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: min(50vw, 820px);
+	}
+	.o-inf-hero__foto::after {
+		background:
+			linear-gradient(90deg, var(--preto) 0, rgba(0, 0, 0, 0.6) 14%, transparent 42%),
+			linear-gradient(180deg, transparent 60%, var(--preto) 92%);
+	}
+	.o-inf-osd {
+		inset: calc(var(--altura-topo) + 22px) clamp(20px, 3vw, 48px) auto clamp(80px, 12vw, 200px);
+	}
+	.o-inf-osd__fita {
+		display: inline-flex !important;
+		flex-basis: 100%;
+		margin-top: min(52svh, 480px);
+	}
+	.o-inf-hero__grade {
+		flex: 1;
+		display: grid;
+		align-content: center;
+		padding-block: clamp(32px, 6svh, 72px) clamp(24px, 4svh, 48px);
+	}
+	.o-inf-hero__texto {
+		width: min(100%, 52%);
+	}
+	.o-inf-checks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 22px;
+	}
+}
+@media (min-width: 1400px) {
+	.o-inf-hero__texto {
+		width: min(100%, 640px);
+	}
+}
+
+/* ---------- 2. Para quem é (verde "brat") ---------- */
+.o-inf-quem {
+	isolation: isolate;
+}
+.o-inf-gigante {
+	position: absolute;
+	top: 0.02em;
+	left: -0.04em;
+	z-index: -1;
+	margin: 0 !important;
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(110px, 24vw, 380px);
+	line-height: 0.8;
+	letter-spacing: -0.04em;
+	white-space: nowrap;
+	color: rgba(0, 0, 0, 0.08);
+	filter: blur(3px);
+	pointer-events: none;
+}
+/* A palavra vem do data-texto (decoração: fica fora da leitura e da conferência de contraste) */
+.o-inf-gigante::before {
+	content: attr(data-texto);
+}
+.o-inf-quem__grade {
+	display: grid;
+	gap: clamp(36px, 5vw, 72px);
+}
+.o-inf-quem__texto {
+	container-type: inline-size;
+}
+/* Título no estilo da capa: minúsculo, condensado, preto chapado no verde */
+.o-inf-quem .o-inf-h2 {
+	max-width: none;
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(52px, 15cqi, 120px);
+	line-height: 0.9;
+	letter-spacing: -0.035em;
+	text-transform: lowercase;
+	text-shadow: 0 0 0.04em rgba(0, 0, 0, 0.5);
+}
+.o-inf-perfis {
+	display: grid;
+	gap: 14px;
+	margin: clamp(24px, 3vw, 36px) 0 0;
+	padding: 0;
+	list-style: none;
+}
+.o-inf-perfil {
+	padding: 16px 18px 15px;
+	border: var(--borda) solid var(--preto);
+	background: var(--preto);
+	color: var(--branco);
+	box-shadow: 6px 6px 0 var(--branco);
+	rotate: calc((var(--k) - 1) * -0.7deg);
+}
+.o-inf-perfil__nome {
+	margin-bottom: 6px !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: clamp(14px, 1.2vw, 16px);
+	line-height: 1.2;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-inf-perfil__texto {
+	margin: 0 !important;
+	font-size: 14px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.86);
+}
+.o-inf-fora {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 24px 0 0 !important;
+	font-size: 14px;
+	font-weight: 700;
+}
+.o-inf-fora__x {
+	position: relative;
+	flex: none;
+	width: 22px;
+	height: 22px;
+	background: var(--preto);
+}
+.o-inf-fora__x::before,
+.o-inf-fora__x::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 13px;
+	height: 2px;
+	background: var(--verde);
+	translate: -50% -50%;
+	rotate: 45deg;
+}
+.o-inf-fora__x::after {
+	rotate: -45deg;
+}
+.o-inf-quem__colagem {
+	position: relative;
+	display: grid;
+	justify-items: center;
+	align-content: center;
+	gap: 26px;
+}
+.o-inf-adesivo--fone {
+	width: min(78%, 440px);
+	rotate: -4deg;
+}
+.o-inf-adesivo--fone .o-inf-tag {
+	right: -8%;
+	bottom: 16%;
+}
+.o-inf-nichos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px 8px;
+	max-width: 520px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.o-inf-nichos li {
+	padding: 6px 12px 8px;
+	border: var(--borda) solid var(--preto);
+	background: var(--branco);
+	color: var(--preto);
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(17px, 1.6vw, 21px);
+	line-height: 1;
+	rotate: calc((var(--k) - 5.5) * 0.6deg);
+}
+.o-inf-nichos li:nth-child(3n + 1) {
+	background: var(--preto);
+	color: var(--branco);
+}
+@media (min-width: 900px) {
+	.o-inf-quem__grade {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+		align-items: center;
+	}
+}
+
+/* ---------- 3. Guia de canais ---------- */
+.o-inf-guia {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: var(--borda) solid var(--branco);
+}
+.o-inf-canal {
+	position: relative;
+	display: grid;
+	grid-template-columns: clamp(56px, 10vw, 132px) minmax(0, 1fr);
+	gap: 4px clamp(12px, 2vw, 18px);
+	align-items: start;
+	padding: clamp(18px, 2.2vw, 26px) clamp(0px, 1.4vw, 18px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+	transition: background-color 0.15s steps(2), color 0.15s steps(2);
+}
+.o-inf-canal__num {
+	grid-row: span 2;
+	display: grid;
+	margin: 0 !important;
+	font-family: var(--fonte-pixel);
+	font-size: clamp(32px, 4.4vw, 56px);
+	line-height: 0.9;
+	color: var(--verde);
+}
+.o-inf-canal__num small {
+	font-size: 12px;
+	letter-spacing: 0.16em;
+	line-height: 1.6;
+}
+.o-inf-canal__nome {
+	margin-bottom: 6px !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(17px, 2vw, 26px);
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+.o-inf-canal__texto {
+	max-width: 60ch;
+	margin: 0 !important;
+	font-size: clamp(14px, 1.05vw, 16px);
+	line-height: 1.55;
+	color: var(--cor-apoio);
+}
+.o-inf-canal__tag {
+	grid-column: 2;
+	justify-self: start;
+	margin: 10px 0 0 !important;
+	padding: 5px 10px;
+	border: 1px solid currentColor;
+	font-family: var(--fonte-pixel);
+	font-size: 11px;
+	letter-spacing: 0.12em;
+	line-height: 1;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.8);
+}
+@media (min-width: 900px) {
+	.o-inf-canal {
+		grid-template-columns: clamp(96px, 10vw, 132px) minmax(0, 1fr) auto;
+		align-items: center;
+	}
+	.o-inf-canal__num {
+		grid-row: auto;
+	}
+	.o-inf-canal__tag {
+		grid-column: auto;
+		margin: 0 !important;
+	}
+}
+/* Troca de canal ao passar o mouse: a linha vira verde chapado */
+@media (hover: hover) and (pointer: fine) {
+	.o-inf-canal:hover {
+		background: var(--verde);
+		color: var(--preto);
+	}
+	.o-inf-canal:hover :is(.o-inf-canal__num, .o-inf-canal__texto, .o-inf-canal__tag) {
+		color: var(--preto);
+	}
+}
+
+/* ---------- 4. Faixa verde ---------- */
+.o-inf-faixa {
+	height: clamp(54px, 5vw, 72px);
+}
+.o-inf-faixa .o-faixa__trilho li {
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(22px, 2.4vw, 32px);
+	letter-spacing: -0.01em;
+	text-transform: lowercase;
+	text-shadow: var(--inf-desfoque);
+}
+
+/* ---------- 5. Enquadramento (visor de câmera) ---------- */
+.o-inf-quadro {
+	padding-block: 0;
+	overflow: hidden;
+}
+.o-inf-quadro__grade {
+	display: grid;
+}
+.o-inf-visor {
+	position: relative;
+	margin: 0;
+	aspect-ratio: 4 / 5;
+	max-height: 88svh;
+	overflow: hidden;
+	background: #1d2a00;
+}
+.o-inf-visor picture,
+.o-inf-visor__img {
+	width: 100%;
+	height: 100%;
+}
+.o-inf-visor__img {
+	object-fit: cover;
+	object-position: 50% 40%;
+}
+.o-inf-visor__osd {
+	position: absolute;
+	inset: clamp(14px, 2.4vw, 32px);
+	font-family: var(--fonte-pixel);
+	font-size: clamp(11px, 1vw, 14px);
+	line-height: 1;
+	letter-spacing: 0.08em;
+	color: var(--branco);
+	pointer-events: none;
+}
+.o-inf-visor__osd > span {
+	position: absolute;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 7px 9px;
+	background: rgba(0, 0, 0, 0.62);
+}
+.o-inf-visor__rec {
+	top: 16px;
+	left: 16px;
+}
+.o-inf-visor__tempo {
+	top: 16px;
+	left: 50%;
+	translate: -50% 0;
+}
+.o-inf-visor__info {
+	top: 16px;
+	right: 16px;
+}
+.o-inf-visor__bateria {
+	position: relative;
+	width: 22px;
+	height: 11px;
+	border: 2px solid currentColor;
+	background: linear-gradient(90deg, currentColor 70%, transparent 70%) 2px 2px / calc(100% - 4px) calc(100% - 4px) no-repeat;
+}
+.o-inf-visor__bateria::after {
+	content: "";
+	position: absolute;
+	right: -5px;
+	top: 2px;
+	width: 3px;
+	height: 3px;
+	background: currentColor;
+}
+/* Cantos do visor e quadrado de foco */
+.o-inf-visor__canto {
+	position: absolute;
+	width: clamp(26px, 4vw, 46px);
+	height: clamp(26px, 4vw, 46px);
+	border: 3px solid var(--branco);
+	filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+.o-inf-visor__canto:nth-of-type(1) { top: 0; left: 0; border-width: 3px 0 0 3px; }
+.o-inf-visor__canto:nth-of-type(2) { top: 0; right: 0; border-width: 3px 3px 0 0; }
+.o-inf-visor__canto:nth-of-type(3) { bottom: 0; left: 0; border-width: 0 0 3px 3px; }
+.o-inf-visor__canto:nth-of-type(4) { bottom: 0; right: 0; border-width: 0 3px 3px 0; }
+.o-inf-visor__foco {
+	position: absolute;
+	left: 50%;
+	top: 38%;
+	width: clamp(64px, 9vw, 110px);
+	aspect-ratio: 1;
+	border: 2px solid rgba(255, 255, 255, 0.85);
+	translate: -50% -50%;
+}
+.o-inf-quadro__texto {
+	align-self: center;
+	padding: clamp(40px, 6vw, 96px) var(--margem);
+	container-type: inline-size;
+}
+.o-inf-quadro .o-inf-h2 {
+	font-size: clamp(22px, min(3.8vw, 7cqi), 52px);
+}
+.o-inf-quadro__texto .o-inf-apoio {
+	margin-bottom: clamp(24px, 3vw, 34px);
+}
+@media (min-width: 900px) {
+	.o-inf-quadro__grade {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		min-height: min(88svh, 820px);
+	}
+	.o-inf-visor {
+		aspect-ratio: auto;
+		max-height: none;
+	}
+	.o-inf-quadro__texto {
+		max-width: 640px;
+		padding-left: clamp(40px, 5vw, 88px);
+	}
+}
+
+/* ---------- 6. Como funciona (branco) ---------- */
+.o-inf-passos__grade {
+	display: grid;
+	gap: clamp(48px, 6vw, 80px);
+}
+.o-inf-passos__texto {
+	container-type: inline-size;
+}
+.o-inf-etapas {
+	display: grid;
+	gap: 18px;
+	margin: clamp(20px, 3vw, 32px) 0 clamp(28px, 3.4vw, 40px);
+	padding: 0;
+	list-style: none;
+}
+.o-inf-etapa {
+	display: grid;
+	grid-template-columns: 56px minmax(0, 1fr);
+	gap: 2px 18px;
+}
+.o-inf-etapa__num {
+	grid-row: span 2;
+	display: grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	background: var(--preto);
+	color: var(--branco);
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 1;
+	box-shadow: 4px 4px 0 var(--violeta);
+	rotate: calc((var(--k) - 1) * 3deg);
+}
+.o-inf-etapa__titulo {
+	align-self: end;
+	margin-top: 4px !important;
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: clamp(15px, 1.4vw, 18px);
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+.o-inf-etapa__texto {
+	margin: 4px 0 0 !important;
+	font-size: 14px;
+	line-height: 1.55;
+	color: var(--cor-apoio);
+}
+/* Tela preta "ao vivo" com o adesivo saindo por cima */
+.o-inf-tela {
+	position: relative;
+	justify-self: center;
+	width: min(100%, 440px);
+	margin-top: clamp(60px, 9vw, 120px);
+	aspect-ratio: 4 / 4.4;
+	border: var(--borda) solid var(--preto);
+	background: var(--preto) var(--inf-linhas);
+	box-shadow: 10px 10px 0 var(--violeta);
+}
+.o-inf-tela::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--grao) 0 0 / 200px;
+	opacity: 0.16;
+	pointer-events: none;
+}
+.o-inf-tela__ao-vivo {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	z-index: 3;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-family: var(--fonte-pixel);
+	font-size: 13px;
+	letter-spacing: 0.12em;
+	color: var(--branco);
+}
+.o-inf-adesivo--corda {
+	position: absolute;
+	left: 50%;
+	bottom: -2px;
+	width: 62%;
+	translate: -50% 0;
+	rotate: 3deg;
+}
+.o-inf-adesivo--corda .o-inf-tag {
+	left: -30%;
+	top: 36%;
+	rotate: -7deg;
+}
+@media (min-width: 900px) {
+	.o-inf-passos__grade {
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		align-items: center;
+	}
+	.o-inf-tela {
+		margin-top: 140px;
+	}
+}
+
+/* ---------- 7. Equipe ---------- */
+.o-inf-pessoas {
+	display: grid;
+	gap: 26px;
+	margin: 0 0 clamp(32px, 4vw, 48px);
+	padding: 0;
+	list-style: none;
+}
+.o-inf-pessoa {
+	display: grid;
+	grid-template-columns: clamp(96px, 24vw, 124px) minmax(0, 1fr);
+	gap: 18px;
+	align-items: start;
+}
+.o-inf-pessoa__foto {
+	margin: 0;
+	border: 5px solid var(--branco);
+	background: var(--branco);
+	box-shadow: 6px 6px 0 var(--verde);
+	rotate: calc((var(--k) - 1) * 2.5deg);
+}
+.o-inf-pessoa__foto img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+	object-fit: cover;
+}
+.o-inf-pessoa__nome {
+	font-family: var(--fonte-titulo);
+	font-weight: 800;
+	font-size: clamp(15px, 1.3vw, 18px);
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+.o-inf-pessoa__nome a {
+	text-decoration: none;
+}
+.o-inf-pessoa__nome a:hover {
+	color: var(--verde);
+	text-decoration: underline;
+}
+.o-inf-pessoa__cargo {
+	margin: 6px 0 10px !important;
+	font-family: var(--fonte-pixel);
+	font-size: 11px;
+	letter-spacing: 0.1em;
+	line-height: 1.4;
+	text-transform: uppercase;
+	color: var(--verde);
+}
+.o-inf-pessoa__frase {
+	margin: 0 !important;
+	font-size: 14px;
+	line-height: 1.55;
+	color: var(--cor-apoio);
+}
+.o-inf-acoes {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 14px 28px;
+	margin: 0 !important;
+}
+@media (min-width: 900px) {
+	.o-inf-pessoas {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 40px;
+	}
+	.o-inf-pessoa {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.o-inf-pessoa__foto {
+		width: min(100%, 220px);
+	}
+}
+
+/* ---------- Rodapé ---------- */
+.o-inf-rodape__grade {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 36px 20px;
+	padding-bottom: clamp(36px, 5vw, 64px);
+}
+.o-inf-rodape__lema {
+	margin: 22px 0 10px;
+	font-family: var(--fonte-titulo);
+	font-weight: 900;
+	font-size: clamp(18px, 1.8vw, 22px);
+	line-height: 1.15;
+	text-transform: uppercase;
+}
+.o-inf-rodape__destaque {
+	color: var(--verde);
+}
+.o-inf-rodape__apoio {
+	max-width: 36ch;
+	margin: 0 0 18px;
+	font-size: 13px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.72);
+}
+.o-inf-rodape__gigante {
+	width: min(100% - 2 * var(--margem), 1440px);
+	height: clamp(54px, 11vw, 176px);
+	margin-inline: auto;
+	overflow: hidden;
+	font-family: var(--inf-brat);
+	font-weight: 600;
+	font-size: clamp(66px, 13.4vw, 216px);
+	line-height: 0.95;
+	letter-spacing: -0.04em;
+	white-space: nowrap;
+	color: var(--verde);
+	text-shadow: 0 0 0.03em rgba(236, 255, 54, 0.6);
+}
+@media (max-width: 767px) {
+	.o-inf-rodape__grade > :is(:first-child, :last-child) {
+		grid-column: 1 / -1;
+	}
+}
+@media (min-width: 768px) {
+	.o-inf-rodape__grade {
+		grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+		gap: clamp(28px, 4vw, 56px);
+	}
+}
+
+/* ---------- Movimento ---------- */
+@media (prefers-reduced-motion: no-preference) {
+	.o-inf-ponto {
+		animation: o-inf-pisca 1.4s steps(1) infinite;
+	}
+	/* Troca de canal a cada 8 s: a foto do banner treme e o chiado sobe por um instante */
+	.o-inf-hero__img {
+		animation: o-inf-canal 8s 2s infinite;
+	}
+	.o-inf-hero__foto::before {
+		animation: o-inf-chiado 8s 2s infinite;
+	}
+	/* Adesivos e cartões entram "colando" ao rolar (só onde o navegador tem animação por rolagem) */
+	@supports (animation-timeline: view()) {
+		:is(.o-inf-adesivo--fone, .o-inf-tela, .o-inf-perfil, .o-inf-pessoa__foto) {
+			animation: o-inf-cola linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 70%;
+		}
+	}
+}
+@keyframes o-inf-pisca {
+	50% {
+		opacity: 0.15;
+	}
+}
+@keyframes o-inf-canal {
+	0%, 94%, 100% {
+		transform: none;
+		filter: none;
+	}
+	95% {
+		transform: translateX(-2.5%) skewX(-3deg);
+		filter: brightness(1.6) contrast(1.3);
+	}
+	96.5% {
+		transform: translateX(2%) scaleY(1.04);
+		filter: brightness(0.7);
+	}
+	98% {
+		transform: translateX(-0.6%);
+		filter: none;
+	}
+}
+@keyframes o-inf-chiado {
+	0%, 94%, 100% {
+		opacity: 0.55;
+		background-position: 0 0;
+	}
+	95% {
+		opacity: 1;
+		background-position: 0 0, 40px 70px;
+	}
+	97% {
+		opacity: 0.9;
+		background-position: 0 2px, -60px 20px;
+	}
+}
+@keyframes o-inf-cola {
+	from {
+		opacity: 0;
+		scale: 1.12;
+	}
+}
