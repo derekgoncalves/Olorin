@@ -3,7 +3,7 @@
 {%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
 <footer class="o-rodape o-rodape--minimo">
 	<div class="o-wrap o-rodape__base-dentro">
-		<p>{{ cfg.NOME }} © 2026 · <a href="{{ waLink('promo-rodape') }}" target="_blank" rel="noopener" id="cta-whatsapp-rodape">WhatsApp {{ cfg.TELEFONE_EXIBICAO }}</a> · CNPJ {{ cfg.CNPJ }}</p>
+		<p>{{ cfg.NOME }} © 2026 · <a href="{{ waLink(('obrigado-' + ((segmento + '-') if segmento in ['educacao', 'influencer'] else '') + 'rodape') if modo == 'obrigado' else 'promo-rodape') }}" target="_blank" rel="noopener" id="cta-whatsapp-rodape">WhatsApp {{ cfg.TELEFONE_EXIBICAO }}</a> · CNPJ {{ cfg.CNPJ }}</p>
 		<p>
 			<a href="/politica-de-privacidade/">Política de Privacidade</a>
 			{#- Escondido sem IDs de medição; o main.js mostra quando há algum. -#}

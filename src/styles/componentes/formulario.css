@@ -371,11 +371,6 @@ html.js .o-form[data-etapa="2"] .o-form__etapa[data-etapa="2"] {
 }
 
 /* ---------- Páginas de obrigado dos públicos (/obrigado-educacao/ e /obrigado-influenciadores/) ---------- */
-/* Cabeçalho mínimo nas páginas de obrigado: sem o botão do Raio-X (o pedido já foi feito e o botão
-   aponta para #formulario, que só existe nas campanhas). */
-.o-modo-obrigado .o-topo--minimo .o-topo__unico {
-	display: none;
-}
 /* /obrigado-influenciadores/: o CSS da LP não leva o promo.css, então a grade vem aqui. Visual pop:
    fundo verde, janela preta torta como adesivo, "RECEBIDO." em verde no preto. */
 .o-obrigado--pop {

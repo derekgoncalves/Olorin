@@ -3,6 +3,8 @@
 <header class="o-topo o-topo--minimo" data-o-topo>
 	<div class="o-topo__dentro">
 		<span class="o-logo" role="img" aria-label="Olorin Digital"><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></span>
+		{%- if modo != "obrigado" %}
 		{{ ui.botaoRaioX("cta-orcamento-topo", "Raio-X grátis" if site.config.OFERTA_DIAGNOSTICO else "Pedir orçamento", "o-btn--pequeno o-topo__unico", "#formulario") }}
+		{%- endif %}
 	</div>
 </header>
