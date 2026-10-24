@@ -11,7 +11,7 @@
 	<span class="o-orcamento__ancora" id="orcamento"></span>
 	<div class="o-fundo o-fundo--subida" aria-hidden="true" data-o-fundo><div class="o-fundo__luz"></div><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 	<div class="o-wrap">
-		<h2 class="o-titulo o-titulo--gg o-orcamento__titulo" id="raio-x-titulo">{{ t.titulo }}</h2>
+		<h2 class="o-titulo o-titulo--gg o-orcamento__titulo" id="raio-x-titulo">{{ t.titulo | logoNoTitulo | safe }}</h2>
 		<div class="o-orcamento__grade">
 			<div class="o-orcamento__lado">
 				{{ chapaRaioX({ variante: "olorin", classe: "o-orcamento__chapa", sizes: "(max-width: 960px) 38vw, min(15vw, 200px)" }) }}

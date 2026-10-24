@@ -123,6 +123,11 @@ export function registrarFiltros(eleventyConfig, { prod }) {
 	eleventyConfig.addFilter('filtrarIds', (lista, ids) => (ids || []).map((id) => (lista || []).find((i) => i && i.id === id)).filter(Boolean));
 	eleventyConfig.addFilter('phpString', phpString);
 	eleventyConfig.addFilter('semVazios', (lista) => (lista || []).filter(Boolean));
+	// Título do Raio-X (dono, 24/10/2026): a palavra "Olorin" no fim vira a logo escrita OLORIN (#s-logo),
+	// na largura da palavra (.o-titulo-logo, em base.css). O nome continua no texto para leitor de tela e Google.
+	eleventyConfig.addFilter('logoNoTitulo', (texto) =>
+		escapar(texto).replace(/\bOlorin\.?\s*$/i, '<span class="o-titulo-logo"><span class="o-sr">Olorin</span><svg viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg></span>'),
+	);
 
 	// Espaço fixo depois de "R$". Marcadores [CONFIRMAR: ...] que sobrarem ficam destacados no
 	// modo de desenvolvimento (em produção o build falha, ver scripts/verificar-build.mjs).

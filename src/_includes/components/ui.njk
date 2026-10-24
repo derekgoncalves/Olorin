@@ -27,17 +27,19 @@
 </article>
 {% endmacro %}
 
-{#- Card de pessoa da equipe, com foto em moldura de janela. -#}
-{% macro cardPessoa(p, nivel="h3", compacto=false, link="") %}
+{#- Card de pessoa da equipe: foto cheia na moldura (dono, 24/10/2026: sem a barra "nome.jpg"). comFrase=false
+    deixa só nome e cargo (seção Quem somos da home: quem quiser mais clica e abre o perfil). -#}
+{% macro cardPessoa(p, nivel="h3", compacto=false, link="", comFrase=true) %}
 <article class="o-pessoa{% if compacto %} o-pessoa--compacta{% endif %}{% if link %} o-pessoa--link{% endif %}" id="{{ p.slug }}">
 	<figure class="o-pessoa__foto o-janela">
-		<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ p.janela }}</span><span class="o-janela__ctrl"></span></div>
 		{{ imagem(imagens, p.foto + ("-quadrada" if compacto else ""), { sizes: "(max-width: 640px) 160px, 160px" if compacto else "(max-width: 640px) 88vw, (max-width: 1100px) 44vw, 380px" }) | safe }}
 	</figure>
 	<div class="o-pessoa__texto">
 		<{{ nivel }} class="o-pessoa__nome">{% if link %}<a class="o-pessoa__link" href="{{ link }}">{{ p.nome }}</a>{% else %}{{ p.nome }}{% endif %}</{{ nivel }}>
 		<p class="o-pessoa__funcao">{{ p.cargo or p.funcao }}</p>
+		{%- if comFrase %}
 		<p class="o-pessoa__frase">{{ p.frase }}</p>
+		{%- endif %}
 		{%- if link %}<p class="o-pessoa__mais" aria-hidden="true">{{ conteudo.home.equipe.ver_perfil or "Ver perfil" }} <span class="o-icone o-icone--seta"></span></p>{% endif %}
 	</div>
 </article>

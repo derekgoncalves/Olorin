@@ -19,6 +19,44 @@
         "avif",
         "webp"
       ]
+    },
+    "chapa-frente-olorin": {
+      "arquivo_original": "src/assets/img-src/chapa-frente-olorin.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Estado A da chapa (24/10/2026): celular realista de frente (moldura de titânio, vidro, ilha e barra de status) montado em HTML e capturado com Playwright, com a home do site de verdade na tela (captura em 390 pt). Mesmo contorno do raio-x: 489 x 996, cantos de 77 (978 x 1992 px, fundo transparente). Para refazer: scripts/gerar-chapa-celular.mjs. Decorativa: alt vazio.",
+      "larguras": [
+        280,
+        420,
+        640
+      ],
+      "largura_padrao": 420,
+      "formatos": [
+        "avif",
+        "webp"
+      ]
+    },
+    "chapa-frente-educacao": {
+      "arquivo_original": "src/assets/img-src/chapa-frente-educacao.webp",
+      "categoria": "marca",
+      "pessoa_ou_cliente": "",
+      "servico_tags": [],
+      "alt": "",
+      "autorizacao_de_uso": "confirmada",
+      "observacoes": "Estado A da chapa (24/10/2026): celular realista de frente (moldura de titânio, vidro, ilha e barra de status) montado em HTML e capturado com Playwright, com a LP Olorin Educação de verdade na tela (captura em 390 pt). Mesmo contorno do raio-x: 489 x 996, cantos de 77 (978 x 1992 px, fundo transparente). Para refazer: scripts/gerar-chapa-celular.mjs. Decorativa: alt vazio.",
+      "larguras": [
+        280,
+        420,
+        640
+      ],
+      "largura_padrao": 420,
+      "formatos": [
+        "avif",
+        "webp"
+      ]
     }
   }
 }

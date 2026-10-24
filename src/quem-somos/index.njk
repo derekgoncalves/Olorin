@@ -34,7 +34,6 @@ eleventyComputed:
 			{%- for pessoa in conteudo.equipe.pessoas %}
 				<li class="o-quem-pilha__item">
 					<a class="o-quem-janela o-janela" href="/quem-somos/{{ pessoa.slug }}/">
-						<span class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ pessoa.janela }}</span><span class="o-janela__ctrl"></span></span>
 						{{ imagem(imagens, pessoa.foto, { prioridade: loop.first, sizes: "(max-width: 960px) 48vw, 260px" }) | safe }}
 						<span class="o-quem-janela__legenda"><strong>{{ pessoa.nome }}</strong><span>{{ pessoa.cargo or pessoa.funcao }}</span></span>
 					</a>
@@ -78,7 +77,6 @@ eleventyComputed:
 		{%- for pessoa in conteudo.equipe.pessoas %}
 			<article class="o-pessoa o-pessoa--link" id="{{ pessoa.slug }}">
 				<figure class="o-pessoa__foto o-janela">
-					<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ pessoa.janela }}</span><span class="o-janela__ctrl"></span></div>
 					{{ imagem(imagens, pessoa.foto, { sizes: "(max-width: 640px) 44vw, (max-width: 1100px) 44vw, 380px" }) | safe }}
 				</figure>
 				<div class="o-pessoa__texto">

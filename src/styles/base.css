@@ -86,6 +86,21 @@ li {
 	border: 0;
 }
 
+/* Logo escrita OLORIN no lugar da palavra "Olorin" no fim de um título (filtro logoNoTitulo; dono, 24/10/2026:
+   "RAIO X DA" + a logo). Na mesma largura da palavra na fonte de títulos (5,04em na Archivo Expanded; a LP
+   Educação ajusta para a Fraunces em educacao.css), apoiada na linha de base, na cor do título. */
+.o-titulo-logo {
+	display: inline-block;
+	width: 5.04em;
+	line-height: 0;
+	vertical-align: baseline;
+}
+.o-titulo-logo svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
 /* "Pular para o conteúdo" */
 .o-pular {
 	position: fixed;

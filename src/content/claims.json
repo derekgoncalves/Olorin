@@ -1,8 +1,8 @@
 {
-  "_leia": "Números da seção Resultados (home) e da barra de prova. Só aparecem itens com verificado = true. Dono, 17/10/2026: ficam só os números, sem a linha de base embaixo ('criterio' e 'periodo' ficam só como registro, não vão para a página). 23/10/2026 (dono): entra o terceiro número, +2x de retorno, com asterisco; 'nota' é a frase pequena que aparece embaixo dos números quando o item está na página.",
+  "_leia": "Números da seção Resultados (home) e da barra de prova. Só aparecem itens com verificado = true. Dono, 17/10/2026: ficam só os números, sem a linha de base embaixo ('criterio' e 'periodo' ficam só como registro, não vão para a página). 23/10/2026 (dono): entrou o terceiro número, +2x de retorno, com asterisco; 24/10/2026 (dono): saiu (verificado = false); 'nota' é a frase pequena que aparece embaixo dos números quando o item está na página.",
   "itens": [
     { "valor": "R$ 5M+", "rotulo": "Verbas geridas em anúncio", "periodo": "", "criterio": "histórico do time, antes e depois da Olorin", "verificado": true, "fonte": "informado pelo dono em 17/10/2026" },
     { "valor": "+50", "rotulo": "Marcas atendidas", "periodo": "", "criterio": "histórico do time, antes e depois da Olorin", "verificado": true, "fonte": "informado pelo dono em 08/10/2026 (escrito como +50 em 23/10/2026)" },
-    { "valor": "+2x", "rotulo": "De retorno*", "nota": "*Resultados variam de cliente a cliente.", "periodo": "", "criterio": "retorno sobre o investimento em anúncio nas contas do time", "verificado": true, "fonte": "dono, 23/10/2026" }
+    { "valor": "+2x", "rotulo": "De retorno*", "nota": "*Resultados variam de cliente a cliente.", "periodo": "", "criterio": "retorno sobre o investimento em anúncio nas contas do time", "verificado": false, "fonte": "dono, 23/10/2026; saiu da página em 24/10/2026 (dono)" }
   ]
 }

@@ -1,9 +1,10 @@
 /* Banner da home (23/10/2026, prévia aprovada pelo dono: "ta perfeito"): tela de início de jogo num fundo
    preto só, com o brilho índigo no meio e a grade de pixels verdes bem sutil. De cima para baixo: o "O" da
    Olorin girando como moeda, a etiqueta, o lema (h1, "outro nível." em verde, o bloquinho piscando e o selo
-   "Level up"), o minijogo 8-bit (canvas, src/scripts/modulos/jogo.js), o botão START do Raio-X, a linha de
-   apoio, os 3 itens com check e, no pé, a faixa de logos (secoes/faixa-clientes.njk).
-   Computador: título, moeda e jogo seguem a altura da janela, para o botão aparecer na primeira tela.
+   "Level up"), o minijogo 8-bit (canvas, src/scripts/modulos/jogo.js), o botão START do Raio-X, os 3 itens
+   com check e, no pé, a faixa de logos (secoes/faixa-clientes.njk).
+   Computador e celular: tudo segue a altura da janela, para o banner inteiro (até a faixa de logos)
+   caber na primeira tela (dono, 24/10/2026), com respiro entre os checks e as logos.
    Celular: o banner ocupa a primeira tela inteira e termina nas logos, acima da barra fixa (o jogo cresce
    ou encolhe para caber). Movimento só em prefers-reduced-motion: no-preference e parado com o-pausado. */
 .o-hero {
@@ -11,7 +12,7 @@
 	flex-direction: column;
 	min-height: 100vh;
 	min-height: 100svh;
-	padding-top: calc(var(--altura-topo) + clamp(10px, 3.2svh, 44px));
+	padding-top: calc(var(--altura-topo) + clamp(8px, 2.2svh, 40px));
 	padding-bottom: 0;
 	overflow: hidden;
 	background: radial-gradient(70% 60% at 50% 38%, #170544 0%, #0a0220 45%, var(--preto) 80%) var(--preto);
@@ -48,16 +49,16 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding-bottom: clamp(12px, 2.4svh, 32px);
+	padding-bottom: clamp(22px, 4.6svh, 52px);
 	text-align: center;
 }
 
 /* 1. O "O" da Olorin, violeta com brilho violeta, girando como moeda. */
 .o-hero__moeda {
 	flex: none;
-	width: clamp(46px, min(9vw, 11svh), 112px);
+	width: clamp(34px, min(9vw, 7svh), 104px);
 	aspect-ratio: 134 / 126;
-	margin-bottom: clamp(12px, 2.6svh, 30px);
+	margin-bottom: clamp(8px, 1.8svh, 26px);
 	perspective: 600px;
 	color: var(--violeta);
 	filter: drop-shadow(0 0 22px rgba(126, 59, 237, 0.85));
@@ -72,7 +73,7 @@
 /* 2. Etiqueta: lavanda, sem o ícone das outras etiquetas (a moeda já está em cima). */
 .o-sec .o-hero__linha {
 	justify-content: center;
-	margin: 0 0 clamp(10px, 1.8svh, 16px);
+	margin: 0 0 clamp(8px, 1.4svh, 16px);
 	font-size: 13px;
 	letter-spacing: 0.14em;
 	color: var(--lavanda);
@@ -86,10 +87,10 @@
    altura da janela (11,5svh), para o botão aparecer na primeira tela. */
 /* A margem de baixo deixa espaço para o selo "Level up" (que fica solto embaixo do título), com ou sem jogo. */
 .o-hero__titulo {
-	margin: 0 0 clamp(40px, 5svh, 56px);
+	margin: 0 0 clamp(32px, 4.8svh, 56px);
 	font-family: var(--fonte-titulo);
 	font-weight: 900;
-	font-size: clamp(24px, min(9.6cqi, 11.5svh), 104px);
+	font-size: clamp(24px, min(9.6cqi, 8.9svh), 104px);
 	line-height: 0.92;
 	letter-spacing: -0.015em;
 	text-transform: uppercase;
@@ -133,9 +134,9 @@
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	height: clamp(110px, 62svh - 252px, 216px);
+	height: clamp(56px, 26svh - 98px, 216px);
 	max-height: calc(min(100cqi, 576px) * 0.375);
-	margin: 0 0 clamp(20px, 3svh, 34px);
+	margin: 0 0 clamp(12px, 2.6svh, 34px);
 }
 html:not(.js) .o-hero__jogo {
 	display: none;
@@ -178,8 +179,8 @@ html:not(.js) .o-hero__jogo {
 	--btn-sombra: var(--branco);
 	flex-wrap: nowrap;
 	gap: 12px;
-	min-height: 64px;
-	padding: 16px 32px;
+	min-height: clamp(52px, 7.6svh, 64px);
+	padding: clamp(10px, 1.8svh, 16px) 32px;
 	border-width: 3px;
 	font-weight: 900;
 	font-size: clamp(18px, 1.8vw, 24px);
@@ -235,14 +236,14 @@ html:not(.js) .o-hero__jogo {
 }
 .o-hero__prova {
 	justify-content: center;
-	margin-top: clamp(14px, 2.2svh, 22px);
+	margin-top: clamp(14px, 2.6svh, 26px);
 	text-align: left;
 }
 
 /* 8. Faixa de logos no pé, no mesmo fundo (o letreiro vem de marquee.css). */
 .o-hero > .o-clientes--pe {
 	flex: none;
-	padding-block: clamp(12px, 2.4svh, 32px) clamp(6px, 1vw, 14px);
+	padding-block: 0 clamp(8px, 1.6svh, 18px);
 }
 
 /* Movimento: moeda girando, selo que sobe e desce e o bloquinho que pisca (algumas vezes e para).
@@ -275,7 +276,10 @@ html:not(.js) .o-hero__jogo {
 		padding-top: calc(var(--altura-topo) + clamp(6px, 2svh, 24px));
 	}
 	.o-hero > .o-clientes--pe {
-		padding-block: clamp(10px, 1.6svh, 18px) calc(58px + env(safe-area-inset-bottom) + 6px);
+		padding-block: 0 calc(58px + env(safe-area-inset-bottom) + 6px);
+	}
+	.o-hero__texto {
+		padding-bottom: clamp(18px, 3.2svh, 30px);
 	}
 	.o-hero__moeda {
 		width: clamp(42px, 7svh, 64px);
@@ -301,10 +305,14 @@ html:not(.js) .o-hero__jogo {
 		max-height: calc(min(100cqi, 420px) * 0.375);
 		margin: 0 0 clamp(12px, 2svh, 20px);
 	}
+	/* "Quero um Raio-X gratuito" numa linha só, do 320 ao 767: a letra segue a largura da coluna. */
 	.o-hero .o-hero__start {
-		min-height: 60px;
-		padding: 14px 24px;
-		font-size: 17px;
+		gap: 10px;
+		max-width: 100%;
+		min-height: 58px;
+		padding: 14px clamp(12px, 4.4cqi, 22px);
+		font-size: clamp(12px, 4.3cqi, 18px);
+		letter-spacing: 0.03em;
 	}
 	.o-hero__apoio {
 		margin-top: clamp(14px, 2svh, 20px) !important;
@@ -319,10 +327,4 @@ html:not(.js) .o-hero__jogo {
 		margin-top: clamp(10px, 1.8svh, 18px);
 	}
 }
-@media (max-width: 359px) {
-	.o-hero .o-hero__start {
-		gap: 10px;
-		padding-inline: 18px;
-		font-size: 15px;
-	}
-}
+

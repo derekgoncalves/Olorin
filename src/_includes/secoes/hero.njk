@@ -18,7 +18,9 @@
 				<div class="o-hero__tela"><canvas width="192" height="72"></canvas><span class="o-hero__aviso" data-o-jogo-aviso>{{ h.jogo_aviso }}</span></div>
 			</div>
 			{{ ui.botaoRaioX("cta-diagnostico-hero", h.botao_start, "o-hero__start") }}
+			{%- if h.apoio %}
 			<p class="o-hero__apoio">{{ h.apoio }}</p>
+			{%- endif %}
 			<ul class="o-prova o-hero__prova" aria-label="{{ h.checks_rotulo }}">
 			{%- for item in h.checks %}
 				<li>{{ item }}</li>

@@ -1,6 +1,6 @@
 {#-
 	CHAPA DO RAIO-X (23/10/2026): uma chapa de filme de raio-x com um celular. Estado A: o celular normal, de
-	frente, com a tela acesa (perfil de rede social da "sua marca" e uma notificação chegando). Um flash branco
+	frente, com a tela acesa (24/10/2026: celular realista com a página de verdade na tela). Um flash branco
 	(o disparo do raio-x) troca para o estado B: o raio-x real do mesmo celular, com o "O" da Olorin girando
 	como moeda, aceso, no círculo do carregador. Segura, outro flash, volta para A. Ciclo de 7 s em CSS
 	(componentes/chapa.css); o JS (modulos/chapa.js) só pausa fora da tela e começa do estado A quando a
@@ -34,70 +34,10 @@
 	<span class="o-chapa__prendedor"></span>
 	<span class="o-chapa__regua"></span>
 	<div class="o-chapa__aparelho">
-		{#- Estado A: o celular de frente. Mesmo contorno do raio-x (489 x 996, cantos de 77, medidos na imagem). -#}
-		<span class="o-chapa__frente"><svg viewBox="0 0 489 996" focusable="false">
-			<rect width="489" height="996" rx="77" fill="#c4cad4"/>
-			<rect x="7" y="7" width="475" height="982" rx="70" fill="#050508"/>
-			<rect x="22" y="22" width="445" height="952" rx="56" fill="#0c0d13"/>
-			<rect x="192" y="40" width="105" height="30" rx="15" fill="#000"/>
-			<g fill="#fff"><rect x="58" y="46" width="50" height="17" rx="8.5"/><rect x="352" y="57" width="6" height="7" rx="1"/><rect x="362" y="53" width="6" height="11" rx="1"/><rect x="372" y="49" width="6" height="15" rx="1"/><rect x="408" y="50" width="20" height="11" rx="2.5"/></g>
-			<rect x="403.5" y="46.5" width="29" height="18" rx="5" fill="none" stroke="#fff" stroke-width="2.5"/>
-			{#- topo do perfil: nome (barra), selo, menu -#}
-			<rect x="58" y="104" width="{{ 168 if edu else 150 }}" height="24" rx="12" fill="#fff"/>
-			<circle cx="{{ 248 if edu else 230 }}" cy="116" r="12" fill="#ecff36"/>
-			<g fill="#fff"><rect x="400" y="104" width="32" height="4.5" rx="2"/><rect x="400" y="113.5" width="32" height="4.5" rx="2"/><rect x="400" y="123" width="32" height="4.5" rx="2"/></g>
-			{#- foto do perfil com anel e os números -#}
-			<circle cx="118" cy="220" r="60" fill="none" stroke="#ecff36" stroke-width="7"/>
-			<circle cx="118" cy="220" r="50" fill="#fff"/>
-			<use href="#s-pixel" x="88" y="194" width="60" height="53" color="#000"/>
-			<g fill="#fff"><rect x="218" y="196" width="56" height="22" rx="6"/><rect x="302" y="196" width="56" height="22" rx="6"/><rect x="386" y="196" width="56" height="22" rx="6"/></g>
-			<g fill="#5a6070"><rect x="214" y="230" width="64" height="11" rx="5.5"/><rect x="298" y="230" width="64" height="11" rx="5.5"/><rect x="382" y="230" width="64" height="11" rx="5.5"/></g>
-			<rect x="58" y="300" width="170" height="20" rx="10" fill="#fff"/>
-			<g fill="#5a6070"><rect x="58" y="334" width="330" height="11" rx="5.5"/><rect x="58" y="356" width="250" height="11" rx="5.5"/></g>
-			{#- botões Seguir (verde) e Mensagem -#}
-			<rect x="58" y="392" width="250" height="50" rx="12" fill="#ecff36"/>
-			<rect x="146" y="412" width="74" height="10" rx="5" fill="#000"/>
-			<rect x="318" y="392" width="113" height="50" rx="12" fill="#262a36"/>
-			<rect x="344" y="412" width="61" height="10" rx="5" fill="#c9ccd6"/>
-			{#- destaques -#}
-			<g fill="none" stroke="#3a3f4e" stroke-width="3"><circle cx="100" cy="502" r="34"/><circle cx="190" cy="502" r="34"/><circle cx="280" cy="502" r="34"/><circle cx="370" cy="502" r="34"/></g>
-			<circle cx="100" cy="502" r="27" fill="#ecff36"/><circle cx="190" cy="502" r="27" fill="#fff"/><circle cx="280" cy="502" r="27" fill="#be96ff"/><circle cx="370" cy="502" r="27" fill="#1e065a"/>
-			{#- abas e a grade de posts (verde nunca ao lado do violeta ou da lavanda) -#}
-			<rect x="22" y="590" width="445" height="1.5" fill="#2c3040"/>
-			<rect x="22" y="588" width="148" height="3.5" fill="#fff"/>
-			<g fill="#fff"><rect x="83" y="557" width="11" height="11" rx="1.5"/><rect x="97" y="557" width="11" height="11" rx="1.5"/><rect x="83" y="571" width="11" height="11" rx="1.5"/><rect x="97" y="571" width="11" height="11" rx="1.5"/></g>
-			<path d="M236 556l22 13-22 13z" fill="#6b7080"/>
-			<rect x="378" y="557" width="28" height="25" rx="7" fill="none" stroke="#6b7080" stroke-width="3.5"/>
-			<rect x="22" y="600" width="147" height="147" fill="#ecff36"/>
-			<g fill="#000"><rect x="48" y="690" width="24" height="32"/><rect x="83" y="667" width="24" height="55"/><rect x="118" y="640" width="24" height="82"/></g>
-			<rect x="171" y="600" width="147" height="147" fill="#fff"/>
-			<path d="M244.5 704c-22-15-40-30-40-49 0-12 9-21 20-21 9 0 15 5 20 12 5-7 11-12 20-12 11 0 20 9 20 21 0 19-18 34-40 49z" fill="#7e3bed"/>
-			<rect x="320" y="600" width="147" height="147" fill="#1e065a"/>
-			<path d="M380 648l38 25-38 25z" fill="#fff"/>
-			<rect x="22" y="749" width="147" height="147" fill="#1a1b25"/>
-			<use href="#s-pixel" x="63" y="795" width="64" height="56" color="#ecff36"/>
-			<rect x="171" y="749" width="147" height="147" fill="#7e3bed"/>
-			<use href="#s-o" x="214" y="793" width="61" height="58" color="#fff"/>
-			<rect x="320" y="749" width="147" height="147" fill="#be96ff"/>
-			<path d="M358 790h70a10 10 0 0 1 10 10v36a10 10 0 0 1-10 10h-44l-18 14v-14h-8a10 10 0 0 1-10-10v-36a10 10 0 0 1 10-10z" fill="#1e065a"/>
-			<rect x="22" y="898" width="147" height="20" fill="#ecff36"/><rect x="171" y="898" width="147" height="20" fill="#fff"/><rect x="320" y="898" width="147" height="20" fill="#1e065a"/>
-			{#- barra de baixo do app (cantos da tela) e o indicador de início -#}
-			<path d="M22 906h445v12a56 56 0 0 1-56 56H78a56 56 0 0 1-56-56z" fill="#0c0d13"/>
-			<rect x="22" y="906" width="445" height="1.5" fill="#2c3040"/>
-			<path d="M60 947v-17l18-14 18 14v17z" fill="#fff"/>
-			<g fill="none" stroke="#fff" stroke-width="4"><circle cx="160" cy="929" r="11"/><path d="M168 937l9 9"/><rect x="232" y="917" width="27" height="27" rx="8"/><path d="M245.5 924v13M239 930.5h13"/><rect x="320" y="917" width="27" height="27" rx="8"/></g>
-			<circle cx="417" cy="931" r="14" fill="#ecff36"/>
-			<rect x="180" y="956" width="129" height="6" rx="3" fill="#fff"/>
-			{#- notificação que chega (anima no estado A): app da Olorin -#}
-			<g class="o-chapa__notificacao">
-				<rect x="34" y="82" width="421" height="84" rx="22" fill="#1f2331" stroke="#3a3f4e" stroke-width="2"/>
-				<rect x="50" y="96" width="56" height="56" rx="14" fill="#ecff36"/>
-				<use href="#s-o" x="60" y="106" width="36" height="34" color="#000"/>
-				<rect x="122" y="104" width="150" height="15" rx="7.5" fill="#fff"/>
-				<rect x="122" y="130" width="250" height="11" rx="5.5" fill="#8c92a3"/>
-				<circle cx="425" cy="111" r="8" fill="#ecff36"/>
-			</g>
-		</svg></span>
+		{#- Estado A: o celular de frente, realista (24/10/2026, dono: "nada de cartoon"): foto montada do aparelho com
+		    a página de verdade na tela (a home; na variante educacao, a LP). Mesmo contorno do raio-x (489 x 996,
+		    cantos de 77). Imagens em src/assets/manifest-chapa.json (chapa-frente-olorin / chapa-frente-educacao). -#}
+		<span class="o-chapa__frente">{{ imagem(imagens, "chapa-frente-educacao" if edu else "chapa-frente-olorin", { alt: "", sizes: opcoes.sizes or "(max-width: 960px) 40vw, 200px", classe: "o-chapa__frente-img" }) | safe }}</span>
 		{#- Estado B: o raio-x do mesmo celular e a logo acesa no círculo do carregador. -#}
 		<div class="o-chapa__rx">
 			{{ imagem(imagens, "raio-x-celular", { alt: "", sizes: opcoes.sizes or "(max-width: 960px) 40vw, 200px", classe: "o-chapa__img" }) | safe }}

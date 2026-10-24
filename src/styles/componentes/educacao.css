@@ -1579,6 +1579,11 @@
 	color: var(--branco);
 	text-shadow: 0.03em 0.035em 0 var(--edu-indigo);
 }
+/* a logo OLORIN do título (base.css) na largura da palavra na Fraunces, com a mesma sombra índigo */
+.o-edu-raio__titulo .o-titulo-logo {
+	width: 3.91em;
+	filter: drop-shadow(0.03em 0.035em 0 var(--edu-indigo));
+}
 .o-edu-passos {
 	grid-area: passos;
 	display: grid;

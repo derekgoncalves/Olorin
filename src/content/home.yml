@@ -36,13 +36,13 @@ hero:
   # Minijogo: aviso que aparece quando o bonequinho clica no alvo (decoração).
   jogo_aviso: +1 nível
   # Botão grande do Raio-X, no estilo START (id cta-diagnostico-hero, usado na medição).
-  botao_start: Raio-X gratuito
-  # Linha de apoio embaixo do botão.
-  apoio: Um Raio-X grátis da sua marca, com o que está travando e o que destravar primeiro.
+  botao_start: Quero um Raio-X gratuito
+  # Linha de apoio embaixo do botão (opcional; saiu em 24/10/2026 a pedido do dono: deixe vazio).
+  apoio: ""
   # Os 3 itens com check (os mesmos de todas as páginas) e o nome da lista para o leitor de tela.
   checks_rotulo: Como a Olorin trabalha
   checks:
-    - Raio-X gratuito e sem compromisso
+    - Diagnóstico gratuito e sem compromisso
     - Estratégia e performance
     - Produção de alto nível
   # Não é do banner: texto do botão do Raio-X no fim da seção de serviços da home (secoes/servicos.njk).

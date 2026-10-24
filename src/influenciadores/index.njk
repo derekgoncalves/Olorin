@@ -43,7 +43,9 @@ fontes_extra:
 		<div class="o-inf-hero__texto">
 			<p class="o-inf-etiqueta"><i class="o-inf-ponto" aria-hidden="true"></i>{{ h.etiqueta }}</p>
 			<h1 class="o-inf-h1" id="inf-titulo"><span class="o-inf-h1__a">{{ h.titulo }}</span> <span class="o-inf-brat">{{ h.titulo_destaque }}</span></h1>
+			{%- if h.texto %}
 			<p class="o-inf-hero__lead">{{ h.texto }}</p>
+			{%- endif %}
 			<div class="o-inf-hero__cta">{{ botaoRaio("cta-raio-x-influencer-hero", h.botao, "o-btn--grande") }}</div>
 			<ul class="o-inf-checks" aria-label="Como a Olorin trabalha">
 			{%- for item in h.prova %}

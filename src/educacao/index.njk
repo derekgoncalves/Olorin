@@ -207,7 +207,6 @@ fontes_extra:
 		{%- for p in conteudo.equipe.pessoas %}
 			<li class="o-edu-pessoa">
 				<figure class="o-janela o-edu-pessoa__foto">
-					<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ p.janela | replace(".exe", ".olo") }}</span><span class="o-janela__ctrl"></span></div>
 					{{ imagem(imagens, p.foto, { sizes: "(max-width: 767px) 36vw, (max-width: 1100px) 30vw, 380px" }) | safe }}
 				</figure>
 				<h3 class="o-edu-pessoa__nome"><a href="/quem-somos/#{{ p.slug }}">{{ p.nome }}</a></h3>
@@ -230,7 +229,7 @@ fontes_extra:
 <section class="o-sec o-edu-sec o-edu-raio o-ctx-violeta o-com-grao" id="raio-x" data-secao="raio-x" aria-labelledby="edu-raio-titulo">
 	<div class="o-edu-fundo o-edu-fundo--raio" aria-hidden="true" data-o-edu-lapis></div>
 	<div class="o-wrap o-edu-raio__grade">
-		<h2 class="o-edu-raio__titulo" id="edu-raio-titulo">{{ t.titulo }}</h2>
+		<h2 class="o-edu-raio__titulo" id="edu-raio-titulo">{{ t.titulo | logoNoTitulo | safe }}</h2>
 		<ol class="o-edu-passos" role="list">
 		{%- for p in t.passos %}
 			<li><svg class="o-edu-passos__o" viewBox="0 0 134 126" aria-hidden="true" focusable="false"><use href="#s-o"></use></svg><span>{{ p }}</span></li>

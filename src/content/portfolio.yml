@@ -42,14 +42,15 @@ itens:
   - { titulo: John Deere, rotulo: Tráfego pago, imagem: portfolio-john-deere, servicos: [trafego-pago] }
   - { titulo: Governo do Estado do RS, rotulo: Identidade visual · Impressos, imagem: portfolio-governo-rs, servicos: [identidade-visual, material-impresso] }
   - { titulo: Anacleto Abduch, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-anacleto-abduch, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
-  - { titulo: Cartas para o Futuro, rotulo: Identidade visual · Impressos, imagem: portfolio-cartas-para-o-futuro, servicos: [identidade-visual, material-impresso] }
+  # Fora do portfólio em 24/10/2026 (dono). Para voltar, tire o "# " da linha abaixo.
+  # - { titulo: Cartas para o Futuro, rotulo: Identidade visual · Impressos, imagem: portfolio-cartas-para-o-futuro, servicos: [identidade-visual, material-impresso] }
   - { titulo: Centro Sul Shop, rotulo: Tráfego pago, imagem: portfolio-centro-sul-shop, servicos: [trafego-pago] }
   # PENDENTE: o serviço feito para a National Geographic (hoje o card diz só "Marca atendida", sem filtro)
   - { titulo: National Geographic, rotulo: Marca atendida, imagem: portfolio-national-geographic, servicos: [] }
   - { titulo: iZETA, rotulo: Sites · Tráfego pago · Redes sociais, imagem: portfolio-izeta, servicos: [site-e-loja-virtual, trafego-pago, redes-sociais] }
-  # Projeto da própria Olorin: página 16 do manual da marca (_brand/paginas/)
-  - { titulo: Olorin Digital, rotulo: Identidade visual, imagem: portfolio-olorin, servicos: [identidade-visual] }
-  # PENDENTE: arte ou logo da Harmonia do Pet (hoje card provisório só com o nome) e o serviço feito
+  # Projeto da própria Olorin: fora em 24/10/2026 (dono). Para voltar, tire o "# " da linha abaixo.
+  # - { titulo: Olorin Digital, rotulo: Identidade visual, imagem: portfolio-olorin, servicos: [identidade-visual] }
+  # Card com o logo enviado pelo dono (24/10/2026). PENDENTE: o serviço feito
   - { titulo: Harmonia do Pet, rotulo: Marca atendida, imagem: portfolio-harmonia-do-pet, servicos: [] }
   # suspenso em 17/10 (dono): Bença fica fora do site; para voltar, tire o "# " da linha abaixo
   # - { titulo: Bença, rotulo: Identidade visual · Impressos, imagem: portfolio-benca, servicos: [identidade-visual, material-impresso] }

@@ -401,6 +401,10 @@ body .o-topo.o-inf-topo {
 	.o-inf-hero > .o-clientes--pe {
 		padding-top: 18px;
 	}
+	/* Dono, 24/10/2026: no celular o banner fica só com o lema (a linha de apoio aparece só no computador). */
+	.o-inf-hero__lead {
+		display: none;
+	}
 }
 @media (max-width: 380px) {
 	.o-inf-hero__lead {

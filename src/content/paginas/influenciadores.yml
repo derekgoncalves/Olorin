@@ -55,12 +55,13 @@ hero:
   etiqueta: Olorin para influenciadores
   titulo: Seu perfil em
   titulo_destaque: outro nível.
+  # Linha de apoio do banner: só no computador (24/10/2026, dono: no celular o banner fica só com o lema).
   texto: Estratégia, conteúdo, design e anúncios para criadores que querem crescer, fechar parcerias e viver do próprio perfil.
   # Curto, para caber numa linha no celular.
   botao: Quero meu Raio-X
   # Os 3 itens com check ao lado do botão (iguais em todas as páginas).
   prova:
-    - Raio-X gratuito e sem compromisso
+    - Diagnóstico gratuito e sem compromisso
     - Estratégia e performance
     - Produção de alto nível
   # Marcas de tela de TV/câmera sobre a foto (decoração, sem leitura de tela).

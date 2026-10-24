@@ -37,7 +37,6 @@ eleventyComputed:
 	</div>
 	<div class="o-wrap o-perfil__grade">
 		<figure class="o-perfil__foto o-janela">
-			<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ pessoa.janela }}</span><span class="o-janela__ctrl"></span></div>
 			{{ imagem(imagens, pessoa.foto + "-quadrada", { prioridade: true, sizes: "(max-width: 640px) 136px, 200px" }) | safe }}
 			{%- if pessoa.emojis and pessoa.emojis.length %}
 			<span class="o-perfil__emojis" aria-hidden="true">{% for e in pessoa.emojis %}<span>{{ e }}</span>{% endfor %}</span>
