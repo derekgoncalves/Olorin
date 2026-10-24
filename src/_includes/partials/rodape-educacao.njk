@@ -1,4 +1,4 @@
-{#- Rodapé da LP Olorin Educação: marca, lema, âncoras da página, links do site da Olorin e contato.
+{#- Rodapé da LP Olorin Educação: marca, lema, segmentos e contato.
     Textos: paginas/educacao.yml → marca, cabecalho e rodape. -#}
 {%- set cfg = site.config -%}
 {%- set E = conteudo.paginas.educacao -%}
@@ -17,22 +17,17 @@
 			<p class="o-edu-rodape__parte">{{ E.marca.parte_de }}</p>
 			{{ ui.redes("o-edu-rodape__redes", "rodape-educacao") }}
 		</div>
-		<nav class="o-edu-rodape__col" aria-label="{{ r.nesta_pagina }} (rodapé)">
-			<p class="o-rodape__titulo">{{ r.nesta_pagina }}</p>
+		{#- Rodapé enxuto (dono, 24/10/2026): como o do site, só Segmentos e Contato. -#}
+		{%- for item in navegacao.principal %}{% if item.submenu == "segmentos" and item.itens %}
+		<nav class="o-edu-rodape__col" aria-label="{{ item.rotulo }}">
+			<p class="o-rodape__titulo">{{ item.rotulo }}</p>
 			<ul>
-			{%- for item in E.cabecalho.menu.concat(E.cabecalho.menu_extra) %}
-				<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
+			{%- for sub in item.itens %}
+				<li><a href="{{ sub.url }}">{{ sub.rotulo }}</a></li>
 			{%- endfor %}
 			</ul>
 		</nav>
-		<nav class="o-edu-rodape__col" aria-label="{{ r.olorin }}">
-			<p class="o-rodape__titulo">{{ r.olorin }}</p>
-			<ul>
-			{%- for item in r.links_olorin %}
-				<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
-			{%- endfor %}
-			</ul>
-		</nav>
+		{%- endif %}{% endfor %}
 		<div class="o-edu-rodape__col">
 			<p class="o-rodape__titulo">{{ r.contato }}</p>
 			<ul>

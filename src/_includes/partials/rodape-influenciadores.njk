@@ -1,5 +1,4 @@
-{#- Rodapé da LP Olorin para influenciadores (23/10/2026): marca, lema, redes, âncoras da página, links do
-    site da Olorin, contato (WhatsApp com ref influencer-rodape, e-mail), CNPJ e política de privacidade.
+{#- Rodapé da LP Olorin para influenciadores (23/10/2026): marca, lema, redes, segmentos, contato (WhatsApp com ref influencer-rodape, e-mail), CNPJ e política de privacidade.
     Textos: paginas/influenciadores.yml → marca, cabecalho, whatsapp e rodape. -#}
 {%- set cfg = site.config -%}
 {%- set I = conteudo.paginas.influenciadores -%}
@@ -17,23 +16,17 @@
 			<p class="o-inf-rodape__apoio">{{ I.marca.parte_de }}</p>
 			{{ ui.redes("o-inf-rodape__redes", "rodape-influencer") }}
 		</div>
-		<nav class="o-inf-rodape__col" aria-label="{{ r.nesta_pagina }} (rodapé)">
-			<p class="o-rodape__titulo">{{ r.nesta_pagina }}</p>
+		{#- Rodapé enxuto (dono, 24/10/2026): como o do site, só Segmentos e Contato. -#}
+		{%- for item in navegacao.principal %}{% if item.submenu == "segmentos" and item.itens %}
+		<nav class="o-inf-rodape__col" aria-label="{{ item.rotulo }}">
+			<p class="o-rodape__titulo">{{ item.rotulo }}</p>
 			<ul>
-			{%- for item in I.cabecalho.menu %}
-				<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
-			{%- endfor %}
-				<li><a href="#raio-x">{{ I.cabecalho.botao }}</a></li>
-			</ul>
-		</nav>
-		<nav class="o-inf-rodape__col" aria-label="{{ r.olorin }}">
-			<p class="o-rodape__titulo">{{ r.olorin }}</p>
-			<ul>
-			{%- for item in r.links_olorin %}
-				<li><a href="{{ item.url }}">{{ item.rotulo }}</a></li>
+			{%- for sub in item.itens %}
+				<li><a href="{{ sub.url }}">{{ sub.rotulo }}</a></li>
 			{%- endfor %}
 			</ul>
 		</nav>
+		{%- endif %}{% endfor %}
 		<div class="o-inf-rodape__col">
 			<p class="o-rodape__titulo">{{ r.contato }}</p>
 			<ul>
