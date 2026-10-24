@@ -25,7 +25,7 @@ fontes_extra:
 {#- Botão do Raio-X (o mesmo do ui.botaoRaioX: verde com o ícone da chapa), com "Raio-X" sem quebrar no hífen.
     cor "preto" no fundo branco (o verde não vai no branco). -#}
 {%- macro botaoRaio(id, texto, classe="", cor="verde") -%}
-<a class="o-btn o-btn--{{ cor }} o-btn--raio {{ classe }}" id="{{ id }}" href="#raio-x" data-cta="{{ id }}"><span class="o-icone o-icone--raio" aria-hidden="true"></span>{{ texto | escape | replace("Raio-X", '<span class="o-inf-nw">Raio-X</span>') | safe }}</a>
+<a class="o-btn o-btn--{{ cor }} o-btn--raio {{ classe }}" id="{{ id }}" href="#raio-x" data-cta="{{ id }}"><span class="o-icone o-icone--raio" aria-hidden="true"></span><span>{{ texto | escape | replace("Raio-X", '<span class="o-inf-nw">Raio-X</span>') | safe }}</span></a>
 {%- endmacro -%}
 
 {#- ===== 1. Banner: a foto roxa (parede de celulares) como tela de TV, lema e o botão do Raio-X no preto ===== -#}

@@ -107,7 +107,7 @@ para_quem:
     - lifestyle
     - tecnologia
     - maternidade
-  adesivo_tag: "#música"
+  adesivo_tag: "#criadora"
 
 canais:
   etiqueta: O que a gente faz
@@ -160,7 +160,7 @@ como_funciona:
     - titulo: Você recebe o plano
       texto: Sem compromisso. Se fizer sentido, a gente toca junto.
   botao: Quero o Raio-X do meu perfil
-  adesivo_tag: "#fitness"
+  adesivo_tag: "#gravando"
   tela: AO VIVO
 
 equipe:

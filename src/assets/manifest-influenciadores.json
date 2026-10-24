@@ -32,7 +32,7 @@
       "servico_tags": [],
       "alt": "Moça de fone vermelho, sorrindo, em luz verde neon",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "f3.jpg recortada com rembg (birefnet-portrait, 1400 px), alfa residual limpo e contorno branco de adesivo (alfa dilatado 30 px e preenchido de branco). Canal alfa.",
+      "observacoes": "f3.jpg recortada com rembg (birefnet-portrait, 2400 px), alfa residual limpo, contorno branco de adesivo (alfa dilatado 50 px e preenchido de branco) e aparada no contorno (1256 x 1339). Canal alfa.",
       "larguras": [360, 600, 900],
       "largura_padrao": 600,
       "formatos": ["avif", "webp"]
@@ -44,7 +44,7 @@
       "servico_tags": [],
       "alt": "Moça de camiseta laranja, agachada, com uma corda de pular, gravando com o celular no tripé",
       "autorizacao_de_uso": "confirmada",
-      "observacoes": "f5.jpg recortada com rembg (birefnet-portrait, 1200 px), alfa residual limpo e contorno branco de adesivo (26 px). Canal alfa.",
+      "observacoes": "f5.jpg recortada com rembg (birefnet-portrait, 1200 px), alfa residual limpo, contorno branco de adesivo (26 px) e aparada no contorno (894 x 1745). Canal alfa.",
       "larguras": [300, 520, 760],
       "largura_padrao": 520,
       "formatos": ["avif", "webp"]
