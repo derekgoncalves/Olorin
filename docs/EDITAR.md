@@ -1,6 +1,6 @@
 # Como editar o site da Olorin
 
-Guia para quem não programa (atualizado em 14/10/2026). Existem **três jeitos** de mudar o site:
+Guia para quem não programa (atualizado em 23/10/2026). Existem **três jeitos** de mudar o site:
 
 | | Pedir ao Claude | Jeito rápido (direto no servidor) | Jeito certo (no projeto + build) |
 |---|---|---|---|
@@ -20,7 +20,6 @@ Guia para quem não programa (atualizado em 14/10/2026). Existem **três jeitos*
    - Home: `index.html`
    - Uma página de serviço: `servicos/trafego-pago/index.html` (troque pelo serviço)
    - Quem somos: `quem-somos/index.html`
-   - Um artigo do blog: `blog/<endereço-do-artigo>/index.html`
 3. Abra no Bloco de Notas (ou no VS Code, gratuito).
 4. Use **Localizar** (Ctrl+F) para achar o texto. Troque **só o texto entre as marcações**. Não apague `<`, `>`, aspas nem nada que comece com `class=`.
 5. Salve em **UTF-8** e envie o arquivo de volta para o mesmo lugar, substituindo.
@@ -29,7 +28,7 @@ Guia para quem não programa (atualizado em 14/10/2026). Existem **três jeitos*
 **Cuidados do jeito rápido:**
 
 - Alguns textos aparecem **mais de uma vez** no mesmo arquivo. As perguntas das dúvidas, por exemplo, aparecem no texto da página e de novo num bloco `<script type="application/ld+json">` (é o que o Google lê). Troque nos dois.
-- Preços aparecem nos planos, na calculadora, nas páginas de serviço, nas dúvidas e no `llms.txt`. Para mudar preço, peça ao Claude ou use o jeito certo (seção 4).
+- O site não mostra preço (dono, 23/10/2026): a calculadora monta um bilhete de orçamento sem valor, que a pessoa manda pelo WhatsApp, e a proposta sai depois do Raio-X.
 - Não mexa em `enviar.php`, `.htaccess` nem `config.php`.
 - Logos, fotos e imagens de compartilhamento podem ser trocados subindo um arquivo com o mesmo nome. A lista está em `docs/PENDENCIAS.md`, seção 6.
 
@@ -49,7 +48,6 @@ Guia para quem não programa (atualizado em 14/10/2026). Existem **três jeitos*
 | `npm run build` | Gera o site pronto na pasta `dist/` e confere tudo (títulos, preços, imagens sem descrição, tamanho dos arquivos). Se der erro, diz o arquivo e o motivo |
 | `npm test` | Testa as páginas, a acessibilidade e o formulário de ponta a ponta |
 | `npm run og` | Refaz as imagens de compartilhamento (a prévia do link no WhatsApp) depois de mudar títulos |
-| `npm run capas` | Gera a capa e a prévia de um artigo novo do blog (veja `docs/BLOG.md`) |
 | `npm run pendencias` | Lista o que ainda está marcado como pendente, com arquivo e linha |
 
 Depois do `npm run build`, o site inteiro está em `dist/`. Para publicar, compacte o **conteúdo** de `dist/` num zip e siga o `COMO-PUBLICAR-final.txt`.
@@ -63,25 +61,25 @@ Todos os textos ficam em `src/content/`. Abra no VS Code (ele colore e avisa err
 | O que você quer mudar | Arquivo | Campo |
 |---|---|---|
 | Ordem dos blocos da home | `src/content/home.yml` | `secoes:` |
-| Banner principal da home | `src/content/home.yml` | `hero:` |
-| Resultados da home (números, logos e portfólio) | `src/content/home.yml` | `resultados:` |
-| Números (R$ 2M+, 50+, 2x, 100+) | `src/content/claims.json` | `itens` |
-| Logos da faixa "Quem confia na Olorin" | `src/content/clientes.yml` | `itens:` |
+| Banner principal da home | `src/content/home.yml` | `hero:`: `linha_superior` (etiqueta), `titulo` e `titulo_destaque` (o lema, "Sua marca em" + "outro nível."), `selo` (Level up), `jogo_aviso` (+1 nível do minijogo), `botao_start`, `apoio`, `checks_rotulo` e `checks` (os 3 itens com check). A prova do banner saiu |
+| Resultados da home (números, logos e portfólio) | `src/content/home.yml` | `resultados:`; `credencial` é a frase embaixo das logos da Meta e do Google ("Agência parceira Meta e Google") |
+| Números (R$ 5M+, +50, +2x) | `src/content/claims.json` | `itens`; `nota` é a letra pequena embaixo dos números ("*Resultados variam de cliente a cliente.") |
+| Logos da faixa "Marcas que o nosso time já atendeu" | `src/content/clientes.yml` | `etiqueta:` e `itens:` |
+| Os 3 itens com check (serviços, Sobre, Quem somos, Portfólio, campanhas) | `src/content/selos.yml` | `itens:` |
+| Calculadora da home (bilhete de orçamento, sem valores) | `src/content/calculadora.yml` | `perguntas:` (cada uma com `rotulo`, `curto` e `mensagem`), `bilhete:`, `botao:` e as mensagens do WhatsApp |
 | Portfólio (home, serviços, perfis e /portfolio/) | `src/content/portfolio.yml` | `itens:` |
 | Time (nome, cargo, frase, biografia) | `src/content/equipe.yml` | `pessoas:` |
-| Planos, preços e calculadora | `src/content/planos.yml` | `planos:` e `calculadora:` |
-| Dúvidas da home | `src/content/faq.yml` | `perguntas:` |
+| Dúvidas (página Sobre) | `src/content/faq.yml` | `perguntas:` |
 | Formulário (rótulos, opções e erros) | `src/content/formulario.yml` | |
-| Cada página de serviço (tudo dela) | `src/content/servicos/<serviço>.yml` | |
+| Cada página de serviço (tudo dela) | `src/content/servicos/<serviço>.yml` | em Redes sociais, `montagem:` tem os textos do celular do banner (`janela`, `rotulo`, `aviso`) |
 | Página de serviços | `src/content/paginas/servicos.yml` | |
-| Quem somos | `src/content/paginas/sobre.yml` | |
-| Planos, Como trabalhamos, Portfólio | `src/content/paginas/planos.yml`, `como-trabalhamos.yml`, `portfolio.yml` | |
+| Quem somos | `src/content/paginas/sobre.yml` | `titulo` + `titulo_destaque` (o "outro nível." em destaque) |
+| Sobre (como trabalhamos) e Portfólio | `src/content/paginas/sobre-metodo.yml` e `portfolio.yml` | |
 | Olorin Educação | `src/content/paginas/educacao.yml` e `src/content/cases.yml` | |
+| Influenciadores | `src/content/paginas/influenciadores.yml` | |
 | Campanhas (`/promo/`) | `src/content/paginas/promo.yml` | |
 | Obrigado, 404, Privacidade | `src/content/paginas/obrigado.yml`, `erro404.yml`, `privacidade.yml` | |
-| Blog (página geral e categorias) | `src/content/paginas/blog.yml` | |
-| Artigos do blog | `src/blog/artigos/*.md` | veja `docs/BLOG.md` |
-| Menu | `src/_data/navegacao.yml` | |
+| Menu | `src/_data/navegacao.yml` | Serviços, Portfólio, Sobre, Quem somos e Segmentos; o submenu de Segmentos é a lista `itens:` (rótulo, endereço, resumo e ícone de Educação e Influenciadores). O rodapé usa a mesma lista |
 | WhatsApp, e-mail e redes sociais | `src/_data/site/config.json` | veja a seção 7 |
 
 **Como o arquivo `.yml` funciona:** cada linha é `nome: valor`. A indentação (os espaços no começo) importa: use sempre 2 espaços, nunca Tab. Se o texto tiver `: ` (dois-pontos seguido de espaço) ou começar com `@`, `*`, `[` ou `"`, coloque entre aspas:
@@ -93,7 +91,7 @@ depois (certo):  - "Cada peça parece de uma empresa diferente: o anúncio e o s
 
 Se errar, o `npm run build` avisa a linha exata.
 
-**Padrões de texto do site:** sem travessão (use vírgula, ponto ou dois-pontos); serviços listados sempre como "Anúncios, redes, marca, site, impressos e dados"; nada de prometer resultado.
+**Padrões de texto do site:** sem travessão (use vírgula, ponto ou dois-pontos); serviços listados sempre como "Anúncios, redes, marca, site, impressos e dados"; nada de prometer resultado; sem preço, plano, mensalidade ou "a partir de"; o lema é "Sua marca em outro nível.", com "outro nível." sempre em destaque.
 
 ---
 
@@ -101,22 +99,20 @@ Se errar, o `npm run build` avisa a linha exata.
 
 ### Reordenar ou esconder blocos da home
 
-Em `src/content/home.yml`, a lista `secoes:` define a ordem. Mude a ordem das linhas; para esconder, ponha `#` no começo da linha (hoje o `checklist` está escondido assim).
+Em `src/content/home.yml`, a lista `secoes:` define a ordem. Mude a ordem das linhas; para esconder, ponha `#` no começo da linha.
 
-### Trocar um preço
+### Preço e orçamento
 
-1. `src/content/planos.yml` → `valor:` do plano (só o número, sem R$ e sem ponto: `3000`).
-2. Confira os textos que citam o valor: `custo_total:` do plano e a `calculadora:` no mesmo arquivo; `preco:`, `resposta_curta:` e `faq:` das páginas de serviço em `src/content/servicos/`; as dúvidas em `src/content/faq.yml`; `paginas/servicos.yml` e `paginas/educacao.yml`. Dica: no VS Code, **Editar → Localizar nos arquivos** por `3.000` acha todos.
-3. `npm run build` e `npm run og`.
+O site não mostra valor em lugar nenhum (dono, 23/10/2026). A calculadora da home (`src/content/calculadora.yml`) só monta o bilhete com o que a pessoa quer (frente, verba de anúncio e objetivo) e o botão manda esse bilhete pelo WhatsApp, com `[ref: calculadora]` no fim. A pergunta "Quanto custa?" das dúvidas (`faq-preco` em `src/content/faq.yml`) responde que o orçamento sai sob medida, depois do Raio-X.
 
-### Adicionar uma pergunta nas dúvidas da home
+### Adicionar uma pergunta nas dúvidas
 
 Em `src/content/faq.yml`, copie um bloco e mude. O `id` precisa ser único, sem acento e sem espaço:
 
 ```yaml
-  - id: faq-reuniao-presencial
-    pergunta: Dá para fazer reunião presencial?
-    resposta: Sim, em Curitiba. Fora daqui, as reuniões são por vídeo.
+  - id: faq-reuniao-video
+    pergunta: As reuniões são por vídeo?
+    resposta: Sim, por vídeo, no dia e no horário combinados com você.
 ```
 
 A mesma pergunta vai sozinha para os dados que o Google lê. Para perguntas de um serviço, use o `faq:` do arquivo do serviço.
@@ -142,7 +138,11 @@ Pelo WebFTP, sem build: suba o SVG novo para `public_html/assets/img/clientes/` 
 
 ### Mudar os números da seção Resultados
 
-`src/content/claims.json`: `valor` (o número grande) e `rotulo`. Só aparecem itens com `"verificado": true`. A base de cada número fica em `periodo` e `criterio` (aparece em letra pequena).
+`src/content/claims.json`: `valor` (o número grande) e `rotulo`. Só aparecem itens com `"verificado": true`. A base de cada número fica em `fonte`, `periodo` e `criterio`; a `nota` aparece em letra pequena embaixo dos números (hoje: "*Resultados variam de cliente a cliente.", do +2x de retorno).
+
+### Imagens de compartilhamento (a prévia do link)
+
+`npm run og` refaz as imagens de `src/assets/og/`: a da home lê `hero.titulo` e `hero.titulo_destaque` do `home.yml`; a de Quem somos lê `paginas/sobre.yml`; as de serviço leem o `h1` de cada serviço. As da Educação ("Sua escola em outro nível.") e de Influenciadores ("Seu perfil em outro nível.", `og/influenciadores.jpg`) estão escritas em `scripts/gerar-og.mjs`.
 
 ### Cases da Olorin Educação
 
@@ -180,13 +180,14 @@ Ao subir um zip novo, o `olorin-ids.js` do zip vem vazio: baixe o seu antes e en
 
 | Campo | Para que serve |
 |---|---|
+| `LEMA` | O lema ("Sua marca em outro nível."), usado no rodapé |
+| `CNPJ` | CNPJ do rodapé |
 | `WHATSAPP` | Número de todos os botões de WhatsApp (só números, com 55 e DDD) |
 | `TELEFONE_EXIBICAO`, `EMAIL` | Contatos que aparecem no site |
 | `INSTAGRAM_URL`, `FACEBOOK_URL`, `X_URL`, `LINKEDIN_URL` | Redes sociais do rodapé |
 | `GTM_ID`, `GA4_ID`, `META_PIXEL_ID`, `GADS_CONVERSION_ID`, `GADS_CONVERSION_LABEL`, `SCHEDULING_URL` | Valores iniciais do `olorin-ids.js` (veja a seção 6) |
 | `GBP_URL` | Link do Perfil da Empresa no Google |
 | `SHOW_STATS` | `true` mostra os números da seção Resultados |
-| `SHOW_TOTAL_COST` | `true` mostra o custo total de entrada nos planos |
 | `OFERTA_DIAGNOSTICO` | `true` usa o Raio-X gratuito como oferta principal; `false` troca por "pedir orçamento" |
 | `FORM_TOP_VARIANT` | `b` (padrão): formulário curto embaixo do banner e completo no fim. `a`: só no fim |
 | `CURSOR_ESTRELA` | `true` liga a estrelinha que segue o mouse no computador |
