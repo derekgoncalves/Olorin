@@ -66,7 +66,8 @@ export function iniciarFlutuantes() {
 		}).observe(sentinela);
 
 		// Sobre seção violeta, verde ou branca, o botão fica preto (verde nunca encosta no violeta nem fica no branco).
-		const coloridas = $$('.o-ctx-violeta, .o-ctx-verde, .o-ctx-branco, .o-faixa');
+		// A faixa de logos (no pé da primeira tela da home) fica de fora: ali o Raio-X continua verde.
+		const coloridas = $$('.o-ctx-violeta, .o-ctx-verde, .o-ctx-branco, .o-faixa:not(.o-faixa--logos)');
 		const sob = new Set();
 		const io = new IntersectionObserver((entradas) => {
 			entradas.forEach((en) => (en.isIntersecting ? sob.add(en.target) : sob.delete(en.target)));

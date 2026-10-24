@@ -99,3 +99,14 @@
 	text-underline-offset: 3px;
 	cursor: pointer;
 }
+
+/* Telas estreitas (até 379 px, ex.: 320 px): 3 botões lado a lado vazavam a caixa.
+   "Aceitar tudo" ocupa a linha de cima; "Recusar" e "Personalizar" dividem a de baixo. */
+@media (max-width: 379px) {
+	.o-cookies__acoes {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.o-cookies__acoes > [data-o-cookies-aceitar] {
+		grid-column: 1 / -1;
+	}
+}
