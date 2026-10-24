@@ -1,52 +1,58 @@
 # ============================================================
-# CALCULADORA DA HOME (secoes/calculadora.njk + ui.calculadora)
+# CALCULADORA DA HOME, EM FORMA DE BILHETE DE ORÇAMENTO (secoes/calculadora.njk + ui.calculadora)
 # ------------------------------------------------------------
-# Dono, 17/10/2026: sem planos nem preços fechados. As perguntas são as de antes (o que a
-# Olorin toca, verba de anúncio e objetivo) e o resultado é a EXPECTATIVA de investimento
-# por mês, gestão e verba juntas, numa destas faixas: R$ 2.500, R$ 5.000, R$ 10.000 ou R$ 20.000.
+# Dono, 23/10/2026: sem "expectativa de investimento" e sem NENHUM valor. A pessoa responde 3 perguntas
+# e o bilhete (recibo impresso) lista o que ela quer; o botão abre o WhatsApp com a lista pronta
+# e " [ref: calculadora]" no fim (o clique é medido como whatsapp_click, origem calculadora).
+# A verba de anúncio é a do próprio cliente (pergunta, não preço).
+# Sem JavaScript: as opções aparecem, o bilhete mostra as opções marcadas de saída e o botão abre o
+# WhatsApp com a mensagem genérica (mensagem_sem_js).
 #
-# Como a conta funciona: cada resposta vale alguns pontos ("pontos"); a soma escolhe a
-# primeira faixa cujo "pontos_ate" seja maior ou igual a ela. O objetivo não muda a conta
-# (vai só no pedido do Raio-X). "servicos" = serviços já marcados no formulário do fim quando
-# a pessoa clica no botão do Raio-X da calculadora (slugs de src/content/servicos/).
-# Sem JavaScript, a página mostra a tabela com todas as combinações.
+# Campos das perguntas: rotulo (pergunta), curto (nome da linha no bilhete), mensagem (nome da linha
+# na mensagem do WhatsApp), opcoes (texto e, se quiser, marcada: true para vir escolhida).
+# A ordem das opções é a da tela.
 # ============================================================
 etiqueta: Calculadora
-titulo: Quanto investir por mês?
-texto: Responda e veja a expectativa de investimento mensal, com a gestão e a verba de anúncio juntas. O número certo para a sua marca sai no Raio-X.
-janela: calculadora.olo
+titulo: Monte o seu orçamento.
+texto: Responda e receba um orçamento, além de um Raio-X gratuito e personalizado da sua marca.
+janela: orcamento.olo
 perguntas:
   - id: frente
     rotulo: O que a Olorin vai tocar
+    curto: Frente
+    mensagem: O que a Olorin vai tocar
     opcoes:
-      - { texto: Uma frente só, pontos: 0, servicos: [] }
-      - { texto: Anúncios e redes, pontos: 1, servicos: [trafego-pago, redes-sociais], marcada: true }
-      - { texto: A marca inteira, pontos: 2, servicos: [trafego-pago, redes-sociais, identidade-visual, material-impresso, site-e-loja-virtual, rastreamento-e-relatorio] }
+      - { texto: Uma frente só }
+      - { texto: Anúncios e redes, marcada: true }
+      - { texto: A marca inteira }
   - id: verba
     rotulo: Verba de anúncio por mês
+    curto: Verba de anúncio
+    mensagem: Verba de anúncio por mês
     opcoes:
-      - { texto: "R$ 1.500", pontos: 0 }
-      - { texto: "R$ 3.000", pontos: 1 }
-      - { texto: "R$ 5.000", pontos: 3 }
-      - { texto: "R$ 10.000 ou mais", pontos: 5 }
+      - { texto: Ainda não invisto }
+      - { texto: "R$ 3.000" }
+      - { texto: "R$ 5.000" }
+      - { texto: "R$ 10.000 ou mais" }
   - id: objetivo
     rotulo: O que você quer mais
+    curto: Objetivo
+    mensagem: Objetivo
     opcoes:
-      - { texto: Vendas, pontos: 0 }
-      - { texto: Matrículas, pontos: 0 }
-      - { texto: Contatos, pontos: 0 }
-      - { texto: Doações ou inscrições, pontos: 0 }
-faixas:
-  - { pontos_ate: 0, valor: 2500 }
-  - { pontos_ate: 2, valor: 5000 }
-  - { pontos_ate: 4, valor: 10000 }
-  - { pontos_ate: 99, valor: 20000 }
-recibo_topo: olorin digital
-recibo_numero: raio-x nº 0001
-resultado_rotulo: Expectativa de investimento
-resultado_sufixo: /mês
-botao: Quero meu orçamento grátis
-aviso: É uma expectativa, não um orçamento. A verba de anúncio vai direto para a Meta e o Google, na sua conta.
-tabela_titulo: Expectativa de investimento por mês, gestão e verba juntas
-# Texto que vai para a mensagem do formulário do fim quando a pessoa usa a calculadora e clica no botão.
-mensagem: "Fiz a conta na calculadora do site:"
+      - { texto: Vendas }
+      - { texto: Matrículas }
+      - { texto: Contatos }
+      - { texto: Visitas }
+# Bilhete (o recibo impresso ao lado das perguntas)
+bilhete:
+  topo: Orçamento
+  numero: nº 0001
+  para: "Para: a sua marca"
+  extra_rotulo: Raio-X da marca
+  extra_valor: Grátis
+  rodape: Orçamento sob medida, junto com o seu Raio-X.
+botao: Enviar esse orçamento por WhatsApp
+# Mensagem do WhatsApp (o site acrescenta as respostas, uma por linha, e " [ref: calculadora]")
+mensagem: "Olá! Montei um orçamento no site da Olorin:"
+mensagem_fim: Quero também o Raio-X gratuito da minha marca.
+mensagem_sem_js: "Olá! Quero montar um orçamento com a Olorin e receber o Raio-X gratuito da minha marca."

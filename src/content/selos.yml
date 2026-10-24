@@ -1,0 +1,10 @@
+# ============================================================
+# OS 3 ITENS COM CHECK ao lado do botão principal do banner (dono, 23/10/2026), iguais em todas as
+# páginas: serviços, /servicos/, Sobre, Quem somos, Portfólio e as landings /promo/ (macro ui.selos,
+# em src/_includes/components/ui.njk). A home e as LPs podem usar a mesma lista: conteudo.selos.itens.
+# Trocar aqui troca em todas as páginas de uma vez.
+# ============================================================
+itens:
+  - Raio-X gratuito e sem compromisso
+  - Estratégia e performance
+  - Produção de alto nível

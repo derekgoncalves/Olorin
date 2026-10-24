@@ -16,6 +16,7 @@ eleventyComputed:
 {#- /promo/<slug>/ — serviço em modo campanha (mesma fonte da página do serviço; canonical para ela).
     Banner com o formulário do Raio-X, barra de logos e "Este é o seu caso?" (partials/campanha-blocos.njk). -#}
 {%- from "components/formulario.njk" import formulario with context -%}
+{%- import "components/ui.njk" as ui with context -%}
 {%- set s = servico -%}
 <section class="o-promo-topo o-ctx-preto" data-secao="promo-hero">
 	<div class="o-wrap o-promo-topo__grade">
@@ -24,6 +25,7 @@ eleventyComputed:
 			<h1 class="o-pagina-topo__titulo">{{ s.campanha.titulo }}</h1>
 			<p class="o-pagina-topo__sub">{{ s.campanha.subtitulo }}</p>
 			<p class="o-resposta__texto o-resposta__texto--promo">{{ s.resposta_curta | emLinha | safe }}</p>
+			{{ ui.selos("o-selos--grande") }}
 		</div>
 		{{ formulario({ id: "formulario", posicao: "promo", modo: "promo", servico: s.slug, nomeServico: s.nome, origemWa: "promo-" + s.slug + "-form" }) }}
 	</div>

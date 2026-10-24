@@ -1,6 +1,6 @@
 /**
  * Dados estruturados (JSON-LD) gerados dos MESMOS dados que aparecem na página.
- * Nunca inclui avaliação (aggregateRating) nem preço não confirmado.
+ * Nunca inclui avaliação (aggregateRating) nem preço (23/10/2026: o site não lista valor nenhum).
  */
 import { textoPuro } from './filtros.mjs';
 
@@ -26,7 +26,7 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			'@id': empresaId,
 			name: cfg.NOME,
 			slogan: cfg.LEMA,
-			description: 'Agência de marketing digital: anúncios, redes, marca, site, impressos e dados de empresas e organizações de todos os tamanhos, num time só e com relatório que qualquer pessoa entende.',
+			description: 'Agência de marketing digital: anúncios, redes, marca, site, impressos e dados de empresas e organizações de todos os tamanhos, num time só, com estratégia, performance e relatório que qualquer pessoa entende. Agência parceira Meta e Google.',
 			url: `${base}/`,
 			logo: `${base}/assets/img/brand/icon-512.png`,
 			image: `${base}/assets/img/og/home.jpg`,
@@ -37,7 +37,7 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			areaServed: [
 				{ '@type': 'Country', name: 'Brasil' },
 			],
-			knowsAbout: ['Tráfego pago', 'Meta Ads', 'Google Ads', 'Gestão de redes sociais', 'Identidade visual', 'Material impresso', 'Criação de sites', 'Google Tag Manager', 'Google Analytics 4'],
+			knowsAbout: ['Tráfego pago', 'Meta Ads', 'Google Ads', 'Gestão de redes sociais', 'Identidade visual', 'Material impresso', 'Criação de sites', 'Google Tag Manager', 'Google Analytics 4', 'Marketing para instituições de ensino', 'Marketing para influenciadores'],
 			sameAs: [cfg.INSTAGRAM_URL, cfg.FACEBOOK_URL, cfg.LINKEDIN_URL, cfg.X_URL, cfg.GBP_URL].filter(Boolean),
 			employee: equipe.map((p) => ({ '@id': `${base}/quem-somos/${p.slug}/#pessoa` })),
 		},
@@ -83,22 +83,6 @@ export function montarSchema({ cfg, content, modo, url, descricao, migalhas, ser
 			],
 			url: `${base}/servicos/${servico.slug}/`,
 		};
-		const sc = servico.preco && servico.preco.schema;
-		if (sc && sc.valor) {
-			// "a partir de" → preço mínimo; mensal → preço por unidade de tempo.
-			const especificacao = sc.minimo
-				? { '@type': 'PriceSpecification', minPrice: sc.valor, priceCurrency: 'BRL' }
-				: sc.unidade
-					? { '@type': 'UnitPriceSpecification', price: sc.valor, priceCurrency: 'BRL', unitCode: sc.unidade, referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: sc.unidade } }
-					: undefined;
-			s.offers = {
-				'@type': 'Offer',
-				priceCurrency: 'BRL',
-				price: sc.minimo ? undefined : sc.valor,
-				description: textoPuro(sc.descricao || ''),
-				priceSpecification: especificacao,
-			};
-		}
 		grafo.push(s);
 	}
 

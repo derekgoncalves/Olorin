@@ -5,7 +5,7 @@ eleventyExcludeFromCollections: true
 {%- set cfg = site.config -%}
 # {{ cfg.NOME }}
 
-> {{ cfg.LEMA if cfg.LEMA.endsWith(".") else cfg.LEMA + "." }} Agência de marketing digital com atendimento 100% remoto. Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, impressos, sites, ecommerce e sistemas web personalizados, rastreamento e relatórios. Atende organizações de todo tipo e tamanho, com relatório em linguagem simples. A porta de entrada é o Raio-X gratuito da marca. Instituições de ensino têm uma frente própria, a Olorin Educação.
+> {{ cfg.LEMA if cfg.LEMA.endsWith(".") else cfg.LEMA + "." }} Agência de marketing digital com atendimento 100% remoto. Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time: tráfego pago (Meta Ads e Google Ads), redes sociais, identidade visual, impressos, sites, ecommerce e sistemas web personalizados, rastreamento e relatórios. Atende organizações de todo tipo e tamanho, com relatório em linguagem simples. Agência parceira Meta e Google. O site não lista preços: o orçamento sai sob medida, junto com o Raio-X gratuito e personalizado da marca. Escolas e criadores de conteúdo têm frentes próprias: a Olorin Educação e a de influenciadores.
 
 - Site: {{ cfg.URL }}/
 - WhatsApp: {{ cfg.TELEFONE_EXIBICAO }} (https://wa.me/{{ cfg.WHATSAPP }})
@@ -28,6 +28,7 @@ eleventyExcludeFromCollections: true
 - [Sobre: Método Olorin e perguntas frequentes]({{ "/sobre/" | urlAbsoluta }})
 - [Portfólio]({{ "/portfolio/" | urlAbsoluta }})
 - [Olorin Educação: marketing para instituições de ensino]({{ "/educacao/" | urlAbsoluta }})
+- [Influenciadores: marketing para criadores de conteúdo e perfis]({{ "/influenciadores/" | urlAbsoluta }})
 - [Quem somos: a Olorin e a equipe]({{ "/quem-somos/" | urlAbsoluta }})
 {%- for p in conteudo.equipe.pessoas %}
 - [{{ p.nome }}, {{ p.cargo or p.funcao }}]({{ ("/quem-somos/" + p.slug + "/") | urlAbsoluta }})

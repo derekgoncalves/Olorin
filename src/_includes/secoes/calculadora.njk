@@ -1,8 +1,9 @@
-{#- ===== SEÇÃO: Calculadora (home, no lugar dos planos) — src/content/calculadora.yml =====
-     Expectativa de investimento por mês, sem planos nem preços fechados; o botão leva ao Raio-X. -#}
+{#- ===== SEÇÃO: Calculadora (home) — src/content/calculadora.yml =====
+     Bilhete de orçamento: 3 perguntas, o bilhete lista o que a pessoa quer (sem nenhum valor) e o botão
+     envia o orçamento por WhatsApp (dono, 23/10/2026). -#}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set c = conteudo.calculadora -%}
-<section class="o-sec o-calc-sec o-ctx-branco" id="investimento" data-secao="calculadora" aria-labelledby="calculadora-titulo">
+<section class="o-sec o-calc-sec o-ctx-branco" id="orcamento-calculadora" data-secao="calculadora" aria-labelledby="calculadora-titulo">
 	<div class="o-wrap">
 		<div class="o-planos__cabeca">
 			<div>

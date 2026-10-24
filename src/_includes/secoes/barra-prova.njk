@@ -14,6 +14,7 @@
 			</div>
 		{%- endfor %}
 		</dl>
+		{%- for n in numeros %}{% if n.nota %}<p class="o-resultados__nota">{{ n.nota }}</p>{% endif %}{% endfor %}
 	</div>
 </section>
 {%- endif %}

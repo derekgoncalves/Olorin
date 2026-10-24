@@ -5,7 +5,9 @@
 # "destaques" são os números do perfil, tirados só da bio; o perfil acrescenta sozinho "frentes que coordena".
 # Links de LinkedIn e Instagram de cada pessoa: por enquanto não (dono, 14/10/2026). Campo opcional redes: [{ nome, url }].
 # "emojis": 3 por pessoa, no topo do perfil (dono, 17/10/2026: Natalia com cérebro e salto alto; os outros escolhidos por nós).
-# "credencial": selo pessoal no perfil (as logos são da pessoa, nunca selo de agência parceira); marcas = arquivos de /assets/img/marcas/.
+# "credencial": linha com logos no perfil (marcas = arquivos de /assets/img/marcas/). 23/10/2026 (dono): a parceria
+# Meta e Google é da agência ("Agência parceira Meta e Google", na home e nas páginas de serviço); no perfil fica só
+# o que a pessoa faz, sem dizer que a parceria é dela.
 # Nomes: Natalia sem acento, Vinícius com acento (dono, 17/10/2026).
 pessoas:
   - slug: natalia-arruda
@@ -19,7 +21,7 @@ pessoas:
     janela: natalia.jpg
     emojis: ["🧠", "👠", "📈"]
     credencial:
-      texto: Gestora de tráfego parceira Meta e Google
+      texto: Gestora de tráfego em Meta Ads e Google Ads
       marcas: [meta, google]
     destaques:
       - { valor: "6+", rotulo: anos em mídia paga }

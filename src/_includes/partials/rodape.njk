@@ -1,4 +1,4 @@
-{#- Rodapé completo. -#}
+{#- Rodapé completo: lema e redes (config.json), serviços, segmentos, a Olorin, contato e o CNPJ. -#}
 {%- set cfg = site.config -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
@@ -18,16 +18,29 @@
 			{%- endfor %}
 			</ul>
 		</nav>
-		<nav class="o-rodape__col" aria-label="A Olorin">
-			<p class="o-rodape__titulo">A Olorin</p>
-			<ul>
-				<li><a href="/quem-somos/">Quem somos</a></li>
-				<li><a href="/sobre/">Sobre</a></li>
-				{%- if conteudo.portfolioPublicado and conteudo.portfolioPublicado.length %}<li><a href="/portfolio/">Portfólio</a></li>{% endif %}
-				<li><a href="/educacao/">Olorin Educação</a></li>
-				<li><a href="/sobre/#duvidas">Dúvidas</a></li>
-			</ul>
-		</nav>
+		{#- Segmentos (23/10/2026: Educação e Influenciadores, os mesmos do menu, src/_data/navegacao.yml) e,
+		    embaixo, na mesma coluna, as páginas da Olorin. -#}
+		<div class="o-rodape__col o-rodape__col--dupla">
+			{%- for item in navegacao.principal %}{% if item.submenu == "segmentos" and item.itens %}
+			<nav aria-label="{{ item.rotulo }}">
+				<p class="o-rodape__titulo">{{ item.rotulo }}</p>
+				<ul>
+				{%- for sub in item.itens %}
+					<li><a href="{{ sub.url }}">{{ sub.rotulo }}</a></li>
+				{%- endfor %}
+				</ul>
+			</nav>
+			{%- endif %}{% endfor %}
+			<nav aria-label="A Olorin">
+				<p class="o-rodape__titulo">A Olorin</p>
+				<ul>
+					<li><a href="/quem-somos/">Quem somos</a></li>
+					<li><a href="/sobre/">Sobre</a></li>
+					{%- if conteudo.portfolioPublicado and conteudo.portfolioPublicado.length %}<li><a href="/portfolio/">Portfólio</a></li>{% endif %}
+					<li><a href="/sobre/#duvidas">Dúvidas</a></li>
+				</ul>
+			</nav>
+		</div>
 		<div class="o-rodape__col">
 			<p class="o-rodape__titulo">Contato</p>
 			<ul>

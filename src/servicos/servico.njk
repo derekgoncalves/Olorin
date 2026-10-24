@@ -36,32 +36,19 @@ eleventyComputed:
 			<h1 class="o-pagina-topo__titulo">{{ s.hero.h1 }}</h1>
 			<p class="o-pagina-topo__sub">{{ s.hero.sub }}</p>
 			<div class="o-hero__acoes">{{ ui.botaoRaioX("cta-raio-x-servico-" + s.slug + "-banner", classe="o-btn--grande") }}</div>
-			{%- if s.hero.selos %}
-			<ul class="o-prova">{% for item in s.hero.selos %}<li>{{ item }}</li>{% endfor %}</ul>
-			{%- endif %}
+			{{ ui.selos() }}
 		</div>
+		{%- if s.montagem %}
+		{#- Redes sociais (dono, 23/10/2026): a montagem do celular que saiu do banner da home, com textos do
+		    serviço (servicos/redes-sociais.yml → montagem). -#}
+		{%- set montagem = s.montagem %}
+		{% include "partials/montagem-celular.njk" %}
+		{%- else %}
 		<div class="o-janela o-cena o-cena--{{ cena }}" aria-hidden="true" data-o-cena>
 			<div class="o-janela__barra"><span class="o-janela__titulo">{{ s.janela }}</span><span class="o-janela__ctrl"></span></div>
 			<div class="o-cena__palco">
 			{%- if cena == "trafego" %}
 				<div class="o-cena-trafego"><p class="o-cena__rotulo">retorno</p><div class="o-cena-trafego__barras"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="o-cena__seta"></span></div>
-			{%- elif cena == "redes" %}
-				{#- Celular com stories, feed rolando, curtida e avisos saindo da tela. -#}
-				<div class="o-cena-redes">
-					<div class="o-cel">
-						<div class="o-cel__topo"><svg class="o-cel__marca" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><i></i><b></b></div>
-						<ul class="o-cel__stories"><li></li><li></li><li></li><li></li><li></li></ul>
-						<div class="o-cel__feed">
-							<div class="o-cel__trilho">
-							{%- for n in [1, 2, 3, 1] %}
-								<div class="o-cel__post o-cel__post--{{ n }}"><p class="o-cel__autor"><i></i><b></b></p><div class="o-cel__foto"><svg viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg></div><p class="o-cel__acoes"><span class="o-cel__curtir"></span><i></i><i></i><b></b></p><p class="o-cel__legenda"><i></i><i></i></p></div>
-							{%- endfor %}
-							</div>
-							<span class="o-cel__estouro"></span>
-						</div>
-					</div>
-					<ul class="o-cena-redes__avisos"><li class="o-cena-redes__aviso--curtida">curtiu</li><li class="o-cena-redes__aviso--seguidor">novo seguidor</li><li class="o-cena-redes__aviso--comentario">comentou</li></ul>
-				</div>
 			{%- elif cena == "marca" %}
 				<div class="o-cena-marca"><svg class="o-cena-marca__o" viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg><span class="o-cena-marca__cores"><i></i><i></i><i></i><i></i></span><span class="o-cena-marca__regua"></span></div>
 			{%- elif cena == "impresso" %}
@@ -76,6 +63,7 @@ eleventyComputed:
 			{%- for linha in s.hero.janela_linhas %}<li>{{ linha }}</li>{% endfor %}
 			</ul>
 		</div>
+		{%- endif %}
 	</div>
 	{#- Barra de logos de clientes no pé do banner, no mesmo fundo (secoes/faixa-clientes.njk) -#}
 	{%- set faixa_pe = true %}
@@ -143,10 +131,11 @@ eleventyComputed:
 	</div>
 </section>
 
-{#- 6 · Ferramentas e redes que o time opera (tráfego e dados), com a credencial da Natalia (dela, não da agência) -#}
+{#- 6 · Ferramentas e redes que o time opera (tráfego e dados), com a credencial "Agência parceira Meta e Google"
+    (dono, 23/10/2026: a parceria é da agência). Com "pessoa", a foto dela entra no lugar do "O" da Olorin. -#}
 {%- if fe %}
 {%- set cr = fe.credencial -%}
-{%- set pessoaCr = conteudo.pessoaPorSlug[cr.pessoa] if cr else null -%}
+{%- set pessoaCr = conteudo.pessoaPorSlug[cr.pessoa] if (cr and cr.pessoa) else null -%}
 <section class="o-sec o-ferramentas o-ctx-verde" id="ferramentas" data-secao="ferramentas" aria-labelledby="ferramentas-titulo">
 	<div class="o-wrap">
 		<div class="o-vitrine__cabeca">
@@ -165,11 +154,13 @@ eleventyComputed:
 		<div class="o-credencial o-ctx-preto">
 			{%- if pessoaCr %}
 			<span class="o-credencial__foto" aria-hidden="true">{{ imagem(imagens, pessoaCr.foto + "-quadrada", { sizes: "96px" }) | safe }}</span>
+			{%- else %}
+			<span class="o-credencial__foto o-credencial__foto--marca" aria-hidden="true"><svg viewBox="0 0 134 126" focusable="false"><use href="#s-o"></use></svg></span>
 			{%- endif %}
 			<div class="o-credencial__texto">
 				<p class="o-etiqueta">{{ cr.etiqueta }}</p>
 				<p class="o-credencial__titulo">{{ cr.titulo }}</p>
-				<p class="o-credencial__nome">{% if pessoaCr %}<a href="/quem-somos/{{ pessoaCr.slug }}/">{{ cr.nome }}</a>{% else %}{{ cr.nome }}{% endif %}<span>{{ cr.funcao }}</span></p>
+				<p class="o-credencial__nome">{% if pessoaCr %}<a href="/quem-somos/{{ pessoaCr.slug }}/">{{ cr.nome }}</a>{% else %}<strong>{{ cr.nome }}</strong>{% endif %}{% if cr.funcao %}<span>{{ cr.funcao | emLinha | safe }}</span>{% endif %}</p>
 			</div>
 			<ul class="o-credencial__selos">
 			{%- for l in cr.logos %}

@@ -8,7 +8,7 @@ seo:
   titulo: Política de Privacidade | Olorin Digital
   descricao: Como a Olorin Digital trata os dados de quem visita o site e pede orçamento, conforme a LGPD (Lei nº 13.709/2018).
 titulo: Política de Privacidade
-atualizado: "2026-10-17"
+atualizado: "2026-10-23"
 introducao: Esta política explica, em linguagem simples, como a Olorin Digital trata os dados pessoais de quem visita o site olorin.com.br, pede orçamento ou fala com a gente pelo WhatsApp. Ela segue a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).
 secoes:
   - id: responsavel
@@ -25,7 +25,7 @@ secoes:
   - id: dados
     titulo: 3. Quais dados coletamos
     lista:
-      - "**Formulário de orçamento ou Raio-X:** nome, WhatsApp, site ou perfil do Instagram (opcional), serviços de interesse, faixa de investimento em anúncio, a mensagem que você escrever e a data e a hora do seu aceite."
+      - "**Formulário de orçamento ou Raio-X:** nome, WhatsApp, e-mail, empresa ou instituição (ou o seu perfil), cargo, porte (como o tamanho da equipe, o número de alunos ou de seguidores), site ou perfil do Instagram (opcional), serviços ou desafios de interesse, verba de anúncio, a mensagem que você escrever e a data e a hora do seu aceite."
       - "**Origem do contato:** a página em que você enviou o formulário, o site de onde veio e os códigos de campanha do endereço (como utm_source, gclid e fbclid). Assim sabemos qual anúncio ou canal trouxe o pedido."
       - "**Proteção contra robôs:** quanto tempo o formulário ficou aberto e uma versão embaralhada (hash) do seu endereço IP, guardada por cerca de 10 minutos para barrar envios em série. Ela não fica junto do seu pedido."
       - "**Conversas:** o que você mandar para a gente pelo WhatsApp, por e-mail ou em reunião por vídeo."
@@ -39,7 +39,7 @@ secoes:
       - "**Responder o seu pedido, fazer o Raio-X e mandar a proposta.** Base legal: procedimentos preliminares a um contrato, a seu pedido (art. 7º, V, da LGPD). A caixa \"Concordo em ser contatado\" registra esse pedido."
       - "**Cumprir o contrato, se você virar cliente.** Base legal: execução de contrato (art. 7º, V) e cumprimento de obrigação legal, como as fiscais (art. 7º, II)."
       - "**Saber qual canal trouxe o contato e proteger o formulário contra spam.** Base legal: legítimo interesse (art. 7º, IX), com o mínimo de dados e sem nenhuma decisão automática sobre você."
-      - "**Medir visitas e o resultado dos nossos anúncios.** Base legal: o seu consentimento no aviso de cookies (art. 7º, I), que você pode retirar quando quiser. Para os sinais sem cookies que o Google recebe antes da sua escolha, o legítimo interesse de saber quantas pessoas o site alcança (art. 7º, IX), sem identificar você."
+      - "**Medir visitas e o resultado dos nossos anúncios.** Base legal: o seu consentimento no aviso de cookies (art. 7º, I), que você pode retirar quando quiser. Antes da sua escolha, só vão sinais sem cookies e sem identificar você, para contar visitas de forma agregada: legítimo interesse (art. 7º, IX)."
       - "**Guardar os registros de acesso e nos defender, se houver processo.** Base legal: obrigação legal (art. 7º, II) e exercício regular de direitos (art. 7º, VI)."
     paragrafos_fim:
       - Não vendemos os seus dados, não mandamos mensagem em massa e não usamos os seus dados para outra finalidade sem avisar antes.
@@ -48,7 +48,7 @@ secoes:
     lista:
       - "**Locaweb:** hospeda o site, os pedidos do formulário e o nosso e-mail, em servidores no Brasil."
       - "**WhatsApp (Meta):** quando você escolhe falar pelo WhatsApp, a conversa segue também as regras do próprio WhatsApp."
-      - "**Google (medição):** o Google Analytics e o Google Tag Manager carregam em todas as páginas. Sem a sua permissão, funcionam sem cookies e sem identificador do navegador: recebem só sinais básicos, como a página vista e o tipo de aparelho, que o Google usa para estimar o total de visitas. Com a sua permissão, recebem dados de navegação, como páginas vistas, cliques e um identificador do navegador. **Meta (Pixel):** só carrega se você permitir Marketing no aviso de cookies. O site não envia o seu nome, telefone, e-mail, empresa ou cargo para essas ferramentas."
+      - "**Google e Meta (medição):** o Google recebe, desde a primeira página, só sinais sem cookies e sem identificador; com a sua permissão no aviso de cookies, Google e Meta recebem dados de navegação, como páginas vistas, cliques e um identificador do navegador. O site não envia o seu nome, telefone ou e-mail para essas ferramentas."
       - "**Ferramenta de agenda:** se você usar o link para marcar um horário, ela recebe os dados que você preencher lá, conforme a política dela."
       - "**Autoridades:** só quando a lei ou uma ordem judicial exigir."
     paragrafos_fim:
@@ -56,7 +56,7 @@ secoes:
   - id: internacional
     titulo: 6. Dados fora do Brasil
     paragrafos:
-      - Google e Meta podem tratar dados de navegação em servidores fora do Brasil, como nos Estados Unidos. No caso da Meta, isso só acontece com o seu consentimento para Marketing ou quando você escolhe usar o WhatsApp; no caso do Google, inclui os sinais sem cookies descritos na seção 7; e essas empresas declaram adotar as garantias que a LGPD exige para esse envio (art. 33), como cláusulas contratuais padrão.
+      - Google e Meta podem tratar dados de navegação em servidores fora do Brasil, como nos Estados Unidos. Isso acontece com os sinais sem cookies do Google, com o seu consentimento para a medição ou quando você escolhe usar o WhatsApp, e essas empresas declaram adotar as garantias que a LGPD exige para esse envio (art. 33), como cláusulas contratuais padrão.
   - id: cookies
     titulo: 7. Cookies e medição
     paragrafos:
@@ -66,7 +66,7 @@ secoes:
       - "**Análise (Google Analytics 4):** conta visitas, páginas e cliques de forma agregada. Cookies _ga e _ga_*, por até 2 anos."
       - "**Marketing (Meta Pixel e Google Ads):** mostra quais anúncios trouxeram visitas e pedidos e permite mostrar anúncios a quem já visitou o site. Cookies como _fbp, _fbc, _gcl_au e _gcl_aw, por até 90 dias."
     paragrafos_fim:
-      - "Antes da sua escolha, nenhum cookie de Análise ou Marketing é gravado e o Pixel da Meta não carrega. O Google Analytics e o Google Tag Manager carregam, mas no modo sem cookies do Google (Consent Mode): só sinais sem identificação, até você aceitar. Se você recusar, continua assim. O aviso tem três botões com o mesmo destaque: Aceitar tudo, Recusar e Personalizar. Enquanto nenhuma ferramenta de medição estiver ligada no site, o aviso nem aparece."
+      - "Nenhum cookie de Análise ou Marketing é gravado antes da sua escolha. O Google Analytics e o Google Tag Manager carregam no modo de consentimento do Google com tudo negado: até você aceitar, o Google recebe só sinais sem cookies e sem identificador, para contar visitas de forma agregada. O Meta Pixel só carrega se você aceitar Marketing. O aviso tem três botões com o mesmo destaque: Aceitar tudo, Recusar e Personalizar. Enquanto nenhuma ferramenta de medição estiver ligada no site, o aviso nem aparece."
       - "Para mudar de ideia, use \"Preferências de cookies\", no rodapé ou no botão abaixo, ou apague os cookies nas configurações do navegador. Recusar não impede você de usar o site nem de pedir orçamento."
     botao_cookies: true
   - id: retencao

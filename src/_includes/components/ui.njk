@@ -66,57 +66,47 @@
 </nav>
 {% endmacro %}
 
-{#- Calculadora da home (src/content/calculadora.yml): expectativa de investimento por mês, sem planos
-    nem preços fechados. Cada resposta vale pontos; a soma escolhe uma das faixas. O botão do Raio-X leva
-    ao formulário do fim (o JS marca os serviços e anota a conta na mensagem). Sem JavaScript, a tabela
-    com todas as combinações fica visível. -#}
+{#- Calculadora da home em forma de bilhete de orçamento (src/content/calculadora.yml; dono, 23/10/2026):
+    sem nenhum valor. As respostas aparecem no bilhete (um recibo saindo da impressora) e o botão abre o
+    WhatsApp com a lista pronta e " [ref: calculadora]" (o JS monta a mensagem a cada escolha).
+    Sem JavaScript: as opções aparecem, o bilhete mostra as marcadas de saída e o botão abre o WhatsApp
+    com a mensagem genérica. -#}
 {% macro calculadora() %}
 {%- set c = conteudo.calculadora -%}
-{%- set pf = c.perguntas[0] -%}
-{%- set pv = c.perguntas[1] -%}
-{%- set soma0 = (((pf.opcoes | filtrarPor("marcada", true))[0] or pf.opcoes[0]).pontos or 0) + (((pv.opcoes | filtrarPor("marcada", true))[0] or pv.opcoes[0]).pontos or 0) -%}
-<div class="o-calc" id="calculadora" data-o-calc data-faixas="{{ c.faixas | dump | escape }}">
+{%- set b = c.bilhete -%}
+<div class="o-calc" id="calculadora" data-o-calc data-mensagem="{{ c.mensagem }}" data-mensagem-fim="{{ c.mensagem_fim }}">
 	<div class="o-janela__barra" aria-hidden="true"><span class="o-janela__titulo">{{ c.janela }}</span><span class="o-janela__ctrl"></span></div>
 	<div class="o-calc__corpo">
-		<form class="o-calc__form" data-o-calc-form hidden>
+		<form class="o-calc__form" data-o-calc-form>
 		{%- for q in c.perguntas %}
 			{%- set marcada = (q.opcoes | filtrarPor("marcada", true))[0] or q.opcoes[0] %}
-			<fieldset class="o-calc__grupo">
+			<fieldset class="o-calc__grupo" data-rotulo="{{ q.mensagem or q.rotulo }}">
 				<legend>{{ q.rotulo }}</legend>
 				<div class="o-calc__opcoes">
 				{%- for op in q.opcoes %}
-					<label class="o-chip o-chip--escuro o-chip--opcao"><input type="radio" name="calc-{{ q.id }}" value="{{ op.texto }}" data-pontos="{{ op.pontos or 0 }}"{% if op.servicos %} data-servicos="{{ op.servicos | join(' ') }}"{% endif %}{% if op.texto == marcada.texto %} checked{% endif %}><span>{{ op.texto }}</span></label>
+					<label class="o-chip o-chip--escuro o-chip--opcao"><input type="radio" name="calc-{{ q.id }}" value="{{ op.texto }}"{% if op.texto == marcada.texto %} checked{% endif %}><span>{{ op.texto }}</span></label>
 				{%- endfor %}
 				</div>
 			</fieldset>
 		{%- endfor %}
 		</form>
-		<div class="o-calc__recibo" data-o-calc-recibo hidden>
-			<p class="o-calc__recibo-topo" aria-hidden="true"><span>{{ c.recibo_topo }}</span><span>{{ c.recibo_numero }}</span></p>
-			<dl class="o-calc__linhas">
-			{%- for q in c.perguntas %}
-				{%- set marcada = (q.opcoes | filtrarPor("marcada", true))[0] or q.opcoes[0] %}
-				<div><dt>{{ q.rotulo }}</dt><dd data-o-calc-linha="{{ q.id }}">{{ marcada.texto }}</dd></div>
-			{%- endfor %}
-			</dl>
-			<output class="o-calc__resultado" aria-live="polite" data-o-calc-resultado>
-				<span class="o-calc__rotulo-total">{{ c.resultado_rotulo }}</span>
-				<span class="o-calc__total"><strong data-o-calc-total>{% for fx in c.faixas %}{% if soma0 <= fx.pontos_ate and (loop.first or soma0 > c.faixas[loop.index0 - 1].pontos_ate) %}{{ fx.valor | reais }}{% endif %}{% endfor %}</strong> <small>{{ c.resultado_sufixo }}</small></span>
-			</output>
-			<a class="o-btn o-btn--verde o-btn--raio o-calc__botao" id="cta-raio-x-home-calculadora" href="#raio-x" data-cta="cta-raio-x-home-calculadora" data-o-calc-botao data-mensagem="{{ c.mensagem }}"><span class="o-icone o-icone--raio" aria-hidden="true"></span>{{ c.botao }}</a>
+		<div class="o-calc__bilhete">
+			<div class="o-calc__impressora" aria-hidden="true"><span class="o-calc__luz"></span><span class="o-calc__fenda"></span></div>
+			<div class="o-calc__papel" data-o-calc-papel>
+				<p class="o-calc__papel-topo"><svg class="o-calc__logo" viewBox="0 0 731 125.6" aria-hidden="true" focusable="false"><use href="#s-logo"></use></svg><span><span class="o-sr">Olorin Digital, </span>{{ b.topo }} <span class="o-calc__numero">{{ b.numero }}</span></span></p>
+				<p class="o-calc__para">{{ b.para }}</p>
+				<dl class="o-calc__linhas">
+				{%- for q in c.perguntas %}
+					{%- set marcada = (q.opcoes | filtrarPor("marcada", true))[0] or q.opcoes[0] %}
+					<div><dt>{{ q.curto or q.rotulo }}</dt><dd data-o-calc-linha="{{ q.id }}">{{ marcada.texto }}</dd></div>
+				{%- endfor %}
+					<div class="o-calc__extra"><dt>{{ b.extra_rotulo }}</dt><dd>{{ b.extra_valor }}</dd></div>
+				</dl>
+				<p class="o-calc__papel-rodape">{{ b.rodape }}</p>
+				<span class="o-calc__codigo" aria-hidden="true"></span>
+			</div>
+			<a class="o-btn o-btn--verde o-calc__botao" id="cta-whatsapp-calculadora" href="{{ waLink('calculadora', { mensagem: c.mensagem_sem_js }) }}" target="_blank" rel="noopener" data-o-calc-botao><span class="o-icone o-icone--whatsapp" aria-hidden="true"></span><span>{{ c.botao }}</span></a>
 		</div>
-		<table class="o-calc__tabela" data-o-calc-tabela>
-			<caption>{{ c.tabela_titulo }}</caption>
-			<thead>
-				<tr><th scope="col">{{ pv.rotulo }}</th>{% for f in pf.opcoes %}<th scope="col">{{ f.texto }}</th>{% endfor %}</tr>
-			</thead>
-			<tbody>
-			{%- for v in pv.opcoes %}
-				<tr><th scope="row">{{ v.texto }}</th>{% for f in pf.opcoes %}{% set soma = (v.pontos or 0) + (f.pontos or 0) %}<td>{% for fx in c.faixas %}{% if soma <= fx.pontos_ate and (loop.first or soma > c.faixas[loop.index0 - 1].pontos_ate) %}{{ fx.valor | reais }}{% endif %}{% endfor %}</td>{% endfor %}</tr>
-			{%- endfor %}
-			</tbody>
-		</table>
-		<p class="o-calc__aviso">{{ c.aviso }}</p>
 	</div>
 </div>
 {% endmacro %}
@@ -134,6 +124,16 @@
 {%- for r in lista %}{% if r.url %}
 	<li><a class="o-redes__link" href="{{ r.url }}" target="_blank" rel="noopener me" data-cta="rede-{{ r.icone }}{% if origem %}-{{ origem }}{% endif %}"><span class="o-icone o-icone--{{ r.icone }}" aria-hidden="true"></span><span class="o-sr">{{ r.nome }} da Olorin (abre em nova aba)</span></a></li>
 {%- endif %}{% endfor %}
+</ul>
+{% endmacro %}
+
+{#- Os 3 itens com check ao lado do botão principal do banner (src/content/selos.yml; dono, 23/10/2026).
+    classe "o-selos--grande": letra maior (landings /promo/, sem botão ao lado). -#}
+{% macro selos(classe="") %}
+<ul class="o-selos {{ classe }}" aria-label="Como a Olorin trabalha">
+{%- for item in conteudo.selos.itens %}
+	<li>{{ item }}</li>
+{%- endfor %}
 </ul>
 {% endmacro %}
 

@@ -1,5 +1,5 @@
 /* Componentes interativos: checklist, método, portfólio, FAQ, calculadora, planos, faixas e contadores. */
-import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz, abaixoDaDobra } from '../util.js';
+import { $, $$, doc, temIO, movimentoReduzido, lerArmazenamento, gravarArmazenamento, raiz, abaixoDaDobra, linkWhatsApp } from '../util.js';
 import { track } from './rastreamento.js';
 
 /* Checklist de dores: botões com aria-pressed; a partir de 2 marcados aparece a resposta. */
@@ -82,73 +82,51 @@ export function iniciarFaq() {
 	if (alvo && alvo.tagName === 'DETAILS') alvo.open = true;
 }
 
-/* Calculadora da home (expectativa de investimento por mês): soma os pontos das respostas e mostra a
-   faixa (data-faixas, de calculadora.yml). O botão do Raio-X marca os serviços da resposta no formulário
-   do fim e anota a conta na mensagem (só se a pessoa ainda não escreveu nada). */
+/* Calculadora da home, em forma de bilhete de orçamento (sem nenhum valor): cada escolha vai para a
+   linha dela no bilhete e para a mensagem do botão do WhatsApp (uma resposta por linha e
+   " [ref: calculadora]" no fim). Sem JS, o botão já leva a uma mensagem genérica. */
 export function iniciarCalculadora() {
 	const calc = $('[data-o-calc]');
 	if (!calc) return;
 	const form = $('[data-o-calc-form]', calc);
-	const recibo = $('[data-o-calc-recibo]', calc);
-	const tabela = $('[data-o-calc-tabela]', calc);
-	if (!form || !recibo) return;
-	let faixas = [];
-	try {
-		faixas = JSON.parse(calc.getAttribute('data-faixas') || '[]');
-	} catch (e) {
-		return;
-	}
-	if (!faixas.length) return;
-	const total = $('[data-o-calc-total]', recibo);
-	const botao = $('[data-o-calc-botao]', recibo);
-	form.hidden = false;
-	recibo.hidden = false;
-	if (tabela) tabela.classList.add('o-sr');
-	const reais = (n) => 'R$ ' + Number(n).toLocaleString('pt-BR');
-	const marcadas = () => $$('input:checked', form);
+	const papel = $('[data-o-calc-papel]', calc);
+	const botao = $('[data-o-calc-botao]', calc);
+	if (!form || !papel) return;
+	const inicio = calc.getAttribute('data-mensagem') || '';
+	const fim = calc.getAttribute('data-mensagem-fim') || '';
 	let usou = false;
-	let valor = 0;
-	function calcular(registrar) {
-		const escolhas = marcadas();
-		const soma = escolhas.reduce((s, i) => s + (Number(i.getAttribute('data-pontos')) || 0), 0);
-		const faixa = faixas.find((f) => soma <= f.pontos_ate) || faixas[faixas.length - 1];
-		valor = faixa.valor;
-		escolhas.forEach((i) => {
-			const linha = $('[data-o-calc-linha="' + i.name.replace('calc-', '') + '"]', recibo);
-			if (linha) linha.textContent = i.value;
+	function escolhas() {
+		return $$('fieldset', form)
+			.map((grupo) => {
+				const marcada = $('input:checked', grupo);
+				return marcada ? { id: marcada.name.replace('calc-', ''), rotulo: grupo.getAttribute('data-rotulo') || '', valor: marcada.value } : null;
+			})
+			.filter(Boolean);
+	}
+	function atualizar(registrar) {
+		const lista = escolhas();
+		lista.forEach((e) => {
+			const linha = $('[data-o-calc-linha="' + e.id + '"]', papel);
+			if (linha) linha.textContent = e.valor;
 		});
-		if (total) total.textContent = reais(valor);
+		if (botao) {
+			const linhas = lista.map((e) => '- ' + e.rotulo + ': ' + e.valor);
+			botao.href = linkWhatsApp([inicio].concat(linhas, fim ? [fim] : []).join('\n'), 'calculadora');
+		}
 		if (registrar) {
-			recibo.classList.remove('is-impresso');
-			void recibo.offsetWidth;
-			recibo.classList.add('is-impresso');
-			track('calculator_use', { verba_faixa: String(valor), escolhas: escolhas.map((i) => i.value).join(' | '), primeira_vez: !usou });
+			papel.classList.remove('is-impresso');
+			void papel.offsetWidth;
+			papel.classList.add('is-impresso');
+			const dados = { escolhas: lista.map((e) => e.valor).join(' | '), primeira_vez: !usou };
+			lista.forEach((e) => {
+				dados[e.id] = e.valor;
+			});
+			track('calculator_use', dados);
 			usou = true;
 		}
 	}
-	form.addEventListener('change', () => calcular(true));
-	calcular(false);
-	if (botao) {
-		botao.addEventListener('click', () => {
-			const destino = $('#form-fim') || $('[data-o-form]');
-			if (!destino) return;
-			const servicos = marcadas()
-				.map((i) => i.getAttribute('data-servicos') || '')
-				.join(' ')
-				.split(' ')
-				.filter(Boolean);
-			if (servicos.length) {
-				$$('input[name="servicos[]"]', destino).forEach((c) => {
-					if (servicos.indexOf(c.getAttribute('data-servico')) > -1) c.checked = true;
-				});
-				destino.dispatchEvent(new CustomEvent('o-servicos'));
-			}
-			const msg = $('textarea[name="mensagem"]', destino);
-			if (msg && !msg.value.trim()) {
-				msg.value = (botao.getAttribute('data-mensagem') || '') + ' ' + marcadas().map((i) => i.value).join(', ') + '. Expectativa: ' + reais(valor) + '/mês.';
-			}
-		});
-	}
+	form.addEventListener('change', () => atualizar(true));
+	atualizar(false);
 }
 
 /* "Quero esse": preenche o plano no formulário e pré-seleciona os serviços. */

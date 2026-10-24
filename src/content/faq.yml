@@ -1,6 +1,6 @@
 # Perguntas frequentes (PROMPT seção 12.6). A mesma fonte gera o HTML e o JSON-LD.
-# Desde 17/10/2026 a FAQ completa aparece só na página /sobre/ (dono). Sem planos e sem preços:
-# o gancho é o Raio-X gratuito.
+# Desde 17/10/2026 a FAQ completa aparece só na página /sobre/ (dono). Sem planos e sem preços (23/10/2026:
+# nenhum valor no site; a pergunta de preço responde que o orçamento sai sob medida, depois do Raio-X).
 # "id" é fixo (serve para links como /sobre/#faq-fidelidade e para o evento faq_open).
 # Regra: no máximo 3 frases curtas por resposta. Texto proposto e ainda não confirmado
 # fica marcado com "# PENDENTE:" na linha de cima (npm run pendencias).
@@ -11,9 +11,12 @@ perguntas:
   - id: faq-uma-frente
     pergunta: Dá para contratar um serviço só?
     resposta: Sim. Dá para contratar só redes sociais, só tráfego pago ou só um site, por exemplo, ou juntar várias frentes no mesmo time. Entregas pontuais, como um logotipo ou um impresso, também entram.
+  - id: faq-preco
+    pergunta: Quanto custa trabalhar com a Olorin?
+    resposta: O site não lista preço, porque cada orçamento sai sob medida, depois do Raio-X gratuito da sua marca. O Raio-X mostra as frentes que fazem sentido agora, e a proposta chega por escrito, sem compromisso. A verba de anúncio é à parte e vai direto para as plataformas.
   - id: faq-segmento
     pergunta: Vocês atendem o meu tipo de organização?
-    resposta: Atendemos empresas e organizações de todos os tipos e tamanhos, do pequeno negócio à indústria, da escola ao projeto cultural. Educação é a nossa especialidade e tem uma frente própria, a [Olorin Educação](/educacao/).
+    resposta: Atendemos empresas e organizações de todos os tipos e tamanhos, do pequeno negócio à indústria, da escola ao projeto cultural. Escolas e criadores de conteúdo têm páginas próprias, a [Olorin Educação](/educacao/) e a de [influenciadores](/influenciadores/).
   - id: faq-comecar-pequeno
     pergunta: Dá para começar pequeno?
     resposta: Dá. Você pode começar por uma entrega pontual ou por um serviço só e crescer depois. O Raio-X gratuito mostra por onde vale começar.
@@ -34,7 +37,7 @@ perguntas:
     resposta: O time da Olorin, com direção de criação do Vinícius Mafra. Quando um projeto pede um especialista a mais, como fotografia, vídeo ou programação, a gente coordena tudo e responde pela entrega. Por isso o anúncio, o post e o impresso saem com a mesma cara.
   - id: faq-impressao
     pergunta: Vocês fazem a impressão ou só entregam o arquivo?
-    resposta: Entregamos o arquivo fechado, pronto para a gráfica. Se precisar, indicamos gráficas parceiras e acompanhamos a prova com você.
+    resposta: Entregamos o arquivo fechado, pronto para a gráfica. Se precisar, indicamos gráficas parceiras e conferimos a prova com a gráfica antes de imprimir.
   - id: faq-a-distancia
     pergunta: Vocês atendem a distância?
     resposta: "Sim. Tudo é feito a distância: WhatsApp, reuniões por vídeo e aprovações por e-mail. Onde a sua marca estiver, o jeito de trabalhar é o mesmo."
@@ -42,7 +45,7 @@ perguntas:
     pergunta: Como é o relatório?
     resposta: "Todo mês você recebe um relatório com quanto investiu, quanto voltou, quanto custou cada resultado e o que muda na próxima rodada, em linguagem simples. Veja um [exemplo ilustrativo](/sobre/#relatorio)."
   - id: faq-dia-a-dia
-    pergunta: Quem acompanha a minha conta no dia a dia?
+    pergunta: Quem é o meu contato no dia a dia?
     resposta: O Derek Gonçalves, diretor de operações e relacionamento, é o seu primeiro contato, principalmente pelo WhatsApp. A Natalia Arruda dirige a estratégia, as mídias pagas, os dados e os relatórios, e o Vinícius Mafra dirige a criação e o design.
   - id: faq-troca-agencia
     pergunta: Já tenho agência. Como funciona a troca?

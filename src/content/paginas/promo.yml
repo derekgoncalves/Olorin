@@ -5,14 +5,10 @@ seo:
   descricao: "Raio-X gratuito da sua marca: 30 minutos por vídeo e, em até 48 horas, um PDF com o que mais trava o seu marketing. Sem compromisso."
 etiqueta: Raio-X gratuito
 titulo: Onde a sua marca trava?
-sub: A gente olha anúncio, redes, site e material da marca e mostra, sem rodeio, por onde vale começar. De graça e sem compromisso.
+sub: A gente olha anúncio, redes, site e material da marca numa conversa de 30 minutos por vídeo e, em até 48 horas, manda um PDF com o que mais trava e por onde começar.
 titulo_sem_diagnostico: Peça seu orçamento.
 sub_sem_diagnostico: Anúncios, redes, marca, site, impressos e dados num time só. Resposta em até 1 dia útil.
-# Itens do banner, com o "O" da Olorin como marcador.
-itens:
-  - 30 minutos por vídeo com quem coordena
-  - Um PDF em até 48 horas com o que mais trava e por onde começar
-  - Gratuito e sem compromisso
+# Os 3 itens com check do banner vêm de src/content/selos.yml (iguais em todas as páginas).
 cta_final:
   titulo: Quer saber onde a sua marca trava?
   botao: Quero meu Raio-X grátis

@@ -38,9 +38,9 @@
 	font-size: 12px;
 	color: var(--cor-apoio);
 }
-/* Home: os 2 números e a credencial Meta e Google da Natalia na mesma linha, com o mesmo peso (dono,
-   18/10/2026: as logos ficam onde ficavam o "2x" e o "100+"). Os tamanhos seguem a largura da linha
-   (cqi), para tudo caber lado a lado no computador; no tablet a credencial desce, no celular tudo empilha. */
+/* Home: os 3 números e "Agência parceira Meta e Google" na mesma linha, com o mesmo peso (dono, 18/10 e
+   23/10/2026). Os tamanhos seguem a largura da linha (cqi), para tudo caber lado a lado no computador; no
+   tablet a credencial desce, no celular os números ficam lado a lado em 2 colunas e a credencial embaixo. */
 .o-resultados__provas {
 	--prova-num: clamp(30px, 4.8cqi, 92px);
 	container-type: inline-size;
@@ -105,10 +105,12 @@
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 }
-.o-parceira__texto a {
-	color: inherit;
-	text-decoration-thickness: 2px;
-	text-underline-offset: 3px;
+/* "*Resultados variam de cliente a cliente." embaixo da linha dos números */
+.o-resultados__nota {
+	margin: 22px 0 0 !important;
+	font-size: 12px;
+	line-height: 1.5;
+	color: var(--cor-apoio);
 }
 @media (max-width: 960px) {
 	.o-resultados__provas {
@@ -121,17 +123,23 @@
 		font-size: 6.6cqi;
 	}
 }
+/* Celular: o R$ 5M+ na linha de cima, +50 e +2x lado a lado embaixo e, depois, as duas logos lado a lado. */
 @media (max-width: 560px) {
-	.o-resultados__provas .o-numeros,
-	.o-parceira__marcas {
-		flex-direction: column;
-		align-items: flex-start;
-	}
 	.o-resultados__provas {
 		--prova-num: 12cqi;
+		gap: 36px;
+	}
+	.o-resultados__provas .o-numeros {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 30px 20px;
+		width: 100%;
+	}
+	.o-resultados__provas .o-numero:first-child {
+		grid-column: 1 / -1;
 	}
 	.o-parceira__marcas {
-		font-size: 10cqi;
+		font-size: 9cqi;
 	}
 }
 .o-cases {

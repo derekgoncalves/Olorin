@@ -3,7 +3,7 @@
 # ------------------------------------------------------------
 # Ordem fixada pelo dono (17/10/2026): 1 banner (com a faixa de logos no pé, no mesmo fundo preto:
 # dono, 18/10/2026; ela vem de dentro do hero.njk, por isso não está na lista), 2 resultados (números,
-# credencial Meta e Google da Natalia e portfólio), 3 serviços, 4 calculadora, 5 quem somos,
+# Agência parceira Meta e Google e portfólio), 3 serviços, 4 calculadora, 5 quem somos,
 # 6 RAIO X DA OLORIN (o formulário do fim, igual em todas as páginas).
 # Saíram da home em 17/10/2026: o Raio-X do meio, o checklist, o método, o blog e as dúvidas.
 # Toda chamada da home é o botão do Raio-X, que leva ao formulário do fim (#raio-x).
@@ -55,15 +55,11 @@ resultados:
   etiqueta: Resultados
   titulo: Provas, não promessas.
   texto: O que o nosso time já fez.
-  # Credencial no banner verde, ao lado dos números (no lugar dos antigos "2x" e "100+"; dono, 18/10/2026):
-  # logos grandes da Meta e do Google e a frase embaixo. A credencial é da Natalia (gestora de tráfego
-  # parceira Meta e Google), nunca selo de "agência parceira". Fica: antes + nome (com link) + depois.
-  credencial_antes: ""
-  credencial_nome: Natalia
-  credencial_link: /quem-somos/natalia-arruda/
-  credencial_depois: ", nossa gestora de tráfego, é parceira Meta e Google"
+  # Credencial no banner verde, ao lado dos números (dono, 18/10/2026; texto do dono, 23/10/2026: é a
+  # agência, não a Natalia): logos grandes da Meta e do Google e a frase embaixo, sem link.
+  credencial: Agência parceira Meta e Google
   cases_etiqueta: Cases
-  cases_titulo: De perto.
+  cases_titulo: Na prática.
   case_link: Ver o serviço
   portfolio_etiqueta: Portfólio
   portfolio_titulo: Marcas atendidas.
@@ -97,4 +93,4 @@ orcamento:
   passos:
     - Você conta quem é
     - A gente analisa tudo
-    - Você recebe o plano
+    - Você recebe o Raio-X
