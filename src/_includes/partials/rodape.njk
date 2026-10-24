@@ -1,4 +1,4 @@
-{#- Rodapé completo: lema e redes (config.json), serviços, segmentos, a Olorin, contato e o CNPJ. -#}
+{#- Rodapé: lema e redes (config.json), segmentos, contato e o CNPJ. -#}
 {%- set cfg = site.config -%}
 {%- import "components/ui.njk" as ui with context -%}
 {%- set temRastreamento = cfg.GTM_ID or cfg.GA4_ID or cfg.META_PIXEL_ID -%}
@@ -10,37 +10,18 @@
 			<p class="o-rodape__titulo o-redes__titulo">Siga a Olorin</p>
 			{{ ui.redes("o-rodape__redes", "rodape") }}
 		</div>
-		<nav class="o-rodape__col" aria-label="Serviços">
-			<p class="o-rodape__titulo">Serviços</p>
+		{#- Rodapé enxuto (dono, 24/10/2026): saíram as colunas Serviços e A Olorin; ficam Segmentos (os mesmos do
+		    menu, src/_data/navegacao.yml) e Contato. -#}
+		{%- for item in navegacao.principal %}{% if item.submenu == "segmentos" and item.itens %}
+		<nav class="o-rodape__col" aria-label="{{ item.rotulo }}">
+			<p class="o-rodape__titulo">{{ item.rotulo }}</p>
 			<ul>
-			{%- for s in conteudo.servicos %}
-				<li><a href="/servicos/{{ s.slug }}/">{{ s.nome }}</a></li>
+			{%- for sub in item.itens %}
+				<li><a href="{{ sub.url }}">{{ sub.rotulo }}</a></li>
 			{%- endfor %}
 			</ul>
 		</nav>
-		{#- Segmentos (23/10/2026: Educação e Influenciadores, os mesmos do menu, src/_data/navegacao.yml) e,
-		    embaixo, na mesma coluna, as páginas da Olorin. -#}
-		<div class="o-rodape__col o-rodape__col--dupla">
-			{%- for item in navegacao.principal %}{% if item.submenu == "segmentos" and item.itens %}
-			<nav aria-label="{{ item.rotulo }}">
-				<p class="o-rodape__titulo">{{ item.rotulo }}</p>
-				<ul>
-				{%- for sub in item.itens %}
-					<li><a href="{{ sub.url }}">{{ sub.rotulo }}</a></li>
-				{%- endfor %}
-				</ul>
-			</nav>
-			{%- endif %}{% endfor %}
-			<nav aria-label="A Olorin">
-				<p class="o-rodape__titulo">A Olorin</p>
-				<ul>
-					<li><a href="/quem-somos/">Quem somos</a></li>
-					<li><a href="/sobre/">Sobre</a></li>
-					{%- if conteudo.portfolioPublicado and conteudo.portfolioPublicado.length %}<li><a href="/portfolio/">Portfólio</a></li>{% endif %}
-					<li><a href="/sobre/#duvidas">Dúvidas</a></li>
-				</ul>
-			</nav>
-		</div>
+		{%- endif %}{% endfor %}
 		<div class="o-rodape__col">
 			<p class="o-rodape__titulo">Contato</p>
 			<ul>

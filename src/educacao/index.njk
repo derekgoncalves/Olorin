@@ -183,7 +183,9 @@ fontes_extra:
 						<div><dt>{{ campo.rotulo }}</dt><dd>{{ campo.valor }}</dd></div>
 					{%- endfor %}
 					</dl>
+					{%- if c.edu.site %}
 					<p class="o-edu-ficha__site"><a class="o-edu-link" href="{{ c.edu.site }}" target="_blank" rel="noopener">{{ t.site }}: {{ c.edu.site_texto }}<span class="o-sr"> (abre em nova aba)</span></a></p>
+					{%- endif %}
 					<p class="o-edu-carimbo o-edu-carimbo--ficha" aria-hidden="true">{{ t.carimbo }}</p>
 				</div>
 			</article>

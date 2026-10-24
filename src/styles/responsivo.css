@@ -40,7 +40,7 @@
 		row-gap: 40px;
 	}
 	.o-rodape__grade {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 	.o-rodape__marca {
 		grid-column: 1 / -1;

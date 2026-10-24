@@ -42,6 +42,5 @@ itens:
           valor: Direito Público
         - rotulo: O que vende
           valor: Cursos e obras (livros) de Direito Público
-      site: https://joseanacletoabduch.com.br/
-      site_texto: joseanacletoabduch.com.br
+      # Sem link para o site dele (dono, 24/10/2026).
       logo_largura: 300
