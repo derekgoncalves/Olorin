@@ -1,0 +1,2730 @@
+{
+ "calculadora": {
+  "etiqueta": "Calculadora",
+  "titulo": "Monte o seu orçamento.",
+  "texto": "Responda e receba um orçamento, além de um Raio-X gratuito e personalizado da sua marca.",
+  "janela": "orcamento.olo",
+  "perguntas": [
+   {
+    "id": "frente",
+    "rotulo": "O que a Olorin vai tocar",
+    "curto": "Frente",
+    "mensagem": "O que a Olorin vai tocar",
+    "opcoes": [
+     {
+      "texto": "Uma frente só"
+     },
+     {
+      "texto": "Anúncios e redes",
+      "marcada": true
+     },
+     {
+      "texto": "A marca inteira"
+     }
+    ]
+   },
+   {
+    "id": "verba",
+    "rotulo": "Verba de anúncio por mês",
+    "curto": "Verba de anúncio",
+    "mensagem": "Verba de anúncio por mês",
+    "opcoes": [
+     {
+      "texto": "Ainda não invisto"
+     },
+     {
+      "texto": "R$ 3.000"
+     },
+     {
+      "texto": "R$ 5.000"
+     },
+     {
+      "texto": "R$ 10.000 ou mais"
+     }
+    ]
+   },
+   {
+    "id": "objetivo",
+    "rotulo": "O que você quer mais",
+    "curto": "Objetivo",
+    "mensagem": "Objetivo",
+    "opcoes": [
+     {
+      "texto": "Vendas"
+     },
+     {
+      "texto": "Matrículas"
+     },
+     {
+      "texto": "Contatos"
+     },
+     {
+      "texto": "Visitas"
+     }
+    ]
+   }
+  ],
+  "bilhete": {
+   "topo": "Orçamento",
+   "numero": "nº 0001",
+   "para": "Para: a sua marca",
+   "extra_rotulo": "Raio-X da marca",
+   "extra_valor": "Grátis",
+   "rodape": "Orçamento sob medida, junto com o seu Raio-X."
+  },
+  "botao": "Enviar esse orçamento por WhatsApp",
+  "mensagem": "Olá! Montei um orçamento no site da Olorin:",
+  "mensagem_fim": "Quero também o Raio-X gratuito da minha marca.",
+  "mensagem_sem_js": "Olá! Quero montar um orçamento com a Olorin e receber o Raio-X gratuito da minha marca."
+ },
+ "cases": {
+  "destaque_no_site": false,
+  "itens": [
+   {
+    "slug": "izeta",
+    "cliente": "iZETA",
+    "logo": "izeta-cor.svg",
+    "segmento": "Educação em saúde",
+    "janela": "cliente_izeta.olo",
+    "servicos_texto": "Sites · Tráfego pago · Redes sociais",
+    "servicos": [
+     "site-e-loja-virtual",
+     "trafego-pago",
+     "redes-sociais"
+    ],
+    "edu": {
+     "nome": "iZETA Educação",
+     "campos": [
+      {
+       "rotulo": "Segmento",
+       "valor": "Educação em saúde"
+      },
+      {
+       "rotulo": "Formato",
+       "valor": "Edtech"
+      }
+     ],
+     "site": "https://izeta.com.br/",
+     "site_texto": "izeta.com.br",
+     "logo_largura": 121
+    }
+   },
+   {
+    "slug": "anacleto",
+    "cliente": "José Anacleto Abduch",
+    "logo": "anacleto-cor.svg",
+    "segmento": "Direito Público",
+    "janela": "cliente_anacleto.olo",
+    "servicos_texto": "Sites · Tráfego pago · Redes sociais",
+    "servicos": [
+     "site-e-loja-virtual",
+     "trafego-pago",
+     "redes-sociais"
+    ],
+    "edu": {
+     "nome": "Dr. José Anacleto Abduch",
+     "campos": [
+      {
+       "rotulo": "Segmento",
+       "valor": "Direito Público"
+      },
+      {
+       "rotulo": "O que vende",
+       "valor": "Cursos e obras (livros) de Direito Público"
+      }
+     ],
+     "logo_largura": 300
+    }
+   }
+  ]
+ },
+ "clientes": {
+  "etiqueta": "Marcas que o nosso time já atendeu",
+  "itens": [
+   {
+    "nome": "National Geographic",
+    "logo": "national-geographic.svg",
+    "largura": 128,
+    "altura": 38
+   },
+   {
+    "nome": "John Deere",
+    "logo": "john-deere.svg",
+    "largura": 136,
+    "altura": 28
+   },
+   {
+    "nome": "iZETA Educação",
+    "logo": "izeta-mono.webp",
+    "largura": 96,
+    "altura": 38
+   },
+   {
+    "nome": "BRAVO Film Festival",
+    "logo": "bravo.svg",
+    "largura": 66,
+    "altura": 56
+   },
+   {
+    "nome": "Governo do Estado do Rio Grande do Sul",
+    "logo": "governo-rs.svg",
+    "largura": 61,
+    "altura": 34
+   },
+   {
+    "nome": "Dr. José Anacleto Abduch Advocacia",
+    "logo": "anacleto-mono.webp",
+    "largura": 174,
+    "altura": 28
+   },
+   {
+    "nome": "Centro Sul Shop",
+    "logo": "centro-sul-shop.svg",
+    "largura": 100,
+    "altura": 58
+   },
+   {
+    "nome": "Harmonia do Pet",
+    "logo": "harmonia-do-pet.webp",
+    "largura": 158,
+    "altura": 38
+   }
+  ]
+ },
+ "depoimentos": {
+  "itens": []
+ },
+ "equipe": {
+  "pessoas": [
+   {
+    "slug": "natalia-arruda",
+    "nome": "Natalia Arruda",
+    "funcao": "Diretora de Estratégia e Mídias Pagas",
+    "titulo_seo": "Natalia Arruda, Estratégia e Mídias Pagas | Olorin",
+    "frase": "Mais de seis anos operando contas de anúncio de e-commerce, serviço, indústria, educação e campanha política.",
+    "bio": "Analista de mídia paga há mais de seis anos. Já operou contas de comércio eletrônico, serviço, indústria, educação e campanha política. Na Olorin, dirige a estratégia, as campanhas na Meta (Facebook e Instagram) e no Google, os dados e os relatórios.",
+    "descricao": "Natalia Arruda dirige estratégia e mídias pagas na Olorin Digital: mais de seis anos em Meta Ads e Google Ads, inclusive em contas de educação.",
+    "foto": "equipe-natalia",
+    "janela": "natalia.jpg",
+    "emojis": [
+     "🧠",
+     "👠",
+     "📈"
+    ],
+    "credencial": {
+     "texto": "Gestora de tráfego em Meta Ads e Google Ads",
+     "marcas": [
+      "meta",
+      "google"
+     ]
+    },
+    "destaques": [
+     {
+      "valor": "6+",
+      "rotulo": "anos em mídia paga"
+     },
+     {
+      "valor": "5",
+      "rotulo": "segmentos atendidos"
+     }
+    ]
+   },
+   {
+    "slug": "vinicius-mafra",
+    "nome": "Vinícius Mafra",
+    "funcao": "Diretor de Criação e Design",
+    "frase": "Mais de 10 anos à frente de projetos, de influenciadores digitais a produções culturais.",
+    "bio": "Diretor de arte e designer há mais de 10 anos. Já esteve à frente de projetos de influenciadores digitais a produções culturais. Na Olorin, dirige a criação, a identidade visual e a direção de arte.",
+    "descricao": "Vinícius Mafra dirige criação e design na Olorin Digital: mais de 10 anos em direção de arte e identidade visual, de influenciadores a produções culturais.",
+    "foto": "equipe-vinicius",
+    "janela": "vinícius.jpg",
+    "emojis": [
+     "🎨",
+     "😎",
+     "🎬"
+    ],
+    "destaques": [
+     {
+      "valor": "10+",
+      "rotulo": "anos em design e direção de arte"
+     }
+    ]
+   },
+   {
+    "slug": "derek-goncalves",
+    "nome": "Derek Gonçalves",
+    "funcao": "Diretor de Operações e Relacionamento",
+    "titulo_seo": "Derek Gonçalves, Operações e Relacionamento | Olorin",
+    "frase": "Mais de 8 anos em comunicação política e institucional. É o seu primeiro contato e quem coordena a sua conta.",
+    "bio": "Comunicador digital com atuação 360 e mais de 8 anos de experiência em comunicação política e institucional. Na Olorin, dirige as operações e o relacionamento com os clientes. É o seu primeiro contato e quem coordena a sua conta no dia a dia.",
+    "descricao": "Derek Gonçalves dirige operações e relacionamento na Olorin Digital: mais de 8 anos em comunicação política e institucional.",
+    "foto": "equipe-derek",
+    "janela": "derek.jpg",
+    "emojis": [
+     "🤝",
+     "👾",
+     "💬"
+    ],
+    "destaques": [
+     {
+      "valor": "8+",
+      "rotulo": "anos em comunicação política e institucional"
+     },
+     {
+      "valor": "1º",
+      "rotulo": "contato da sua conta"
+     }
+    ]
+   }
+  ]
+ },
+ "faq": {
+  "perguntas": [
+   {
+    "id": "faq-raio-x",
+    "pergunta": "O que é o Raio-X gratuito?",
+    "resposta": "Uma conversa de 30 minutos por vídeo sobre o seu anúncio, as suas redes, o seu site e o material da sua marca. Em até 48 horas, você recebe um PDF de 1 página com os 3 pontos que mais travam a sua venda e as 3 ações para começar. Sem compromisso."
+   },
+   {
+    "id": "faq-uma-frente",
+    "pergunta": "Dá para contratar um serviço só?",
+    "resposta": "Sim. Dá para contratar só redes sociais, só tráfego pago ou só um site, por exemplo, ou juntar várias frentes no mesmo time. Entregas pontuais, como um logotipo ou um impresso, também entram."
+   },
+   {
+    "id": "faq-preco",
+    "pergunta": "Quanto custa trabalhar com a Olorin?",
+    "resposta": "O site não lista preço, porque cada orçamento sai sob medida, depois do Raio-X gratuito da sua marca. O Raio-X mostra as frentes que fazem sentido agora, e a proposta chega por escrito, sem compromisso. A verba de anúncio é à parte e vai direto para as plataformas."
+   },
+   {
+    "id": "faq-segmento",
+    "pergunta": "Vocês atendem o meu tipo de organização?",
+    "resposta": "Atendemos empresas e organizações de todos os tipos e tamanhos, do pequeno negócio à indústria, da escola ao projeto cultural. Escolas e criadores de conteúdo têm páginas próprias, a [Olorin Educação](/educacao/) e a de [influenciadores](/influenciadores/)."
+   },
+   {
+    "id": "faq-comecar-pequeno",
+    "pergunta": "Dá para começar pequeno?",
+    "resposta": "Dá. Você pode começar por uma entrega pontual ou por um serviço só e crescer depois. O Raio-X gratuito mostra por onde vale começar."
+   },
+   {
+    "id": "faq-verba-minima",
+    "pergunta": "Quanto preciso investir em anúncio para começar?",
+    "resposta": "Depende do objetivo, da região e da concorrência. Com pouca verba, as plataformas demoram mais para aprender, e no Raio-X a gente indica um valor que faça sentido para a sua marca. A verba vai direto para as plataformas, na sua conta."
+   },
+   {
+    "id": "faq-tempo-resultado",
+    "pergunta": "Em quanto tempo eu vejo resultado?",
+    "resposta": "Depende do objetivo. Campanha de venda, de matrícula ou de mensagem costuma dar os primeiros sinais em 2 a 4 semanas. Marca e conteúdo pedem de 2 a 3 meses de constância."
+   },
+   {
+    "id": "faq-fidelidade",
+    "pergunta": "Vocês trabalham com contrato de fidelidade?",
+    "resposta": "Nos serviços mensais, o contrato mínimo é de 3 meses. Depois, segue mês a mês, e para encerrar basta avisar com 30 dias, sem multa. Entregas pontuais e projetos de site não têm contrato mensal."
+   },
+   {
+    "id": "faq-arrependimento",
+    "pergunta": "Posso desistir depois de contratar?",
+    "resposta": "Sim. Se você contratou a distância, pelo site, WhatsApp ou e-mail, pode desistir em até 7 dias da assinatura, com devolução do que pagou (art. 49 do Código de Defesa do Consumidor). Depois disso, vale o contrato: mínimo de 3 meses nos serviços mensais e, depois, aviso de 30 dias, sem multa."
+   },
+   {
+    "id": "faq-quem-cria",
+    "pergunta": "Quem cria as artes dos anúncios e dos posts?",
+    "resposta": "O time da Olorin, com direção de criação do Vinícius Mafra. Quando um projeto pede um especialista a mais, como fotografia, vídeo ou programação, a gente coordena tudo e responde pela entrega. Por isso o anúncio, o post e o impresso saem com a mesma cara."
+   },
+   {
+    "id": "faq-impressao",
+    "pergunta": "Vocês fazem a impressão ou só entregam o arquivo?",
+    "resposta": "Entregamos o arquivo fechado, pronto para a gráfica. Se precisar, indicamos gráficas parceiras e conferimos a prova com a gráfica antes de imprimir."
+   },
+   {
+    "id": "faq-a-distancia",
+    "pergunta": "Vocês atendem a distância?",
+    "resposta": "Sim. Tudo é feito a distância: WhatsApp, reuniões por vídeo e aprovações por e-mail. Onde a sua marca estiver, o jeito de trabalhar é o mesmo."
+   },
+   {
+    "id": "faq-relatorio",
+    "pergunta": "Como é o relatório?",
+    "resposta": "Todo mês você recebe um relatório com quanto investiu, quanto voltou, quanto custou cada resultado e o que muda na próxima rodada, em linguagem simples. Veja um [exemplo ilustrativo](/sobre/#relatorio)."
+   },
+   {
+    "id": "faq-dia-a-dia",
+    "pergunta": "Quem é o meu contato no dia a dia?",
+    "resposta": "O Derek Gonçalves, diretor de operações e relacionamento, é o seu primeiro contato, principalmente pelo WhatsApp. A Natalia Arruda dirige a estratégia, as mídias pagas, os dados e os relatórios, e o Vinícius Mafra dirige a criação e o design."
+   },
+   {
+    "id": "faq-troca-agencia",
+    "pergunta": "Já tenho agência. Como funciona a troca?",
+    "resposta": "A gente faz a transição com você. Pedimos os acessos às contas de anúncio, às redes e ao site, guardamos o histórico e fazemos o Raio-X antes de mexer em qualquer coisa, para nada sair do ar no meio do caminho."
+   },
+   {
+    "id": "faq-sem-verba",
+    "pergunta": "E se eu ainda não tiver verba para anúncio?",
+    "resposta": "Sem problema. Dá para começar por uma entrega pontual, como logotipo, identidade visual ou um impresso, ou por um site. O Raio-X gratuito mostra o melhor primeiro passo."
+   },
+   {
+    "id": "faq-dono-contas",
+    "pergunta": "Quem é o dono das contas de anúncio, do site e dos arquivos?",
+    "resposta": "Você. As contas de anúncio, o domínio e o site ficam no nome da sua organização, e os arquivos finais são seus. A Olorin trabalha com acesso de parceiro, que você pode tirar quando quiser."
+   }
+  ],
+  "whatsapp": "Perguntar no WhatsApp"
+ },
+ "formulario": {
+  "barra_topo": "raio-x.olo",
+  "barra_fim": "ficha.olo",
+  "etapa1_legenda": "Seus contatos",
+  "rotulos": {
+   "nome": "Seu nome",
+   "whatsapp": "WhatsApp com DDD",
+   "email": "E-mail",
+   "site_opcional": "(opcional)",
+   "servicos": "O que você precisa agora?",
+   "servicos_dica": "Pode marcar mais de um.",
+   "selecionar_tudo": "Selecionar tudo",
+   "investimento": "Quanto você investe hoje em anúncio por mês?",
+   "mensagem": "Quer contar mais alguma coisa?",
+   "mensagem_opcional": "(opcional)"
+  },
+  "placeholders": {
+   "nome": "Como te chamamos",
+   "whatsapp": "(41) 99999-9999",
+   "email": "voce@email.com.br"
+  },
+  "servicos_extra": "Ainda não sei, quero conversar",
+  "investimento_placeholder": "Selecione uma faixa",
+  "investimento": [
+   "Ainda não invisto",
+   "Até R$ 2 mil por mês",
+   "De R$ 2 a 5 mil por mês",
+   "De R$ 5 a 15 mil por mês",
+   "Acima de R$ 15 mil por mês"
+  ],
+  "sem_verba": "Sem problema. No Raio-X, mostramos por onde vale começar mesmo sem verba de anúncio.",
+  "selecione": "Selecione",
+  "consentimento": "Concordo em ser contatado pela Olorin sobre este pedido, conforme a",
+  "consentimento_link": "Política de Privacidade",
+  "botao_continuar": "Continuar",
+  "botao_voltar": "Voltar e editar contatos",
+  "botao_enviar": "Pedir orçamento",
+  "botao_enviar_diagnostico": "Quero meu Raio-X",
+  "botao_enviando": "Enviando…",
+  "nota": "Usamos seus dados só para responder este pedido. Nada de mensagem em massa.",
+  "alternativa_wa": "Prefere conversar agora?",
+  "alternativa_wa_link": "Chame no WhatsApp",
+  "erros": {
+   "nome": "Conta pra gente o seu nome.",
+   "whatsapp": "Confira o WhatsApp com DDD, por exemplo (41) 99999-9999.",
+   "ddd": "Esse DDD não existe. Confira o número.",
+   "email": "Confira o e-mail, por exemplo voce@email.com.br.",
+   "consentimento": "Precisamos do seu ok para entrar em contato.",
+   "geral": "Não conseguimos enviar agora.",
+   "conexao": "Parece que a conexão caiu.",
+   "wa_alternativa": "Mande pelo WhatsApp, com o que você já preencheu"
+  },
+  "erro_sem_js": "Não conseguimos registrar o seu pedido. Confira os campos ou chame no WhatsApp.",
+  "segmentos": {
+   "site": {
+    "nome": "Site",
+    "etapa2_legenda": "Sobre a sua empresa",
+    "empresa": {
+     "rotulo": "Empresa ou organização",
+     "placeholder": "Nome da empresa",
+     "erro": "Conta pra gente o nome da empresa."
+    },
+    "cargo": {
+     "rotulo": "Seu cargo",
+     "exemplo": "Ex.: sócio, diretora, gerente de marketing",
+     "erro": "Conta pra gente o seu cargo."
+    },
+    "porte": {
+     "rotulo": "Tamanho da equipe",
+     "erro": "Escolha o tamanho da equipe.",
+     "opcoes": [
+      "Só eu",
+      "2 a 10 pessoas",
+      "11 a 50 pessoas",
+      "51 a 200 pessoas",
+      "Mais de 200 pessoas"
+     ]
+    },
+    "site": {
+     "rotulo": "Site ou @ do Instagram",
+     "placeholder": "@suamarca ou site"
+    },
+    "mensagem_placeholder": "Ex.: tenho uma loja virtual e quero vender mais pelo Instagram."
+   },
+   "educacao": {
+    "nome": "Educação",
+    "etapa2_legenda": "Sobre a sua instituição",
+    "empresa": {
+     "rotulo": "Instituição",
+     "placeholder": "Nome da escola ou faculdade",
+     "erro": "Conta pra gente o nome da instituição."
+    },
+    "cargo": {
+     "rotulo": "Seu cargo",
+     "exemplo": "Ex.: diretora, mantenedor, coordenador de marketing",
+     "erro": "Conta pra gente o seu cargo."
+    },
+    "porte": {
+     "rotulo": "Alunos hoje",
+     "erro": "Escolha quantos alunos a instituição tem hoje.",
+     "opcoes": [
+      "Até 200",
+      "201 a 1.000",
+      "1.001 a 5.000",
+      "Mais de 5.000"
+     ]
+    },
+    "site": {
+     "rotulo": "Site ou @ da instituição",
+     "placeholder": "@suaescola ou site"
+    },
+    "desafios": {
+     "rotulo": "Qual é o maior desafio hoje?",
+     "dica": "Pode marcar mais de um.",
+     "opcoes": [
+      "Poucos contatos",
+      "Contatos que não viram matrícula",
+      "Não sei o custo de cada matrícula",
+      "Abrir turma ou unidade nova",
+      "Ainda não sei, quero conversar"
+     ]
+    },
+    "mensagem_placeholder": "Ex.: queremos encher a turma de 2027 do ensino médio."
+   },
+   "influenciadores": {
+    "nome": "Influenciadores",
+    "etapa2_legenda": "Sobre o seu perfil",
+    "empresa": {
+     "rotulo": "Seu perfil ou marca",
+     "placeholder": "@seuperfil",
+     "erro": "Conta pra gente o seu perfil ou a sua marca."
+    },
+    "cargo": {
+     "rotulo": "Você é",
+     "erro": "Escolha o que você é.",
+     "opcoes": [
+      "Criador ou criadora de conteúdo",
+      "Agente ou empresário de criadores",
+      "Marca ou empresa",
+      "Outro"
+     ]
+    },
+    "porte": {
+     "rotulo": "Seguidores no maior perfil",
+     "erro": "Escolha uma faixa de seguidores.",
+     "opcoes": [
+      "Até 10 mil",
+      "10 mil a 100 mil",
+      "100 mil a 500 mil",
+      "500 mil a 1 milhão",
+      "Mais de 1 milhão"
+     ]
+    },
+    "site": {
+     "rotulo": "Outra rede, canal ou site",
+     "placeholder": "TikTok, YouTube ou site"
+    },
+    "desafios": {
+     "rotulo": "Qual é o maior desafio hoje?",
+     "dica": "Pode marcar mais de um.",
+     "opcoes": [
+      "Crescer o perfil",
+      "Fechar mais publis e parcerias",
+      "Vender meu produto, curso ou mentoria",
+      "Conteúdo e identidade visual",
+      "Ainda não sei, quero conversar"
+     ]
+    },
+    "mensagem_placeholder": "Ex.: quero crescer no TikTok e fechar mais publis."
+   }
+  }
+ },
+ "home": {
+  "secoes": [
+   "hero",
+   "resultados",
+   "servicos",
+   "calculadora",
+   "equipe",
+   "orcamento"
+  ],
+  "seo": {
+   "titulo": "Olorin Digital | Agência de marketing digital",
+   "descricao": "Sua marca em outro nível. Anúncios, redes, marca, site, impressos e dados num time só, com estratégia e relatório todo mês. Peça o seu Raio-X gratuito."
+  },
+  "hero": {
+   "linha_superior": "Agência de marketing digital",
+   "titulo": "Sua marca em",
+   "titulo_destaque": "outro nível.",
+   "selo": "Level up",
+   "jogo_aviso": "+1 nível",
+   "botao_start": "Quero um Raio-X gratuito",
+   "apoio": "",
+   "checks_rotulo": "Como a Olorin trabalha",
+   "checks": [
+    "Diagnóstico gratuito e sem compromisso",
+    "Estratégia e performance",
+    "Produção de alto nível"
+   ],
+   "botao": "Quero meu Raio-X"
+  },
+  "resultados": {
+   "etiqueta": "Resultados",
+   "titulo": "Provas, não promessas.",
+   "texto": "O que o nosso time já fez.",
+   "credencial": "Agência parceira Meta e Google",
+   "cases_etiqueta": "Cases",
+   "cases_titulo": "Na prática.",
+   "case_link": "Ver o serviço",
+   "portfolio_etiqueta": "Portfólio",
+   "portfolio_titulo": "Marcas atendidas.",
+   "portfolio_texto": "Identidade, redes, impressos, sites e campanhas feitos pelo nosso time.",
+   "filtro_todos": "Tudo",
+   "limite": 6,
+   "link_mais": {
+    "texto": "Ver o portfólio completo",
+    "url": "/portfolio/"
+   },
+   "botao_instagram": "Ver mais no Instagram"
+  },
+  "servicos": {
+   "titulo": "O que a Olorin faz",
+   "ver_detalhes": "Ver o serviço",
+   "faixa_texto": "Não sabe por onde começar?"
+  },
+  "equipe": {
+   "etiqueta": "Quem toca",
+   "titulo": "Fale com quem coordena.",
+   "texto": "Cada frente tem alguém que coordena e responde por ela. Você fala com quem coordena, sem intermediário.",
+   "botao": "Falar no WhatsApp",
+   "link_sobre": "Conheça quem somos",
+   "ver_perfil": "Ver perfil"
+  },
+  "orcamento": {
+   "titulo": "RAIO X DA OLORIN",
+   "passos": [
+    "Você conta quem é",
+    "A gente analisa tudo",
+    "Você recebe o Raio-X"
+   ]
+  }
+ },
+ "portfolio": {
+  "filtros": [
+   {
+    "id": "identidade-visual",
+    "rotulo": "Identidade visual",
+    "curto": "Identidade"
+   },
+   {
+    "id": "redes-sociais",
+    "rotulo": "Redes sociais",
+    "curto": "Redes"
+   },
+   {
+    "id": "material-impresso",
+    "rotulo": "Impressos"
+   },
+   {
+    "id": "site-e-loja-virtual",
+    "rotulo": "Sites"
+   },
+   {
+    "id": "trafego-pago",
+    "rotulo": "Tráfego pago",
+    "curto": "Tráfego"
+   },
+   {
+    "id": "rastreamento-e-relatorio",
+    "rotulo": "Dados"
+   }
+  ],
+  "itens": [
+   {
+    "titulo": "BRAVO Film Festival",
+    "rotulo": "Identidade visual · Redes sociais",
+    "imagem": "portfolio-bravo-film-festival",
+    "servicos": [
+     "identidade-visual",
+     "redes-sociais"
+    ]
+   },
+   {
+    "titulo": "John Deere",
+    "rotulo": "Tráfego pago",
+    "imagem": "portfolio-john-deere",
+    "servicos": [
+     "trafego-pago"
+    ]
+   },
+   {
+    "titulo": "Governo do Estado do RS",
+    "rotulo": "Identidade visual · Impressos",
+    "imagem": "portfolio-governo-rs",
+    "servicos": [
+     "identidade-visual",
+     "material-impresso"
+    ]
+   },
+   {
+    "titulo": "José Anacleto Abduch",
+    "rotulo": "Sites · Tráfego pago · Redes sociais",
+    "imagem": "portfolio-anacleto-abduch",
+    "servicos": [
+     "site-e-loja-virtual",
+     "trafego-pago",
+     "redes-sociais"
+    ]
+   },
+   {
+    "titulo": "Centro Sul Shop",
+    "rotulo": "Tráfego pago",
+    "imagem": "portfolio-centro-sul-shop",
+    "servicos": [
+     "trafego-pago"
+    ]
+   },
+   {
+    "titulo": "National Geographic",
+    "rotulo": "Marca atendida",
+    "imagem": "portfolio-national-geographic",
+    "servicos": []
+   },
+   {
+    "titulo": "iZETA",
+    "rotulo": "Sites · Tráfego pago · Redes sociais · Dados",
+    "imagem": "portfolio-izeta",
+    "servicos": [
+     "site-e-loja-virtual",
+     "trafego-pago",
+     "redes-sociais",
+     "rastreamento-e-relatorio"
+    ]
+   },
+   {
+    "titulo": "Harmonia do Pet",
+    "rotulo": "Sites · Tráfego pago · Redes sociais · Dados",
+    "imagem": "portfolio-harmonia-do-pet",
+    "servicos": [
+     "site-e-loja-virtual",
+     "trafego-pago",
+     "redes-sociais",
+     "rastreamento-e-relatorio"
+    ]
+   }
+  ]
+ },
+ "selos": {
+  "itens": [
+   "Diagnóstico gratuito e sem compromisso",
+   "Estratégia e performance",
+   "Produção de alto nível"
+  ]
+ },
+ "paginas": {
+  "educacao": {
+   "seo": {
+    "titulo": "Marketing para instituições de ensino | Olorin Educação",
+    "descricao": "Captação de alunos para universidades, escolas, cursos, idiomas, pré-vestibular e pós. Anúncio, Instagram e atendimento. Peça o Raio-X grátis."
+   },
+   "marca": {
+    "nome": "Olorin Educação",
+    "sub": "educação",
+    "lema": "Sua escola em outro nível.",
+    "apoio": "Do curso livre à pós-graduação.",
+    "parte_de": "A Olorin Educação é a área de instituições de ensino da Olorin Digital."
+   },
+   "whatsapp": {
+    "padrao": "Oi! Vim pela página Olorin Educação e quero o Raio-X da minha instituição.",
+    "equipe": "Oi! Vim pela página Olorin Educação e quero falar com a equipe.",
+    "assunto_form": "o Raio-X da minha instituição"
+   },
+   "formulario": {
+    "barra_topo": "ficha_raio_x.olo",
+    "barra_fim": "ficha_raio_x.olo",
+    "placeholders": {
+     "site": "@suainstituicao ou seusite.com.br",
+     "mensagem": "Ex.: somos uma faculdade e queremos mais matrículas para o próximo semestre."
+    }
+   },
+   "cabecalho": {
+    "menu": [
+     {
+      "rotulo": "Para quem",
+      "url": "#para-quem"
+     },
+     {
+      "rotulo": "Calendário",
+      "url": "#calendario"
+     },
+     {
+      "rotulo": "Cases",
+      "url": "#cases"
+     },
+     {
+      "rotulo": "Equipe",
+      "url": "#equipe"
+     }
+    ],
+    "menu_extra": [],
+    "voltar": "Site da Olorin",
+    "voltar_longo": "Voltar para o site da Olorin Digital",
+    "botao": "Raio-X grátis",
+    "whatsapp": "Falar no WhatsApp",
+    "remoto": "Atendimento 100% remoto"
+   },
+   "hero": {
+    "etiqueta": "Olorin Educação · captação de alunos",
+    "titulo": "Sua escola em",
+    "titulo_destaque": "outro nível.",
+    "apoio": "Turma cheia não é sorte.",
+    "texto": "Anúncio, Instagram e atendimento com a mesma equipe, e um boletim todo mês com o custo de cada matrícula.",
+    "botao": "Quero o Raio-X grátis",
+    "prova": [
+     "Diagnóstico gratuito e sem compromisso",
+     "Estratégia e performance",
+     "Produção de alto nível"
+    ],
+    "boletim": {
+     "janela": "boletim.olo",
+     "titulo": "Boletim da captação",
+     "escola": "Instituição Exemplo",
+     "periodo": "Raio-X gratuito",
+     "coluna_materia": "Matéria",
+     "coluna_nota": "Nota",
+     "materias": [
+      {
+       "nome": "Anúncio na Meta e no Google",
+       "nota": "8,5"
+      },
+      {
+       "nome": "Instagram da instituição",
+       "nota": "7,0"
+      },
+      {
+       "nome": "Site e página de matrícula",
+       "nota": "6,0"
+      },
+      {
+       "nome": "Resposta no WhatsApp",
+       "nota": "4,5",
+       "obs": "recuperação · 3 h 40 min para responder",
+       "alerta": true
+      },
+      {
+       "nome": "Custo por matrícula",
+       "nota": "?",
+       "obs": "ninguém mede",
+       "alerta": true
+      }
+     ],
+     "carimbo": "Raio-X",
+     "aviso": "Exemplo ilustrativo de Raio-X, com dados fictícios."
+    }
+   },
+   "regua": [
+    "Captação de alunos",
+    "Campanha de matrícula",
+    "Meta Ads e Google Ads",
+    "Instagram da instituição",
+    "Página de matrícula",
+    "Atendimento no WhatsApp",
+    "Custo por matrícula"
+   ],
+   "chamada": {
+    "etiqueta": "Para quem é",
+    "titulo": "Feita para quem vende matrícula.",
+    "texto": "Universidade, escola, curso ou pós-graduação. Se a receita depende de turma cheia, a Olorin Educação toca a sua captação.",
+    "nota": "Atendimento 100% remoto, com reunião por vídeo e boletim online.",
+    "janela": "chamada.olo",
+    "turma": "Lista de chamada",
+    "presente": "presente",
+    "itens": [
+     "Universidades e faculdades",
+     "Escolas particulares",
+     "Cursos livres",
+     "Cursos profissionalizantes",
+     "Escolas de idiomas",
+     "Pré-vestibular e preparatórios",
+     "Pós-graduação",
+     "Educação executiva"
+    ],
+    "ausente": "ausente",
+    "ausente_texto": "Quem só quer post bonito, sem medir matrícula."
+   },
+   "calendario": {
+    "etiqueta": "Calendário de captação",
+    "titulo": "Ainda dá tempo.",
+    "texto": "Em escola, a família costuma decidir entre outubro e janeiro, com pico em novembro. Começando agora, a campanha chega pronta ao pico.",
+    "aqui": "Você está aqui",
+    "pico": "pico",
+    "vagas": 10,
+    "turma_legenda": "A turma enchendo ao longo da temporada (ilustração).",
+    "fora": "Fora da temporada? Melhor. Dá para preparar a próxima com calma.",
+    "nota": "Curso livre, idiomas, pré-vestibular e pós têm calendário próprio, às vezes com mais de uma entrada por ano. No Raio-X, montamos o do seu curso.",
+    "botao": "Quero o Raio-X grátis",
+    "meses": [
+     {
+      "mes": 10,
+      "nome": "Outubro",
+      "curto": "out",
+      "fase": "Preparar",
+      "texto": "Raio-X, planejamento, criativos e campanha no ar.",
+      "turma": 2
+     },
+     {
+      "mes": 11,
+      "nome": "Novembro",
+      "curto": "nov",
+      "fase": "Pico",
+      "texto": "As famílias decidem. Visitas e aulas experimentais.",
+      "turma": 5,
+      "pico": true
+     },
+     {
+      "mes": 12,
+      "nome": "Dezembro",
+      "curto": "dez",
+      "fase": "Fechar",
+      "texto": "Matrícula, rematrícula e retorno para quem visitou.",
+      "turma": 8
+     },
+     {
+      "mes": 1,
+      "nome": "Janeiro",
+      "curto": "jan",
+      "fase": "Ajustar",
+      "texto": "Quem decide tarde. Verba onde o custo por matrícula é menor.",
+      "turma": 9
+     },
+     {
+      "mes": 2,
+      "nome": "Fevereiro",
+      "curto": "fev",
+      "fase": "Ler",
+      "texto": "Volta às aulas. Boletim da temporada e lições para a próxima.",
+      "turma": 10
+     }
+    ]
+   },
+   "cases": {
+    "etiqueta": "Clientes",
+    "titulo": "Quem já atendemos.",
+    "texto": "Uma edtech de educação em saúde e a venda de cursos e obras de um especialista em Direito Público.",
+    "ficha": "Ficha nº",
+    "carimbo": "Atendido pela Olorin",
+    "site": "Ver o site"
+   },
+   "equipe": {
+    "etiqueta": "Quem coordena",
+    "titulo": "Fale com quem coordena.",
+    "texto": "Agência parceira Meta e Google. Um time inteiro na sua captação, com uma pessoa respondendo por cada frente.",
+    "frases": {
+     "natalia-arruda": "Gestora de tráfego com mais de seis anos em mídia paga e contas de educação no currículo. Dirige a estratégia e os anúncios.",
+     "vinicius-mafra": "Mais de 10 anos de direção de arte. Dá cara de marca a quem costuma ter comunicação burocrática.",
+     "derek-goncalves": "Seu primeiro contato e quem coordena a sua captação no dia a dia."
+    },
+    "botao": "Falar no WhatsApp",
+    "link_sobre": "Conheça quem somos"
+   },
+   "raio_x": {
+    "titulo": "Raio X da Olorin",
+    "passos": [
+     "Você conta sobre a instituição",
+     "A gente testa o atendimento e analisa tudo",
+     "Você recebe o plano da captação"
+    ]
+   },
+   "rodape": {
+    "nesta_pagina": "Nesta página",
+    "olorin": "Olorin Digital",
+    "contato": "Contato",
+    "links_olorin": [
+     {
+      "rotulo": "Site da Olorin",
+      "url": "/"
+     },
+     {
+      "rotulo": "Portfólio",
+      "url": "/portfolio/"
+     },
+     {
+      "rotulo": "Sobre",
+      "url": "/sobre/"
+     },
+     {
+      "rotulo": "Quem somos",
+      "url": "/quem-somos/"
+     }
+    ]
+   }
+  },
+  "erro404": {
+   "seo": {
+    "titulo": "Página não encontrada | Olorin Digital",
+    "descricao": "Essa página não existe ou mudou de endereço. Veja os serviços da Olorin ou fale com a gente no WhatsApp."
+   },
+   "janela": "erro_404.olo",
+   "titulo": "Página não encontrada.",
+   "texto": "Essa página não existe ou mudou de endereço. Veja se o que você procura está nos serviços abaixo.",
+   "inicio": "Voltar para o início",
+   "raio_x": "Pedir meu Raio-X grátis"
+  },
+  "influenciadores": {
+   "seo": {
+    "titulo": "Marketing para influenciadores | Olorin Digital",
+    "descricao": "Seu perfil em outro nível. Estratégia, conteúdo, design e anúncios para criadores e influenciadores. Peça o Raio-X gratuito do seu perfil."
+   },
+   "marca": {
+    "nome": "Olorin para influenciadores",
+    "sub": "influenciadores",
+    "lema": "Seu perfil em outro nível.",
+    "lema_1": "Seu perfil em",
+    "lema_destaque": "outro nível.",
+    "apoio": "Para quem cria, de qualquer nicho.",
+    "parte_de": "A Olorin para influenciadores é a área de criadores de conteúdo da Olorin Digital."
+   },
+   "whatsapp": {
+    "padrao": "Oi! Vim pela página de influenciadores da Olorin e quero o Raio-X do meu perfil.",
+    "equipe": "Oi! Vim pela página de influenciadores da Olorin e quero falar com a equipe.",
+    "assunto_form": "o Raio-X do meu perfil"
+   },
+   "formulario": {
+    "barra_topo": "raio_x_do_perfil.olo",
+    "barra_fim": "raio_x_do_perfil.olo",
+    "placeholders": {
+     "site": "@seuperfil ou link do canal",
+     "mensagem": "Ex.: posto sobre fitness no Instagram e no TikTok e quero crescer e fechar mais parcerias."
+    }
+   },
+   "cabecalho": {
+    "menu": [
+     {
+      "rotulo": "Para quem",
+      "url": "#para-quem"
+     },
+     {
+      "rotulo": "O que a gente faz",
+      "url": "#canais"
+     },
+     {
+      "rotulo": "Como funciona",
+      "url": "#como-funciona"
+     },
+     {
+      "rotulo": "Equipe",
+      "url": "#equipe"
+     }
+    ],
+    "voltar": "Site da Olorin",
+    "voltar_longo": "Voltar para o site da Olorin Digital",
+    "botao": "Raio-X gratuito",
+    "whatsapp": "Falar no WhatsApp",
+    "remoto": "Atendimento 100% remoto"
+   },
+   "hero": {
+    "etiqueta": "Olorin para influenciadores",
+    "titulo": "Seu perfil em",
+    "titulo_destaque": "outro nível.",
+    "texto": "Estratégia, conteúdo, design e anúncios para criadores que querem crescer, fechar parcerias e viver do próprio perfil.",
+    "botao": "Quero meu Raio-X",
+    "prova": [
+     "Diagnóstico gratuito e sem compromisso",
+     "Estratégia e performance",
+     "Produção de alto nível"
+    ],
+    "osd": {
+     "rec": "REC",
+     "canal": "CH 01",
+     "fita": "▶ PLAY"
+    }
+   },
+   "faixa": [
+    "crescer o perfil",
+    "fechar publi",
+    "mídia kit",
+    "calendário de conteúdo",
+    "reels e carrossel",
+    "anúncio na Meta e no Google",
+    "relatório todo mês"
+   ],
+   "para_quem": {
+    "etiqueta": "Para quem é",
+    "titulo": "Feita para quem cria.",
+    "gigante": "pra quem cria",
+    "texto": "Se o seu trabalho é o seu perfil, a Olorin entra com estratégia, produção e anúncio.",
+    "perfis": [
+     {
+      "nome": "Criadores e influenciadores",
+      "texto": "Crescer com método, não no chute."
+     },
+     {
+      "nome": "Perfis que querem virar marca",
+      "texto": "Lançar produto, curso ou mentoria."
+     },
+     {
+      "nome": "Agentes e empresários",
+      "texto": "Mídia kit, relatório e campanha."
+     }
+    ],
+    "fora": "Não é para quem quer comprar seguidor.",
+    "nichos_rotulo": "Nichos que a gente atende",
+    "nichos": [
+     "moda",
+     "beleza",
+     "fitness",
+     "games",
+     "música",
+     "humor",
+     "educação",
+     "gastronomia",
+     "viagem",
+     "lifestyle",
+     "tecnologia",
+     "maternidade"
+    ],
+    "adesivo_tag": "#criadora"
+   },
+   "canais": {
+    "etiqueta": "O que a gente faz",
+    "titulo": "A programação do seu perfil.",
+    "texto": "Tudo o que um perfil precisa para crescer, num time só.",
+    "rotulo_canal": "CH",
+    "itens": [
+     {
+      "canal": "01",
+      "nome": "Estratégia e calendário",
+      "texto": "Posicionamento, linha editorial e calendário.",
+      "tag": "planejamento"
+     },
+     {
+      "canal": "02",
+      "nome": "Identidade visual e mídia kit",
+      "texto": "Feed, destaques e mídia kit.",
+      "tag": "visual"
+     },
+     {
+      "canal": "03",
+      "nome": "Produção e edição",
+      "texto": "Reels, carrosséis e stories.",
+      "tag": "conteúdo"
+     },
+     {
+      "canal": "04",
+      "nome": "Anúncios",
+      "texto": "Meta e Google para crescer, vender e atrair marcas.",
+      "tag": "mídia paga"
+     },
+     {
+      "canal": "05",
+      "nome": "Relatório todo mês",
+      "texto": "O que funcionou e o próximo passo.",
+      "tag": "dados"
+     }
+    ]
+   },
+   "enquadramento": {
+    "etiqueta": "Estratégia antes do post",
+    "titulo": "Primeiro o enquadramento.",
+    "titulo_destaque": "depois o play.",
+    "texto": "Para quem você fala, como aparece e o que cada post precisa fazer.",
+    "botao": "Raio-X do meu perfil",
+    "visor": {
+     "rec": "REC",
+     "tempo": "00:00:15",
+     "info": "4K · 60"
+    }
+   },
+   "como_funciona": {
+    "etiqueta": "Como funciona",
+    "titulo": "O Raio-X do seu perfil.",
+    "texto": "Em 3 cenas, sem compromisso.",
+    "roteiro": {
+     "titulo": "Roteiro",
+     "formato": "Reels · 0:30",
+     "take": "Take 1"
+    },
+    "passos": [
+     {
+      "tempo": "0:00",
+      "cena": "Gancho",
+      "titulo": "A gente olha o seu perfil.",
+      "texto": "Conteúdo, frequência, formatos e anúncios."
+     },
+     {
+      "tempo": "0:03",
+      "cena": "Virada",
+      "titulo": "Mostra o que trava.",
+      "texto": "E o que destravar primeiro."
+     },
+     {
+      "tempo": "0:20",
+      "cena": "Chamada",
+      "titulo": "Você recebe o plano.",
+      "texto": "Se fizer sentido, a gente toca junto."
+     }
+    ],
+    "postit": "Grátis e sem compromisso!",
+    "botao": "Raio-X do meu perfil",
+    "adesivo_tag": "#gravando"
+   },
+   "equipe": {
+    "etiqueta": "Quem faz",
+    "titulo": "O time por trás do play.",
+    "texto": "Estratégia, criação e mídia paga, com uma pessoa respondendo por cada frente.",
+    "frases": {
+     "natalia-arruda": "Dirige a estratégia e os anúncios na Meta e no Google. Mais de seis anos em mídia paga.",
+     "vinicius-mafra": "Mais de 10 anos em direção de arte, de influenciadores digitais a produções culturais. Dirige a criação.",
+     "derek-goncalves": "Seu primeiro contato e quem coordena o seu perfil no dia a dia."
+    },
+    "botao": "Falar no WhatsApp",
+    "link_sobre": "Conheça quem somos"
+   },
+   "rodape": {
+    "nesta_pagina": "Nesta página",
+    "olorin": "Olorin Digital",
+    "contato": "Contato",
+    "links_olorin": [
+     {
+      "rotulo": "Site da Olorin",
+      "url": "/"
+     },
+     {
+      "rotulo": "Olorin Educação",
+      "url": "/educacao/"
+     },
+     {
+      "rotulo": "Serviços",
+      "url": "/servicos/"
+     },
+     {
+      "rotulo": "Portfólio",
+      "url": "/portfolio/"
+     },
+     {
+      "rotulo": "Quem somos",
+      "url": "/quem-somos/"
+     }
+    ]
+   }
+  },
+  "obrigado": {
+   "seo": {
+    "titulo": "Recebido | Olorin Digital",
+    "descricao": "Recebemos o seu pedido. Vamos te chamar no WhatsApp em até 1 dia útil."
+   },
+   "etiqueta": "Pedido recebido",
+   "titulo": "Recebido.",
+   "texto": "Vamos te chamar no WhatsApp para entender o que você precisa e marcar a conversa.",
+   "prazo": "Resposta em até 1 dia útil.",
+   "botao": "Falar no WhatsApp",
+   "agendar": "Prefere marcar um horário?",
+   "enquanto_titulo": "Enquanto isso",
+   "enquanto": [
+    {
+     "rotulo": "Veja como funciona o Método Olorin",
+     "url": "/sobre/"
+    },
+    {
+     "rotulo": "Veja um exemplo do nosso relatório",
+     "url": "/sobre/#relatorio"
+    },
+    {
+     "rotulo": "Veja o portfólio",
+     "url": "/portfolio/"
+    },
+    {
+     "rotulo": "Conheça o time",
+     "url": "/quem-somos/"
+    }
+   ],
+   "educacao": {
+    "seo": {
+     "titulo": "Recebido | Olorin Educação",
+     "descricao": "Recebemos o pedido de Raio-X da sua instituição. Vamos te chamar no WhatsApp em até 1 dia útil."
+    },
+    "barra": "raio-x_pedido.olo",
+    "etiqueta": "Raio-X pedido",
+    "titulo": "Recebido.",
+    "texto": "Vamos te chamar no WhatsApp para entender o momento da sua instituição e marcar a conversa do Raio-X.",
+    "prazo": "Resposta em até 1 dia útil.",
+    "botao": "Falar no WhatsApp",
+    "whatsapp": "Oi! Acabei de pedir o Raio-X da minha instituição pela página Olorin Educação e quero adiantar a conversa.",
+    "agendar": "Prefere marcar um horário?",
+    "enquanto_titulo": "Enquanto isso",
+    "enquanto": [
+     {
+      "rotulo": "Volte para a página Olorin Educação",
+      "url": "/educacao/"
+     },
+     {
+      "rotulo": "Veja o portfólio",
+      "url": "/portfolio/"
+     },
+     {
+      "rotulo": "Conheça o time",
+      "url": "/quem-somos/"
+     }
+    ]
+   },
+   "influenciadores": {
+    "seo": {
+     "titulo": "Recebido | Olorin para influenciadores",
+     "descricao": "Recebemos o pedido de Raio-X do seu perfil. Vamos te chamar no WhatsApp em até 1 dia útil."
+    },
+    "barra": "raio-x_do_perfil.olo",
+    "etiqueta": "Raio-X pedido",
+    "titulo": "Recebido.",
+    "texto": "Vamos te chamar no WhatsApp para olhar o seu perfil com você e marcar a conversa do Raio-X.",
+    "prazo": "Resposta em até 1 dia útil.",
+    "botao": "Falar no WhatsApp",
+    "whatsapp": "Oi! Acabei de pedir o Raio-X do meu perfil pela página de influenciadores da Olorin e quero adiantar a conversa.",
+    "agendar": "Prefere marcar um horário?",
+    "enquanto_titulo": "Enquanto isso",
+    "instagram": "Siga a Olorin no Instagram",
+    "enquanto": [
+     {
+      "rotulo": "Volte para a página de influenciadores",
+      "url": "/influenciadores/"
+     },
+     {
+      "rotulo": "Veja o portfólio",
+      "url": "/portfolio/"
+     },
+     {
+      "rotulo": "Conheça o time",
+      "url": "/quem-somos/"
+     }
+    ]
+   }
+  },
+  "portfolio": {
+   "etiqueta": "Portfólio",
+   "titulo": "Feito pelo nosso time.",
+   "sub": "Projetos do time da Olorin, inclusive o que cada um de nós já fez para estas marcas.",
+   "cases": {
+    "etiqueta": "Cases",
+    "titulo": "Em destaque.",
+    "texto": "Dois clientes de educação, com o que a Olorin fez em cada um."
+   },
+   "portfolio": {
+    "etiqueta": "Trabalhos",
+    "titulo": "Marcas atendidas.",
+    "filtro_todos": "Tudo",
+    "botao": "Ver mais no Instagram"
+   }
+  },
+  "privacidade": {
+   "seo": {
+    "titulo": "Política de Privacidade | Olorin Digital",
+    "descricao": "Como a Olorin Digital trata os dados de quem visita o site e pede orçamento, conforme a LGPD (Lei nº 13.709/2018)."
+   },
+   "titulo": "Política de Privacidade",
+   "atualizado": "2026-10-23",
+   "introducao": "Esta política explica, em linguagem simples, como a Olorin Digital trata os dados pessoais de quem visita o site olorin.com.br, pede orçamento ou fala com a gente pelo WhatsApp. Ela segue a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).",
+   "secoes": [
+    {
+     "id": "responsavel",
+     "titulo": "1. Quem é responsável pelos seus dados",
+     "paragrafos": [
+      "A controladora dos dados é a **Olorin Digital**, agência de marketing digital com atendimento 100% remoto.",
+      "Contato: [digital@olorin.com.br](mailto:digital@olorin.com.br) ou WhatsApp (41) 99646-0861.",
+      "CNPJ da Olorin Digital: 57.027.011/0001-82."
+     ]
+    },
+    {
+     "id": "encarregado",
+     "titulo": "2. Encarregado de dados (DPO)",
+     "paragrafos": [
+      "O encarregado pelo tratamento de dados pessoais é **Derek Gonçalves**. Fale com ele pelo e-mail [digital@olorin.com.br](mailto:digital@olorin.com.br), com o assunto \"Privacidade\"."
+     ]
+    },
+    {
+     "id": "dados",
+     "titulo": "3. Quais dados coletamos",
+     "lista": [
+      "**Formulário de orçamento ou Raio-X:** nome, WhatsApp, e-mail, empresa ou instituição (ou o seu perfil), cargo, porte (como o tamanho da equipe, o número de alunos ou de seguidores), site ou perfil do Instagram (opcional), serviços ou desafios de interesse, verba de anúncio, a mensagem que você escrever e a data e a hora do seu aceite.",
+      "**Origem do contato:** a página em que você enviou o formulário, o site de onde veio e os códigos de campanha do endereço (como utm_source, gclid e fbclid). Assim sabemos qual anúncio ou canal trouxe o pedido.",
+      "**Proteção contra robôs:** quanto tempo o formulário ficou aberto e uma versão embaralhada (hash) do seu endereço IP, guardada por cerca de 10 minutos para barrar envios em série. Ela não fica junto do seu pedido.",
+      "**Conversas:** o que você mandar para a gente pelo WhatsApp, por e-mail ou em reunião por vídeo.",
+      "**Registros de acesso:** como em todo site, a hospedagem registra o IP, a data e a hora das visitas. O Marco Civil da Internet (Lei nº 12.965/2014) manda guardar esses registros por 6 meses.",
+      "**Medição de visitas e anúncios:** com cookies, só se você permitir no aviso de cookies; sem permissão, o Google recebe apenas sinais sem cookies e sem identificação (veja a seção 7)."
+     ],
+     "paragrafos_fim": [
+      "Não pedimos CPF, endereço, dados bancários nem dados sensíveis, como saúde, religião ou opinião política. Por favor, não mande esse tipo de informação no campo de mensagem."
+     ]
+    },
+    {
+     "id": "finalidade",
+     "titulo": "4. Para que usamos e com qual base legal",
+     "lista": [
+      "**Responder o seu pedido, fazer o Raio-X e mandar a proposta.** Base legal: procedimentos preliminares a um contrato, a seu pedido (art. 7º, V, da LGPD). A caixa \"Concordo em ser contatado\" registra esse pedido.",
+      "**Cumprir o contrato, se você virar cliente.** Base legal: execução de contrato (art. 7º, V) e cumprimento de obrigação legal, como as fiscais (art. 7º, II).",
+      "**Saber qual canal trouxe o contato e proteger o formulário contra spam.** Base legal: legítimo interesse (art. 7º, IX), com o mínimo de dados e sem nenhuma decisão automática sobre você.",
+      "**Medir visitas e o resultado dos nossos anúncios.** Base legal: o seu consentimento no aviso de cookies (art. 7º, I), que você pode retirar quando quiser. Antes da sua escolha, só vão sinais sem cookies e sem identificar você, para contar visitas de forma agregada: legítimo interesse (art. 7º, IX).",
+      "**Guardar os registros de acesso e nos defender, se houver processo.** Base legal: obrigação legal (art. 7º, II) e exercício regular de direitos (art. 7º, VI)."
+     ],
+     "paragrafos_fim": [
+      "Não vendemos os seus dados, não mandamos mensagem em massa e não usamos os seus dados para outra finalidade sem avisar antes."
+     ]
+    },
+    {
+     "id": "compartilhamento",
+     "titulo": "5. Com quem compartilhamos",
+     "lista": [
+      "**Locaweb:** hospeda o site, os pedidos do formulário e o nosso e-mail, em servidores no Brasil.",
+      "**WhatsApp (Meta):** quando você escolhe falar pelo WhatsApp, a conversa segue também as regras do próprio WhatsApp.",
+      "**Google e Meta (medição):** o Google recebe, desde a primeira página, só sinais sem cookies e sem identificador; com a sua permissão no aviso de cookies, Google e Meta recebem dados de navegação, como páginas vistas, cliques e um identificador do navegador. O site não envia o seu nome, telefone ou e-mail para essas ferramentas.",
+      "**Ferramenta de agenda:** se você usar o link para marcar um horário, ela recebe os dados que você preencher lá, conforme a política dela.",
+      "**Autoridades:** só quando a lei ou uma ordem judicial exigir."
+     ],
+     "paragrafos_fim": [
+      "Se passarmos a usar outra ferramenta com os seus dados, como um sistema de gestão de clientes, ela entra nesta lista antes."
+     ]
+    },
+    {
+     "id": "internacional",
+     "titulo": "6. Dados fora do Brasil",
+     "paragrafos": [
+      "Google e Meta podem tratar dados de navegação em servidores fora do Brasil, como nos Estados Unidos. Isso acontece com os sinais sem cookies do Google, com o seu consentimento para a medição ou quando você escolhe usar o WhatsApp, e essas empresas declaram adotar as garantias que a LGPD exige para esse envio (art. 33), como cláusulas contratuais padrão."
+     ]
+    },
+    {
+     "id": "cookies",
+     "titulo": "7. Cookies e medição",
+     "paragrafos": [
+      "Cookies e tecnologias parecidas, como o armazenamento do navegador, guardam pequenas informações no seu aparelho. O site usa três tipos:"
+     ],
+     "lista": [
+      "**Necessários:** guardam no seu navegador a sua escolha sobre cookies e, só enquanto a aba estiver aberta, a origem da visita (para ir junto com o seu pedido) e a versão do formulário que você viu. Não dependem de autorização.",
+      "**Análise (Google Analytics 4):** conta visitas, páginas e cliques de forma agregada. Cookies _ga e _ga_*, por até 2 anos.",
+      "**Marketing (Meta Pixel e Google Ads):** mostra quais anúncios trouxeram visitas e pedidos e permite mostrar anúncios a quem já visitou o site. Cookies como _fbp, _fbc, _gcl_au e _gcl_aw, por até 90 dias."
+     ],
+     "paragrafos_fim": [
+      "Nenhum cookie de Análise ou Marketing é gravado antes da sua escolha. O Google Analytics e o Google Tag Manager carregam no modo de consentimento do Google com tudo negado: até você aceitar, o Google recebe só sinais sem cookies e sem identificador, para contar visitas de forma agregada. O Meta Pixel só carrega se você aceitar Marketing. O aviso tem três botões com o mesmo destaque: Aceitar tudo, Recusar e Personalizar. Enquanto nenhuma ferramenta de medição estiver ligada no site, o aviso nem aparece.",
+      "Para mudar de ideia, use \"Preferências de cookies\", no rodapé ou no botão abaixo, ou apague os cookies nas configurações do navegador. Recusar não impede você de usar o site nem de pedir orçamento."
+     ],
+     "botao_cookies": true
+    },
+    {
+     "id": "retencao",
+     "titulo": "8. Por quanto tempo guardamos",
+     "lista": [
+      "**Pedidos de orçamento e conversas:** até 24 meses depois do último contato. Se você virar cliente, pelo tempo do contrato e, depois dele, pelos prazos que a lei exige, como os fiscais.",
+      "**Registros de acesso ao site:** 6 meses.",
+      "**Hash do IP contra spam:** cerca de 10 minutos.",
+      "**Sua escolha sobre cookies:** fica no seu navegador até você apagar ou mudar.",
+      "**Dados de medição:** pelo prazo configurado no Google e na Meta, de até 14 meses no Google Analytics."
+     ],
+     "paragrafos_fim": [
+      "Depois desses prazos, apagamos os dados ou deixamos anônimos. Você pode pedir a exclusão antes, menos do que a lei obriga a guardar."
+     ]
+    },
+    {
+     "id": "direitos",
+     "titulo": "9. Seus direitos",
+     "paragrafos": [
+      "Pela LGPD (art. 18), você pode pedir, a qualquer momento e sem custo:"
+     ],
+     "lista": [
+      "confirmação de que tratamos os seus dados e acesso a eles;",
+      "correção de dados incompletos, errados ou desatualizados;",
+      "anonimização, bloqueio ou eliminação de dados desnecessários ou tratados fora da lei;",
+      "portabilidade dos dados para outro fornecedor;",
+      "eliminação dos dados tratados com o seu consentimento e informação sobre o que acontece se você não consentir;",
+      "informação sobre com quem compartilhamos os seus dados;",
+      "revogação do consentimento e oposição a um tratamento que você considere irregular."
+     ],
+     "paragrafos_fim": [
+      "**Como pedir:** escreva para [digital@olorin.com.br](mailto:digital@olorin.com.br), com o assunto \"Privacidade\", ou mande mensagem no WhatsApp (41) 99646-0861. Podemos pedir uma confirmação simples de que o pedido é seu. Respondemos em até 15 dias.",
+      "Se não ficar satisfeito com a resposta, você pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD), no site [gov.br/anpd](https://www.gov.br/anpd/pt-br)."
+     ]
+    },
+    {
+     "id": "seguranca",
+     "titulo": "10. Segurança",
+     "paragrafos": [
+      "O site usa conexão criptografada (HTTPS). Os pedidos ficam numa pasta do servidor fechada ao público, e só a equipe da Olorin acessa o e-mail e as planilhas, com senha. Nenhum sistema é totalmente seguro. Se houver um incidente que possa trazer risco a você, avisamos você e a ANPD, como manda a lei (art. 48)."
+     ]
+    },
+    {
+     "id": "menores",
+     "titulo": "11. Crianças e adolescentes",
+     "paragrafos": [
+      "O site é feito para empresas, instituições e adultos que contratam serviços de marketing. Não coletamos de propósito dados de menores de 18 anos. Se isso acontecer, apagamos assim que soubermos."
+     ]
+    },
+    {
+     "id": "contratacao",
+     "titulo": "12. Propostas e direito de arrependimento",
+     "paragrafos": [
+      "O site não publica preços. O escopo, o prazo, o valor e as condições ficam na proposta e no contrato. A verba de anúncio não entra no valor dos serviços, porque você paga direto às plataformas.",
+      "Se você contratar a distância (pelo site, WhatsApp, e-mail ou reunião por vídeo), pode desistir em até 7 dias da assinatura, com devolução do que tiver pago, como prevê o art. 49 do Código de Defesa do Consumidor, quando ele se aplica. Isso vale também para os formatos mensais, que têm contrato mínimo de 3 meses."
+     ]
+    },
+    {
+     "id": "mudancas",
+     "titulo": "13. Mudanças nesta política",
+     "paragrafos": [
+      "Podemos atualizar este texto quando o site ou a lei mudarem. A data da última atualização fica sempre no topo da página."
+     ]
+    }
+   ]
+  },
+  "promo": {
+   "seo": {
+    "titulo": "Raio-X gratuito de marketing | Olorin Digital",
+    "descricao": "Raio-X gratuito da sua marca: 30 minutos por vídeo e, em até 48 horas, um PDF com o que mais trava o seu marketing. Sem compromisso."
+   },
+   "etiqueta": "Raio-X gratuito",
+   "titulo": "Onde a sua marca trava?",
+   "sub": "A gente olha anúncio, redes, site e material da marca numa conversa de 30 minutos por vídeo e, em até 48 horas, manda um PDF com o que mais trava e por onde começar.",
+   "titulo_sem_diagnostico": "Peça seu orçamento.",
+   "sub_sem_diagnostico": "Anúncios, redes, marca, site, impressos e dados num time só. Resposta em até 1 dia útil.",
+   "cta_final": {
+    "titulo": "Quer saber onde a sua marca trava?",
+    "botao": "Quero meu Raio-X grátis"
+   }
+  },
+  "servicos": {
+   "seo": {
+    "titulo": "Serviços de Marketing Digital | Olorin Digital",
+    "descricao": "Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time. Peça o Raio-X gratuito e veja por onde começar."
+   },
+   "etiqueta": "Serviços de marketing digital",
+   "titulo": "Entregas que trabalham juntas.",
+   "texto": "Anúncios, redes, marca, site, impressos e dados coordenados pelo mesmo time. Contrate uma frente só ou junte todas. Quando rodam juntas, uma puxa a outra.",
+   "janela": "servicos.olo",
+   "janela_linhas": [
+    "Um time · seis frentes",
+    "Raio-X · gratuito"
+   ],
+   "cards": {
+    "etiqueta": "O que fazemos",
+    "titulo": "Escolha a frente.",
+    "texto": "Cada serviço tem página própria, com o que pode entrar, os trabalhos do time e quem coordena."
+   },
+   "escolher": {
+    "etiqueta": "Por onde começar",
+    "titulo": "Este é o seu caso?",
+    "situacoes": [
+     {
+      "situacao": "Você já anuncia, mas não sabe quanto cada venda custou.",
+      "servico": "trafego-pago",
+      "porque": "Arrumamos as campanhas e o rastreamento. O relatório passa a mostrar quanto custou cada venda."
+     },
+     {
+      "situacao": "Sua marca parece diferente em cada lugar: no feed, no cartão e no site.",
+      "servico": "identidade-visual",
+      "porque": "Primeiro, uma identidade clara. Depois, anúncio, post, site e impresso saem com a mesma cara."
+     },
+     {
+      "situacao": "O anúncio leva gente para um site lento ou confuso.",
+      "servico": "site-e-loja-virtual",
+      "porque": "Um site rápido e claro no celular aproveita melhor cada visita que o anúncio traz."
+     }
+    ],
+    "nao_sei": "Ainda em dúvida? O Raio-X gratuito mostra por onde começar."
+   },
+   "combinacoes": {
+    "etiqueta": "Combinações",
+    "titulo": "Junto rende mais.",
+    "texto": "As frentes que mais recomendamos juntas. No Raio-X, a gente mostra qual combinação faz sentido para você.",
+    "itens": [
+     {
+      "janela": "anuncio_e_feed.olo",
+      "nome": "Tráfego pago + redes sociais",
+      "texto": "O anúncio traz gente nova e o feed confirma o que ele promete. Mesmo time, mesma cara, ajuste toda semana e relatório todo mês.",
+      "servicos": [
+       "trafego-pago",
+       "redes-sociais"
+      ]
+     },
+     {
+      "janela": "marca_inteira.olo",
+      "nome": "A marca inteira",
+      "texto": "Anúncios, redes, marca, site, impressos e dados juntos, com reunião semanal e planejamento todo mês.",
+      "servicos": [
+       "trafego-pago",
+       "redes-sociais",
+       "identidade-visual",
+       "material-impresso",
+       "site-e-loja-virtual",
+       "rastreamento-e-relatorio"
+      ]
+     },
+     {
+      "janela": "marca_e_papel.olo",
+      "nome": "Identidade + impressos",
+      "texto": "Uma identidade clara e cada peça impressa com a mesma cara, do cartão à fachada, com o arquivo certo para a gráfica.",
+      "servicos": [
+       "identidade-visual",
+       "material-impresso"
+      ]
+     },
+     {
+      "janela": "site_e_dados.olo",
+      "nome": "Site + dados",
+      "texto": "Um site rápido no celular, com a medição configurada desde o primeiro dia, para saber de onde veio cada contato e cada venda.",
+      "servicos": [
+       "site-e-loja-virtual",
+       "rastreamento-e-relatorio"
+      ]
+     }
+    ],
+    "botao": "Quero essa combinação"
+   }
+  },
+  "sobre-metodo": {
+   "seo": {
+    "titulo": "Sobre a Olorin | Método e dúvidas frequentes",
+    "descricao": "As 4 etapas do Método Olorin, o relatório mensal que mostra faturamento, não só alcance, e as respostas para as dúvidas mais comuns."
+   },
+   "etiqueta": "Sobre a Olorin",
+   "titulo": "Sobre.",
+   "sub": "Como a Olorin trabalha, do primeiro contato ao relatório de todo mês, e as respostas para as dúvidas mais comuns. Sem caixa-preta, para qualquer frente e qualquer tamanho de marca.",
+   "janela": "metodo.olo",
+   "janela_linhas": [
+    "Raio-X · gratuito",
+    "Relatório · todo mês"
+   ],
+   "metodo": {
+    "etiqueta": "Método Olorin",
+    "titulo": "Quatro etapas. Zero achismo.",
+    "texto": "O mesmo caminho para qualquer frente que você contratar, de um anúncio a uma marca inteira.",
+    "cta_texto": "Quer saber em qual etapa a sua marca está travada?",
+    "etapas": [
+     {
+      "nome": "Raio-X",
+      "texto": "Olhamos tudo o que já existe, da conta de anúncio às redes, ao site e ao material da marca. Antes de criar qualquer coisa, descobrimos o que está travando."
+     },
+     {
+      "nome": "Direção",
+      "texto": "Estratégia e identidade alinhadas, com o que falar, para quem, em qual canal e com qual cara. Uma marca só, em todos os pontos de contato."
+     },
+     {
+      "nome": "Execução",
+      "texto": "Campanha no ar, conteúdo publicado, arquivo fechado para a gráfica e site no ar. Tudo saindo pela mesma porta, no mesmo ritmo."
+     },
+     {
+      "nome": "Leitura",
+      "texto": "Relatório que qualquer pessoa entende, com quanto entrou, quanto saiu, qual foi o retorno e o que vem na próxima rodada."
+     }
+    ]
+   },
+   "duvidas": {
+    "etiqueta": "Dúvidas",
+    "titulo": "Perguntas diretas.",
+    "texto": "Ficou alguma dúvida que não está aqui? A gente responde no Raio-X, de graça."
+   },
+   "relatorio": {
+    "etiqueta": "Como é o nosso relatório",
+    "titulo": "Faturamento, não só alcance.",
+    "texto": "Todo mês você recebe um painel como este, com o que foi investido, o que voltou e o que muda na próxima rodada. Sem sigla solta e sem gráfico bonito que não diz nada.",
+    "aviso": "Exemplo ilustrativo, com dados fictícios",
+    "janela": "painel.olo",
+    "mes": "Mês de exemplo",
+    "indicadores": [
+     {
+      "rotulo": "Investimento em anúncio",
+      "valor": "R$ 3.000",
+      "variacao": "mesmo valor do mês anterior",
+      "tendencia": "neutra"
+     },
+     {
+      "rotulo": "Faturamento atribuído",
+      "valor": "R$ 7.800",
+      "variacao": "+12% sobre o mês anterior",
+      "tendencia": "alta"
+     },
+     {
+      "rotulo": "Custo por venda",
+      "valor": "R$ 75,00",
+      "variacao": "−8% sobre o mês anterior",
+      "tendencia": "alta"
+     },
+     {
+      "rotulo": "Retorno sobre o investimento",
+      "valor": "2,6x",
+      "variacao": "era 2,3x no mês anterior",
+      "tendencia": "alta"
+     }
+    ],
+    "grafico_titulo": "Faturamento atribuído por semana",
+    "grafico": [
+     {
+      "rotulo": "Semana 1",
+      "valor": 1500
+     },
+     {
+      "rotulo": "Semana 2",
+      "valor": 1800
+     },
+     {
+      "rotulo": "Semana 3",
+      "valor": 2100
+     },
+     {
+      "rotulo": "Semana 4",
+      "valor": 2400
+     }
+    ],
+    "proxima_titulo": "O que faremos na próxima rodada",
+    "proxima": [
+     "Aumentar a verba da campanha de remarketing, que teve o menor custo por venda.",
+     "Trocar os dois anúncios com pior taxa de clique por versões novas.",
+     "Revisar a página de destino, que perde gente no celular."
+    ],
+    "glossario": "Retorno sobre o investimento (ROAS): quanto voltou em faturamento para cada R$ 1 investido em anúncio."
+   }
+  },
+  "sobre": {
+   "seo": {
+    "titulo": "Quem somos | Olorin Digital, agência de marketing digital",
+    "descricao": "Conheça quem coordena anúncios, redes, marca, site, impressos e dados na Olorin Digital, para organizações de todo tipo e tamanho."
+   },
+   "etiqueta": "Quem somos",
+   "titulo": "Um time inteiro. Sua marca em",
+   "titulo_destaque": "outro nível.",
+   "sub": "A Olorin Digital é uma agência de marketing digital. Faz anúncios, redes, marca, site, impressos e dados para organizações de todo tipo e tamanho.",
+   "whatsapp": "Falar no WhatsApp",
+   "dica_pilha": "Passe o mouse ou toque para ver cada perfil.",
+   "historia": {
+    "etiqueta": "Por que a Olorin existe",
+    "titulo": "Tudo no mesmo time.",
+    "paragrafos": [
+     "A Olorin nasceu para juntar o que quase sempre vive separado: estratégia, anúncio, conteúdo, arte, site e impresso. Quando cada parte fica com um fornecedor diferente, a marca fala várias línguas e ninguém sabe dizer quanto cada real trouxe de volta.",
+     "Aqui, cada frente tem alguém que coordena e responde por ela, e todas conversam entre si. O relatório é fácil de entender e não prometemos o que o número não sustenta.",
+     "Seja um negócio de bairro, uma escola com várias unidades ou uma indústria, o jeito de trabalhar é o mesmo. Somando tudo, o time já atendeu mais de 50 marcas e geriu mais de R$ 5 milhões em verba de anúncio."
+    ],
+    "apoio": "Da menor à maior organização, o mesmo time e o mesmo método.",
+    "educacao": {
+     "texto": "Escolas e criadores de conteúdo têm frentes só deles: a Olorin Educação, para a captação de matrículas no calendário certo, e a de influenciadores, para perfis que querem crescer e fechar mais parcerias.",
+     "links": [
+      {
+       "texto": "Olorin Educação",
+       "url": "/educacao/"
+      },
+      {
+       "texto": "Influenciadores",
+       "url": "/influenciadores/"
+      }
+     ]
+    }
+   },
+   "equipe": {
+    "etiqueta": "O time",
+    "titulo": "Quem coordena.",
+    "texto": "Cada pessoa responde por uma frente, e todas trabalham juntas na sua marca. Você fala direto com quem coordena."
+   },
+   "jeito": {
+    "etiqueta": "O nosso jeito",
+    "titulo": "Combinado não sai caro.",
+    "itens": [
+     {
+      "titulo": "Raio-X antes de tudo",
+      "texto": "Antes de qualquer proposta, a gente olha o que você já tem: anúncio, redes, site e material da marca. De graça e sem compromisso."
+     },
+     {
+      "titulo": "Fale com quem coordena",
+      "texto": "Cada frente tem uma pessoa que responde por ela. Nada de recado perdido no caminho."
+     },
+     {
+      "titulo": "Número que se entende",
+      "texto": "Relatório em linguagem simples: quanto entrou, quanto saiu e o que muda."
+     },
+     {
+      "titulo": "Sem promessa vazia",
+      "texto": "Não garantimos o que o número não sustenta. Mostramos o que dá para medir."
+     }
+    ]
+   },
+   "remoto": {
+    "etiqueta": "Como atendemos",
+    "titulo": "Longe só no mapa.",
+    "itens": [
+     "O processo foi feito para funcionar a distância, esteja a sua marca onde estiver.",
+     "Conversa pelo WhatsApp, reunião por vídeo, aprovação por e-mail e arquivos entregues pela internet.",
+     "O Derek é o seu primeiro contato e coordena a sua conta no dia a dia.",
+     "Natalia e Vinícius entram já na primeira reunião, cada um com a frente que coordena."
+    ]
+   },
+   "contato": {
+    "titulo": "Quer conversar com a gente?",
+    "botao": "Falar no WhatsApp"
+   },
+   "perfil": {
+    "coordena": "Coordena",
+    "frentes": "frentes que coordena",
+    "frente": "frente que coordena",
+    "sobre": "Sobre",
+    "dia_a_dia": "O que coordena",
+    "trabalhos": "Trabalhos",
+    "trabalhos_texto": "Peças e projetos das frentes que coordena.",
+    "trabalhos_link": "Ver o portfólio completo",
+    "time": "Também no time",
+    "whatsapp": "WhatsApp",
+    "copiar": "Copiar link",
+    "copiado": "Link copiado"
+   }
+  }
+ },
+ "servicos": [
+  {
+   "slug": "trafego-pago",
+   "ordem": 1,
+   "nome": "Tráfego pago",
+   "chip": "Tráfego pago",
+   "icone": "trafego",
+   "janela": "campanhas.olo",
+   "cena": "trafego",
+   "atualizado": "2026-10-17",
+   "quem_faz": [
+    "natalia-arruda"
+   ],
+   "seo": {
+    "title": "Gestão de Tráfego Pago: Meta Ads e Google Ads | Olorin",
+    "description": "Meta Ads e Google Ads com otimização toda semana e relatório que mostra o retorno. Peça o Raio-X gratuito da sua conta de anúncio."
+   },
+   "card": {
+    "titulo": "Tráfego pago",
+    "resumo": "Meta Ads e Google Ads para venda, matrícula e contato, com otimização toda semana.",
+    "resumo_curto": "Meta Ads e Google Ads com otimização semanal."
+   },
+   "hero": {
+    "eyebrow": "Gestão de tráfego pago",
+    "h1": "Anúncios que lucram.",
+    "sub": "Meta Ads e Google Ads com ajuste toda semana e um relatório que mostra quanto cada centavo investido devolveu.",
+    "janela_linhas": [
+     "Campanha de venda · no ar",
+     "Otimização · toda semana",
+     "Relatório · todo mês"
+    ]
+   },
+   "resposta_curta": "Gestão de tráfego pago é planejar, montar e ajustar os seus anúncios na Meta (Instagram e Facebook) e no Google para buscar venda, matrícula ou contato. A Olorin cria as peças, ajusta as campanhas toda semana e manda um relatório por mês com quanto foi investido e quanto voltou. A verba de anúncio fica na sua conta, paga direto à Meta ou ao Google.",
+   "o_que_e": {
+    "titulo": "Cada real com destino.",
+    "texto": [
+     "Tráfego pago é o anúncio que aparece para quem tem cara de cliente: no Instagram e no Facebook (Meta Ads), para quem ainda não conhece você, e no Google (Google Ads), para quem já está procurando o que você vende.",
+     "A Olorin monta as campanhas pelo objetivo do seu negócio, seja venda, matrícula, contato ou inscrição, cria as peças com a cara da sua marca e ajusta tudo toda semana pelo que vende, não pelo que dá curtida.",
+     "No fim do mês, chega um relatório que qualquer pessoa entende: quanto foi investido, quanto voltou e o que muda na próxima rodada."
+    ],
+    "destaques": [
+     "Otimização toda semana",
+     "Peças com a cara da marca",
+     "Relatório com retorno, não com curtida"
+    ]
+   },
+   "dores": {
+    "etiqueta": "Este é o seu caso?",
+    "titulo": "Dinheiro no escuro?",
+    "texto": "Se um destes aparece aí, a sua conta de anúncio precisa de revisão.",
+    "itens": [
+     {
+      "titulo": "Sem saber o custo",
+      "texto": "Você investe todo mês e não sabe quanto custou cada venda ou cada contato."
+     },
+     {
+      "titulo": "Relatório de vaidade",
+      "texto": "O relatório mostra alcance e impressões, nunca faturamento, matrícula ou pedido."
+     },
+     {
+      "titulo": "Conta bagunçada",
+      "texto": "A conta virou um amontoado de campanhas antigas e públicos repetidos."
+     },
+     {
+      "titulo": "Promessa quebrada",
+      "texto": "O anúncio promete uma coisa, o site mostra outra, e a pessoa desiste no caminho."
+     }
+    ]
+   },
+   "entregas": {
+    "titulo": "O que pode entrar.",
+    "texto": "Da estrutura da conta ao relatório do mês, com o mesmo time.",
+    "itens": [
+     {
+      "titulo": "Campanhas por objetivo",
+      "texto": "Estrutura separada para venda, matrícula, contato ou reconhecimento, cada uma com a sua meta.",
+      "frequencia": "no início",
+      "icone": "trafego"
+     },
+     {
+      "titulo": "Públicos limpos",
+      "texto": "Segmentações sem sobreposição, para o anúncio chegar em quem tem cara de cliente.",
+      "frequencia": "revisados toda semana",
+      "icone": "dados"
+     },
+     {
+      "titulo": "Peças com a cara da marca",
+      "texto": "Criativos feitos pelo time de design da Olorin, com a mesma cara do feed e do site.",
+      "frequencia": "todo mês",
+      "icone": "marca"
+     },
+     {
+      "titulo": "Otimização semanal",
+      "texto": "Verba, públicos e anúncios ajustados pelo que vende, e não no achismo.",
+      "frequencia": "toda semana",
+      "icone": "relogio"
+     },
+     {
+      "titulo": "Rastreamento certo",
+      "texto": "Pixel, conversões e etiquetas configurados, para cada resultado chegar ao relatório.",
+      "frequencia": "no início",
+      "icone": "site"
+     },
+     {
+      "titulo": "Relatório com retorno",
+      "texto": "Quanto entrou, quanto saiu e o que muda, em linguagem simples.",
+      "frequencia": "todo mês",
+      "icone": "dados"
+     }
+    ]
+   },
+   "ferramentas": {
+    "etiqueta": "Onde a gente anuncia",
+    "titulo": "Onde o seu cliente está.",
+    "texto": "Campanhas planejadas, montadas e ajustadas toda semana nas plataformas e redes em que o seu público passa o dia.",
+    "itens": [
+     {
+      "nome": "Meta Ads",
+      "logo": "meta"
+     },
+     {
+      "nome": "Google Ads",
+      "logo": "googleads"
+     },
+     {
+      "nome": "Google",
+      "logo": "google"
+     },
+     {
+      "nome": "YouTube",
+      "logo": "youtube"
+     },
+     {
+      "nome": "Instagram",
+      "logo": "instagram"
+     },
+     {
+      "nome": "Facebook",
+      "logo": "facebook"
+     },
+     {
+      "nome": "WhatsApp",
+      "logo": "whatsapp"
+     },
+     {
+      "nome": "Threads",
+      "logo": "threads"
+     },
+     {
+      "nome": "TikTok",
+      "logo": "tiktok"
+     },
+     {
+      "nome": "Pinterest",
+      "logo": "pinterest"
+     }
+    ],
+    "credencial": {
+     "etiqueta": "Credencial",
+     "titulo": "Agência parceira Meta e Google.",
+     "nome": "Olorin Digital",
+     "funcao": "Campanhas coordenadas pela [Natalia Arruda](/quem-somos/natalia-arruda/), gestora de tráfego",
+     "logos": [
+      {
+       "nome": "Meta",
+       "logo": "meta"
+      },
+      {
+       "nome": "Google",
+       "logo": "google"
+      }
+     ]
+    }
+   },
+   "portfolio": {
+    "titulo": "Na prática.",
+    "texto": "Marcas que já anunciaram com o nosso time."
+   },
+   "combina_com": [
+    {
+     "slug": "redes-sociais",
+     "porque": "O anúncio vende mais quando o feed confirma o que ele promete. Com o mesmo time, os dois andam juntos."
+    },
+    {
+     "slug": "rastreamento-e-relatorio",
+     "porque": "Sem pixel e conversões, a otimização trabalha no escuro."
+    }
+   ],
+   "campanha": {
+    "titulo": "Pare de pagar anúncio que não volta.",
+    "subtitulo": "Raio-X gratuito da sua conta de anúncio, com 30 minutos por vídeo e um PDF com o que mais trava a sua venda. Sem compromisso."
+   }
+  },
+  {
+   "slug": "redes-sociais",
+   "ordem": 2,
+   "nome": "Redes sociais",
+   "chip": "Redes sociais",
+   "icone": "redes",
+   "janela": "feed.olo",
+   "cena": "redes",
+   "montagem": {
+    "janela": "redes.olo",
+    "rotulo": "Relatório do mês",
+    "aviso": "Novo seguidor"
+   },
+   "atualizado": "2026-10-17",
+   "quem_faz": [
+    "vinicius-mafra",
+    "derek-goncalves"
+   ],
+   "seo": {
+    "title": "Gestão de Redes Sociais | Olorin Digital",
+    "description": "Calendário, posts, Reels e legendas com a cara da sua marca, feitos pelo mesmo time do anúncio. Peça o Raio-X gratuito do seu perfil."
+   },
+   "card": {
+    "titulo": "Redes sociais",
+    "resumo": "Calendário editorial, posts, Reels e legendas que sustentam o anúncio, em vez de brigar com ele.",
+    "resumo_curto": "Posts, Reels e legendas com a cara da marca."
+   },
+   "hero": {
+    "eyebrow": "Gestão de redes sociais",
+    "h1": "Suas redes no próximo nível.",
+    "sub": "Posts, Reels e legendas feitos pelo mesmo time que cria os seus anúncios. Quem clica no anúncio e abre o seu perfil encontra a mesma marca.",
+    "janela_linhas": [
+     "Calendário do mês · aprovado",
+     "Post, Reels e legenda · no ar",
+     "Relatório · todo mês"
+    ]
+   },
+   "resposta_curta": "Gestão de redes sociais é planejar, criar e publicar posts, Reels e legendas com a mesma cara do seu anúncio e do seu site. A Olorin monta o calendário do mês com você, cria as artes e as legendas, publica no dia certo e mostra, todo mês, o que funcionou e o que muda.",
+   "o_que_e": {
+    "titulo": "Perfil que confirma a promessa.",
+    "texto": [
+     "Quando alguém vê o seu anúncio, a primeira coisa que faz é abrir o seu perfil. Se o feed está parado, confuso ou com cara de outra empresa, a venda morre ali.",
+     "A Olorin planeja o mês com você, cria as artes e as legendas no tom da sua marca e publica no dia certo. Tudo sai do mesmo time que faz o anúncio, então o feed e a campanha falam a mesma língua.",
+     "No fim do mês, você vê o que funcionou e o que muda, sem relatório de curtida pela curtida."
+    ],
+    "destaques": [
+     "Calendário aprovado antes de publicar",
+     "Arte e legenda no mesmo tom",
+     "O mesmo time do anúncio"
+    ]
+   },
+   "dores": {
+    "etiqueta": "Este é o seu caso?",
+    "titulo": "Perfil parado?",
+    "texto": "Se um destes aparece aí, o seu feed está trabalhando contra você.",
+    "itens": [
+     {
+      "titulo": "Posta quando sobra tempo",
+      "texto": "O perfil passa semanas parado e volta do nada com vários posts no mesmo dia."
+     },
+     {
+      "titulo": "Cada post de um jeito",
+      "texto": "Cada arte sai com uma cor, uma letra e um jeito de falar."
+     },
+     {
+      "titulo": "Feed contra o anúncio",
+      "texto": "O anúncio leva a pessoa ao perfil, e o feed parece de outra empresa."
+     },
+     {
+      "titulo": "Ninguém conversa",
+      "texto": "Um fornecedor faz a arte, outro a legenda, outro o anúncio, e cada um puxa para um lado."
+     }
+    ]
+   },
+   "entregas": {
+    "titulo": "O que pode entrar.",
+    "texto": "Do calendário do mês ao relatório, com a sua aprovação em cada etapa.",
+    "itens": [
+     {
+      "titulo": "Calendário editorial",
+      "texto": "O roteiro do que vai ao ar no mês, com tema, formato e data de cada publicação.",
+      "frequencia": "todo mês",
+      "icone": "relogio"
+     },
+     {
+      "titulo": "Criativos para o feed",
+      "texto": "Posts, carrosséis e vídeos curtos feitos pelo time de design da Olorin, com a cara da sua marca. A quantidade e o formato são combinados com você.",
+      "frequencia": "todo mês",
+      "icone": "marca"
+     },
+     {
+      "titulo": "Versão para stories",
+      "texto": "Cada post do feed ganha a versão no formato dos stories, para a marca aparecer nos dois lugares.",
+      "frequencia": "em cada post",
+      "icone": "redes"
+     },
+     {
+      "titulo": "Legendas no tom certo",
+      "texto": "Texto que conversa com quem você quer atrair, com chamada para a ação certa.",
+      "frequencia": "em cada post",
+      "icone": "mais"
+     },
+     {
+      "titulo": "Publicação no dia",
+      "texto": "Tudo agendado e publicado no dia e na hora do calendário aprovado.",
+      "frequencia": "toda semana",
+      "icone": "check"
+     },
+     {
+      "titulo": "Leitura do mês",
+      "texto": "O que deu resultado, o que não deu e o que muda no próximo calendário.",
+      "frequencia": "todo mês",
+      "icone": "dados"
+     }
+    ]
+   },
+   "portfolio": {
+    "titulo": "Feed de verdade.",
+    "texto": "Conteúdo, campanha e direção de arte para redes sociais."
+   },
+   "combina_com": [
+    {
+     "slug": "trafego-pago",
+     "porque": "O feed ganha gente nova e o anúncio ganha um perfil que confirma a promessa. Com o mesmo time, os dois andam juntos."
+    },
+    {
+     "slug": "identidade-visual",
+     "porque": "Com uma identidade clara, cada post sai mais rápido e com a mesma cara."
+    }
+   ],
+   "campanha": {
+    "titulo": "Seu feed está espantando cliente?",
+    "subtitulo": "Raio-X gratuito do seu perfil, com 30 minutos por vídeo e um PDF com o que trava o seu conteúdo. Sem compromisso."
+   }
+  },
+  {
+   "slug": "identidade-visual",
+   "ordem": 3,
+   "nome": "Identidade visual",
+   "chip": "Identidade visual",
+   "icone": "marca",
+   "janela": "marca.ai",
+   "cena": "marca",
+   "atualizado": "2026-10-17",
+   "quem_faz": [
+    "vinicius-mafra"
+   ],
+   "seo": {
+    "title": "Identidade Visual e Logotipo | Olorin Digital",
+    "description": "Logotipo, paleta, tipografia e manual de marca para a sua empresa ter uma cara só, do feed ao cartão. Peça o Raio-X gratuito da sua marca."
+   },
+   "card": {
+    "titulo": "Identidade visual",
+    "resumo": "Logotipo, paleta, tipografia e manual de marca. A marca com cara de marca, não de improviso.",
+    "resumo_curto": "Logotipo, paleta e manual de marca."
+   },
+   "hero": {
+    "eyebrow": "Identidade visual e logotipo",
+    "h1": "Uma marca, uma cara.",
+    "sub": "Logotipo, cores, letras e regras de uso para a sua marca ser reconhecida em qualquer lugar, do avatar do Instagram à fachada.",
+    "janela_linhas": [
+     "Logotipo · aprovado",
+     "Paleta e tipografia · definidas",
+     "Manual · entregue"
+    ]
+   },
+   "resposta_curta": "Identidade visual é o conjunto que faz a sua marca ser reconhecida: logotipo, cores, tipografia e as regras de uso. Na Olorin, o projeto começa por uma imersão no seu negócio, tem rodadas de ajuste toda semana e termina com o manual e os arquivos finais em todos os formatos. O escopo e o prazo são fechados na proposta.",
+   "o_que_e": {
+    "titulo": "Reconhecida de longe.",
+    "texto": [
+     "Identidade visual não é só o logo. É o conjunto de cores, letras, formas e regras que faz alguém reconhecer a sua marca antes mesmo de ler o nome.",
+     "A Olorin começa entendendo o seu negócio, o seu público e os seus concorrentes. Depois desenha o logotipo e as variações, escolhe a paleta e a tipografia e organiza tudo num manual simples, para qualquer fornecedor aplicar do jeito certo.",
+     "O resultado é uma marca que funciona pequena no avatar, grande na fachada e igual em todo lugar: no anúncio, no feed, no site e no cartão."
+    ],
+    "destaques": [
+     "Logotipo com versões para cada uso",
+     "Paleta e tipografia definidas",
+     "Manual de marca fácil de seguir"
+    ]
+   },
+   "dores": {
+    "etiqueta": "Este é o seu caso?",
+    "titulo": "Marca com várias caras?",
+    "texto": "Se um destes aparece aí, a sua marca está perdendo força.",
+    "itens": [
+     {
+      "titulo": "Cada lugar uma marca",
+      "texto": "O feed, o cartão e o site parecem de empresas diferentes."
+     },
+     {
+      "titulo": "Logo que não cabe",
+      "texto": "O logo some no avatar do Instagram e fica estranho em fundo escuro."
+     },
+     {
+      "titulo": "Sem regra",
+      "texto": "Cada fornecedor usa uma cor e uma letra, porque ninguém tem o manual."
+     },
+     {
+      "titulo": "Cara de improviso",
+      "texto": "A marca parece menor do que o negócio que você construiu."
+     }
+    ]
+   },
+   "entregas": {
+    "titulo": "O que pode entrar.",
+    "texto": "O que pode entrar no projeto, com o escopo fechado na proposta e arquivos prontos para usar.",
+    "itens": [
+     {
+      "titulo": "Imersão e referências",
+      "texto": "Conversa sobre o negócio, o público e os concorrentes, e um painel de referências para alinhar o caminho.",
+      "frequencia": "no início",
+      "icone": "mais"
+     },
+     {
+      "titulo": "Logotipo e variações",
+      "texto": "Versão principal, reduzida, símbolo e versões para fundo claro e escuro.",
+      "frequencia": "ajustes toda semana",
+      "icone": "marca"
+     },
+     {
+      "titulo": "Paleta e tipografia",
+      "texto": "Cores com os códigos certos para tela e impressão, e as letras da marca.",
+      "frequencia": "definidas no projeto",
+      "icone": "pixel"
+     },
+     {
+      "titulo": "Manual de marca",
+      "texto": "Um guia simples com o que pode e o que não pode, para qualquer pessoa aplicar certo.",
+      "frequencia": "na entrega",
+      "icone": "check"
+     },
+     {
+      "titulo": "Aplicações",
+      "texto": "A marca aplicada em avatar, capa, cartão e papelaria, para você ver funcionando.",
+      "frequencia": "na entrega",
+      "icone": "impresso"
+     },
+     {
+      "titulo": "Arquivos finais",
+      "texto": "Todos os formatos: vetor para gráfica, PNG para redes e SVG para o site.",
+      "frequencia": "na entrega",
+      "icone": "site"
+     }
+    ]
+   },
+   "portfolio": {
+    "titulo": "Na prática.",
+    "texto": "Identidade, tipografia e direção de arte feitas pelo time da Olorin."
+   },
+   "combina_com": [
+    {
+     "slug": "material-impresso",
+     "porque": "Com a identidade pronta, cartão, folder e fachada saem com a mesma cara."
+    },
+    {
+     "slug": "redes-sociais",
+     "porque": "O feed é onde a marca aparece todo dia. Com identidade clara, cada post sai mais rápido."
+    }
+   ],
+   "campanha": {
+    "titulo": "Sua marca tem cara de improviso?",
+    "subtitulo": "Raio-X gratuito da sua marca, com 30 minutos por vídeo e um PDF com o que trava a sua imagem. Sem compromisso."
+   }
+  },
+  {
+   "slug": "material-impresso",
+   "ordem": 4,
+   "nome": "Impressos",
+   "chip": "Impressos",
+   "icone": "impresso",
+   "janela": "grafica.pdf",
+   "cena": "impresso",
+   "atualizado": "2026-10-17",
+   "quem_faz": [
+    "vinicius-mafra"
+   ],
+   "seo": {
+    "title": "Design de Material Impresso | Olorin Digital",
+    "description": "Cartão, folder, catálogo, banner, fachada e embalagem com arquivo fechado para a gráfica e prova conferida. Peça o Raio-X gratuito."
+   },
+   "card": {
+    "titulo": "Impressos",
+    "resumo": "Cartão, folder, catálogo, banner, fachada e embalagem, com arquivo fechado para a gráfica.",
+    "resumo_curto": "Cartão, folder, banner e embalagem."
+   },
+   "hero": {
+    "eyebrow": "Design de material impresso",
+    "h1": "Bonito na mão.",
+    "sub": "Cartão, folder, catálogo, banner, fachada e embalagem com a cara da sua marca e o arquivo certo para a gráfica, sem surpresa na entrega.",
+    "janela_linhas": [
+     "Arte · aprovada",
+     "Arquivo · fechado para a gráfica",
+     "Prova · conferida"
+    ]
+   },
+   "resposta_curta": "Design de material impresso é criar cartão, folder, catálogo, banner, fachada e embalagem com a cara da sua marca e entregar o arquivo fechado para a gráfica. A Olorin cria a arte, fecha o arquivo do jeito que a gráfica pede e confere a prova. A impressão é paga direto à gráfica.",
+   "o_que_e": {
+    "titulo": "Do arquivo à gráfica.",
+    "texto": [
+     "Material impresso é o que o seu cliente leva para casa: o cartão, o folder, o cardápio, a sacola, a fachada que ele vê da rua. É a marca que dá para pegar na mão.",
+     "A Olorin cria a peça com a mesma cara do seu anúncio e do seu feed, fecha o arquivo do jeito que a gráfica pede, com sangria, cor e resolução certas, e confere a prova para nada sair diferente do combinado.",
+     "Você não precisa entender de gráfica. A gente conversa com ela por você."
+    ],
+    "destaques": [
+     "Arquivo fechado sem retrabalho",
+     "Prova conferida antes de imprimir",
+     "A mesma cara do digital"
+    ]
+   },
+   "dores": {
+    "etiqueta": "Este é o seu caso?",
+    "titulo": "Surpresa na gráfica?",
+    "texto": "Se um destes aparece aí, o seu impresso está custando mais do que devia.",
+    "itens": [
+     {
+      "titulo": "Arquivo recusado",
+      "texto": "A gráfica devolve o arquivo por falta de sangria, resolução ou cor certa."
+     },
+     {
+      "titulo": "Cor que muda",
+      "texto": "O roxo da tela vira outro roxo no papel."
+     },
+     {
+      "titulo": "Cada peça de um jeito",
+      "texto": "Cartão, folder e banner parecem de empresas diferentes."
+     },
+     {
+      "titulo": "Tudo em cima da hora",
+      "texto": "O evento é amanhã e o material ainda nem foi para a gráfica."
+     }
+    ]
+   },
+   "entregas": {
+    "titulo": "O que pode entrar.",
+    "texto": "Peças com a cara da marca e o arquivo certo para cada gráfica.",
+    "itens": [
+     {
+      "titulo": "Cartão e papelaria",
+      "texto": "Cartão de visita, papel timbrado, envelope e assinatura de e-mail.",
+      "frequencia": "por peça",
+      "icone": "impresso"
+     },
+     {
+      "titulo": "Folder, flyer e catálogo",
+      "texto": "Material de venda que explica, convence e cabe na mão.",
+      "frequencia": "por peça",
+      "icone": "marca"
+     },
+     {
+      "titulo": "Banner, fachada e adesivo",
+      "texto": "Comunicação de ponto de venda e de evento, do banner ao letreiro.",
+      "frequencia": "por peça",
+      "icone": "pixel"
+     },
+     {
+      "titulo": "Embalagem e rótulo",
+      "texto": "Caixa, sacola, tag e rótulo com a cara da marca.",
+      "frequencia": "por projeto",
+      "icone": "check"
+     },
+     {
+      "titulo": "Arquivo para a gráfica",
+      "texto": "Sangria, perfil de cor e resolução certos, no formato que a gráfica pede.",
+      "frequencia": "em toda peça",
+      "icone": "site"
+     },
+     {
+      "titulo": "Prova conferida",
+      "texto": "Conferimos a prova com a gráfica antes de rodar a tiragem.",
+      "frequencia": "em toda peça",
+      "icone": "relogio"
+     }
+    ]
+   },
+   "portfolio": {
+    "titulo": "Feito para pegar.",
+    "texto": "Cartazes, sinalização e peças de evento feitos pelo nosso time."
+   },
+   "combina_com": [
+    {
+     "slug": "identidade-visual",
+     "porque": "Com a identidade definida, cada impresso sai mais rápido e igual aos outros."
+    },
+    {
+     "slug": "site-e-loja-virtual",
+     "porque": "O impresso leva ao site pelo QR code. Os dois com a mesma cara fecham a venda."
+    }
+   ],
+   "campanha": {
+    "titulo": "Impresso com cara de marca.",
+    "subtitulo": "Raio-X gratuito do seu material, com 30 minutos por vídeo e um PDF com o que melhorar antes da próxima tiragem. Sem compromisso."
+   }
+  },
+  {
+   "slug": "site-e-loja-virtual",
+   "ordem": 5,
+   "nome": "Sites",
+   "chip": "Sites",
+   "icone": "site",
+   "janela": "site.html",
+   "cena": "site",
+   "atualizado": "2026-10-17",
+   "quem_faz": [
+    "vinicius-mafra",
+    "derek-goncalves"
+   ],
+   "seo": {
+    "title": "Criação de Sites e Lojas Virtuais | Olorin Digital",
+    "description": "Site institucional, ecommerce e sistemas web personalizados, rápidos no celular e com medição desde o primeiro dia. Peça o Raio-X gratuito."
+   },
+   "card": {
+    "titulo": "Sites",
+    "resumo": "Site institucional, ecommerce, sistemas web personalizados e página de captação, feitos para trazer contato e venda.",
+    "resumo_curto": "Site institucional, ecommerce e sistemas web."
+   },
+   "hero": {
+    "eyebrow": "Criação de sites e lojas virtuais",
+    "h1": "Site que trabalha.",
+    "sub": "Site institucional, ecommerce, sistema web personalizado e página de captação com a cara da sua marca, rápidos no celular e feitos para transformar visita em contato ou venda.",
+    "janela_linhas": [
+     "Versão do celular · aprovada",
+     "Velocidade · conferida",
+     "Medição de visitas · configurada"
+    ]
+   },
+   "resposta_curta": "A Olorin cria site institucional, ecommerce, sistemas web personalizados e página de captação: rápidos, bonitos no celular e feitos para transformar visita em contato ou venda. Cada projeto é fechado, com escopo e prazo combinados antes de começar, e já sai com a medição de visitas e contatos configurada.",
+   "o_que_e": {
+    "titulo": "Visita que vira contato.",
+    "texto": [
+     "O site é para onde o anúncio, o post e a indicação levam a pessoa. Se ele demora, confunde ou não tem a sua cara, o interesse acaba ali, e o dinheiro do anúncio vai junto.",
+     "A Olorin cria sites institucionais, lojas virtuais, sistemas web personalizados e páginas de captação com a identidade da sua marca, pensados primeiro para o celular, fáceis de ler, com o botão de contato sempre à mão e a medição configurada desde o primeiro dia.",
+     "Escopo e prazo são combinados no briefing, antes de começar, do site de uma página à loja com catálogo inteiro."
+    ],
+    "destaques": [
+     "Rápido no celular",
+     "A mesma cara da marca",
+     "Medição desde o primeiro dia"
+    ]
+   },
+   "dores": {
+    "etiqueta": "Este é o seu caso?",
+    "titulo": "Site que espanta?",
+    "texto": "Se um destes aparece aí, o seu site está perdendo cliente.",
+    "itens": [
+     {
+      "titulo": "Lento no celular",
+      "texto": "O anúncio leva a pessoa ao site, mas a página demora a abrir, e ela desiste."
+     },
+     {
+      "titulo": "Botão sumido",
+      "texto": "No celular o texto fica miúdo e pedir orçamento vira uma maratona."
+     },
+     {
+      "titulo": "Cara de outra marca",
+      "texto": "O site não tem as cores, as fontes e o jeito de falar do feed e do anúncio."
+     },
+     {
+      "titulo": "Sem medição",
+      "texto": "Você não sabe quantos contatos ou vendas vieram do site no mês passado."
+     }
+    ]
+   },
+   "entregas": {
+    "titulo": "O que pode entrar.",
+    "texto": "Do briefing ao site no ar, tudo o que faz a visita virar contato.",
+    "itens": [
+     {
+      "titulo": "Site institucional",
+      "texto": "Páginas que apresentam a empresa e os serviços e levam a pessoa até o contato.",
+      "frequencia": "projeto fechado",
+      "icone": "site"
+     },
+     {
+      "titulo": "Ecommerce e sistemas web personalizados",
+      "texto": "Loja com catálogo, carrinho, pagamento e frete, ou um sistema web sob medida para o seu processo.",
+      "frequencia": "sob medida",
+      "icone": "estrela"
+     },
+     {
+      "titulo": "Página de captação",
+      "texto": "Uma página só para a oferta ou a campanha, feita para receber quem clica no anúncio.",
+      "frequencia": "no projeto ou à parte",
+      "icone": "trafego"
+     },
+     {
+      "titulo": "Celular primeiro",
+      "texto": "Desenho pensado primeiro para a tela pequena, onde está a maior parte das visitas.",
+      "frequencia": "em todas as páginas",
+      "icone": "redes"
+     },
+     {
+      "titulo": "Velocidade e acessibilidade",
+      "texto": "Imagens leves, texto legível e navegação por teclado, como padrão e não como extra.",
+      "frequencia": "conferidas antes de publicar",
+      "icone": "relogio"
+     },
+     {
+      "titulo": "Medição configurada",
+      "texto": "Google Analytics, pixel e conversões, para saber de onde veio cada contato e cada venda.",
+      "frequencia": "na publicação",
+      "icone": "dados"
+     }
+    ]
+   },
+   "portfolio": {
+    "titulo": "Na prática.",
+    "texto": "Marcas com site feito pelo nosso time."
+   },
+   "combina_com": [
+    {
+     "slug": "trafego-pago",
+     "porque": "O site recebe quem clica. Com tráfego pago, quem clica tem cara de cliente."
+    },
+    {
+     "slug": "rastreamento-e-relatorio",
+     "porque": "Com a medição certa, você sabe quanto cada página trouxe de contato e de venda."
+    }
+   ],
+   "campanha": {
+    "titulo": "Chega de site que espanta cliente.",
+    "subtitulo": "Raio-X gratuito do seu site, com 30 minutos por vídeo e um PDF com o que mais trava o contato. Sem compromisso."
+   }
+  },
+  {
+   "slug": "rastreamento-e-relatorio",
+   "ordem": 6,
+   "nome": "Dados",
+   "chip": "Dados",
+   "icone": "dados",
+   "janela": "painel.olo",
+   "cena": "dados",
+   "atualizado": "2026-10-17",
+   "quem_faz": [
+    "natalia-arruda"
+   ],
+   "seo": {
+    "title": "Rastreamento e Relatório de Marketing (GTM e GA4) | Olorin",
+    "description": "Tag Manager, GA4, pixel e conversões configurados para saber quanto entrou e qual foi o retorno. Peça o Raio-X gratuito do seu rastreamento."
+   },
+   "card": {
+    "titulo": "Dados",
+    "resumo": "Google Tag Manager, pixel da Meta e painel para saber quanto cada anúncio vendeu.",
+    "resumo_curto": "Medição do site e dos anúncios, com painel."
+   },
+   "hero": {
+    "eyebrow": "Rastreamento com Google Tag Manager e GA4",
+    "h1": "Dados que decidem.",
+    "sub": "Tag Manager, Google Analytics, pixel e conversões configurados direito, e um painel que mostra quanto entrou, quanto saiu e qual foi o retorno.",
+    "janela_linhas": [
+     "Tag Manager · publicado",
+     "Conversões · conferidas",
+     "Painel · atualizado"
+    ]
+   },
+   "resposta_curta": "Rastreamento é configurar o Google Tag Manager, o Google Analytics, o pixel da Meta e as conversões para cada venda, matrícula ou contato chegar ao relatório com a sua origem. A Olorin configura, confere cada evento, monta um painel simples e faz, todo mês, a leitura do que os números pedem.",
+   "o_que_e": {
+    "titulo": "Número que fecha.",
+    "texto": [
+     "Sem rastreamento, o anúncio otimiza no escuro e o relatório mostra o que é fácil de contar, não o que importa. Com ele, cada venda, matrícula ou contato chega com a sua origem: qual anúncio, qual página, qual campanha.",
+     "A Olorin configura o Google Tag Manager, o Google Analytics 4, o pixel da Meta e as conversões do Google Ads, confere se cada evento chega certo e monta um painel simples, que você abre quando quiser.",
+     "Todo mês, a leitura vira decisão: onde investir mais, o que cortar e o que testar."
+    ],
+    "destaques": [
+     "Conversões conferidas",
+     "Painel que qualquer pessoa entende",
+     "Leitura que vira decisão"
+    ]
+   },
+   "dores": {
+    "etiqueta": "Este é o seu caso?",
+    "titulo": "Número que não fecha?",
+    "texto": "Se um destes aparece aí, as suas decisões estão sendo tomadas no escuro.",
+    "itens": [
+     {
+      "titulo": "Venda sem origem",
+      "texto": "Chegam vendas e contatos, mas ninguém sabe de qual anúncio ou página vieram."
+     },
+     {
+      "titulo": "Números que brigam",
+      "texto": "O Google Analytics, a Meta e a planilha mostram números diferentes para a mesma coisa."
+     },
+     {
+      "titulo": "Pixel quebrado",
+      "texto": "O pixel ou a conversão parou de funcionar e ninguém percebeu."
+     },
+     {
+      "titulo": "Relatório sem resposta",
+      "texto": "O relatório tem muito gráfico e nenhuma resposta sobre o que fazer."
+     }
+    ]
+   },
+   "entregas": {
+    "titulo": "O que pode entrar.",
+    "texto": "Da configuração ao painel, para cada resultado chegar com a sua origem.",
+    "itens": [
+     {
+      "titulo": "Google Tag Manager",
+      "texto": "Contêiner organizado, com cada etiqueta nomeada e documentada.",
+      "frequencia": "no início",
+      "icone": "site"
+     },
+     {
+      "titulo": "Google Analytics 4",
+      "texto": "Eventos e conversões que contam venda, matrícula e contato, não só visita.",
+      "frequencia": "no início",
+      "icone": "dados"
+     },
+     {
+      "titulo": "Pixel e conversões",
+      "texto": "Pixel da Meta e conversões do Google Ads conferidos, para o anúncio otimizar certo.",
+      "frequencia": "no início",
+      "icone": "trafego"
+     },
+     {
+      "titulo": "Origem de cada contato",
+      "texto": "Links etiquetados (UTM) e formulários que guardam de onde a pessoa veio.",
+      "frequencia": "em toda campanha",
+      "icone": "seta"
+     },
+     {
+      "titulo": "Painel de resultados",
+      "texto": "Investimento, resultado e retorno num painel simples, que você abre quando quiser.",
+      "frequencia": "acesso a qualquer hora",
+      "icone": "estrela"
+     },
+     {
+      "titulo": "Leitura mensal",
+      "texto": "Os números do mês em linguagem simples e o que muda na próxima rodada.",
+      "frequencia": "todo mês",
+      "icone": "relogio"
+     }
+    ]
+   },
+   "ferramentas": {
+    "etiqueta": "O que a gente configura",
+    "titulo": "Cada número no lugar.",
+    "texto": "As ferramentas que contam o que acontece no site e nos anúncios, configuradas e conferidas uma a uma.",
+    "itens": [
+     {
+      "nome": "Google Analytics 4",
+      "logo": "googleanalytics"
+     },
+     {
+      "nome": "Google Tag Manager",
+      "logo": "googletagmanager"
+     },
+     {
+      "nome": "Search Console",
+      "logo": "googlesearchconsole"
+     },
+     {
+      "nome": "Gerenciador de Eventos da Meta",
+      "logo": "meta"
+     },
+     {
+      "nome": "Conversões do Google Ads",
+      "logo": "googleads"
+     }
+    ],
+    "credencial": {
+     "etiqueta": "Credencial",
+     "titulo": "Agência parceira Meta e Google.",
+     "nome": "Olorin Digital",
+     "funcao": "Medição e relatórios coordenados pela [Natalia Arruda](/quem-somos/natalia-arruda/), gestora de tráfego",
+     "logos": [
+      {
+       "nome": "Meta",
+       "logo": "meta"
+      },
+      {
+       "nome": "Google",
+       "logo": "google"
+      }
+     ]
+    }
+   },
+   "portfolio": {
+    "titulo": "Na prática.",
+    "texto": "Trabalhos em que a medição mostrou onde estava o resultado."
+   },
+   "combina_com": [
+    {
+     "slug": "trafego-pago",
+     "porque": "O rastreamento mostra o que vende; o tráfego pago põe mais verba nisso."
+    },
+    {
+     "slug": "site-e-loja-virtual",
+     "porque": "Um site feito com a medição desde o primeiro dia já nasce contando contato e venda."
+    }
+   ],
+   "campanha": {
+    "titulo": "Pare de decidir no escuro.",
+    "subtitulo": "Raio-X gratuito do seu rastreamento, com 30 minutos por vídeo e um PDF com o que está contando errado. Sem compromisso."
+   }
+  }
+ ],
+ "site": {
+  "_leia": "Configuração geral do site (PROMPT seção 13.1). Campos vazios ficam de fora: sem GTM_ID/GA4_ID/META_PIXEL_ID não há rastreamento nem aviso de cookies.",
+  "URL": "https://olorin.com.br",
+  "NOME": "Olorin Digital",
+  "LEMA": "Sua marca em outro nível.",
+  "CIDADE": "Curitiba",
+  "UF": "PR",
+  "WHATSAPP": "5541996460861",
+  "CNPJ": "57.027.011/0001-82",
+  "TELEFONE_EXIBICAO": "(41) 99646-0861",
+  "EMAIL": "digital@olorin.com.br",
+  "INSTAGRAM_HANDLE": "@olorin.digital",
+  "INSTAGRAM_URL": "https://www.instagram.com/olorin.digital",
+  "FACEBOOK_URL": "https://www.facebook.com/olorin.digital",
+  "X_URL": "https://x.com/olorindigital",
+  "LINKEDIN_URL": "https://www.linkedin.com/company/olorin.digital",
+  "GTM_ID": "GTM-NDD92B4G",
+  "GA4_ID": "G-ZNZFCSGHZQ",
+  "META_PIXEL_ID": "1141955118186850",
+  "GADS_CONVERSION_ID": "",
+  "GADS_CONVERSION_LABEL": "",
+  "SCHEDULING_URL": "",
+  "GBP_URL": "https://share.google/PcFqzqt0UBtsMV5H7",
+  "SHOW_STATS": true,
+  "SHOW_TOTAL_COST": true,
+  "OFERTA_DIAGNOSTICO": true,
+  "FORM_TOP_VARIANT": "b",
+  "APPROVED_ASSETS": [
+   "equipe-natalia",
+   "equipe-natalia-quadrada",
+   "equipe-vinicius",
+   "equipe-vinicius-quadrada",
+   "equipe-derek",
+   "equipe-derek-quadrada"
+  ],
+  "CURSOR_ESTRELA": true,
+  "ATUALIZADO_EM": "2026-10-23"
+ },
+ "claims": {
+  "_leia": "Números da seção Resultados (home) e da barra de prova. Só aparecem itens com verificado = true. Dono, 17/10/2026: ficam só os números, sem a linha de base embaixo ('criterio' e 'periodo' ficam só como registro, não vão para a página). 23/10/2026 (dono): entrou o terceiro número, +2x de retorno, com asterisco; 24/10/2026 (dono): saiu (verificado = false); 'nota' é a frase pequena que aparece embaixo dos números quando o item está na página.",
+  "itens": [
+   {
+    "valor": "R$ 5M+",
+    "rotulo": "Verbas geridas em anúncio",
+    "periodo": "",
+    "criterio": "histórico do time, antes e depois da Olorin",
+    "verificado": true,
+    "fonte": "informado pelo dono em 17/10/2026"
+   },
+   {
+    "valor": "+50",
+    "rotulo": "Marcas atendidas",
+    "periodo": "",
+    "criterio": "histórico do time, antes e depois da Olorin",
+    "verificado": true,
+    "fonte": "informado pelo dono em 08/10/2026 (escrito como +50 em 23/10/2026)"
+   },
+   {
+    "valor": "+2x",
+    "rotulo": "De retorno*",
+    "nota": "*Resultados variam de cliente a cliente.",
+    "periodo": "",
+    "criterio": "retorno sobre o investimento em anúncio nas contas do time",
+    "verificado": false,
+    "fonte": "dono, 23/10/2026; saiu da página em 24/10/2026 (dono)"
+   }
+  ]
+ }
+}

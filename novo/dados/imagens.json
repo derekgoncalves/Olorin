@@ -1,0 +1,285 @@
+{
+ "adesivo-criadora": [
+  {
+   "arq": "adesivo-criadora-800.webp",
+   "w": 410,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-criadora-1400.webp",
+   "w": 717,
+   "h": 1400
+  }
+ ],
+ "adesivo-educacao": [
+  {
+   "arq": "adesivo-educacao-800.webp",
+   "w": 1087,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-educacao-1400.webp",
+   "w": 1902,
+   "h": 1400
+  }
+ ],
+ "adesivo-estrela": [
+  {
+   "arq": "adesivo-estrela-800.webp",
+   "w": 755,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-estrela-1400.webp",
+   "w": 1321,
+   "h": 1400
+  }
+ ],
+ "adesivo-fone": [
+  {
+   "arq": "adesivo-fone-800.webp",
+   "w": 750,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-fone-1400.webp",
+   "w": 1313,
+   "h": 1400
+  }
+ ],
+ "adesivo-lupa": [
+  {
+   "arq": "adesivo-lupa-800.webp",
+   "w": 739,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-lupa-1400.webp",
+   "w": 1292,
+   "h": 1400
+  }
+ ],
+ "adesivo-megafone": [
+  {
+   "arq": "adesivo-megafone-800.webp",
+   "w": 669,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-megafone-1400.webp",
+   "w": 1170,
+   "h": 1400
+  }
+ ],
+ "adesivo-notebook": [
+  {
+   "arq": "adesivo-notebook-800.webp",
+   "w": 547,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-notebook-1400.webp",
+   "w": 957,
+   "h": 1400
+  }
+ ],
+ "adesivo-salto": [
+  {
+   "arq": "adesivo-salto-800.webp",
+   "w": 577,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-salto-1400.webp",
+   "w": 1011,
+   "h": 1400
+  }
+ ],
+ "adesivo-selfie": [
+  {
+   "arq": "adesivo-selfie-800.webp",
+   "w": 716,
+   "h": 800
+  },
+  {
+   "arq": "adesivo-selfie-1400.webp",
+   "w": 1252,
+   "h": 1400
+  }
+ ],
+ "equipe-derek": [
+  {
+   "arq": "equipe-derek-600.webp",
+   "w": 480,
+   "h": 600
+  },
+  {
+   "arq": "equipe-derek-1000.webp",
+   "w": 800,
+   "h": 1000
+  }
+ ],
+ "equipe-natalia": [
+  {
+   "arq": "equipe-natalia-521.webp",
+   "w": 417,
+   "h": 521
+  }
+ ],
+ "equipe-vinicius": [
+  {
+   "arq": "equipe-vinicius-600.webp",
+   "w": 480,
+   "h": 600
+  },
+  {
+   "arq": "equipe-vinicius-1000.webp",
+   "w": 800,
+   "h": 1000
+  }
+ ],
+ "faixa-pedestres": [
+  {
+   "arq": "faixa-pedestres-600.webp",
+   "w": 360,
+   "h": 600
+  },
+  {
+   "arq": "faixa-pedestres-1000.webp",
+   "w": 600,
+   "h": 1000
+  }
+ ],
+ "influenciadores-hero": [
+  {
+   "arq": "influenciadores-hero-800.webp",
+   "w": 449,
+   "h": 800
+  },
+  {
+   "arq": "influenciadores-hero-1400.webp",
+   "w": 786,
+   "h": 1400
+  }
+ ],
+ "influenciadores-quadro": [
+  {
+   "arq": "influenciadores-quadro-700.webp",
+   "w": 560,
+   "h": 700
+  },
+  {
+   "arq": "influenciadores-quadro-1200.webp",
+   "w": 960,
+   "h": 1200
+  }
+ ],
+ "portfolio-anacleto-abduch": [
+  {
+   "arq": "portfolio-anacleto-abduch-560.webp",
+   "w": 448,
+   "h": 560
+  },
+  {
+   "arq": "portfolio-anacleto-abduch-900.webp",
+   "w": 720,
+   "h": 900
+  }
+ ],
+ "portfolio-bravo-film-festival": [
+  {
+   "arq": "portfolio-bravo-film-festival-560.webp",
+   "w": 448,
+   "h": 560
+  },
+  {
+   "arq": "portfolio-bravo-film-festival-900.webp",
+   "w": 720,
+   "h": 900
+  }
+ ],
+ "portfolio-centro-sul-shop": [
+  {
+   "arq": "portfolio-centro-sul-shop-560.webp",
+   "w": 448,
+   "h": 560
+  },
+  {
+   "arq": "portfolio-centro-sul-shop-900.webp",
+   "w": 720,
+   "h": 900
+  }
+ ],
+ "portfolio-governo-rs": [
+  {
+   "arq": "portfolio-governo-rs-560.webp",
+   "w": 448,
+   "h": 560
+  },
+  {
+   "arq": "portfolio-governo-rs-900.webp",
+   "w": 720,
+   "h": 900
+  }
+ ],
+ "portfolio-harmonia-do-pet": [
+  {
+   "arq": "portfolio-harmonia-do-pet-560.webp",
+   "w": 448,
+   "h": 560
+  },
+  {
+   "arq": "portfolio-harmonia-do-pet-900.webp",
+   "w": 720,
+   "h": 900
+  }
+ ],
+ "portfolio-izeta": [
+  {
+   "arq": "portfolio-izeta-560.webp",
+   "w": 448,
+   "h": 560
+  },
+  {
+   "arq": "portfolio-izeta-900.webp",
+   "w": 720,
+   "h": 900
+  }
+ ],
+ "portfolio-john-deere": [
+  {
+   "arq": "portfolio-john-deere-560.webp",
+   "w": 448,
+   "h": 560
+  },
+  {
+   "arq": "portfolio-john-deere-900.webp",
+   "w": 720,
+   "h": 900
+  }
+ ],
+ "portfolio-national-geographic": [
+  {
+   "arq": "portfolio-national-geographic-560.webp",
+   "w": 448,
+   "h": 560
+  },
+  {
+   "arq": "portfolio-national-geographic-900.webp",
+   "w": 720,
+   "h": 900
+  }
+ ],
+ "raio-x-celular": [
+  {
+   "arq": "raio-x-celular-640.webp",
+   "w": 334,
+   "h": 640
+  },
+  {
+   "arq": "raio-x-celular-1061.webp",
+   "w": 554,
+   "h": 1061
+  }
+ ]
+}
