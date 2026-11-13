@@ -97,7 +97,7 @@ export function formulario({ segmento = 'site', pagina = 'home', titulo = 'raio-
 		<div class="campo"><label for="f-email-${pagina}">${esc(F.rotulos.email)} <small>(opcional, para receber o PDF)</small></label><input id="f-email-${pagina}" type="email" name="email" autocomplete="email" maxlength="120" placeholder="${esc(F.placeholders.email)}"><span class="erro" hidden></span></div>
 		<div class="campo"><label for="f-msg-${pagina}">${esc(F.rotulos.mensagem)} <small>${esc(F.rotulos.mensagem_opcional)}</small></label><textarea id="f-msg-${pagina}" name="mensagem" rows="2" maxlength="1500" placeholder="${esc(seg.mensagem_placeholder)}"></textarea></div>
 		<button class="btn btn--g" type="submit" data-enviar><span>Enviar e finalizar</span>${I.seta}</button>
-		<a class="form__voltar" href="/obrigado/" data-pular hidden>Pular esta parte</a>
+		<a class="form__voltar" href="${segmento === 'site' ? '/obrigado/' : `/obrigado-${segmento}/`}" data-pular hidden>Pular esta parte</a>
 	</div>
 </form>`;
 	return `<div class="form" id="form-raio-x">${janela(titulo, corpo)}</div>`;
@@ -211,7 +211,7 @@ function esquema(pg) {
 
 function pagina(pg, versao) {
 	const canon = S.URL + pg.url;
-	const cfg = { whatsapp: S.WHATSAPP, gtm: S.GTM_ID, ga4: S.GA4_ID, pixel: S.META_PIXEL_ID, modo: pg.modo || 'pagina', slug: pg.slug || '', segmento: pg.segmento || '' };
+	const cfg = { ...(PREVIA ? { previa: true } : {}), whatsapp: S.WHATSAPP, gtm: S.GTM_ID, ga4: S.GA4_ID, pixel: S.META_PIXEL_ID, modo: pg.modo || 'pagina', slug: pg.slug || '', segmento: pg.segmento || '' };
 	const og = `${S.URL}/assets/og/${pg.og || 'olorin'}.png`;
 	return `<!doctype html>
 <html lang="pt-BR">
@@ -258,7 +258,7 @@ function relativizar(html, url) {
 	const prof = url.split('/').filter(Boolean).length - (url.endsWith('.html') ? 1 : 0);
 	const base = prof ? '../'.repeat(prof) : './';
 	return html
-		.replace(/(href|src|action)="\/(?!\/)([^"]*)"/g, (m, a, c) => `${a}="${base}${c.replace(/^([^#?]*\/)?(#.*|\?.*)?$/, (x, p, r) => `${p || ''}index.html${r || ''}`)}"`)
+		.replace(/(href|src|action|data-previa)="\/(?!\/)([^"]*)"/g, (m, a, c) => `${a}="${base}${c.replace(/^([^#?]*\/)?(#.*|\?.*)?$/, (x, p, r) => `${p || ''}index.html${r || ''}`)}"`)
 		.replace(/srcset="([^"]+)"/g, (m, s) => `srcset="${s.replace(/(^|,\s*)\//g, `$1${base}`)}"`)
 		.replace(/url\(\/assets\//g, `url(${base}assets/`);
 }
@@ -288,7 +288,7 @@ for (const pg of lista) {
 
 // PHP, IDs, sitemap, robots
 const php = ler('src/enviar.php')
-	.replace('__LISTAS__', JSON.stringify({ servicos: [...SERVICOS.map((s) => s.chip), D.formulario.servicos_extra], horario: ['Agora mesmo', 'De manhã', 'À tarde', 'À noite'], segmentos: Object.fromEntries(Object.entries(D.formulario.segmentos).map(([k, v]) => [k, { nome: v.nome, porte: v.porte.opcoes, desafios: v.desafios ? v.desafios.opcoes : [], obrigado: k === 'site' ? '/obrigado/' : `/obrigado-${k}/` }])) }).replace(/'/g, "\\'"));
+	.replace('__LISTAS__', JSON.stringify({ servicos: [...SERVICOS.map((s) => s.chip), D.formulario.servicos_extra], horario: ['Agora mesmo', 'De manhã', 'À tarde', 'À noite'], segmentos: Object.fromEntries(Object.entries(D.formulario.segmentos).map(([k, v]) => [k, { nome: v.nome, porte: v.porte.opcoes, desafios: v.desafios ? v.desafios.opcoes : [], obrigado: k === 'site' ? '/obrigado/' : `/obrigado-${k}/` }])) }).replace(/\\/g, '\\\\').replace(/'/g, "\\'"));
 fs.writeFileSync(path.join(DIST, 'enviar.php'), php);
 fs.copyFileSync(path.join(RAIZ, 'src/config.example.php'), path.join(DIST, 'config.example.php'));
 fs.writeFileSync(path.join(DIST, 'olorin-ids.js'), ler('src/olorin-ids.js').replace('__GTM__', S.GTM_ID).replace('__GA4__', S.GA4_ID).replace('__PIXEL__', S.META_PIXEL_ID));

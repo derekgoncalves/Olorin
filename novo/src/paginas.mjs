@@ -20,11 +20,14 @@ function home(x) {
 	<div class="c hero__c">
 		<div>
 			${fita(H.hero.linha_superior)}
+			<div class="hero__tw">
 			<h1 class="giga hero__t linhas" aria-label="${esc(S.LEMA)}">
 				<span class="l" aria-hidden="true"><span>sua marca</span></span>
 				<span class="l" aria-hidden="true"><span>em <i class="moeda">${I.o}</i>utro</span></span>
 				<span class="l" aria-hidden="true"><span>nível.</span></span>
 			</h1>
+			<div class="cola cola--3" aria-hidden="true" style="--n:2" data-px="1.2">${janela('nivel.olo', `<div class="nivel" data-nivel-demo><span class="nivel__mais">+1 nível</span><div class="nivel__linha"><span>sua marca</span><span>nível</span></div><div class="nivel__linha"><span></span><b class="nivel__n" data-n>07</b></div><div class="nivel__xp"><i></i></div></div>`)}</div>
+			</div>
 			<div class="botoes hero__acoes">
 				${btn(H.hero.botao_start, '#raio-x', { cls: 'btn--g', id: 'cta-diagnostico-hero' })}
 				${btn('Falar no WhatsApp', wa(WA_PADRAO, 'hero'), { wa: true, cls: 'btn--vazado btn--g' })}
@@ -36,7 +39,6 @@ function home(x) {
 			${img('adesivo-estrela', '', { sizes: '(min-width:900px) 47vw, 92vw', cls: 'hero__pessoa adesivo', lazy: false })}
 			<div class="cola cola--1 toast" style="--n:0" data-px="1.8"><span class="toast__ic">${I.o}</span><span><small>instagram · agora</small><b>novo contato recebido</b></span></div>
 			<div class="cola cola--2 toast" style="--n:1" data-px="2.4"><span class="toast__ic">${I.o}</span><span><small>whatsapp · 2 min</small><b>“quero um orçamento”</b></span></div>
-			<div class="cola cola--3" style="--n:2" data-px="1.2">${janela('nivel.olo', `<div class="nivel" data-nivel-demo><span class="nivel__mais">+1 nível</span><div class="nivel__linha"><span>sua marca</span><span>nível</span></div><div class="nivel__linha"><span></span><b class="nivel__n" data-n>07</b></div><div class="nivel__xp"><i></i></div><span class="pixel" style="font-size:.62rem">subindo de nível…</span></div>`)}</div>
 			<a class="cola cola--4 selo" style="--n:3" data-px="3" href="#raio-x" tabindex="-1"><span><small>grátis</small>raio-x<br>da sua<br>marca</span></a>
 		</div>
 	</div>
@@ -57,7 +59,7 @@ function home(x) {
 			<p class="lede" data-r>Anúncio, redes, marca, site, impressos e dados com o mesmo time, a mesma estratégia e um relatório todo mês.</p>
 		</div>
 		<div class="servs" data-servs>
-			${SERVICOS.map((s, i) => `<a class="serv" href="${s.url}" data-r style="--d:${i * 0.05}s"${ARTE_SERV[s.slug] ? ` data-previa="${x.IMGS[ARTE_SERV[s.slug]][0].arq}"` : ''}>
+			${SERVICOS.map((s, i) => `<a class="serv" href="${s.url}" data-r style="--d:${i * 0.05}s"${ARTE_SERV[s.slug] ? ` data-previa="/assets/img/${x.IMGS[ARTE_SERV[s.slug]][0].arq}"` : ''}>
 				<span class="serv__n">0${i + 1}</span>
 				<span><span class="serv__nome">${esc(NOME_SERV[s.slug])}</span><span class="serv__txt">${esc(s.card.resumo_curto)}</span></span>
 				<span class="serv__seta" aria-hidden="true">${I.seta}</span>
@@ -86,7 +88,6 @@ function home(x) {
 		</div>
 		<div>
 			<div class="rx__palco" data-r>
-				<div class="meio-tom" style="width:92%;aspect-ratio:1;left:4%;top:8%"></div>
 				<div class="scan" data-scan role="img" aria-label="Demonstração: o Raio-X da Olorin passa por um perfil e aponta o que trava o resultado.">
 					<div class="scan__cam scan__tela">${mockPerfil(I)}</div>
 					<div class="scan__cam scan__raio">${img('raio-x-celular', '', { sizes: '300px' })}</div>
@@ -133,13 +134,13 @@ ${banda('provas, não promessas', 't-neon', 'banda--torta')}
 		<div class="portas">
 			<a class="porta" href="/educacao/" data-r>
 				${fita('Olorin Educação')}
-				<div><p class="porta__t">sua escola em <em>outro nível.</em></p><p style="margin-top:14px">Captação de alunos para escolas, cursos e faculdades.</p></div>
+				<div><p class="porta__t">sua escola<br>em <em>outro<br>nível.</em></p><p style="margin-top:14px">Captação de alunos para escolas, cursos e faculdades.</p></div>
 				<span class="porta__ir">conhecer ${I.seta}</span>
 				${img('adesivo-educacao', '', { sizes: '(min-width:860px) 30vw, 60vw' })}
 			</a>
 			<a class="porta" href="/influenciadores/" data-r style="--d:.1s">
 				${fita('Olorin para influenciadores')}
-				<div><p class="porta__t">seu perfil em <em>outro nível.</em></p><p style="margin-top:14px">Estratégia, conteúdo, design e anúncio para quem cria.</p></div>
+				<div><p class="porta__t">seu perfil<br>em <em>outro<br>nível.</em></p><p style="margin-top:14px">Estratégia, conteúdo, design e anúncio para quem cria.</p></div>
 				<span class="porta__ir">conhecer ${I.seta}</span>
 				${img('adesivo-fone', '', { sizes: '(min-width:860px) 30vw, 60vw' })}
 			</a>

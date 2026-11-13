@@ -122,7 +122,7 @@
      "redes-sociais"
     ],
     "edu": {
-     "nome": "Dr. José Anacleto Abduch",
+     "nome": "José Anacleto Abduch",
      "campos": [
       {
        "rotulo": "Segmento",
@@ -172,7 +172,7 @@
     "altura": 34
    },
    {
-    "nome": "Dr. José Anacleto Abduch Advocacia",
+    "nome": "José Anacleto Abduch",
     "logo": "anacleto-mono.webp",
     "largura": 174,
     "altura": 28
@@ -1321,8 +1321,8 @@
     "descricao": "Como a Olorin Digital trata os dados de quem visita o site e pede orçamento, conforme a LGPD (Lei nº 13.709/2018)."
    },
    "titulo": "Política de Privacidade",
-   "atualizado": "2026-10-23",
-   "introducao": "Esta política explica, em linguagem simples, como a Olorin Digital trata os dados pessoais de quem visita o site olorin.com.br, pede orçamento ou fala com a gente pelo WhatsApp. Ela segue a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).",
+   "atualizado": "2026-11-13",
+   "introducao": "Esta política explica, em linguagem simples, como a Olorin Digital trata os dados pessoais de quem visita o site olorin.com.br, pede o Raio-X ou um orçamento ou fala com a gente pelo WhatsApp. Ela segue a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).",
    "secoes": [
     {
      "id": "responsavel",
@@ -1344,7 +1344,7 @@
      "id": "dados",
      "titulo": "3. Quais dados coletamos",
      "lista": [
-      "**Formulário de orçamento ou Raio-X:** nome, WhatsApp, e-mail, empresa ou instituição (ou o seu perfil), cargo, porte (como o tamanho da equipe, o número de alunos ou de seguidores), site ou perfil do Instagram (opcional), serviços ou desafios de interesse, verba de anúncio, a mensagem que você escrever e a data e a hora do seu aceite.",
+      "**Formulário de Raio-X ou orçamento:** nome e WhatsApp, que são os únicos campos obrigatórios, e a data e a hora do seu aceite. Se você quiser completar o pedido, também: e-mail, empresa ou instituição (ou o seu perfil), porte (como o número de alunos ou de seguidores), site ou perfil do Instagram, serviços ou desafios de interesse, o melhor horário para falar e a mensagem que você escrever. O pedido é registrado já na primeira etapa, com nome e WhatsApp, para a gente chamar você mais rápido.",
       "**Origem do contato:** a página em que você enviou o formulário, o site de onde veio e os códigos de campanha do endereço (como utm_source, gclid e fbclid). Assim sabemos qual anúncio ou canal trouxe o pedido.",
       "**Proteção contra robôs:** quanto tempo o formulário ficou aberto e uma versão embaralhada (hash) do seu endereço IP, guardada por cerca de 10 minutos para barrar envios em série. Ela não fica junto do seu pedido.",
       "**Conversas:** o que você mandar para a gente pelo WhatsApp, por e-mail ou em reunião por vídeo.",
@@ -1359,7 +1359,7 @@
      "id": "finalidade",
      "titulo": "4. Para que usamos e com qual base legal",
      "lista": [
-      "**Responder o seu pedido, fazer o Raio-X e mandar a proposta.** Base legal: procedimentos preliminares a um contrato, a seu pedido (art. 7º, V, da LGPD). A caixa \"Concordo em ser contatado\" registra esse pedido.",
+      "**Responder o seu pedido, chamar você no WhatsApp, fazer o Raio-X e mandar a proposta.** Base legal: procedimentos preliminares a um contrato, a seu pedido (art. 7º, V, da LGPD). A caixa \"Concordo em ser contatado\" registra esse pedido.",
       "**Cumprir o contrato, se você virar cliente.** Base legal: execução de contrato (art. 7º, V) e cumprimento de obrigação legal, como as fiscais (art. 7º, II).",
       "**Saber qual canal trouxe o contato e proteger o formulário contra spam.** Base legal: legítimo interesse (art. 7º, IX), com o mínimo de dados e sem nenhuma decisão automática sobre você.",
       "**Medir visitas e o resultado dos nossos anúncios.** Base legal: o seu consentimento no aviso de cookies (art. 7º, I), que você pode retirar quando quiser. Antes da sua escolha, só vão sinais sem cookies e sem identificar você, para contar visitas de forma agregada: legítimo interesse (art. 7º, IX).",
@@ -1397,7 +1397,7 @@
       "Cookies e tecnologias parecidas, como o armazenamento do navegador, guardam pequenas informações no seu aparelho. O site usa três tipos:"
      ],
      "lista": [
-      "**Necessários:** guardam no seu navegador a sua escolha sobre cookies e, só enquanto a aba estiver aberta, a origem da visita (para ir junto com o seu pedido) e a versão do formulário que você viu. Não dependem de autorização.",
+      "**Necessários:** guardam no seu navegador a sua escolha sobre cookies e, só enquanto a aba estiver aberta, a origem da visita (para ir junto com o seu pedido) e o seu primeiro nome, para personalizar a página de confirmação e a mensagem pronta do WhatsApp. Não dependem de autorização.",
       "**Análise (Google Analytics 4):** conta visitas, páginas e cliques de forma agregada. Cookies _ga e _ga_*, por até 2 anos.",
       "**Marketing (Meta Pixel e Google Ads):** mostra quais anúncios trouxeram visitas e pedidos e permite mostrar anúncios a quem já visitou o site. Cookies como _fbp, _fbc, _gcl_au e _gcl_aw, por até 90 dias."
      ],

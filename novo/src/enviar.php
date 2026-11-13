@@ -1,0 +1,577 @@
+<?php
+/**
+ * Olorin Digital — recebe o formulário do Raio-X (site novo, nov/2026).
+ *
+ * O formulário tem 2 passos e o PRIMEIRO já registra o contato (nome + WhatsApp):
+ *   etapa=1        → grava o contato e avisa por e-mail na hora, com o link para chamar no WhatsApp
+ *   etapa=2        → grava o complemento (o que precisa, empresa, horário...) com o mesmo lead_id
+ *   etapa=completo → envio sem JavaScript (tudo de uma vez)
+ * O que faz: confere a origem e os campos, barra robôs, limita envios por IP, grava na planilha
+ * mensal (pasta leads, fechada ao navegador), manda o aviso por e-mail (SMTP da Locaweb, senha no
+ * config.php) e responde em JSON (site) ou redireciona para a página de obrigado (sem JavaScript).
+ * A senha do e-mail NUNCA fica neste arquivo: fica no config.php, só no servidor.
+ */
+
+header('X-Robots-Tag: noindex, nofollow');
+header('Cache-Control: no-store');
+
+// Listas aceitas (geradas pelo build a partir de dados/conteudo.json).
+$OLORIN = json_decode('__LISTAS__', true);
+$OLORIN_SEGMENTOS = $OLORIN['segmentos'];
+
+const OLORIN_WHATSAPP_SITE_PADRAO = '5541996460861';
+const OLORIN_DDDS = array(11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 31, 32, 33, 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68, 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99);
+
+/* ---------- Configuração ---------- */
+
+function olorin_config()
+{
+	$padrao = array(
+		'email_destino'    => 'digital@olorin.com.br',
+		'whatsapp'         => OLORIN_WHATSAPP_SITE_PADRAO,
+		'smtp_host'        => 'email-ssl.com.br',
+		'smtp_porta'       => 465,
+		'smtp_seguranca'   => 'ssl',
+		'smtp_usuario'     => '',
+		'smtp_senha'       => '',
+		'remetente_nome'   => 'Site Olorin',
+		'dominios'         => array('olorin.com.br', 'www.olorin.com.br'),
+		'pasta_leads'      => '',
+		'lead_webhook_url' => '',
+	);
+	$candidatos = array(dirname(__DIR__) . '/olorin-config.php', __DIR__ . '/config.php');
+	foreach ($candidatos as $arquivo) {
+		if (@is_readable($arquivo)) {
+			$cfg = require $arquivo;
+			if (is_array($cfg)) {
+				$cfg = array_merge($padrao, $cfg);
+				if ('TROCAR_NO_SERVIDOR' === $cfg['smtp_senha']) {
+					$cfg['smtp_senha'] = '';
+				}
+				return $cfg;
+			}
+		}
+	}
+	return $padrao;
+}
+
+$cfg  = olorin_config();
+$ajax = isset($_SERVER['HTTP_ACCEPT']) && false !== strpos((string) $_SERVER['HTTP_ACCEPT'], 'application/json');
+
+/* Público do formulário (pelo modo da página): textos, listas aceitas e página de obrigado. */
+$modo_bruto = isset($_POST['modo_pagina']) && is_scalar($_POST['modo_pagina']) ? (string) $_POST['modo_pagina'] : '';
+$seg_chave  = isset($OLORIN_SEGMENTOS[$modo_bruto]) ? $modo_bruto : 'site';
+$SEG        = $OLORIN_SEGMENTOS[$seg_chave];
+
+/* ---------- Respostas ---------- */
+
+function olorin_responder($ok, $status = 200, $extra = array())
+{
+	global $ajax, $SEG;
+	if ($ok && !isset($extra['redirect'])) {
+		$extra['redirect'] = $SEG['obrigado'];
+	}
+	if ($ajax) {
+		http_response_code($status);
+		header('Content-Type: application/json; charset=utf-8');
+		echo json_encode(array_merge(array('ok' => $ok), $extra), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		exit;
+	}
+	if ($ok) {
+		header('Location: ' . $extra['redirect'], true, 303);
+		exit;
+	}
+	olorin_pagina_erro($status, isset($extra['message']) ? $extra['message'] : '', isset($extra['fields']) ? $extra['fields'] : array());
+}
+
+/** Página simples de erro para quem envia sem JavaScript (antes voltava sem nenhuma mensagem). */
+function olorin_pagina_erro($status, $mensagem, $campos)
+{
+	http_response_code($status);
+	header('Content-Type: text/html; charset=utf-8');
+	$h = static function ($t) {
+		return htmlspecialchars((string) $t, ENT_QUOTES, 'UTF-8');
+	};
+	global $seg_chave;
+	// O formulário fica em #raio-x (site e LPs) ou em #formulario (campanhas /promo/).
+	$voltar = '/#raio-x';
+	if (!empty($_SERVER['HTTP_REFERER']) && olorin_mesmo_dominio($_SERVER['HTTP_REFERER'])) {
+		$base   = strtok((string) $_SERVER['HTTP_REFERER'], '#');
+		$voltar = $base . (0 === strpos((string) parse_url($base, PHP_URL_PATH), '/promo') ? '#formulario' : '#raio-x');
+	}
+	$ref = array('educacao' => 'educacao-', 'influenciadores' => 'influencer-');
+	$wa  = 'https://wa.me/' . OLORIN_WHATSAPP_SITE_PADRAO . '?text=' . rawurlencode('Oi! Tentei pedir um orçamento pelo site da Olorin e não consegui. [ref: ' . (isset($ref[$seg_chave]) ? $ref[$seg_chave] : '') . 'form-erro-sem-js]');
+	echo '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">';
+	echo '<title>Não conseguimos enviar | Olorin Digital</title>';
+	echo '<style>body{margin:0;background:#7e3bed;color:#fff;font:16px/1.6 ui-monospace,Menlo,Consolas,monospace}main{max-width:620px;margin:10vh auto;padding:24px;border:2px solid #fff;background:rgba(0,0,0,.18)}h1{font:900 28px/1.1 "Arial Black",sans-serif;text-transform:uppercase;margin:0 0 12px}a{color:#fff;font-weight:700}li{margin:4px 0}.b{display:inline-block;margin:16px 12px 0 0;padding:14px 18px;border:2px solid #fff;text-decoration:none}.b:first-of-type{background:#fff;color:#7e3bed}</style></head><body><main>';
+	echo '<h1>Não conseguimos enviar</h1><p>' . $h($mensagem ? $mensagem : 'Confira os dados e tente de novo.') . '</p>';
+	if ($campos) {
+		echo '<ul>';
+		foreach ($campos as $texto) {
+			echo '<li>' . $h($texto) . '</li>';
+		}
+		echo '</ul>';
+	}
+	echo '<a class="b" href="' . $h($voltar) . '">Voltar ao formulário</a><a class="b" href="' . $h($wa) . '">Chamar no WhatsApp</a>';
+	echo '</main></body></html>';
+	exit;
+}
+
+/* ---------- Utilidades ---------- */
+
+/** Texto de UMA linha: sem tags, sem caracteres de controle, sem quebra de linha (evita injeção de cabeçalho). */
+function olorin_linha($chave, $max = 200)
+{
+	$v = isset($_POST[$chave]) && is_scalar($_POST[$chave]) ? (string) $_POST[$chave] : '';
+	$v = strip_tags($v);
+	$v = preg_replace('/[\x00-\x1F\x7F]+/u', ' ', $v);
+	$v = trim(preg_replace('/\s{2,}/u', ' ', (string) $v));
+	return function_exists('mb_substr') ? mb_substr($v, 0, $max) : substr($v, 0, $max);
+}
+
+/** Texto de várias linhas (mensagem): mantém as quebras, tira o resto. */
+function olorin_texto($chave, $max = 1500)
+{
+	$v = isset($_POST[$chave]) && is_scalar($_POST[$chave]) ? (string) $_POST[$chave] : '';
+	$v = strip_tags($v);
+	$v = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/u', '', $v);
+	$v = trim(str_replace("\r\n", "\n", (string) $v));
+	return function_exists('mb_substr') ? mb_substr($v, 0, $max) : substr($v, 0, $max);
+}
+
+function olorin_permitido($valor, $lista)
+{
+	return in_array($valor, $lista, true) ? $valor : '';
+}
+
+function olorin_host($url)
+{
+	$host = parse_url((string) $url, PHP_URL_HOST);
+	return $host ? strtolower($host) : '';
+}
+
+/** O pedido veio do próprio site? (aceita os domínios da config e o host atual, para testes locais) */
+function olorin_mesmo_dominio($url)
+{
+	global $cfg;
+	$host = olorin_host($url);
+	if ('' === $host) {
+		return false;
+	}
+	$atual = strtolower(preg_replace('/:\d+$/', '', isset($_SERVER['HTTP_HOST']) ? (string) $_SERVER['HTTP_HOST'] : ''));
+	$aceitos = array_merge(array_map('strtolower', (array) $cfg['dominios']), array($atual));
+	return in_array($host, $aceitos, true);
+}
+
+/** WhatsApp: só dígitos, DDD válido, celular com 9 → +55DDDNÚMERO (ou '' se inválido). */
+function olorin_whatsapp($bruto, &$erro)
+{
+	$d = preg_replace('/\D+/', '', (string) $bruto);
+	if (strlen($d) > 11 && 0 === strpos($d, '55')) {
+		$d = substr($d, 2);
+	}
+	if (strlen($d) < 10 || strlen($d) > 11) {
+		$erro = 'Confira o WhatsApp com DDD, por exemplo (41) 99999-9999.';
+		return '';
+	}
+	if (!in_array((int) substr($d, 0, 2), OLORIN_DDDS, true)) {
+		$erro = 'Esse DDD não existe. Confira o número.';
+		return '';
+	}
+	if (11 === strlen($d) && '9' !== $d[2]) {
+		$erro = 'Confira o WhatsApp com DDD, por exemplo (41) 99999-9999.';
+		return '';
+	}
+	return '+55' . $d;
+}
+
+/* ---------- 1. Método, origem e anti-spam ---------- */
+
+if ('POST' !== (isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : '')) {
+	http_response_code(405);
+	header('Allow: POST');
+	exit('Método não permitido.');
+}
+
+$origem_http = isset($_SERVER['HTTP_ORIGIN']) ? (string) $_SERVER['HTTP_ORIGIN'] : '';
+$referer     = isset($_SERVER['HTTP_REFERER']) ? (string) $_SERVER['HTTP_REFERER'] : '';
+if (('' !== $origem_http && 'null' !== $origem_http && !olorin_mesmo_dominio($origem_http))
+	|| ('' === $origem_http && '' !== $referer && !olorin_mesmo_dominio($referer))) {
+	olorin_responder(false, 403, array('message' => 'Envio recusado: origem desconhecida.'));
+}
+
+// Isca para robôs: responde "ok" (com a mesma página de obrigado) sem gravar nada.
+if (!empty($_POST['empresa_url'])) {
+	olorin_responder(true, 200);
+}
+
+// Tempo mínimo de preenchimento (3 s). olorin_tempo = segundos (JS); olorin_ts = carimbo de quando o formulário abriu.
+$tempo = null;
+if (isset($_POST['olorin_tempo']) && is_numeric($_POST['olorin_tempo']) && '' !== $_POST['olorin_tempo']) {
+	$tempo = (int) $_POST['olorin_tempo'];
+} elseif (isset($_POST['olorin_ts']) && ctype_digit((string) $_POST['olorin_ts'])) {
+	$ts = (int) $_POST['olorin_ts'];
+	if ($ts > time() - 2 * 86400 && $ts <= time() + 60) {
+		$tempo = time() - $ts;
+	}
+}
+if (null !== $tempo && $tempo < 3) {
+	olorin_responder(false, 429, array('message' => 'Envio rápido demais. Espere alguns segundos e tente de novo.'));
+}
+
+/* ---------- 2. Dados ---------- */
+
+/** E-mail: uma linha, minúsculo, validado com filter_var ('' se inválido). */
+function olorin_email($chave)
+{
+	$v = strtolower(str_replace(' ', '', olorin_linha($chave, 120)));
+	return ('' !== $v && false !== filter_var($v, FILTER_VALIDATE_EMAIL)) ? $v : '';
+}
+
+/** Marcações de uma lista (chips): só as opções aceitas, na ordem do formulário. */
+function olorin_marcados($chave, $aceitos)
+{
+	if (!isset($_POST[$chave]) || !is_array($_POST[$chave])) {
+		return '';
+	}
+	$enviados = array_map('strval', array_filter($_POST[$chave], 'is_scalar'));
+	return implode(', ', array_values(array_intersect($aceitos, $enviados)));
+}
+
+$erro_whats = '';
+$etapa = olorin_permitido(olorin_linha('etapa', 10), array('1', '2', 'completo'));
+if ('' === $etapa) {
+	$etapa = 'completo';
+}
+$etapas_nome = array('1' => 'contato (passo 1 de 2)', '2' => 'complemento (passo 2 de 2)', 'completo' => 'completo');
+$lead = array(
+	'data'          => date('d/m/Y H:i'),
+	'etapa'         => $etapas_nome[$etapa],
+	'lead_id'       => preg_replace('/[^a-zA-Z0-9-]/', '', olorin_linha('lead_id', 64)),
+	'segmento'      => $SEG['nome'],
+	'nome'          => olorin_linha('nome', 80),
+	'whatsapp'      => olorin_whatsapp(olorin_linha('whatsapp', 30), $erro_whats),
+	'email'         => olorin_email('email'),
+	'empresa'       => olorin_linha('empresa', 120),
+	'site'          => olorin_linha('site', 160),
+	'porte'         => olorin_permitido(olorin_linha('porte', 60), $SEG['porte']),
+	'servicos'      => olorin_marcados('servicos', $OLORIN['servicos']),
+	'desafios'      => $SEG['desafios'] ? olorin_marcados('desafios', $SEG['desafios']) : '',
+	'horario'       => olorin_permitido(olorin_linha('horario', 40), $OLORIN['horario']),
+	'mensagem'      => olorin_texto('mensagem', 1500),
+	'utm_source'    => olorin_linha('utm_source', 120),
+	'utm_medium'    => olorin_linha('utm_medium', 120),
+	'utm_campaign'  => olorin_linha('utm_campaign', 160),
+	'utm_content'   => olorin_linha('utm_content', 160),
+	'utm_term'      => olorin_linha('utm_term', 160),
+	'origem_clique' => olorin_linha('origem_clique', 60),
+	'pagina'        => olorin_linha('pagina', 80),
+	'consentimento' => !empty($_POST['consentimento']) ? date('d/m/Y H:i') : '',
+	'email_enviado' => '',
+);
+
+$tamanho = static function ($t) {
+	return function_exists('mb_strlen') ? mb_strlen($t) : strlen($t);
+};
+$erros = array();
+if ($tamanho($lead['nome']) < 2) {
+	$erros['nome'] = 'Conta pra gente o seu nome.';
+}
+if ('' === $lead['whatsapp']) {
+	$erros['whatsapp'] = $erro_whats;
+}
+if ('' === $lead['consentimento']) {
+	$erros['consentimento'] = 'Precisamos do seu ok para entrar em contato.';
+}
+if ($erros) {
+	olorin_responder(false, 422, array('message' => 'Confira os campos: ' . implode(' ', $erros), 'fields' => $erros));
+}
+
+/* ---------- 3. Limite por IP (só pedidos válidos contam) ---------- */
+
+$ip       = isset($_SERVER['REMOTE_ADDR']) ? (string) $_SERVER['REMOTE_ADDR'] : '';
+$rl_file  = sys_get_temp_dir() . '/olorin_rl_' . hash('sha256', $ip . __DIR__);
+$envios   = @is_readable($rl_file) ? array_filter(array_map('intval', explode(',', (string) @file_get_contents($rl_file)))) : array();
+$envios   = array_values(array_filter($envios, static function ($t) {
+	return $t > time() - 600;
+}));
+if (count($envios) >= 12) {
+	olorin_responder(false, 429, array('message' => 'Muitos envios seguidos. Chame a gente no WhatsApp.'));
+}
+$envios[] = time();
+@file_put_contents($rl_file, implode(',', $envios), LOCK_EX);
+
+/* ---------- 4. CSV mensal fora da pasta pública ---------- */
+
+function olorin_pasta_leads()
+{
+	global $cfg;
+	$opcoes = array_filter(array($cfg['pasta_leads'], dirname(__DIR__) . '/leads', __DIR__ . '/leads'));
+	foreach ($opcoes as $pasta) {
+		if (!is_dir($pasta)) {
+			@mkdir($pasta, 0750, true);
+		}
+		if (is_dir($pasta) && is_writable($pasta)) {
+			if (0 === strpos(realpath($pasta), realpath(__DIR__))) {
+				// Dentro do site: garante o bloqueio de acesso.
+				if (!file_exists($pasta . '/.htaccess')) {
+					@file_put_contents($pasta . '/.htaccess', "Require all denied\n");
+				}
+			}
+			return $pasta;
+		}
+	}
+	return '';
+}
+
+/** "+5541999990000" → "(41) 99999-0000" (o Excel não confunde com número nem com fórmula). */
+function olorin_whatsapp_legivel($e164)
+{
+	$d = preg_replace('/\D/', '', (string) $e164);
+	if (0 === strpos($d, '55') && strlen($d) > 11) {
+		$d = substr($d, 2);
+	}
+	if (11 === strlen($d)) {
+		return '(' . substr($d, 0, 2) . ') ' . substr($d, 2, 5) . '-' . substr($d, 7);
+	}
+	if (10 === strlen($d)) {
+		return '(' . substr($d, 0, 2) . ') ' . substr($d, 2, 4) . '-' . substr($d, 6);
+	}
+	return $d;
+}
+
+/** Linha da planilha: WhatsApp legível + link clicável para abrir a conversa. */
+function olorin_para_planilha($lead)
+{
+	$saida = array();
+	foreach ($lead as $chave => $valor) {
+		if ('whatsapp' === $chave) {
+			$saida['whatsapp']      = olorin_whatsapp_legivel($valor);
+			$saida['whatsapp_link'] = '' !== $valor ? 'https://wa.me/' . ltrim($valor, '+') : '';
+		} else {
+			$saida[$chave] = $valor;
+		}
+	}
+	return $saida;
+}
+
+/** Primeira linha (cabeçalho) de um CSV já gravado, sem o BOM. */
+function olorin_cabecalho_csv($arquivo)
+{
+	$h = @fopen($arquivo, 'r');
+	if (!$h) {
+		return array();
+	}
+	$linha = fgetcsv($h, 0, ';', '"', '\\');
+	fclose($h);
+	if (!is_array($linha)) {
+		return array();
+	}
+	$linha[0] = preg_replace('/^\xEF\xBB\xBF/', '', (string) $linha[0]);
+	return $linha;
+}
+
+function olorin_gravar_csv($lead)
+{
+	$lead  = olorin_para_planilha($lead);
+	$pasta = olorin_pasta_leads();
+	if ('' === $pasta) {
+		return false;
+	}
+	// Colunas mudaram (ex.: e-mail, empresa, cargo e porte em 23/10/2026)? Em vez de bagunçar a planilha
+	// do mês, o pedido vai para AAAA-MM-2.csv (ou -3...), com o cabeçalho novo.
+	$colunas = array_keys($lead);
+	$arquivo = '';
+	for ($i = 1; $i <= 20; $i++) {
+		$candidato = $pasta . '/' . date('Y-m') . ($i > 1 ? '-' . $i : '') . '.csv';
+		if (!file_exists($candidato) || olorin_cabecalho_csv($candidato) === $colunas) {
+			$arquivo = $candidato;
+			break;
+		}
+	}
+	if ('' === $arquivo) {
+		return false;
+	}
+	$novo    = !file_exists($arquivo);
+	$h       = @fopen($arquivo, 'a');
+	if (!$h) {
+		return false;
+	}
+	flock($h, LOCK_EX);
+	if ($novo) {
+		fwrite($h, "\xEF\xBB\xBF");
+		fputcsv($h, array_keys($lead), ';', '"', '\\');
+	}
+	$linha = array_map(static function ($v) {
+		$v = (string) $v;
+		// Protege contra injeção de fórmula no Excel/Planilhas.
+		return ('' !== $v && in_array($v[0], array('=', '+', '-', '@', "\t", "\r"), true)) ? "'" . $v : $v;
+	}, array_values($lead));
+	$ok = false !== fputcsv($h, $linha, ';', '"', '\\');
+	flock($h, LOCK_UN);
+	fclose($h);
+	return $ok;
+}
+
+/* ---------- 5. E-mail e webhook ---------- */
+
+$rotulos = array(
+	'etapa' => 'Etapa', 'segmento' => 'Público', 'nome' => 'Nome', 'whatsapp' => 'WhatsApp', 'email' => 'E-mail',
+	'empresa' => 'Empresa, instituição ou perfil', 'site' => 'Site ou @', 'porte' => 'Tamanho',
+	'servicos' => 'Precisa de', 'desafios' => 'Maior desafio', 'horario' => 'Melhor horário para chamar',
+	'mensagem' => 'Mensagem', 'pagina' => 'Página de envio', 'origem_clique' => 'Botão clicado',
+	'utm_source' => 'utm_source', 'utm_medium' => 'utm_medium', 'utm_campaign' => 'utm_campaign',
+	'utm_content' => 'utm_content', 'utm_term' => 'utm_term', 'consentimento' => 'Consentimento LGPD',
+);
+
+$corta = static function ($t, $n) {
+	return function_exists('mb_substr') ? mb_substr($t, 0, $n) : substr($t, 0, $n);
+};
+$origem_txt   = $lead['utm_source'] ? $lead['utm_source'] . ($lead['utm_medium'] ? '/' . $lead['utm_medium'] : '') : 'site (direto)';
+$fone_legivel = olorin_whatsapp_legivel($lead['whatsapp']);
+$primeiro     = preg_split('/\s+/', trim($lead['nome']));
+$primeiro     = $primeiro[0];
+// Ex.: "CHAMAR AGORA (Educação): Maria · (41) 99999-0000 | google/cpc"
+if ('2' === $etapa) {
+	$assunto = 'Complemento do contato (' . $SEG['nome'] . '): ' . $corta($lead['nome'], 40) . ($lead['empresa'] ? ' · ' . $corta($lead['empresa'], 50) : '') . ($lead['horario'] ? ' · ' . $lead['horario'] : '');
+} else {
+	$assunto = 'CHAMAR AGORA (' . $SEG['nome'] . '): ' . $corta($lead['nome'], 40) . ' · ' . $fone_legivel . ' | ' . $origem_txt;
+}
+
+// Conversa já pronta: um toque no link abre o WhatsApp do contato com a primeira mensagem escrita.
+$abertura = 'Oi, ' . $primeiro . '! Aqui é o Derek, da Olorin. Recebi agora o seu pedido de Raio-X pelo site. Posso te fazer duas perguntas rápidas por aqui?';
+$link_wa  = 'https://wa.me/' . ltrim($lead['whatsapp'], '+') . '?text=' . rawurlencode($abertura);
+
+$corpo  = '2' === $etapa ? "O contato completou o pedido. O que ele contou a mais:\n\n" : "Contato novo pelo site. Quem é chamado nos primeiros minutos responde muito mais.\n\n";
+$corpo .= "CHAMAR NO WHATSAPP (mensagem pronta):\n" . $link_wa . "\n\n";
+foreach ($rotulos as $chave => $rotulo) {
+	if ('' !== $lead[$chave]) {
+		$corpo .= $rotulo . ': ' . ('whatsapp' === $chave ? $fone_legivel : $lead[$chave]) . "\n";
+	}
+}
+if ('' !== $lead['email']) {
+	$corpo .= "\nResponder por e-mail: " . $lead['email'] . " (é só responder esta mensagem)\n";
+}
+
+$erro_email = '';
+$enviado    = olorin_enviar_email($cfg, (string) $cfg['email_destino'], $assunto, $corpo, $erro_email, $lead['email']);
+$lead['email_enviado'] = $enviado ? 'sim' : 'não';
+$salvo = olorin_gravar_csv($lead);
+
+if (!empty($cfg['lead_webhook_url']) && preg_match('#^https://#', (string) $cfg['lead_webhook_url'])) {
+	$ctx = stream_context_create(array('http' => array(
+		'method'        => 'POST',
+		'header'        => "Content-Type: application/json\r\n",
+		'content'       => json_encode($lead, JSON_UNESCAPED_UNICODE),
+		'timeout'       => 3,
+		'ignore_errors' => true,
+	)));
+	@file_get_contents((string) $cfg['lead_webhook_url'], false, $ctx); // falha silenciosa
+}
+
+if (!$salvo && !$enviado) {
+	error_log('Olorin: pedido não registrado (sem CSV e sem e-mail). ' . $erro_email);
+	olorin_responder(false, 500, array('message' => 'Não conseguimos registrar agora.'));
+}
+if (!$enviado) {
+	error_log('Olorin: pedido salvo no CSV, mas o e-mail falhou. ' . $erro_email);
+}
+
+olorin_responder(true, 200, array('message' => 'Recebido.', 'redirect' => $SEG['obrigado']));
+
+/**
+ * E-mail: SMTP autenticado se configurado (exigência da Locaweb); senão tenta mail() do PHP.
+ */
+function olorin_enviar_email($cfg, $para, $assunto, $corpo, &$erro, $responder = '')
+{
+	if ('' === trim($para)) {
+		$erro = 'sem e-mail de destino';
+		return false;
+	}
+	// "Responder" no e-mail vai direto para quem pediu (e-mail já validado, sem quebra de linha).
+	$responder = (false !== filter_var((string) $responder, FILTER_VALIDATE_EMAIL)) ? (string) $responder : '';
+	if (empty($cfg['smtp_usuario']) || empty($cfg['smtp_senha'])) {
+		$host = preg_replace('/^www\./', '', preg_replace('/[^a-z0-9.-]/i', '', isset($_SERVER['HTTP_HOST']) ? (string) $_SERVER['HTTP_HOST'] : 'localhost'));
+		$de   = 'no-reply@' . $host;
+		$cab  = 'From: ' . $de . ($responder ? "\r\nReply-To: " . $responder : '') . "\r\nContent-Type: text/plain; charset=UTF-8";
+		$ok   = function_exists('mail') && @mail($para, '=?UTF-8?B?' . base64_encode($assunto) . '?=', $corpo, $cab, '-f' . $de);
+		$erro = $ok ? '' : 'mail() indisponível — configure o SMTP';
+		return $ok;
+	}
+	return olorin_smtp($cfg, $para, $assunto, $corpo, $erro, $responder);
+}
+
+/**
+ * Cliente SMTP mínimo (SSL na 465 ou STARTTLS na 587) com AUTH LOGIN e tempo limite curto.
+ */
+function olorin_smtp($cfg, $para, $assunto, $corpo, &$erro, $responder = '')
+{
+	$seguranca = strtolower((string) $cfg['smtp_seguranca']);
+	$remoto    = ('ssl' === $seguranca ? 'ssl://' : 'tcp://') . $cfg['smtp_host'] . ':' . (int) $cfg['smtp_porta'];
+	$ctx       = stream_context_create(array('ssl' => array('verify_peer' => true, 'verify_peer_name' => true, 'SNI_enabled' => true)));
+	$fp        = @stream_socket_client($remoto, $errno, $errstr, 10, STREAM_CLIENT_CONNECT, $ctx);
+	if (!$fp) {
+		$erro = 'Conexão SMTP falhou: ' . $errstr;
+		return false;
+	}
+	stream_set_timeout($fp, 10);
+
+	$falar = static function ($comando, $espera) use ($fp, &$erro) {
+		if (null !== $comando) {
+			fwrite($fp, $comando . "\r\n");
+		}
+		$resposta = '';
+		while (false !== ($linha = fgets($fp, 1024))) {
+			$resposta .= $linha;
+			if (strlen($linha) < 4 || ' ' === $linha[3]) {
+				break;
+			}
+		}
+		$meta = stream_get_meta_data($fp);
+		if (!empty($meta['timed_out'])) {
+			$erro = 'tempo esgotado no SMTP';
+			return false;
+		}
+		if (!in_array((int) substr($resposta, 0, 3), (array) $espera, true)) {
+			$erro = trim($resposta) ? trim($resposta) : 'sem resposta do servidor';
+			return false;
+		}
+		return true;
+	};
+
+	$host = preg_replace('/[^a-z0-9.-]/i', '', isset($_SERVER['HTTP_HOST']) ? (string) $_SERVER['HTTP_HOST'] : 'localhost');
+	$de   = (string) $cfg['smtp_usuario'];
+	$ok   = $falar(null, 220) && $falar('EHLO ' . $host, 250);
+	if ($ok && 'tls' === $seguranca) {
+		$ok = $falar('STARTTLS', 220)
+			&& stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)
+			&& $falar('EHLO ' . $host, 250);
+	}
+	$ok = $ok
+		&& $falar('AUTH LOGIN', 334)
+		&& $falar(base64_encode($de), 334)
+		&& $falar(base64_encode((string) $cfg['smtp_senha']), 235)
+		&& $falar('MAIL FROM:<' . $de . '>', 250)
+		&& $falar('RCPT TO:<' . $para . '>', array(250, 251))
+		&& $falar('DATA', 354);
+
+	if ($ok) {
+		$cod = static function ($t) {
+			return '=?UTF-8?B?' . base64_encode($t) . '?=';
+		};
+		$msg = 'Date: ' . date('r') . "\r\n"
+			. 'From: ' . $cod((string) $cfg['remetente_nome']) . ' <' . $de . ">\r\n"
+			. 'To: <' . $para . ">\r\n"
+			. ($responder ? 'Reply-To: <' . $responder . ">\r\n" : '')
+			. 'Subject: ' . $cod($assunto) . "\r\n"
+			. 'Message-ID: <' . bin2hex(random_bytes(8)) . '@' . $host . ">\r\n"
+			. "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n"
+			. chunk_split(base64_encode($corpo));
+		fwrite($fp, $msg . "\r\n.\r\n");
+		$ok = $falar(null, 250);
+	}
+	@fwrite($fp, "QUIT\r\n");
+	fclose($fp);
+	return $ok;
+}
+
