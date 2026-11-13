@@ -15,7 +15,8 @@
 
 	/* ---------- IDs editáveis pelo WebFTP (olorin-ids.js) ---------- */
 	(function () {
-		var ids = w.OLORIN_IDS || {};
+		var ids = CFG.previa ? {} : (w.OLORIN_IDS || {});
+		if (CFG.previa) { CFG.gtm = CFG.ga4 = CFG.pixel = ''; } // prévia: sem medição
 		var mapa = [['GTM_ID', 'gtm', /^GTM-[A-Z0-9]{4,12}$/i], ['GA4_ID', 'ga4', /^G-[A-Z0-9]{4,15}$/i], ['META_PIXEL_ID', 'pixel', /^\d{6,20}$/], ['GADS_CONVERSION_ID', 'adsId', /^(AW-)?\d{6,15}$/i], ['GADS_CONVERSION_LABEL', 'adsLabel', /^[\w-]{4,64}$/], ['SCHEDULING_URL', 'agenda', /^https:\/\/[^\s"'<>]+$/]];
 		mapa.forEach(function (m) {
 			var v = ids[m[0]] == null ? '' : String(ids[m[0]]).trim();

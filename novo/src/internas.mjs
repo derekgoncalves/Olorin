@@ -17,7 +17,7 @@ export function internas(x) {
 		const meio = Math.ceil(pal.length / 2);
 		return [pal.slice(0, meio).join(' '), pal.slice(meio).join(' ')];
 	};
-	const cab = (etiqueta, titulo, texto, { lado = true, cls = 'mega', tag = 'h2' } = {}) => `<div class="cab${lado && texto ? ' cab--lado' : ''}">${etiqueta ? fita(etiqueta) : ''}${linhas(partir(titulo).map(esc), cls, tag)}${texto ? `<p class="lede" data-r>${esc(texto)}</p>` : ''}</div>`;
+	const cab = (etiqueta, titulo, texto, { lado = true, cls = 'mega', tag = 'h2' } = {}) => `<div class="cab${lado && texto ? ' cab--lado' : ''}">${etiqueta ? fita(etiqueta) : ''}${linhas((Array.isArray(titulo) ? titulo : partir(titulo)).map(esc), cls, tag)}${texto ? `<p class="lede" data-r>${esc(texto)}</p>` : ''}</div>`;
 	const capa = ({ tema, etiqueta, titulo, texto, botoes = '', arte = '', nivel = 'início', cls = '' }) => `
 <section class="capa ${tema} ${cls}" data-nivel="${nivel}">
 	<div class="c capa__c">
@@ -150,19 +150,19 @@ ${banda(F.faixa.join('  ✦  '), 't-neon')}
 	</div>
 </section>
 <section class="sec t-preto" id="canais" data-nivel="programação">
-	<div class="c">${cab(F.canais.etiqueta, F.canais.titulo, F.canais.texto)}
+	<div class="c">${cab(F.canais.etiqueta, ['a programação', 'do seu perfil.'], F.canais.texto, { lado: false })}
 		<ul class="canais">${F.canais.itens.map((c, i) => `<li data-r style="--d:${i * 0.05}s"><span class="canais__ch">${esc(F.canais.rotulo_canal)} ${esc(c.canal)}</span><div><h3 class="grande">${esc(c.nome)}</h3><p>${esc(c.texto)}</p></div><span class="pixel canais__tag">${esc(c.tag)}</span></li>`).join('')}</ul>
 	</div>
 </section>
 <section class="sec t-branco" id="enquadramento" data-nivel="estratégia">
 	<div class="c duas">
-		<div>${fita(F.enquadramento.etiqueta)}${linhas(['primeiro o', 'enquadramento.', 'depois o play.'], 'mega', 'h2', ' style="margin-top:22px"')}<p class="lede" data-r style="margin-top:22px">${esc(F.enquadramento.texto)}</p><div data-r style="margin-top:26px">${btn(F.enquadramento.botao, '#raio-x', { cls: 'btn--g' })}</div></div>
+		<div>${fita(F.enquadramento.etiqueta)}${linhas(['primeiro o', 'enquadramento.', 'depois o play.'], 'grande quadro__t', 'h2', ' style="margin-top:22px"')}<p class="lede" data-r style="margin-top:22px">${esc(F.enquadramento.texto)}</p><div data-r style="margin-top:26px">${btn(F.enquadramento.botao, '#raio-x', { cls: 'btn--g' })}</div></div>
 		<div class="quadro" data-r>${img('influenciadores-quadro', 'Criadora enquadrando o rosto com as mãos', { sizes: '(min-width:900px) 40vw, 92vw' })}<span class="pixel quadro__a">● ${esc(F.enquadramento.visor.rec)} ${esc(F.enquadramento.visor.tempo)}</span><span class="pixel quadro__b">${esc(F.enquadramento.visor.info)}</span>${img('adesivo-fone', '', { sizes: '200px', cls: 'quadro__adesivo adesivo' })}</div>
 	</div>
 </section>
 <section class="sec t-preto" id="como-funciona" data-nivel="roteiro">
 	<div class="c">${cab(F.como_funciona.etiqueta, F.como_funciona.titulo, F.como_funciona.texto)}
-		<div class="roteiro" data-r>${janela(`${F.como_funciona.roteiro.titulo} · ${F.como_funciona.roteiro.formato}`, `<ol class="cenas">${F.como_funciona.passos.map((p) => `<li><span class="pixel">${esc(p.tempo)} · ${esc(p.cena)}</span><b class="medio">${esc(p.titulo)}</b><span>${esc(p.texto)}</span></li>`).join('')}</ol><p class="postit">${esc(F.como_funciona.postit)}</p>`)}</div>
+		<div class="roteiro-l"><div class="roteiro" data-r>${janela(`${F.como_funciona.roteiro.titulo} · ${F.como_funciona.roteiro.formato}`, `<ol class="cenas">${F.como_funciona.passos.map((p) => `<li><span class="pixel">${esc(p.tempo)} · ${esc(p.cena)}</span><b class="medio">${esc(p.titulo)}</b><span>${esc(p.texto)}</span></li>`).join('')}</ol><p class="postit">${esc(F.como_funciona.postit)}</p>`)}</div><div class="roteiro__arte" data-r style="--d:.12s">${img('adesivo-selfie', '', { sizes: '(min-width:900px) 30vw, 70vw', cls: 'adesivo' })}<span class="fita">${esc(F.como_funciona.adesivo_tag)}</span></div></div>
 	</div>
 </section>
 ${secEquipe(F.equipe, 't-branco', F.equipe.frases).replace('class="sec t-branco"', 'class="sec t-branco sec--time-claro"')}
@@ -311,7 +311,7 @@ ${capa({ tema: 't-preto', etiqueta: `Atualizada em ${data}`, titulo: ['política
 			</div>
 			<div class="quem quem--escuro">${img('equipe-derek', 'Derek Gonçalves', { sizes: '74px' })}<div><small>Quem vai te chamar</small><b>Derek Gonçalves</b><span>${esc(S.TELEFONE_EXIBICAO)}</span></div></div>
 		</div>
-		<div class="capa__arte">${img('adesivo-salto', '', { sizes: '(min-width:900px) 34vw, 70vw', cls: 'capa__pessoa adesivo', lazy: false })}<span class="selo" style="--tam:150px;position:absolute;right:4%;top:6%" aria-hidden="true"><span><small>pedido</small>+1<br>nível</span></span></div>
+		<div class="capa__arte">${img('adesivo-salto', '', { sizes: '(min-width:900px) 34vw, 70vw', cls: 'capa__pessoa adesivo', lazy: false })}<span class="selo" style="--tam:150px;position:absolute;right:-3%;top:-2%;z-index:3" aria-hidden="true"><span><small>pedido</small>+1<br>nível</span></span></div>
 	</div>
 </section>
 <section class="sec t-neon" data-nivel="enquanto isso"><div class="c">${cab(T.enquanto_titulo, 'Dá uma olhada.', '')}<div class="servs">${T.enquanto.map((l, i) => `<a class="serv" href="${l.url}"><span class="serv__n">0${i + 1}</span><span><span class="serv__nome serv__nome--p">${esc(l.rotulo)}</span></span><span class="serv__seta" aria-hidden="true">${I.seta}</span></a>`).join('')}</div></div></section>`;
@@ -324,7 +324,7 @@ ${capa({ tema: 't-preto', etiqueta: `Atualizada em ${data}`, titulo: ['política
 		const E4 = P.erro404;
 		out.push({
 			url: '/404.html', modo: 'erro', slug: '404', titulo: E4.seo.titulo, descricao: E4.seo.descricao, noindex: true, semForm: true,
-			corpo: capa({ tema: 't-neon', etiqueta: 'Erro 404', titulo: ['fase não', 'encontrada.'], texto: E4.texto, cls: 'capa--obrigado', botoes: btn(E4.inicio, '/', { cls: 'btn--g' }) + btn(E4.raio_x, '/#raio-x', { cls: 'btn--vazado btn--g' }), arte: img('adesivo-estrela', '', { sizes: '(min-width:900px) 36vw, 70vw', cls: 'capa__pessoa adesivo', lazy: false }) }),
+			corpo: capa({ tema: 't-neon', etiqueta: 'Erro 404', titulo: ['fase não', 'encontrada.'], texto: 'Essa página não existe ou mudou de endereço. Volte para o início ou peça o seu Raio-X gratuito.', cls: 'capa--obrigado', botoes: btn(E4.inicio, '/', { cls: 'btn--g' }) + btn(E4.raio_x, '/#raio-x', { cls: 'btn--vazado btn--g' }), arte: img('adesivo-estrela', '', { sizes: '(min-width:900px) 36vw, 70vw', cls: 'capa__pessoa adesivo', lazy: false }) }),
 		});
 	}
 	return out;

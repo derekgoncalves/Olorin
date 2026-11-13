@@ -47,7 +47,7 @@
 
 /* blocos comuns */
 .duas{display:grid;gap:clamp(30px,5vw,80px);align-items:start}
-@media (min-width:900px){.duas{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){.duas{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .prosa{display:grid;gap:1.1em;font-size:clamp(1rem,1.2vw,1.12rem);max-width:62ch}
 .prosa--legal{max-width:76ch;font-size:1rem}
 .prosa--legal section{display:grid;gap:.9em;margin-top:2.2em;scroll-margin-top:110px}
@@ -143,7 +143,12 @@
 .quadro span{position:absolute;background:var(--preto);color:var(--branco);padding:6px 9px;font-size:.66rem}
 .quadro__a{left:14px;top:14px}.quadro__b{right:14px;top:14px}
 .quadro__adesivo{position:absolute;right:-8%;bottom:-8%;width:44%;height:auto}
-.roteiro{max-width:860px}
+.roteiro-l{display:grid;gap:clamp(24px,4vw,60px);align-items:end}
+@media (min-width:900px){.roteiro-l{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}}
+.roteiro__arte{position:relative;justify-self:center;max-width:min(360px,80%)}
+.roteiro__arte img{width:100%;height:auto}
+.roteiro__arte .fita{position:absolute;left:-4%;top:12%;background:var(--neon);color:var(--preto);transform:rotate(-6deg)}
+.quadro__t{font-size:clamp(1.9rem,3.5vw,3.2rem)}
 .roteiro .janela__corpo{position:relative;padding:clamp(18px,2.6vw,34px)}
 .cenas{display:grid;gap:0}
 .cenas li{display:grid;gap:4px;padding:16px 0;border-bottom:1.5px dashed rgba(0,0,0,.3)}
@@ -197,4 +202,6 @@
 /* Obrigado */
 .proximo{border:2.5px solid var(--neon);border-radius:var(--raio);padding:clamp(18px,2.4vw,28px);display:grid;gap:12px;max-width:640px}
 .proximo p:not(.medio){font-size:.92rem;color:var(--mudo)}
+.capa__txt>*{min-width:0;max-width:100%}
+@media (max-width:560px){.proximo .botoes{display:grid}.proximo .btn{width:100%;font-size:.86rem;padding-inline:14px}}
 .quem--escuro{margin-top:0;box-shadow:7px 7px 0 var(--neon);color:var(--preto)}

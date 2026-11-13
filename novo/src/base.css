@@ -25,7 +25,7 @@
 	--topo:84px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--topo) + 12px)}
+html{overflow-x:clip;-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--topo) + 12px)}
 body{margin:0;background:var(--preto);color:var(--branco);font:400 1rem/1.6 var(--f-texto);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img,svg{display:block;max-width:100%}
 img{height:auto}
@@ -151,7 +151,7 @@ a.selo{transition:transform .3s var(--mola)}a.selo:hover{transform:scale(1.08) r
 .menu__topo .topo__logo{width:118px}
 .menu__fechar{width:48px;height:48px;border-radius:50%;background:var(--neon);color:var(--preto);font:900 1.3rem var(--f-titulo)}
 .menu nav{display:grid;gap:2px}
-.menu nav>a{font:900 clamp(2rem,10.5vw,3.4rem)/1 var(--f-titulo);text-transform:lowercase;letter-spacing:-.03em;text-decoration:none;padding:.16em 0}
+.menu nav>a{font:900 clamp(1.7rem,8.6vw,3.4rem)/1 var(--f-titulo);text-transform:lowercase;letter-spacing:-.03em;text-decoration:none;padding:.16em 0}
 .menu nav>a:hover,.menu nav>a[aria-current]{color:var(--neon)}
 .menu__serv{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
 .menu__serv a{font-size:.84rem;text-decoration:none;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 14px}
