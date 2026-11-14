@@ -1,23 +1,31 @@
 <?php
 /**
- * Olorin Digital — recebe o formulário do Raio-X (site novo, nov/2026).
+ * Olorin Digital — recebe o formulário de orçamento (PROMPT seção 10.4).
  *
- * O formulário tem 2 passos e o PRIMEIRO já registra o contato (nome + WhatsApp):
- *   etapa=1        → grava o contato e avisa por e-mail na hora, com o link para chamar no WhatsApp
- *   etapa=2        → grava o complemento (o que precisa, empresa, horário...) com o mesmo lead_id
- *   etapa=completo → envio sem JavaScript (tudo de uma vez)
- * O que faz: confere a origem e os campos, barra robôs, limita envios por IP, grava na planilha
- * mensal (pasta leads, fechada ao navegador), manda o aviso por e-mail (SMTP da Locaweb, senha no
- * config.php) e responde em JSON (site) ou redireciona para a página de obrigado (sem JavaScript).
- * A senha do e-mail NUNCA fica neste arquivo: fica no config.php, só no servidor.
+ * GERADO PELO BUILD a partir de src/php/enviar.njk: as listas de serviços, faixas de investimento,
+ * planos, páginas e as opções de cada público (porte, "Você é", desafios) vêm do mesmo conteúdo do site
+ * (src/content/formulario.yml e servicos/), para nunca ficarem diferentes do formulário.
+ *
+ *  1. Confere método, origem (Origin/Referer do próprio domínio) e anti-spam (isca e tempo mínimo)
+ *  2. Valida e limpa os campos (sem quebra de linha em campos de uma linha; WhatsApp em +55DDDNÚMERO;
+ *     e-mail com filter_var; empresa, cargo e porte obrigatórios; listas fechadas conferidas)
+ *  3. Limita envios por IP (6 a cada 10 min) — contado só depois da validação
+ *  4. Grava o pedido num CSV mensal FORA da pasta pública (../leads/AAAA-MM.csv), se possível
+ *  5. Envia o aviso por e-mail via SMTP autenticado da Locaweb (e webhook opcional), com o público no assunto
+ *  6. Responde em JSON (envio pelo site) ou redireciona (navegador sem JavaScript) para a página de obrigado
+ *     do público: /obrigado-educacao/, /obrigado-influenciadores/ ou /obrigado/
+ *
+ * Configuração: ../olorin-config.php (fora do public_html) ou config.php (ao lado deste arquivo).
+ * Modelo em config.example.php. Requer PHP 7.4 ou superior. Nunca grave senha neste arquivo.
  */
 
+date_default_timezone_set('America/Sao_Paulo');
 header('X-Robots-Tag: noindex, nofollow');
 header('Cache-Control: no-store');
 
-// Listas aceitas (geradas pelo build a partir de dados/conteudo.json).
-$OLORIN = json_decode('__LISTAS__', true);
-$OLORIN_SEGMENTOS = $OLORIN['segmentos'];
+$OLORIN_LISTAS = json_decode('{"servicos":["Tráfego pago","Redes sociais","Identidade visual","Impressos","Sites","Dados","Ainda não sei, quero conversar"],"investimento":["Ainda não invisto","Até R$ 2 mil por mês","De R$ 2 a 5 mil por mês","De R$ 5 a 15 mil por mês","Acima de R$ 15 mil por mês"],"planos":[""],"slugs":["","trafego-pago","redes-sociais","identidade-visual","material-impresso","site-e-loja-virtual","rastreamento-e-relatorio"]}', true);
+// Por público (formulario.yml → segmentos): nome, página de obrigado, rótulos, listas aceitas e mensagens de erro.
+$OLORIN_SEGMENTOS = json_decode('{"site": {"nome":"Site","obrigado":"/obrigado/","rotulos":{"empresa":"Empresa ou organização","cargo":"Seu cargo","porte":"Tamanho da equipe","site":"Site ou @ do Instagram"},"cargo":[],"porte":["Só eu","2 a 10 pessoas","11 a 50 pessoas","51 a 200 pessoas","Mais de 200 pessoas"],"desafios":[],"erros":{"empresa":"Conta pra gente o nome da empresa.","cargo":"Conta pra gente o seu cargo.","porte":"Escolha o tamanho da equipe.","email":"Confira o e-mail, por exemplo voce@email.com.br."}}, "educacao": {"nome":"Educação","obrigado":"/obrigado-educacao/","rotulos":{"empresa":"Instituição","cargo":"Seu cargo","porte":"Alunos hoje","site":"Site ou @ da instituição"},"cargo":[],"porte":["Até 200","201 a 1.000","1.001 a 5.000","Mais de 5.000"],"desafios":["Poucos contatos","Contatos que não viram matrícula","Não sei o custo de cada matrícula","Abrir turma ou unidade nova","Ainda não sei, quero conversar"],"erros":{"empresa":"Conta pra gente o nome da instituição.","cargo":"Conta pra gente o seu cargo.","porte":"Escolha quantos alunos a instituição tem hoje.","email":"Confira o e-mail, por exemplo voce@email.com.br."}}, "influenciadores": {"nome":"Influenciadores","obrigado":"/obrigado-influenciadores/","rotulos":{"empresa":"Seu perfil ou marca","cargo":"Você é","porte":"Seguidores no maior perfil","site":"Outra rede, canal ou site"},"cargo":["Criador ou criadora de conteúdo","Agente ou empresário de criadores","Marca ou empresa","Outro"],"porte":["Até 10 mil","10 mil a 100 mil","100 mil a 500 mil","500 mil a 1 milhão","Mais de 1 milhão"],"desafios":["Crescer o perfil","Fechar mais publis e parcerias","Vender meu produto, curso ou mentoria","Conteúdo e identidade visual","Ainda não sei, quero conversar"],"erros":{"empresa":"Conta pra gente o seu perfil ou a sua marca.","cargo":"Escolha o que você é.","porte":"Escolha uma faixa de seguidores.","email":"Confira o e-mail, por exemplo voce@email.com.br."}} }', true);
 
 const OLORIN_WHATSAPP_SITE_PADRAO = '5541996460861';
 const OLORIN_DDDS = array(11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 31, 32, 33, 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68, 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99);
@@ -38,6 +46,7 @@ function olorin_config()
 		'dominios'         => array('olorin.com.br', 'www.olorin.com.br'),
 		'pasta_leads'      => '',
 		'lead_webhook_url' => '',
+		'servicos'         => array(),
 	);
 	$candidatos = array(dirname(__DIR__) . '/olorin-config.php', __DIR__ . '/config.php');
 	foreach ($candidatos as $arquivo) {
@@ -60,7 +69,7 @@ $ajax = isset($_SERVER['HTTP_ACCEPT']) && false !== strpos((string) $_SERVER['HT
 
 /* Público do formulário (pelo modo da página): textos, listas aceitas e página de obrigado. */
 $modo_bruto = isset($_POST['modo_pagina']) && is_scalar($_POST['modo_pagina']) ? (string) $_POST['modo_pagina'] : '';
-$seg_chave  = isset($OLORIN_SEGMENTOS[$modo_bruto]) ? $modo_bruto : 'site';
+$seg_chave  = isset($OLORIN_SEGMENTOS[$modo_bruto]) && 'site' !== $modo_bruto ? $modo_bruto : 'site';
 $SEG        = $OLORIN_SEGMENTOS[$seg_chave];
 
 /* ---------- Respostas ---------- */
@@ -239,36 +248,45 @@ function olorin_marcados($chave, $aceitos)
 }
 
 $erro_whats = '';
-$etapa = olorin_permitido(olorin_linha('etapa', 10), array('1', '2', 'completo'));
-if ('' === $etapa) {
-	$etapa = 'completo';
-}
-$etapas_nome = array('1' => 'contato (passo 1 de 2)', '2' => 'complemento (passo 2 de 2)', 'completo' => 'completo');
+$cargo_bruto = olorin_linha('cargo', 80);
 $lead = array(
-	'data'          => date('d/m/Y H:i'),
-	'etapa'         => $etapas_nome[$etapa],
-	'lead_id'       => preg_replace('/[^a-zA-Z0-9-]/', '', olorin_linha('lead_id', 64)),
-	'segmento'      => $SEG['nome'],
-	'nome'          => olorin_linha('nome', 80),
-	'whatsapp'      => olorin_whatsapp(olorin_linha('whatsapp', 30), $erro_whats),
-	'email'         => olorin_email('email'),
-	'empresa'       => olorin_linha('empresa', 120),
-	'site'          => olorin_linha('site', 160),
-	'porte'         => olorin_permitido(olorin_linha('porte', 60), $SEG['porte']),
-	'servicos'      => olorin_marcados('servicos', $OLORIN['servicos']),
-	'desafios'      => $SEG['desafios'] ? olorin_marcados('desafios', $SEG['desafios']) : '',
-	'horario'       => olorin_permitido(olorin_linha('horario', 40), $OLORIN['horario']),
-	'mensagem'      => olorin_texto('mensagem', 1500),
-	'utm_source'    => olorin_linha('utm_source', 120),
-	'utm_medium'    => olorin_linha('utm_medium', 120),
-	'utm_campaign'  => olorin_linha('utm_campaign', 160),
-	'utm_content'   => olorin_linha('utm_content', 160),
-	'utm_term'      => olorin_linha('utm_term', 160),
-	'origem_clique' => olorin_linha('origem_clique', 60),
-	'pagina'        => olorin_linha('pagina', 80),
-	'consentimento' => !empty($_POST['consentimento']) ? date('d/m/Y H:i') : '',
-	'email_enviado' => '',
+	'data'                => date('d/m/Y H:i'),
+	'segmento'            => $SEG['nome'],
+	'nome'                => olorin_linha('nome', 80),
+	'whatsapp'            => olorin_whatsapp(olorin_linha('whatsapp', 30), $erro_whats),
+	'email'               => olorin_email('email'),
+	'empresa'             => olorin_linha('empresa', 120),
+	'cargo'               => $SEG['cargo'] ? olorin_permitido($cargo_bruto, $SEG['cargo']) : $cargo_bruto,
+	'porte'               => olorin_permitido(olorin_linha('porte', 60), $SEG['porte']),
+	'site'                => olorin_linha('site', 120),
+	'servicos'            => '',
+	'desafios'            => $SEG['desafios'] ? olorin_marcados('desafios', $SEG['desafios']) : '',
+	'investimento'        => olorin_permitido(olorin_linha('investimento', 80), $OLORIN_LISTAS['investimento']),
+	'mensagem'            => olorin_texto('mensagem', 1500),
+	'plano'               => olorin_permitido(olorin_linha('plano', 40), $OLORIN_LISTAS['planos']),
+	'utm_source'          => olorin_linha('utm_source', 120),
+	'utm_medium'          => olorin_linha('utm_medium', 120),
+	'utm_campaign'        => olorin_linha('utm_campaign', 160),
+	'utm_content'         => olorin_linha('utm_content', 160),
+	'utm_term'            => olorin_linha('utm_term', 160),
+	'gclid'               => olorin_linha('gclid', 255),
+	'gbraid'              => olorin_linha('gbraid', 255),
+	'wbraid'              => olorin_linha('wbraid', 255),
+	'fbclid'              => olorin_linha('fbclid', 255),
+	'primeiro_toque'      => olorin_linha('primeiro_toque', 500),
+	'pagina'              => olorin_linha('pagina', 300),
+	'referencia'          => olorin_linha('referencia', 300),
+	'modo_pagina'         => olorin_permitido(olorin_linha('modo_pagina', 20), array('home', 'educacao', 'influenciadores', 'servico', 'promo', 'sobre', 'hub', 'simples', 'obrigado', 'erro')),
+	'servico_pagina'      => olorin_permitido(olorin_linha('servico_pagina', 60), $OLORIN_LISTAS['slugs']),
+	'posicao_formulario'  => olorin_permitido(olorin_linha('posicao_formulario', 10), array('topo', 'fim', 'promo')),
+	'variante_formulario' => olorin_permitido(olorin_linha('variante_formulario', 2), array('a', 'b')),
+	'consentimento'       => !empty($_POST['consentimento']) ? date('d/m/Y H:i') : '',
+	'email_enviado'       => '',
 );
+if (isset($_POST['servicos']) && is_array($_POST['servicos'])) {
+	$aceitos = array_merge($OLORIN_LISTAS['servicos'], (array) $cfg['servicos']);
+	$lead['servicos'] = implode(', ', array_values(array_intersect(array_map('strval', array_filter($_POST['servicos'], 'is_scalar')), $aceitos)));
+}
 
 $tamanho = static function ($t) {
 	return function_exists('mb_strlen') ? mb_strlen($t) : strlen($t);
@@ -280,11 +298,23 @@ if ($tamanho($lead['nome']) < 2) {
 if ('' === $lead['whatsapp']) {
 	$erros['whatsapp'] = $erro_whats;
 }
+if ('' === $lead['email']) {
+	$erros['email'] = $SEG['erros']['email'];
+}
+if ($tamanho($lead['empresa']) < 2) {
+	$erros['empresa'] = $SEG['erros']['empresa'];
+}
+if ($tamanho($lead['cargo']) < 2) {
+	$erros['cargo'] = $SEG['erros']['cargo'];
+}
+if ('' === $lead['porte']) {
+	$erros['porte'] = $SEG['erros']['porte'];
+}
 if ('' === $lead['consentimento']) {
 	$erros['consentimento'] = 'Precisamos do seu ok para entrar em contato.';
 }
 if ($erros) {
-	olorin_responder(false, 422, array('message' => 'Confira os campos: ' . implode(' ', $erros), 'fields' => $erros));
+	olorin_responder(false, 422, array('message' => 'Confira os campos destacados.', 'fields' => $erros));
 }
 
 /* ---------- 3. Limite por IP (só pedidos válidos contam) ---------- */
@@ -295,7 +325,7 @@ $envios   = @is_readable($rl_file) ? array_filter(array_map('intval', explode(',
 $envios   = array_values(array_filter($envios, static function ($t) {
 	return $t > time() - 600;
 }));
-if (count($envios) >= 12) {
+if (count($envios) >= 6) {
 	olorin_responder(false, 429, array('message' => 'Muitos envios seguidos. Chame a gente no WhatsApp.'));
 }
 $envios[] = time();
@@ -416,42 +446,43 @@ function olorin_gravar_csv($lead)
 /* ---------- 5. E-mail e webhook ---------- */
 
 $rotulos = array(
-	'etapa' => 'Etapa', 'segmento' => 'Público', 'nome' => 'Nome', 'whatsapp' => 'WhatsApp', 'email' => 'E-mail',
-	'empresa' => 'Empresa, instituição ou perfil', 'site' => 'Site ou @', 'porte' => 'Tamanho',
-	'servicos' => 'Precisa de', 'desafios' => 'Maior desafio', 'horario' => 'Melhor horário para chamar',
-	'mensagem' => 'Mensagem', 'pagina' => 'Página de envio', 'origem_clique' => 'Botão clicado',
-	'utm_source' => 'utm_source', 'utm_medium' => 'utm_medium', 'utm_campaign' => 'utm_campaign',
-	'utm_content' => 'utm_content', 'utm_term' => 'utm_term', 'consentimento' => 'Consentimento LGPD',
+	'segmento' => 'Público', 'nome' => 'Nome', 'whatsapp' => 'WhatsApp', 'email' => 'E-mail',
+	'empresa' => $SEG['rotulos']['empresa'], 'cargo' => $SEG['rotulos']['cargo'], 'porte' => $SEG['rotulos']['porte'],
+	'site' => $SEG['rotulos']['site'], 'servicos' => 'Precisa de', 'desafios' => 'Maior desafio',
+	'investimento' => 'Investimento em anúncio', 'mensagem' => 'Mensagem', 'plano' => 'Plano clicado',
+	'servico_pagina' => 'Página de serviço', 'modo_pagina' => 'Tipo de página', 'posicao_formulario' => 'Formulário',
+	'variante_formulario' => 'Variante (A/B)', 'utm_source' => 'utm_source', 'utm_medium' => 'utm_medium',
+	'utm_campaign' => 'utm_campaign', 'utm_content' => 'utm_content', 'utm_term' => 'utm_term',
+	'gclid' => 'gclid', 'gbraid' => 'gbraid', 'wbraid' => 'wbraid', 'fbclid' => 'fbclid',
+	'primeiro_toque' => 'Primeiro toque', 'pagina' => 'Página de envio', 'referencia' => 'Veio de',
+	'consentimento' => 'Consentimento LGPD',
 );
 
 $corta = static function ($t, $n) {
 	return function_exists('mb_substr') ? mb_substr($t, 0, $n) : substr($t, 0, $n);
 };
-$origem_txt   = $lead['utm_source'] ? $lead['utm_source'] . ($lead['utm_medium'] ? '/' . $lead['utm_medium'] : '') : 'site (direto)';
-$fone_legivel = olorin_whatsapp_legivel($lead['whatsapp']);
-$primeiro     = preg_split('/\s+/', trim($lead['nome']));
-$primeiro     = $primeiro[0];
-// Ex.: "CHAMAR AGORA (Educação): Maria · (41) 99999-0000 | google/cpc"
-if ('2' === $etapa) {
-	$assunto = 'Complemento do contato (' . $SEG['nome'] . '): ' . $corta($lead['nome'], 40) . ($lead['empresa'] ? ' · ' . $corta($lead['empresa'], 50) : '') . ($lead['horario'] ? ' · ' . $lead['horario'] : '');
+if ($lead['utm_source']) {
+	$assunto_origem = $lead['utm_source'] . ($lead['utm_medium'] ? '/' . $lead['utm_medium'] : '');
+} elseif ($lead['gclid'] || $lead['gbraid'] || $lead['wbraid']) {
+	$assunto_origem = 'google ads';
+} elseif ($lead['fbclid']) {
+	$assunto_origem = 'meta';
+} elseif ($lead['referencia']) {
+	$assunto_origem = olorin_host($lead['referencia']) ?: 'indicação';
 } else {
-	$assunto = 'CHAMAR AGORA (' . $SEG['nome'] . '): ' . $corta($lead['nome'], 40) . ' · ' . $fone_legivel . ' | ' . $origem_txt;
+	$assunto_origem = 'site (direto)';
 }
+// Ex.: "Novo lead (Educação): Colégio Exemplo · Diretora · 201 a 1.000 | google/cpc"
+$assunto = 'Novo lead (' . $SEG['nome'] . '): ' . $corta($lead['empresa'], 60) . ' · ' . $corta($lead['cargo'], 40) . ' · ' . $lead['porte'] . ' | ' . $assunto_origem;
 
-// Conversa já pronta: um toque no link abre o WhatsApp do contato com a primeira mensagem escrita.
-$abertura = 'Oi, ' . $primeiro . '! Aqui é o Derek, da Olorin. Recebi agora o seu pedido de Raio-X pelo site. Posso te fazer duas perguntas rápidas por aqui?';
-$link_wa  = 'https://wa.me/' . ltrim($lead['whatsapp'], '+') . '?text=' . rawurlencode($abertura);
-
-$corpo  = '2' === $etapa ? "O contato completou o pedido. O que ele contou a mais:\n\n" : "Contato novo pelo site. Quem é chamado nos primeiros minutos responde muito mais.\n\n";
-$corpo .= "CHAMAR NO WHATSAPP (mensagem pronta):\n" . $link_wa . "\n\n";
+$corpo = '';
 foreach ($rotulos as $chave => $rotulo) {
 	if ('' !== $lead[$chave]) {
-		$corpo .= $rotulo . ': ' . ('whatsapp' === $chave ? $fone_legivel : $lead[$chave]) . "\n";
+		$corpo .= $rotulo . ': ' . $lead[$chave] . "\n";
 	}
 }
-if ('' !== $lead['email']) {
-	$corpo .= "\nResponder por e-mail: " . $lead['email'] . " (é só responder esta mensagem)\n";
-}
+$corpo .= "\nResponder no WhatsApp: https://wa.me/" . ltrim($lead['whatsapp'], '+') . "\n";
+$corpo .= 'Responder por e-mail: ' . $lead['email'] . " (é só responder esta mensagem)\n";
 
 $erro_email = '';
 $enviado    = olorin_enviar_email($cfg, (string) $cfg['email_destino'], $assunto, $corpo, $erro_email, $lead['email']);

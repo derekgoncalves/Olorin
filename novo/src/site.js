@@ -1,7 +1,7 @@
 /* Olorin Digital — comportamento do site novo (sem dependências).
    1. medição com consentimento (LGPD + Google Consent Mode v2)   2. cabeçalho, menu e HUD de nível
    3. entradas ao rolar e colagem do banner                        4. Raio-X arrastável, trilho, prévia de serviço
-   5. formulário em 2 passos (o 1º já registra o contato)          6. página de obrigado */
+   5. formulário em 2 etapas e calculadora de orçamento            6. página de obrigado */
 (function () {
 	'use strict';
 	var d = document, w = window, raiz = d.documentElement;
@@ -31,6 +31,7 @@
 	var origem = (function () {
 		var q = new URLSearchParams(location.search), o = {}, tem = false;
 		['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { var v = q.get(k); if (v) { o[k] = v.slice(0, 120); tem = true; } });
+		['gclid', 'gbraid', 'wbraid', 'fbclid'].forEach(function (k) { var v = q.get(k); if (v) { o[k] = v.slice(0, 200); tem = true; } });
 		if (q.get('gclid')) { o.utm_source = o.utm_source || 'google'; o.utm_medium = o.utm_medium || 'cpc'; tem = true; }
 		if (q.get('fbclid')) { o.utm_source = o.utm_source || 'meta'; o.utm_medium = o.utm_medium || 'paid_social'; tem = true; }
 		if (tem) gravar('sessionStorage', 'olorin_origem', o);
@@ -281,6 +282,7 @@
 	(function () {
 		var grupo = $('[data-filtros]'); if (!grupo) return;
 		var itens = $$('[data-servicos]');
+		grupo.hidden = false;
 		grupo.addEventListener('click', function (e) {
 			var b = e.target.closest('button'); if (!b) return;
 			var f = b.getAttribute('data-filtro');
@@ -303,87 +305,129 @@
 		return n.length ? '(' + n : '';
 	}
 	$$('[data-form]').forEach(function (form) {
-		var seg = form.getAttribute('data-segmento') || 'site';
-		var e1 = $('[data-etapa="1"]', form), e2 = $('[data-etapa="2"]', form), prog = $$('.form__prog i', form), erroGeral = $('[data-erro-geral]', form);
+		var caixa = form.closest('.form'), E = {};
+		try { E = JSON.parse(caixa.getAttribute('data-erros')) || {}; } catch (e) { /* usa os textos padrão */ }
+		var e1 = $('[data-etapa="1"]', form), e2 = $('[data-etapa="2"]', form), prog = $$('.form__prog i', form), rot = $('[data-etapa-rotulo]', form), erroGeral = $('[data-erro-geral]', form);
+		var avancar = $('[data-avancar]', form), voltar = $('[data-voltar]', form), botao = $('[data-enviar]', form);
 		var campo = function (n) { return form.elements[n]; };
-		var inicio = Date.now(), comecou = false, pular = $('[data-pular]', form);
-		e2.hidden = true; pular.hidden = false;
-		campo('etapa').value = '1';
-		campo('lead_id').value = (w.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2);
+		var inicio = Date.now(), comecou = false;
+		form.noValidate = true;
+		e2.hidden = true; avancar.hidden = false; voltar.hidden = false;
+		campo('olorin_ts').value = String(Math.floor(inicio / 1000));
+		campo('pagina').value = location.pathname;
+		campo('referencia').value = (d.referrer || '').slice(0, 200);
 		Object.keys(origem).forEach(function (k) { if (campo(k)) campo(k).value = origem[k]; });
 		var wa = campo('whatsapp');
 		wa.addEventListener('input', function () { wa.value = mascara(wa.value); });
-		form.addEventListener('focusin', function () { if (!comecou) { comecou = true; track('form_start', { form_segmento: seg }); } });
+		form.addEventListener('focusin', function () { if (!comecou) { comecou = true; track('form_start', {}); } });
+
 		function erro(el, msg) {
-			var c = el.closest('.campo'), s = $('.erro', c);
+			var c = el.closest('.campo'), sp = $('.erro', c);
 			if (el.type !== 'checkbox') el.setAttribute('aria-invalid', msg ? 'true' : 'false');
-			if (s) { s.textContent = msg || ''; s.hidden = !msg; }
+			if (sp) { sp.textContent = msg || ''; sp.hidden = !msg; }
 			return !msg;
 		}
-		function validar1() {
-			var E = { nome: 'Conta pra gente o seu nome.', wa: 'Confira o WhatsApp com DDD, por exemplo (41) 99999-9999.', ddd: 'Esse DDD não existe. Confira o número.', aceite: 'Precisamos do seu ok para entrar em contato.' };
-			var n = wa.value.replace(/\D/g, ''), ok = true, primeiro = null;
-			var checar = function (el, msg) { if (!erro(el, msg)) { ok = false; primeiro = primeiro || el; } };
-			checar(campo('nome'), campo('nome').value.trim().length < 2 ? E.nome : '');
-			checar(wa, n.length < 10 || n.length > 11 ? E.wa : DDDS.indexOf(n.slice(0, 2)) < 0 ? E.ddd : '');
-			checar(campo('consentimento'), campo('consentimento').checked ? '' : E.aceite);
+		var limpar = function (ev) { var t = ev.target; if (t.getAttribute('aria-invalid') === 'true' || t.type === 'checkbox') { var c = t.closest('.campo'); if (c && $('.erro', c)) erro(t, ''); } };
+		form.addEventListener('input', limpar); form.addEventListener('change', limpar);
+		function checar(lista) {
+			var primeiro = null;
+			lista.forEach(function (par) { if (!erro(par[0], par[1])) primeiro = primeiro || par[0]; });
 			if (primeiro) primeiro.focus();
-			return ok;
+			return !primeiro;
 		}
-		function enviar(etapa) {
-			campo('etapa').value = etapa; campo('olorin_tempo').value = Math.round((Date.now() - inicio) / 1000);
-			if (campo('origem_clique')) campo('origem_clique').value = ler('sessionStorage', 'olorin_cta') || '';
-			if (CFG.previa) return new Promise(function (ok) { setTimeout(function () { ok({ ok: true }); }, 500); });
-			return fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } }).then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw j; return j; }); });
+		function validar1() {
+			var n = wa.value.replace(/\D/g, ''), em = campo('email').value.trim();
+			return checar([
+				[campo('nome'), campo('nome').value.trim().length < 2 ? E.nome : ''],
+				[wa, n.length < 10 || n.length > 11 ? E.whatsapp : DDDS.indexOf(n.slice(0, 2)) < 0 ? E.ddd : ''],
+				[campo('email'), /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em) ? '' : E.email]
+			]);
 		}
-		function falha(j) {
-			var nome = campo('nome').value.trim();
+		function validar2() {
+			var falta = function (n) { var el = campo(n); return [el, el.value.trim().length < (el.tagName === 'SELECT' ? 1 : 2) ? el.getAttribute('data-msg') : '']; };
+			return checar([falta('empresa'), falta('cargo'), falta('porte'), [campo('consentimento'), campo('consentimento').checked ? '' : E.consentimento]]);
+		}
+		function etapa(n) {
+			e1.hidden = n === 2; e2.hidden = n === 1;
+			prog[1].classList.toggle('on', n === 2);
+			rot.textContent = 'Etapa ' + n + ' de 2';
+			var alvo = $('legend', n === 2 ? e2 : e1); if (alvo) alvo.focus({ preventScroll: true });
+			caixa.scrollIntoView({ block: 'nearest', behavior: calmo ? 'auto' : 'smooth' });
+		}
+		avancar.addEventListener('click', function () { if (validar1()) { etapa(2); track('form_step', { etapa: 2 }); } });
+		voltar.addEventListener('click', function () { etapa(1); });
+		$$('[data-etapa="1"] input', form).forEach(function (el) { el.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); avancar.click(); } }); });
+
+		/* serviços: "Selecionar tudo" e a opção exclusiva "Ainda não sei" */
+		var chips = $('[data-chips]', form), todos = $('[data-todos]', form), caixas = $$('input[name="servicos[]"]', form);
+		var comuns = caixas.filter(function (c) { return !c.hasAttribute('data-exclusivo'); }), exclusivo = caixas.filter(function (c) { return c.hasAttribute('data-exclusivo'); })[0];
+		$('[data-todos-rotulo]', form).hidden = false;
+		chips.addEventListener('change', function (ev) {
+			var t = ev.target;
+			if (t === todos) { comuns.forEach(function (c) { c.checked = todos.checked; }); if (todos.checked && exclusivo) exclusivo.checked = false; }
+			else if (t === exclusivo && t.checked) { comuns.forEach(function (c) { c.checked = false; }); todos.checked = false; }
+			else { if (t.checked && exclusivo) exclusivo.checked = false; todos.checked = comuns.every(function (c) { return c.checked; }); }
+		});
+		/* verba: recado para quem ainda não investe */
+		var verba = campo('investimento'), semVerba = $('[data-sem-verba]', form);
+		verba.addEventListener('change', function () { semVerba.hidden = verba.selectedIndex !== 1; });
+
+		function falha(j, conexao) {
+			var nome = campo('nome').value.trim(), emp = campo('empresa').value.trim();
 			erroGeral.innerHTML = '';
-			erroGeral.appendChild(d.createTextNode((j && j.message) || 'Não conseguimos enviar agora. '));
+			erroGeral.appendChild(d.createTextNode(((j && j.message) || (conexao ? E.conexao : E.geral)) + ' '));
 			var a = d.createElement('a'); a.className = 'link'; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('data-wa', '');
-			a.href = 'https://wa.me/' + CFG.whatsapp + '?text=' + encodeURIComponent('Oi! Tentei pedir o Raio-X pelo site e não consegui enviar.' + (nome ? ' Meu nome é ' + nome + '.' : '') + ' [ref: form-erro]');
-			a.textContent = ' Mande pelo WhatsApp'; erroGeral.appendChild(a); erroGeral.hidden = false;
-			track('form_error', { form_segmento: seg });
+			a.href = 'https://wa.me/' + CFG.whatsapp + '?text=' + encodeURIComponent('Oi! Tentei pedir o Raio-X pelo site e não consegui enviar.' + (nome ? ' Meu nome é ' + nome + (emp ? ', da ' + emp : '') + '.' : '') + ' [ref: form-erro]');
+			a.textContent = E.wa_alternativa + '.'; erroGeral.appendChild(a); erroGeral.hidden = false;
+			erroGeral.scrollIntoView({ block: 'nearest' });
+			track('form_error', {});
 		}
-		function ocupado(b, sim) { b.disabled = sim; b.setAttribute('aria-busy', String(sim)); }
 		form.addEventListener('submit', function (ev) {
 			ev.preventDefault(); erroGeral.hidden = true;
-			var nome = campo('nome').value.trim().split(/\s+/)[0];
-			if (e2.hidden) {
-				if (!validar1()) return;
-				var b = $('[data-continuar]', form); ocupado(b, true);
-				enviar('1').then(function () {
-					gravar('sessionStorage', 'olorin_lead', { nome: nome, segmento: seg });
-					converterLead(seg);
-					e1.hidden = true; e2.hidden = false; prog[1].classList.add('on');
-					$('[data-ola]', form).textContent = 'Recebido, ' + nome + '! Só mais um toque.';
-					var alvo = $('input:not([type=hidden])', e2); if (alvo) alvo.focus({ preventScroll: true });
-					form.closest('.form').scrollIntoView({ block: 'nearest', behavior: calmo ? 'auto' : 'smooth' });
-				}).catch(falha).then(function () { ocupado(b, false); });
-			} else {
-				var em = campo('email');
-				if (em.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())) { erro(em, 'Confira o e-mail, por exemplo voce@email.com.br.'); em.focus(); return; }
-				erro(em, '');
-				var b2 = $('[data-enviar]', form); ocupado(b2, true);
-				var emp = campo('empresa').value.trim();
-				gravar('sessionStorage', 'olorin_lead', { nome: nome, segmento: seg, empresa: emp.slice(0, 80) });
-				enviar('2').then(function () { track('form_complete', { form_segmento: seg }); location.href = pular.getAttribute('href'); }).catch(function (j) { ocupado(b2, false); falha(j); });
-			}
+			if (!validar1()) { if (e1.hidden) { etapa(1); validar1(); } return; }
+			if (e2.hidden) { etapa(2); return; }
+			if (!validar2()) return;
+			campo('olorin_tempo').value = String(Math.round((Date.now() - inicio) / 1000));
+			botao.disabled = true; botao.setAttribute('aria-busy', 'true');
+			var pedido = CFG.previa
+				? new Promise(function (ok) { setTimeout(function () { ok({ ok: true }); }, 500); })
+				: fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } }).then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw j; return j; }); });
+			pedido.then(function (j) {
+				track('form_submit', {});
+				converterLead('site');
+				var destino = j.redirect || '/obrigado/';
+				if (CFG.previa) destino = (form.getAttribute('action') || '').replace(/enviar\.php.*$/, '') + 'obrigado/index.html';
+				location.href = destino;
+			}).catch(function (j) { botao.disabled = false; botao.removeAttribute('aria-busy'); falha(j && j.message ? j : null, !(j && j.message)); });
 		});
 	});
 
-	/* ---------- Página de obrigado: nome no título e conversa pronta no WhatsApp ---------- */
+	/* ---------- Calculadora: monta o orçamento e manda por WhatsApp ---------- */
+	(function () {
+		var calc = $('[data-calc]'); if (!calc) return;
+		var botao = $('[data-calc-botao]', calc), grupos = $$('[data-calc-grupo]', calc), usou = false;
+		function montar() {
+			var linhas = [calc.getAttribute('data-inicio')];
+			grupos.forEach(function (g) {
+				var m = $('input:checked', g); if (!m) return;
+				var alvo = $('[data-calc-linha="' + g.getAttribute('data-calc-grupo') + '"]', calc); if (alvo) alvo.textContent = m.value;
+				linhas.push('- ' + g.getAttribute('data-rotulo') + ': ' + m.value);
+			});
+			linhas.push(calc.getAttribute('data-fim'));
+			botao.href = 'https://wa.me/' + CFG.whatsapp + '?text=' + encodeURIComponent(linhas.join('\n') + ' [ref: calculadora]');
+		}
+		calc.addEventListener('change', function () {
+			montar();
+			var papel = $('[data-calc-papel]', calc); papel.classList.remove('pulso'); void papel.offsetWidth; papel.classList.add('pulso');
+			if (!usou) { usou = true; track('calculator_use', {}); }
+		});
+		montar();
+	})();
+
+	/* ---------- Página de obrigado ---------- */
 	(function () {
 		var ob = $('[data-obrigado]'); if (!ob) return;
-		var lead = ler('sessionStorage', 'olorin_lead') || {};
 		converterLead(ob.getAttribute('data-obrigado'));
-		var nome = String(lead.nome || '').replace(/[<>]/g, '').slice(0, 30);
-		if (nome) { var t = $('[data-nome]', ob); if (t) t.textContent = nome + ','; }
-		var b = $('[data-wa-obrigado]', ob);
-		if (b && nome) {
-			var msg = 'Oi, Derek! Aqui é ' + nome + (lead.empresa ? ', da ' + lead.empresa : '') + '. Acabei de pedir o Raio-X pelo site. Pode me chamar por aqui. [ref: obrigado]';
-			b.href = 'https://wa.me/' + CFG.whatsapp + '?text=' + encodeURIComponent(msg);
-		}
 		var ag = $('[data-agenda]', ob); if (ag && CFG.agenda) { ag.href = CFG.agenda; ag.hidden = false; }
 	})();
 

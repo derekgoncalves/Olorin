@@ -1,7 +1,7 @@
 /* Páginas internas: serviços, Educação, Influenciadores, quem somos e perfis, sobre, portfólio,
    privacidade, obrigado e 404. Os textos vêm de dados/conteudo.json. */
 export function internas(x) {
-	const { D, S, SERVICOS, NOME_SERV, ARTE_SERV, I, esc, rico, wa, WA_PADRAO, img, btn, linhas, fita, janela, banda, secaoFinal } = x;
+	const { D, S, SERVICOS, NOME_SERV, ARTE_SERV, I, esc, rico, wa, WA_PADRAO, img, btn, linhas, fita, janela, banda, secaoFinal, marcas, secTime } = x;
 	const P = D.paginas;
 	const equipe = D.equipe.pessoas;
 	const FOTO = { 'natalia-arruda': 'equipe-natalia', 'vinicius-mafra': 'equipe-vinicius', 'derek-goncalves': 'equipe-derek' };
@@ -34,7 +34,7 @@ export function internas(x) {
 	const peca = (p) => `<figure class="peca" data-servicos="${p.servicos.join(' ')}"><div class="peca__img">${img(p.imagem, `Trabalho para ${p.titulo}`, { sizes: '(min-width:900px) 26vw, 240px' })}</div><figcaption><b>${esc(p.titulo)}</b><span>${esc(p.rotulo)}</span></figcaption></figure>`;
 	const cartaoPessoa = (p, i, frase) => `<a class="jog" href="/quem-somos/${p.slug}/" data-r style="--d:${i * 0.08}s">
 		<div class="jog__foto">${img(FOTO[p.slug], `Foto de ${p.nome}`, { sizes: '(min-width:900px) 30vw, 92vw' })}<span class="jog__p">player ${i + 1}</span></div>
-		<div class="jog__info"><b>${esc(p.nome)}</b><span>${esc(p.funcao)}</span>${frase ? `<span style="margin-top:6px">${esc(frase)}</span>` : ''}<i>Ver perfil →</i></div></a>`;
+		<div class="jog__info"><b>${esc(p.nome)}</b><span>${esc(p.funcao)}</span>${frase ? `<span class="jog__frase">${esc(frase)}</span>` : ''}<i>Ver perfil →</i></div></a>`;
 	const secEquipe = (E, tema = 't-preto', frases = null) => `
 <section class="sec ${tema}" id="equipe" data-nivel="time">
 	<div class="c">${cab(E.etiqueta, E.titulo, E.texto)}
@@ -60,6 +60,7 @@ export function internas(x) {
 		const arte = `${ARTE_SERV[s.slug] ? img(ARTE_SERV[s.slug], '', { sizes: '(min-width:900px) 40vw, 80vw', cls: 'capa__pessoa adesivo', lazy: false }) : `<div class="capa__icones" aria-hidden="true">${I.o}${I.pixel}</div>`}<div class="capa__janela" data-r="cola" style="--fim:-3deg">${janela(s.janela, linhasJanela)}</div>`;
 		const corpo = `
 ${capa({ tema: T[0], etiqueta: s.hero.eyebrow, titulo: s.hero.h1, texto: s.hero.sub, arte, botoes: btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g', id: 'cta-diagnostico-hero' }) + btn('Falar no WhatsApp', wa(msgWa, 'hero-servico'), { wa: true, cls: 'btn--vazado btn--g' }) })}
+${marcas()}
 <section class="sec ${T[1]}" data-nivel="o que é">
 	<div class="c duas">
 		<div>${fita(s.nome)}${linhas(partir(s.o_que_e.titulo).map(esc), 'mega', 'h2', ' style="margin-top:22px"')}
@@ -85,7 +86,8 @@ ${capa({ tema: T[0], etiqueta: s.hero.eyebrow, titulo: s.hero.h1, texto: s.hero.
 		<p class="quem-faz" data-r>Quem coordena: ${s.quem_faz.map((q) => `<a class="link" href="/quem-somos/${q}/">${esc(pessoa(q).nome)}</a>`).join(' e ')}.</p>
 	</div>
 </section>
-${secaoFinal({ pagina: s.slug, mensagemWa: msgWa, titulo: partir(s.campanha.titulo), texto: s.campanha.subtitulo })}`;
+${secTime(T[4] === 't-preto' ? 't-branco' : 't-preto')}
+${secaoFinal({ pagina: s.slug, servico: s.slug, nomeServico: s.nome, mensagemWa: msgWa })}`;
 		out.push({
 			url: s.url, modo: 'servico', slug: s.slug, titulo: s.seo.title, descricao: s.seo.description, corpo, mensagemWa: msgWa,
 			esquema: [{ '@context': 'https://schema.org', '@type': 'Service', name: s.nome, description: s.resposta_curta, provider: { '@id': S.URL + '/#org' }, areaServed: 'BR', url: S.URL + s.url }],
@@ -93,13 +95,24 @@ ${secaoFinal({ pagina: s.slug, mensagemWa: msgWa, titulo: partir(s.campanha.titu
 	}
 
 	/* hub de serviços */
-	out.push({
-		url: '/servicos/', modo: 'hub', slug: 'servicos', titulo: 'Serviços de marketing digital | Olorin Digital', descricao: 'Tráfego pago, redes sociais, identidade visual, sites, impressos e dados com o mesmo time. Peça o seu Raio-X gratuito.',
-		corpo: `${capa({ tema: 't-neon', etiqueta: 'Serviços', titulo: ['tudo num', 'time só.'], texto: P.servicos?.sub || 'Anúncio, redes, marca, site, impressos e dados com o mesmo time, a mesma estratégia e um relatório todo mês.', cls: 'capa--baixa' })}
-<section class="sec t-neon" style="padding-top:0" data-nivel="serviços"><div class="c"><div class="servs">${SERVICOS.map((s, i) => `<a class="serv" href="${s.url}" data-r><span class="serv__n">0${i + 1}</span><span><span class="serv__nome">${esc(NOME_SERV[s.slug])}</span><span class="serv__txt">${esc(s.card.resumo)}</span></span><span class="serv__seta" aria-hidden="true">${I.seta}</span></a>`).join('')}</div></div></section>
-${banda('sua marca em outro nível', 't-preto')}
+	{
+		const H = P.servicos, nomeDe = (slug) => SERVICOS.find((v) => v.slug === slug);
+		out.push({
+			url: '/servicos/', modo: 'hub', slug: 'servicos', titulo: H.seo.titulo, descricao: H.seo.descricao,
+			corpo: `${capa({ tema: 't-preto', etiqueta: H.etiqueta, titulo: H.titulo, texto: H.texto, cls: 'capa--baixa', botoes: btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g', id: 'cta-diagnostico-hero' }) })}
+${marcas()}
+<section class="sec t-neon" id="servicos" data-nivel="serviços"><div class="c">${cab(H.cards.etiqueta, H.cards.titulo, H.cards.texto)}<div class="servs">${SERVICOS.map((s, i) => `<a class="serv" href="${s.url}" data-r><span class="serv__n">0${i + 1}</span><span><span class="serv__nome">${esc(NOME_SERV[s.slug])}</span><span class="serv__txt">${esc(s.card.resumo)}</span></span><span class="serv__seta" aria-hidden="true">${I.seta}</span></a>`).join('')}</div></div></section>
+<section class="sec t-preto" id="por-onde-comecar" data-nivel="por onde começar"><div class="c">${cab(H.escolher.etiqueta, H.escolher.titulo, '')}
+	<div class="grade grade--3">${H.escolher.situacoes.map((c, i) => `<article class="cartao" data-r style="--d:${i * 0.06}s"><span class="pixel">${esc(nomeDe(c.servico).nome)}</span><h3 class="medio medio--frase">${esc(c.situacao)}</h3><p>${esc(c.porque)}</p><a class="link" href="${nomeDe(c.servico).url}">Ver o serviço →</a></article>`).join('')}</div>
+	<div class="servs__pe" data-r><p class="medio medio--frase">${esc(H.escolher.nao_sei)}</p>${btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g' })}</div>
+</div></section>
+<section class="sec t-branco" id="combinacoes" data-nivel="combinações"><div class="c">${cab(H.combinacoes.etiqueta, H.combinacoes.titulo, H.combinacoes.texto)}
+	<div class="grade grade--2">${H.combinacoes.itens.map((c, i) => `<article class="cartao cartao--g" data-r style="--d:${i * 0.06}s"><span class="pixel">${esc(c.janela)}</span><h3 class="grande grande--frase">${esc(c.nome)}</h3><p>${esc(c.texto)}</p><div>${btn(H.combinacoes.botao, wa(`Oi! Vim pelo site da Olorin e quero saber da combinação ${c.nome}.`, 'combinacao'), { wa: true })}</div></article>`).join('')}</div>
+</div></section>
+${secTime('t-preto')}
 ${secaoFinal({ pagina: 'servicos' })}`,
-	});
+		});
+	}
 
 	/* ---------- Olorin Educação ---------- */
 	{
@@ -175,12 +188,13 @@ ${secaoFinal({ segmento: 'influenciadores', pagina: 'influenciadores', mensagemW
 		const Q = P.sobre;
 		const msg = 'Oi! Vim pelo site da Olorin e quero falar com a equipe.';
 		const corpo = `
-${capa({ tema: 't-preto', etiqueta: Q.etiqueta, titulo: ['um time', 'inteiro.'], texto: Q.sub, botoes: btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g' }) + btn(Q.whatsapp, wa(msg, 'quem-somos'), { wa: true, cls: 'btn--vazado btn--g' }),
+${capa({ tema: 't-preto', etiqueta: Q.etiqueta, titulo: ['Um time inteiro.', 'Sua marca em', 'outro nível.'], texto: Q.sub, cls: 'capa--longa', botoes: btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g' }) + btn(Q.whatsapp, wa(msg, 'quem-somos'), { wa: true, cls: 'btn--vazado btn--g' }),
 		arte: `<div class="pilha">${equipe.map((p, i) => `<div class="pilha__f" style="--i:${i}" data-r="cola">${img(FOTO[p.slug], '', { sizes: '(min-width:900px) 20vw, 40vw', lazy: i > 0 })}</div>`).join('')}</div>` })}
+${marcas()}
 <section class="sec t-branco" data-nivel="história">
 	<div class="c duas">
-		<div>${fita(Q.historia.etiqueta)}${linhas(['tudo no', 'mesmo time.'], 'mega', 'h2', ' style="margin-top:22px"')}<div class="numeros numeros--col" data-r>${D.claims.itens.filter((c) => c.verificado).map((n) => `<div class="numero"><b>${esc(n.valor)}</b><span>${esc(n.rotulo)}</span></div>`).join('')}</div></div>
-		<div class="prosa" data-r>${Q.historia.paragrafos.map((t) => `<p>${esc(t)}</p>`).join('')}<p><strong>${esc(Q.historia.apoio)}</strong></p><p>${esc(Q.historia.educacao.texto)} ${Q.historia.educacao.links.map((l) => `<a class="link" href="${l.url}">${esc(l.texto)}</a>`).join(' · ')}</p></div>
+		<div>${fita(Q.historia.etiqueta)}${linhas(['Tudo no', 'mesmo time.'], 'mega', 'h2', ' style="margin-top:22px"')}<div class="numeros numeros--col" data-r>${D.claims.itens.filter((c) => c.verificado).map((n) => `<div class="numero"><b>${esc(n.valor)}</b><span>${esc(n.rotulo)}</span></div>`).join('')}</div></div>
+		<div class="prosa" data-r><p><strong>${esc(Q.historia.apoio)}</strong></p>${Q.historia.paragrafos.map((t) => `<p>${esc(t)}</p>`).join('')}</div>
 	</div>
 </section>
 ${secEquipe(Q.equipe, 't-preto', Object.fromEntries(equipe.map((p) => [p.slug, p.frase])))}
@@ -191,7 +205,7 @@ ${secEquipe(Q.equipe, 't-preto', Object.fromEntries(equipe.map((p) => [p.slug, p
 </section>
 <section class="sec t-preto" data-nivel="atendimento">
 	<div class="c duas">
-		<div>${fita(Q.remoto.etiqueta)}${linhas(['longe só', 'no mapa.'], 'mega', 'h2', ' style="margin-top:22px"')}</div>
+		<div>${fita(Q.remoto.etiqueta)}${linhas(['Longe só', 'no mapa.'], 'mega', 'h2', ' style="margin-top:22px"')}</div>
 		<ul class="lista-ok lista-ok--g" data-r>${Q.remoto.itens.map((t) => `<li>${I.check}<span>${esc(t)}</span></li>`).join('')}</ul>
 	</div>
 </section>
@@ -205,23 +219,25 @@ ${secaoFinal({ pagina: 'quem-somos', mensagemWa: msg })}`;
 			const msgP = `Oi! Vim pelo perfil de ${p.nome} no site da Olorin e quero falar com a equipe.`;
 			const destaques = [...p.destaques, { valor: String(frentes.length), rotulo: frentes.length > 1 ? Q.perfil.frentes : Q.perfil.frente }];
 			const corpoP = `
-${capa({ tema: 't-preto', etiqueta: p.funcao, titulo: p.nome.split(' '), texto: p.bio, cls: 'capa--perfil',
-				botoes: btn('Falar no WhatsApp', wa(msgP, 'perfil'), { wa: true, cls: 'btn--g' }) + `<button class="btn btn--vazado btn--g" type="button" data-copiar>${esc(Q.perfil.copiar)}</button>`,
+${capa({ tema: 't-preto', etiqueta: p.funcao, titulo: p.nome.split(' ').map((n) => `<span class="nome">${esc(n)}</span>`), texto: p.credencial ? p.credencial.texto : '', cls: 'capa--perfil',
+				botoes: btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g' }) + btn('WhatsApp', wa(msgP, 'perfil'), { wa: true, cls: 'btn--vazado btn--g' }) + `<button class="btn btn--vazado btn--g" type="button" data-copiar>${esc(Q.perfil.copiar)}</button>`,
 				arte: `<div class="retrato" data-r="cola" style="--fim:2deg">${img(FOTO[p.slug], `Foto de ${p.nome}`, { sizes: '(min-width:900px) 34vw, 80vw', lazy: false })}<span class="retrato__emojis" aria-hidden="true">${p.emojis.join(' ')}</span></div>` })}
-<section class="sec t-branco" data-nivel="frentes">
+${marcas()}
+<section class="sec t-branco" data-nivel="sobre">
 	<div class="c">
 		<div class="numeros" data-r>${destaques.map((n) => `<div class="numero"><b>${esc(n.valor)}</b><span>${esc(n.rotulo)}</span></div>`).join('')}${p.credencial ? `<div class="cred">${p.credencial.marcas.map((m) => `<img src="/assets/marcas/${m}-original.webp" alt="${m === 'meta' ? 'Meta' : 'Google'}" height="30" width="${m === 'meta' ? 130 : 99}" loading="lazy">`).join('')}<b>${esc(p.credencial.texto)}</b></div>` : ''}</div>
-		${cab(Q.perfil.dia_a_dia, `As frentes de ${primeiro}.`, '')}
+		<div class="duas perfil-sobre"><div>${fita(Q.perfil.sobre)}${linhas([`<span class="nome">${esc(primeiro)}.</span>`], 'mega', 'h2', ' style="margin-top:22px"')}</div><div class="prosa" data-r><p>${esc(p.bio)}</p><p><strong>“${esc(p.frase)}”</strong></p></div></div>
+		<p class="pixel" style="margin-bottom:14px">${esc(Q.perfil.dia_a_dia)}</p>
 		<div class="servs servs--claro">${frentes.map((s, i) => `<a class="serv" href="${s.url}" data-r><span class="serv__n">0${i + 1}</span><span><span class="serv__nome">${esc(NOME_SERV[s.slug])}</span><span class="serv__txt">${esc(s.card.resumo_curto)}</span></span><span class="serv__seta" aria-hidden="true">${I.seta}</span></a>`).join('')}</div>
 		${trabalhos.length ? `<div style="margin-top:clamp(48px,7vw,96px)">${cab(Q.perfil.trabalhos, 'Na prática.', Q.perfil.trabalhos_texto)}<div class="trilho" data-trilho tabindex="0" aria-label="Portfólio: arraste para o lado">${trabalhos.map(peca).join('')}</div><div class="botoes">${btn(Q.perfil.trabalhos_link, '/portfolio/')}</div></div>` : ''}
 	</div>
 </section>
 <section class="sec t-preto" data-nivel="time">
-	<div class="c">${cab(Q.perfil.time, 'O resto do time.', '')}
+	<div class="c">${cab('', Q.perfil.time, '')}
 		<div class="time time--2">${equipe.filter((o) => o.slug !== p.slug).map((o, i) => cartaoPessoa(o, i, '')).join('')}</div>
 	</div>
 </section>
-${secaoFinal({ pagina: p.slug, mensagemWa: msgP })}`;
+${secaoFinal({ pagina: 'perfil', mensagemWa: msgP })}`;
 			out.push({
 				url: `/quem-somos/${p.slug}/`, modo: 'perfil', slug: p.slug, titulo: p.titulo_seo || `${p.nome}, ${p.funcao.replace(/^Diretora? de /, '')} | Olorin`, descricao: p.descricao, corpo: corpoP, mensagemWa: msgP,
 				esquema: [{ '@context': 'https://schema.org', '@type': 'Person', name: p.nome, jobTitle: p.funcao, worksFor: { '@id': S.URL + '/#org' }, url: `${S.URL}/quem-somos/${p.slug}/` }],
@@ -238,16 +254,17 @@ ${secaoFinal({ pagina: p.slug, mensagemWa: msgP })}`;
 			<div class="painel__graf" role="img" aria-label="${esc(R.grafico.map((g) => `${g.rotulo}: R$ ${g.valor.toLocaleString('pt-BR')}`).join('; '))}">${R.grafico.map((g) => `<div style="--h:${Math.round((g.valor / max) * 100)}%"><b>R$ ${g.valor.toLocaleString('pt-BR')}</b><i></i><span>${esc(g.rotulo)}</span></div>`).join('')}</div>
 			<p class="painel__t">${esc(R.proxima_titulo)}</p><ul class="lista-ok">${R.proxima.map((t) => `<li>${I.check}<span>${esc(t)}</span></li>`).join('')}</ul><p class="boletim__aviso">${esc(R.glossario)}</p>`);
 		const corpo = `
-${capa({ tema: 't-neon', etiqueta: M.etiqueta, titulo: ['quatro etapas.', 'zero achismo.'], texto: M.sub, botoes: btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g' }), arte: img('adesivo-lupa', '', { sizes: '(min-width:900px) 36vw, 70vw', cls: 'capa__pessoa adesivo', lazy: false }) })}
+${capa({ tema: 't-neon', etiqueta: M.etiqueta, titulo: [M.titulo], texto: M.sub, botoes: btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g' }), arte: img('adesivo-lupa', '', { sizes: '(min-width:900px) 36vw, 70vw', cls: 'capa__pessoa adesivo', lazy: false }) })}
+${marcas()}
 <section class="sec t-preto" id="metodo" data-nivel="método">
-	<div class="c">${cab(M.metodo.etiqueta, 'Do raio-x à leitura.', M.metodo.texto)}
+	<div class="c">${cab(M.metodo.etiqueta, M.metodo.titulo, M.metodo.texto)}
 		<ol class="etapas">${M.metodo.etapas.map((e, i) => `<li data-r style="--d:${i * 0.07}s"><span class="etapas__n">${i + 1}</span><h3 class="grande">${esc(e.nome)}</h3><p>${esc(e.texto)}</p></li>`).join('')}</ol>
 		<div class="servs__pe" data-r><p class="medio">${esc(M.metodo.cta_texto)}</p>${btn('Quero meu Raio-X', '#raio-x', { cls: 'btn--g' })}</div>
 	</div>
 </section>
 <section class="sec t-branco" id="relatorio" data-nivel="relatório">
 	<div class="c duas">
-		<div>${fita(R.etiqueta)}${linhas(['faturamento,', 'não só', 'alcance.'], 'mega', 'h2', ' style="margin-top:22px"')}<p class="lede" data-r style="margin-top:22px">${esc(R.texto)}</p></div>
+		<div>${fita(R.etiqueta)}${linhas(['Faturamento,', 'não só', 'alcance.'], 'mega', 'h2', ' style="margin-top:22px"')}<p class="lede" data-r style="margin-top:22px">${esc(R.texto)}</p></div>
 		<div class="painel" data-r>${painel}</div>
 	</div>
 </section>
@@ -257,6 +274,7 @@ ${capa({ tema: 't-neon', etiqueta: M.etiqueta, titulo: ['quatro etapas.', 'zero 
 		<p data-r style="margin-top:28px">${esc(M.duvidas.texto)} <a class="link" href="${wa('Oi! Vim pelo site da Olorin e tenho uma dúvida.', 'duvidas')}" target="_blank" rel="noopener" data-wa>${esc(D.faq.whatsapp)}</a></p>
 	</div>
 </section>
+${secTime('t-branco')}
 ${secaoFinal({ pagina: 'sobre' })}`;
 		out.push({
 			url: '/sobre/', modo: 'sobre', slug: 'sobre', titulo: M.seo.titulo, descricao: M.seo.descricao, corpo,
@@ -268,15 +286,16 @@ ${secaoFinal({ pagina: 'sobre' })}`;
 	{
 		const F = P.portfolio, filtros = D.portfolio.filtros.filter((f) => D.portfolio.itens.some((p) => p.servicos.includes(f.id)));
 		const corpo = `
-${capa({ tema: 't-branco', etiqueta: F.etiqueta, titulo: ['feito pelo', 'nosso time.'], texto: F.sub, cls: 'capa--baixa' })}
-<section class="sec t-branco" style="padding-top:0" data-nivel="trabalhos">
-	<div class="c">
+${capa({ tema: 't-branco', etiqueta: F.etiqueta, titulo: F.titulo, texto: F.sub, cls: 'capa--baixa' })}
+${marcas()}
+<section class="sec t-branco" data-nivel="trabalhos">
+	<div class="c">${cab(F.portfolio.etiqueta, F.portfolio.titulo, '')}
 		<div class="filtros" data-filtros role="group" aria-label="Filtrar por serviço"><button type="button" data-filtro="" aria-pressed="true">${esc(F.portfolio.filtro_todos)}</button>${filtros.map((f) => `<button type="button" data-filtro="${f.id}" aria-pressed="false">${esc(f.rotulo)}</button>`).join('')}</div>
 		<div class="mural">${D.portfolio.itens.map(peca).join('')}</div>
 		<div class="botoes" style="margin-top:clamp(36px,5vw,64px)">${btn(F.portfolio.botao, S.INSTAGRAM_URL, { cls: 'btn--vazado', attrs: 'target="_blank" rel="noopener"' })}</div>
 	</div>
 </section>
-${banda('provas, não promessas', 't-preto')}
+${secTime('t-preto')}
 ${secaoFinal({ pagina: 'portfolio' })}`;
 		out.push({ url: '/portfolio/', modo: 'portfolio', slug: 'portfolio', titulo: F.seo?.titulo || 'Portfólio | Olorin Digital', descricao: F.seo?.descricao || 'Identidade, redes, impressos, sites e campanhas feitos pelo time da Olorin Digital. Veja as marcas atendidas e peça o seu Raio-X gratuito.', corpo });
 	}
@@ -302,19 +321,14 @@ ${capa({ tema: 't-preto', etiqueta: `Atualizada em ${data}`, titulo: ['política
 	<div class="c capa__c">
 		<div class="capa__txt">
 			${fita(T.etiqueta)}
-			<h1 class="giga capa__t linhas v"><span class="l"><span><span data-nome></span> recebido.</span></span></h1>
+			<h1 class="giga capa__t linhas v"><span class="l"><span>${esc(T.titulo)}</span></span></h1>
 			<p class="lede">${esc(T.texto)} ${esc(T.prazo)}</p>
-			<div class="proximo">
-				<p class="medio">Quer adiantar? Mande um oi agora.</p>
-				<p>A conversa já abre com a sua mensagem pronta, direto com o Derek. Assim você não perde o nosso contato no meio das outras mensagens.</p>
-				<div class="botoes">${`<a class="btn btn--wa btn--g" href="${wa(msg, 'obrigado')}" target="_blank" rel="noopener" data-wa data-wa-obrigado>${I.wa}<span>Abrir a conversa no WhatsApp</span></a>`}<a class="btn btn--vazado" href="/olorin.vcf" download>Salvar o contato da Olorin</a><a class="btn btn--vazado" href="#" target="_blank" rel="noopener" data-agenda hidden>${esc(T.agendar)}</a></div>
-			</div>
-			<div class="quem quem--escuro">${img('equipe-derek', 'Derek Gonçalves', { sizes: '74px' })}<div><small>Quem vai te chamar</small><b>Derek Gonçalves</b><span>${esc(S.TELEFONE_EXIBICAO)}</span></div></div>
+			<div class="botoes">${btn(T.botao, wa(msg, 'obrigado'), { wa: true, cls: 'btn--g' })}<a class="btn btn--vazado" href="#" target="_blank" rel="noopener" data-agenda hidden>${esc(T.agendar)}</a></div>
 		</div>
 		<div class="capa__arte">${img('adesivo-salto', '', { sizes: '(min-width:900px) 34vw, 70vw', cls: 'capa__pessoa adesivo', lazy: false })}<span class="selo" style="--tam:150px;position:absolute;right:-3%;top:-2%;z-index:3" aria-hidden="true"><span><small>pedido</small>+1<br>nível</span></span></div>
 	</div>
 </section>
-<section class="sec t-neon" data-nivel="enquanto isso"><div class="c">${cab(T.enquanto_titulo, 'Dá uma olhada.', '')}<div class="servs">${T.enquanto.map((l, i) => `<a class="serv" href="${l.url}"><span class="serv__n">0${i + 1}</span><span><span class="serv__nome serv__nome--p">${esc(l.rotulo)}</span></span><span class="serv__seta" aria-hidden="true">${I.seta}</span></a>`).join('')}</div></div></section>`;
+<section class="sec t-neon" data-nivel="enquanto isso"><div class="c">${cab('', T.enquanto_titulo, '')}<div class="servs">${T.enquanto.map((l, i) => `<a class="serv" href="${l.url}"><span class="serv__n">0${i + 1}</span><span><span class="serv__nome serv__nome--p">${esc(l.rotulo)}</span></span><span class="serv__seta" aria-hidden="true">${I.seta}</span></a>`).join('')}</div></div></section>`;
 			out.push({ url, modo: 'obrigado', slug: url.replace(/\//g, ''), segmento: seg === 'influenciadores' ? 'influencer' : seg === 'educacao' ? 'educacao' : '', titulo: (T.seo || O.seo).titulo, descricao: (T.seo || O.seo).descricao, corpo, noindex: true, semForm: true, mensagemWa: msg });
 		}
 	}
@@ -324,7 +338,8 @@ ${capa({ tema: 't-preto', etiqueta: `Atualizada em ${data}`, titulo: ['política
 		const E4 = P.erro404;
 		out.push({
 			url: '/404.html', modo: 'erro', slug: '404', titulo: E4.seo.titulo, descricao: E4.seo.descricao, noindex: true, semForm: true,
-			corpo: capa({ tema: 't-neon', etiqueta: 'Erro 404', titulo: ['fase não', 'encontrada.'], texto: 'Essa página não existe ou mudou de endereço. Volte para o início ou peça o seu Raio-X gratuito.', cls: 'capa--obrigado', botoes: btn(E4.inicio, '/', { cls: 'btn--g' }) + btn(E4.raio_x, '/#raio-x', { cls: 'btn--vazado btn--g' }), arte: img('adesivo-estrela', '', { sizes: '(min-width:900px) 36vw, 70vw', cls: 'capa__pessoa adesivo', lazy: false }) }),
+			corpo: `${capa({ tema: 't-preto', etiqueta: 'Erro 404', titulo: E4.titulo, texto: E4.texto, cls: 'capa--baixa', botoes: btn(E4.inicio, '/', { cls: 'btn--g' }) + btn(E4.raio_x, '/#raio-x', { cls: 'btn--vazado btn--g' }) })}
+<section class="sec t-neon" data-nivel="serviços"><div class="c"><div class="servs">${SERVICOS.map((s, i) => `<a class="serv" href="${s.url}"><span class="serv__n">0${i + 1}</span><span><span class="serv__nome serv__nome--p">${esc(NOME_SERV[s.slug])}</span></span><span class="serv__seta" aria-hidden="true">${I.seta}</span></a>`).join('')}</div></div></section>`,
 		});
 	}
 	return out;

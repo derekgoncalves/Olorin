@@ -88,6 +88,9 @@ AddDefaultCharset utf-8
 	# Páginas de campanha antigas (/promo/...) agora são as páginas de serviço; os parâmetros do anúncio (utm, gclid, fbclid) seguem junto
 	RewriteRule ^promo/(trafego-pago|redes-sociais|identidade-visual|material-impresso|site-e-loja-virtual|rastreamento-e-relatorio)/?$ /servicos/$1/ [L,R=301,QSA]
 	RewriteRule ^promo/?$ /servicos/ [L,R=301,QSA]
+	# Segmentos em pausa (14/11/2026): Educação e Influenciadores levam para a home por enquanto (302, temporário)
+	RewriteRule ^(educacao|influenciadores)/?$ / [L,R=302,QSA]
+	RewriteRule ^obrigado-(educacao|influenciadores)/?$ /obrigado/ [L,R=302]
 </IfModule>
 
 # ------------------------------------------------------------

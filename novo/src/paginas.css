@@ -205,3 +205,73 @@
 .capa__txt>*{min-width:0;max-width:100%}
 @media (max-width:560px){.proximo .botoes{display:grid}.proximo .btn{width:100%;font-size:.86rem;padding-inline:14px}}
 .quem--escuro{margin-top:0;box-shadow:7px 7px 0 var(--neon);color:var(--preto)}
+
+/* ---------- 14/11: conteúdo de 24/10 na identidade nova ---------- */
+/* nomes próprios nunca em minúsculas */
+.nome,.jog__info b,.peca figcaption b,.quem b,.cred b,.medio--frase,.grande--frase{text-transform:none}
+/* página mais enxuta */
+.sec{padding:clamp(54px,7vw,104px) 0}
+.mega{font-size:clamp(2.15rem,5.9vw,5.3rem)}
+.cab{margin-bottom:clamp(26px,3.6vw,50px)}
+.numeros{margin-bottom:0}
+.t-neon .cred{box-shadow:8px 8px 0 var(--preto)}
+.trilho{padding-top:22px;padding-bottom:34px}
+.filtros{margin-bottom:clamp(14px,2vw,24px)}
+.capa--longa .capa__t{font-size:clamp(1.9rem,4.5vw,4.1rem)}
+.perfil-sobre{margin:clamp(34px,5vw,64px) 0}
+.jog__frase{margin-top:6px}
+/* serviços da home: grade compacta */
+.sgrade{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,18px)}
+@media (min-width:860px){.sgrade{grid-template-columns:repeat(3,1fr)}}
+.scard{display:grid;gap:10px;align-content:space-between;min-height:clamp(118px,13vw,176px);padding:clamp(14px,1.8vw,24px);border:2.5px solid rgba(255,255,255,.28);border-radius:var(--raio);text-decoration:none;transition:background .2s,color .2s,transform .3s var(--mola),border-color .2s}
+.scard .pixel{color:var(--neon);font-size:.68rem}
+.scard b{font:900 clamp(1.05rem,2.5vw,2.1rem)/.95 var(--f-titulo);text-transform:lowercase;letter-spacing:-.035em}
+.scard i{font-style:normal;font-family:var(--f-pixel);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.78)}
+.scard i svg{width:14px;height:14px;transition:transform .25s var(--mola)}
+.scard:hover,.scard:focus-visible{background:var(--neon);color:var(--preto);border-color:var(--neon);transform:translateY(-5px)}
+.scard:hover .pixel,.scard:hover i{color:var(--preto)}
+.scard:hover i svg{transform:translateX(4px)}
+/* time compacto no celular */
+@media (max-width:899px){.time--c{gap:12px}.time--c .jog{grid-template-columns:104px 1fr;align-items:center}.time--c .jog__foto{aspect-ratio:1;height:100%}.time--c .jog__p{display:none}.time--c .jog__info{padding:12px 14px}}
+/* calculadora */
+.calc .janela__corpo{padding:clamp(18px,2.6vw,34px)}
+.calc__g{display:grid;gap:clamp(22px,3vw,48px)}
+@media (min-width:900px){.calc__g{grid-template-columns:1.15fr .85fr;align-items:center}}
+.calc__form{display:grid;gap:20px}
+.calc__lado{display:grid;gap:18px}
+.bilhete{background:var(--neon);border:2.5px dashed var(--preto);padding:clamp(16px,2vw,24px);font-size:.86rem;transform:rotate(-1.2deg)}
+.bilhete.pulso{animation:pulso .4s var(--mola)}
+@keyframes pulso{40%{transform:rotate(-1.2deg) scale(1.03)}}
+.bilhete__topo{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--f-pixel);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}
+.bilhete__logo svg{height:15px;width:auto;display:block}
+.bilhete__para{margin:12px 0 4px;font-weight:700}
+.bilhete dl{margin:0}
+.bilhete dl div{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1.5px dashed rgba(0,0,0,.45)}
+.bilhete dd{margin:0;font-weight:700;text-align:right}
+.bilhete__extra dd{background:var(--preto);color:var(--neon);padding:1px 8px}
+.bilhete__pe{margin-top:12px;font-size:.76rem}
+.calc__btn{--b-bg:var(--preto);--b-fg:var(--neon);--sombra:var(--violeta);width:100%;font-size:clamp(.66rem,2.75vw,1rem);padding:1.15em .9em}
+/* seção final: Raio X da Olorin */
+.fim__logo{display:inline-block}
+.fim__logo svg{height:.7em;width:auto;display:inline-block;vertical-align:-.02em}
+.fim__rx{display:flex;align-items:center;gap:clamp(18px,3vw,40px)}
+.fim__rx .passos3{margin-top:0;font-weight:700}
+.scan--p{width:clamp(120px,15vw,180px);flex:none;border-radius:22px}
+.scan--p .perfil{zoom:.58}
+.scan--p .scan__feixe::after{font-size:.6rem;padding:7px 6px}
+.fim__alt{margin-top:clamp(20px,3vw,32px);font-size:.92rem}
+/* formulário de 24/10 */
+.form__f{display:grid;gap:14px}
+.form__etapa{border:0;margin:0;padding:0;min-width:0}
+.form__etapa+.form__etapa{margin-top:8px}
+.form__prog{align-items:center;gap:12px}
+.form__prog span{display:flex;gap:6px;flex:1}
+.form__prog b{font-family:var(--f-pixel);font-weight:400;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.sel{position:relative;display:block}
+.sel select{width:100%;appearance:none;-webkit-appearance:none;border:2.5px solid var(--preto);border-radius:12px;background:var(--branco);color:var(--preto);padding:14px 40px 14px 14px;font:inherit;font-size:1rem}
+.sel select:focus{outline:0;box-shadow:4px 4px 0 var(--violeta)}
+.sel::after{content:"";position:absolute;right:17px;top:50%;width:9px;height:9px;border-right:2.5px solid var(--preto);border-bottom:2.5px solid var(--preto);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.campo__ex{font-size:.76rem;color:#333}
+.campo__dica{font-size:.8rem;background:#f1f1f1;border-left:4px solid var(--violeta);padding:8px 10px}
+.chips__todos span{border-style:dashed}
+@media (max-width:899px){.time--c .jog{grid-template-columns:96px minmax(0,1fr)}.time--c .jog__foto{aspect-ratio:auto;width:96px;height:100%;min-height:96px}}
